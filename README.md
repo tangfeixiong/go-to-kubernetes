@@ -12,7 +12,7 @@ The installation can be referenced in [kubernetes v1.0 documentation - Getting S
 
 * Run master
 
-the master include scheduler, api... so enable TCP 8080 port or API will be failed
+the master include controll, scheduler, POD, api... so enable TCP 8080 port or API will be failed
 
 >`# docker run --net=host -d -v /var/run/docker.sock:/var/run/docker.sock  gcr.io/google_containers/hyperkube:v0.21.2 /hyperkube kubelet --api_servers=http://localhost:8080 --v=2 --address=0.0.0.0 --enable_server --hostname_override=127.0.0.1 --config=/etc/kubernetes/manifests
 `
@@ -109,4 +109,35 @@ enable TCP 80 port or service can not be created
 >`# curl http://10.0.0.206`
 
 >the same result as above
+
+## list container with Docker
+
+>`# docker ps`
+
+>CONTAINER ID        IMAGE                                        COMMAND                CREATED             STATUS              PORTS               NAMES
+
+>58ca7b7bc89a        nginx                                        "nginx -g 'daemon of   59 minutes ago      Up 59 minutes                           k8s_nginx.d7d3eb2f_nginx-syeg7_default_fc945b19-41a1-11e5-b8c4-c4346b46de6e_24ac6b02
+
+>ffed942cfc52        gcr.io/google_containers/hyperkube:v0.21.2   "/hyperkube controll   59 minutes ago      Up 59 minutes                           k8s_controller-manager.aad1ee8f_k8s-master-127.0.0.1_default_9b44830745c166dfc6d027b0fc2df36d_8441f980
+
+>ac7cbe846daf        gcr.io/google_containers/pause:0.8.0         "/pause"
+        59 minutes ago      Up 59 minutes                           k8s_POD.ef28
+e851_nginx-syeg7_default_fc945b19-41a1-11e5-b8c4-c4346b46de6e_eeac80e6
+
+>0af559d7e351        gcr.io/google_containers/hyperkube:v0.21.2   "/hyperkube schedule   59 minutes ago      Up 59 minutes                           k8s_scheduler.b725e775_k8s-master-127.0.0.1_default_9b44830745c166dfc6d027b0fc2df36d_8d259834
+
+>fa8bac1ebcfb        gcr.io/google_containers/hyperkube:v0.21.2   "/hyperkube apiserve   59 minutes ago      Up 59 minutes                           k8s_apiserver.70750283_k8s-master-127.0.0.1_default_9b44830745c166dfc6d027b0fc2df36d_6c3cd54
+a
+
+>608b86a418dd        gcr.io/google_containers/pause:0.8.0         "/pause"
+        59 minutes ago      Up 59 minutes                           k8s_POD.e4cc
+795_k8s-master-127.0.0.1_default_9b44830745c166dfc6d027b0fc2df36d_4c85ae5c
+
+>706a1dd60111        gcr.io/google_containers/hyperkube:v0.21.2   "/hyperkube proxy --   10 days ago         Up 59 minutes                           sharp_bell
+
+
+>8f4172000232        gcr.io/google_containers/hyperkube:v0.21.2   "/hyperkube kubelet    10 days ago         Up About an hour                        suspicious_albattani
+
+>cfb63e647cac        gcr.io/google_containers/etcd:2.0.9          "/usr/local/bin/etcd   10 days ago         Up About an hour                        gloomy_jones
+
 
