@@ -2,10 +2,11 @@ package client
 
 import (
     "encoding/base64"
-    
     "io/ioutil"
-	"k8s.io/kubernetes/pkg/api"
+
 	"testing"
+
+	"k8s.io/kubernetes/pkg/api"
 )
 
 func TestListRC(t *testing.T) {
