@@ -380,17 +380,17 @@ The web tty is [forked and customized from krishnasrinivas/wetty](https://github
 
 * Login and run kubectl client
 
-![kubectl](/path/to/img.jpg)
+![kubectl](/images/service-auto-discovery/屏幕快照%202016-06-10%20下午3.35.12.png?raw=true "Optional Title")
 
 * From helm namespace to access services of another namespaces
 
 nc-http, redis-sentinel, openshift
 
-![access services](/path/to/img.jpg)
+![access services](/images/service-auto-discovery/屏幕快照%202016-06-10%20下午3.44.06.png?raw=true "Optional Title")
 
 * Inspect itself
 
-![inspect itself](/path/to/img.jpg)
+![inspect itself](/images/service-auto-discovery/屏幕快照%202016-06-10%20下午3.57.36.png?raw=true "Optional Title")
 
 ### Study case: if have not kubectl in container
 
@@ -400,9 +400,11 @@ According first case, a container already know Kubernetes services
 
 According front inspecting, Kubernetes not only inject environments, but also mount a secret volume
 
+![get sa and secret](/images/service-auto-discovery/屏幕快照%202016-06-10%20下午4.14.00.png?raw=true "Optional Title")
+
 The provided service account (namespace, token, ca) is equal to:
 
-![get sa and secret](/path/to/img.jpg)
+![get sa and secret](/images/service-auto-discovery/屏幕快照%202016-06-10%20下午4.25.38.png?raw=true "Optional Title")
 
 This is called in-cluster config, [The golang source code of Kubernetes client api](https://github.com/kubernetes/kubernetes/blob/master/pkg/client/unversioned/clientcmd/client_config.go#L345-L382)
 
