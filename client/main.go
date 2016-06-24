@@ -16,6 +16,7 @@ var (
 
 func main() {
     kubeconfig = "/home/ubuntu/.kube/config"
+    
 	// k8s.io/kubernetes/pkg/client/unversioned/clientcmd/loader.go
 	config, err := clientcmd.LoadFromFile(kubeconfig)
 	if err != nil {
