@@ -6,26 +6,99 @@ import (
 	"encoding/json"
 	"fmt"
 	"io/ioutil"
-	_ "log"
+	"log"
 	"net/http"
 	_ "net/url"
+	"os"
 	"regexp"
 	"strings"
 
-	"github.com/golang/build/kubernetes"
+	"golang.org/x/build/kubernetes"
+
 	k8sapi "golang.org/x/build/kubernetes/api"
 	"golang.org/x/net/context"
 	"golang.org/x/net/context/ctxhttp"
+
 	"k8s.io/kubernetes/pkg/api"
-	unversionedapi "k8s.io/kubernetes/pkg/api/unversioned"
-	unversionedclient "k8s.io/kubernetes/pkg/client/unversioned"
+	"k8s.io/kubernetes/pkg/api/unversioned"
+	"k8s.io/kubernetes/pkg/client/restclient"
+	kclient "k8s.io/kubernetes/pkg/client/unversioned"
+	"k8s.io/kubernetes/pkg/client/unversioned/clientcmd"
+	clientcmdapi "k8s.io/kubernetes/pkg/client/unversioned/clientcmd/api"
 	"k8s.io/kubernetes/pkg/fields"
+	kcmdutil "k8s.io/kubernetes/pkg/kubectl/cmd/util"
 	"k8s.io/kubernetes/pkg/labels"
 )
 
+type CmdUtilFactory struct {
+	*kcmdutil.Factory
+}
+
+func NewCmdUtilFactory(kubeconfigPath, kubeApiserver, kubectlContext string) (*CmdUtilFactory, error) {
+	cc, err := customClientConfig(kubeconfigPath, kubeApiserver, kubectlContext)
+	if err != nil {
+		return nil, err
+	}
+	f := &CmdUtilFactory{
+		Factory: kcmdutil.NewFactory(cc),
+	}
+	return f, nil
+}
+
+/*func DefaultClientConfig(flags *pflag.FlagSet) clientcmd.ClientConfig {
+	loadingRules := clientcmd.NewDefaultClientConfigLoadingRules()
+	flags.StringVar(&loadingRules.ExplicitPath, "kubeconfig", "", "Path to the kubeconfig file to use for CLI requests.")
+
+	overrides := &clientcmd.ConfigOverrides{}
+	flagNames := clientcmd.RecommendedConfigOverrideFlags("")
+	// short flagnames are disabled by default.  These are here for compatibility with existing scripts
+	flagNames.ClusterOverrideFlags.APIServer.ShortName = "s"
+
+	clientcmd.BindOverrideFlags(overrides, flags, flagNames)
+	clientConfig := clientcmd.NewInteractiveDeferredLoadingClientConfig(loadingRules, overrides, os.Stdin)
+
+	return clientConfig
+}*/
+
+func customClientConfig(kubeconfigPath, kubeApiserver, kubectlContext string) (clientcmd.ClientConfig, error) {
+	var logger *log.Logger = log.New(os.Stdout, "[client/customClientConfig] ", log.LstdFlags|log.Lshortfile)
+	var loadingRules *clientcmd.ClientConfigLoadingRules
+
+	var overrides *clientcmd.ConfigOverrides = &clientcmd.ConfigOverrides{}
+	if len(kubeApiserver) > 0 {
+		overrides.ClusterInfo.Server = kubeApiserver
+	}
+
+	var clientConfig clientcmd.ClientConfig
+
+	if len(kubeconfigPath) == 0 {
+		loadingRules = clientcmd.NewDefaultClientConfigLoadingRules()
+		clientConfig = clientcmd.NewInteractiveDeferredLoadingClientConfig(loadingRules, overrides, os.Stdin)
+		return clientConfig, nil
+	}
+
+	var data []byte
+	var err error
+	data, err = ioutil.ReadFile(kubeconfigPath)
+	if err != nil {
+		logger.Printf("kubeconfig not accessed: %+v\n", err)
+		return nil, err
+	}
+	logger.Printf("kubeconfig: \n%+v\n", string(data))
+	var conf *clientcmdapi.Config
+	conf, err = clientcmd.Load(data)
+	if err != nil {
+		logger.Printf("kubeconfig invalid: %v\n", err)
+		return nil, err
+	}
+
+	clientConfig = clientcmd.NewNonInteractiveClientConfig(*conf, kubectlContext, overrides, loadingRules)
+	return clientConfig, nil
+}
+
 type ClientWrapper struct {
-	k8sConfig *unversionedclient.Config
-	k8sClient *unversionedclient.Client
+	k8sConfig *restclient.Config
+	k8sClient *kclient.Client
 	*kubernetes.Client
 	apiUrl     string
 	httpClient *http.Client
@@ -36,11 +109,11 @@ const (
 )
 
 func NewClientWrapper(apiHost string, userName string, passWord string) (*ClientWrapper, error) {
-	conf := &unversionedclient.Config{
+	conf := &restclient.Config{
 		Host:   apiHost,
 		Prefix: "",
 		//Version:    "v1",
-		//GroupVersion: &unversionedapi.GroupVersion{"", "v1"},
+		//GroupVersion: &unversioned.GroupVersion{"", "v1"},
 		QPS:      5.0,
 		Burst:    10,
 		Username: userName,
@@ -52,7 +125,7 @@ func NewClientWrapper(apiHost string, userName string, passWord string) (*Client
 		k8sConfig: conf,
 	}
 
-	if client, err := unversionedclient.New(conf); err == nil {
+	if client, err := kclient.New(conf); err == nil {
 		wrapper.k8sClient = client
 		return wrapper, nil
 	}
@@ -79,10 +152,10 @@ func NewClientWrapper(apiHost string, userName string, passWord string) (*Client
 	return wrapper, nil
 }
 
-func (c *ClientWrapper) RunPod(pod *k8sapi.Pod) (*k8sapi.Pod, error) {
+func (c *ClientWrapper) RunPod(pod *k8sapi.Pod) (*k8sapi.PodStatus, error) {
 	ctx := context.TODO()
 
-	return c.Client.RunPod(ctx, pod)
+	return c.Client.RunLongLivedPod(ctx, pod)
 }
 
 func (c *ClientWrapper) GetPods() ([]k8sapi.Pod, error) {
@@ -131,7 +204,7 @@ func (c *ClientWrapper) FindReplicationControllerList() (*api.ReplicationControl
 		rcFinder := c.k8sClient.ReplicationControllers("default")
 
 		return rcFinder.List(api.ListOptions{
-			TypeMeta: unversionedapi.TypeMeta{
+			TypeMeta: unversioned.TypeMeta{
 				Kind:       "List", //"ReplicationControllerList",
 				APIVersion: "v1",
 			},
@@ -157,7 +230,7 @@ func (c *ClientWrapper) FindServiceList() (*api.ServiceList, error) {
 		svcFinder := c.k8sClient.Services("default")
 
 		return svcFinder.List(api.ListOptions{
-			TypeMeta: unversionedapi.TypeMeta{
+			TypeMeta: unversioned.TypeMeta{
 				Kind:       "ServiceList",
 				APIVersion: "v1",
 			},

@@ -1,21 +1,53 @@
-
 package client
 
 import (
 	"fmt"
 	"io/ioutil"
-    "log"
-    "strings"
+	"log"
+	"strings"
 
 	"k8s.io/kubernetes/pkg/api"
-	apiunversioned "k8s.io/kubernetes/pkg/api/unversioned"
-	"k8s.io/kubernetes/pkg/client/unversioned"
+	"k8s.io/kubernetes/pkg/api/unversioned"
+	kclient "k8s.io/kubernetes/pkg/client/unversioned"
 	"k8s.io/kubernetes/pkg/client/unversioned/clientcmd"
 	clientcmdapi "k8s.io/kubernetes/pkg/client/unversioned/clientcmd/api"
+	"k8s.io/kubernetes/pkg/labels"
 	"k8s.io/kubernetes/pkg/runtime"
 	"k8s.io/kubernetes/pkg/util/yaml"
-    
 )
+
+func NamespaceScopedServices(cf *CmdUtilFactory, namespace string) (*api.ServiceList, error) {
+	if cf == nil {
+		return nil, fmt.Errorf("args required")
+	}
+	c, err := cf.Client()
+	if err != nil {
+		return nil, err
+	}
+	ns := "default"
+	if len(namespace) > 0 {
+		ns = namespace
+	}
+	return c.Services(ns).List(api.ListOptions{})
+}
+
+func NamespaceScopedPodsWithLabels(cf *CmdUtilFactory, namespace string, labelselection map[string]string) (*api.PodList, error) {
+	if cf == nil {
+		return nil, fmt.Errorf("args required")
+	}
+	c, err := cf.Client()
+	if err != nil {
+		return nil, err
+	}
+	ns := "default"
+	if len(namespace) > 0 {
+		ns = namespace
+	}
+	opt := api.ListOptions{
+		LabelSelector: labels.Set(labelselection).AsSelector(),
+	}
+	return c.Pods(ns).List(opt)
+}
 
 type K8sClientConfig struct {
 	ClusterID string
@@ -40,10 +72,10 @@ type K8sClientConfig struct {
 	// ClientKeyData contains PEM-encoded data from a client key file for TLS. Overrides ClientKey
 	ClientKeyData []byte `json:"client-key-data,omitempty"`
 	config        *clientcmdapi.Config
-	client        *unversioned.Client
+	client        *kclient.Client
 }
 
-func (k8scc *K8sClientConfig) UnversionedClient() *unversioned.Client {
+func (k8scc *K8sClientConfig) UnversionedClient() *kclient.Client {
 	config := clientcmdapi.NewConfig()
 	config.Clusters[k8scc.ClusterID] = &clientcmdapi.Cluster{
 		InsecureSkipTLSVerify:    k8scc.InsecureSkipTLSVerify,
@@ -63,24 +95,23 @@ func (k8scc *K8sClientConfig) UnversionedClient() *unversioned.Client {
 	}
 	config.CurrentContext = k8scc.ClusterID
 
-	clientBuilder := clientcmd.NewNonInteractiveClientConfig(*config, k8scc.ClusterID, &clientcmd.ConfigOverrides{})
+	cc := clientcmd.NewNonInteractiveClientConfig(*config, k8scc.ClusterID, &clientcmd.ConfigOverrides{}, clientcmd.NewDefaultClientConfigLoadingRules())
 
-	clientConfig, err := clientBuilder.ClientConfig()
+	clientConfig, err := cc.ClientConfig()
 	if err != nil {
 		log.Fatalf("Unexpected error: %v", err)
 	}
-	client, err := unversioned.New(clientConfig)
+	client, err := kclient.New(clientConfig)
 	if err != nil {
 		log.Fatalf("Unexpected error: %v", err)
 	}
-	
+
 	return client
 }
 
 func (conf *K8sClientConfig) Init() {
 	conf.client = conf.UnversionedClient()
 }
-
 
 func (conf *K8sClientConfig) CreateRc(fileName string) (rc *api.ReplicationController, err error) {
 	if conf.client == nil {
@@ -105,7 +136,7 @@ func (conf *K8sClientConfig) CreateRc(fileName string) (rc *api.ReplicationContr
 	}
 	//log.Println(string(jsonData))
 	ctrl := &api.ReplicationController{}
-	if err = runtime.DecodeInto(api.Codecs.LegacyCodec(apiunversioned.GroupVersion{}), jsonData, ctrl); err != nil {
+	if err = runtime.DecodeInto(api.Codecs.LegacyCodec(unversioned.GroupVersion{}), jsonData, ctrl); err != nil {
 		log.Fatalf("Unexpected error decoding rc: %v", err)
 	}
 	//log.Println(ctrl.Spec.Template.)
@@ -122,7 +153,7 @@ func (conf *K8sClientConfig) CreateRcByInput(data []byte) (rc *api.ReplicationCo
 		jsonData = tmp
 	}
 	ctrl := &api.ReplicationController{}
-	if err = runtime.DecodeInto(api.Codecs.LegacyCodec(apiunversioned.GroupVersion{}), jsonData, ctrl); err != nil {
+	if err = runtime.DecodeInto(api.Codecs.LegacyCodec(unversioned.GroupVersion{}), jsonData, ctrl); err != nil {
 		log.Fatalf("Unexpected error decoding rc: %v", err)
 	}
 	rc, err = conf.createReplicationControllers(ctrl)
@@ -154,7 +185,7 @@ func (conf *K8sClientConfig) DeleteRc(name string) (err error) {
 	return
 
 }
-func (conf *K8sClientConfig) ScaleRc(name string, num int) (rc *api.ReplicationController, err error) {
+func (conf *K8sClientConfig) ScaleRc(name string, num int32) (rc *api.ReplicationController, err error) {
 	if conf.client == nil {
 		conf.Init()
 	}

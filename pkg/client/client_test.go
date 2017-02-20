@@ -1,17 +1,29 @@
 package client
 
 import (
-    "encoding/base64"
-    "io/ioutil"
+	"encoding/base64"
+	"io/ioutil"
 
 	"testing"
 
 	"k8s.io/kubernetes/pkg/api"
 )
 
+var (
+	fake_namespace string = "default"
+)
+
+func TestService_list(t *testing.T) {
+	result, err := NamespaceScopedServices(fake_cf, fake_namespace)
+	if err != nil {
+		t.Fatal(err)
+	}
+	t.Logf("%+v services found: %+v", len(result.Items), result)
+}
+
 func TestListRC(t *testing.T) {
-    var ca, crt, key []byte = make([]byte,2000), make([]byte,2000), make([]byte,2000)
-    l1, _ := base64.StdEncoding.Decode(ca, []byte(`
+	var ca, crt, key []byte = make([]byte, 2000), make([]byte, 2000), make([]byte, 2000)
+	l1, _ := base64.StdEncoding.Decode(ca, []byte(`
 LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSURHakNDQWdLZ0F3SUJBZ0lKQUxuV3hZRmty
 VnQrTUEwR0NTcUdTSWIzRFFFQkJRVUFNQkl4RURBT0JnTlYKQkFNVEIydDFZbVV0WTJFd0hoY05N
 VFl3TVRJNU1UZzFOVEE1V2hjTk5ETXdOakUyTVRnMU5UQTVXakFTTVJBdwpEZ1lEVlFRREV3ZHJk
@@ -33,7 +45,7 @@ ZWlLTGJuNzBHQzhDc0dmTnNKaDhBcnJ2NnBlVVFFTjhnClIxbzhwNUlVM0IwWEdhZld1TG1IU3VS
 UnM0ZU1yV0FJVzZXWkc4bWduR0tWRklBZTlNR3ZRVXJMeG11NFRwMk4Kc1k3QXdYUzVQSjJvdks1
 WXkrelYvU2Z1ZFVCbFVMdlByQk9BZmVzYgotLS0tLUVORCBDRVJUSUZJQ0FURS0tLS0tCg==
 `))
-    l2, _ := base64.StdEncoding.Decode(crt, []byte(`
+	l2, _ := base64.StdEncoding.Decode(crt, []byte(`
 LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSUM3ekNDQWRlZ0F3SUJBZ0lKQUl0UEgyR3BL
 UjV1TUEwR0NTcUdTSWIzRFFFQkJRVUFNQkl4RURBT0JnTlYKQkFNVEIydDFZbVV0WTJFd0hoY05N
 VFl3TVRJNU1UZzFOVEV3V2hjTk1UY3dNVEk0TVRnMU5URXdXakFWTVJNdwpFUVlEVlFRRERBcHJk
@@ -54,7 +66,7 @@ QWp0dmFjOHhQVGFFRE9oOHlOR2dlN2NXdApyc1VNemVjM0w5WXNQd1JWOE4rZlpPdEdwWWtEVGJB
 QlNsRHRaRmZONXVHcEJFeUYvREZUV2lZbVFTTlJuY2xyCkRyZ1E4STFzRXQ2TVNzYWxvSGxxcjVO
 cGVBWlhVbkg2cjRYdFROZ1NBN085QnFJPQotLS0tLUVORCBDRVJUSUZJQ0FURS0tLS0tCg==
 `))
-    l3, _ := base64.StdEncoding.Decode(key, []byte(`
+	l3, _ := base64.StdEncoding.Decode(key, []byte(`
 LS0tLS1CRUdJTiBSU0EgUFJJVkFURSBLRVktLS0tLQpNSUlFb3dJQkFBS0NBUUVBcjhldXZBbGJt
 aEgySXZCS2g3aEp3blFPamNCaWdNNE1ubUNmUmdBVGo2V1REczFVCjVZVGdPWWlvRmE3T3ludUZq
 S1NRNkJibTZhMG5QbGpiV3BYNmJhU0dQRE1XeUxzeFhGMEk2UFNqU3lteW5INEYKVnNBaDZwak9S
@@ -86,10 +98,10 @@ d2daN2JEMTlCT3ZPK29EMWhIWW00WnBRK3VkVGhYVVM0S21nUU93ZGJ6Nkl6V0ZybldNSQpBZGtY
 SDV5V2xqbkJpU1lnc1BVVFhvVXdXcmZlSnFQdzhmcE9jSTFoSmtSaGJZS2NPc0J4Ci0tLS0tRU5E
 IFJTQSBQUklWQVRFIEtFWS0tLS0tCg==
 `))
-    t.Log(l1, l2, l3)
+	t.Log(l1, l2, l3)
 	cc := K8sClientConfig{
-		ClusterID:            "test",
-		NameSpace:            "default",
+		ClusterID: "test",
+		NameSpace: "default",
 		//Server:               "https://192.168.1.230:443",
 		Server: "https://172.17.4.99",
 		//CertificateAuthority: "/home/johnsenxu/ssl/ca.pem",
@@ -107,7 +119,7 @@ IFJTQSBQUklWQVRFIEtFWS0tLS0tCg==
 		t.Fatal(err)
 	}
 	t.Log(rc)
-    
+
 }
 
 func testConf(t *testing.T) {
@@ -135,7 +147,7 @@ func testConf(t *testing.T) {
 		t.Fatal(err)
 	}
 	t.Log(rc)
-    
+
 }
 
 func testg(t *testing.T) {

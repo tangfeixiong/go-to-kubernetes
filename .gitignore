@@ -1,4 +1,15 @@
 /bin
+/rootfs/kubectl
+/rootfs/exec2hterm
+/rootfs/.gotty
+
+/http%3A%2F%2Fyum.kubernetes.io
+/https%3A%2F%2Fpackages.cloud.google.com
+/java
+/examples
+/vendor
+vendor.txt
+
 # Mac
 .DS_Store
 # Compiled Object files, Static and Dynamic libs (Shared Objects)

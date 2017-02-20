@@ -1,143 +1,67 @@
-# go-for-kubernetes
-Learning, exercising and working on Kubernetes
+# Go-to-Kubernetes
 
-## Install a Docker-based Kubernetes cluster
+## Tables of Content
 
-The installation can be referenced in [kubernetes v1.0 documentation - Getting Started - Running locally via docker](http://kubernetes.io/v1.0/docs/getting-started-guides/docker.html)
+Documentation
 
-* Run etcd for cluster configuration management
+* HandsOn - CentOS Installation
 
->`# docker run --net=host -d gcr.io/google_containers/etcd:2.0.9 /usr/local/bin/etcd --addr=127.0.0.1:4001 --bind-addr=0.0.0.0:4001 --data-dir=/var/etcd/data
-`
+* [DevOps - CentOS Everything ISO media repo](./docs/centos-devops-iso-repo.md)
 
-* Run master
+* [DevOps - CentOS repo mirror](./docs/centos-devops-sync-repo.md)
 
-the master include controll, scheduler, POD, api... so enable TCP 8080 port or API will be failed
+* [HandsOn - CentOS Docker installation](./docs/centos-devops-install-docker.md)
 
->`# docker run --net=host -d -v /var/run/docker.sock:/var/run/docker.sock  gcr.io/google_containers/hyperkube:v0.21.2 /hyperkube kubelet --api_servers=http://localhost:8080 --v=2 --address=0.0.0.0 --enable_server --hostname_override=127.0.0.1 --config=/etc/kubernetes/manifests
-`
+Examples
 
-* Run service proxy
+* Java - Spring Boot docker list images
 
-it is used to expose service with endpoint for external networking
+## Golang
 
->`# docker run -d --net=host --privileged gcr.io/google_containers/hyperkube:v0.21.2 /hyperkube proxy --master=http://127.0.0.1:8080 --v=2
-`
+Version and Env
 
-* Run a nginx demo
+    $ go version
+    go version go1.6.2 linux/amd64
 
->`# kubectl -s http://localhost:8080 run-container nginx --image=nginx --port=80
-`
+    $ echo $GOPATH; echo $GOBIN
+    /data:/go:/work
+    /data/bin
 
-* Expose nginx as networing service
+## Vendoring
 
-enable TCP 80 port or service can not be created
+Using `godep`:
 
->`# kubectl expose rc nginx --port=80`
+    $ go get https://github.com/tools/godep
+    
+Currently
 
+    $ GOPATH=/work:/go:/data godep save -v -d ./cmd/c3/
+    godep: Go Version: go1.6
+    godep: Finding dependencies for [./cmd/c3/]
+    godep: Found package: github.com/tangfeixiong/go-to-kubernetes/cmd/c3
+    godep: 	Deps: bufio bytes compress/gzip compress/zlib container/heap container/list crypto crypto/hmac crypto/md5 crypto/rand crypto/rsa crypto/sha1 crypto/sha256 crypto/tls crypto/x509 crypto/x509/pkix database/sql/driver encoding encoding/base64 encoding/binary encoding/csv encoding/hex encoding/json encoding/pem encoding/xml errors expvar flag fmt github.com/golang/build/kubernetes github.com/golang/glog github.com/inconshreveable/mousetrap github.com/spf13/cobra github.com/spf13/pflag github.com/tangfeixiong/go-to-kubernetes/pkg/api github.com/tangfeixiong/go-to-kubernetes/pkg/client github.com/tangfeixiong/go-to-kubernetes/pkg/cmd github.com/tangfeixiong/go-to-kubernetes/pkg/component go/ast go/doc go/format go/parser go/token golang.org/x/build/kubernetes/api golang.org/x/net/context golang.org/x/net/context/ctxhttp gopkg.in/inf.v0 hash hash/adler32 hash/fnv io io/ioutil k8s.io/kubernetes/federation/apis/federation k8s.io/kubernetes/federation/apis/federation/install k8s.io/kubernetes/federation/apis/federation/v1beta1
+    ...
+    k8s.io/kubernetes/vendor/golang.org/x/net/websocket k8s.io/kubernetes/vendor/golang.org/x/oauth2 k8s.io/kubernetes/vendor/golang.org/x/oauth2/google k8s.io/kubernetes/vendor/golang.org/x/oauth2/internal k8s.io/kubernetes/vendor/golang.org/x/oauth2/jws k8s.io/kubernetes/vendor/golang.org/x/oauth2/jwt k8s.io/kubernetes/vendor/google.golang.org/cloud/compute/metadata k8s.io/kubernetes/vendor/google.golang.org/cloud/internal k8s.io/kubernetes/vendor/gopkg.in/inf.v0 k8s.io/kubernetes/vendor/gopkg.in/yaml.v2 log log/syslog math math/big math/rand mime net net/http net/http/httputil net/mail net/rpc net/textproto net/url os os/exec os/signal os/user path path/filepath reflect regexp runtime runtime/cgo runtime/debug sort strconv strings sync sync/atomic syscall text/tabwriter text/template time unicode unicode/utf16 unicode/utf8 unsafe
+    godep: Computing new Godeps.json file
+    ...
+    godep: Rewriting paths (if necessary)
 
-## Now test it out
+Want update, for example, update [Kubernetes forks from Openshift Origin](https://github.com/openshift/kubernetes):
 
-* via endpoint
+    $ (TBC)
 
->`# /opt/tfx/kubectl get endpoints`
+## Make binary
 
->`NAME         ENDPOINTS`
+Go build
 
->`kubernetes   192.168.0.25:6443`
+    $ GOPATH=/work:/go:/data go build -o $GOBIN/c3 -a -v github.com/tangfeixiong/go-to-kubernetes/cmd/c3
 
->`nginx        172.17.0.1:80`
+Or
 
->`# curl http://172.17.0.1`
+    $ GOPATH=/work:/go:/data go install -v github.com/tangfeixiong/go-to-kubernetes/cmd/c3
 
->`<!DOCTYPE html>`
+## Intruduction of *docker exec* and *kubectl exec* command 简述docker exec和kubectl exec的远程命令机制
 
->`<html>`
+[terminal-emulator.md](./terminal-emulator.md)
 
->`<head>`
-
->`<title>Welcome to nginx!</title>`
-
->`<style>`
-
->`    body {`
-
->`        width: 35em;`
-
->`        margin: 0 auto;`
-
->`        font-family: Tahoma, Verdana, Arial, sans-serif;`
-
->`    }`
-
->`</style>`
-
->`</head>`
-
->`<body>`
-
->`<h1>Welcome to nginx!</h1>`
-
->`<p>If you see this page, the nginx web server is successfully installed and`
-
->`working. Further configuration is required.</p>`
-
->`<p>For online documentation and support please refer to`
-
->`<a href="http://nginx.org/">nginx.org</a>.<br/>`
-
->`Commercial support is available at`
-
->`<a href="http://nginx.com/">nginx.com</a>.</p>`
-
->`<p><em>Thank you for using nginx.</em></p>`
-
->`</body>`
-
->`</html>`
-
-* via networking service
-
->`# /opt/tfx/kubectl get services`
-
->`NAME         LABELS                                    SELECTOR    IP(S)        PORT(S)`
-
->`kubernetes   component=apiserver,provider=kubernetes   <none>      10.0.0.1     443/TCP`
-
->`nginx        run=nginx                                 run=nginx   10.0.0.206   80/TCP`
-
->`# curl http://10.0.0.206`
-
->the same result as above
-
-## list container with Docker
-
->`# docker ps`
-
->CONTAINER ID        IMAGE                                        COMMAND                CREATED             STATUS              PORTS               NAMES
-
->58ca7b7bc89a        nginx                                        "nginx -g 'daemon of   59 minutes ago      Up 59 minutes                           k8s_nginx.d7d3eb2f_nginx-syeg7_default_fc945b19-41a1-11e5-b8c4-c4346b46de6e_24ac6b02
-
->ffed942cfc52        gcr.io/google_containers/hyperkube:v0.21.2   "/hyperkube controll   59 minutes ago      Up 59 minutes                           k8s_controller-manager.aad1ee8f_k8s-master-127.0.0.1_default_9b44830745c166dfc6d027b0fc2df36d_8441f980
-
->ac7cbe846daf        gcr.io/google_containers/pause:0.8.0         "/pause"
-        59 minutes ago      Up 59 minutes                           k8s_POD.ef28
-e851_nginx-syeg7_default_fc945b19-41a1-11e5-b8c4-c4346b46de6e_eeac80e6
-
->0af559d7e351        gcr.io/google_containers/hyperkube:v0.21.2   "/hyperkube schedule   59 minutes ago      Up 59 minutes                           k8s_scheduler.b725e775_k8s-master-127.0.0.1_default_9b44830745c166dfc6d027b0fc2df36d_8d259834
-
->fa8bac1ebcfb        gcr.io/google_containers/hyperkube:v0.21.2   "/hyperkube apiserve   59 minutes ago      Up 59 minutes                           k8s_apiserver.70750283_k8s-master-127.0.0.1_default_9b44830745c166dfc6d027b0fc2df36d_6c3cd54
-a
-
->608b86a418dd        gcr.io/google_containers/pause:0.8.0         "/pause"
-        59 minutes ago      Up 59 minutes                           k8s_POD.e4cc
-795_k8s-master-127.0.0.1_default_9b44830745c166dfc6d027b0fc2df36d_4c85ae5c
-
->706a1dd60111        gcr.io/google_containers/hyperkube:v0.21.2   "/hyperkube proxy --   10 days ago         Up 59 minutes                           sharp_bell
-
-
->8f4172000232        gcr.io/google_containers/hyperkube:v0.21.2   "/hyperkube kubelet    10 days ago         Up About an hour                        suspicious_albattani
-
->cfb63e647cac        gcr.io/google_containers/etcd:2.0.9          "/usr/local/bin/etcd   10 days ago         Up About an hour                        gloomy_jones
-
-
+## Web based terminal via websocket protool 基于websocket协议的web终端

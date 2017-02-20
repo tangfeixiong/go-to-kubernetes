@@ -47,34 +47,7 @@ func onceBody() {
 }
 */
 
-func TestMain(m *testing.M) {
-	fmt.Println("----")
-
-	/*
-	   flag.Parse()
-
-	   if user == "" || pass == "" {
-	       fmt.Errorf("no enough args")
-	       os.Exit(1)
-	   }
-
-	   c, err := NewClientWrapper(server, user, pass)
-	   if err != nil {
-	       fmt.Errorf(err.Error())
-	       os.Exit(1)
-	   }
-
-	   if c == nil {
-	       fmt.Errorf("no client")
-	       os.Exit(1)
-	   }
-	*/
-	ret := m.Run()
-
-	os.Exit(ret)
-}
-
-func TestListRC(t *testing.T) {
+func TestReplicationController_List(t *testing.T) {
 	//tc = t
 	//once.Do(onceBody)
 
