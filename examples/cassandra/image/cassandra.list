@@ -1,0 +1,12 @@
+# deb http://www.apache.org/dist/cassandra/debian 21x main
+# deb-src http://www.apache.org/dist/cassandra/debian 21x main
+
+# deb http://mirrors.aliyun.com/apache/cassandra/debian 21x main
+# deb-src http://mirrors.aliyun.com/apache/cassandra/debian 21x main
+
+# for 35x
+deb http://mirrors.aliyun.com/apache/cassandra/debian 35x main
+deb-src http://mirrors.aliyun.com/apache/cassandra/debian 35x main
+
+# for jre8 (35x required)
+deb http://http.debian.net/debian jessie-backports main

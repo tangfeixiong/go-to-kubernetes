@@ -1,0 +1,5 @@
+# The OS-scoped excludes
+
+LiveOS/
+images/
+isolinux/

@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: repcached
+  name: repcached
+spec:
+  ports:
+    - port: 11211
+  selector:
+    app: repcached

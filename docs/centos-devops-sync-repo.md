@@ -17,23 +17,35 @@ Execute __Linux__ command _wget_ to download - 从[阿里云镜像站](http://mi
 
 ```
 tangf@DESKTOP-H68OQDV /cygdrive/f/16-mirror/centos
-$ ls
+$ ls -1
+atomic.exclude
+atomic.include
 centos-rsync.filter
-dockerproject.exclude
+centosplus.exclude
+centosplus.include
+cloud.exclude
+cloud.include
+cr.exclude
+cr.include
 extras.exclude
 extras.include
-https%3A%2F%2Fpackages.cloud.google.com%2Fyum
-kubernetes.repo
-kubernetes.wgetrc
-kubernetes-yum-key.gpg
-kubernetes-yum-package-key.gpg
+fasttrack.exclude
+fasttrack.include
+isos.exclude
+isos.include
 mirror-by-rsync.sh
-mirror-by-wget.sh
+os.exclude
+os.include
 paas.exclude
 paas.include
-rsync%3A%2F%2Fmirrors.yun-idc.com%2Fcentos%2F7
+sclo.exclude
+sclo.include
 storage.exclude
 storage.include
+updates.exclude
+updates.include
+virt.exclude
+virt.include
 
 tangf@DESKTOP-H68OQDV /cygdrive/f/16-mirror/centos
 $ ./mirror-by-rsync.sh
@@ -47,6 +59,8 @@ sent 1,122 bytes  received 12,107 bytes  8,819.33 bytes/sec
 total size is 464,833,789  speedup is 35,137.48
 
 ```
+
+Find sync script in [/examples/centos-devops-sync-repo](/examples/centos-devops-sync-repo) dir.
 
 The mirror repos except __isos__ and __os__ (same with Everything ISO), and size is a bit larger
 
@@ -78,6 +92,24 @@ mirror repo
 [vagrant@openshiftdev yum.repos.d]$ mkdir -p /home/vagrant/offline-repo
 [vagrant@openshiftdev yum.repos.d]$ cp -r /vagrant_data/16-mirror/centos/rsync%3A%2F%2Fmirrors.yun-idc.com%2Fcentos%2F7/* /home/vagrant/offline-repo/
 [vagrant@openshiftdev yum.repos.d]$ sudo vi offline.repo                        
+[root@localhost yum.repos.d]# cat /etc/yum.repos.d/offline.repo 
+# offline.repo
+#
+# To use this repo, put in and use it with the other repos too:
+#  yum --enablerepo=offline [command]
+#  
+# or for ONLY the media repo, do this:
+#
+#  yum --disablerepo=\* --enablerepo=offline [command]
+
+[offline]
+name=CentOS-$releasever - Offline
+baseurl=file:///home/ecp/centos-repo-mirror/extras/x86_64
+        file:///home/ecp/centos-repo-mirror/paas/x86_64
+        file:///home/ecp/centos-repo-mirror/storage/x86_64
+gpgcheck=1
+enabled=0
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7
 
 ```
 

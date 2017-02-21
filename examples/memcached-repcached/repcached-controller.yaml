@@ -1,0 +1,30 @@
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  labels:
+    app: repcached
+  name: repcached
+spec:
+  replicas: 2
+  selector:
+      app: repcached
+  template:
+    metadata:
+      labels:
+        app: repcached
+    spec:
+      containers:
+      - command:
+        - /bin/memcached
+        - -u
+        - root
+        - -x
+        - "172.17.0.5"
+        resources:
+          limits:
+            cpu: 0.1
+        image: tangfeixiong/repcached:2.3.1-memcached-1.4.13
+        name: repcached
+        ports:
+        - containerPort: 11211
+          name: client

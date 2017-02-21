@@ -1,0 +1,4 @@
+drpms/
+
+*.i686.rpm
+firefox-*.rpm

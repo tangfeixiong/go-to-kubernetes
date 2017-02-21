@@ -12,6 +12,8 @@ Documentation
 
 * [HandsOn - CentOS Docker installation](./docs/centos-devops-install-docker.md)
 
+* [DevOps - CentOS Etcd2 installation](./docs/kubernetes-devops-install-etcd.md)
+
 Examples
 
 * Java - Spring Boot docker list images

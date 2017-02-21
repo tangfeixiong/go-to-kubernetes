@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    app: repcached
+  name: repcached
+spec:
+  containers:
+  - command:
+    - memcached
+    - -u
+    - root
+    resources:
+      limits:
+        cpu: "0.1"
+    image: tangfeixiong/repcached:2.3.1-memcached-1.4.13
+    name: repcached
+    ports:
+    - name: client
+      containerPort: 11211
+  restartPolicy: OnFailure
