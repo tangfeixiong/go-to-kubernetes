@@ -6,13 +6,19 @@ Documentation
 
 * HandsOn - CentOS Installation
 
-* [DevOps - CentOS Everything ISO media repo](./docs/centos-devops-iso-repo.md)
+* [CentOS DevOps - CentOS Everything ISO media repo](./docs/centos-devops-iso-repo.md)
 
-* [DevOps - CentOS repo mirror](./docs/centos-devops-sync-repo.md)
+* [CentOS DevOps - YUM repo mirror](./docs/centos-devops-sync-repo.md)
 
-* [HandsOn - CentOS Docker installation](./docs/centos-devops-install-docker.md)
+* [CentOS HandsOn - Docker installation](./docs/centos-devops-install-docker.md)
 
-* [DevOps - CentOS Etcd2 installation](./docs/kubernetes-devops-install-etcd.md)
+* [CentOS DevOps - Etcd2 installation](./docs/kubernetes-devops-install-etcd.md)
+
+* [CentOS DevOps - Kubernetes master installation](./docs/kubernetes-devops-install-master.md)
+
+* [CentOS DevOps - GlusterFS](./docs/glusterfs)
+
+* [CentOS DevOps - Hadoop HDFS](./docs/hadoop)
 
 Examples
 

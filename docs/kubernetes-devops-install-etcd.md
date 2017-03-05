@@ -1,8 +1,8 @@
 Install ETCD 安装ETCD配置管理服务
 ===============================
 
-POC
-----
+Install
+--------
 
 About etcd2 package
 
@@ -34,54 +34,50 @@ About etcd2 package
       dependency: systemd
        provider: systemd.x86_64 219-19.el7_2.13
 
-* Install from local repo
+Using _offline_ repo
 
-Using *gofileserver*
+```
+[root@localhost ecp]# yum --disablerepo=\* --enablerepo=c7-media --enablerepo=offline install etcd
+已加载插件：fastestmirror
+c7-media                                                                                       | 3.6 kB  00:00:00     
+offline                                                                                        | 3.4 kB  00:00:00     
+Loading mirror speeds from cached hostfile
+ * c7-media: 
+ * offline: 
+正在解决依赖关系
+--> 正在检查事务
+---> 软件包 etcd.x86_64.0.2.3.7-4.el7 将被 安装
+--> 解决依赖关系完成
 
-    tangf@DESKTOP-H68OQDV /cygdrive/g/2015-12-19-repository/99-mirror/centos/rsync%3A%2F%2Fmirrors.yun-idc.com%2Fcentos%2F7
-    $ cd /cygdrive/i/mirror/centos/rsync%3A%2F%2Fmirrors.yun-idc.com%2Fcentos%2F7/
+依赖关系解决
 
-    tangf@DESKTOP-H68OQDV /cygdrive/i/mirror/centos/rsync%3A%2F%2Fmirrors.yun-idc.com%2Fcentos%2F7
-    $ gofileserver.exe
-    Listening at  :48080
+======================================================================================================================
+ Package                 架构                      版本                              源                          大小
+======================================================================================================================
+正在安装:
+ etcd                    x86_64                    2.3.7-4.el7                       offline                    6.5 M
 
-    [vagrant@localhost ~]$ sudo yum --disablerepo=extras --enablerepo=extras-mirror install -y etcd
-    Loaded plugins: fastestmirror
-    Loading mirror speeds from cached hostfile
-     * base: mirrors.zju.edu.cn
-     * updates: mirrors.zju.edu.cn
-    Resolving Dependencies
-    --> Running transaction check
-    ---> Package etcd.x86_64 0:2.3.7-4.el7 will be installed
-    --> Finished Dependency Resolution
+事务概要
+======================================================================================================================
+安装  1 软件包
 
-    Dependencies Resolved
+总下载量：6.5 M
+安装大小：31 M
+Is this ok [y/d/N]: y
+Downloading packages:
+Running transaction check
+Running transaction test
+Transaction test succeeded
+Running transaction
+  正在安装    : etcd-2.3.7-4.el7.x86_64                                                                           1/1 
+  验证中      : etcd-2.3.7-4.el7.x86_64                                                                           1/1 
 
-    ================================================================================
-     Package      Arch           Version                Repository             Size
-    ================================================================================
-    Installing:
-     etcd         x86_64         2.3.7-4.el7            extras-mirror         6.5 M
+已安装:
+  etcd.x86_64 0:2.3.7-4.el7                                                                                           
 
-    Transaction Summary
-    ================================================================================
-    Install  1 Package
+完毕！
 
-    Total download size: 6.5 M
-    Installed size: 31 M
-    Downloading packages:
-    etcd-2.3.7-4.el7.x86_64.rpm                                | 6.5 MB   00:06
-    Running transaction check
-    Running transaction test
-    Transaction test succeeded
-    Running transaction
-      Installing : etcd-2.3.7-4.el7.x86_64                                      1/1
-      Verifying  : etcd-2.3.7-4.el7.x86_64                                      1/1
-
-    Installed:
-      etcd.x86_64 0:2.3.7-4.el7
-
-    Complete!
+```
 
 Deep dive into etcd2
 
@@ -117,99 +113,169 @@ Deep dive into etcd2
     [vagrant@localhost ~]$ cat /etc/passwd | grep etcd
     etcd:x:994:990:etcd user:/var/lib/etcd:/sbin/nologin
 
-    [vagrant@localhost ~]$ sudo vi /etc/etcd/etcd.conf
-    # [member]
-    ETCD_NAME=default
-    ETCD_DATA_DIR="/var/lib/etcd/default.etcd"
-    #ETCD_WAL_DIR=""
-    #ETCD_SNAPSHOT_COUNT="10000"
-    #ETCD_HEARTBEAT_INTERVAL="100"
-    #ETCD_ELECTION_TIMEOUT="1000"
-    #ETCD_LISTEN_PEER_URLS="http://localhost:2380"
-    #ETCD_LISTEN_CLIENT_URLS="http://localhost:2379"
-    ETCD_LISTEN_CLIENT_URLS="http://10.64.33.81:2379"
-    #ETCD_MAX_SNAPSHOTS="5"
-    #ETCD_MAX_WALS="5"
-    #ETCD_CORS=""
-    #
-    #[cluster]
-    #ETCD_INITIAL_ADVERTISE_PEER_URLS="http://localhost:2380"
-    # if you use different ETCD_NAME (e.g. test), set ETCD_INITIAL_CLUSTER value for this name, i.e. "test=http://..."
-    #ETCD_INITIAL_CLUSTER="default=http://localhost:2380"
-    #ETCD_INITIAL_CLUSTER_STATE="new"
-    #ETCD_INITIAL_CLUSTER_TOKEN="etcd-cluster"
-    #ETCD_ADVERTISE_CLIENT_URLS="http://localhost:2379"
-    ETCD_ADVERTISE_CLIENT_URLS="http://0.0.0.0:2379"
-    #ETCD_DISCOVERY=""
-    #ETCD_DISCOVERY_SRV=""
-    #ETCD_DISCOVERY_FALLBACK="proxy"
-    #ETCD_DISCOVERY_PROXY=""
-    #ETCD_STRICT_RECONFIG_CHECK="false"
-    #
-    #[proxy]
-    #ETCD_PROXY="off"
-    #ETCD_PROXY_FAILURE_WAIT="5000"
-    #ETCD_PROXY_REFRESH_INTERVAL="30000"
-    #ETCD_PROXY_DIAL_TIMEOUT="1000"
-    #ETCD_PROXY_WRITE_TIMEOUT="5000"
-    #ETCD_PROXY_READ_TIMEOUT="0"
-    #
-    #[security]
-    #ETCD_CERT_FILE=""
-    #ETCD_KEY_FILE=""
-    #ETCD_CLIENT_CERT_AUTH="false"
-    #ETCD_TRUSTED_CA_FILE=""
-    #ETCD_PEER_CERT_FILE=""
-    #ETCD_PEER_KEY_FILE=""
-    #ETCD_PEER_CLIENT_CERT_AUTH="false"
-    #ETCD_PEER_TRUSTED_CA_FILE=""
-    #
-    #[logging]
-    #ETCD_DEBUG="false"
-    # examples for -log-package-levels etcdserver=WARNING,security=DEBUG
-    #ETCD_LOG_PACKAGE_LEVELS=""
-    #
-    #[profiling]
-    #ETCD_ENABLE_PPROF="false"
+Daemon option
 
-    [vagrant@localhost ~]$ sudo systemctl enable etcd.service
-    Created symlink from /etc/systemd/system/multi-user.target.wants/etcd.service to /usr/lib/systemd/system/etcd.service.
+```
+[root@localhost ecp]# vi /etc/etcd/etcd.conf 
 
-    [vagrant@localhost ~]$ ls -l /etc/systemd/system/multi-user.target.wants/etcd.service
-    lrwxrwxrwx. 1 root root 36 Nov 10 20:20 /etc/systemd/system/multi-user.target.wants/etcd.service -> /usr/lib/systemd/system/etcd.service
+```
 
-    [vagrant@localhost ~]$ sudo systemctl start etcd.service
+Detail option
+```
+[root@localhost ecp]# cat /etc/etcd/etcd.conf 
+# [member]
+ETCD_NAME=default
+ETCD_DATA_DIR="/var/lib/etcd/default.etcd"
+#ETCD_WAL_DIR=""
+#ETCD_SNAPSHOT_COUNT="10000"
+#ETCD_HEARTBEAT_INTERVAL="100"
+#ETCD_ELECTION_TIMEOUT="1000"
+# ETCD_LISTEN_PEER_URLS="http://localhost:2380"
+ETCD_LISTEN_PEER_URLS="http://192.168.2.20:2380"
+# ETCD_LISTEN_CLIENT_URLS="http://localhost:2379"
+ETCD_LISTEN_CLIENT_URLS="http://localhost:2379,http://192.168.2.20:2379"
+#ETCD_MAX_SNAPSHOTS="5"
+#ETCD_MAX_WALS="5"
+#ETCD_CORS=""
+#
+#[cluster]
+# ETCD_INITIAL_ADVERTISE_PEER_URLS="http://localhost:2380"
+ETCD_INITIAL_ADVERTISE_PEER_URLS="http://192.168.2.20:2380"
+# if you use different ETCD_NAME (e.g. test), set ETCD_INITIAL_CLUSTER value for this name, i.e. "test=http://..."
+# ETCD_INITIAL_CLUSTER="default=http://localhost:2380"
+ETCD_INITIAL_CLUSTER="default=http://192.168.2.20:2380"
+#ETCD_INITIAL_CLUSTER_STATE="new"
+#ETCD_INITIAL_CLUSTER_TOKEN="etcd-cluster"
+# ETCD_ADVERTISE_CLIENT_URLS="http://localhost:2379"
+ETCD_ADVERTISE_CLIENT_URLS="http://192.168.2.20:2379"
+#ETCD_DISCOVERY=""
+#ETCD_DISCOVERY_SRV=""
+#ETCD_DISCOVERY_FALLBACK="proxy"
+#ETCD_DISCOVERY_PROXY=""
+#ETCD_STRICT_RECONFIG_CHECK="false"
+#
+#[proxy]
+#ETCD_PROXY="off"
+#ETCD_PROXY_FAILURE_WAIT="5000"
+#ETCD_PROXY_REFRESH_INTERVAL="30000"
+#ETCD_PROXY_DIAL_TIMEOUT="1000"
+#ETCD_PROXY_WRITE_TIMEOUT="5000"
+#ETCD_PROXY_READ_TIMEOUT="0"
+#
+#[security]
+#ETCD_CERT_FILE=""
+#ETCD_KEY_FILE=""
+#ETCD_CLIENT_CERT_AUTH="false"
+#ETCD_TRUSTED_CA_FILE=""
+#ETCD_PEER_CERT_FILE=""
+#ETCD_PEER_KEY_FILE=""
+#ETCD_PEER_CLIENT_CERT_AUTH="false"
+#ETCD_PEER_TRUSTED_CA_FILE=""
+#
+#[logging]
+#ETCD_DEBUG="false"
+# examples for -log-package-levels etcdserver=WARNING,security=DEBUG
+#ETCD_LOG_PACKAGE_LEVELS=""
+#
+#[profiling]
+#ETCD_ENABLE_PPROF="false"
 
-    [vagrant@localhost ~]$ sudo systemctl -l status etcd.service
-    鈼▒ etcd.service - Etcd Server
-       Loaded: loaded (/usr/lib/systemd/system/etcd.service; enabled; vendor preset: disabled)
-       Active: active (running) since Thu 2016-11-10 20:25:15 UTC; 52s ago
-     Main PID: 4473 (etcd)
-       CGroup: /system.slice/etcd.service
-               鈹斺攢4473 /usr/bin/etcd --name=default --data-dir=/var/lib/etcd/default.etcd --listen-client-urls=http://0.0.0.0:2379
+```
 
-    Nov 10 20:25:15 localhost.localdomain etcd[4473]: starting server... [version: 2.3.7, cluster version: to_be_decided]
-    Nov 10 20:25:15 localhost.localdomain systemd[1]: Started Etcd Server.
-    Nov 10 20:25:15 localhost.localdomain etcd[4473]: added local member ce2a822cea30bfca [http://localhost:2380 http://localhost:7001] to cluster 7e27652122e8b2ae
-    Nov 10 20:25:15 localhost.localdomain etcd[4473]: set the initial cluster version to 2.3
-    Nov 10 20:25:17 localhost.localdomain etcd[4473]: ce2a822cea30bfca is starting a new election at term 2
-    Nov 10 20:25:17 localhost.localdomain etcd[4473]: ce2a822cea30bfca became candidate at term 3
-    Nov 10 20:25:17 localhost.localdomain etcd[4473]: ce2a822cea30bfca received vote from ce2a822cea30bfca at term 3
-    Nov 10 20:25:17 localhost.localdomain etcd[4473]: ce2a822cea30bfca became leader at term 3
-    Nov 10 20:25:17 localhost.localdomain etcd[4473]: raft.node: ce2a822cea30bfca elected leader ce2a822cea30bfca at term 3
-    Nov 10 20:25:17 localhost.localdomain etcd[4473]: published {Name:default ClientURLs:[http://10.64.33.81:2379]} to cluster 7e27652122e8b2ae
+Start Daemon
 
-    [vagrant@localhost ~]$ sudo journalctl --no-pager --no-tail -u etcd.service
+```
+[root@localhost ecp]# systemctl enable etcd.service
+Created symlink from /etc/systemd/system/multi-user.target.wants/etcd.service to /usr/lib/systemd/system/etcd.service.
 
-    [vagrant@localhost ~]$ curl http://127.0.0.1:2379/version
-    {"etcdserver":"2.3.7","etcdcluster":"2.3.0"}
+[root@localhost ecp]# systemctl start etcd.service
 
-    [vagrant@localhost ~]$ which etcdctl
-    /usr/bin/etcdctl
+[root@localhost ecp]# systemctl -l status etcd.service
+● etcd.service - Etcd Server
+   Loaded: loaded (/usr/lib/systemd/system/etcd.service; enabled; vendor preset: disabled)
+   Active: active (running) since 三 2017-02-22 12:47:52 CST; 1min 7s ago
+ Main PID: 11648 (etcd)
+   Memory: 2.9M
+   CGroup: /system.slice/etcd.service
+           └─11648 /usr/bin/etcd --name=default --data-dir=/var/lib/etcd/default.etcd --listen-client-urls=http://localhost:2379,http://192.168.2.20:2379
 
-    [vagrant@localhost ~]$ etcdctl member list
-    ce2a822cea30bfca: name=default peerURLs=http://localhost:2380,http://localhost:7001 clientURLs=http://10.64.33.81:2379 isLeader=true
+2月 22 12:47:52 localhost.localdomain systemd[1]: Started Etcd Server.
+2月 22 12:47:52 localhost.localdomain etcd[11648]: added local member 9bfd26ae5d19811c [http://192.168.2.20:2380] to cluster aad0dfda8ae36082
+2月 22 12:47:52 localhost.localdomain etcd[11648]: 9bfd26ae5d19811c is starting a new election at term 1
+2月 22 12:47:52 localhost.localdomain etcd[11648]: 9bfd26ae5d19811c became candidate at term 2
+2月 22 12:47:52 localhost.localdomain etcd[11648]: 9bfd26ae5d19811c received vote from 9bfd26ae5d19811c at term 2
+2月 22 12:47:52 localhost.localdomain etcd[11648]: 9bfd26ae5d19811c became leader at term 2
+2月 22 12:47:52 localhost.localdomain etcd[11648]: raft.node: 9bfd26ae5d19811c elected leader 9bfd26ae5d19811c at term 2
+2月 22 12:47:52 localhost.localdomain etcd[11648]: published {Name:default ClientURLs:[http://192.168.2.20:2379]} to cluster aad0dfda8ae36082
+2月 22 12:47:52 localhost.localdomain etcd[11648]: setting up the initial cluster version to 2.3
+2月 22 12:47:52 localhost.localdomain etcd[11648]: set the initial cluster version to 2.3
 
-    [vagrant@localhost ~]$ etcdctl cluster-health
-    member ce2a822cea30bfca is healthy: got healthy result from http://10.64.33.81:2379
-    cluster is healthy
+```
+
+CLI
+
+```
+[root@localhost ecp]# curl http://127.0.0.1:2379/version
+{"etcdserver":"2.3.7","etcdcluster":"2.3.0"}
+
+[root@localhost ecp]# which etcdctl
+/usr/bin/etcdctl
+
+[root@localhost ecp]# etcdctl ls
+
+[root@localhost ecp]# etcdctl member list
+9bfd26ae5d19811c: name=default peerURLs=http://192.168.2.20:2380 clientURLs=http://192.168.2.20:2379 isLeader=true
+
+[root@localhost ecp]# etcdctl cluster-health
+member 9bfd26ae5d19811c is healthy: got healthy result from http://192.168.2.20:2379
+cluster is healthy
+
+```
+
+Journal
+
+```
+[root@localhost ecp]# journalctl --no-pager --no-tail --pager-end -u etcd.service
+-- Logs begin at 二 2017-02-21 11:23:50 CST, end at 三 2017-02-22 12:47:52 CST. --
+2月 22 12:47:51 localhost.localdomain systemd[1]: Starting Etcd Server...
+2月 22 12:47:52 localhost.localdomain etcd[11648]: recognized and used environment variable ETCD_ADVERTISE_CLIENT_URLS=http://192.168.2.20:2379
+2月 22 12:47:52 localhost.localdomain etcd[11648]: recognized and used environment variable ETCD_INITIAL_ADVERTISE_PEER_URLS=http://192.168.2.20:2380
+2月 22 12:47:52 localhost.localdomain etcd[11648]: recognized and used environment variable ETCD_INITIAL_CLUSTER=default=http://192.168.2.20:2380
+2月 22 12:47:52 localhost.localdomain etcd[11648]: recognized and used environment variable ETCD_LISTEN_PEER_URLS=http://192.168.2.20:2380
+2月 22 12:47:52 localhost.localdomain etcd[11648]: recognized environment variable ETCD_NAME, but unused: shadowed by corresponding flag 
+2月 22 12:47:52 localhost.localdomain etcd[11648]: recognized environment variable ETCD_DATA_DIR, but unused: shadowed by corresponding flag 
+2月 22 12:47:52 localhost.localdomain etcd[11648]: recognized environment variable ETCD_LISTEN_CLIENT_URLS, but unused: shadowed by corresponding flag 
+2月 22 12:47:52 localhost.localdomain etcd[11648]: etcd Version: 2.3.7
+2月 22 12:47:52 localhost.localdomain etcd[11648]: Git SHA: fd17c91
+2月 22 12:47:52 localhost.localdomain etcd[11648]: Go Version: go1.6.3
+2月 22 12:47:52 localhost.localdomain etcd[11648]: Go OS/Arch: linux/amd64
+2月 22 12:47:52 localhost.localdomain etcd[11648]: setting maximum number of CPUs to 2, total number of available CPUs is 2
+2月 22 12:47:52 localhost.localdomain etcd[11648]: listening for peers on http://192.168.2.20:2380
+2月 22 12:47:52 localhost.localdomain etcd[11648]: listening for client requests on http://192.168.2.20:2379
+2月 22 12:47:52 localhost.localdomain etcd[11648]: listening for client requests on http://localhost:2379
+2月 22 12:47:52 localhost.localdomain etcd[11648]: name = default
+2月 22 12:47:52 localhost.localdomain etcd[11648]: data dir = /var/lib/etcd/default.etcd
+2月 22 12:47:52 localhost.localdomain etcd[11648]: member dir = /var/lib/etcd/default.etcd/member
+2月 22 12:47:52 localhost.localdomain etcd[11648]: heartbeat = 100ms
+2月 22 12:47:52 localhost.localdomain etcd[11648]: election = 1000ms
+2月 22 12:47:52 localhost.localdomain etcd[11648]: snapshot count = 10000
+2月 22 12:47:52 localhost.localdomain etcd[11648]: advertise client URLs = http://192.168.2.20:2379
+2月 22 12:47:52 localhost.localdomain etcd[11648]: initial advertise peer URLs = http://192.168.2.20:2380
+2月 22 12:47:52 localhost.localdomain etcd[11648]: initial cluster = default=http://192.168.2.20:2380
+2月 22 12:47:52 localhost.localdomain etcd[11648]: starting member 9bfd26ae5d19811c in cluster aad0dfda8ae36082
+2月 22 12:47:52 localhost.localdomain etcd[11648]: 9bfd26ae5d19811c became follower at term 0
+2月 22 12:47:52 localhost.localdomain etcd[11648]: newRaft 9bfd26ae5d19811c [peers: [], term: 0, commit: 0, applied: 0, lastindex: 0, lastterm: 0]
+2月 22 12:47:52 localhost.localdomain etcd[11648]: 9bfd26ae5d19811c became follower at term 1
+2月 22 12:47:52 localhost.localdomain etcd[11648]: starting server... [version: 2.3.7, cluster version: to_be_decided]
+2月 22 12:47:52 localhost.localdomain systemd[1]: Started Etcd Server.
+2月 22 12:47:52 localhost.localdomain etcd[11648]: added local member 9bfd26ae5d19811c [http://192.168.2.20:2380] to cluster aad0dfda8ae36082
+2月 22 12:47:52 localhost.localdomain etcd[11648]: 9bfd26ae5d19811c is starting a new election at term 1
+2月 22 12:47:52 localhost.localdomain etcd[11648]: 9bfd26ae5d19811c became candidate at term 2
+2月 22 12:47:52 localhost.localdomain etcd[11648]: 9bfd26ae5d19811c received vote from 9bfd26ae5d19811c at term 2
+2月 22 12:47:52 localhost.localdomain etcd[11648]: 9bfd26ae5d19811c became leader at term 2
+2月 22 12:47:52 localhost.localdomain etcd[11648]: raft.node: 9bfd26ae5d19811c elected leader 9bfd26ae5d19811c at term 2
+2月 22 12:47:52 localhost.localdomain etcd[11648]: published {Name:default ClientURLs:[http://192.168.2.20:2379]} to cluster aad0dfda8ae36082
+2月 22 12:47:52 localhost.localdomain etcd[11648]: setting up the initial cluster version to 2.3
+2月 22 12:47:52 localhost.localdomain etcd[11648]: set the initial cluster version to 2.3
+
+```

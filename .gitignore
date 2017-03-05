@@ -1,3 +1,5 @@
+**/*.rtf
+
 /bin
 /rootfs/kubectl
 /rootfs/exec2hterm
