@@ -187,10 +187,14 @@ ecp@192.168.2.20's password:
 Last login: Tue Feb 21 16:51:42 2017 from 192.168.2.54
 [ecp@localhost ~]$ sudo -i
 [sudo] password for ecp: 
+
 [ecp@localhost ~]$ sudo systemctl enable docker.service
 [sudo] password for ecp: 
 Created symlink from /etc/systemd/system/multi-user.target.wants/docker.service to /usr/lib/systemd/system/docker.service.
+
 [ecp@localhost ~]$ sudo systemctl start docker.service
+
+[ecp@localhost ~]$ sudo docker version
 
 ```
 
