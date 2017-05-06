@@ -1,0 +1,26 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: topic-create-test1
+  namespace: kafka
+spec:
+  template:
+    metadata:
+      name: topic-create-test1
+    spec:
+      containers:
+      - name: kafka
+        image: solsson/kafka-persistent:0.10.1
+        imagePullPolicy: Never
+        command:
+        - ./bin/kafka-topics.sh
+        - --zookeeper
+        - zookeeper.kafka.svc.cluster.local:2181
+        - --create
+        - --topic
+        - test1
+        - --partitions
+        - "1"
+        - --replication-factor
+        - "1"
+      restartPolicy: Never

@@ -1,0 +1,24 @@
+{
+"apiVersion": "batch/v1",
+"kind": "Job",
+"metadata": {
+  "name": "consume-test1",
+  "namespace": "kafka"
+  },
+"spec": {
+  "template": {
+    "metadata": {
+      "name": "consume-test1"
+    },
+    "spec": {
+      "containers": [
+        {
+          "name": "kafka",
+          "image": "solsson/kafka-persistent:0.10.1",
+          "imagePullPolicy": "Never",
+          "command": ["./bin/kafka-console-consumer.sh", "--bootstrap-server", "broker.kafka.svc.cluster.local:9092", "--topic", "test1", "--from-beginning"]
+        }],
+      "restartPolicy": "Never"
+    }
+  }
+}}
