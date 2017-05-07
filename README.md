@@ -4,6 +4,8 @@
 
 Documentation
 
+* DevOps动手部署Kubernetes v1.5.7 － Hand-on: Deploying Kubernetes v1.5.7
+
 * HandsOn - CentOS Installation
 
 * [CentOS DevOps - CentOS Everything ISO media repo](./docs/centos-devops-iso-repo.md)
@@ -19,10 +21,11 @@ Documentation
 * [CentOS DevOps - GlusterFS](./docs/glusterfs)
 
 * [CentOS DevOps - Hadoop HDFS](./docs/hadoop)
+* Java示例io.fabric8:kubernetes-client项目的example - [Java example of Fabric8 kubernetes-client project](./java-devel)
 
 Examples
 
-* Java - Spring Boot docker list images
+* 示例k8s编排Kafka集群 － [Hand-on: Deploying Kafka into Kubernetes](./examples/kafka)
 
 ## Golang
 

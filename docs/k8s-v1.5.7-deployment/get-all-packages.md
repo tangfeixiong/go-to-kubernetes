@@ -1,5 +1,5 @@
-Hand-on: Deploying Kubernetes Master under Kubelet －容器化部署K8s主控节点
-==================================================
+Hand-on: Deploying Kubernetes all-in-one under Kubelet －容器化部署K8s主控节点
+======================================================
 
 Table of Content －目录
 ----------------

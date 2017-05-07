@@ -1,3 +1,5 @@
+java-devel/https%3A%2F%2Fgist.github.com%2Fferronrsmith%2F9328204/src
+
 **/*.rtf
 
 /bin
@@ -7,7 +9,6 @@
 
 /http%3A%2F%2Fyum.kubernetes.io
 /https%3A%2F%2Fpackages.cloud.google.com
-/java
 /vendor
 vendor.txt
 
