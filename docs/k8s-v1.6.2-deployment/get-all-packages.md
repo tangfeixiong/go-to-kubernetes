@@ -5,6 +5,17 @@ __Tips__
 
 另可参考[K8s v1.5.7安装](../k8s-v1.5.7-deployment)
 
+### Prerequistes
+
+__Shutdown Firewall & Selinux__
+```
+[tangfx@localhost ~]$ sudo systemctl stop firewalld.service
+[tangfx@localhost ~]$ sudo systemctl disable firewalld.service
+[tangfx@localhost ~]$ sudo setenforce 0
+[tangfx@localhost ~]$ sudo sed -i 's/SELINUX=.*/SELINUE=permissive/' /etc/sysconfig/selinux
+[tangfx@localhost ~]$ sudo getenforce 1
+```
+
 __安装Docker Engine 1.12.6__
 
 从Windows Cygwin登录CentOS虚拟机

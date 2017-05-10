@@ -1,4 +1,7 @@
 java-devel/https%3A%2F%2Fgist.github.com%2Fferronrsmith%2F9328204/src
+java-devel/**/.project
+java-devel/**/.settings/
+java-devel/**/target/
 
 **/*.rtf
 
