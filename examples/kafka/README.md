@@ -314,6 +314,23 @@ Digest: sha256:0719b4688b666490abf4b32a3cc5c5da7bb2d6276b47377b35de5429f783e9c2
 Status: Downloaded newer image for solsson/kafka-persistent:0.10.1
 ```
 
+### Advanced
+
+Dockerfile
+```
+fanhonglingdeMacBook-Pro:https%3A%2F%2Fraw.githubusercontent.com%2fYolean%2Fkubernetes-kafka%2Fmaster fanhongling$ mkdir docker-kafka-persistent
+fanhonglingdeMacBook-Pro:https%3A%2F%2Fraw.githubusercontent.com%2fYolean%2Fkubernetes-kafka%2Fmaster fanhongling$ cd docker-kafka-persistent/
+fanhonglingdeMacBook-Pro:docker-kafka-persistent fanhongling$ curl -jkSLO https://raw.githubusercontent.com/Yolean/kubernetes-kafka/master/docker-kafka-persistent/Dockerfile
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100   556  100   556    0     0    216      0  0:00:02  0:00:02 --:--:--   216
+fanhonglingdeMacBook-Pro:docker-kafka-persistent fanhongling$ mkdir config
+fanhonglingdeMacBook-Pro:docker-kafka-persistent fanhongling$ curl -jkSL https://raw.githubusercontent.com/Yolean/kubernetes-kafka/master/docker-kafka-persistent/config/server.properties -o config/server.properties
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100  5434  100  5434    0     0   2136      0  0:00:02  0:00:02 --:--:--  2136
+```
+
 ## https://github.com/CloudTrackInc/kubernetes-kafka （未测试）
 
 Download
