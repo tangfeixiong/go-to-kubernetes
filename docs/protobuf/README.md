@@ -1,8 +1,8 @@
 Build Protobuf development environment
 ======================================
 
-Prerequistes
-------------
+Environment
+-----------
 
 Ubuntu 14.04 VBox
 
@@ -111,7 +111,7 @@ Do you want to continue? [Y/n] y
 
 ```
 
-Generate 'makefile'
+Generate _makefile_
 ```
 vagrant@vagrant-ubuntu-trusty-64:/work/src/github.com/google/protobuf$ ./autogen.sh 
 + autoreconf -f -i -Wall,no-obsolete
