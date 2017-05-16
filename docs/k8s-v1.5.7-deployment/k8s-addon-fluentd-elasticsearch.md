@@ -1438,3 +1438,7 @@ NAME                CLUSTER-IP      EXTERNAL-IP   PORT(S)          AGE
 kibana-logging      10.123.251.25   <none>        5601/TCP         4m
 kibana-logging-ex   10.123.245.63   <nodes>       5601:30288/TCP   32s
 ```
+
+### Links
+
+[使用Fluentd和ElasticSearch Stack实现Kubernetes的集群Logging](http://tonybai.com/2017/03/03/implement-kubernetes-cluster-level-logging-with-fluentd-and-elasticsearch-stack/) - Tony Bai

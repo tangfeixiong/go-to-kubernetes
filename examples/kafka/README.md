@@ -331,10 +331,9 @@ fanhonglingdeMacBook-Pro:docker-kafka-persistent fanhongling$ curl -jkSL https:/
 100  5434  100  5434    0     0   2136      0  0:00:02  0:00:02 --:--:--  2136
 ```
 
-## https://github.com/CloudTrackInc/kubernetes-kafka （未测试）
+## Links
 
-Download
-
+https://github.com/CloudTrackInc/kubernetes-kafka
 ```
 fanhonglingdeMacBook-Pro:kafka fanhongling$ curl -jkSL https://raw.githubusercontent.com/CloudTrackInc/kubernetes-kafka/master/zoo-service.yaml -o https%3A%2F%2Fraw.githubusercontent.com%2fCloudTrackInc%2Fkubernetes-kafka%2Fmaster/zoo-service.yaml
   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
@@ -354,3 +353,5 @@ fanhonglingdeMacBook-Pro:kafka fanhongling$ curl -jkSL https://raw.githubusercon
 100  1020  100  1020    0     0    155      0  0:00:06  0:00:06 --:--:--   255
 
 ```
+
+http://www.defuze.org/archives/351-running-a-zookeeper-and-kafka-cluster-with-kubernetes-on-aws.html

@@ -21,6 +21,7 @@ Documentation
 * [CentOS DevOps - GlusterFS](./docs/glusterfs)
 
 * [CentOS DevOps - Hadoop HDFS](./docs/hadoop)
+
 * Java示例io.fabric8:kubernetes-client项目的example - [Java example of Fabric8 kubernetes-client project](./java-devel)
 
 Examples
