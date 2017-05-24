@@ -1,8 +1,6 @@
 Monitoring Apache Kafak with Prometheus and Grafana
 ===================================================
 
-Inspried from https://github.com/rama-nallamilli/kafka-prometheus-monitoring
-
 Table of contents
 -----------------
 
@@ -13,6 +11,11 @@ Table of contents
 
 Content
 -------
+
+Inspried from https://github.com/rama-nallamilli/kafka-prometheus-monitoring
+![屏幕快照 2017-05-19 下午1.12.55.png](./屏幕快照%202017-05-19%20下午1.12.55.png)
+
+### Investigation
 
 Download
 ```
@@ -1024,11 +1027,11 @@ vagrant@vagrant-ubuntu-trusty-64:/work/src/github.com/tangfeixiong/go-to-kuberne
 
 ```
 
-Set up datasource "Prometheus"
+Set up datasource "Prometheus" - 屏幕快照 2017-05-19 下午1.40.38.png
 
-Import _kafka.json_ configuration
+Import _kafka.json_ configuration - 屏幕快照 2017-05-19 下午1.30.36.png
 
-![屏幕快照 2017-05-19 下午1.12.55.png](./屏幕快照%202017-05-19%20下午1.12.55.png)
+### 附图
 
 ![屏幕快照 2017-05-19 下午1.45.39.png](./屏幕快照%202017-05-19%20下午1.45.39.png)
 

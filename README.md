@@ -2,31 +2,24 @@
 
 ## Tables of Content
 
-Documentation
+[Documentation](./docs)
 
 * DevOps动手部署Kubernetes v1.5.7 － Hand-on: Deploying Kubernetes v1.5.7
-
 * HandsOn - CentOS Installation
-
 * [CentOS DevOps - CentOS Everything ISO media repo](./docs/centos-devops-iso-repo.md)
-
 * [CentOS DevOps - YUM repo mirror](./docs/centos-devops-sync-repo.md)
-
 * [CentOS HandsOn - Docker installation](./docs/centos-devops-install-docker.md)
-
 * [CentOS DevOps - Etcd2 installation](./docs/kubernetes-devops-install-etcd.md)
-
 * [CentOS DevOps - Kubernetes master installation](./docs/kubernetes-devops-install-master.md)
-
 * [CentOS DevOps - GlusterFS](./docs/glusterfs)
-
 * [CentOS DevOps - Hadoop HDFS](./docs/hadoop)
-
 * Java示例io.fabric8:kubernetes-client项目的example - [Java example of Fabric8 kubernetes-client project](./java-devel)
 
-Examples
+[Clustering examples in Kubernetes](./examples)
 
-* 示例k8s编排Kafka集群 － [Hand-on: Deploying Kafka into Kubernetes](./examples/kafka)
+* 示例K8s的ElasticSearch日志分析平台 —— ElasticSearch With StorageClass and StatefulSet [Hand-on](./example/elasticsearch)
+* 示例k8s编排Kafka集群 —— Deploying Kafka into Kubernetes - [Hand-on](./examples/kafka)
+* 以及Kafka在k8s上使用Prometheus和Grafana去度量和监控 —— Kafka metrics with Prometheus and Grafana into Kubernetes
 
 ## Golang
 

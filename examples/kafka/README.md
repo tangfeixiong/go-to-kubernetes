@@ -1,11 +1,13 @@
-
+# Kafka DevOps of Kubernetes
 
 ## Content
 
-Inspired from https://github.com/Yolean/kubernetes-kafka
+* Kafka cluster
+* Kafka metrie
 
-## Inspired from https://github.com/Yolean/kubernetes-kafka
+## Clustering kafaka
 
+inspired from https://github.com/Yolean/kubernetes-kafka
 ![屏幕快照 2017-05-05 下午11.23.18.png](./屏幕快照%202017-05-05%20下午11.23.18.png)
 
 ### zookeeper
