@@ -1,0 +1,49 @@
+syntax = "proto3";
+
+option go_package = “ecp2.pb3.gprc.upload”;
+option java_multiple_files = true;
+option java_package = "pb3.grpc.upload";
+option java_outer_classname = "Ecp2Proto";
+option objc_class_prefix = "E2P";
+
+package ecp2;
+
+service Simple_gRPC {
+    
+    rpc StartResumableUploading(Authentication, UploadRequestObj) returns (UploadResponseObj) {}
+
+    rpc RetrieveUploadingProgress(stream UploadRequestObj) returns (UploadResponseObj) {}
+    
+    rpc ReceiveUploadData(stream UploadContentRequest) returns (UploadContentResponse) {}
+
+    rpc TerminateUploading(UploadRequestObj) returns (UploadResponseObj) {}
+    
+}
+
+message Authentication {
+    string token = 1;
+    bytes ca = 2;
+    bytes pubkey = 3;
+}
+
+message UploadRequestObj {
+    string project = 1;
+    string package = 2;
+    string category = 3;   
+    string name = 4;
+    ResumableGraph size = 5;
+}
+
+message UploadResponseObj {
+    string project = 1;
+    string package = 2;
+    string category = 3;   
+    string name = 4;
+    ResumableGraph size = 5;
+}
+
+message ResumableGraph {
+    int32  offset = 1;
+    int32  length = 2;
+    bytes  content = 3;
+}

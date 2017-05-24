@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: prometheus-jmx-exporter-0
+  name: prometheus-jmx-exporter-0
+  namespace: default
+spec:
+  clusterIP: None
+  ports:
+    - port: 8080 # this Service's port (cluster-internal IP clusterIP)
+      targetPort: 8080 # pods expose this port
+  selector: # exposes any pods with the following labels as a service
+    app: prometheus-jmx-exporter-0
+  type: ClusterIP

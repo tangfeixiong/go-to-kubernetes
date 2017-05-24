@@ -1,0 +1,126 @@
+---
+apiVersion: v1
+kind: List
+items:
+- apiVersion: v1
+  kind: Service
+  metadata:
+    annotations:
+      fabric8.io/git-commit: 4c927bd833bd6a51c7535148cfcd0641bbe58302
+      fabric8.io/scm-con-url: scm:git:git://github.com/spring-cloud-incubator/spring-cloud-kubernetes.git/spring-cloud-kubernetes-applications/kafka-connect-and-streams-management-service
+      prometheus.io/port: "9779"
+      fabric8.io/scm-url: https://github.com/spring-cloud-incubator/spring-cloud-kubernetes/spring-cloud-kubernetes-applications/kafka-connect-and-streams-management-service
+      fabric8.io/git-branch: master
+      prometheus.io/scrape: "true"
+      fabric8.io/scm-devcon-url: scm:git:ssh://git@github.com/spring-cloud-incubator/spring-cloud-kubernetes.git/spring-cloud-kubernetes-applications/kafka-connect-and-streams-management-service
+      fabric8.io/scm-tag: HEAD
+    labels:
+      expose: "true"
+      provider: fabric8
+      project: kafka-connect-and-streams-management-service
+      version: 0.2.0.BUILD-SNAPSHOT
+      group: https0x3A0x2F0x2Fgithub0x2Ecom0x2Ftangfeixiong0x2Fgo-to-kubernetes
+    name: kafka-connect-and-stream
+  spec:
+    ports:
+    - name: http
+      port: 80
+      protocol: TCP
+      targetPort: 8080
+    selector:
+      project: kafka-connect-and-streams-management-service
+      provider: fabric8
+      group: https0x3A0x2F0x2Fgithub0x2Ecom0x2Ftangfeixiong0x2Fgo-to-kubernetes
+- apiVersion: v1
+  kind: DeploymentConfig
+  metadata:
+    annotations:
+      fabric8.io/git-commit: 4c927bd833bd6a51c7535148cfcd0641bbe58302
+      fabric8.io/metrics-path: dashboard/file/kubernetes-pods.json/?var-project=kafka-connect-and-streams-management-service&var-version=0.2.0.BUILD-SNAPSHOT
+      fabric8.io/scm-con-url: scm:git:git://github.com/spring-cloud-incubator/spring-cloud-kubernetes.git/spring-cloud-kubernetes-applications/kafka-connect-and-streams-management-service
+      fabric8.io/scm-url: https://github.com/spring-cloud-incubator/spring-cloud-kubernetes/spring-cloud-kubernetes-applications/kafka-connect-and-streams-management-service
+      fabric8.io/git-branch: master
+      fabric8.io/scm-devcon-url: scm:git:ssh://git@github.com/spring-cloud-incubator/spring-cloud-kubernetes.git/spring-cloud-kubernetes-applications/kafka-connect-and-streams-management-service
+      fabric8.io/scm-tag: HEAD
+      fabric8.io/docs-url: scp://static.springframework.org/var/www/domains/springframework.org/static/htdocs/spring-cloud/docs/kafka-connect-and-streams-management-service/0.2.0.BUILD-SNAPSHOT/spring-cloud-kubernetes/spring-cloud-kubernetes-applications/kafka-connect-and-streams-management-service
+    labels:
+      provider: fabric8
+      project: kafka-connect-and-streams-management-service
+      version: 0.2.0.BUILD-SNAPSHOT
+      group: https0x3A0x2F0x2Fgithub0x2Ecom0x2Ftangfeixiong0x2Fgo-to-kubernetes
+    name: kafka-connect-and-stream
+  spec:
+    replicas: 1
+    selector:
+      project: kafka-connect-and-streams-management-service
+      provider: fabric8
+      version: 0.2.0.BUILD-SNAPSHOT
+      group: https0x3A0x2F0x2Fgithub0x2Ecom0x2Ftangfeixiong0x2Fgo-to-kubernetes
+    template:
+      metadata:
+        annotations:
+          fabric8.io/git-commit: 4c927bd833bd6a51c7535148cfcd0641bbe58302
+          fabric8.io/metrics-path: dashboard/file/kubernetes-pods.json/?var-project=kafka-connect-and-streams-management-service&var-version=0.2.0.BUILD-SNAPSHOT
+          fabric8.io/scm-con-url: scm:git:git://github.com/spring-cloud-incubator/spring-cloud-kubernetes.git/spring-cloud-kubernetes-applications/kafka-connect-and-streams-management-service
+          fabric8.io/scm-url: https://github.com/spring-cloud-incubator/spring-cloud-kubernetes/spring-cloud-kubernetes-applications/kafka-connect-and-streams-management-service
+          fabric8.io/git-branch: master
+          fabric8.io/scm-devcon-url: scm:git:ssh://git@github.com/spring-cloud-incubator/spring-cloud-kubernetes.git/spring-cloud-kubernetes-applications/kafka-connect-and-streams-management-service
+          fabric8.io/scm-tag: HEAD
+          fabric8.io/docs-url: scp://static.springframework.org/var/www/domains/springframework.org/static/htdocs/spring-cloud/docs/kafka-connect-and-streams-management-service/0.2.0.BUILD-SNAPSHOT/spring-cloud-kubernetes/spring-cloud-kubernetes-applications/kafka-connect-and-streams-management-service
+        labels:
+          provider: fabric8
+          project: kafka-connect-and-streams-management-service
+          version: 0.2.0.BUILD-SNAPSHOT
+          group: https0x3A0x2F0x2Fgithub0x2Ecom0x2Ftangfeixiong0x2Fgo-to-kubernetes
+      spec:
+        containers:
+        - env:
+          - name: KUBERNETES_NAMESPACE
+            valueFrom:
+              fieldRef:
+                fieldPath: metadata.namespace
+          image: https0x3a0x2f0x2fgithub0x2ecom0x2ftangfeixiong0x2fgo-to-kubernetes/kafka-connect-and-streams-management-service:snapshot-170518-150731-0604
+          imagePullPolicy: IfNotPresent
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: 8080
+              scheme: HTTP
+            initialDelaySeconds: 180
+          name: spring-boot
+          ports:
+          - containerPort: 8080
+            name: http
+            protocol: TCP
+          - containerPort: 9779
+            name: prometheus
+            protocol: TCP
+          - containerPort: 8778
+            name: jolokia
+            protocol: TCP
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: 8080
+              scheme: HTTP
+            initialDelaySeconds: 10
+          securityContext:
+            privileged: false
+    triggers:
+    - type: ConfigChange
+- apiVersion: v1
+  kind: Route
+  metadata:
+    labels:
+      expose: "true"
+      provider: fabric8
+      project: kafka-connect-and-streams-management-service
+      version: 0.2.0.BUILD-SNAPSHOT
+      group: https0x3A0x2F0x2Fgithub0x2Ecom0x2Ftangfeixiong0x2Fgo-to-kubernetes
+    name: kafka-connect-and-stream
+  spec:
+    port:
+      targetPort: 8080
+    to:
+      kind: Service
+      name: kafka-connect-and-stream

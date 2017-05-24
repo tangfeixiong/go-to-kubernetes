@@ -1,0 +1,13 @@
+Manifest-Version: 1.0
+Implementation-Title: Spring Cloud Kubernetes :: Kafka-with-streams-an
+ d-connect :: getting-started
+Implementation-Version: 0.2.0.BUILD-SNAPSHOT
+Built-By: fanhongling
+Implementation-Vendor-Id: https0x3A0x2F0x2Fgithub0x2Ecom0x2Ftangfeixio
+ ng0x2Fgo-to-kubernetes
+Build-Jdk: 1.8.0_91
+Implementation-URL: http://cloud.spring.io/spring-cloud-kubernetes-mis
+ sion/kafka-with-streams-and-connect
+Created-By: Maven Integration for Eclipse
+Implementation-Vendor: Pivotal Software, Inc.
+

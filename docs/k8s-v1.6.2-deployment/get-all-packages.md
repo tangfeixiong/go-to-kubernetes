@@ -193,3 +193,6 @@ Check _kubelet_ service
 [tangfx@localhost ~]$ sudo systemctl restart kubelet.service
 [tangfx@localhost ~]$ sudo systemctl -l status kubelet.service
 ```
+
+__Flannel__
+```

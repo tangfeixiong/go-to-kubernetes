@@ -1,0 +1,25 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    app: prometheus-jmx-exporter-0
+  name: prometheus-jmx-exporter-0
+  namespace: default
+spec:
+  containers:
+  - name: prometheus-jmx-exporter
+    image: tangfeixiong/prometheus-jmx-exporter
+    imagePullPolicy: Never
+    env:
+    - name: JMX_PORT
+      value: '9999'
+    - name: JMX_HOST
+      value: kafka-0.broker.kafka.svc.cluster.local
+    - name: HTTP_PORT
+      value: '8080'
+    - name: JMX_EXPORTER_CONFIG_FILE
+      value: kafka.yml
+    ports:
+    - containerPort: 8080
+  restartPolicy: Always
+  terminationGracePeriodSeconds: 10

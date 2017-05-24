@@ -1,0 +1,1504 @@
+# Hand-on
+
+## Reference
+
+http://maven.apache.org/plugins/maven-dependency-plugin/usage.html
+
+## Content
+
+### https://repo1.maven.org/maven2/io/fabric8/forge/distro/distro/2.2.234/
+
+__zip__
+```
+vagrant@vagrant-ubuntu-trusty-64:/data/src/github.com/fabric8io/gofabric8$ mvn dependency:get -DremoteRepositories=https://repo1.maven.org/maven2/ -Dartifact=io.fabric8.forge.distro:distro:2.2.234:zip:templates
+[INFO] Scanning for projects...
+[INFO]                                                                         
+[INFO] ------------------------------------------------------------------------
+[INFO] Building gofabric8 1-SNAPSHOT
+[INFO] ------------------------------------------------------------------------
+[INFO] 
+[INFO] --- maven-dependency-plugin:2.8:get (default-cli) @ gofabric8 ---
+[INFO] Resolving io.fabric8.forge.distro:distro:zip:templates:2.2.234 with transitive dependencies
+Downloading: https://repo.maven.apache.org/maven2/io/fabric8/forge/distro/distro/2.2.234/distro-2.2.234-templates.zip
+Downloaded: https://repo.maven.apache.org/maven2/io/fabric8/forge/distro/distro/2.2.234/distro-2.2.234-templates.zip (42 KB at 8.9 KB/sec)
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time: 25.245 s
+[INFO] Finished at: 2017-05-24T04:11:10+00:00
+[INFO] Final Memory: 16M/187M
+[INFO] ------------------------------------------------------------------------
+```
+
+__POM__
+```
+fanhonglingdeMacBook-Pro:github.com fanhongling$ mvn dependency:get -DremoteRepositories=https://repo1.maven.org/maven2/ -Dartifact=io.fabric8.forge.distro:distro:2.2.234:pom
+[INFO] Scanning for projects...
+[INFO]                                                                         
+[INFO] ------------------------------------------------------------------------
+[INFO] Building Maven Stub Project (No POM) 1
+[INFO] ------------------------------------------------------------------------
+[INFO] 
+[INFO] --- maven-dependency-plugin:2.8:get (default-cli) @ standalone-pom ---
+[INFO] Resolving io.fabric8.forge.distro:distro:jar:2.2.234 with transitive dependencies
+Downloading: https://repo.maven.apache.org/maven2/io/fabric8/forge/distro/distro/2.2.234/distro-2.2.234.pom
+Downloaded: https://repo.maven.apache.org/maven2/io/fabric8/forge/distro/distro/2.2.234/distro-2.2.234.pom (8 KB at 1.1 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/fabric8/forge/packages/packages/2.2.234/packages-2.2.234.pom
+Downloaded: https://repo.maven.apache.org/maven2/io/fabric8/forge/packages/packages/2.2.234/packages-2.2.234.pom (3 KB at 3.4 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/fabric8/forge/forge-parent/2.2.234/forge-parent-2.2.234.pom
+Downloaded: https://repo.maven.apache.org/maven2/io/fabric8/forge/forge-parent/2.2.234/forge-parent-2.2.234.pom (16 KB at 15.1 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/fabric8/forge/packages/cd-pipeline/2.2.234/cd-pipeline-2.2.234.pom
+Downloaded: https://repo.maven.apache.org/maven2/io/fabric8/forge/packages/cd-pipeline/2.2.234/cd-pipeline-2.2.234.pom (3 KB at 3.8 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/fabric8/devops/apps/gogs/2.2.218/gogs-2.2.218.pom
+Downloaded: https://repo.maven.apache.org/maven2/io/fabric8/devops/apps/gogs/2.2.218/gogs-2.2.218.pom (4 KB at 5.5 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/fabric8/devops/apps/fabric8-devops/2.2.218/fabric8-devops-2.2.218.pom
+Downloaded: https://repo.maven.apache.org/maven2/io/fabric8/devops/apps/fabric8-devops/2.2.218/fabric8-devops-2.2.218.pom (21 KB at 19.5 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/fabric8/fabric8-project/2.2.142/fabric8-project-2.2.142.pom
+Downloaded: https://repo.maven.apache.org/maven2/io/fabric8/fabric8-project/2.2.142/fabric8-project-2.2.142.pom (73 KB at 49.0 KB/sec)
+Downloading: https://repo1.maven.org/maven2/org/apache/camel/camel-parent/2.17.2/camel-parent-2.17.2.pom
+Downloaded: https://repo1.maven.org/maven2/org/apache/camel/camel-parent/2.17.2/camel-parent-2.17.2.pom (137 KB at 34.6 KB/sec)
+Downloading: https://repo1.maven.org/maven2/org/apache/camel/camel/2.17.2/camel-2.17.2.pom
+Downloaded: https://repo1.maven.org/maven2/org/apache/camel/camel/2.17.2/camel-2.17.2.pom (27 KB at 38.4 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/fabric8/kubernetes-api/2.2.142/kubernetes-api-2.2.142.pom
+Downloaded: https://repo.maven.apache.org/maven2/io/fabric8/kubernetes-api/2.2.142/kubernetes-api-2.2.142.pom (4 KB at 5.1 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/fabric8/components/2.2.142/components-2.2.142.pom
+Downloaded: https://repo.maven.apache.org/maven2/io/fabric8/components/2.2.142/components-2.2.142.pom (4 KB at 3.8 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/fabric8/fabric8-parent/2.2.142/fabric8-parent-2.2.142.pom
+Downloaded: https://repo.maven.apache.org/maven2/io/fabric8/fabric8-parent/2.2.142/fabric8-parent-2.2.142.pom (16 KB at 17.8 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/fabric8/openshift-client/1.3.99/openshift-client-1.3.99.pom
+Downloaded: https://repo.maven.apache.org/maven2/io/fabric8/openshift-client/1.3.99/openshift-client-1.3.99.pom (5 KB at 6.0 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/fabric8/kubernetes-client-project/1.3.99/kubernetes-client-project-1.3.99.pom
+Downloaded: https://repo.maven.apache.org/maven2/io/fabric8/kubernetes-client-project/1.3.99/kubernetes-client-project-1.3.99.pom (12 KB at 7.6 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/fabric8/kubernetes-client/1.3.99/kubernetes-client-1.3.99.pom
+Downloaded: https://repo.maven.apache.org/maven2/io/fabric8/kubernetes-client/1.3.99/kubernetes-client-1.3.99.pom (9 KB at 17.0 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/fabric8/fabric8-utils/2.2.142/fabric8-utils-2.2.142.pom
+Downloaded: https://repo.maven.apache.org/maven2/io/fabric8/fabric8-utils/2.2.142/fabric8-utils-2.2.142.pom (2 KB at 3.0 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/fabric8/kubernetes-generator/2.2.142/kubernetes-generator-2.2.142.pom
+Downloaded: https://repo.maven.apache.org/maven2/io/fabric8/kubernetes-generator/2.2.142/kubernetes-generator-2.2.142.pom (3 KB at 3.5 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/fabric8/devops/apps/fabric8-docker-registry/2.2.218/fabric8-docker-registry-2.2.218.pom
+Downloaded: https://repo.maven.apache.org/maven2/io/fabric8/devops/apps/fabric8-docker-registry/2.2.218/fabric8-docker-registry-2.2.218.pom (3 KB at 3.8 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/fabric8/devops/apps/nexus/2.2.218/nexus-2.2.218.pom
+Downloaded: https://repo.maven.apache.org/maven2/io/fabric8/devops/apps/nexus/2.2.218/nexus-2.2.218.pom (4 KB at 3.7 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/fabric8/devops/apps/jenkins/2.2.218/jenkins-2.2.218.pom
+Downloaded: https://repo.maven.apache.org/maven2/io/fabric8/devops/apps/jenkins/2.2.218/jenkins-2.2.218.pom (5 KB at 7.0 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/fabric8/forge/apps/fabric8-forge/2.2.234/fabric8-forge-2.2.234.pom
+Downloaded: https://repo.maven.apache.org/maven2/io/fabric8/forge/apps/fabric8-forge/2.2.234/fabric8-forge-2.2.234.pom (15 KB at 16.7 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/fabric8/fabric8-project/2.2.144/fabric8-project-2.2.144.pom
+Downloaded: https://repo.maven.apache.org/maven2/io/fabric8/fabric8-project/2.2.144/fabric8-project-2.2.144.pom (73 KB at 54.1 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/fabric8/forge/fabric8-forge-web/2.2.234/fabric8-forge-web-2.2.234.pom
+Downloaded: https://repo.maven.apache.org/maven2/io/fabric8/forge/fabric8-forge-web/2.2.234/fabric8-forge-web-2.2.234.pom (6 KB at 8.1 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/org/jboss/forge/forge-bom/3.2.3.Final/forge-bom-3.2.3.Final.pom
+Downloaded: https://repo.maven.apache.org/maven2/org/jboss/forge/forge-bom/3.2.3.Final/forge-bom-3.2.3.Final.pom (18 KB at 26.0 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/fabric8/devops/packages/chat-irc/2.2.218/chat-irc-2.2.218.pom
+Downloaded: https://repo.maven.apache.org/maven2/io/fabric8/devops/packages/chat-irc/2.2.218/chat-irc-2.2.218.pom (2 KB at 2.5 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/fabric8/devops/packages/packages/2.2.218/packages-2.2.218.pom
+Downloaded: https://repo.maven.apache.org/maven2/io/fabric8/devops/packages/packages/2.2.218/packages-2.2.218.pom (3 KB at 3.4 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/fabric8/devops/apps/hubot-notifier/2.2.218/hubot-notifier-2.2.218.pom
+Downloaded: https://repo.maven.apache.org/maven2/io/fabric8/devops/apps/hubot-notifier/2.2.218/hubot-notifier-2.2.218.pom (8 KB at 10.7 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/fabric8/fabric8-cdi/2.2.142/fabric8-cdi-2.2.142.pom
+Downloaded: https://repo.maven.apache.org/maven2/io/fabric8/fabric8-cdi/2.2.142/fabric8-cdi-2.2.142.pom (11 KB at 13.5 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/fabric8/fabric8-annotations/2.2.142/fabric8-annotations-2.2.142.pom
+Downloaded: https://repo.maven.apache.org/maven2/io/fabric8/fabric8-annotations/2.2.142/fabric8-annotations-2.2.142.pom (2 KB at 1.9 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/fabric8/hubot-api/2.2.142/hubot-api-2.2.142.pom
+Downloaded: https://repo.maven.apache.org/maven2/io/fabric8/hubot-api/2.2.142/hubot-api-2.2.142.pom (5 KB at 7.3 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/fabric8/cxf-utils/2.2.142/cxf-utils-2.2.142.pom
+Downloaded: https://repo.maven.apache.org/maven2/io/fabric8/cxf-utils/2.2.142/cxf-utils-2.2.142.pom (2 KB at 2.6 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/fabric8/devops/apps/hubot-irc/2.2.218/hubot-irc-2.2.218.pom
+Downloaded: https://repo.maven.apache.org/maven2/io/fabric8/devops/apps/hubot-irc/2.2.218/hubot-irc-2.2.218.pom (3 KB at 4.4 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/fabric8/devops/packages/chat-letschat/2.2.218/chat-letschat-2.2.218.pom
+Downloaded: https://repo.maven.apache.org/maven2/io/fabric8/devops/packages/chat-letschat/2.2.218/chat-letschat-2.2.218.pom (3 KB at 2.9 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/fabric8/devops/apps/letschat/2.2.218/letschat-2.2.218.pom
+Downloaded: https://repo.maven.apache.org/maven2/io/fabric8/devops/apps/letschat/2.2.218/letschat-2.2.218.pom (3 KB at 3.8 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/fabric8/devops/apps/hubot-letschat/2.2.218/hubot-letschat-2.2.218.pom
+Downloaded: https://repo.maven.apache.org/maven2/io/fabric8/devops/apps/hubot-letschat/2.2.218/hubot-letschat-2.2.218.pom (3 KB at 1.5 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/fabric8/devops/packages/chat-slack/2.2.218/chat-slack-2.2.218.pom
+Downloaded: https://repo.maven.apache.org/maven2/io/fabric8/devops/packages/chat-slack/2.2.218/chat-slack-2.2.218.pom (2 KB at 2.8 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/fabric8/devops/apps/hubot-slack/2.2.218/hubot-slack-2.2.218.pom
+Downloaded: https://repo.maven.apache.org/maven2/io/fabric8/devops/apps/hubot-slack/2.2.218/hubot-slack-2.2.218.pom (3 KB at 3.9 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/fabric8/devops/apps/git-collector/2.2.218/git-collector-2.2.218.pom
+Downloaded: https://repo.maven.apache.org/maven2/io/fabric8/devops/apps/git-collector/2.2.218/git-collector-2.2.218.pom (10 KB at 8.0 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/fabric8/devops/apps/collector-utils/2.2.218/collector-utils-2.2.218.pom
+Downloaded: https://repo.maven.apache.org/maven2/io/fabric8/devops/apps/collector-utils/2.2.218/collector-utils-2.2.218.pom (5 KB at 7.1 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/fabric8/devops/apps/gitlab/2.2.218/gitlab-2.2.218.pom
+Downloaded: https://repo.maven.apache.org/maven2/io/fabric8/devops/apps/gitlab/2.2.218/gitlab-2.2.218.pom (3 KB at 5.4 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/fabric8/devops/apps/gerrit/2.2.218/gerrit-2.2.218.pom
+Downloaded: https://repo.maven.apache.org/maven2/io/fabric8/devops/apps/gerrit/2.2.218/gerrit-2.2.218.pom (6 KB at 7.6 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/fabric8/devops/apps/ingress-nginx/2.2.218/ingress-nginx-2.2.218.pom
+Downloaded: https://repo.maven.apache.org/maven2/io/fabric8/devops/apps/ingress-nginx/2.2.218/ingress-nginx-2.2.218.pom (3 KB at 4.0 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/fabric8/devops/packages/social/2.2.218/social-2.2.218.pom
+Downloaded: https://repo.maven.apache.org/maven2/io/fabric8/devops/packages/social/2.2.218/social-2.2.218.pom (2 KB at 1.2 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/fabric8/devops/apps/taiga/2.2.218/taiga-2.2.218.pom
+Downloaded: https://repo.maven.apache.org/maven2/io/fabric8/devops/apps/taiga/2.2.218/taiga-2.2.218.pom (3 KB at 4.2 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/fabric8/devops/apps/orion/2.2.218/orion-2.2.218.pom
+Downloaded: https://repo.maven.apache.org/maven2/io/fabric8/devops/apps/orion/2.2.218/orion-2.2.218.pom (3 KB at 3.6 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/fabric8/devops/packages/management/2.2.218/management-2.2.218.pom
+Downloaded: https://repo.maven.apache.org/maven2/io/fabric8/devops/packages/management/2.2.218/management-2.2.218.pom (2 KB at 2.5 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/fabric8/devops/packages/logging/2.2.218/logging-2.2.218.pom
+Downloaded: https://repo.maven.apache.org/maven2/io/fabric8/devops/packages/logging/2.2.218/logging-2.2.218.pom (3 KB at 1.8 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/fabric8/devops/apps/elasticsearch/2.2.218/elasticsearch-2.2.218.pom
+Downloaded: https://repo.maven.apache.org/maven2/io/fabric8/devops/apps/elasticsearch/2.2.218/elasticsearch-2.2.218.pom (7 KB at 9.2 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/fabric8/devops/apps/kibana/2.2.218/kibana-2.2.218.pom
+Downloaded: https://repo.maven.apache.org/maven2/io/fabric8/devops/apps/kibana/2.2.218/kibana-2.2.218.pom (8 KB at 11.9 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/fabric8/devops/apps/fluentd/2.2.218/fluentd-2.2.218.pom
+Downloaded: https://repo.maven.apache.org/maven2/io/fabric8/devops/apps/fluentd/2.2.218/fluentd-2.2.218.pom (3 KB at 2.4 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/fabric8/devops/packages/metrics/2.2.218/metrics-2.2.218.pom
+Downloaded: https://repo.maven.apache.org/maven2/io/fabric8/devops/packages/metrics/2.2.218/metrics-2.2.218.pom (3 KB at 1.7 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/fabric8/devops/apps/prometheus/2.2.218/prometheus-2.2.218.pom
+Downloaded: https://repo.maven.apache.org/maven2/io/fabric8/devops/apps/prometheus/2.2.218/prometheus-2.2.218.pom (5 KB at 4.4 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/fabric8/devops/apps/grafana/2.2.218/grafana-2.2.218.pom
+Downloaded: https://repo.maven.apache.org/maven2/io/fabric8/devops/apps/grafana/2.2.218/grafana-2.2.218.pom (3 KB at 1.3 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/fabric8/devops/apps/chaos-monkey/2.2.218/chaos-monkey-2.2.218.pom
+Downloaded: https://repo.maven.apache.org/maven2/io/fabric8/devops/apps/chaos-monkey/2.2.218/chaos-monkey-2.2.218.pom (8 KB at 9.3 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/fabric8/devops/apps/artifactory/2.2.218/artifactory-2.2.218.pom
+Downloaded: https://repo.maven.apache.org/maven2/io/fabric8/devops/apps/artifactory/2.2.218/artifactory-2.2.218.pom (3 KB at 4.1 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/fabric8/devops/apps/kiwiirc/2.2.218/kiwiirc-2.2.218.pom
+Downloaded: https://repo.maven.apache.org/maven2/io/fabric8/devops/apps/kiwiirc/2.2.218/kiwiirc-2.2.218.pom (3 KB at 3.6 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/fabric8/devops/apps/maven-shell/2.2.218/maven-shell-2.2.218.pom
+Downloaded: https://repo.maven.apache.org/maven2/io/fabric8/devops/apps/maven-shell/2.2.218/maven-shell-2.2.218.pom (5 KB at 4.3 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/fabric8/devops/apps/manageiq/2.2.218/manageiq-2.2.218.pom
+Downloaded: https://repo.maven.apache.org/maven2/io/fabric8/devops/apps/manageiq/2.2.218/manageiq-2.2.218.pom (5 KB at 4.5 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/fabric8/devops/apps/content-repository/2.2.218/content-repository-2.2.218.pom
+Downloaded: https://repo.maven.apache.org/maven2/io/fabric8/devops/apps/content-repository/2.2.218/content-repository-2.2.218.pom (4 KB at 4.2 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/fabric8/devops/apps/gogs/2.2.218/gogs-2.2.218-kubernetes.json
+Downloading: https://repo.maven.apache.org/maven2/io/fabric8/forge/distro/distro/2.2.234/distro-2.2.234.jar
+Downloading: https://repo.maven.apache.org/maven2/io/fabric8/forge/packages/cd-pipeline/2.2.234/cd-pipeline-2.2.234-kubernetes.json
+Downloading: https://repo.maven.apache.org/maven2/io/fabric8/kubernetes-api/2.2.142/kubernetes-api-2.2.142.jar
+Downloading: https://repo.maven.apache.org/maven2/io/fabric8/openshift-client/1.3.99/openshift-client-1.3.99.jar
+Downloading: https://repo1.maven.org/maven2/io/fabric8/forge/distro/distro/2.2.234/distro-2.2.234.jar
+Downloading: https://repo.maven.apache.org/maven2/io/fabric8/kubernetes-client/1.3.99/kubernetes-client-1.3.99.jar
+Downloaded: https://repo.maven.apache.org/maven2/io/fabric8/devops/apps/gogs/2.2.218/gogs-2.2.218-kubernetes.json (9 KB at 2.3 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/fabric8/fabric8-utils/2.2.142/fabric8-utils-2.2.142.jar
+Downloaded: https://repo.maven.apache.org/maven2/io/fabric8/forge/packages/cd-pipeline/2.2.234/cd-pipeline-2.2.234-kubernetes.json (46 KB at 11.1 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/fabric8/kubernetes-generator/2.2.142/kubernetes-generator-2.2.142.jar
+Downloaded: https://repo.maven.apache.org/maven2/io/fabric8/openshift-client/1.3.99/openshift-client-1.3.99.jar (104 KB at 21.0 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/fabric8/devops/apps/fabric8-docker-registry/2.2.218/fabric8-docker-registry-2.2.218-kubernetes.json
+Downloaded: https://repo.maven.apache.org/maven2/io/fabric8/kubernetes-api/2.2.142/kubernetes-api-2.2.142.jar (84 KB at 16.1 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/fabric8/devops/apps/nexus/2.2.218/nexus-2.2.218-kubernetes.json
+Downloaded: https://repo.maven.apache.org/maven2/io/fabric8/kubernetes-generator/2.2.142/kubernetes-generator-2.2.142.jar (24 KB at 20.8 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/fabric8/devops/apps/jenkins/2.2.218/jenkins-2.2.218-kubernetes.json
+Downloaded: https://repo.maven.apache.org/maven2/io/fabric8/devops/apps/fabric8-docker-registry/2.2.218/fabric8-docker-registry-2.2.218-kubernetes.json (5 KB at 6.0 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/fabric8/forge/apps/fabric8-forge/2.2.234/fabric8-forge-2.2.234-kubernetes.json
+Downloaded: https://repo.maven.apache.org/maven2/io/fabric8/fabric8-utils/2.2.142/fabric8-utils-2.2.142.jar (140 KB at 59.9 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/fabric8/forge/fabric8-forge-web/2.2.234/fabric8-forge-web-2.2.234.war
+Downloaded: https://repo.maven.apache.org/maven2/io/fabric8/devops/apps/jenkins/2.2.218/jenkins-2.2.218-kubernetes.json (25 KB at 20.9 KB/sec)
+Downloaded: https://repo.maven.apache.org/maven2/io/fabric8/devops/apps/nexus/2.2.218/nexus-2.2.218-kubernetes.json (4 KB at 3.3 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/fabric8/devops/packages/chat-irc/2.2.218/chat-irc-2.2.218-kubernetes.json
+Downloading: https://repo.maven.apache.org/maven2/io/fabric8/devops/apps/hubot-notifier/2.2.218/hubot-notifier-2.2.218-kubernetes.json
+Downloaded: https://repo.maven.apache.org/maven2/io/fabric8/forge/apps/fabric8-forge/2.2.234/fabric8-forge-2.2.234-kubernetes.json (6 KB at 4.4 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/fabric8/fabric8-cdi/2.2.142/fabric8-cdi-2.2.142.jar
+Downloaded: https://repo.maven.apache.org/maven2/io/fabric8/devops/apps/hubot-notifier/2.2.218/hubot-notifier-2.2.218-kubernetes.json (4 KB at 2.5 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/fabric8/fabric8-annotations/2.2.142/fabric8-annotations-2.2.142.jar
+Downloaded: https://repo.maven.apache.org/maven2/io/fabric8/devops/packages/chat-irc/2.2.218/chat-irc-2.2.218-kubernetes.json (10 KB at 6.6 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/fabric8/hubot-api/2.2.142/hubot-api-2.2.142.jar
+Downloaded: https://repo.maven.apache.org/maven2/io/fabric8/fabric8-cdi/2.2.142/fabric8-cdi-2.2.142.jar (63 KB at 57.3 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/fabric8/cxf-utils/2.2.142/cxf-utils-2.2.142.jar
+Downloaded: https://repo.maven.apache.org/maven2/io/fabric8/hubot-api/2.2.142/hubot-api-2.2.142.jar (9 KB at 11.1 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/fabric8/devops/apps/hubot-irc/2.2.218/hubot-irc-2.2.218-kubernetes.json
+Downloaded: https://repo.maven.apache.org/maven2/io/fabric8/kubernetes-client/1.3.99/kubernetes-client-1.3.99.jar (277 KB at 51.6 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/fabric8/devops/packages/chat-letschat/2.2.218/chat-letschat-2.2.218-kubernetes.json
+Downloaded: https://repo.maven.apache.org/maven2/io/fabric8/cxf-utils/2.2.142/cxf-utils-2.2.142.jar (12 KB at 14.9 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/fabric8/devops/apps/letschat/2.2.218/letschat-2.2.218-kubernetes.json
+Downloaded: https://repo.maven.apache.org/maven2/io/fabric8/fabric8-annotations/2.2.142/fabric8-annotations-2.2.142.jar (9 KB at 8.3 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/fabric8/devops/apps/hubot-letschat/2.2.218/hubot-letschat-2.2.218-kubernetes.json
+Downloaded: https://repo.maven.apache.org/maven2/io/fabric8/devops/apps/hubot-irc/2.2.218/hubot-irc-2.2.218-kubernetes.json (6 KB at 6.1 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/fabric8/devops/packages/chat-slack/2.2.218/chat-slack-2.2.218-kubernetes.json
+Downloaded: https://repo.maven.apache.org/maven2/io/fabric8/devops/apps/letschat/2.2.218/letschat-2.2.218-kubernetes.json (4 KB at 3.3 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/fabric8/devops/apps/hubot-slack/2.2.218/hubot-slack-2.2.218-kubernetes.json
+Downloaded: https://repo.maven.apache.org/maven2/io/fabric8/devops/packages/chat-letschat/2.2.218/chat-letschat-2.2.218-kubernetes.json (14 KB at 10.0 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/fabric8/devops/apps/git-collector/2.2.218/git-collector-2.2.218-kubernetes.json
+Downloaded: https://repo.maven.apache.org/maven2/io/fabric8/devops/apps/hubot-letschat/2.2.218/hubot-letschat-2.2.218-kubernetes.json (6 KB at 4.8 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/fabric8/devops/apps/collector-utils/2.2.218/collector-utils-2.2.218.jar
+Downloaded: https://repo.maven.apache.org/maven2/io/fabric8/devops/packages/chat-slack/2.2.218/chat-slack-2.2.218-kubernetes.json (7 KB at 5.5 KB/sec)
+Downloaded: https://repo.maven.apache.org/maven2/io/fabric8/devops/apps/hubot-slack/2.2.218/hubot-slack-2.2.218-kubernetes.json (3 KB at 2.8 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/fabric8/devops/apps/gitlab/2.2.218/gitlab-2.2.218-kubernetes.json
+Downloading: https://repo.maven.apache.org/maven2/io/fabric8/devops/apps/gerrit/2.2.218/gerrit-2.2.218-kubernetes.json
+Downloaded: https://repo.maven.apache.org/maven2/io/fabric8/devops/apps/git-collector/2.2.218/git-collector-2.2.218-kubernetes.json (6 KB at 7.8 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/fabric8/devops/apps/ingress-nginx/2.2.218/ingress-nginx-2.2.218-kubernetes.json
+Downloaded: https://repo.maven.apache.org/maven2/io/fabric8/devops/apps/gitlab/2.2.218/gitlab-2.2.218-kubernetes.json (5 KB at 3.7 KB/sec)
+Downloaded: https://repo.maven.apache.org/maven2/io/fabric8/devops/apps/ingress-nginx/2.2.218/ingress-nginx-2.2.218-kubernetes.json (2 KB at 0.9 KB/sec)
+Downloaded: https://repo.maven.apache.org/maven2/io/fabric8/devops/apps/gerrit/2.2.218/gerrit-2.2.218-kubernetes.json (9 KB at 6.8 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/fabric8/devops/packages/social/2.2.218/social-2.2.218-kubernetes.json
+Downloading: https://repo.maven.apache.org/maven2/io/fabric8/devops/apps/taiga/2.2.218/taiga-2.2.218-kubernetes.json
+Downloading: https://repo.maven.apache.org/maven2/io/fabric8/devops/apps/orion/2.2.218/orion-2.2.218-kubernetes.json
+Downloaded: https://repo.maven.apache.org/maven2/io/fabric8/devops/apps/collector-utils/2.2.218/collector-utils-2.2.218.jar (25 KB at 9.0 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/fabric8/devops/packages/management/2.2.218/management-2.2.218-kubernetes.json
+Downloaded: https://repo.maven.apache.org/maven2/io/fabric8/devops/apps/orion/2.2.218/orion-2.2.218-kubernetes.json (4 KB at 3.1 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/fabric8/devops/packages/logging/2.2.218/logging-2.2.218-kubernetes.json
+Downloaded: https://repo.maven.apache.org/maven2/io/fabric8/devops/apps/taiga/2.2.218/taiga-2.2.218-kubernetes.json (5 KB at 2.0 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/fabric8/devops/apps/elasticsearch/2.2.218/elasticsearch-2.2.218-kubernetes.json
+Downloaded: https://repo.maven.apache.org/maven2/io/fabric8/devops/packages/social/2.2.218/social-2.2.218-kubernetes.json (9 KB at 3.3 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/fabric8/devops/apps/kibana/2.2.218/kibana-2.2.218-kubernetes.json
+Downloaded: https://repo.maven.apache.org/maven2/io/fabric8/devops/apps/kibana/2.2.218/kibana-2.2.218-kubernetes.json (5 KB at 3.2 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/fabric8/devops/apps/fluentd/2.2.218/fluentd-2.2.218-kubernetes.json
+Downloaded: https://repo.maven.apache.org/maven2/io/fabric8/devops/packages/logging/2.2.218/logging-2.2.218-kubernetes.json (13 KB at 4.2 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/fabric8/devops/packages/metrics/2.2.218/metrics-2.2.218-kubernetes.json
+Downloaded: https://repo.maven.apache.org/maven2/io/fabric8/devops/packages/management/2.2.218/management-2.2.218-kubernetes.json (21 KB at 5.2 KB/sec)
+Downloaded: https://repo.maven.apache.org/maven2/io/fabric8/devops/apps/fluentd/2.2.218/fluentd-2.2.218-kubernetes.json (2 KB at 2.5 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/fabric8/devops/apps/grafana/2.2.218/grafana-2.2.218-kubernetes.json
+Downloading: https://repo.maven.apache.org/maven2/io/fabric8/devops/apps/prometheus/2.2.218/prometheus-2.2.218-kubernetes.json
+Downloaded: https://repo.maven.apache.org/maven2/io/fabric8/devops/packages/metrics/2.2.218/metrics-2.2.218-kubernetes.json (9 KB at 7.6 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/fabric8/devops/apps/chaos-monkey/2.2.218/chaos-monkey-2.2.218-kubernetes.json
+Downloaded: https://repo.maven.apache.org/maven2/io/fabric8/devops/apps/prometheus/2.2.218/prometheus-2.2.218-kubernetes.json (5 KB at 4.9 KB/sec)
+Downloaded: https://repo.maven.apache.org/maven2/io/fabric8/devops/apps/grafana/2.2.218/grafana-2.2.218-kubernetes.json (4 KB at 4.3 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/fabric8/devops/apps/artifactory/2.2.218/artifactory-2.2.218-kubernetes.json
+Downloading: https://repo.maven.apache.org/maven2/io/fabric8/devops/apps/kiwiirc/2.2.218/kiwiirc-2.2.218-kubernetes.json
+Downloaded: https://repo.maven.apache.org/maven2/io/fabric8/devops/apps/chaos-monkey/2.2.218/chaos-monkey-2.2.218-kubernetes.json (4 KB at 3.3 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/fabric8/devops/apps/maven-shell/2.2.218/maven-shell-2.2.218-kubernetes.json
+Downloaded: https://repo.maven.apache.org/maven2/io/fabric8/devops/apps/artifactory/2.2.218/artifactory-2.2.218-kubernetes.json (4 KB at 3.6 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/fabric8/devops/apps/manageiq/2.2.218/manageiq-2.2.218-kubernetes.json
+Downloaded: https://repo.maven.apache.org/maven2/io/fabric8/devops/apps/kiwiirc/2.2.218/kiwiirc-2.2.218-kubernetes.json (4 KB at 3.1 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/fabric8/devops/apps/content-repository/2.2.218/content-repository-2.2.218-kubernetes.json
+Downloaded: https://repo.maven.apache.org/maven2/io/fabric8/devops/apps/elasticsearch/2.2.218/elasticsearch-2.2.218-kubernetes.json (6 KB at 1.0 KB/sec)
+Downloaded: https://repo.maven.apache.org/maven2/io/fabric8/devops/apps/maven-shell/2.2.218/maven-shell-2.2.218-kubernetes.json (4 KB at 2.4 KB/sec)
+Downloaded: https://repo.maven.apache.org/maven2/io/fabric8/devops/apps/content-repository/2.2.218/content-repository-2.2.218-kubernetes.json (4 KB at 2.1 KB/sec)
+Downloaded: https://repo.maven.apache.org/maven2/io/fabric8/devops/apps/manageiq/2.2.218/manageiq-2.2.218-kubernetes.json (4 KB at 1.7 KB/sec)
+Downloaded: https://repo.maven.apache.org/maven2/io/fabric8/forge/fabric8-forge-web/2.2.234/fabric8-forge-web-2.2.234.war (25403 KB at 90.6 KB/sec)
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time: 6.500 s
+[INFO] Finished at: 2017-05-23T00:01:32-07:00
+[INFO] Final Memory: 11M/323M
+[INFO] ------------------------------------------------------------------------
+```
+
+### https://repo1.maven.org/maven2/io/fabric8/ipaas/distro/distro/2.2.168/
+
+__zip__
+```
+vagrant@vagrant-ubuntu-trusty-64:/data/src/github.com/fabric8io/gofabric8$ mvn dependency:get -DremoteRepositories=https://repo1.maven.org/maven2/ -Dartifact=io.fabric8.ipaas.distro:distro:2.2.168:zip:templates
+[INFO] Scanning for projects...
+[INFO]                                                                         
+[INFO] ------------------------------------------------------------------------
+[INFO] Building gofabric8 1-SNAPSHOT
+[INFO] ------------------------------------------------------------------------
+[INFO] 
+[INFO] --- maven-dependency-plugin:2.8:get (default-cli) @ gofabric8 ---
+[INFO] Resolving io.fabric8.ipaas.distro:distro:zip:templates:2.2.168 with transitive dependencies
+[INFO] artifact org.glassfish:javax.el: checking for updates from central
+[INFO] artifact org.glassfish:javax.el: checking for updates from temp
+[INFO] artifact org.glassfish:javax.el: checking for updates from snapshots-repo
+[INFO] artifact org.glassfish:javax.el: checking for updates from sonatype-snapshots
+Downloading: https://repo.maven.apache.org/maven2/io/fabric8/ipaas/distro/distro/2.2.168/distro-2.2.168-templates.zip
+Downloaded: https://repo.maven.apache.org/maven2/io/fabric8/ipaas/distro/distro/2.2.168/distro-2.2.168-templates.zip (25 KB at 26.8 KB/sec)
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time: 36.598 s
+[INFO] Finished at: 2017-05-24T04:21:28+00:00
+[INFO] Final Memory: 16M/159M
+[INFO] ------------------------------------------------------------------------
+```
+
+__POM__
+```
+fanhonglingdeMacBook-Pro:github.com fanhongling$ mvn dependency:get -DremoteRepositories=https://repo1.maven.org/maven2/ -Dartifact=io.fabric8.ipaas.distro:distro:2.2.168:pom
+[INFO] Scanning for projects...
+[INFO]                                                                         
+[INFO] ------------------------------------------------------------------------
+[INFO] Building Maven Stub Project (No POM) 1
+[INFO] ------------------------------------------------------------------------
+[INFO] 
+[INFO] --- maven-dependency-plugin:2.8:get (default-cli) @ standalone-pom ---
+[INFO] Resolving io.fabric8.ipaas.distro:distro:zip:2.2.168 with transitive dependencies
+Downloading: https://repo.maven.apache.org/maven2/io/fabric8/ipaas/distro/distro/2.2.168/distro-2.2.168.pom
+Downloaded: https://repo.maven.apache.org/maven2/io/fabric8/ipaas/distro/distro/2.2.168/distro-2.2.168.pom (4 KB at 0.4 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/fabric8/ipaas/packages/packages/2.2.168/packages-2.2.168.pom
+Downloaded: https://repo.maven.apache.org/maven2/io/fabric8/ipaas/packages/packages/2.2.168/packages-2.2.168.pom (2 KB at 0.4 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/fabric8/ipaas/apps/fabric8-ipaas/2.2.168/fabric8-ipaas-2.2.168.pom
+Downloaded: https://repo.maven.apache.org/maven2/io/fabric8/ipaas/apps/fabric8-ipaas/2.2.168/fabric8-ipaas-2.2.168.pom (22 KB at 7.1 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/fabric8/fabric8-project/2.2.192/fabric8-project-2.2.192.pom
+Downloaded: https://repo.maven.apache.org/maven2/io/fabric8/fabric8-project/2.2.192/fabric8-project-2.2.192.pom (83 KB at 11.9 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/fabric8/ipaas/packages/messaging/2.2.168/messaging-2.2.168.pom
+Downloaded: https://repo.maven.apache.org/maven2/io/fabric8/ipaas/packages/messaging/2.2.168/messaging-2.2.168.pom (3 KB at 2.9 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/fabric8/ipaas/apps/message-broker/2.2.168/message-broker-2.2.168.pom
+Downloaded: https://repo.maven.apache.org/maven2/io/fabric8/ipaas/apps/message-broker/2.2.168/message-broker-2.2.168.pom (10 KB at 4.8 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/fabric8/fabric8-project-bom-with-platform-deps/2.2.192/fabric8-project-bom-with-platform-deps-2.2.192.pom
+Downloaded: https://repo.maven.apache.org/maven2/io/fabric8/fabric8-project-bom-with-platform-deps/2.2.192/fabric8-project-bom-with-platform-deps-2.2.192.pom (32 KB at 12.3 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/org/hibernate/hibernate-validator-annotation-processor/4.1.0.Final/hibernate-validator-annotation-processor-4.1.0.Final.pom
+Downloaded: https://repo.maven.apache.org/maven2/org/hibernate/hibernate-validator-annotation-processor/4.1.0.Final/hibernate-validator-annotation-processor-4.1.0.Final.pom (4 KB at 3.6 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/org/hibernate/hibernate-validator-parent/4.1.0.Final/hibernate-validator-parent-4.1.0.Final.pom
+Downloaded: https://repo.maven.apache.org/maven2/org/hibernate/hibernate-validator-parent/4.1.0.Final/hibernate-validator-parent-4.1.0.Final.pom (0 B at 0.0 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/org/hibernate/hibernate-validator/4.1.0.Final/hibernate-validator-4.1.0.Final.pom
+Downloaded: https://repo.maven.apache.org/maven2/org/hibernate/hibernate-validator/4.1.0.Final/hibernate-validator-4.1.0.Final.pom (0 B at 0.0 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/org/apache/activemq/artemis-jms-client/1.2.0/artemis-jms-client-1.2.0.pom
+Downloaded: https://repo.maven.apache.org/maven2/org/apache/activemq/artemis-jms-client/1.2.0/artemis-jms-client-1.2.0.pom (4 KB at 2.0 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/org/apache/activemq/artemis-pom/1.2.0/artemis-pom-1.2.0.pom
+Downloaded: https://repo.maven.apache.org/maven2/org/apache/activemq/artemis-pom/1.2.0/artemis-pom-1.2.0.pom (47 KB at 5.2 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/org/apache/activemq/artemis-core-client/1.2.0/artemis-core-client-1.2.0.pom
+Downloaded: https://repo.maven.apache.org/maven2/org/apache/activemq/artemis-core-client/1.2.0/artemis-core-client-1.2.0.pom (4 KB at 2.1 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/org/jgroups/jgroups/3.6.6.Final/jgroups-3.6.6.Final.pom
+Downloaded: https://repo.maven.apache.org/maven2/org/jgroups/jgroups/3.6.6.Final/jgroups-3.6.6.Final.pom (20 KB at 2.1 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/org/apache/activemq/artemis-commons/1.2.0/artemis-commons-1.2.0.pom
+Downloaded: https://repo.maven.apache.org/maven2/org/apache/activemq/artemis-commons/1.2.0/artemis-commons-1.2.0.pom (3 KB at 1.1 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/org/jboss/logging/jboss-logging/3.1.4.GA/jboss-logging-3.1.4.GA.pom
+Downloaded: https://repo.maven.apache.org/maven2/org/jboss/logging/jboss-logging/3.1.4.GA/jboss-logging-3.1.4.GA.pom (5 KB at 1.5 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/netty/netty-all/4.0.32.Final/netty-all-4.0.32.Final.pom
+Downloaded: https://repo.maven.apache.org/maven2/io/netty/netty-all/4.0.32.Final/netty-all-4.0.32.Final.pom (18 KB at 4.8 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/netty/netty-parent/4.0.32.Final/netty-parent-4.0.32.Final.pom
+Downloaded: https://repo.maven.apache.org/maven2/io/netty/netty-parent/4.0.32.Final/netty-parent-4.0.32.Final.pom (52 KB at 8.8 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/org/apache/activemq/artemis-selector/1.2.0/artemis-selector-1.2.0.pom
+Downloaded: https://repo.maven.apache.org/maven2/org/apache/activemq/artemis-selector/1.2.0/artemis-selector-1.2.0.pom (5 KB at 0.1 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/org/apache/geronimo/specs/geronimo-jms_2.0_spec/1.0-alpha-2/geronimo-jms_2.0_spec-1.0-alpha-2.pom
+Downloaded: https://repo.maven.apache.org/maven2/org/apache/geronimo/specs/geronimo-jms_2.0_spec/1.0-alpha-2/geronimo-jms_2.0_spec-1.0-alpha-2.pom (5 KB at 0.3 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/org/apache/geronimo/genesis/genesis-java6-flava/2.2/genesis-java6-flava-2.2.pom
+Downloaded: https://repo.maven.apache.org/maven2/org/apache/geronimo/genesis/genesis-java6-flava/2.2/genesis-java6-flava-2.2.pom (6 KB at 0.5 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/org/apache/geronimo/genesis/genesis-default-flava/2.2/genesis-default-flava-2.2.pom
+Downloaded: https://repo.maven.apache.org/maven2/org/apache/geronimo/genesis/genesis-default-flava/2.2/genesis-default-flava-2.2.pom (15 KB at 0.5 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/org/apache/geronimo/genesis/genesis/2.2/genesis-2.2.pom
+Downloaded: https://repo.maven.apache.org/maven2/org/apache/geronimo/genesis/genesis/2.2/genesis-2.2.pom (17 KB at 0.2 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/org/apache/activemq/artemis-journal/1.2.0/artemis-journal-1.2.0.pom
+Downloaded: https://repo.maven.apache.org/maven2/org/apache/activemq/artemis-journal/1.2.0/artemis-journal-1.2.0.pom (3 KB at 0.1 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/org/apache/activemq/artemis-native/1.2.0/artemis-native-1.2.0.pom
+Downloaded: https://repo.maven.apache.org/maven2/org/apache/activemq/artemis-native/1.2.0/artemis-native-1.2.0.pom (4 KB at 0.0 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/org/apache/activemq/artemis-server/1.2.0/artemis-server-1.2.0.pom
+Downloaded: https://repo.maven.apache.org/maven2/org/apache/activemq/artemis-server/1.2.0/artemis-server-1.2.0.pom (6 KB at 0.6 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/org/apache/activemq/artemis-openwire-protocol/1.2.0/artemis-openwire-protocol-1.2.0.pom
+Downloaded: https://repo.maven.apache.org/maven2/org/apache/activemq/artemis-openwire-protocol/1.2.0/artemis-openwire-protocol-1.2.0.pom (3 KB at 4.2 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/org/apache/activemq/artemis-protocols/1.2.0/artemis-protocols-1.2.0.pom
+Downloaded: https://repo.maven.apache.org/maven2/org/apache/activemq/artemis-protocols/1.2.0/artemis-protocols-1.2.0.pom (2 KB at 0.4 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/org/apache/activemq/activemq-client/5.12.0/activemq-client-5.12.0.pom
+Downloaded: https://repo.maven.apache.org/maven2/org/apache/activemq/activemq-client/5.12.0/activemq-client-5.12.0.pom (13 KB at 2.7 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/org/apache/activemq/activemq-parent/5.12.0/activemq-parent-5.12.0.pom
+Downloaded: https://repo.maven.apache.org/maven2/org/apache/activemq/activemq-parent/5.12.0/activemq-parent-5.12.0.pom (59 KB at 3.4 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/org/apache/geronimo/specs/geronimo-jms_1.1_spec/1.1.1/geronimo-jms_1.1_spec-1.1.1.pom
+Downloaded: https://repo.maven.apache.org/maven2/org/apache/geronimo/specs/geronimo-jms_1.1_spec/1.1.1/geronimo-jms_1.1_spec-1.1.1.pom (3 KB at 2.3 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/org/fusesource/hawtbuf/hawtbuf/1.11/hawtbuf-1.11.pom
+Downloaded: https://repo.maven.apache.org/maven2/org/fusesource/hawtbuf/hawtbuf/1.11/hawtbuf-1.11.pom (3 KB at 3.7 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/org/fusesource/hawtbuf/hawtbuf-project/1.11/hawtbuf-project-1.11.pom
+Downloaded: https://repo.maven.apache.org/maven2/org/fusesource/hawtbuf/hawtbuf-project/1.11/hawtbuf-project-1.11.pom (12 KB at 3.0 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/org/fusesource/fusesource-pom/1.10/fusesource-pom-1.10.pom
+Downloaded: https://repo.maven.apache.org/maven2/org/fusesource/fusesource-pom/1.10/fusesource-pom-1.10.pom (15 KB at 0.9 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/org/apache/geronimo/specs/geronimo-j2ee-management_1.1_spec/1.0.1/geronimo-j2ee-management_1.1_spec-1.0.1.pom
+Downloaded: https://repo.maven.apache.org/maven2/org/apache/geronimo/specs/geronimo-j2ee-management_1.1_spec/1.0.1/geronimo-j2ee-management_1.1_spec-1.0.1.pom (3 KB at 0.9 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/org/apache/activemq/artemis-amqp-protocol/1.2.0/artemis-amqp-protocol-1.2.0.pom
+Downloaded: https://repo.maven.apache.org/maven2/org/apache/activemq/artemis-amqp-protocol/1.2.0/artemis-amqp-protocol-1.2.0.pom (4 KB at 1.3 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/org/apache/activemq/artemis-proton-plug/1.2.0/artemis-proton-plug-1.2.0.pom
+Downloaded: https://repo.maven.apache.org/maven2/org/apache/activemq/artemis-proton-plug/1.2.0/artemis-proton-plug-1.2.0.pom (4 KB at 0.9 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/org/apache/qpid/proton-j/0.10/proton-j-0.10.pom
+Downloaded: https://repo.maven.apache.org/maven2/org/apache/qpid/proton-j/0.10/proton-j-0.10.pom (2 KB at 0.6 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/org/apache/qpid/proton-project/0.10/proton-project-0.10.pom
+Downloaded: https://repo.maven.apache.org/maven2/org/apache/qpid/proton-project/0.10/proton-project-0.10.pom (5 KB at 2.9 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/org/apache/qpid/proton-jms/0.10/proton-jms-0.10.pom
+Downloaded: https://repo.maven.apache.org/maven2/org/apache/qpid/proton-jms/0.10/proton-jms-0.10.pom (2 KB at 0.7 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/org/apache/activemq/artemis-hornetq-protocol/1.2.0/artemis-hornetq-protocol-1.2.0.pom
+Downloaded: https://repo.maven.apache.org/maven2/org/apache/activemq/artemis-hornetq-protocol/1.2.0/artemis-hornetq-protocol-1.2.0.pom (3 KB at 0.7 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/org/apache/activemq/artemis-hqclient-protocol/1.2.0/artemis-hqclient-protocol-1.2.0.pom
+Downloaded: https://repo.maven.apache.org/maven2/org/apache/activemq/artemis-hqclient-protocol/1.2.0/artemis-hqclient-protocol-1.2.0.pom (3 KB at 1.4 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/org/apache/activemq/artemis-jms-server/1.2.0/artemis-jms-server-1.2.0.pom
+Downloaded: https://repo.maven.apache.org/maven2/org/apache/activemq/artemis-jms-server/1.2.0/artemis-jms-server-1.2.0.pom (4 KB at 3.0 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/org/apache/activemq/artemis-service-extensions/1.2.0/artemis-service-extensions-1.2.0.pom
+Downloaded: https://repo.maven.apache.org/maven2/org/apache/activemq/artemis-service-extensions/1.2.0/artemis-service-extensions-1.2.0.pom (3 KB at 2.4 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/org/apache/geronimo/specs/geronimo-ejb_3.0_spec/1.0.1/geronimo-ejb_3.0_spec-1.0.1.pom
+Downloaded: https://repo.maven.apache.org/maven2/org/apache/geronimo/specs/geronimo-ejb_3.0_spec/1.0.1/geronimo-ejb_3.0_spec-1.0.1.pom (3 KB at 1.4 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/fabric8/fabric8-utils/2.2.192/fabric8-utils-2.2.192.pom
+Downloaded: https://repo.maven.apache.org/maven2/io/fabric8/fabric8-utils/2.2.192/fabric8-utils-2.2.192.pom (2 KB at 0.7 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/fabric8/components/2.2.192/components-2.2.192.pom
+Downloaded: https://repo.maven.apache.org/maven2/io/fabric8/components/2.2.192/components-2.2.192.pom (4 KB at 1.0 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/fabric8/fabric8-parent/2.2.192/fabric8-parent-2.2.192.pom
+Downloaded: https://repo.maven.apache.org/maven2/io/fabric8/fabric8-parent/2.2.192/fabric8-parent-2.2.192.pom (16 KB at 1.8 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/fabric8/ipaas/apps/message-gateway/2.2.168/message-gateway-2.2.168.pom
+Downloaded: https://repo.maven.apache.org/maven2/io/fabric8/ipaas/apps/message-gateway/2.2.168/message-gateway-2.2.168.pom (10 KB at 2.8 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot-dependencies/1.3.0.RELEASE/spring-boot-dependencies-1.3.0.RELEASE.pom
+Downloaded: https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot-dependencies/1.3.0.RELEASE/spring-boot-dependencies-1.3.0.RELEASE.pom (72 KB at 2.9 KB/sec)
+Downloading: https://repo1.maven.org/maven2/org/springframework/spring-framework-bom/4.2.3.RELEASE/spring-framework-bom-4.2.3.RELEASE.pom
+Downloaded: https://repo1.maven.org/maven2/org/springframework/spring-framework-bom/4.2.3.RELEASE/spring-framework-bom-4.2.3.RELEASE.pom (5 KB at 0.8 KB/sec)
+Downloading: https://repo1.maven.org/maven2/org/springframework/data/spring-data-releasetrain/Gosling-SR1/spring-data-releasetrain-Gosling-SR1.pom
+Downloaded: https://repo1.maven.org/maven2/org/springframework/data/spring-data-releasetrain/Gosling-SR1/spring-data-releasetrain-Gosling-SR1.pom (5 KB at 2.7 KB/sec)
+Downloading: https://repo1.maven.org/maven2/org/springframework/data/build/spring-data-build/1.7.1.RELEASE/spring-data-build-1.7.1.RELEASE.pom
+Downloaded: https://repo1.maven.org/maven2/org/springframework/data/build/spring-data-build/1.7.1.RELEASE/spring-data-build-1.7.1.RELEASE.pom (3 KB at 1.1 KB/sec)
+Downloading: https://repo1.maven.org/maven2/org/springframework/integration/spring-integration-bom/4.2.1.RELEASE/spring-integration-bom-4.2.1.RELEASE.pom
+Downloaded: https://repo1.maven.org/maven2/org/springframework/integration/spring-integration-bom/4.2.1.RELEASE/spring-integration-bom-4.2.1.RELEASE.pom (9 KB at 7.3 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot-starter/1.3.0.RELEASE/spring-boot-starter-1.3.0.RELEASE.pom
+Downloaded: https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot-starter/1.3.0.RELEASE/spring-boot-starter-1.3.0.RELEASE.pom (2 KB at 0.7 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot-starters/1.3.0.RELEASE/spring-boot-starters-1.3.0.RELEASE.pom
+Downloaded: https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot-starters/1.3.0.RELEASE/spring-boot-starters-1.3.0.RELEASE.pom (4 KB at 0.4 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot-parent/1.3.0.RELEASE/spring-boot-parent-1.3.0.RELEASE.pom
+Downloaded: https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot-parent/1.3.0.RELEASE/spring-boot-parent-1.3.0.RELEASE.pom (25 KB at 1.4 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/org/apache/curator/curator-framework/2.9.1/curator-framework-2.9.1.pom
+Downloaded: https://repo.maven.apache.org/maven2/org/apache/curator/curator-framework/2.9.1/curator-framework-2.9.1.pom (3 KB at 0.6 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/org/apache/curator/apache-curator/2.9.1/apache-curator-2.9.1.pom
+Downloaded: https://repo.maven.apache.org/maven2/org/apache/curator/apache-curator/2.9.1/apache-curator-2.9.1.pom (30 KB at 3.0 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/org/apache/curator/curator-client/2.9.1/curator-client-2.9.1.pom
+Downloaded: https://repo.maven.apache.org/maven2/org/apache/curator/curator-client/2.9.1/curator-client-2.9.1.pom (3 KB at 0.5 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/org/apache/curator/curator-recipes/2.9.1/curator-recipes-2.9.1.pom
+Downloaded: https://repo.maven.apache.org/maven2/org/apache/curator/curator-recipes/2.9.1/curator-recipes-2.9.1.pom (3 KB at 1.2 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/fabric8/kubernetes-api/2.2.192/kubernetes-api-2.2.192.pom
+Downloaded: https://repo.maven.apache.org/maven2/io/fabric8/kubernetes-api/2.2.192/kubernetes-api-2.2.192.pom (4 KB at 1.7 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/fabric8/openshift-client/1.4.33/openshift-client-1.4.33.pom
+Downloaded: https://repo.maven.apache.org/maven2/io/fabric8/openshift-client/1.4.33/openshift-client-1.4.33.pom (8 KB at 1.9 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/fabric8/kubernetes-client-project/1.4.33/kubernetes-client-project-1.4.33.pom
+Downloaded: https://repo.maven.apache.org/maven2/io/fabric8/kubernetes-client-project/1.4.33/kubernetes-client-project-1.4.33.pom (12 KB at 3.1 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/fabric8/kubernetes-client/1.4.33/kubernetes-client-1.4.33.pom
+Downloaded: https://repo.maven.apache.org/maven2/io/fabric8/kubernetes-client/1.4.33/kubernetes-client-1.4.33.pom (9 KB at 1.3 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/fabric8/kubernetes-model/1.0.65/kubernetes-model-1.0.65.pom
+Downloaded: https://repo.maven.apache.org/maven2/io/fabric8/kubernetes-model/1.0.65/kubernetes-model-1.0.65.pom (7 KB at 2.5 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/fabric8/kubernetes-model-generator/1.0.65/kubernetes-model-generator-1.0.65.pom
+Downloaded: https://repo.maven.apache.org/maven2/io/fabric8/kubernetes-model-generator/1.0.65/kubernetes-model-generator-1.0.65.pom (14 KB at 1.3 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/org/slf4j/slf4j-log4j12/1.7.13/slf4j-log4j12-1.7.13.pom
+Downloaded: https://repo.maven.apache.org/maven2/org/slf4j/slf4j-log4j12/1.7.13/slf4j-log4j12-1.7.13.pom (909 B at 0.6 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/fabric8/ipaas/apps/zookeeper/2.2.168/zookeeper-2.2.168.pom
+Downloaded: https://repo.maven.apache.org/maven2/io/fabric8/ipaas/apps/zookeeper/2.2.168/zookeeper-2.2.168.pom (6 KB at 1.7 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/fabric8/kubernetes-generator/2.2.192/kubernetes-generator-2.2.192.pom
+Downloaded: https://repo.maven.apache.org/maven2/io/fabric8/kubernetes-generator/2.2.192/kubernetes-generator-2.2.192.pom (3 KB at 1.6 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/fabric8/ipaas/packages/apiman/2.2.168/apiman-2.2.168.pom
+Downloaded: https://repo.maven.apache.org/maven2/io/fabric8/ipaas/packages/apiman/2.2.168/apiman-2.2.168.pom (3 KB at 1.9 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/fabric8/ipaas/apps/elasticsearch-v1/2.2.168/elasticsearch-v1-2.2.168.pom
+Downloaded: https://repo.maven.apache.org/maven2/io/fabric8/ipaas/apps/elasticsearch-v1/2.2.168/elasticsearch-v1-2.2.168.pom (10 KB at 3.0 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/fabric8/ipaas/apps/apiman/2.2.168/apiman-2.2.168.pom
+Downloaded: https://repo.maven.apache.org/maven2/io/fabric8/ipaas/apps/apiman/2.2.168/apiman-2.2.168.pom (11 KB at 4.6 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/apiman/apiman/1.2.7.Beta1/apiman-1.2.7.Beta1.pom
+Downloaded: https://repo.maven.apache.org/maven2/io/apiman/apiman/1.2.7.Beta1/apiman-1.2.7.Beta1.pom (62 KB at 2.6 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/apiman/apiman-manager-api-micro/1.2.7.Beta1/apiman-manager-api-micro-1.2.7.Beta1.pom
+Downloaded: https://repo.maven.apache.org/maven2/io/apiman/apiman-manager-api-micro/1.2.7.Beta1/apiman-manager-api-micro-1.2.7.Beta1.pom (10 KB at 1.1 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/apiman/apiman-manager-api/1.2.7.Beta1/apiman-manager-api-1.2.7.Beta1.pom
+Downloaded: https://repo.maven.apache.org/maven2/io/apiman/apiman-manager-api/1.2.7.Beta1/apiman-manager-api-1.2.7.Beta1.pom (2 KB at 0.6 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/apiman/apiman-manager/1.2.7.Beta1/apiman-manager-1.2.7.Beta1.pom
+Downloaded: https://repo.maven.apache.org/maven2/io/apiman/apiman-manager/1.2.7.Beta1/apiman-manager-1.2.7.Beta1.pom (760 B at 0.3 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/apiman/apiman-common-util/1.2.7.Beta1/apiman-common-util-1.2.7.Beta1.pom
+Downloaded: https://repo.maven.apache.org/maven2/io/apiman/apiman-common-util/1.2.7.Beta1/apiman-common-util-1.2.7.Beta1.pom (2 KB at 0.4 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/apiman/apiman-common/1.2.7.Beta1/apiman-common-1.2.7.Beta1.pom
+Downloaded: https://repo.maven.apache.org/maven2/io/apiman/apiman-common/1.2.7.Beta1/apiman-common-1.2.7.Beta1.pom (742 B at 1.4 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/org/apache/commons/commons-lang3/3.3.2/commons-lang3-3.3.2.pom
+Downloaded: https://repo.maven.apache.org/maven2/org/apache/commons/commons-lang3/3.3.2/commons-lang3-3.3.2.pom (20 KB at 2.0 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/apiman/apiman-common-config/1.2.7.Beta1/apiman-common-config-1.2.7.Beta1.pom
+Downloaded: https://repo.maven.apache.org/maven2/io/apiman/apiman-common-config/1.2.7.Beta1/apiman-common-config-1.2.7.Beta1.pom (2 KB at 0.3 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/apiman/apiman-common-auth/1.2.7.Beta1/apiman-common-auth-1.2.7.Beta1.pom
+Downloaded: https://repo.maven.apache.org/maven2/io/apiman/apiman-common-auth/1.2.7.Beta1/apiman-common-auth-1.2.7.Beta1.pom (2 KB at 0.5 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/apiman/apiman-common-servlet/1.2.7.Beta1/apiman-common-servlet-1.2.7.Beta1.pom
+Downloaded: https://repo.maven.apache.org/maven2/io/apiman/apiman-common-servlet/1.2.7.Beta1/apiman-common-servlet-1.2.7.Beta1.pom (2 KB at 0.5 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/apiman/apiman-manager-api-config/1.2.7.Beta1/apiman-manager-api-config-1.2.7.Beta1.pom
+Downloaded: https://repo.maven.apache.org/maven2/io/apiman/apiman-manager-api-config/1.2.7.Beta1/apiman-manager-api-config-1.2.7.Beta1.pom (2 KB at 0.4 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/apiman/apiman-manager-api-beans/1.2.7.Beta1/apiman-manager-api-beans-1.2.7.Beta1.pom
+Downloaded: https://repo.maven.apache.org/maven2/io/apiman/apiman-manager-api-beans/1.2.7.Beta1/apiman-manager-api-beans-1.2.7.Beta1.pom (3 KB at 0.5 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/apiman/apiman-manager-api-core/1.2.7.Beta1/apiman-manager-api-core-1.2.7.Beta1.pom
+Downloaded: https://repo.maven.apache.org/maven2/io/apiman/apiman-manager-api-core/1.2.7.Beta1/apiman-manager-api-core-1.2.7.Beta1.pom (4 KB at 0.6 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/apiman/apiman-common-logging-core/1.2.7.Beta1/apiman-common-logging-core-1.2.7.Beta1.pom
+Downloaded: https://repo.maven.apache.org/maven2/io/apiman/apiman-common-logging-core/1.2.7.Beta1/apiman-common-logging-core-1.2.7.Beta1.pom (618 B at 0.4 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/apiman/apiman-common-logging/1.2.7.Beta1/apiman-common-logging-1.2.7.Beta1.pom
+Downloaded: https://repo.maven.apache.org/maven2/io/apiman/apiman-common-logging/1.2.7.Beta1/apiman-common-logging-1.2.7.Beta1.pom (662 B at 0.3 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/apiman/apiman-common-plugin/1.2.7.Beta1/apiman-common-plugin-1.2.7.Beta1.pom
+Downloaded: https://repo.maven.apache.org/maven2/io/apiman/apiman-common-plugin/1.2.7.Beta1/apiman-common-plugin-1.2.7.Beta1.pom (2 KB at 0.2 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/joda-time/joda-time/2.7/joda-time-2.7.pom
+Downloaded: https://repo.maven.apache.org/maven2/joda-time/joda-time/2.7/joda-time-2.7.pom (0 B at 0.0 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/org/apache/logging/log4j/log4j-api/2.2/log4j-api-2.2.pom
+Downloaded: https://repo.maven.apache.org/maven2/org/apache/logging/log4j/log4j-api/2.2/log4j-api-2.2.pom (8 KB at 1.3 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/org/apache/logging/log4j/log4j/2.2/log4j-2.2.pom
+Downloaded: https://repo.maven.apache.org/maven2/org/apache/logging/log4j/log4j/2.2/log4j-2.2.pom (48 KB at 0.6 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/org/apache/logging/log4j/log4j-core/2.2/log4j-core-2.2.pom
+Downloaded: https://repo.maven.apache.org/maven2/org/apache/logging/log4j/log4j-core/2.2/log4j-core-2.2.pom (16 KB at 0.4 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/org/mvel/mvel2/2.2.7.Final/mvel2-2.2.7.Final.pom
+Downloaded: https://repo.maven.apache.org/maven2/org/mvel/mvel2/2.2.7.Final/mvel2-2.2.7.Final.pom (11 KB at 0.6 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/apiman/apiman-manager-api-rest/1.2.7.Beta1/apiman-manager-api-rest-1.2.7.Beta1.pom
+Downloaded: https://repo.maven.apache.org/maven2/io/apiman/apiman-manager-api-rest/1.2.7.Beta1/apiman-manager-api-rest-1.2.7.Beta1.pom (4 KB at 0.3 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/swagger/swagger-annotations/1.5.7/swagger-annotations-1.5.7.pom
+Downloaded: https://repo.maven.apache.org/maven2/io/swagger/swagger-annotations/1.5.7/swagger-annotations-1.5.7.pom (7 KB at 0.4 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/swagger/swagger-project/1.5.7/swagger-project-1.5.7.pom
+Downloaded: https://repo.maven.apache.org/maven2/io/swagger/swagger-project/1.5.7/swagger-project-1.5.7.pom (21 KB at 0.7 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/apiman/apiman-manager-api-rest-impl/1.2.7.Beta1/apiman-manager-api-rest-impl-1.2.7.Beta1.pom
+Downloaded: https://repo.maven.apache.org/maven2/io/apiman/apiman-manager-api-rest-impl/1.2.7.Beta1/apiman-manager-api-rest-impl-1.2.7.Beta1.pom (4 KB at 1.3 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/apiman/apiman-manager-api-security/1.2.7.Beta1/apiman-manager-api-security-1.2.7.Beta1.pom
+Downloaded: https://repo.maven.apache.org/maven2/io/apiman/apiman-manager-api-security/1.2.7.Beta1/apiman-manager-api-security-1.2.7.Beta1.pom (3 KB at 1.1 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/apiman/apiman-manager-api-gateway/1.2.7.Beta1/apiman-manager-api-gateway-1.2.7.Beta1.pom
+Downloaded: https://repo.maven.apache.org/maven2/io/apiman/apiman-manager-api-gateway/1.2.7.Beta1/apiman-manager-api-gateway-1.2.7.Beta1.pom (3 KB at 0.6 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/apiman/apiman-gateway-engine-beans/1.2.7.Beta1/apiman-gateway-engine-beans-1.2.7.Beta1.pom
+Downloaded: https://repo.maven.apache.org/maven2/io/apiman/apiman-gateway-engine-beans/1.2.7.Beta1/apiman-gateway-engine-beans-1.2.7.Beta1.pom (2 KB at 0.7 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/apiman/apiman-gateway-engine/1.2.7.Beta1/apiman-gateway-engine-1.2.7.Beta1.pom
+Downloaded: https://repo.maven.apache.org/maven2/io/apiman/apiman-gateway-engine/1.2.7.Beta1/apiman-gateway-engine-1.2.7.Beta1.pom (847 B at 0.5 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/apiman/apiman-gateway/1.2.7.Beta1/apiman-gateway-1.2.7.Beta1.pom
+Downloaded: https://repo.maven.apache.org/maven2/io/apiman/apiman-gateway/1.2.7.Beta1/apiman-gateway-1.2.7.Beta1.pom (619 B at 0.1 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/net/openhft/zero-allocation-hashing/0.6/zero-allocation-hashing-0.6.pom
+Downloaded: https://repo.maven.apache.org/maven2/net/openhft/zero-allocation-hashing/0.6/zero-allocation-hashing-0.6.pom (5 KB at 1.4 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/net/openhft/java-parent-pom/1.1.2/java-parent-pom-1.1.2.pom
+Downloaded: https://repo.maven.apache.org/maven2/net/openhft/java-parent-pom/1.1.2/java-parent-pom-1.1.2.pom (6 KB at 3.5 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/net/openhft/root-parent-pom/1.1.1/root-parent-pom-1.1.1.pom
+Downloaded: https://repo.maven.apache.org/maven2/net/openhft/root-parent-pom/1.1.1/root-parent-pom-1.1.1.pom (7 KB at 6.8 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/apiman/apiman-gateway-api-rest/1.2.7.Beta1/apiman-gateway-api-rest-1.2.7.Beta1.pom
+Downloaded: https://repo.maven.apache.org/maven2/io/apiman/apiman-gateway-api-rest/1.2.7.Beta1/apiman-gateway-api-rest-1.2.7.Beta1.pom (4 KB at 5.1 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/apiman/apiman-gateway-api/1.2.7.Beta1/apiman-gateway-api-1.2.7.Beta1.pom
+Downloaded: https://repo.maven.apache.org/maven2/io/apiman/apiman-gateway-api/1.2.7.Beta1/apiman-gateway-api-1.2.7.Beta1.pom (580 B at 1.1 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/swagger/swagger-jaxrs/1.5.7/swagger-jaxrs-1.5.7.pom
+Downloaded: https://repo.maven.apache.org/maven2/io/swagger/swagger-jaxrs/1.5.7/swagger-jaxrs-1.5.7.pom (6 KB at 2.5 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/com/fasterxml/jackson/dataformat/jackson-dataformat-yaml/2.4.5/jackson-dataformat-yaml-2.4.5.pom
+Downloaded: https://repo.maven.apache.org/maven2/com/fasterxml/jackson/dataformat/jackson-dataformat-yaml/2.4.5/jackson-dataformat-yaml-2.4.5.pom (8 KB at 3.4 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/com/fasterxml/jackson/dataformat/jackson-dataformat-xml/2.4.5/jackson-dataformat-xml-2.4.5.pom
+Downloaded: https://repo.maven.apache.org/maven2/com/fasterxml/jackson/dataformat/jackson-dataformat-xml/2.4.5/jackson-dataformat-xml-2.4.5.pom (7 KB at 2.4 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/com/fasterxml/jackson/module/jackson-module-jaxb-annotations/2.4.5/jackson-module-jaxb-annotations-2.4.5.pom
+Downloaded: https://repo.maven.apache.org/maven2/com/fasterxml/jackson/module/jackson-module-jaxb-annotations/2.4.5/jackson-module-jaxb-annotations-2.4.5.pom (5 KB at 2.0 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/swagger/swagger-core/1.5.7/swagger-core-1.5.7.pom
+Downloaded: https://repo.maven.apache.org/maven2/io/swagger/swagger-core/1.5.7/swagger-core-1.5.7.pom (8 KB at 1.7 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/org/slf4j/slf4j-api/1.6.3/slf4j-api-1.6.3.pom
+Downloaded: https://repo.maven.apache.org/maven2/org/slf4j/slf4j-api/1.6.3/slf4j-api-1.6.3.pom (0 B at 0.0 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/org/slf4j/slf4j-parent/1.6.3/slf4j-parent-1.6.3.pom
+Downloaded: https://repo.maven.apache.org/maven2/org/slf4j/slf4j-parent/1.6.3/slf4j-parent-1.6.3.pom (0 B at 0.0 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/com/fasterxml/jackson/datatype/jackson-datatype-joda/2.4.5/jackson-datatype-joda-2.4.5.pom
+Downloaded: https://repo.maven.apache.org/maven2/com/fasterxml/jackson/datatype/jackson-datatype-joda/2.4.5/jackson-datatype-joda-2.4.5.pom (4 KB at 2.9 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/swagger/swagger-models/1.5.7/swagger-models-1.5.7.pom
+Downloaded: https://repo.maven.apache.org/maven2/io/swagger/swagger-models/1.5.7/swagger-models-1.5.7.pom (5 KB at 5.4 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/com/fasterxml/jackson/jaxrs/jackson-jaxrs-json-provider/2.4.5/jackson-jaxrs-json-provider-2.4.5.pom
+Downloaded: https://repo.maven.apache.org/maven2/com/fasterxml/jackson/jaxrs/jackson-jaxrs-json-provider/2.4.5/jackson-jaxrs-json-provider-2.4.5.pom (4 KB at 3.8 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/com/fasterxml/jackson/jaxrs/jackson-jaxrs-providers/2.4.5/jackson-jaxrs-providers-2.4.5.pom
+Downloaded: https://repo.maven.apache.org/maven2/com/fasterxml/jackson/jaxrs/jackson-jaxrs-providers/2.4.5/jackson-jaxrs-providers-2.4.5.pom (4 KB at 4.6 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/com/fasterxml/jackson/jaxrs/jackson-jaxrs-base/2.4.5/jackson-jaxrs-base-2.4.5.pom
+Downloaded: https://repo.maven.apache.org/maven2/com/fasterxml/jackson/jaxrs/jackson-jaxrs-base/2.4.5/jackson-jaxrs-base-2.4.5.pom (2 KB at 2.1 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/org/apache/httpcomponents/httpclient/4.5/httpclient-4.5.pom
+Downloaded: https://repo.maven.apache.org/maven2/org/apache/httpcomponents/httpclient/4.5/httpclient-4.5.pom (0 B at 0.0 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/org/apache/httpcomponents/httpcomponents-client/4.5/httpcomponents-client-4.5.pom
+Downloaded: https://repo.maven.apache.org/maven2/org/apache/httpcomponents/httpcomponents-client/4.5/httpcomponents-client-4.5.pom (0 B at 0.0 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/org/apache/httpcomponents/httpcore/4.4.1/httpcore-4.4.1.pom
+Downloaded: https://repo.maven.apache.org/maven2/org/apache/httpcomponents/httpcore/4.4.1/httpcore-4.4.1.pom (0 B at 0.0 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/org/apache/httpcomponents/httpcomponents-core/4.4.1/httpcomponents-core-4.4.1.pom
+Downloaded: https://repo.maven.apache.org/maven2/org/apache/httpcomponents/httpcomponents-core/4.4.1/httpcomponents-core-4.4.1.pom (0 B at 0.0 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/apiman/apiman-manager-api-export-import-api/1.2.7.Beta1/apiman-manager-api-export-import-api-1.2.7.Beta1.pom
+Downloaded: https://repo.maven.apache.org/maven2/io/apiman/apiman-manager-api-export-import-api/1.2.7.Beta1/apiman-manager-api-export-import-api-1.2.7.Beta1.pom (4 KB at 0.7 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/apiman/apiman-manager-api-migrator/1.2.7.Beta1/apiman-manager-api-migrator-1.2.7.Beta1.pom
+Downloaded: https://repo.maven.apache.org/maven2/io/apiman/apiman-manager-api-migrator/1.2.7.Beta1/apiman-manager-api-migrator-1.2.7.Beta1.pom (3 KB at 1.3 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/apiman/apiman-manager-api-jpa/1.2.7.Beta1/apiman-manager-api-jpa-1.2.7.Beta1.pom
+Downloaded: https://repo.maven.apache.org/maven2/io/apiman/apiman-manager-api-jpa/1.2.7.Beta1/apiman-manager-api-jpa-1.2.7.Beta1.pom (3 KB at 0.6 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/apiman/apiman-distro-data/1.2.7.Beta1/apiman-distro-data-1.2.7.Beta1.pom
+Downloaded: https://repo.maven.apache.org/maven2/io/apiman/apiman-distro-data/1.2.7.Beta1/apiman-distro-data-1.2.7.Beta1.pom (467 B at 0.3 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/apiman/apiman-distro/1.2.7.Beta1/apiman-distro-1.2.7.Beta1.pom
+Downloaded: https://repo.maven.apache.org/maven2/io/apiman/apiman-distro/1.2.7.Beta1/apiman-distro-1.2.7.Beta1.pom (2 KB at 0.5 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/commons-dbutils/commons-dbutils/1.6/commons-dbutils-1.6.pom
+Downloaded: https://repo.maven.apache.org/maven2/commons-dbutils/commons-dbutils/1.6/commons-dbutils-1.6.pom (10 KB at 2.0 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/apiman/apiman-manager-api-es/1.2.7.Beta1/apiman-manager-api-es-1.2.7.Beta1.pom
+Downloaded: https://repo.maven.apache.org/maven2/io/apiman/apiman-manager-api-es/1.2.7.Beta1/apiman-manager-api-es-1.2.7.Beta1.pom (4 KB at 4.2 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/searchbox/jest/0.1.7/jest-0.1.7.pom
+Downloaded: https://repo.maven.apache.org/maven2/io/searchbox/jest/0.1.7/jest-0.1.7.pom (5 KB at 1.0 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/searchbox/jest-parent/0.1.7/jest-parent-0.1.7.pom
+Downloaded: https://repo.maven.apache.org/maven2/io/searchbox/jest-parent/0.1.7/jest-parent-0.1.7.pom (15 KB at 2.3 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/searchbox/jest-common/0.1.7/jest-common-0.1.7.pom
+Downloaded: https://repo.maven.apache.org/maven2/io/searchbox/jest-common/0.1.7/jest-common-0.1.7.pom (4 KB at 1.8 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/org/apache/httpcomponents/httpcore-nio/4.4.1/httpcore-nio-4.4.1.pom
+Downloaded: https://repo.maven.apache.org/maven2/org/apache/httpcomponents/httpcore-nio/4.4.1/httpcore-nio-4.4.1.pom (5 KB at 2.2 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/org/apache/httpcomponents/httpasyncclient/4.1/httpasyncclient-4.1.pom
+Downloaded: https://repo.maven.apache.org/maven2/org/apache/httpcomponents/httpasyncclient/4.1/httpasyncclient-4.1.pom (6 KB at 1.4 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/org/apache/httpcomponents/httpcomponents-asyncclient/4.1/httpcomponents-asyncclient-4.1.pom
+Downloaded: https://repo.maven.apache.org/maven2/org/apache/httpcomponents/httpcomponents-asyncclient/4.1/httpcomponents-asyncclient-4.1.pom (12 KB at 1.9 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/org/apache/httpcomponents/httpclient/4.4.1/httpclient-4.4.1.pom
+Downloaded: https://repo.maven.apache.org/maven2/org/apache/httpcomponents/httpclient/4.4.1/httpclient-4.4.1.pom (7 KB at 1.9 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/org/apache/httpcomponents/httpcomponents-client/4.4.1/httpcomponents-client-4.4.1.pom
+Downloaded: https://repo.maven.apache.org/maven2/org/apache/httpcomponents/httpcomponents-client/4.4.1/httpcomponents-client-4.4.1.pom (16 KB at 3.1 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/apiman/apiman-manager-api-hawkular/1.2.7.Beta1/apiman-manager-api-hawkular-1.2.7.Beta1.pom
+Downloaded: https://repo.maven.apache.org/maven2/io/apiman/apiman-manager-api-hawkular/1.2.7.Beta1/apiman-manager-api-hawkular-1.2.7.Beta1.pom (3 KB at 1.2 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/apiman/apiman-common-net/1.2.7.Beta1/apiman-common-net-1.2.7.Beta1.pom
+Downloaded: https://repo.maven.apache.org/maven2/io/apiman/apiman-common-net/1.2.7.Beta1/apiman-common-net-1.2.7.Beta1.pom (2 KB at 0.4 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/com/squareup/okhttp/okhttp/2.4.0/okhttp-2.4.0.pom
+Downloaded: https://repo.maven.apache.org/maven2/com/squareup/okhttp/okhttp/2.4.0/okhttp-2.4.0.pom (2 KB at 0.5 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/com/squareup/okhttp/parent/2.4.0/parent-2.4.0.pom
+Downloaded: https://repo.maven.apache.org/maven2/com/squareup/okhttp/parent/2.4.0/parent-2.4.0.pom (9 KB at 2.1 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/com/squareup/okio/okio/1.4.0/okio-1.4.0.pom
+Downloaded: https://repo.maven.apache.org/maven2/com/squareup/okio/okio/1.4.0/okio-1.4.0.pom (2 KB at 0.5 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/com/squareup/okio/okio-parent/1.4.0/okio-parent-1.4.0.pom
+Downloaded: https://repo.maven.apache.org/maven2/com/squareup/okio/okio-parent/1.4.0/okio-parent-1.4.0.pom (4 KB at 0.5 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/apiman/apiman-manager-ui-war/1.2.7.Beta1/apiman-manager-ui-war-1.2.7.Beta1.pom
+Downloaded: https://repo.maven.apache.org/maven2/io/apiman/apiman-manager-ui-war/1.2.7.Beta1/apiman-manager-ui-war-1.2.7.Beta1.pom (8 KB at 0.9 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/apiman/apiman-manager-ui/1.2.7.Beta1/apiman-manager-ui-1.2.7.Beta1.pom
+Downloaded: https://repo.maven.apache.org/maven2/io/apiman/apiman-manager-ui/1.2.7.Beta1/apiman-manager-ui-1.2.7.Beta1.pom (845 B at 0.2 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/org/jboss/spec/javax/servlet/jboss-servlet-api_3.0_spec/1.0.2.Final/jboss-servlet-api_3.0_spec-1.0.2.Final.pom
+Downloaded: https://repo.maven.apache.org/maven2/org/jboss/spec/javax/servlet/jboss-servlet-api_3.0_spec/1.0.2.Final/jboss-servlet-api_3.0_spec-1.0.2.Final.pom (4 KB at 1.4 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/org/eclipse/jetty/jetty-server/9.2.10.v20150310/jetty-server-9.2.10.v20150310.pom
+Downloaded: https://repo.maven.apache.org/maven2/org/eclipse/jetty/jetty-server/9.2.10.v20150310/jetty-server-9.2.10.v20150310.pom (5 KB at 1.5 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/org/eclipse/jetty/jetty-project/9.2.10.v20150310/jetty-project-9.2.10.v20150310.pom
+Downloaded: https://repo.maven.apache.org/maven2/org/eclipse/jetty/jetty-project/9.2.10.v20150310/jetty-project-9.2.10.v20150310.pom (35 KB at 0.3 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/org/eclipse/jetty/jetty-http/9.2.10.v20150310/jetty-http-9.2.10.v20150310.pom
+Downloaded: https://repo.maven.apache.org/maven2/org/eclipse/jetty/jetty-http/9.2.10.v20150310/jetty-http-9.2.10.v20150310.pom (3 KB at 0.1 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/org/eclipse/jetty/jetty-util/9.2.10.v20150310/jetty-util-9.2.10.v20150310.pom
+Downloaded: https://repo.maven.apache.org/maven2/org/eclipse/jetty/jetty-util/9.2.10.v20150310/jetty-util-9.2.10.v20150310.pom (4 KB at 0.1 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/org/eclipse/jetty/jetty-io/9.2.10.v20150310/jetty-io-9.2.10.v20150310.pom
+Downloaded: https://repo.maven.apache.org/maven2/org/eclipse/jetty/jetty-io/9.2.10.v20150310/jetty-io-9.2.10.v20150310.pom (3 KB at 0.1 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/org/eclipse/jetty/jetty-servlet/9.2.10.v20150310/jetty-servlet-9.2.10.v20150310.pom
+Downloaded: https://repo.maven.apache.org/maven2/org/eclipse/jetty/jetty-servlet/9.2.10.v20150310/jetty-servlet-9.2.10.v20150310.pom (4 KB at 0.1 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/org/eclipse/jetty/jetty-security/9.2.10.v20150310/jetty-security-9.2.10.v20150310.pom
+Downloaded: https://repo.maven.apache.org/maven2/org/eclipse/jetty/jetty-security/9.2.10.v20150310/jetty-security-9.2.10.v20150310.pom (3 KB at 0.1 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/org/eclipse/jetty/jetty-servlets/9.2.10.v20150310/jetty-servlets-9.2.10.v20150310.pom
+Downloaded: https://repo.maven.apache.org/maven2/org/eclipse/jetty/jetty-servlets/9.2.10.v20150310/jetty-servlets-9.2.10.v20150310.pom (4 KB at 0.1 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/org/eclipse/jetty/jetty-continuation/9.2.10.v20150310/jetty-continuation-9.2.10.v20150310.pom
+Downloaded: https://repo.maven.apache.org/maven2/org/eclipse/jetty/jetty-continuation/9.2.10.v20150310/jetty-continuation-9.2.10.v20150310.pom (2 KB at 0.1 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/org/eclipse/jetty/jetty-jsp/9.2.10.v20150310/jetty-jsp-9.2.10.v20150310.pom
+Downloaded: https://repo.maven.apache.org/maven2/org/eclipse/jetty/jetty-jsp/9.2.10.v20150310/jetty-jsp-9.2.10.v20150310.pom (3 KB at 0.1 KB/sec)
+[INFO] artifact org.glassfish:javax.el: checking for updates from central
+[INFO] artifact org.glassfish:javax.el: checking for updates from temp
+[INFO] artifact org.glassfish:javax.el: checking for updates from jboss-public-repository-group
+[INFO] artifact org.glassfish:javax.el: checking for updates from snapshots-repo
+[INFO] artifact org.glassfish:javax.el: checking for updates from sonatype-snapshots
+[INFO] artifact org.glassfish:javax.el: checking for updates from java.net.Releases
+Downloading: https://repo.maven.apache.org/maven2/org/glassfish/javax.el/3.0.1-b08-jbossorg-1/javax.el-3.0.1-b08-jbossorg-1.pom
+Downloading: https://repo1.maven.org/maven2/org/glassfish/javax.el/3.0.1-b08-jbossorg-1/javax.el-3.0.1-b08-jbossorg-1.pom
+Downloading: http://repository.jboss.org/nexus/content/groups/public/org/glassfish/javax.el/3.0.1-b08-jbossorg-1/javax.el-3.0.1-b08-jbossorg-1.pom
+Downloaded: http://repository.jboss.org/nexus/content/groups/public/org/glassfish/javax.el/3.0.1-b08-jbossorg-1/javax.el-3.0.1-b08-jbossorg-1.pom (14 KB at 3.9 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/org/eclipse/jetty/jetty-jndi/9.2.10.v20150310/jetty-jndi-9.2.10.v20150310.pom
+Downloaded: https://repo.maven.apache.org/maven2/org/eclipse/jetty/jetty-jndi/9.2.10.v20150310/jetty-jndi-9.2.10.v20150310.pom (4 KB at 1.5 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/org/eclipse/jetty/jetty-rewrite/9.2.10.v20150310/jetty-rewrite-9.2.10.v20150310.pom
+Downloaded: https://repo.maven.apache.org/maven2/org/eclipse/jetty/jetty-rewrite/9.2.10.v20150310/jetty-rewrite-9.2.10.v20150310.pom (3 KB at 6.4 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/org/eclipse/jetty/jetty-client/9.2.10.v20150310/jetty-client-9.2.10.v20150310.pom
+Downloaded: https://repo.maven.apache.org/maven2/org/eclipse/jetty/jetty-client/9.2.10.v20150310/jetty-client-9.2.10.v20150310.pom (5 KB at 9.0 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/org/jboss/weld/se/weld-se-core/2.3.3.Final/weld-se-core-2.3.3.Final.pom
+Downloaded: https://repo.maven.apache.org/maven2/org/jboss/weld/se/weld-se-core/2.3.3.Final/weld-se-core-2.3.3.Final.pom (7 KB at 9.8 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/org/jboss/weld/weld-core-parent/2.3.3.Final/weld-core-parent-2.3.3.Final.pom
+Downloaded: https://repo.maven.apache.org/maven2/org/jboss/weld/weld-core-parent/2.3.3.Final/weld-core-parent-2.3.3.Final.pom (27 KB at 10.2 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/org/jboss/weld/weld-api-bom/2.3.SP1/weld-api-bom-2.3.SP1.pom
+Downloaded: https://repo.maven.apache.org/maven2/org/jboss/weld/weld-api-bom/2.3.SP1/weld-api-bom-2.3.SP1.pom (6 KB at 7.1 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/org/jboss/weld/environment/weld-environment-common/2.3.3.Final/weld-environment-common-2.3.3.Final.pom
+Downloaded: https://repo.maven.apache.org/maven2/org/jboss/weld/environment/weld-environment-common/2.3.3.Final/weld-environment-common-2.3.3.Final.pom (2 KB at 2.7 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/org/jboss/weld/weld-core-impl/2.3.3.Final/weld-core-impl-2.3.3.Final.pom
+Downloaded: https://repo.maven.apache.org/maven2/org/jboss/weld/weld-core-impl/2.3.3.Final/weld-core-impl-2.3.3.Final.pom (9 KB at 12.0 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/org/jboss/weld/weld-api/2.3.SP1/weld-api-2.3.SP1.pom
+Downloaded: https://repo.maven.apache.org/maven2/org/jboss/weld/weld-api/2.3.SP1/weld-api-2.3.SP1.pom (2 KB at 3.7 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/org/jboss/weld/weld-api-parent/2.3.SP1/weld-api-parent-2.3.SP1.pom
+Downloaded: https://repo.maven.apache.org/maven2/org/jboss/weld/weld-api-parent/2.3.SP1/weld-api-parent-2.3.SP1.pom (4 KB at 2.3 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/org/jboss/weld/weld-spi/2.3.SP1/weld-spi-2.3.SP1.pom
+Downloaded: https://repo.maven.apache.org/maven2/org/jboss/weld/weld-spi/2.3.SP1/weld-spi-2.3.SP1.pom (3 KB at 6.1 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/org/jboss/weld/probe/weld-probe-core/2.3.3.Final/weld-probe-core-2.3.3.Final.pom
+Downloaded: https://repo.maven.apache.org/maven2/org/jboss/weld/probe/weld-probe-core/2.3.3.Final/weld-probe-core-2.3.3.Final.pom (9 KB at 10.7 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/org/jboss/weld/probe/weld-probe-parent/2.3.3.Final/weld-probe-parent-2.3.3.Final.pom
+Downloaded: https://repo.maven.apache.org/maven2/org/jboss/weld/probe/weld-probe-parent/2.3.3.Final/weld-probe-parent-2.3.3.Final.pom (816 B at 0.7 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/org/jboss/weld/weld-core/2.3.3.Final/weld-core-2.3.3.Final.pom
+Downloaded: https://repo.maven.apache.org/maven2/org/jboss/weld/weld-core/2.3.3.Final/weld-core-2.3.3.Final.pom (6 KB at 10.6 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/org/jboss/weld/servlet/weld-servlet-core/2.3.3.Final/weld-servlet-core-2.3.3.Final.pom
+Downloaded: https://repo.maven.apache.org/maven2/org/jboss/weld/servlet/weld-servlet-core/2.3.3.Final/weld-servlet-core-2.3.3.Final.pom (5 KB at 8.4 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/org/jboss/weld/servlet/weld-servlet-parent/2.3.3.Final/weld-servlet-parent-2.3.3.Final.pom
+Downloaded: https://repo.maven.apache.org/maven2/org/jboss/weld/servlet/weld-servlet-parent/2.3.3.Final/weld-servlet-parent-2.3.3.Final.pom (6 KB at 7.8 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/org/jboss/jandex/2.0.2.Final/jandex-2.0.2.Final.pom
+Downloaded: https://repo.maven.apache.org/maven2/org/jboss/jandex/2.0.2.Final/jandex-2.0.2.Final.pom (6 KB at 4.3 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/org/jboss/jboss-parent/12/jboss-parent-12.pom
+Downloaded: https://repo.maven.apache.org/maven2/org/jboss/jboss-parent/12/jboss-parent-12.pom (31 KB at 18.6 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/org/jboss/resteasy/resteasy-jaxrs/3.0.16.Final/resteasy-jaxrs-3.0.16.Final.pom
+Downloaded: https://repo.maven.apache.org/maven2/org/jboss/resteasy/resteasy-jaxrs/3.0.16.Final/resteasy-jaxrs-3.0.16.Final.pom (10 KB at 13.9 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/org/jboss/resteasy/resteasy-jaxrs-all/3.0.16.Final/resteasy-jaxrs-all-3.0.16.Final.pom
+Downloaded: https://repo.maven.apache.org/maven2/org/jboss/resteasy/resteasy-jaxrs-all/3.0.16.Final/resteasy-jaxrs-all-3.0.16.Final.pom (27 KB at 18.0 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/org/jboss/spec/javax/ws/rs/jboss-jaxrs-api_2.0_spec/1.0.0.Final/jboss-jaxrs-api_2.0_spec-1.0.0.Final.pom
+Downloaded: https://repo.maven.apache.org/maven2/org/jboss/spec/javax/ws/rs/jboss-jaxrs-api_2.0_spec/1.0.0.Final/jboss-jaxrs-api_2.0_spec-1.0.0.Final.pom (4 KB at 7.8 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/org/jboss/resteasy/resteasy-cdi/3.0.16.Final/resteasy-cdi-3.0.16.Final.pom
+Downloaded: https://repo.maven.apache.org/maven2/org/jboss/resteasy/resteasy-cdi/3.0.16.Final/resteasy-cdi-3.0.16.Final.pom (7 KB at 12.6 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/org/jboss/resteasy/resteasy-jackson-provider/3.0.16.Final/resteasy-jackson-provider-3.0.16.Final.pom
+Downloaded: https://repo.maven.apache.org/maven2/org/jboss/resteasy/resteasy-jackson-provider/3.0.16.Final/resteasy-jackson-provider-3.0.16.Final.pom (4 KB at 5.7 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/org/codehaus/jackson/jackson-core-asl/1.9.12/jackson-core-asl-1.9.12.pom
+Downloaded: https://repo.maven.apache.org/maven2/org/codehaus/jackson/jackson-core-asl/1.9.12/jackson-core-asl-1.9.12.pom (2 KB at 3.2 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/org/codehaus/jackson/jackson-mapper-asl/1.9.12/jackson-mapper-asl-1.9.12.pom
+Downloaded: https://repo.maven.apache.org/maven2/org/codehaus/jackson/jackson-mapper-asl/1.9.12/jackson-mapper-asl-1.9.12.pom (2 KB at 3.5 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/org/codehaus/jackson/jackson-jaxrs/1.9.12/jackson-jaxrs-1.9.12.pom
+Downloaded: https://repo.maven.apache.org/maven2/org/codehaus/jackson/jackson-jaxrs/1.9.12/jackson-jaxrs-1.9.12.pom (2 KB at 2.7 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/org/codehaus/jackson/jackson-xc/1.9.12/jackson-xc-1.9.12.pom
+Downloaded: https://repo.maven.apache.org/maven2/org/codehaus/jackson/jackson-xc/1.9.12/jackson-xc-1.9.12.pom (2 KB at 4.1 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/org/jboss/resteasy/resteasy-jaxb-provider/3.0.16.Final/resteasy-jaxb-provider-3.0.16.Final.pom
+Downloaded: https://repo.maven.apache.org/maven2/org/jboss/resteasy/resteasy-jaxb-provider/3.0.16.Final/resteasy-jaxb-provider-3.0.16.Final.pom (7 KB at 5.4 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/com/sun/xml/bind/jaxb-impl/2.2.7/jaxb-impl-2.2.7.pom
+Downloaded: https://repo.maven.apache.org/maven2/com/sun/xml/bind/jaxb-impl/2.2.7/jaxb-impl-2.2.7.pom (5 KB at 9.1 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/com/sun/xml/bind/jaxb-core/2.2.7/jaxb-core-2.2.7.pom
+Downloaded: https://repo.maven.apache.org/maven2/com/sun/xml/bind/jaxb-core/2.2.7/jaxb-core-2.2.7.pom (5 KB at 7.3 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/javax/xml/bind/jaxb-api/2.2.7/jaxb-api-2.2.7.pom
+Downloaded: https://repo.maven.apache.org/maven2/javax/xml/bind/jaxb-api/2.2.7/jaxb-api-2.2.7.pom (8 KB at 13.3 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/com/sun/istack/istack-commons-runtime/2.16/istack-commons-runtime-2.16.pom
+Downloaded: https://repo.maven.apache.org/maven2/com/sun/istack/istack-commons-runtime/2.16/istack-commons-runtime-2.16.pom (4 KB at 7.9 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/com/sun/istack/istack-commons/2.16/istack-commons-2.16.pom
+Downloaded: https://repo.maven.apache.org/maven2/com/sun/istack/istack-commons/2.16/istack-commons-2.16.pom (12 KB at 17.8 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/com/sun/xml/fastinfoset/FastInfoset/1.2.12/FastInfoset-1.2.12.pom
+Downloaded: https://repo.maven.apache.org/maven2/com/sun/xml/fastinfoset/FastInfoset/1.2.12/FastInfoset-1.2.12.pom (2 KB at 2.6 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/com/sun/xml/fastinfoset/fastinfoset-project/1.2.12/fastinfoset-project-1.2.12.pom
+Downloaded: https://repo.maven.apache.org/maven2/com/sun/xml/fastinfoset/fastinfoset-project/1.2.12/fastinfoset-project-1.2.12.pom (12 KB at 9.8 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/javax/xml/bind/jsr173_api/1.0/jsr173_api-1.0.pom
+Downloaded: https://repo.maven.apache.org/maven2/javax/xml/bind/jsr173_api/1.0/jsr173_api-1.0.pom (157 B at 0.2 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/com/h2database/h2/1.3.173/h2-1.3.173.pom
+Downloaded: https://repo.maven.apache.org/maven2/com/h2database/h2/1.3.173/h2-1.3.173.pom (973 B at 2.3 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/org/hibernate/hibernate-core/5.0.9.Final/hibernate-core-5.0.9.Final.pom
+Downloaded: https://repo.maven.apache.org/maven2/org/hibernate/hibernate-core/5.0.9.Final/hibernate-core-5.0.9.Final.pom (4 KB at 7.1 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/org/hibernate/javax/persistence/hibernate-jpa-2.1-api/1.0.0.Final/hibernate-jpa-2.1-api-1.0.0.Final.pom
+Downloaded: https://repo.maven.apache.org/maven2/org/hibernate/javax/persistence/hibernate-jpa-2.1-api/1.0.0.Final/hibernate-jpa-2.1-api-1.0.0.Final.pom (3 KB at 4.5 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/org/jboss/jandex/2.0.0.Final/jandex-2.0.0.Final.pom
+Downloaded: https://repo.maven.apache.org/maven2/org/jboss/jandex/2.0.0.Final/jandex-2.0.0.Final.pom (6 KB at 3.7 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/org/hibernate/common/hibernate-commons-annotations/5.0.1.Final/hibernate-commons-annotations-5.0.1.Final.pom
+Downloaded: https://repo.maven.apache.org/maven2/org/hibernate/common/hibernate-commons-annotations/5.0.1.Final/hibernate-commons-annotations-5.0.1.Final.pom (2 KB at 1.0 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/org/hibernate/hibernate-entitymanager/5.0.9.Final/hibernate-entitymanager-5.0.9.Final.pom
+Downloaded: https://repo.maven.apache.org/maven2/org/hibernate/hibernate-entitymanager/5.0.9.Final/hibernate-entitymanager-5.0.9.Final.pom (3 KB at 2.1 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/fabric8/ipaas/apps/apiman-gateway/2.2.168/apiman-gateway-2.2.168.pom
+Downloaded: https://repo.maven.apache.org/maven2/io/fabric8/ipaas/apps/apiman-gateway/2.2.168/apiman-gateway-2.2.168.pom (10 KB at 6.7 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/apiman/apiman-gateway-platforms-war-micro/1.2.7.Beta1/apiman-gateway-platforms-war-micro-1.2.7.Beta1.pom
+Downloaded: https://repo.maven.apache.org/maven2/io/apiman/apiman-gateway-platforms-war-micro/1.2.7.Beta1/apiman-gateway-platforms-war-micro-1.2.7.Beta1.pom (6 KB at 6.5 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/apiman/apiman-gateway-platforms/1.2.7.Beta1/apiman-gateway-platforms-1.2.7.Beta1.pom
+Downloaded: https://repo.maven.apache.org/maven2/io/apiman/apiman-gateway-platforms/1.2.7.Beta1/apiman-gateway-platforms-1.2.7.Beta1.pom (997 B at 1.3 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/apiman/apiman-gateway-api-rest-impl/1.2.7.Beta1/apiman-gateway-api-rest-impl-1.2.7.Beta1.pom
+Downloaded: https://repo.maven.apache.org/maven2/io/apiman/apiman-gateway-api-rest-impl/1.2.7.Beta1/apiman-gateway-api-rest-impl-1.2.7.Beta1.pom (3 KB at 3.2 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/apiman/apiman-gateway-engine-core/1.2.7.Beta1/apiman-gateway-engine-core-1.2.7.Beta1.pom
+Downloaded: https://repo.maven.apache.org/maven2/io/apiman/apiman-gateway-engine-core/1.2.7.Beta1/apiman-gateway-engine-core-1.2.7.Beta1.pom (4 KB at 4.5 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/com/zaxxer/HikariCP/2.4.0/HikariCP-2.4.0.pom
+Downloaded: https://repo.maven.apache.org/maven2/com/zaxxer/HikariCP/2.4.0/HikariCP-2.4.0.pom (16 KB at 15.5 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/com/unboundid/unboundid-ldapsdk/3.0.0/unboundid-ldapsdk-3.0.0.pom
+Downloaded: https://repo.maven.apache.org/maven2/com/unboundid/unboundid-ldapsdk/3.0.0/unboundid-ldapsdk-3.0.0.pom (3 KB at 6.6 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/apiman/apiman-gateway-engine-es/1.2.7.Beta1/apiman-gateway-engine-es-1.2.7.Beta1.pom
+Downloaded: https://repo.maven.apache.org/maven2/io/apiman/apiman-gateway-engine-es/1.2.7.Beta1/apiman-gateway-engine-es-1.2.7.Beta1.pom (3 KB at 3.2 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/apiman/apiman-gateway-engine-hawkular/1.2.7.Beta1/apiman-gateway-engine-hawkular-1.2.7.Beta1.pom
+Downloaded: https://repo.maven.apache.org/maven2/io/apiman/apiman-gateway-engine-hawkular/1.2.7.Beta1/apiman-gateway-engine-hawkular-1.2.7.Beta1.pom (2 KB at 1.9 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/apiman/apiman-gateway-engine-jdbc/1.2.7.Beta1/apiman-gateway-engine-jdbc-1.2.7.Beta1.pom
+Downloaded: https://repo.maven.apache.org/maven2/io/apiman/apiman-gateway-engine-jdbc/1.2.7.Beta1/apiman-gateway-engine-jdbc-1.2.7.Beta1.pom (4 KB at 2.1 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/apiman/apiman-gateway-engine-ispn/1.2.7.Beta1/apiman-gateway-engine-ispn-1.2.7.Beta1.pom
+Downloaded: https://repo.maven.apache.org/maven2/io/apiman/apiman-gateway-engine-ispn/1.2.7.Beta1/apiman-gateway-engine-ispn-1.2.7.Beta1.pom (2 KB at 2.0 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/apiman/apiman-gateway-engine-policies/1.2.7.Beta1/apiman-gateway-engine-policies-1.2.7.Beta1.pom
+Downloaded: https://repo.maven.apache.org/maven2/io/apiman/apiman-gateway-engine-policies/1.2.7.Beta1/apiman-gateway-engine-policies-1.2.7.Beta1.pom (4 KB at 3.9 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/apiman/apiman-gateway-platforms-servlet/1.2.7.Beta1/apiman-gateway-platforms-servlet-1.2.7.Beta1.pom
+Downloaded: https://repo.maven.apache.org/maven2/io/apiman/apiman-gateway-platforms-servlet/1.2.7.Beta1/apiman-gateway-platforms-servlet-1.2.7.Beta1.pom (4 KB at 4.2 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/apiman/apiman-gateway-platforms-war/1.2.7.Beta1/apiman-gateway-platforms-war-1.2.7.Beta1.pom
+Downloaded: https://repo.maven.apache.org/maven2/io/apiman/apiman-gateway-platforms-war/1.2.7.Beta1/apiman-gateway-platforms-war-1.2.7.Beta1.pom (4 KB at 4.1 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/apiman/apiman-gateway-engine-influxdb/1.2.7.Beta1/apiman-gateway-engine-influxdb-1.2.7.Beta1.pom
+Downloaded: https://repo.maven.apache.org/maven2/io/apiman/apiman-gateway-engine-influxdb/1.2.7.Beta1/apiman-gateway-engine-influxdb-1.2.7.Beta1.pom (2 KB at 1.4 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/fabric8/ipaas/apps/cassandra/2.2.168/cassandra-2.2.168.pom
+Downloaded: https://repo.maven.apache.org/maven2/io/fabric8/ipaas/apps/cassandra/2.2.168/cassandra-2.2.168.pom (3 KB at 2.8 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/fabric8/fabric8-project-bom-with-platform-deps/2.2.175/fabric8-project-bom-with-platform-deps-2.2.175.pom
+Downloaded: https://repo.maven.apache.org/maven2/io/fabric8/fabric8-project-bom-with-platform-deps/2.2.175/fabric8-project-bom-with-platform-deps-2.2.175.pom (32 KB at 11.7 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/fabric8/fabric8-project/2.2.175/fabric8-project-2.2.175.pom
+Downloaded: https://repo.maven.apache.org/maven2/io/fabric8/fabric8-project/2.2.175/fabric8-project-2.2.175.pom (79 KB at 17.0 KB/sec)
+Downloading: https://repo1.maven.org/maven2/org/apache/camel/camel-parent/2.18.0/camel-parent-2.18.0.pom
+Downloaded: https://repo1.maven.org/maven2/org/apache/camel/camel-parent/2.18.0/camel-parent-2.18.0.pom (187 KB at 17.2 KB/sec)
+Downloading: https://repo1.maven.org/maven2/org/apache/camel/camel/2.18.0/camel-2.18.0.pom
+Downloaded: https://repo1.maven.org/maven2/org/apache/camel/camel/2.18.0/camel-2.18.0.pom (28 KB at 15.5 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/fabric8/ipaas/apps/example-message-consumer/2.2.168/example-message-consumer-2.2.168.pom
+Downloaded: https://repo.maven.apache.org/maven2/io/fabric8/ipaas/apps/example-message-consumer/2.2.168/example-message-consumer-2.2.168.pom (7 KB at 2.7 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/fabric8/ipaas/mq/camel-amq/2.2.168/camel-amq-2.2.168.pom
+Downloaded: https://repo.maven.apache.org/maven2/io/fabric8/ipaas/mq/camel-amq/2.2.168/camel-amq-2.2.168.pom (7 KB at 6.2 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/fabric8/ipaas/mq/mq-client/2.2.168/mq-client-2.2.168.pom
+Downloaded: https://repo.maven.apache.org/maven2/io/fabric8/ipaas/mq/mq-client/2.2.168/mq-client-2.2.168.pom (5 KB at 2.7 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/org/apache/activemq/activemq-pool/5.12.1/activemq-pool-5.12.1.pom
+Downloaded: https://repo.maven.apache.org/maven2/org/apache/activemq/activemq-pool/5.12.1/activemq-pool-5.12.1.pom (4 KB at 4.0 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/org/apache/activemq/activemq-jms-pool/5.12.1/activemq-jms-pool-5.12.1.pom
+Downloaded: https://repo.maven.apache.org/maven2/org/apache/activemq/activemq-jms-pool/5.12.1/activemq-jms-pool-5.12.1.pom (5 KB at 7.0 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/org/apache/geronimo/specs/geronimo-jta_1.0.1B_spec/1.0.1/geronimo-jta_1.0.1B_spec-1.0.1.pom
+Downloaded: https://repo.maven.apache.org/maven2/org/apache/geronimo/specs/geronimo-jta_1.0.1B_spec/1.0.1/geronimo-jta_1.0.1B_spec-1.0.1.pom (737 B at 1.9 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/org/apache/geronimo/specs/specs/1.1/specs-1.1.pom
+Downloaded: https://repo.maven.apache.org/maven2/org/apache/geronimo/specs/specs/1.1/specs-1.1.pom (14 KB at 13.2 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/org/apache/commons/commons-pool2/2.4.2/commons-pool2-2.4.2.pom
+Downloaded: https://repo.maven.apache.org/maven2/org/apache/commons/commons-pool2/2.4.2/commons-pool2-2.4.2.pom (11 KB at 13.4 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/org/apache/activemq/activemq-client/5.12.1/activemq-client-5.12.1.pom
+Downloaded: https://repo.maven.apache.org/maven2/org/apache/activemq/activemq-client/5.12.1/activemq-client-5.12.1.pom (13 KB at 17.3 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/org/apache/camel/camel-jms/2.15.3/camel-jms-2.15.3.pom
+Downloaded: https://repo.maven.apache.org/maven2/org/apache/camel/camel-jms/2.15.3/camel-jms-2.15.3.pom (6 KB at 5.5 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/org/apache/camel/components/2.15.3/components-2.15.3.pom
+Downloaded: https://repo.maven.apache.org/maven2/org/apache/camel/components/2.15.3/components-2.15.3.pom (11 KB at 4.8 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/org/apache/camel/camel-core/2.15.3/camel-core-2.15.3.pom
+Downloaded: https://repo.maven.apache.org/maven2/org/apache/camel/camel-core/2.15.3/camel-core-2.15.3.pom (28 KB at 8.8 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/org/apache/camel/camel-spring/2.15.3/camel-spring-2.15.3.pom
+Downloaded: https://repo.maven.apache.org/maven2/org/apache/camel/camel-spring/2.15.3/camel-spring-2.15.3.pom (23 KB at 18.1 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/org/springframework/spring-tx/4.1.6.RELEASE/spring-tx-4.1.6.RELEASE.pom
+Downloaded: https://repo.maven.apache.org/maven2/org/springframework/spring-tx/4.1.6.RELEASE/spring-tx-4.1.6.RELEASE.pom (4 KB at 6.2 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/org/springframework/spring-jms/4.1.6.RELEASE/spring-jms-4.1.6.RELEASE.pom
+Downloaded: https://repo.maven.apache.org/maven2/org/springframework/spring-jms/4.1.6.RELEASE/spring-jms-4.1.6.RELEASE.pom (4 KB at 1.0 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/org/apache/activemq/activemq-spring/5.12.1/activemq-spring-5.12.1.pom
+Downloaded: https://repo.maven.apache.org/maven2/org/apache/activemq/activemq-spring/5.12.1/activemq-spring-5.12.1.pom (15 KB at 2.8 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/org/apache/xbean/xbean-spring/3.18/xbean-spring-3.18.pom
+Downloaded: https://repo.maven.apache.org/maven2/org/apache/xbean/xbean-spring/3.18/xbean-spring-3.18.pom (6 KB at 7.1 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/org/apache/activemq/activemq-broker/5.12.1/activemq-broker-5.12.1.pom
+Downloaded: https://repo.maven.apache.org/maven2/org/apache/activemq/activemq-broker/5.12.1/activemq-broker-5.12.1.pom (9 KB at 11.6 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/org/apache/activemq/activemq-openwire-legacy/5.12.1/activemq-openwire-legacy-5.12.1.pom
+Downloaded: https://repo.maven.apache.org/maven2/org/apache/activemq/activemq-openwire-legacy/5.12.1/activemq-openwire-legacy-5.12.1.pom (2 KB at 2.8 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/fabric8/ipaas/apps/example-message-producer/2.2.168/example-message-producer-2.2.168.pom
+Downloaded: https://repo.maven.apache.org/maven2/io/fabric8/ipaas/apps/example-message-producer/2.2.168/example-message-producer-2.2.168.pom (7 KB at 6.8 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/fabric8/ipaas/apps/kafka/2.2.168/kafka-2.2.168.pom
+Downloaded: https://repo.maven.apache.org/maven2/io/fabric8/ipaas/apps/kafka/2.2.168/kafka-2.2.168.pom (5 KB at 5.6 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/fabric8/ipaas/packages/messaging/2.2.168/messaging-2.2.168.jar
+Downloading: https://repo.maven.apache.org/maven2/io/fabric8/ipaas/apps/message-broker/2.2.168/message-broker-2.2.168.jar
+Downloading: https://repo.maven.apache.org/maven2/org/hibernate/hibernate-validator-annotation-processor/4.1.0.Final/hibernate-validator-annotation-processor-4.1.0.Final.jar
+Downloading: https://repo.maven.apache.org/maven2/org/hibernate/hibernate-validator/4.1.0.Final/hibernate-validator-4.1.0.Final.jar
+Downloading: https://repo.maven.apache.org/maven2/org/slf4j/slf4j-api/1.7.7/slf4j-api-1.7.7.jar
+Downloaded: https://repo.maven.apache.org/maven2/io/fabric8/ipaas/packages/messaging/2.2.168/messaging-2.2.168.jar (18 KB at 1.1 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/org/apache/activemq/artemis-jms-client/1.2.0/artemis-jms-client-1.2.0.jar
+Downloaded: https://repo.maven.apache.org/maven2/org/hibernate/hibernate-validator-annotation-processor/4.1.0.Final/hibernate-validator-annotation-processor-4.1.0.Final.jar (39 KB at 1.6 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/org/apache/activemq/artemis-core-client/1.2.0/artemis-core-client-1.2.0.jar
+Downloaded: https://repo.maven.apache.org/maven2/org/slf4j/slf4j-api/1.7.7/slf4j-api-1.7.7.jar (29 KB at 1.0 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/org/jgroups/jgroups/3.6.6.Final/jgroups-3.6.6.Final.jar
+Downloaded: https://repo.maven.apache.org/maven2/org/apache/activemq/artemis-jms-client/1.2.0/artemis-jms-client-1.2.0.jar (170 KB at 1.3 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/org/apache/activemq/artemis-commons/1.2.0/artemis-commons-1.2.0.jar
+Downloaded: https://repo.maven.apache.org/maven2/org/apache/activemq/artemis-commons/1.2.0/artemis-commons-1.2.0.jar (141 KB at 49.8 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/org/jboss/logging/jboss-logging/3.1.4.GA/jboss-logging-3.1.4.GA.jar
+Downloaded: https://repo.maven.apache.org/maven2/org/jboss/logging/jboss-logging/3.1.4.GA/jboss-logging-3.1.4.GA.jar (56 KB at 57.8 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/netty/netty-all/4.0.32.Final/netty-all-4.0.32.Final.jar
+Downloaded: https://repo.maven.apache.org/maven2/org/apache/activemq/artemis-core-client/1.2.0/artemis-core-client-1.2.0.jar (602 KB at 4.0 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/com/google/guava/guava/15.0/guava-15.0.jar
+Downloaded: https://repo.maven.apache.org/maven2/io/netty/netty-all/4.0.32.Final/netty-all-4.0.32.Final.jar (2044 KB at 72.4 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/org/apache/activemq/artemis-selector/1.2.0/artemis-selector-1.2.0.jar
+Downloaded: https://repo.maven.apache.org/maven2/org/apache/activemq/artemis-selector/1.2.0/artemis-selector-1.2.0.jar (104 KB at 31.5 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/org/apache/geronimo/specs/geronimo-jms_2.0_spec/1.0-alpha-2/geronimo-jms_2.0_spec-1.0-alpha-2.jar
+Downloaded: https://repo.maven.apache.org/maven2/org/hibernate/hibernate-validator/4.1.0.Final/hibernate-validator-4.1.0.Final.jar (281 KB at 1.5 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/org/apache/activemq/artemis-journal/1.2.0/artemis-journal-1.2.0.jar
+Downloaded: https://repo.maven.apache.org/maven2/org/apache/geronimo/specs/geronimo-jms_2.0_spec/1.0-alpha-2/geronimo-jms_2.0_spec-1.0-alpha-2.jar (47 KB at 15.3 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/org/apache/activemq/artemis-native/1.2.0/artemis-native-1.2.0.jar
+Downloaded: https://repo.maven.apache.org/maven2/org/apache/activemq/artemis-native/1.2.0/artemis-native-1.2.0.jar (37 KB at 12.4 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/org/apache/activemq/artemis-server/1.2.0/artemis-server-1.2.0.jar
+Downloaded: https://repo.maven.apache.org/maven2/org/apache/activemq/artemis-journal/1.2.0/artemis-journal-1.2.0.jar (169 KB at 14.8 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/org/apache/activemq/artemis-openwire-protocol/1.2.0/artemis-openwire-protocol-1.2.0.jar
+Downloaded: https://repo.maven.apache.org/maven2/org/apache/activemq/artemis-openwire-protocol/1.2.0/artemis-openwire-protocol-1.2.0.jar (101 KB at 14.1 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/org/apache/activemq/activemq-client/5.12.0/activemq-client-5.12.0.jar
+Downloaded: https://repo.maven.apache.org/maven2/com/google/guava/guava/15.0/guava-15.0.jar (2122 KB at 45.6 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/org/apache/geronimo/specs/geronimo-jms_1.1_spec/1.1.1/geronimo-jms_1.1_spec-1.1.1.jar
+Downloaded: https://repo.maven.apache.org/maven2/org/apache/geronimo/specs/geronimo-jms_1.1_spec/1.1.1/geronimo-jms_1.1_spec-1.1.1.jar (32 KB at 4.9 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/org/fusesource/hawtbuf/hawtbuf/1.11/hawtbuf-1.11.jar
+Downloaded: https://repo.maven.apache.org/maven2/org/apache/activemq/artemis-server/1.2.0/artemis-server-1.2.0.jar (1237 KB at 35.9 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/org/apache/geronimo/specs/geronimo-j2ee-management_1.1_spec/1.0.1/geronimo-j2ee-management_1.1_spec-1.0.1.jar
+Downloaded: https://repo.maven.apache.org/maven2/org/fusesource/hawtbuf/hawtbuf/1.11/hawtbuf-1.11.jar (49 KB at 11.7 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/org/apache/activemq/artemis-amqp-protocol/1.2.0/artemis-amqp-protocol-1.2.0.jar
+Downloaded: https://repo.maven.apache.org/maven2/org/apache/geronimo/specs/geronimo-j2ee-management_1.1_spec/1.0.1/geronimo-j2ee-management_1.1_spec-1.0.1.jar (20 KB at 7.0 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/org/apache/activemq/artemis-proton-plug/1.2.0/artemis-proton-plug-1.2.0.jar
+Downloaded: https://repo.maven.apache.org/maven2/org/apache/activemq/activemq-client/5.12.0/activemq-client-5.12.0.jar (1258 KB at 46.0 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/org/apache/qpid/proton-j/0.10/proton-j-0.10.jar
+Downloaded: https://repo.maven.apache.org/maven2/org/apache/activemq/artemis-amqp-protocol/1.2.0/artemis-amqp-protocol-1.2.0.jar (45 KB at 12.1 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/org/apache/qpid/proton-jms/0.10/proton-jms-0.10.jar
+Downloaded: https://repo.maven.apache.org/maven2/org/apache/activemq/artemis-proton-plug/1.2.0/artemis-proton-plug-1.2.0.jar (83 KB at 15.1 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/org/apache/activemq/artemis-hornetq-protocol/1.2.0/artemis-hornetq-protocol-1.2.0.jar
+Downloaded: https://repo.maven.apache.org/maven2/org/jgroups/jgroups/3.6.6.Final/jgroups-3.6.6.Final.jar (2317 KB at 11.2 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/org/apache/activemq/artemis-hqclient-protocol/1.2.0/artemis-hqclient-protocol-1.2.0.jar
+Downloaded: https://repo.maven.apache.org/maven2/org/apache/qpid/proton-jms/0.10/proton-jms-0.10.jar (29 KB at 7.7 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/org/apache/activemq/artemis-jms-server/1.2.0/artemis-jms-server-1.2.0.jar
+Downloaded: https://repo.maven.apache.org/maven2/org/apache/activemq/artemis-hornetq-protocol/1.2.0/artemis-hornetq-protocol-1.2.0.jar (14 KB at 8.0 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/org/apache/activemq/artemis-service-extensions/1.2.0/artemis-service-extensions-1.2.0.jar
+Downloaded: https://repo.maven.apache.org/maven2/org/apache/activemq/artemis-hqclient-protocol/1.2.0/artemis-hqclient-protocol-1.2.0.jar (18 KB at 11.2 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/org/apache/geronimo/specs/geronimo-ejb_3.0_spec/1.0.1/geronimo-ejb_3.0_spec-1.0.1.jar
+Downloaded: https://repo.maven.apache.org/maven2/org/apache/activemq/artemis-service-extensions/1.2.0/artemis-service-extensions-1.2.0.jar (36 KB at 19.6 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/fabric8/fabric8-utils/2.2.192/fabric8-utils-2.2.192.jar
+Downloaded: https://repo.maven.apache.org/maven2/org/apache/geronimo/specs/geronimo-ejb_3.0_spec/1.0.1/geronimo-ejb_3.0_spec-1.0.1.jar (32 KB at 15.0 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/fabric8/ipaas/apps/message-gateway/2.2.168/message-gateway-2.2.168.jar
+Downloaded: https://repo.maven.apache.org/maven2/org/apache/activemq/artemis-jms-server/1.2.0/artemis-jms-server-1.2.0.jar (153 KB at 37.4 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/org/apache/curator/curator-framework/2.9.1/curator-framework-2.9.1.jar
+Downloaded: https://repo.maven.apache.org/maven2/io/fabric8/fabric8-utils/2.2.192/fabric8-utils-2.2.192.jar (140 KB at 58.0 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/org/apache/curator/curator-client/2.9.1/curator-client-2.9.1.jar
+Downloaded: https://repo.maven.apache.org/maven2/org/apache/curator/curator-client/2.9.1/curator-client-2.9.1.jar (71 KB at 14.9 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/org/apache/curator/curator-recipes/2.9.1/curator-recipes-2.9.1.jar
+Downloaded: https://repo.maven.apache.org/maven2/org/apache/curator/curator-framework/2.9.1/curator-framework-2.9.1.jar (188 KB at 23.0 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/fabric8/kubernetes-api/2.2.192/kubernetes-api-2.2.192.jar
+Downloaded: https://repo.maven.apache.org/maven2/org/apache/qpid/proton-j/0.10/proton-j-0.10.jar (706 KB at 38.1 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/fabric8/openshift-client/1.4.33/openshift-client-1.4.33.jar
+Downloaded: https://repo.maven.apache.org/maven2/io/fabric8/kubernetes-api/2.2.192/kubernetes-api-2.2.192.jar (96 KB at 26.6 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/fabric8/kubernetes-client/1.4.33/kubernetes-client-1.4.33.jar
+Downloaded: https://repo.maven.apache.org/maven2/org/apache/curator/curator-recipes/2.9.1/curator-recipes-2.9.1.jar (271 KB at 31.1 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/fabric8/kubernetes-model/1.0.65/kubernetes-model-1.0.65.jar
+Downloaded: https://repo.maven.apache.org/maven2/io/fabric8/openshift-client/1.4.33/openshift-client-1.4.33.jar (143 KB at 13.7 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/com/fasterxml/jackson/core/jackson-annotations/2.5.4/jackson-annotations-2.5.4.jar
+Downloaded: https://repo.maven.apache.org/maven2/io/fabric8/kubernetes-client/1.4.33/kubernetes-client-1.4.33.jar (295 KB at 22.3 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/fabric8/ipaas/apps/zookeeper/2.2.168/zookeeper-2.2.168.jar
+Downloaded: https://repo.maven.apache.org/maven2/com/fasterxml/jackson/core/jackson-annotations/2.5.4/jackson-annotations-2.5.4.jar (39 KB at 6.0 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/fabric8/kubernetes-generator/2.2.192/kubernetes-generator-2.2.192.jar
+Downloaded: https://repo.maven.apache.org/maven2/io/fabric8/ipaas/apps/zookeeper/2.2.168/zookeeper-2.2.168.jar (15 KB at 3.9 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/fabric8/ipaas/packages/apiman/2.2.168/apiman-2.2.168.jar
+Downloaded: https://repo.maven.apache.org/maven2/io/fabric8/kubernetes-generator/2.2.192/kubernetes-generator-2.2.192.jar (24 KB at 4.6 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/fabric8/ipaas/apps/elasticsearch-v1/2.2.168/elasticsearch-v1-2.2.168.jar
+Downloaded: https://repo.maven.apache.org/maven2/io/fabric8/ipaas/packages/apiman/2.2.168/apiman-2.2.168.jar (20 KB at 4.9 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/fabric8/ipaas/apps/apiman/2.2.168/apiman-2.2.168.jar
+Downloaded: https://repo.maven.apache.org/maven2/io/fabric8/ipaas/apps/elasticsearch-v1/2.2.168/elasticsearch-v1-2.2.168.jar (22 KB at 3.9 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/apiman/apiman-manager-api-micro/1.2.7.Beta1/apiman-manager-api-micro-1.2.7.Beta1.jar
+Downloaded: https://repo.maven.apache.org/maven2/io/fabric8/ipaas/apps/apiman/2.2.168/apiman-2.2.168.jar (71 KB at 11.6 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/apiman/apiman-common-util/1.2.7.Beta1/apiman-common-util-1.2.7.Beta1.jar
+Downloaded: https://repo.maven.apache.org/maven2/io/apiman/apiman-manager-api-micro/1.2.7.Beta1/apiman-manager-api-micro-1.2.7.Beta1.jar (30 KB at 6.4 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/org/apache/commons/commons-lang3/3.3.2/commons-lang3-3.3.2.jar
+Downloaded: https://repo.maven.apache.org/maven2/io/apiman/apiman-common-util/1.2.7.Beta1/apiman-common-util-1.2.7.Beta1.jar (22 KB at 5.5 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/apiman/apiman-common-config/1.2.7.Beta1/apiman-common-config-1.2.7.Beta1.jar
+Downloaded: https://repo.maven.apache.org/maven2/io/apiman/apiman-common-config/1.2.7.Beta1/apiman-common-config-1.2.7.Beta1.jar (15 KB at 4.5 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/apiman/apiman-common-auth/1.2.7.Beta1/apiman-common-auth-1.2.7.Beta1.jar
+Downloaded: https://repo.maven.apache.org/maven2/io/apiman/apiman-common-auth/1.2.7.Beta1/apiman-common-auth-1.2.7.Beta1.jar (8 KB at 2.5 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/apiman/apiman-common-servlet/1.2.7.Beta1/apiman-common-servlet-1.2.7.Beta1.jar
+Downloaded: https://repo.maven.apache.org/maven2/io/apiman/apiman-common-servlet/1.2.7.Beta1/apiman-common-servlet-1.2.7.Beta1.jar (13 KB at 3.3 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/apiman/apiman-manager-api-config/1.2.7.Beta1/apiman-manager-api-config-1.2.7.Beta1.jar
+Downloaded: https://repo.maven.apache.org/maven2/io/apiman/apiman-manager-api-config/1.2.7.Beta1/apiman-manager-api-config-1.2.7.Beta1.jar (5 KB at 2.1 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/apiman/apiman-manager-api-beans/1.2.7.Beta1/apiman-manager-api-beans-1.2.7.Beta1.jar
+Downloaded: https://repo.maven.apache.org/maven2/org/apache/commons/commons-lang3/3.3.2/commons-lang3-3.3.2.jar (404 KB at 26.5 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/apiman/apiman-manager-api-core/1.2.7.Beta1/apiman-manager-api-core-1.2.7.Beta1.jar
+Downloaded: https://repo.maven.apache.org/maven2/io/apiman/apiman-manager-api-core/1.2.7.Beta1/apiman-manager-api-core-1.2.7.Beta1.jar (42 KB at 9.6 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/apiman/apiman-common-logging-core/1.2.7.Beta1/apiman-common-logging-core-1.2.7.Beta1.jar
+Downloaded: https://repo.maven.apache.org/maven2/io/apiman/apiman-common-logging-core/1.2.7.Beta1/apiman-common-logging-core-1.2.7.Beta1.jar (8 KB at 2.4 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/apiman/apiman-common-plugin/1.2.7.Beta1/apiman-common-plugin-1.2.7.Beta1.jar
+Downloaded: https://repo.maven.apache.org/maven2/io/apiman/apiman-manager-api-beans/1.2.7.Beta1/apiman-manager-api-beans-1.2.7.Beta1.jar (283 KB at 22.6 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/joda-time/joda-time/2.7/joda-time-2.7.jar
+Downloaded: https://repo.maven.apache.org/maven2/io/apiman/apiman-common-plugin/1.2.7.Beta1/apiman-common-plugin-1.2.7.Beta1.jar (14 KB at 4.7 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/org/apache/logging/log4j/log4j-api/2.2/log4j-api-2.2.jar
+Downloaded: https://repo.maven.apache.org/maven2/joda-time/joda-time/2.7/joda-time-2.7.jar (0 B at 0.0 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/org/apache/logging/log4j/log4j-core/2.2/log4j-core-2.2.jar
+Downloaded: https://repo.maven.apache.org/maven2/org/apache/logging/log4j/log4j-api/2.2/log4j-api-2.2.jar (131 KB at 14.8 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/org/mvel/mvel2/2.2.7.Final/mvel2-2.2.7.Final.jar
+Downloaded: https://repo.maven.apache.org/maven2/org/apache/logging/log4j/log4j-core/2.2/log4j-core-2.2.jar (808 KB at 36.3 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/apiman/apiman-manager-api-rest/1.2.7.Beta1/apiman-manager-api-rest-1.2.7.Beta1.jar
+Downloaded: https://repo.maven.apache.org/maven2/io/apiman/apiman-manager-api-rest/1.2.7.Beta1/apiman-manager-api-rest-1.2.7.Beta1.jar (130 KB at 22.2 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/swagger/swagger-annotations/1.5.7/swagger-annotations-1.5.7.jar
+Downloaded: https://repo.maven.apache.org/maven2/org/mvel/mvel2/2.2.7.Final/mvel2-2.2.7.Final.jar (989 KB at 40.3 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/apiman/apiman-manager-api-rest-impl/1.2.7.Beta1/apiman-manager-api-rest-impl-1.2.7.Beta1.jar
+Downloaded: https://repo.maven.apache.org/maven2/io/swagger/swagger-annotations/1.5.7/swagger-annotations-1.5.7.jar (16 KB at 1.2 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/apiman/apiman-manager-api-security/1.2.7.Beta1/apiman-manager-api-security-1.2.7.Beta1.jar
+Downloaded: https://repo.maven.apache.org/maven2/io/apiman/apiman-manager-api-rest-impl/1.2.7.Beta1/apiman-manager-api-rest-impl-1.2.7.Beta1.jar (107 KB at 9.9 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/apiman/apiman-manager-api-gateway/1.2.7.Beta1/apiman-manager-api-gateway-1.2.7.Beta1.jar
+Downloaded: https://repo.maven.apache.org/maven2/io/apiman/apiman-manager-api-gateway/1.2.7.Beta1/apiman-manager-api-gateway-1.2.7.Beta1.jar (17 KB at 27.2 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/apiman/apiman-gateway-engine-beans/1.2.7.Beta1/apiman-gateway-engine-beans-1.2.7.Beta1.jar
+Downloaded: https://repo.maven.apache.org/maven2/io/apiman/apiman-manager-api-security/1.2.7.Beta1/apiman-manager-api-security-1.2.7.Beta1.jar (12 KB at 4.2 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/net/openhft/zero-allocation-hashing/0.6/zero-allocation-hashing-0.6.jar
+Downloaded: https://repo.maven.apache.org/maven2/io/apiman/apiman-gateway-engine-beans/1.2.7.Beta1/apiman-gateway-engine-beans-1.2.7.Beta1.jar (40 KB at 19.2 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/apiman/apiman-gateway-api-rest/1.2.7.Beta1/apiman-gateway-api-rest-1.2.7.Beta1.jar
+Downloaded: https://repo.maven.apache.org/maven2/net/openhft/zero-allocation-hashing/0.6/zero-allocation-hashing-0.6.jar (46 KB at 12.9 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/swagger/swagger-jaxrs/1.5.7/swagger-jaxrs-1.5.7.jar
+Downloaded: https://repo.maven.apache.org/maven2/io/apiman/apiman-gateway-api-rest/1.2.7.Beta1/apiman-gateway-api-rest-1.2.7.Beta1.jar (14 KB at 6.3 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/com/fasterxml/jackson/dataformat/jackson-dataformat-xml/2.4.5/jackson-dataformat-xml-2.4.5.jar
+Downloaded: https://repo.maven.apache.org/maven2/io/swagger/swagger-jaxrs/1.5.7/swagger-jaxrs-1.5.7.jar (60 KB at 7.5 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/swagger/swagger-core/1.5.7/swagger-core-1.5.7.jar
+Downloaded: https://repo.maven.apache.org/maven2/com/fasterxml/jackson/dataformat/jackson-dataformat-xml/2.4.5/jackson-dataformat-xml-2.4.5.jar (89 KB at 9.5 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/com/fasterxml/jackson/datatype/jackson-datatype-joda/2.4.5/jackson-datatype-joda-2.4.5.jar
+Downloaded: https://repo.maven.apache.org/maven2/com/fasterxml/jackson/datatype/jackson-datatype-joda/2.4.5/jackson-datatype-joda-2.4.5.jar (55 KB at 5.5 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/swagger/swagger-models/1.5.7/swagger-models-1.5.7.jar
+Downloaded: https://repo.maven.apache.org/maven2/io/swagger/swagger-core/1.5.7/swagger-core-1.5.7.jar (102 KB at 7.6 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/com/fasterxml/jackson/jaxrs/jackson-jaxrs-json-provider/2.4.5/jackson-jaxrs-json-provider-2.4.5.jar
+Downloaded: https://repo.maven.apache.org/maven2/com/fasterxml/jackson/jaxrs/jackson-jaxrs-json-provider/2.4.5/jackson-jaxrs-json-provider-2.4.5.jar (17 KB at 1.9 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/com/fasterxml/jackson/jaxrs/jackson-jaxrs-base/2.4.5/jackson-jaxrs-base-2.4.5.jar
+Downloaded: https://repo.maven.apache.org/maven2/com/fasterxml/jackson/jaxrs/jackson-jaxrs-base/2.4.5/jackson-jaxrs-base-2.4.5.jar (28 KB at 11.4 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/org/apache/httpcomponents/httpclient/4.5/httpclient-4.5.jar
+Downloaded: https://repo.maven.apache.org/maven2/org/apache/httpcomponents/httpclient/4.5/httpclient-4.5.jar (0 B at 0.0 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/org/apache/httpcomponents/httpcore/4.4.1/httpcore-4.4.1.jar
+Downloaded: https://repo.maven.apache.org/maven2/org/apache/httpcomponents/httpcore/4.4.1/httpcore-4.4.1.jar (0 B at 0.0 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/apiman/apiman-manager-api-export-import-api/1.2.7.Beta1/apiman-manager-api-export-import-api-1.2.7.Beta1.jar
+Downloaded: https://repo.maven.apache.org/maven2/io/apiman/apiman-manager-api-export-import-api/1.2.7.Beta1/apiman-manager-api-export-import-api-1.2.7.Beta1.jar (51 KB at 17.3 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/apiman/apiman-manager-api-migrator/1.2.7.Beta1/apiman-manager-api-migrator-1.2.7.Beta1.jar
+Downloaded: https://repo.maven.apache.org/maven2/io/fabric8/kubernetes-model/1.0.65/kubernetes-model-1.0.65.jar (5542 KB at 39.7 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/apiman/apiman-manager-api-jpa/1.2.7.Beta1/apiman-manager-api-jpa-1.2.7.Beta1.jar
+Downloaded: https://repo.maven.apache.org/maven2/io/apiman/apiman-manager-api-migrator/1.2.7.Beta1/apiman-manager-api-migrator-1.2.7.Beta1.jar (19 KB at 4.9 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/apiman/apiman-distro-data/1.2.7.Beta1/apiman-distro-data-1.2.7.Beta1.jar
+Downloaded: https://repo.maven.apache.org/maven2/io/apiman/apiman-manager-api-jpa/1.2.7.Beta1/apiman-manager-api-jpa-1.2.7.Beta1.jar (43 KB at 14.1 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/commons-dbutils/commons-dbutils/1.6/commons-dbutils-1.6.jar
+Downloaded: https://repo.maven.apache.org/maven2/commons-dbutils/commons-dbutils/1.6/commons-dbutils-1.6.jar (77 KB at 31.4 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/apiman/apiman-manager-api-es/1.2.7.Beta1/apiman-manager-api-es-1.2.7.Beta1.jar
+Downloaded: https://repo.maven.apache.org/maven2/io/apiman/apiman-distro-data/1.2.7.Beta1/apiman-distro-data-1.2.7.Beta1.jar (76 KB at 28.8 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/searchbox/jest/0.1.7/jest-0.1.7.jar
+Downloaded: https://repo.maven.apache.org/maven2/io/swagger/swagger-models/1.5.7/swagger-models-1.5.7.jar (134 KB at 5.4 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/searchbox/jest-common/0.1.7/jest-common-0.1.7.jar
+Downloaded: https://repo.maven.apache.org/maven2/io/apiman/apiman-manager-api-es/1.2.7.Beta1/apiman-manager-api-es-1.2.7.Beta1.jar (95 KB at 31.8 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/org/apache/httpcomponents/httpcore-nio/4.4.1/httpcore-nio-4.4.1.jar
+Downloaded: https://repo.maven.apache.org/maven2/io/searchbox/jest/0.1.7/jest-0.1.7.jar (19 KB at 1.5 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/org/apache/httpcomponents/httpasyncclient/4.1/httpasyncclient-4.1.jar
+Downloaded: https://repo.maven.apache.org/maven2/org/apache/httpcomponents/httpasyncclient/4.1/httpasyncclient-4.1.jar (173 KB at 18.1 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/apiman/apiman-manager-api-hawkular/1.2.7.Beta1/apiman-manager-api-hawkular-1.2.7.Beta1.jar
+Downloaded: https://repo.maven.apache.org/maven2/io/searchbox/jest-common/0.1.7/jest-common-0.1.7.jar (228 KB at 9.9 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/apiman/apiman-common-net/1.2.7.Beta1/apiman-common-net-1.2.7.Beta1.jar
+Downloaded: https://repo.maven.apache.org/maven2/io/apiman/apiman-manager-api-hawkular/1.2.7.Beta1/apiman-manager-api-hawkular-1.2.7.Beta1.jar (8 KB at 2.2 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/apiman/apiman-manager-ui-war/1.2.7.Beta1/apiman-manager-ui-war-1.2.7.Beta1-ui.jar
+Downloaded: https://repo.maven.apache.org/maven2/org/apache/httpcomponents/httpcore-nio/4.4.1/httpcore-nio-4.4.1.jar (348 KB at 15.4 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/org/jboss/spec/javax/servlet/jboss-servlet-api_3.0_spec/1.0.2.Final/jboss-servlet-api_3.0_spec-1.0.2.Final.jar
+Downloaded: https://repo.maven.apache.org/maven2/io/apiman/apiman-common-net/1.2.7.Beta1/apiman-common-net-1.2.7.Beta1.jar (19 KB at 4.1 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/org/eclipse/jetty/jetty-server/9.2.10.v20150310/jetty-server-9.2.10.v20150310.jar
+Downloaded: https://repo.maven.apache.org/maven2/org/jboss/spec/javax/servlet/jboss-servlet-api_3.0_spec/1.0.2.Final/jboss-servlet-api_3.0_spec-1.0.2.Final.jar (182 KB at 19.7 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/org/eclipse/jetty/jetty-http/9.2.10.v20150310/jetty-http-9.2.10.v20150310.jar
+Downloaded: https://repo.maven.apache.org/maven2/org/eclipse/jetty/jetty-http/9.2.10.v20150310/jetty-http-9.2.10.v20150310.jar (104 KB at 21.2 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/org/eclipse/jetty/jetty-util/9.2.10.v20150310/jetty-util-9.2.10.v20150310.jar
+Downloaded: https://repo.maven.apache.org/maven2/org/eclipse/jetty/jetty-util/9.2.10.v20150310/jetty-util-9.2.10.v20150310.jar (348 KB at 23.9 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/org/eclipse/jetty/jetty-io/9.2.10.v20150310/jetty-io-9.2.10.v20150310.jar
+Downloaded: https://repo.maven.apache.org/maven2/org/eclipse/jetty/jetty-io/9.2.10.v20150310/jetty-io-9.2.10.v20150310.jar (106 KB at 26.3 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/org/eclipse/jetty/jetty-servlet/9.2.10.v20150310/jetty-servlet-9.2.10.v20150310.jar
+Downloaded: https://repo.maven.apache.org/maven2/org/eclipse/jetty/jetty-server/9.2.10.v20150310/jetty-server-9.2.10.v20150310.jar (410 KB at 11.7 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/org/eclipse/jetty/jetty-security/9.2.10.v20150310/jetty-security-9.2.10.v20150310.jar
+Downloaded: https://repo.maven.apache.org/maven2/org/eclipse/jetty/jetty-servlet/9.2.10.v20150310/jetty-servlet-9.2.10.v20150310.jar (113 KB at 14.7 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/org/eclipse/jetty/jetty-servlets/9.2.10.v20150310/jetty-servlets-9.2.10.v20150310.jar
+Downloaded: https://repo.maven.apache.org/maven2/org/eclipse/jetty/jetty-security/9.2.10.v20150310/jetty-security-9.2.10.v20150310.jar (94 KB at 4.1 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/org/eclipse/jetty/jetty-continuation/9.2.10.v20150310/jetty-continuation-9.2.10.v20150310.jar
+Downloaded: https://repo.maven.apache.org/maven2/org/eclipse/jetty/jetty-servlets/9.2.10.v20150310/jetty-servlets-9.2.10.v20150310.jar (120 KB at 4.7 KB/sec)
+Downloaded: https://repo.maven.apache.org/maven2/org/eclipse/jetty/jetty-continuation/9.2.10.v20150310/jetty-continuation-9.2.10.v20150310.jar (16 KB at 4.3 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/org/eclipse/jetty/jetty-jsp/9.2.10.v20150310/jetty-jsp-9.2.10.v20150310.jar
+Downloading: https://repo.maven.apache.org/maven2/org/eclipse/jetty/jetty-jndi/9.2.10.v20150310/jetty-jndi-9.2.10.v20150310.jar
+Downloaded: https://repo.maven.apache.org/maven2/org/eclipse/jetty/jetty-jsp/9.2.10.v20150310/jetty-jsp-9.2.10.v20150310.jar (6 KB at 1.5 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/org/eclipse/jetty/jetty-rewrite/9.2.10.v20150310/jetty-rewrite-9.2.10.v20150310.jar
+Downloaded: https://repo.maven.apache.org/maven2/org/eclipse/jetty/jetty-jndi/9.2.10.v20150310/jetty-jndi-9.2.10.v20150310.jar (41 KB at 5.5 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/org/eclipse/jetty/jetty-client/9.2.10.v20150310/jetty-client-9.2.10.v20150310.jar
+Downloaded: https://repo.maven.apache.org/maven2/org/eclipse/jetty/jetty-rewrite/9.2.10.v20150310/jetty-rewrite-9.2.10.v20150310.jar (30 KB at 7.1 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/org/jboss/weld/se/weld-se-core/2.3.3.Final/weld-se-core-2.3.3.Final.jar
+Downloaded: https://repo.maven.apache.org/maven2/org/jboss/weld/se/weld-se-core/2.3.3.Final/weld-se-core-2.3.3.Final.jar (48 KB at 7.9 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/org/jboss/weld/environment/weld-environment-common/2.3.3.Final/weld-environment-common-2.3.3.Final.jar
+Downloaded: https://repo.maven.apache.org/maven2/org/jboss/weld/environment/weld-environment-common/2.3.3.Final/weld-environment-common-2.3.3.Final.jar (74 KB at 15.6 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/org/jboss/weld/weld-core-impl/2.3.3.Final/weld-core-impl-2.3.3.Final.jar
+Downloaded: https://repo.maven.apache.org/maven2/org/eclipse/jetty/jetty-client/9.2.10.v20150310/jetty-client-9.2.10.v20150310.jar (228 KB at 11.2 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/org/jboss/weld/weld-api/2.3.SP1/weld-api-2.3.SP1.jar
+Downloaded: https://repo.maven.apache.org/maven2/org/jboss/weld/weld-api/2.3.SP1/weld-api-2.3.SP1.jar (21 KB at 3.4 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/org/jboss/weld/weld-spi/2.3.SP1/weld-spi-2.3.SP1.jar
+Downloaded: https://repo.maven.apache.org/maven2/org/jboss/weld/weld-spi/2.3.SP1/weld-spi-2.3.SP1.jar (83 KB at 2.8 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/org/jboss/weld/probe/weld-probe-core/2.3.3.Final/weld-probe-core-2.3.3.Final.jar
+Downloading: https://repo1.maven.org/maven2/io/fabric8/ipaas/apps/message-broker/2.2.168/message-broker-2.2.168.jar
+Downloaded: https://repo.maven.apache.org/maven2/org/jboss/weld/weld-core-impl/2.3.3.Final/weld-core-impl-2.3.3.Final.jar (1517 KB at 23.9 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/org/jboss/weld/weld-core/2.3.3.Final/weld-core-2.3.3.Final.jar
+Downloaded: https://repo.maven.apache.org/maven2/org/jboss/weld/probe/weld-probe-core/2.3.3.Final/weld-probe-core-2.3.3.Final.jar (737 KB at 15.4 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/org/jboss/weld/servlet/weld-servlet-core/2.3.3.Final/weld-servlet-core-2.3.3.Final.jar
+Downloaded: https://repo.maven.apache.org/maven2/org/jboss/weld/weld-core/2.3.3.Final/weld-core-2.3.3.Final.jar (1548 KB at 34.7 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/org/jboss/jandex/2.0.2.Final/jandex-2.0.2.Final.jar
+Downloaded: https://repo.maven.apache.org/maven2/org/jboss/weld/servlet/weld-servlet-core/2.3.3.Final/weld-servlet-core-2.3.3.Final.jar (95 KB at 5.8 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/org/jboss/resteasy/resteasy-jaxrs/3.0.16.Final/resteasy-jaxrs-3.0.16.Final.jar
+Downloaded: https://repo.maven.apache.org/maven2/org/jboss/jandex/2.0.2.Final/jandex-2.0.2.Final.jar (184 KB at 25.2 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/org/jboss/spec/javax/ws/rs/jboss-jaxrs-api_2.0_spec/1.0.0.Final/jboss-jaxrs-api_2.0_spec-1.0.0.Final.jar
+Downloaded: https://repo.maven.apache.org/maven2/org/jboss/spec/javax/ws/rs/jboss-jaxrs-api_2.0_spec/1.0.0.Final/jboss-jaxrs-api_2.0_spec-1.0.0.Final.jar (115 KB at 21.9 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/org/jboss/resteasy/resteasy-cdi/3.0.16.Final/resteasy-cdi-3.0.16.Final.jar
+Downloaded: https://repo.maven.apache.org/maven2/org/jboss/resteasy/resteasy-cdi/3.0.16.Final/resteasy-cdi-3.0.16.Final.jar (29 KB at 4.5 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/org/jboss/resteasy/resteasy-jackson-provider/3.0.16.Final/resteasy-jackson-provider-3.0.16.Final.jar
+Downloaded: https://repo.maven.apache.org/maven2/org/jboss/resteasy/resteasy-jackson-provider/3.0.16.Final/resteasy-jackson-provider-3.0.16.Final.jar (8 KB at 2.9 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/org/codehaus/jackson/jackson-core-asl/1.9.12/jackson-core-asl-1.9.12.jar
+Downloaded: https://repo.maven.apache.org/maven2/org/codehaus/jackson/jackson-core-asl/1.9.12/jackson-core-asl-1.9.12.jar (227 KB at 12.2 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/org/codehaus/jackson/jackson-mapper-asl/1.9.12/jackson-mapper-asl-1.9.12.jar
+Downloaded: https://repo.maven.apache.org/maven2/org/jboss/resteasy/resteasy-jaxrs/3.0.16.Final/resteasy-jaxrs-3.0.16.Final.jar (860 KB at 18.9 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/org/codehaus/jackson/jackson-jaxrs/1.9.12/jackson-jaxrs-1.9.12.jar
+Downloaded: https://repo.maven.apache.org/maven2/org/codehaus/jackson/jackson-jaxrs/1.9.12/jackson-jaxrs-1.9.12.jar (18 KB at 2.8 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/org/codehaus/jackson/jackson-xc/1.9.12/jackson-xc-1.9.12.jar
+Downloaded: https://repo.maven.apache.org/maven2/org/codehaus/jackson/jackson-xc/1.9.12/jackson-xc-1.9.12.jar (27 KB at 3.4 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/org/jboss/resteasy/resteasy-jaxb-provider/3.0.16.Final/resteasy-jaxb-provider-3.0.16.Final.jar
+Downloaded: https://repo.maven.apache.org/maven2/org/jboss/resteasy/resteasy-jaxb-provider/3.0.16.Final/resteasy-jaxb-provider-3.0.16.Final.jar (78 KB at 6.2 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/com/sun/xml/bind/jaxb-impl/2.2.7/jaxb-impl-2.2.7.jar
+Downloaded: https://repo.maven.apache.org/maven2/org/codehaus/jackson/jackson-mapper-asl/1.9.12/jackson-mapper-asl-1.9.12.jar (763 KB at 17.2 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/com/sun/xml/fastinfoset/FastInfoset/1.2.12/FastInfoset-1.2.12.jar
+Downloaded: https://repo.maven.apache.org/maven2/com/sun/xml/fastinfoset/FastInfoset/1.2.12/FastInfoset-1.2.12.jar (287 KB at 11.1 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/javax/xml/bind/jsr173_api/1.0/jsr173_api-1.0.jar
+Downloaded: https://repo.maven.apache.org/maven2/javax/xml/bind/jsr173_api/1.0/jsr173_api-1.0.jar (49 KB at 5.2 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/com/h2database/h2/1.3.173/h2-1.3.173.jar
+Downloaded: https://repo.maven.apache.org/maven2/io/apiman/apiman-manager-ui-war/1.2.7.Beta1/apiman-manager-ui-war-1.2.7.Beta1-ui.jar (6650 KB at 15.1 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/org/hibernate/hibernate-core/5.0.9.Final/hibernate-core-5.0.9.Final.jar
+Downloaded: https://repo.maven.apache.org/maven2/com/sun/xml/bind/jaxb-impl/2.2.7/jaxb-impl-2.2.7.jar (899 KB at 3.8 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/org/hibernate/javax/persistence/hibernate-jpa-2.1-api/1.0.0.Final/hibernate-jpa-2.1-api-1.0.0.Final.jar
+Downloaded: https://repo.maven.apache.org/maven2/com/h2database/h2/1.3.173/h2-1.3.173.jar (1538 KB at 6.6 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/org/hibernate/common/hibernate-commons-annotations/5.0.1.Final/hibernate-commons-annotations-5.0.1.Final.jar
+Downloaded: https://repo.maven.apache.org/maven2/org/hibernate/common/hibernate-commons-annotations/5.0.1.Final/hibernate-commons-annotations-5.0.1.Final.jar (74 KB at 3.5 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/org/hibernate/hibernate-entitymanager/5.0.9.Final/hibernate-entitymanager-5.0.9.Final.jar
+Downloaded: https://repo.maven.apache.org/maven2/org/hibernate/javax/persistence/hibernate-jpa-2.1-api/1.0.0.Final/hibernate-jpa-2.1-api-1.0.0.Final.jar (111 KB at 1.2 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/fabric8/ipaas/apps/apiman-gateway/2.2.168/apiman-gateway-2.2.168.jar
+Downloaded: https://repo.maven.apache.org/maven2/io/fabric8/ipaas/apps/apiman-gateway/2.2.168/apiman-gateway-2.2.168.jar (30 KB at 2.0 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/apiman/apiman-gateway-platforms-war-micro/1.2.7.Beta1/apiman-gateway-platforms-war-micro-1.2.7.Beta1.jar
+Downloaded: https://repo.maven.apache.org/maven2/org/hibernate/hibernate-entitymanager/5.0.9.Final/hibernate-entitymanager-5.0.9.Final.jar (595 KB at 7.9 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/apiman/apiman-gateway-api-rest-impl/1.2.7.Beta1/apiman-gateway-api-rest-impl-1.2.7.Beta1.jar
+Downloaded: https://repo.maven.apache.org/maven2/io/apiman/apiman-gateway-api-rest-impl/1.2.7.Beta1/apiman-gateway-api-rest-impl-1.2.7.Beta1.jar (12 KB at 0.2 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/apiman/apiman-gateway-engine-core/1.2.7.Beta1/apiman-gateway-engine-core-1.2.7.Beta1.jar
+Downloaded: https://repo.maven.apache.org/maven2/io/apiman/apiman-gateway-platforms-war-micro/1.2.7.Beta1/apiman-gateway-platforms-war-micro-1.2.7.Beta1.jar (16 KB at 0.1 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/com/zaxxer/HikariCP/2.4.0/HikariCP-2.4.0.jar
+Downloaded: https://repo.maven.apache.org/maven2/com/zaxxer/HikariCP/2.4.0/HikariCP-2.4.0.jar (123 KB at 1.3 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/com/unboundid/unboundid-ldapsdk/3.0.0/unboundid-ldapsdk-3.0.0.jar
+Downloaded: https://repo.maven.apache.org/maven2/io/apiman/apiman-gateway-engine-core/1.2.7.Beta1/apiman-gateway-engine-core-1.2.7.Beta1.jar (178 KB at 1.5 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/apiman/apiman-gateway-engine-es/1.2.7.Beta1/apiman-gateway-engine-es-1.2.7.Beta1.jar
+Downloaded: https://repo.maven.apache.org/maven2/io/apiman/apiman-gateway-engine-es/1.2.7.Beta1/apiman-gateway-engine-es-1.2.7.Beta1.jar (46 KB at 2.9 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/apiman/apiman-gateway-engine-hawkular/1.2.7.Beta1/apiman-gateway-engine-hawkular-1.2.7.Beta1.jar
+Downloaded: https://repo.maven.apache.org/maven2/io/apiman/apiman-gateway-engine-hawkular/1.2.7.Beta1/apiman-gateway-engine-hawkular-1.2.7.Beta1.jar (7 KB at 0.2 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/apiman/apiman-gateway-engine-jdbc/1.2.7.Beta1/apiman-gateway-engine-jdbc-1.2.7.Beta1.jar
+Downloaded: https://repo.maven.apache.org/maven2/io/apiman/apiman-gateway-engine-jdbc/1.2.7.Beta1/apiman-gateway-engine-jdbc-1.2.7.Beta1.jar (29 KB at 0.2 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/apiman/apiman-gateway-engine-ispn/1.2.7.Beta1/apiman-gateway-engine-ispn-1.2.7.Beta1.jar
+Downloaded: https://repo.maven.apache.org/maven2/com/unboundid/unboundid-ldapsdk/3.0.0/unboundid-ldapsdk-3.0.0.jar (1689 KB at 8.9 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/apiman/apiman-gateway-engine-policies/1.2.7.Beta1/apiman-gateway-engine-policies-1.2.7.Beta1.jar
+Downloaded: https://repo.maven.apache.org/maven2/io/apiman/apiman-gateway-engine-ispn/1.2.7.Beta1/apiman-gateway-engine-ispn-1.2.7.Beta1.jar (18 KB at 0.5 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/apiman/apiman-gateway-platforms-servlet/1.2.7.Beta1/apiman-gateway-platforms-servlet-1.2.7.Beta1.jar
+Downloaded: https://repo.maven.apache.org/maven2/io/apiman/apiman-gateway-engine-policies/1.2.7.Beta1/apiman-gateway-engine-policies-1.2.7.Beta1.jar (124 KB at 5.3 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/apiman/apiman-gateway-platforms-war/1.2.7.Beta1/apiman-gateway-platforms-war-1.2.7.Beta1.jar
+Downloaded: https://repo.maven.apache.org/maven2/org/hibernate/hibernate-core/5.0.9.Final/hibernate-core-5.0.9.Final.jar (5465 KB at 8.5 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/apiman/apiman-gateway-engine-influxdb/1.2.7.Beta1/apiman-gateway-engine-influxdb-1.2.7.Beta1.jar
+Downloaded: https://repo.maven.apache.org/maven2/io/apiman/apiman-gateway-engine-influxdb/1.2.7.Beta1/apiman-gateway-engine-influxdb-1.2.7.Beta1.jar (12 KB at 2.8 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/fabric8/ipaas/apps/cassandra/2.2.168/cassandra-2.2.168.jar
+Downloaded: https://repo.maven.apache.org/maven2/io/fabric8/ipaas/apps/cassandra/2.2.168/cassandra-2.2.168.jar (12 KB at 2.6 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/fabric8/ipaas/apps/example-message-consumer/2.2.168/example-message-consumer-2.2.168.jar
+Downloaded: https://repo.maven.apache.org/maven2/io/fabric8/ipaas/apps/example-message-consumer/2.2.168/example-message-consumer-2.2.168.jar (15 KB at 0.4 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/fabric8/ipaas/mq/camel-amq/2.2.168/camel-amq-2.2.168.jar
+Downloaded: https://repo.maven.apache.org/maven2/io/fabric8/ipaas/mq/camel-amq/2.2.168/camel-amq-2.2.168.jar (9 KB at 1.4 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/fabric8/ipaas/mq/mq-client/2.2.168/mq-client-2.2.168.jar
+Downloaded: https://repo.maven.apache.org/maven2/io/apiman/apiman-gateway-platforms-servlet/1.2.7.Beta1/apiman-gateway-platforms-servlet-1.2.7.Beta1.jar (61 KB at 0.5 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/org/apache/activemq/activemq-pool/5.12.1/activemq-pool-5.12.1.jar
+Downloaded: https://repo.maven.apache.org/maven2/io/fabric8/ipaas/mq/mq-client/2.2.168/mq-client-2.2.168.jar (6 KB at 0.2 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/org/apache/activemq/activemq-jms-pool/5.12.1/activemq-jms-pool-5.12.1.jar
+Downloaded: https://repo.maven.apache.org/maven2/org/apache/activemq/activemq-pool/5.12.1/activemq-pool-5.12.1.jar (20 KB at 0.8 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/org/apache/geronimo/specs/geronimo-jta_1.0.1B_spec/1.0.1/geronimo-jta_1.0.1B_spec-1.0.1.jar
+Downloaded: https://repo.maven.apache.org/maven2/org/apache/geronimo/specs/geronimo-jta_1.0.1B_spec/1.0.1/geronimo-jta_1.0.1B_spec-1.0.1.jar (15 KB at 2.9 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/org/apache/commons/commons-pool2/2.4.2/commons-pool2-2.4.2.jar
+Downloaded: https://repo.maven.apache.org/maven2/org/apache/commons/commons-pool2/2.4.2/commons-pool2-2.4.2.jar (110 KB at 8.1 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/org/apache/camel/camel-jms/2.15.3/camel-jms-2.15.3.jar
+Downloaded: https://repo.maven.apache.org/maven2/org/apache/activemq/activemq-jms-pool/5.12.1/activemq-jms-pool-5.12.1.jar (52 KB at 1.7 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/org/apache/camel/camel-core/2.15.3/camel-core-2.15.3.jar
+Downloaded: https://repo.maven.apache.org/maven2/org/apache/camel/camel-jms/2.15.3/camel-jms-2.15.3.jar (149 KB at 5.3 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/org/apache/camel/camel-spring/2.15.3/camel-spring-2.15.3.jar
+Downloaded: https://repo.maven.apache.org/maven2/io/apiman/apiman-gateway-platforms-war/1.2.7.Beta1/apiman-gateway-platforms-war-1.2.7.Beta1.jar (15 KB at 0.1 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/org/springframework/spring-tx/4.1.6.RELEASE/spring-tx-4.1.6.RELEASE.jar
+Downloaded: https://repo.maven.apache.org/maven2/org/springframework/spring-tx/4.1.6.RELEASE/spring-tx-4.1.6.RELEASE.jar (247 KB at 12.8 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/org/springframework/spring-jms/4.1.6.RELEASE/spring-jms-4.1.6.RELEASE.jar
+Downloaded: https://repo.maven.apache.org/maven2/org/apache/camel/camel-spring/2.15.3/camel-spring-2.15.3.jar (298 KB at 3.0 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/org/apache/activemq/activemq-spring/5.12.1/activemq-spring-5.12.1.jar
+Downloaded: https://repo.maven.apache.org/maven2/org/springframework/spring-jms/4.1.6.RELEASE/spring-jms-4.1.6.RELEASE.jar (263 KB at 6.0 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/org/apache/xbean/xbean-spring/3.18/xbean-spring-3.18.jar
+Downloaded: https://repo.maven.apache.org/maven2/org/apache/activemq/activemq-spring/5.12.1/activemq-spring-5.12.1.jar (165 KB at 8.9 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/org/apache/activemq/activemq-broker/5.12.1/activemq-broker-5.12.1.jar
+Downloaded: https://repo.maven.apache.org/maven2/org/apache/xbean/xbean-spring/3.18/xbean-spring-3.18.jar (129 KB at 10.9 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/org/apache/activemq/activemq-openwire-legacy/5.12.1/activemq-openwire-legacy-5.12.1.jar
+Downloading: https://repo1.maven.org/maven2/io/fabric8/ipaas/apps/message-gateway/2.2.168/message-gateway-2.2.168.jar
+Downloaded: https://repo.maven.apache.org/maven2/org/apache/activemq/activemq-openwire-legacy/5.12.1/activemq-openwire-legacy-5.12.1.jar (670 KB at 7.3 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/fabric8/ipaas/apps/example-message-producer/2.2.168/example-message-producer-2.2.168.jar
+Downloaded: https://repo.maven.apache.org/maven2/org/apache/activemq/activemq-broker/5.12.1/activemq-broker-5.12.1.jar (1069 KB at 10.9 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/fabric8/ipaas/apps/kafka/2.2.168/kafka-2.2.168.jar
+Downloaded: https://repo.maven.apache.org/maven2/io/fabric8/ipaas/apps/kafka/2.2.168/kafka-2.2.168.jar (10 KB at 7.7 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/fabric8/ipaas/apps/zookeeper/2.2.168/zookeeper-2.2.168-kubernetes.json
+Downloaded: https://repo.maven.apache.org/maven2/io/fabric8/ipaas/apps/zookeeper/2.2.168/zookeeper-2.2.168-kubernetes.json (5 KB at 0.5 KB/sec)
+Downloaded: https://repo.maven.apache.org/maven2/io/fabric8/ipaas/apps/example-message-producer/2.2.168/example-message-producer-2.2.168.jar (17 KB at 0.8 KB/sec)
+Downloaded: https://repo.maven.apache.org/maven2/org/apache/camel/camel-core/2.15.3/camel-core-2.15.3.jar (3069 KB at 10.3 KB/sec)
+Downloaded: https://repo1.maven.org/maven2/io/fabric8/ipaas/apps/message-broker/2.2.168/message-broker-2.2.168.jar (21064 KB at 11.8 KB/sec)
+Downloaded: https://repo1.maven.org/maven2/io/fabric8/ipaas/apps/message-gateway/2.2.168/message-gateway-2.2.168.jar (32341 KB at 38.5 KB/sec)
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time: 01:08 h
+[INFO] Finished at: 2017-05-23T03:13:06-07:00
+[INFO] Final Memory: 13M/271M
+[INFO] ------------------------------------------------------------------------
+```
+
+### https://repo.maven.apache.org/maven2/io/fabric8/kubeflix/distro/distro/1.0.28
+
+__zip__
+```
+vagrant@vagrant-ubuntu-trusty-64:/data/src/github.com/fabric8io/gofabric8$ mvn dependency:get -DremoteRepositories=https://repo1.maven.org/maven2/ -Dartifact=io.fabric8.kubeflix.distro:distro:1.0.28:zip:templates
+[INFO] Scanning for projects...
+[INFO]                                                                         
+[INFO] ------------------------------------------------------------------------
+[INFO] Building gofabric8 1-SNAPSHOT
+[INFO] ------------------------------------------------------------------------
+[INFO] 
+[INFO] --- maven-dependency-plugin:2.8:get (default-cli) @ gofabric8 ---
+[INFO] Resolving io.fabric8.kubeflix.distro:distro:zip:templates:1.0.28 with transitive dependencies
+[INFO] artifact joda-time:joda-time: checking for updates from central
+[INFO] artifact joda-time:joda-time: checking for updates from temp
+[INFO] artifact joda-time:joda-time: checking for updates from spring-releases
+[INFO] artifact joda-time:joda-time: checking for updates from spring-milestones
+Downloading: https://repo.maven.apache.org/maven2/io/fabric8/kubeflix/distro/distro/1.0.28/distro-1.0.28-templates.zip
+Downloaded: https://repo.maven.apache.org/maven2/io/fabric8/kubeflix/distro/distro/1.0.28/distro-1.0.28-templates.zip (7 KB at 9.0 KB/sec)
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time: 30.246 s
+[INFO] Finished at: 2017-05-24T04:23:34+00:00
+[INFO] Final Memory: 15M/151M
+[INFO] ------------------------------------------------------------------------
+```
+
+__POM__
+```
+vagrant@vagrant-ubuntu-trusty-64:/work/src/github.com/fabric8io$ mvn dependency:get -DremoteRepositories=https://repo1.maven.org/maven2/ -Dartifact=io.fabric8.kubeflix.distro:distro:1.0.28:pom
+[INFO] Scanning for projects...
+[INFO]                                                                         
+[INFO] ------------------------------------------------------------------------
+[INFO] Building Maven Stub Project (No POM) 1
+[INFO] ------------------------------------------------------------------------
+[INFO] 
+[INFO] --- maven-dependency-plugin:2.8:get (default-cli) @ standalone-pom ---
+[INFO] Resolving io.fabric8.kubeflix.distro:distro:templates:1.0.28 with transitive dependencies
+Downloading: https://repo.maven.apache.org/maven2/io/fabric8/kubeflix/distro/distro/1.0.28/distro-1.0.28.pom
+Downloaded: https://repo.maven.apache.org/maven2/io/fabric8/kubeflix/distro/distro/1.0.28/distro-1.0.28.pom (3 KB at 0.4 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/fabric8/kubeflix/packages/packages/1.0.28/packages-1.0.28.pom
+Downloaded: https://repo.maven.apache.org/maven2/io/fabric8/kubeflix/packages/packages/1.0.28/packages-1.0.28.pom (2 KB at 0.6 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/fabric8/kubeflix/kubeflix-project/1.0.28/kubeflix-project-1.0.28.pom
+Downloaded: https://repo.maven.apache.org/maven2/io/fabric8/kubeflix/kubeflix-project/1.0.28/kubeflix-project-1.0.28.pom (25 KB at 1.1 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/org/springframework/cloud/spring-cloud-dependencies/Brixton.SR5/spring-cloud-dependencies-Brixton.SR5.pom
+Downloaded: https://repo.maven.apache.org/maven2/org/springframework/cloud/spring-cloud-dependencies/Brixton.SR5/spring-cloud-dependencies-Brixton.SR5.pom (14 KB at 2.3 KB/sec)
+Downloading: https://repo1.maven.org/maven2/org/springframework/cloud/spring-cloud-netflix-dependencies/1.1.5.RELEASE/spring-cloud-netflix-dependencies-1.1.5.RELEASE.pom
+Downloaded: https://repo1.maven.org/maven2/org/springframework/cloud/spring-cloud-netflix-dependencies/1.1.5.RELEASE/spring-cloud-netflix-dependencies-1.1.5.RELEASE.pom (17 KB at 0.1 KB/sec)
+Downloading: https://repo1.maven.org/maven2/org/springframework/cloud/spring-cloud-task-dependencies/1.0.2.RELEASE/spring-cloud-task-dependencies-1.0.2.RELEASE.pom
+Downloaded: https://repo1.maven.org/maven2/org/springframework/cloud/spring-cloud-task-dependencies/1.0.2.RELEASE/spring-cloud-task-dependencies-1.0.2.RELEASE.pom (6 KB at 0.0 KB/sec)
+Downloading: https://repo1.maven.org/maven2/org/springframework/cloud/spring-cloud-sleuth-dependencies/1.0.6.RELEASE/spring-cloud-sleuth-dependencies-1.0.6.RELEASE.pom
+Downloaded: https://repo1.maven.org/maven2/org/springframework/cloud/spring-cloud-sleuth-dependencies/1.0.6.RELEASE/spring-cloud-sleuth-dependencies-1.0.6.RELEASE.pom (5 KB at 0.1 KB/sec)
+Downloading: https://repo1.maven.org/maven2/org/springframework/cloud/spring-cloud-zookeeper-dependencies/1.0.2.RELEASE/spring-cloud-zookeeper-dependencies-1.0.2.RELEASE.pom
+Downloaded: https://repo1.maven.org/maven2/org/springframework/cloud/spring-cloud-zookeeper-dependencies/1.0.2.RELEASE/spring-cloud-zookeeper-dependencies-1.0.2.RELEASE.pom (7 KB at 4.3 KB/sec)
+Downloading: https://repo1.maven.org/maven2/org/springframework/cloud/spring-cloud-cloudfoundry-dependencies/1.0.0.RELEASE/spring-cloud-cloudfoundry-dependencies-1.0.0.RELEASE.pom
+Downloaded: https://repo1.maven.org/maven2/org/springframework/cloud/spring-cloud-cloudfoundry-dependencies/1.0.0.RELEASE/spring-cloud-cloudfoundry-dependencies-1.0.0.RELEASE.pom (4 KB at 3.1 KB/sec)
+Downloading: https://repo1.maven.org/maven2/org/springframework/cloud/spring-cloud-netflix-dependencies/1.1.0.RELEASE/spring-cloud-netflix-dependencies-1.1.0.RELEASE.pom
+Downloaded: https://repo1.maven.org/maven2/org/springframework/cloud/spring-cloud-netflix-dependencies/1.1.0.RELEASE/spring-cloud-netflix-dependencies-1.1.0.RELEASE.pom (17 KB at 6.3 KB/sec)
+Downloading: https://repo1.maven.org/maven2/org/springframework/cloud/spring-cloud-config-dependencies/1.1.0.RELEASE/spring-cloud-config-dependencies-1.1.0.RELEASE.pom
+Downloaded: https://repo1.maven.org/maven2/org/springframework/cloud/spring-cloud-config-dependencies/1.1.0.RELEASE/spring-cloud-config-dependencies-1.1.0.RELEASE.pom (4 KB at 0.5 KB/sec)
+Downloading: https://repo1.maven.org/maven2/org/springframework/cloud/spring-cloud-aws-dependencies/1.1.1.RELEASE/spring-cloud-aws-dependencies-1.1.1.RELEASE.pom
+Downloaded: https://repo1.maven.org/maven2/org/springframework/cloud/spring-cloud-aws-dependencies/1.1.1.RELEASE/spring-cloud-aws-dependencies-1.1.1.RELEASE.pom (6 KB at 5.7 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/fabric8/kubeflix/packages/kubeflix/1.0.28/kubeflix-1.0.28.pom
+Downloaded: https://repo.maven.apache.org/maven2/io/fabric8/kubeflix/packages/kubeflix/1.0.28/kubeflix-1.0.28.pom (3 KB at 0.2 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/fabric8/kubeflix/turbine-server/1.0.28/turbine-server-1.0.28.pom
+Downloaded: https://repo.maven.apache.org/maven2/io/fabric8/kubeflix/turbine-server/1.0.28/turbine-server-1.0.28.pom (7 KB at 3.4 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/fabric8/kubeflix/turbine-discovery/1.0.28/turbine-discovery-1.0.28.pom
+Downloaded: https://repo.maven.apache.org/maven2/io/fabric8/kubeflix/turbine-discovery/1.0.28/turbine-discovery-1.0.28.pom (3 KB at 2.5 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/com/fasterxml/jackson/core/jackson-databind/2.8.3/jackson-databind-2.8.3.pom
+Downloaded: https://repo.maven.apache.org/maven2/com/fasterxml/jackson/core/jackson-databind/2.8.3/jackson-databind-2.8.3.pom (6 KB at 3.0 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/com/fasterxml/jackson/core/jackson-core/2.8.3/jackson-core-2.8.3.pom
+Downloaded: https://repo.maven.apache.org/maven2/com/fasterxml/jackson/core/jackson-core/2.8.3/jackson-core-2.8.3.pom (6 KB at 1.9 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/org/springframework/cloud/spring-cloud-starter-ribbon/1.1.5.RELEASE/spring-cloud-starter-ribbon-1.1.5.RELEASE.pom
+Downloaded: https://repo.maven.apache.org/maven2/org/springframework/cloud/spring-cloud-starter-ribbon/1.1.5.RELEASE/spring-cloud-starter-ribbon-1.1.5.RELEASE.pom (2 KB at 0.5 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/org/springframework/cloud/spring-cloud-netflix/1.1.5.RELEASE/spring-cloud-netflix-1.1.5.RELEASE.pom
+Downloaded: https://repo.maven.apache.org/maven2/org/springframework/cloud/spring-cloud-netflix/1.1.5.RELEASE/spring-cloud-netflix-1.1.5.RELEASE.pom (8 KB at 1.5 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/org/springframework/cloud/spring-cloud-build/1.1.1.RELEASE/spring-cloud-build-1.1.1.RELEASE.pom
+Downloaded: https://repo.maven.apache.org/maven2/org/springframework/cloud/spring-cloud-build/1.1.1.RELEASE/spring-cloud-build-1.1.1.RELEASE.pom (25 KB at 5.2 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/org/springframework/cloud/spring-cloud-starter/1.1.1.RELEASE/spring-cloud-starter-1.1.1.RELEASE.pom
+Downloaded: https://repo.maven.apache.org/maven2/org/springframework/cloud/spring-cloud-starter/1.1.1.RELEASE/spring-cloud-starter-1.1.1.RELEASE.pom (2 KB at 2.4 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/org/springframework/cloud/spring-cloud-commons-parent/1.1.1.RELEASE/spring-cloud-commons-parent-1.1.1.RELEASE.pom
+Downloaded: https://repo.maven.apache.org/maven2/org/springframework/cloud/spring-cloud-commons-parent/1.1.1.RELEASE/spring-cloud-commons-parent-1.1.1.RELEASE.pom (5 KB at 2.1 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot-starter/1.3.5.RELEASE/spring-boot-starter-1.3.5.RELEASE.pom
+Downloaded: https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot-starter/1.3.5.RELEASE/spring-boot-starter-1.3.5.RELEASE.pom (2 KB at 0.3 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot-starters/1.3.5.RELEASE/spring-boot-starters-1.3.5.RELEASE.pom
+Downloaded: https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot-starters/1.3.5.RELEASE/spring-boot-starters-1.3.5.RELEASE.pom (4 KB at 3.7 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot-parent/1.3.5.RELEASE/spring-boot-parent-1.3.5.RELEASE.pom
+Downloaded: https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot-parent/1.3.5.RELEASE/spring-boot-parent-1.3.5.RELEASE.pom (25 KB at 8.9 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/org/springframework/cloud/spring-cloud-context/1.1.1.RELEASE/spring-cloud-context-1.1.1.RELEASE.pom
+Downloaded: https://repo.maven.apache.org/maven2/org/springframework/cloud/spring-cloud-context/1.1.1.RELEASE/spring-cloud-context-1.1.1.RELEASE.pom (3 KB at 1.3 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/org/springframework/cloud/spring-cloud-commons/1.1.1.RELEASE/spring-cloud-commons-1.1.1.RELEASE.pom
+Downloaded: https://repo.maven.apache.org/maven2/org/springframework/cloud/spring-cloud-commons/1.1.1.RELEASE/spring-cloud-commons-1.1.1.RELEASE.pom (3 KB at 2.0 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/org/springframework/security/spring-security-rsa/1.0.1.RELEASE/spring-security-rsa-1.0.1.RELEASE.pom
+Downloaded: https://repo.maven.apache.org/maven2/org/springframework/security/spring-security-rsa/1.0.1.RELEASE/spring-security-rsa-1.0.1.RELEASE.pom (6 KB at 4.7 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/org/springframework/security/spring-security-crypto/3.2.7.RELEASE/spring-security-crypto-3.2.7.RELEASE.pom
+Downloaded: https://repo.maven.apache.org/maven2/org/springframework/security/spring-security-crypto/3.2.7.RELEASE/spring-security-crypto-3.2.7.RELEASE.pom (3 KB at 4.2 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/org/bouncycastle/bcpkix-jdk15on/1.47/bcpkix-jdk15on-1.47.pom
+Downloaded: https://repo.maven.apache.org/maven2/org/bouncycastle/bcpkix-jdk15on/1.47/bcpkix-jdk15on-1.47.pom (2 KB at 0.6 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/org/bouncycastle/bcprov-jdk15on/1.47/bcprov-jdk15on-1.47.pom
+Downloaded: https://repo.maven.apache.org/maven2/org/bouncycastle/bcprov-jdk15on/1.47/bcprov-jdk15on-1.47.pom (832 B at 1.3 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/org/springframework/cloud/spring-cloud-netflix-core/1.1.5.RELEASE/spring-cloud-netflix-core-1.1.5.RELEASE.pom
+Downloaded: https://repo.maven.apache.org/maven2/org/springframework/cloud/spring-cloud-netflix-core/1.1.5.RELEASE/spring-cloud-netflix-core-1.1.5.RELEASE.pom (7 KB at 4.4 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot/1.3.5.RELEASE/spring-boot-1.3.5.RELEASE.pom
+Downloaded: https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot/1.3.5.RELEASE/spring-boot-1.3.5.RELEASE.pom (8 KB at 6.9 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot-autoconfigure/1.3.5.RELEASE/spring-boot-autoconfigure-1.3.5.RELEASE.pom
+Downloaded: https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot-autoconfigure/1.3.5.RELEASE/spring-boot-autoconfigure-1.3.5.RELEASE.pom (18 KB at 6.5 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/org/springframework/cloud/spring-cloud-starter-archaius/1.1.5.RELEASE/spring-cloud-starter-archaius-1.1.5.RELEASE.pom
+Downloaded: https://repo.maven.apache.org/maven2/org/springframework/cloud/spring-cloud-starter-archaius/1.1.5.RELEASE/spring-cloud-starter-archaius-1.1.5.RELEASE.pom (2 KB at 3.2 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/com/google/guava/guava/16.0/guava-16.0.pom
+Downloaded: https://repo.maven.apache.org/maven2/com/google/guava/guava/16.0/guava-16.0.pom (6 KB at 2.4 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/com/google/guava/guava-parent/16.0/guava-parent-16.0.pom
+Downloaded: https://repo.maven.apache.org/maven2/com/google/guava/guava-parent/16.0/guava-parent-16.0.pom (8 KB at 3.3 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/com/fasterxml/jackson/core/jackson-annotations/2.4.3/jackson-annotations-2.4.3.pom
+Downloaded: https://repo.maven.apache.org/maven2/com/fasterxml/jackson/core/jackson-annotations/2.4.3/jackson-annotations-2.4.3.pom (2 KB at 1.5 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/com/fasterxml/jackson/core/jackson-annotations/2.6.6/jackson-annotations-2.6.6.pom
+Downloaded: https://repo.maven.apache.org/maven2/com/fasterxml/jackson/core/jackson-annotations/2.6.6/jackson-annotations-2.6.6.pom (2 KB at 2.2 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/com/fasterxml/jackson/core/jackson-databind/2.6.6/jackson-databind-2.6.6.pom
+Downloaded: https://repo.maven.apache.org/maven2/com/fasterxml/jackson/core/jackson-databind/2.6.6/jackson-databind-2.6.6.pom (6 KB at 3.2 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/reactivex/rxjava/1.0.9/rxjava-1.0.9.pom
+Downloaded: https://repo.maven.apache.org/maven2/io/reactivex/rxjava/1.0.9/rxjava-1.0.9.pom (3 KB at 1.4 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/reactivex/rxjava/1.0.10/rxjava-1.0.10.pom
+Downloaded: https://repo.maven.apache.org/maven2/io/reactivex/rxjava/1.0.10/rxjava-1.0.10.pom (3 KB at 2.0 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/com/netflix/servo/servo-core/0.7.5/servo-core-0.7.5.pom
+Downloaded: https://repo.maven.apache.org/maven2/com/netflix/servo/servo-core/0.7.5/servo-core-0.7.5.pom (3 KB at 1.4 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/com/netflix/hystrix/hystrix-core/1.4.3/hystrix-core-1.4.3.pom
+Downloaded: https://repo.maven.apache.org/maven2/com/netflix/hystrix/hystrix-core/1.4.3/hystrix-core-1.4.3.pom (3 KB at 1.1 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/com/netflix/archaius/archaius-core/0.4.1/archaius-core-0.4.1.pom
+Downloaded: https://repo.maven.apache.org/maven2/com/netflix/archaius/archaius-core/0.4.1/archaius-core-0.4.1.pom (3 KB at 1.0 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/reactivex/rxjava/1.0.7/rxjava-1.0.7.pom
+Downloaded: https://repo.maven.apache.org/maven2/io/reactivex/rxjava/1.0.7/rxjava-1.0.7.pom (3 KB at 2.8 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/org/apache/httpcomponents/httpclient/4.1.1/httpclient-4.1.1.pom
+Downloaded: https://repo.maven.apache.org/maven2/org/apache/httpcomponents/httpclient/4.1.1/httpclient-4.1.1.pom (6 KB at 3.1 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/org/apache/httpcomponents/httpcomponents-client/4.1.1/httpcomponents-client-4.1.1.pom
+Downloaded: https://repo.maven.apache.org/maven2/org/apache/httpcomponents/httpcomponents-client/4.1.1/httpcomponents-client-4.1.1.pom (12 KB at 1.5 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/reactivex/rxjava/1.1.5/rxjava-1.1.5.pom
+Downloaded: https://repo.maven.apache.org/maven2/io/reactivex/rxjava/1.1.5/rxjava-1.1.5.pom (3 KB at 1.2 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/org/springframework/cloud/spring-cloud-starter-turbine/1.1.5.RELEASE/spring-cloud-starter-turbine-1.1.5.RELEASE.pom
+Downloaded: https://repo.maven.apache.org/maven2/org/springframework/cloud/spring-cloud-starter-turbine/1.1.5.RELEASE/spring-cloud-starter-turbine-1.1.5.RELEASE.pom (3 KB at 1.5 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/org/springframework/cloud/spring-cloud-starter-eureka/1.1.5.RELEASE/spring-cloud-starter-eureka-1.1.5.RELEASE.pom
+Downloaded: https://repo.maven.apache.org/maven2/org/springframework/cloud/spring-cloud-starter-eureka/1.1.5.RELEASE/spring-cloud-starter-eureka-1.1.5.RELEASE.pom (3 KB at 1.5 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot-starter-web/1.3.5.RELEASE/spring-boot-starter-web-1.3.5.RELEASE.pom
+Downloaded: https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot-starter-web/1.3.5.RELEASE/spring-boot-starter-web-1.3.5.RELEASE.pom (2 KB at 0.8 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/org/springframework/cloud/spring-cloud-netflix-eureka-client/1.1.5.RELEASE/spring-cloud-netflix-eureka-client-1.1.5.RELEASE.pom
+Downloaded: https://repo.maven.apache.org/maven2/org/springframework/cloud/spring-cloud-netflix-eureka-client/1.1.5.RELEASE/spring-cloud-netflix-eureka-client-1.1.5.RELEASE.pom (5 KB at 1.5 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/com/netflix/eureka/eureka-client/1.4.10/eureka-client-1.4.10.pom
+Downloaded: https://repo.maven.apache.org/maven2/com/netflix/eureka/eureka-client/1.4.10/eureka-client-1.4.10.pom (7 KB at 1.2 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/com/google/code/gson/gson/2.1/gson-2.1.pom
+Downloaded: https://repo.maven.apache.org/maven2/com/google/code/gson/gson/2.1/gson-2.1.pom (11 KB at 2.2 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/com/netflix/servo/servo-core/0.5.3/servo-core-0.5.3.pom
+Downloaded: https://repo.maven.apache.org/maven2/com/netflix/servo/servo-core/0.5.3/servo-core-0.5.3.pom (3 KB at 2.6 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/com/netflix/archaius/archaius-core/0.3.3/archaius-core-0.3.3.pom
+Downloaded: https://repo.maven.apache.org/maven2/com/netflix/archaius/archaius-core/0.3.3/archaius-core-0.3.3.pom (3 KB at 1.1 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/com/netflix/archaius/archaius-core/0.7.3/archaius-core-0.7.3.pom
+Downloaded: https://repo.maven.apache.org/maven2/com/netflix/archaius/archaius-core/0.7.3/archaius-core-0.7.3.pom (4 KB at 1.1 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/com/sun/jersey/jersey-core/1.19/jersey-core-1.19.pom
+Downloaded: https://repo.maven.apache.org/maven2/com/sun/jersey/jersey-core/1.19/jersey-core-1.19.pom (10 KB at 2.2 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/com/sun/jersey/jersey-project/1.19/jersey-project-1.19.pom
+Downloaded: https://repo.maven.apache.org/maven2/com/sun/jersey/jersey-project/1.19/jersey-project-1.19.pom (24 KB at 1.4 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/com/sun/jersey/jersey-client/1.19/jersey-client-1.19.pom
+Downloaded: https://repo.maven.apache.org/maven2/com/sun/jersey/jersey-client/1.19/jersey-client-1.19.pom (7 KB at 2.6 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/com/sun/jersey/contribs/jersey-apache-client4/1.19/jersey-apache-client4-1.19.pom
+Downloaded: https://repo.maven.apache.org/maven2/com/sun/jersey/contribs/jersey-apache-client4/1.19/jersey-apache-client4-1.19.pom (7 KB at 1.6 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/com/sun/jersey/contribs/jersey-contribs/1.19/jersey-contribs-1.19.pom
+Downloaded: https://repo.maven.apache.org/maven2/com/sun/jersey/contribs/jersey-contribs/1.19/jersey-contribs-1.19.pom (4 KB at 0.3 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/org/apache/httpcomponents/httpclient/4.3.4/httpclient-4.3.4.pom
+Downloaded: https://repo.maven.apache.org/maven2/org/apache/httpcomponents/httpclient/4.3.4/httpclient-4.3.4.pom (6 KB at 0.4 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/org/apache/httpcomponents/httpcomponents-client/4.3.4/httpcomponents-client-4.3.4.pom
+Downloaded: https://repo.maven.apache.org/maven2/org/apache/httpcomponents/httpcomponents-client/4.3.4/httpcomponents-client-4.3.4.pom (15 KB at 0.5 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/com/fasterxml/jackson/core/jackson-annotations/2.5.4/jackson-annotations-2.5.4.pom
+Downloaded: https://repo.maven.apache.org/maven2/com/fasterxml/jackson/core/jackson-annotations/2.5.4/jackson-annotations-2.5.4.pom (2 KB at 0.2 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/com/netflix/eureka/eureka-core/1.4.10/eureka-core-1.4.10.pom
+Downloaded: https://repo.maven.apache.org/maven2/com/netflix/eureka/eureka-core/1.4.10/eureka-core-1.4.10.pom (5 KB at 0.4 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/com/amazonaws/aws-java-sdk-core/1.9.3/aws-java-sdk-core-1.9.3.pom
+Downloaded: https://repo.maven.apache.org/maven2/com/amazonaws/aws-java-sdk-core/1.9.3/aws-java-sdk-core-1.9.3.pom (3 KB at 0.1 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/com/amazonaws/aws-java-sdk-pom/1.9.3/aws-java-sdk-pom-1.9.3.pom
+Downloaded: https://repo.maven.apache.org/maven2/com/amazonaws/aws-java-sdk-pom/1.9.3/aws-java-sdk-pom-1.9.3.pom (6 KB at 0.1 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/org/apache/httpcomponents/httpclient/4.3/httpclient-4.3.pom
+Downloaded: https://repo.maven.apache.org/maven2/org/apache/httpcomponents/httpclient/4.3/httpclient-4.3.pom (6 KB at 0.1 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/org/apache/httpcomponents/httpcomponents-client/4.3/httpcomponents-client-4.3.pom
+Downloaded: https://repo.maven.apache.org/maven2/org/apache/httpcomponents/httpcomponents-client/4.3/httpcomponents-client-4.3.pom (16 KB at 0.0 KB/sec)
+[INFO] artifact joda-time:joda-time: checking for updates from central
+[INFO] artifact joda-time:joda-time: checking for updates from temp
+[INFO] artifact joda-time:joda-time: checking for updates from spring-releases
+[INFO] artifact joda-time:joda-time: checking for updates from spring-milestones
+Downloading: https://repo.maven.apache.org/maven2/joda-time/joda-time/2.9.9/joda-time-2.9.9.pom
+Downloading: https://repo1.maven.org/maven2/joda-time/joda-time/2.9.9/joda-time-2.9.9.pom
+Downloading: https://repo.spring.io/libs-release/joda-time/joda-time/2.9.9/joda-time-2.9.9.pom
+Downloaded: https://repo.spring.io/libs-release/joda-time/joda-time/2.9.9/joda-time-2.9.9.pom (34 KB at 2.1 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/com/amazonaws/aws-java-sdk-ec2/1.9.3/aws-java-sdk-ec2-1.9.3.pom
+Downloaded: https://repo.maven.apache.org/maven2/com/amazonaws/aws-java-sdk-ec2/1.9.3/aws-java-sdk-ec2-1.9.3.pom (2 KB at 0.3 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/com/amazonaws/aws-java-sdk-autoscaling/1.9.3/aws-java-sdk-autoscaling-1.9.3.pom
+Downloaded: https://repo.maven.apache.org/maven2/com/amazonaws/aws-java-sdk-autoscaling/1.9.3/aws-java-sdk-autoscaling-1.9.3.pom (2 KB at 0.3 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/com/amazonaws/aws-java-sdk-sts/1.9.3/aws-java-sdk-sts-1.9.3.pom
+Downloaded: https://repo.maven.apache.org/maven2/com/amazonaws/aws-java-sdk-sts/1.9.3/aws-java-sdk-sts-1.9.3.pom (2 KB at 1.8 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/com/amazonaws/aws-java-sdk-route53/1.9.3/aws-java-sdk-route53-1.9.3.pom
+Downloaded: https://repo.maven.apache.org/maven2/com/amazonaws/aws-java-sdk-route53/1.9.3/aws-java-sdk-route53-1.9.3.pom (2 KB at 0.4 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/com/netflix/eureka/eureka-client/1.4.6/eureka-client-1.4.6.pom
+Downloaded: https://repo.maven.apache.org/maven2/com/netflix/eureka/eureka-client/1.4.6/eureka-client-1.4.6.pom (7 KB at 2.0 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/org/springframework/cloud/spring-cloud-netflix-turbine/1.1.5.RELEASE/spring-cloud-netflix-turbine-1.1.5.RELEASE.pom
+Downloaded: https://repo.maven.apache.org/maven2/org/springframework/cloud/spring-cloud-netflix-turbine/1.1.5.RELEASE/spring-cloud-netflix-turbine-1.1.5.RELEASE.pom (4 KB at 0.2 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/com/netflix/servo/servo-core/0.4.49/servo-core-0.4.49.pom
+Downloaded: https://repo.maven.apache.org/maven2/com/netflix/servo/servo-core/0.4.49/servo-core-0.4.49.pom (3 KB at 1.0 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/org/springframework/cloud/spring-cloud-context/1.1.3.RELEASE/spring-cloud-context-1.1.3.RELEASE.pom
+Downloaded: https://repo.maven.apache.org/maven2/org/springframework/cloud/spring-cloud-context/1.1.3.RELEASE/spring-cloud-context-1.1.3.RELEASE.pom (3 KB at 1.0 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/org/springframework/cloud/spring-cloud-commons-parent/1.1.3.RELEASE/spring-cloud-commons-parent-1.1.3.RELEASE.pom
+Downloaded: https://repo.maven.apache.org/maven2/org/springframework/cloud/spring-cloud-commons-parent/1.1.3.RELEASE/spring-cloud-commons-parent-1.1.3.RELEASE.pom (5 KB at 0.8 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/org/springframework/cloud/spring-cloud-build/1.1.2.RELEASE/spring-cloud-build-1.1.2.RELEASE.pom
+Downloaded: https://repo.maven.apache.org/maven2/org/springframework/cloud/spring-cloud-build/1.1.2.RELEASE/spring-cloud-build-1.1.2.RELEASE.pom (25 KB at 1.7 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/org/springframework/cloud/spring-cloud-commons-dependencies/1.1.3.RELEASE/spring-cloud-commons-dependencies-1.1.3.RELEASE.pom
+Downloaded: https://repo.maven.apache.org/maven2/org/springframework/cloud/spring-cloud-commons-dependencies/1.1.3.RELEASE/spring-cloud-commons-dependencies-1.1.3.RELEASE.pom (4 KB at 0.0 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/org/springframework/cloud/spring-cloud-sleuth-zipkin/1.0.9.RELEASE/spring-cloud-sleuth-zipkin-1.0.9.RELEASE.pom
+Downloaded: https://repo.maven.apache.org/maven2/org/springframework/cloud/spring-cloud-sleuth-zipkin/1.0.9.RELEASE/spring-cloud-sleuth-zipkin-1.0.9.RELEASE.pom (4 KB at 0.6 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/org/springframework/cloud/spring-cloud-sleuth/1.0.9.RELEASE/spring-cloud-sleuth-1.0.9.RELEASE.pom
+Downloaded: https://repo.maven.apache.org/maven2/org/springframework/cloud/spring-cloud-sleuth/1.0.9.RELEASE/spring-cloud-sleuth-1.0.9.RELEASE.pom (11 KB at 2.1 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/org/springframework/cloud/spring-cloud-sleuth-core/1.0.9.RELEASE/spring-cloud-sleuth-core-1.0.9.RELEASE.pom
+Downloaded: https://repo.maven.apache.org/maven2/org/springframework/cloud/spring-cloud-sleuth-core/1.0.9.RELEASE/spring-cloud-sleuth-core-1.0.9.RELEASE.pom (5 KB at 1.3 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/zipkin/java/zipkin/1.11.1/zipkin-1.11.1.pom
+Downloaded: https://repo.maven.apache.org/maven2/io/zipkin/java/zipkin/1.11.1/zipkin-1.11.1.pom (4 KB at 0.2 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/zipkin/java/parent/1.11.1/parent-1.11.1.pom
+Downloaded: https://repo.maven.apache.org/maven2/io/zipkin/java/parent/1.11.1/parent-1.11.1.pom (20 KB at 3.8 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/zipkin/reporter/zipkin-reporter/0.5.0/zipkin-reporter-0.5.0.pom
+Downloaded: https://repo.maven.apache.org/maven2/io/zipkin/reporter/zipkin-reporter/0.5.0/zipkin-reporter-0.5.0.pom (2 KB at 1.8 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/zipkin/reporter/zipkin-reporter-parent/0.5.0/zipkin-reporter-parent-0.5.0.pom
+Downloaded: https://repo.maven.apache.org/maven2/io/zipkin/reporter/zipkin-reporter-parent/0.5.0/zipkin-reporter-parent-0.5.0.pom (12 KB at 6.8 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/zipkin/reporter/zipkin-sender-urlconnection/0.5.0/zipkin-sender-urlconnection-0.5.0.pom
+Downloaded: https://repo.maven.apache.org/maven2/io/zipkin/reporter/zipkin-sender-urlconnection/0.5.0/zipkin-sender-urlconnection-0.5.0.pom (2 KB at 2.1 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/reactivex/rxjava/1.0.17/rxjava-1.0.17.pom
+Downloaded: https://repo.maven.apache.org/maven2/io/reactivex/rxjava/1.0.17/rxjava-1.0.17.pom (3 KB at 2.5 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/netty/netty-buffer/4.1.4.Final/netty-buffer-4.1.4.Final.pom
+Downloaded: https://repo.maven.apache.org/maven2/io/netty/netty-buffer/4.1.4.Final/netty-buffer-4.1.4.Final.pom (2 KB at 3.0 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/fabric8/kubeflix/hystrix-dashboard/1.0.28/hystrix-dashboard-1.0.28.pom
+Downloaded: https://repo.maven.apache.org/maven2/io/fabric8/kubeflix/hystrix-dashboard/1.0.28/hystrix-dashboard-1.0.28.pom (5 KB at 3.8 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/fabric8/kubeflix/turbine-server/1.0.28/turbine-server-1.0.28.jar
+Downloading: https://repo.maven.apache.org/maven2/io/fabric8/kubeflix/packages/kubeflix/1.0.28/kubeflix-1.0.28.jar
+Downloading: https://repo.maven.apache.org/maven2/io/fabric8/kubeflix/turbine-discovery/1.0.28/turbine-discovery-1.0.28.jar
+Downloading: https://repo.maven.apache.org/maven2/com/fasterxml/jackson/core/jackson-databind/2.8.3/jackson-databind-2.8.3.jar
+Downloading: https://repo.maven.apache.org/maven2/org/springframework/cloud/spring-cloud-starter-ribbon/1.1.5.RELEASE/spring-cloud-starter-ribbon-1.1.5.RELEASE.jar
+Downloaded: https://repo.maven.apache.org/maven2/io/fabric8/kubeflix/packages/kubeflix/1.0.28/kubeflix-1.0.28.jar (11 KB at 6.8 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/org/springframework/cloud/spring-cloud-starter/1.1.1.RELEASE/spring-cloud-starter-1.1.1.RELEASE.jar
+Downloaded: https://repo.maven.apache.org/maven2/org/springframework/cloud/spring-cloud-starter/1.1.1.RELEASE/spring-cloud-starter-1.1.1.RELEASE.jar (3 KB at 0.9 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/org/springframework/cloud/spring-cloud-context/1.1.1.RELEASE/spring-cloud-context-1.1.1.RELEASE.jar
+Downloaded: https://repo.maven.apache.org/maven2/org/springframework/cloud/spring-cloud-starter-ribbon/1.1.5.RELEASE/spring-cloud-starter-ribbon-1.1.5.RELEASE.jar (3 KB at 0.5 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/org/springframework/cloud/spring-cloud-commons/1.1.1.RELEASE/spring-cloud-commons-1.1.1.RELEASE.jar
+Downloaded: https://repo.maven.apache.org/maven2/io/fabric8/kubeflix/turbine-discovery/1.0.28/turbine-discovery-1.0.28.jar (10 KB at 1.7 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/org/springframework/security/spring-security-rsa/1.0.1.RELEASE/spring-security-rsa-1.0.1.RELEASE.jar
+Downloaded: https://repo.maven.apache.org/maven2/org/springframework/security/spring-security-rsa/1.0.1.RELEASE/spring-security-rsa-1.0.1.RELEASE.jar (25 KB at 6.0 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/org/bouncycastle/bcpkix-jdk15on/1.47/bcpkix-jdk15on-1.47.jar
+Downloaded: https://repo.maven.apache.org/maven2/org/springframework/cloud/spring-cloud-commons/1.1.1.RELEASE/spring-cloud-commons-1.1.1.RELEASE.jar (68 KB at 13.2 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/org/bouncycastle/bcprov-jdk15on/1.47/bcprov-jdk15on-1.47.jar
+Downloaded: https://repo.maven.apache.org/maven2/org/springframework/cloud/spring-cloud-context/1.1.1.RELEASE/spring-cloud-context-1.1.1.RELEASE.jar (93 KB at 6.6 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/org/springframework/cloud/spring-cloud-netflix-core/1.1.5.RELEASE/spring-cloud-netflix-core-1.1.5.RELEASE.jar
+Downloaded: https://repo.maven.apache.org/maven2/org/bouncycastle/bcpkix-jdk15on/1.47/bcpkix-jdk15on-1.47.jar (503 KB at 19.1 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/org/springframework/cloud/spring-cloud-starter-archaius/1.1.5.RELEASE/spring-cloud-starter-archaius-1.1.5.RELEASE.jar
+Downloaded: https://repo.maven.apache.org/maven2/org/springframework/cloud/spring-cloud-netflix-core/1.1.5.RELEASE/spring-cloud-netflix-core-1.1.5.RELEASE.jar (278 KB at 13.8 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/com/netflix/servo/servo-core/0.4.49/servo-core-0.4.49.jar
+Downloaded: https://repo.maven.apache.org/maven2/com/fasterxml/jackson/core/jackson-databind/2.8.3/jackson-databind-2.8.3.jar (1205 KB at 29.0 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/com/netflix/hystrix/hystrix-core/1.4.3/hystrix-core-1.4.3.jar
+Downloaded: https://repo.maven.apache.org/maven2/org/springframework/cloud/spring-cloud-starter-archaius/1.1.5.RELEASE/spring-cloud-starter-archaius-1.1.5.RELEASE.jar (3 KB at 0.3 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/org/apache/httpcomponents/httpclient/4.2.1/httpclient-4.2.1.jar
+Downloaded: https://repo.maven.apache.org/maven2/com/netflix/servo/servo-core/0.4.49/servo-core-0.4.49.jar (197 KB at 10.1 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/org/springframework/cloud/spring-cloud-starter-turbine/1.1.5.RELEASE/spring-cloud-starter-turbine-1.1.5.RELEASE.jar
+Downloaded: https://repo.maven.apache.org/maven2/com/netflix/hystrix/hystrix-core/1.4.3/hystrix-core-1.4.3.jar (280 KB at 8.7 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/org/springframework/cloud/spring-cloud-starter-eureka/1.1.5.RELEASE/spring-cloud-starter-eureka-1.1.5.RELEASE.jar
+Downloaded: https://repo.maven.apache.org/maven2/org/springframework/cloud/spring-cloud-starter-turbine/1.1.5.RELEASE/spring-cloud-starter-turbine-1.1.5.RELEASE.jar (3 KB at 0.0 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/org/springframework/cloud/spring-cloud-netflix-eureka-client/1.1.5.RELEASE/spring-cloud-netflix-eureka-client-1.1.5.RELEASE.jar
+Downloaded: https://repo.maven.apache.org/maven2/org/springframework/cloud/spring-cloud-starter-eureka/1.1.5.RELEASE/spring-cloud-starter-eureka-1.1.5.RELEASE.jar (3 KB at 0.0 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/com/netflix/eureka/eureka-client/1.4.10/eureka-client-1.4.10.jar
+Downloaded: https://repo.maven.apache.org/maven2/org/bouncycastle/bcprov-jdk15on/1.47/bcprov-jdk15on-1.47.jar (1951 KB at 12.5 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/com/google/code/gson/gson/2.1/gson-2.1.jar
+Downloaded: https://repo.maven.apache.org/maven2/org/apache/httpcomponents/httpclient/4.2.1/httpclient-4.2.1.jar (418 KB at 2.9 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/com/netflix/eureka/eureka-core/1.4.10/eureka-core-1.4.10.jar
+Downloaded: https://repo.maven.apache.org/maven2/com/google/code/gson/gson/2.1/gson-2.1.jar (176 KB at 3.2 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/com/amazonaws/aws-java-sdk-core/1.9.3/aws-java-sdk-core-1.9.3.jar
+Downloaded: https://repo.maven.apache.org/maven2/org/springframework/cloud/spring-cloud-netflix-eureka-client/1.1.5.RELEASE/spring-cloud-netflix-eureka-client-1.1.5.RELEASE.jar (66 KB at 0.5 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/com/amazonaws/aws-java-sdk-ec2/1.9.3/aws-java-sdk-ec2-1.9.3.jar
+Downloaded: https://repo.maven.apache.org/maven2/com/netflix/eureka/eureka-core/1.4.10/eureka-core-1.4.10.jar (239 KB at 2.3 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/com/amazonaws/aws-java-sdk-autoscaling/1.9.3/aws-java-sdk-autoscaling-1.9.3.jar
+Downloaded: https://repo.maven.apache.org/maven2/com/amazonaws/aws-java-sdk-core/1.9.3/aws-java-sdk-core-1.9.3.jar (449 KB at 6.5 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/com/amazonaws/aws-java-sdk-sts/1.9.3/aws-java-sdk-sts-1.9.3.jar
+Downloaded: https://repo.maven.apache.org/maven2/com/amazonaws/aws-java-sdk-sts/1.9.3/aws-java-sdk-sts-1.9.3.jar (88 KB at 4.2 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/com/amazonaws/aws-java-sdk-route53/1.9.3/aws-java-sdk-route53-1.9.3.jar
+Downloaded: https://repo.maven.apache.org/maven2/com/amazonaws/aws-java-sdk-autoscaling/1.9.3/aws-java-sdk-autoscaling-1.9.3.jar (414 KB at 4.6 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/org/springframework/cloud/spring-cloud-netflix-turbine/1.1.5.RELEASE/spring-cloud-netflix-turbine-1.1.5.RELEASE.jar
+Downloaded: https://repo.maven.apache.org/maven2/com/amazonaws/aws-java-sdk-route53/1.9.3/aws-java-sdk-route53-1.9.3.jar (440 KB at 6.0 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/org/springframework/cloud/spring-cloud-sleuth-zipkin/1.0.9.RELEASE/spring-cloud-sleuth-zipkin-1.0.9.RELEASE.jar
+Downloaded: https://repo.maven.apache.org/maven2/com/netflix/eureka/eureka-client/1.4.10/eureka-client-1.4.10.jar (377 KB at 1.7 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/org/springframework/cloud/spring-cloud-sleuth-core/1.0.9.RELEASE/spring-cloud-sleuth-core-1.0.9.RELEASE.jar
+Downloaded: https://repo.maven.apache.org/maven2/org/springframework/cloud/spring-cloud-sleuth-zipkin/1.0.9.RELEASE/spring-cloud-sleuth-zipkin-1.0.9.RELEASE.jar (20 KB at 7.4 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/zipkin/java/zipkin/1.11.1/zipkin-1.11.1.jar
+Downloaded: https://repo.maven.apache.org/maven2/io/zipkin/java/zipkin/1.11.1/zipkin-1.11.1.jar (151 KB at 1.9 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/zipkin/reporter/zipkin-reporter/0.5.0/zipkin-reporter-0.5.0.jar
+Downloaded: https://repo.maven.apache.org/maven2/com/amazonaws/aws-java-sdk-ec2/1.9.3/aws-java-sdk-ec2-1.9.3.jar (1658 KB at 7.0 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/zipkin/java/zipkin/1.11.1/zipkin-1.11.1-tests.jar
+Downloaded: https://repo.maven.apache.org/maven2/io/zipkin/reporter/zipkin-reporter/0.5.0/zipkin-reporter-0.5.0.jar (30 KB at 9.2 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/zipkin/reporter/zipkin-sender-urlconnection/0.5.0/zipkin-sender-urlconnection-0.5.0.jar
+Downloaded: https://repo.maven.apache.org/maven2/io/zipkin/reporter/zipkin-sender-urlconnection/0.5.0/zipkin-sender-urlconnection-0.5.0.jar (11 KB at 2.7 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/fabric8/kubeflix/hystrix-dashboard/1.0.28/hystrix-dashboard-1.0.28.war
+Downloaded: https://repo.maven.apache.org/maven2/io/zipkin/java/zipkin/1.11.1/zipkin-1.11.1-tests.jar (76 KB at 17.6 KB/sec)
+Downloading: https://repo1.maven.org/maven2/io/fabric8/kubeflix/turbine-server/1.0.28/turbine-server-1.0.28.jar
+Downloaded: https://repo.maven.apache.org/maven2/org/springframework/cloud/spring-cloud-netflix-turbine/1.1.5.RELEASE/spring-cloud-netflix-turbine-1.1.5.RELEASE.jar (23 KB at 0.2 KB/sec)
+Downloaded: https://repo.maven.apache.org/maven2/org/springframework/cloud/spring-cloud-sleuth-core/1.0.9.RELEASE/spring-cloud-sleuth-core-1.0.9.RELEASE.jar (165 KB at 1.3 KB/sec)
+Downloaded: https://repo.maven.apache.org/maven2/io/fabric8/kubeflix/hystrix-dashboard/1.0.28/hystrix-dashboard-1.0.28.war (1581 KB at 33.7 KB/sec)
+Downloaded: https://repo1.maven.org/maven2/io/fabric8/kubeflix/turbine-server/1.0.28/turbine-server-1.0.28.jar (47431 KB at 59.6 KB/sec)
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time: 01:20 h
+[INFO] Finished at: 2017-05-23T10:21:48+00:00
+[INFO] Final Memory: 13M/113M
+[INFO] ------------------------------------------------------------------------
+```
+
+### https://repo1.maven.org/maven2/io/fabric8/zipkin/packages/distro/0.1.9/
+
+__zip__
+```
+vagrant@vagrant-ubuntu-trusty-64:/data/src/github.com/fabric8io/gofabric8$ mvn dependency:get -DremoteRepositories=https://repo1.maven.org/maven2/ -Dartifact=io.fabric8.zipkin.packages:distro:0.1.9:zip:templates
+[INFO] Scanning for projects...
+[INFO]                                                                         
+[INFO] ------------------------------------------------------------------------
+[INFO] Building gofabric8 1-SNAPSHOT
+[INFO] ------------------------------------------------------------------------
+[INFO] 
+[INFO] --- maven-dependency-plugin:2.8:get (default-cli) @ gofabric8 ---
+[INFO] Resolving io.fabric8.zipkin.packages:distro:zip:templates:0.1.9 with transitive dependencies
+Downloading: https://repo.maven.apache.org/maven2/io/fabric8/zipkin/packages/distro/0.1.9/distro-0.1.9-templates.zip
+Downloaded: https://repo.maven.apache.org/maven2/io/fabric8/zipkin/packages/distro/0.1.9/distro-0.1.9-templates.zip (4 KB at 1.8 KB/sec)
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time: 7.721 s
+[INFO] Finished at: 2017-05-24T04:24:46+00:00
+[INFO] Final Memory: 15M/172M
+[INFO] ------------------------------------------------------------------------
+```
+
+__POM__
+```
+vagrant@vagrant-ubuntu-trusty-64:/work/src/github.com/fabric8io$ mvn dependency:get -DremoteRepositories=https://repo1.maven.org/maven2/ -Dartifact=io.fabric8.zipkin.packages:distro:0.1.9:pom
+[INFO] Scanning for projects...
+[INFO]                                                                         
+[INFO] ------------------------------------------------------------------------
+[INFO] Building Maven Stub Project (No POM) 1
+[INFO] ------------------------------------------------------------------------
+[INFO] 
+[INFO] --- maven-dependency-plugin:2.8:get (default-cli) @ standalone-pom ---
+[INFO] Resolving io.fabric8.zipkin.packages:distro:templates:0.1.9 with transitive dependencies
+Downloading: https://repo.maven.apache.org/maven2/io/fabric8/zipkin/packages/distro/0.1.9/distro-0.1.9.pom
+Downloaded: https://repo.maven.apache.org/maven2/io/fabric8/zipkin/packages/distro/0.1.9/distro-0.1.9.pom (3 KB at 1.2 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/fabric8/zipkin/packages/0.1.9/packages-0.1.9.pom
+Downloaded: https://repo.maven.apache.org/maven2/io/fabric8/zipkin/packages/0.1.9/packages-0.1.9.pom (2 KB at 1.3 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/fabric8/zipkin-project/0.1.9/zipkin-project-0.1.9.pom
+Downloaded: https://repo.maven.apache.org/maven2/io/fabric8/zipkin-project/0.1.9/zipkin-project-0.1.9.pom (11 KB at 10.9 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/fabric8/fabric8-project-bom-with-platform-deps/2.2.205/fabric8-project-bom-with-platform-deps-2.2.205.pom
+Downloaded: https://repo.maven.apache.org/maven2/io/fabric8/fabric8-project-bom-with-platform-deps/2.2.205/fabric8-project-bom-with-platform-deps-2.2.205.pom (32 KB at 31.6 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/fabric8/zipkin/packages/zipkin/0.1.9/zipkin-0.1.9.pom
+Downloaded: https://repo.maven.apache.org/maven2/io/fabric8/zipkin/packages/zipkin/0.1.9/zipkin-0.1.9.pom (5 KB at 7.8 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/fabric8/zipkin/packages/distro/0.1.9/distro-0.1.9.templates
+Downloading: https://repo.maven.apache.org/maven2/io/fabric8/zipkin/packages/zipkin/0.1.9/zipkin-0.1.9-kubernetes.json
+Downloading: https://repo1.maven.org/maven2/io/fabric8/zipkin/packages/distro/0.1.9/distro-0.1.9.templates
+Downloaded: https://repo.maven.apache.org/maven2/io/fabric8/zipkin/packages/zipkin/0.1.9/zipkin-0.1.9-kubernetes.json (25 KB at 9.1 KB/sec)
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time: 4.248 s
+[INFO] Finished at: 2017-05-23T08:59:28+00:00
+[INFO] Final Memory: 11M/139M
+[INFO] ------------------------------------------------------------------------
+```
