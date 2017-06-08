@@ -13,6 +13,478 @@ fanhonglingdeMacBook-Pro:bin fanhongling$ curl -jkSL -C- https://github.com/fabr
 
 ## Version 0.4.124
 
+Deploy
+```
+vagrant@vagrant-ubuntu-trusty-64:/work/src/github.com/fabric8io$ gofabric8 deploy --domain=172.17.4.200.xip.io --ingress=true --loadbalancer=false --open-console=false --maven-repo="https://repo1.maven.org/maven2/"
+E0525 05:26:08.825643     962 update.go:78] Get https://api.github.com/repos/fabric8io/gofabric8/releases/latest: net/http: TLS handshake timeout
+             ▄▄▄▄▄▄▄         
+             ███████         
+     ▄▄▄▄▄▄▄ ▄▄▄▄▄▄█         
+     ███████ ▀▀▀▀▀▀▀ ▄▄▄▄▄▄  
+     ▄▄▄▄▄▄▄         ██████  
+   ▄▄▄▄▄             ▄▄▄▄▄▄  
+   ▀▄▄▄▄▄      ▄▄▄       ▄▄▄ 
+    ▀▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄   ▄▄▄▄▄▀
+      ▀▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄█▄▄▀ 
+        ▀▀▄█▄▄▄▄▄▄▄▄▄▄▄▄▄▀   
+          ▄█▄▄▄█▄▄▄█▄▄▄      
+          ▄█▄▄▄▄▄▄▄▄▄▄▄      
+           ▄▄█▄▄▄▄▄▄▄▄       
+            ▄▄▄▄▀▀▄█▄        
+         ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄     
+         ▀▀▀▀▀▀▀▀▀▀▀▀▀▀      
+Deploying fabric8 to your Kubernetes installation at https://172.17.4.200:6443 for domain 172.17.4.200.xip.io in namespace default
+
+Loading fabric8 releases from maven repository:https://repo1.maven.org/maven2/
+Please note that the --app parameter is now deprecated.
+Please use the --package argument to specify a package like `platform`, `console`, `ipaas` or to refer to a URL or file of the YAML package to install
+Continue? [Y/n] y
+Deploying package: platform version: 2.4.24
+
+Now about to install package https://repo1.maven.org/maven2/io/fabric8/platform/packages/fabric8-platform/2.4.24/fabric8-platform-2.4.24-kubernetes.yml
+Processing resource kind: Namespace in namespace default name user-secrets-source-admin
+Found namespace on kind Secret of user-secrets-source-adminProcessing resource kind: Secret in namespace user-secrets-source-admin name default-gogs-git
+Processing resource kind: Secret in namespace default name jenkins-docker-cfg
+Processing resource kind: Secret in namespace default name jenkins-git-ssh
+Processing resource kind: Secret in namespace default name jenkins-hub-api-token
+Processing resource kind: Secret in namespace default name jenkins-master-ssh
+Processing resource kind: Secret in namespace default name jenkins-maven-settings
+Processing resource kind: Secret in namespace default name jenkins-release-gpg
+Processing resource kind: Secret in namespace default name jenkins-ssh-config
+Processing resource kind: ServiceAccount in namespace default name configmapcontroller
+Processing resource kind: ServiceAccount in namespace default name exposecontroller
+Processing resource kind: ServiceAccount in namespace default name fabric8
+Processing resource kind: ServiceAccount in namespace default name gogs
+Processing resource kind: ServiceAccount in namespace default name jenkins
+Processing resource kind: Service in namespace default name fabric8
+Processing resource kind: Service in namespace default name fabric8-docker-registry
+Processing resource kind: Service in namespace default name fabric8-forge
+Processing resource kind: Service in namespace default name gogs
+Processing resource kind: Service in namespace default name gogs-ssh
+Processing resource kind: Service in namespace default name jenkins
+Processing resource kind: Service in namespace default name jenkins-jnlp
+Processing resource kind: Service in namespace default name jenkinshift
+Processing resource kind: Service in namespace default name nexus
+Processing resource kind: PersistentVolumeClaim in namespace default name fabric8-docker-registry-storage
+Processing resource kind: PersistentVolumeClaim in namespace default name gogs-data
+Processing resource kind: PersistentVolumeClaim in namespace default name jenkins-jobs
+Processing resource kind: PersistentVolumeClaim in namespace default name jenkins-mvn-local-repo
+Processing resource kind: PersistentVolumeClaim in namespace default name jenkins-workspace
+Processing resource kind: PersistentVolumeClaim in namespace default name nexus-storage
+Processing resource kind: ConfigMap in namespace default name catalog-apiman
+Processing resource kind: ConfigMap in namespace default name catalog-apiman-gateway
+Processing resource kind: ConfigMap in namespace default name catalog-artifactory
+Processing resource kind: ConfigMap in namespace default name catalog-cd-pipeline
+Processing resource kind: ConfigMap in namespace default name catalog-chaos-monkey
+Processing resource kind: ConfigMap in namespace default name catalog-chat-irc
+Processing resource kind: ConfigMap in namespace default name catalog-chat-letschat
+Processing resource kind: ConfigMap in namespace default name catalog-chat-slack
+Processing resource kind: ConfigMap in namespace default name catalog-configmapcontroller
+Processing resource kind: ConfigMap in namespace default name catalog-content-repository
+Processing resource kind: ConfigMap in namespace default name catalog-elasticsearch
+Processing resource kind: ConfigMap in namespace default name catalog-elasticsearch-v1
+Processing resource kind: ConfigMap in namespace default name catalog-exposecontroller
+Processing resource kind: ConfigMap in namespace default name catalog-fabric8-docker-registry
+Processing resource kind: ConfigMap in namespace default name catalog-fabric8-forge
+Processing resource kind: ConfigMap in namespace default name catalog-fluentd
+Processing resource kind: ConfigMap in namespace default name catalog-funktion
+Processing resource kind: ConfigMap in namespace default name catalog-funktion-operator
+Processing resource kind: ConfigMap in namespace default name catalog-funktion-runtimes
+Processing resource kind: ConfigMap in namespace default name catalog-gerrit
+Processing resource kind: ConfigMap in namespace default name catalog-git-collector
+Processing resource kind: ConfigMap in namespace default name catalog-gitlab
+Processing resource kind: ConfigMap in namespace default name catalog-gogs
+Processing resource kind: ConfigMap in namespace default name catalog-grafana
+Processing resource kind: ConfigMap in namespace default name catalog-ingress-nginx
+Processing resource kind: ConfigMap in namespace default name catalog-jenkins
+Processing resource kind: ConfigMap in namespace default name catalog-keycloak
+Processing resource kind: ConfigMap in namespace default name catalog-kibana
+Processing resource kind: ConfigMap in namespace default name catalog-kiwiirc
+Processing resource kind: ConfigMap in namespace default name catalog-kubeflix
+Processing resource kind: ConfigMap in namespace default name catalog-letschat
+Processing resource kind: ConfigMap in namespace default name catalog-logging
+Processing resource kind: ConfigMap in namespace default name catalog-manageiq
+Processing resource kind: ConfigMap in namespace default name catalog-management
+Processing resource kind: ConfigMap in namespace default name catalog-maven-shell
+Processing resource kind: ConfigMap in namespace default name catalog-message-broker
+Processing resource kind: ConfigMap in namespace default name catalog-message-gateway
+Processing resource kind: ConfigMap in namespace default name catalog-messaging
+Processing resource kind: ConfigMap in namespace default name catalog-metrics
+Processing resource kind: ConfigMap in namespace default name catalog-nexus
+Processing resource kind: ConfigMap in namespace default name catalog-prometheus
+Processing resource kind: ConfigMap in namespace default name catalog-prometheus-blackbox-exporter
+Processing resource kind: ConfigMap in namespace default name catalog-prometheus-node-exporter
+Processing resource kind: ConfigMap in namespace default name catalog-social
+Processing resource kind: ConfigMap in namespace default name catalog-taiga
+Processing resource kind: ConfigMap in namespace default name catalog-turbine-server
+Processing resource kind: ConfigMap in namespace default name catalog-zipkin
+Processing resource kind: ConfigMap in namespace default name catalog-zookeeper
+Processing resource kind: ConfigMap in namespace default name exposecontroller
+Processing resource kind: ConfigMap in namespace default name fabric8
+Processing resource kind: ConfigMap in namespace default name fabric8-environments
+Processing resource kind: ConfigMap in namespace default name fabric8-forge
+Found namespace on kind ConfigMap of user-secrets-source-adminProcessing resource kind: ConfigMap in namespace user-secrets-source-admin name fabric8-git-app-secrets
+Processing resource kind: ConfigMap in namespace default name fabric8-platform
+Processing resource kind: ConfigMap in namespace default name gogs
+Processing resource kind: ConfigMap in namespace default name jenkins
+Processing resource kind: Deployment in namespace default name configmapcontroller
+Processing resource kind: Deployment in namespace default name exposecontroller
+Processing resource kind: Deployment in namespace default name fabric8
+Processing resource kind: Deployment in namespace default name fabric8-docker-registry
+Processing resource kind: Deployment in namespace default name fabric8-forge
+Processing resource kind: Deployment in namespace default name gogs
+Processing resource kind: Deployment in namespace default name jenkins
+Processing resource kind: Deployment in namespace default name nexus
+platform......................................................................✔ 
+Creating new Namespace: fabric8-system
+ns is default
+
+
+Installing: ingress-nginx
+
+Creating ingress-nginx template resources in namespace default from 3 objects
+Processing resource kind: Namespace in namespace default name fabric8-system
+Processing resource kind: ConfigMap in namespace fabric8-system name nginx-config
+Processing resource kind: Deployment in namespace fabric8-system name ingress-nginx
+ingress-nginx.................................................................✔ 
+
+Recreating configmap exposecontroller 
+
+-------------------------
+
+Deploying ingress controller on node 172.17.4.200 use its external ip when configuring your wildcard DNS.
+To change node move the label: `kubectl label node 172.17.4.200 fabric8.io/externalIP- && kubectl label node $YOUR_NEW_NODE fabric8.io/externalIP=true`
+
+Default GOGS admin username/password = gogsadmin/RedHat$1
+
+Checking if PersistentVolumeClaims bind to a PersistentVolume 
+Downloading images and waiting to open the fabric8 console...
+
+-------------------------
+```
+
+iPaaS
+```
+vagrant@vagrant-ubuntu-trusty-64:/work/src/github.com/tangfeixiong/go-to-kubernetes/examples/fabric8io$ 
+vagrant@vagrant-ubuntu-trusty-64:/work/src/github.com/tangfeixiong/go-to-kubernetes/examples/fabric8io$ gofabric8 deploy --domain 172.17.4.200.xip.io --ingress true --package ipaas --maven-repo https://repo1.maven.org/maven2/
+             ▄▄▄▄▄▄▄         
+             ███████         
+     ▄▄▄▄▄▄▄ ▄▄▄▄▄▄█         
+     ███████ ▀▀▀▀▀▀▀ ▄▄▄▄▄▄  
+     ▄▄▄▄▄▄▄         ██████  
+   ▄▄▄▄▄             ▄▄▄▄▄▄  
+   ▀▄▄▄▄▄      ▄▄▄       ▄▄▄ 
+    ▀▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄   ▄▄▄▄▄▀
+      ▀▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄█▄▄▀ 
+        ▀▀▄█▄▄▄▄▄▄▄▄▄▄▄▄▄▀   
+          ▄█▄▄▄█▄▄▄█▄▄▄      
+          ▄█▄▄▄▄▄▄▄▄▄▄▄      
+           ▄▄█▄▄▄▄▄▄▄▄       
+            ▄▄▄▄▀▀▄█▄        
+         ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄     
+         ▀▀▀▀▀▀▀▀▀▀▀▀▀▀      
+Deploying fabric8 to your Kubernetes installation at https://172.17.4.200:6443 for domain 172.17.4.200.xip.io in namespace default
+
+Loading fabric8 releases from maven repository:https://repo1.maven.org/maven2/
+Please note that the --app parameter is now deprecated.
+Please use the --package argument to specify a package like `platform`, `console`, `ipaas` or to refer to a URL or file of the YAML package to install
+Continue? [Y/n] y
+Deploying package: ipaas version: 1.0.32
+
+Now about to install package https://repo1.maven.org/maven2/io/fabric8/ipaas/platform/packages/ipaas-platform/1.0.32/ipaas-platform-1.0.32-kubernetes.yml
+Processing resource kind: Namespace in namespace default name user-secrets-source-admin
+Failed to create Namespace: Failed to create Namespace: 0 namespaces "user-secrets-source-admin" already exists
+Found namespace on kind Secret of user-secrets-source-adminProcessing resource kind: Secret in namespace user-secrets-source-admin name default-gogs-git
+Failed to create Secret: Failed to create Secret: 0 secrets "default-gogs-git" already exists
+Processing resource kind: Secret in namespace default name jenkins-maven-settings
+Failed to create Secret: Failed to create Secret: 0 secrets "jenkins-maven-settings" already exists
+Processing resource kind: ServiceAccount in namespace default name configmapcontroller
+Failed to create ServiceAccount: Failed to create ServiceAccount: 0 serviceaccounts "configmapcontroller" already exists
+Processing resource kind: ServiceAccount in namespace default name exposecontroller
+Failed to create ServiceAccount: Failed to create ServiceAccount: 0 serviceaccounts "exposecontroller" already exists
+Processing resource kind: ServiceAccount in namespace default name fabric8
+Failed to create ServiceAccount: Failed to create ServiceAccount: 0 serviceaccounts "fabric8" already exists
+Processing resource kind: ServiceAccount in namespace default name gogs
+Failed to create ServiceAccount: Failed to create ServiceAccount: 0 serviceaccounts "gogs" already exists
+Processing resource kind: ServiceAccount in namespace default name jenkins
+Failed to create ServiceAccount: Failed to create ServiceAccount: 0 serviceaccounts "jenkins" already exists
+Processing resource kind: Service in namespace default name fabric8
+Failed to create Service: Failed to create Service: 0 services "fabric8" already exists
+Processing resource kind: Service in namespace default name fabric8-forge
+Failed to create Service: Failed to create Service: 0 services "fabric8-forge" already exists
+Processing resource kind: Service in namespace default name gogs
+Failed to create Service: Failed to create Service: 0 services "gogs" already exists
+Processing resource kind: Service in namespace default name gogs-ssh
+Failed to create Service: Failed to create Service: 0 services "gogs-ssh" already exists
+Processing resource kind: Service in namespace default name ipaas-console
+Processing resource kind: Service in namespace default name jenkins
+Failed to create Service: Failed to create Service: 0 services "jenkins" already exists
+Processing resource kind: Service in namespace default name jenkins-jnlp
+Failed to create Service: Failed to create Service: 0 services "jenkins-jnlp" already exists
+Processing resource kind: Service in namespace default name jenkinshift
+Failed to create Service: Failed to create Service: 0 services "jenkinshift" already exists
+Processing resource kind: Service in namespace default name nexus
+Failed to create Service: Failed to create Service: 0 services "nexus" already exists
+Processing resource kind: PersistentVolumeClaim in namespace default name gogs-data
+Failed to create PersistentVolumeClaim: Failed to create PersistentVolumeClaim: 0 persistentvolumeclaims "gogs-data" already exists
+Processing resource kind: PersistentVolumeClaim in namespace default name jenkins-jobs
+Failed to create PersistentVolumeClaim: Failed to create PersistentVolumeClaim: 0 persistentvolumeclaims "jenkins-jobs" already exists
+Processing resource kind: PersistentVolumeClaim in namespace default name jenkins-mvn-local-repo
+Failed to create PersistentVolumeClaim: Failed to create PersistentVolumeClaim: 0 persistentvolumeclaims "jenkins-mvn-local-repo" already exists
+Processing resource kind: PersistentVolumeClaim in namespace default name jenkins-workspace
+Failed to create PersistentVolumeClaim: Failed to create PersistentVolumeClaim: 0 persistentvolumeclaims "jenkins-workspace" already exists
+Processing resource kind: PersistentVolumeClaim in namespace default name nexus-storage
+Failed to create PersistentVolumeClaim: Failed to create PersistentVolumeClaim: 0 persistentvolumeclaims "nexus-storage" already exists
+Processing resource kind: ConfigMap in namespace default name exposecontroller
+Failed to create ConfigMap: Failed to create ConfigMap: 0 configmaps "exposecontroller" already exists
+Processing resource kind: ConfigMap in namespace default name fabric8
+Failed to create ConfigMap: Failed to create ConfigMap: 0 configmaps "fabric8" already exists
+Processing resource kind: ConfigMap in namespace default name fabric8-environments
+Failed to create ConfigMap: Failed to create ConfigMap: 0 configmaps "fabric8-environments" already exists
+Processing resource kind: ConfigMap in namespace default name fabric8-forge
+Failed to create ConfigMap: Failed to create ConfigMap: 0 configmaps "fabric8-forge" already exists
+Found namespace on kind ConfigMap of user-secrets-source-adminProcessing resource kind: ConfigMap in namespace user-secrets-source-admin name fabric8-git-app-secrets
+Failed to create ConfigMap: Failed to create ConfigMap: 0 configmaps "fabric8-git-app-secrets" already exists
+Processing resource kind: ConfigMap in namespace default name gogs
+Failed to create ConfigMap: Failed to create ConfigMap: 0 configmaps "gogs" already exists
+Processing resource kind: Deployment in namespace default name configmapcontroller
+Failed to create Deployment: Failed to create Deployment: 0 deployments.extensions "configmapcontroller" already exists
+Processing resource kind: Deployment in namespace default name exposecontroller
+Failed to create Deployment: Failed to create Deployment: 0 deployments.extensions "exposecontroller" already exists
+Processing resource kind: Deployment in namespace default name fabric8
+Failed to create Deployment: Failed to create Deployment: 0 deployments.extensions "fabric8" already exists
+Processing resource kind: Deployment in namespace default name fabric8-forge
+Failed to create Deployment: Failed to create Deployment: 0 deployments.extensions "fabric8-forge" already exists
+Processing resource kind: Deployment in namespace default name gogs
+Failed to create Deployment: Failed to create Deployment: 0 Deployment.extensions "gogs" is invalid: spec.template.spec.initContainers[0].imagePullPolicy: Required value
+Processing resource kind: Deployment in namespace default name ipaas-console
+Processing resource kind: Deployment in namespace default name jenkins
+Failed to create Deployment: Failed to create Deployment: 0 Deployment.extensions "jenkins" is invalid: spec.template.spec.initContainers[0].imagePullPolicy: Required value
+Processing resource kind: Deployment in namespace default name nexus
+Failed to create Deployment: Failed to create Deployment: 0 Deployment.extensions "nexus" is invalid: spec.template.spec.initContainers[0].imagePullPolicy: Required value
+ipaas.........................................................................✔ 
+Creating new Namespace: fabric8-system
+ns is default
+
+
+Installing: ingress-nginx
+
+Creating ingress-nginx template resources in namespace default from 3 objects
+Processing resource kind: Namespace in namespace default name fabric8-system
+Processing resource kind: ConfigMap in namespace fabric8-system name nginx-config
+Processing resource kind: Deployment in namespace fabric8-system name ingress-nginx
+ingress-nginx.................................................................✔ 
+
+Recreating configmap exposecontroller 
+
+-------------------------
+
+Deploying ingress controller on node 172.17.4.200 use its external ip when configuring your wildcard DNS.
+To change node move the label: `kubectl label node 172.17.4.200 fabric8.io/externalIP- && kubectl label node $YOUR_NEW_NODE fabric8.io/externalIP=true`
+
+Default GOGS admin username/password = gogsadmin/RedHat$1
+
+Checking if PersistentVolumeClaims bind to a PersistentVolume 
+Downloading images and waiting to open the fabric8 console...
+
+-------------------------
+
+Opening URL http://fabric8.default.172.17.4.200.xip.io
+```
+
+
+_Ingress_ 
+```
+vagrant@vagrant-ubuntu-trusty-64:~$ gofabric8 ingress --domain 172.17.4.200.xip.io
+             ▄▄▄▄▄▄▄         
+             ███████         
+     ▄▄▄▄▄▄▄ ▄▄▄▄▄▄█         
+     ███████ ▀▀▀▀▀▀▀ ▄▄▄▄▄▄  
+     ▄▄▄▄▄▄▄         ██████  
+   ▄▄▄▄▄             ▄▄▄▄▄▄  
+   ▀▄▄▄▄▄      ▄▄▄       ▄▄▄ 
+    ▀▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄   ▄▄▄▄▄▀
+      ▀▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄█▄▄▀ 
+        ▀▀▄█▄▄▄▄▄▄▄▄▄▄▄▄▄▀   
+          ▄█▄▄▄█▄▄▄█▄▄▄      
+          ▄█▄▄▄▄▄▄▄▄▄▄▄      
+           ▄▄█▄▄▄▄▄▄▄▄       
+            ▄▄▄▄▀▀▄█▄        
+         ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄     
+         ▀▀▀▀▀▀▀▀▀▀▀▀▀▀      
+Setting up ingress on your Kubernetes installation at https://172.17.4.200:6443 in namespace default at domain 172.17.4.200.xip.io
+
+Create Ingress................................................................✔ 
+vagrant@vagrant-ubuntu-trusty-64:~$ 
+```
+
+Console
+```
+vagrant@vagrant-ubuntu-trusty-64:/work/src/github.com/tangfeixiong/go-to-kubernetes/examples/fabric8io$ gofabric8 deploy --domain 172.17.4.200.xip.io --ingress true --package console --maven-repo https://repo1.maven.org/maven2/
+             ▄▄▄▄▄▄▄         
+             ███████         
+     ▄▄▄▄▄▄▄ ▄▄▄▄▄▄█         
+     ███████ ▀▀▀▀▀▀▀ ▄▄▄▄▄▄  
+     ▄▄▄▄▄▄▄         ██████  
+   ▄▄▄▄▄             ▄▄▄▄▄▄  
+   ▀▄▄▄▄▄      ▄▄▄       ▄▄▄ 
+    ▀▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄   ▄▄▄▄▄▀
+      ▀▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄█▄▄▀ 
+        ▀▀▄█▄▄▄▄▄▄▄▄▄▄▄▄▄▀   
+          ▄█▄▄▄█▄▄▄█▄▄▄      
+          ▄█▄▄▄▄▄▄▄▄▄▄▄      
+           ▄▄█▄▄▄▄▄▄▄▄       
+            ▄▄▄▄▀▀▄█▄        
+         ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄     
+         ▀▀▀▀▀▀▀▀▀▀▀▀▀▀      
+Deploying fabric8 to your Kubernetes installation at https://172.17.4.200:6443 for domain 172.17.4.200.xip.io in namespace default
+
+Loading fabric8 releases from maven repository:https://repo1.maven.org/maven2/
+Please note that the --app parameter is now deprecated.
+Please use the --package argument to specify a package like `platform`, `console`, `ipaas` or to refer to a URL or file of the YAML package to install
+Continue? [Y/n] y
+Deploying package: console version: 2.4.24
+
+Now about to install package https://repo1.maven.org/maven2/io/fabric8/platform/packages/console/2.4.24/console-2.4.24-kubernetes.yml
+Processing resource kind: Namespace in namespace default name user-secrets-source-admin
+Failed to create Namespace: Failed to create Namespace: 0 namespaces "user-secrets-source-admin" already exists
+Processing resource kind: ServiceAccount in namespace default name fabric8
+Failed to create ServiceAccount: Failed to create ServiceAccount: 0 serviceaccounts "fabric8" already exists
+Processing resource kind: Service in namespace default name fabric8
+Failed to create Service: Failed to create Service: 0 services "fabric8" already exists
+Processing resource kind: Service in namespace default name jenkinshift
+Failed to create Service: Failed to create Service: 0 services "jenkinshift" already exists
+Processing resource kind: ConfigMap in namespace default name catalog-apiman
+Failed to create ConfigMap: Failed to create ConfigMap: 0 configmaps "catalog-apiman" already exists
+Processing resource kind: ConfigMap in namespace default name catalog-apiman-gateway
+Failed to create ConfigMap: Failed to create ConfigMap: 0 configmaps "catalog-apiman-gateway" already exists
+Processing resource kind: ConfigMap in namespace default name catalog-artifactory
+Failed to create ConfigMap: Failed to create ConfigMap: 0 configmaps "catalog-artifactory" already exists
+Processing resource kind: ConfigMap in namespace default name catalog-cd-pipeline
+Failed to create ConfigMap: Failed to create ConfigMap: 0 configmaps "catalog-cd-pipeline" already exists
+Processing resource kind: ConfigMap in namespace default name catalog-chaos-monkey
+Failed to create ConfigMap: Failed to create ConfigMap: 0 configmaps "catalog-chaos-monkey" already exists
+Processing resource kind: ConfigMap in namespace default name catalog-chat-irc
+Failed to create ConfigMap: Failed to create ConfigMap: 0 configmaps "catalog-chat-irc" already exists
+Processing resource kind: ConfigMap in namespace default name catalog-chat-letschat
+Failed to create ConfigMap: Failed to create ConfigMap: 0 configmaps "catalog-chat-letschat" already exists
+Processing resource kind: ConfigMap in namespace default name catalog-chat-slack
+Failed to create ConfigMap: Failed to create ConfigMap: 0 configmaps "catalog-chat-slack" already exists
+Processing resource kind: ConfigMap in namespace default name catalog-configmapcontroller
+Failed to create ConfigMap: Failed to create ConfigMap: 0 configmaps "catalog-configmapcontroller" already exists
+Processing resource kind: ConfigMap in namespace default name catalog-content-repository
+Failed to create ConfigMap: Failed to create ConfigMap: 0 configmaps "catalog-content-repository" already exists
+Processing resource kind: ConfigMap in namespace default name catalog-elasticsearch
+Failed to create ConfigMap: Failed to create ConfigMap: 0 configmaps "catalog-elasticsearch" already exists
+Processing resource kind: ConfigMap in namespace default name catalog-elasticsearch-v1
+Failed to create ConfigMap: Failed to create ConfigMap: 0 configmaps "catalog-elasticsearch-v1" already exists
+Processing resource kind: ConfigMap in namespace default name catalog-exposecontroller
+Failed to create ConfigMap: Failed to create ConfigMap: 0 configmaps "catalog-exposecontroller" already exists
+Processing resource kind: ConfigMap in namespace default name catalog-fabric8-docker-registry
+Failed to create ConfigMap: Failed to create ConfigMap: 0 configmaps "catalog-fabric8-docker-registry" already exists
+Processing resource kind: ConfigMap in namespace default name catalog-fabric8-forge
+Failed to create ConfigMap: Failed to create ConfigMap: 0 configmaps "catalog-fabric8-forge" already exists
+Processing resource kind: ConfigMap in namespace default name catalog-fluentd
+Failed to create ConfigMap: Failed to create ConfigMap: 0 configmaps "catalog-fluentd" already exists
+Processing resource kind: ConfigMap in namespace default name catalog-funktion
+Failed to create ConfigMap: Failed to create ConfigMap: 0 configmaps "catalog-funktion" already exists
+Processing resource kind: ConfigMap in namespace default name catalog-funktion-operator
+Failed to create ConfigMap: Failed to create ConfigMap: 0 configmaps "catalog-funktion-operator" already exists
+Processing resource kind: ConfigMap in namespace default name catalog-funktion-runtimes
+Failed to create ConfigMap: Failed to create ConfigMap: 0 configmaps "catalog-funktion-runtimes" already exists
+Processing resource kind: ConfigMap in namespace default name catalog-gerrit
+Failed to create ConfigMap: Failed to create ConfigMap: 0 configmaps "catalog-gerrit" already exists
+Processing resource kind: ConfigMap in namespace default name catalog-git-collector
+Failed to create ConfigMap: Failed to create ConfigMap: 0 configmaps "catalog-git-collector" already exists
+Processing resource kind: ConfigMap in namespace default name catalog-gitlab
+Failed to create ConfigMap: Failed to create ConfigMap: 0 configmaps "catalog-gitlab" already exists
+Processing resource kind: ConfigMap in namespace default name catalog-gogs
+Failed to create ConfigMap: Failed to create ConfigMap: 0 configmaps "catalog-gogs" already exists
+Processing resource kind: ConfigMap in namespace default name catalog-grafana
+Failed to create ConfigMap: Failed to create ConfigMap: 0 configmaps "catalog-grafana" already exists
+Processing resource kind: ConfigMap in namespace default name catalog-ingress-nginx
+Failed to create ConfigMap: Failed to create ConfigMap: 0 configmaps "catalog-ingress-nginx" already exists
+Processing resource kind: ConfigMap in namespace default name catalog-jenkins
+Failed to create ConfigMap: Failed to create ConfigMap: 0 configmaps "catalog-jenkins" already exists
+Processing resource kind: ConfigMap in namespace default name catalog-keycloak
+Failed to create ConfigMap: Failed to create ConfigMap: 0 configmaps "catalog-keycloak" already exists
+Processing resource kind: ConfigMap in namespace default name catalog-kibana
+Failed to create ConfigMap: Failed to create ConfigMap: 0 configmaps "catalog-kibana" already exists
+Processing resource kind: ConfigMap in namespace default name catalog-kiwiirc
+Failed to create ConfigMap: Failed to create ConfigMap: 0 configmaps "catalog-kiwiirc" already exists
+Processing resource kind: ConfigMap in namespace default name catalog-kubeflix
+Failed to create ConfigMap: Failed to create ConfigMap: 0 configmaps "catalog-kubeflix" already exists
+Processing resource kind: ConfigMap in namespace default name catalog-letschat
+Failed to create ConfigMap: Failed to create ConfigMap: 0 configmaps "catalog-letschat" already exists
+Processing resource kind: ConfigMap in namespace default name catalog-logging
+Failed to create ConfigMap: Failed to create ConfigMap: 0 configmaps "catalog-logging" already exists
+Processing resource kind: ConfigMap in namespace default name catalog-manageiq
+Failed to create ConfigMap: Failed to create ConfigMap: 0 configmaps "catalog-manageiq" already exists
+Processing resource kind: ConfigMap in namespace default name catalog-management
+Failed to create ConfigMap: Failed to create ConfigMap: 0 configmaps "catalog-management" already exists
+Processing resource kind: ConfigMap in namespace default name catalog-maven-shell
+Failed to create ConfigMap: Failed to create ConfigMap: 0 configmaps "catalog-maven-shell" already exists
+Processing resource kind: ConfigMap in namespace default name catalog-message-broker
+Failed to create ConfigMap: Failed to create ConfigMap: 0 configmaps "catalog-message-broker" already exists
+Processing resource kind: ConfigMap in namespace default name catalog-message-gateway
+Failed to create ConfigMap: Failed to create ConfigMap: 0 configmaps "catalog-message-gateway" already exists
+Processing resource kind: ConfigMap in namespace default name catalog-messaging
+Failed to create ConfigMap: Failed to create ConfigMap: 0 configmaps "catalog-messaging" already exists
+Processing resource kind: ConfigMap in namespace default name catalog-metrics
+Failed to create ConfigMap: Failed to create ConfigMap: 0 configmaps "catalog-metrics" already exists
+Processing resource kind: ConfigMap in namespace default name catalog-nexus
+Failed to create ConfigMap: Failed to create ConfigMap: 0 configmaps "catalog-nexus" already exists
+Processing resource kind: ConfigMap in namespace default name catalog-prometheus
+Failed to create ConfigMap: Failed to create ConfigMap: 0 configmaps "catalog-prometheus" already exists
+Processing resource kind: ConfigMap in namespace default name catalog-prometheus-blackbox-exporter
+Failed to create ConfigMap: Failed to create ConfigMap: 0 configmaps "catalog-prometheus-blackbox-exporter" already exists
+Processing resource kind: ConfigMap in namespace default name catalog-prometheus-node-exporter
+Failed to create ConfigMap: Failed to create ConfigMap: 0 configmaps "catalog-prometheus-node-exporter" already exists
+Processing resource kind: ConfigMap in namespace default name catalog-social
+Failed to create ConfigMap: Failed to create ConfigMap: 0 configmaps "catalog-social" already exists
+Processing resource kind: ConfigMap in namespace default name catalog-taiga
+Failed to create ConfigMap: Failed to create ConfigMap: 0 configmaps "catalog-taiga" already exists
+Processing resource kind: ConfigMap in namespace default name catalog-turbine-server
+Failed to create ConfigMap: Failed to create ConfigMap: 0 configmaps "catalog-turbine-server" already exists
+Processing resource kind: ConfigMap in namespace default name catalog-zipkin
+Failed to create ConfigMap: Failed to create ConfigMap: 0 configmaps "catalog-zipkin" already exists
+Processing resource kind: ConfigMap in namespace default name catalog-zookeeper
+Failed to create ConfigMap: Failed to create ConfigMap: 0 configmaps "catalog-zookeeper" already exists
+Processing resource kind: ConfigMap in namespace default name fabric8
+Failed to create ConfigMap: Failed to create ConfigMap: 0 configmaps "fabric8" already exists
+Processing resource kind: ConfigMap in namespace default name fabric8-environments
+Failed to create ConfigMap: Failed to create ConfigMap: 0 configmaps "fabric8-environments" already exists
+Processing resource kind: Deployment in namespace default name fabric8
+Failed to create Deployment: Failed to create Deployment: 0 deployments.extensions "fabric8" already exists
+console.......................................................................✔ 
+ns is default
+
+
+Installing: ingress-nginx
+
+Creating ingress-nginx template resources in namespace default from 3 objects
+Processing resource kind: Namespace in namespace default name fabric8-system
+Processing resource kind: ConfigMap in namespace fabric8-system name nginx-config
+Processing resource kind: Deployment in namespace fabric8-system name ingress-nginx
+ingress-nginx.................................................................✘ Failed to create Deployment: 0 deployments.extensions "ingress-nginx" already exists
+
+Recreating configmap exposecontroller 
+
+-------------------------
+
+Deploying ingress controller on node 172.17.4.200 use its external ip when configuring your wildcard DNS.
+To change node move the label: `kubectl label node 172.17.4.200 fabric8.io/externalIP- && kubectl label node $YOUR_NEW_NODE fabric8.io/externalIP=true`
+
+Default GOGS admin username/password = gogsadmin/RedHat$1
+
+Checking if PersistentVolumeClaims bind to a PersistentVolume 
+Downloading images and waiting to open the fabric8 console...
+
+-------------------------
+
+Opening URL http://fabric8.default.172.17.4.200.xip.io
+```
+
 Make 
 ```
 fanhonglingdeMacBook-Pro:gofabric8 fanhongling$ make bootstrap

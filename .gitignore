@@ -3,7 +3,7 @@ java-devel/**/.project
 java-devel/**/.settings/
 java-devel/**/target/
 **/.gradle
-
+**/*.war
 **/*.rtf
 
 /bin

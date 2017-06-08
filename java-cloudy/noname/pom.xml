@@ -74,6 +74,11 @@
 			<name>spring-plugins-snapshot</name>
 			<url>https://repo.spring.io/plugins-snapshot</url>
 	    </repository>
+		<repository>
+		    <id>sonatype-snapshots</id>
+			<name>sonatype-snapshots</name>
+			<url>https://oss.sonatype.org/content/repositories/snapshots/</url>
+		</repository>	
     </repositories>
 
 	<build>

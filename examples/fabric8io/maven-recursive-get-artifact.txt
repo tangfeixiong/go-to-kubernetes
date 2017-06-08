@@ -6,6 +6,197 @@ http://maven.apache.org/plugins/maven-dependency-plugin/usage.html
 
 ## Content
 
+### https://repo1.maven.org/maven2/io/fabric8/platform/packages/fabric8-platform/2.4.24/
+
+__kubernetes__
+```
+fanhonglingdeMacBook-Pro:99-mirror fanhongling$ mvn dependency:get -DremoteRepositories=https://repo1.maven.org/maven2/ -Dartifact=io.fabric8.platform.packages:fabric8-platform:2.4.24:yml:kubernetes
+[INFO] Scanning for projects...
+[INFO]                                                                         
+[INFO] ------------------------------------------------------------------------
+[INFO] Building Maven Stub Project (No POM) 1
+[INFO] ------------------------------------------------------------------------
+[INFO] 
+[INFO] --- maven-dependency-plugin:2.8:get (default-cli) @ standalone-pom ---
+[INFO] Resolving io.fabric8.platform.packages:fabric8-platform:yml:kubernetes:2.4.24 with transitive dependencies
+Downloading: https://repo.maven.apache.org/maven2/io/fabric8/platform/packages/fabric8-platform/2.4.24/fabric8-platform-2.4.24.pom
+Downloaded: https://repo.maven.apache.org/maven2/io/fabric8/platform/packages/fabric8-platform/2.4.24/fabric8-platform-2.4.24.pom (3 KB at 0.4 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/fabric8/platform/packages/packages/2.4.24/packages-2.4.24.pom
+Downloaded: https://repo.maven.apache.org/maven2/io/fabric8/platform/packages/packages/2.4.24/packages-2.4.24.pom (3 KB at 3.5 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/fabric8/platform/parent/2.4.24/parent-2.4.24.pom
+Downloaded: https://repo.maven.apache.org/maven2/io/fabric8/platform/parent/2.4.24/parent-2.4.24.pom (12 KB at 3.1 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/fabric8/platform/packages/console/2.4.24/console-2.4.24.pom
+Downloaded: https://repo.maven.apache.org/maven2/io/fabric8/platform/packages/console/2.4.24/console-2.4.24.pom (3 KB at 2.9 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/fabric8/platform/packages/cd-pipeline/2.4.24/cd-pipeline-2.4.24.pom
+Downloaded: https://repo.maven.apache.org/maven2/io/fabric8/platform/packages/cd-pipeline/2.4.24/cd-pipeline-2.4.24.pom (4 KB at 3.6 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/fabric8/devops/apps/configmapcontroller/2.2.311/configmapcontroller-2.2.311.pom
+Downloaded: https://repo.maven.apache.org/maven2/io/fabric8/devops/apps/configmapcontroller/2.2.311/configmapcontroller-2.2.311.pom (3 KB at 2.9 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/fabric8/devops/apps/fabric8-devops/2.2.311/fabric8-devops-2.2.311.pom
+Downloaded: https://repo.maven.apache.org/maven2/io/fabric8/devops/apps/fabric8-devops/2.2.311/fabric8-devops-2.2.311.pom (17 KB at 4.8 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/fabric8/devops/apps/exposecontroller/2.2.311/exposecontroller-2.2.311.pom
+Downloaded: https://repo.maven.apache.org/maven2/io/fabric8/devops/apps/exposecontroller/2.2.311/exposecontroller-2.2.311.pom (3 KB at 3.1 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/fabric8/platform/packages/console/2.4.24/console-2.4.24.jar
+Downloading: https://repo.maven.apache.org/maven2/io/fabric8/platform/packages/fabric8-platform/2.4.24/fabric8-platform-2.4.24-kubernetes.yml
+Downloading: https://repo.maven.apache.org/maven2/io/fabric8/devops/apps/configmapcontroller/2.2.311/configmapcontroller-2.2.311.jar
+Downloading: https://repo.maven.apache.org/maven2/io/fabric8/devops/apps/exposecontroller/2.2.311/exposecontroller-2.2.311.jar
+Downloading: https://repo.maven.apache.org/maven2/io/fabric8/platform/packages/cd-pipeline/2.4.24/cd-pipeline-2.4.24.jar
+Downloaded: https://repo.maven.apache.org/maven2/io/fabric8/devops/apps/exposecontroller/2.2.311/exposecontroller-2.2.311.jar (21 KB at 11.2 KB/sec)
+Downloaded: https://repo.maven.apache.org/maven2/io/fabric8/platform/packages/cd-pipeline/2.4.24/cd-pipeline-2.4.24.jar (69 KB at 27.1 KB/sec)
+Downloaded: https://repo.maven.apache.org/maven2/io/fabric8/devops/apps/configmapcontroller/2.2.311/configmapcontroller-2.2.311.jar (245 KB at 18.3 KB/sec)
+Downloaded: https://repo.maven.apache.org/maven2/io/fabric8/platform/packages/console/2.4.24/console-2.4.24.jar (425 KB at 31.6 KB/sec)
+Downloaded: https://repo.maven.apache.org/maven2/io/fabric8/platform/packages/fabric8-platform/2.4.24/fabric8-platform-2.4.24-kubernetes.yml (987 KB at 31.8 KB/sec)
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time: 51.688 s
+[INFO] Finished at: 2017-05-25T02:33:45-07:00
+[INFO] Final Memory: 14M/331M
+[INFO] ------------------------------------------------------------------------
+```
+
+__openshift__
+```
+fanhonglingdeMacBook-Pro:99-mirror fanhongling$ mvn dependency:get -DremoteRepositories=https://repo1.maven.org/maven2/ -Dartifact=io.fabric8.platform.packages:fabric8-platform:2.4.24:json:openshift
+[INFO] Scanning for projects...
+[INFO]                                                                         
+[INFO] ------------------------------------------------------------------------
+[INFO] Building Maven Stub Project (No POM) 1
+[INFO] ------------------------------------------------------------------------
+[INFO] 
+[INFO] --- maven-dependency-plugin:2.8:get (default-cli) @ standalone-pom ---
+[INFO] Resolving io.fabric8.platform.packages:fabric8-platform:json:openshift:2.4.24 with transitive dependencies
+Downloading: https://repo.maven.apache.org/maven2/io/fabric8/platform/packages/fabric8-platform/2.4.24/fabric8-platform-2.4.24-openshift.json
+Downloaded: https://repo.maven.apache.org/maven2/io/fabric8/platform/packages/fabric8-platform/2.4.24/fabric8-platform-2.4.24-openshift.json (583 KB at 31.0 KB/sec)
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time: 22.594 s
+[INFO] Finished at: 2017-05-25T02:35:19-07:00
+[INFO] Final Memory: 15M/316M
+[INFO] ------------------------------------------------------------------------
+```
+
+### https://repo1.maven.org/maven2/io/fabric8/platform/packages/console/2.4.24/
+
+__kubernetes__
+```
+fanhonglingdeMacBook-Pro:99-mirror fanhongling$ mvn dependency:get -DremoteRepositories=https://repo1.maven.org/maven2/ -Dartifact=io.fabric8.platform.packages:console:2.4.24:yml:kubernetes
+[INFO] Scanning for projects...
+[INFO]                                                                         
+[INFO] ------------------------------------------------------------------------
+[INFO] Building Maven Stub Project (No POM) 1
+[INFO] ------------------------------------------------------------------------
+[INFO] 
+[INFO] --- maven-dependency-plugin:2.8:get (default-cli) @ standalone-pom ---
+[INFO] Resolving io.fabric8.platform.packages:console:yml:kubernetes:2.4.24 with transitive dependencies
+Downloading: https://repo.maven.apache.org/maven2/io/fabric8/platform/packages/console/2.4.24/console-2.4.24-kubernetes.yml
+Downloaded: https://repo.maven.apache.org/maven2/io/fabric8/platform/packages/console/2.4.24/console-2.4.24-kubernetes.yml (945 KB at 16.4 KB/sec)
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time: 59.891 s
+[INFO] Finished at: 2017-05-25T20:57:53-07:00
+[INFO] Final Memory: 14M/309M
+[INFO] ------------------------------------------------------------------------
+```
+
+__openshift__
+```
+fanhonglingdeMacBook-Pro:99-mirror fanhongling$ mvn dependency:get -DremoteRepositories=https://repo1.maven.org/maven2/ -Dartifact=io.fabric8.platform.packages:console:2.4.24:yml:openshift
+[INFO] Scanning for projects...
+[INFO]                                                                         
+[INFO] ------------------------------------------------------------------------
+[INFO] Building Maven Stub Project (No POM) 1
+[INFO] ------------------------------------------------------------------------
+[INFO] 
+[INFO] --- maven-dependency-plugin:2.8:get (default-cli) @ standalone-pom ---
+[INFO] Resolving io.fabric8.platform.packages:console:yml:openshift:2.4.24 with transitive dependencies
+Downloading: https://repo.maven.apache.org/maven2/io/fabric8/platform/packages/console/2.4.24/console-2.4.24-openshift.yml
+Downloaded: https://repo.maven.apache.org/maven2/io/fabric8/platform/packages/console/2.4.24/console-2.4.24-openshift.yml (416 KB at 3.9 KB/sec)
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time: 01:48 min
+[INFO] Finished at: 2017-05-25T20:56:15-07:00
+[INFO] Final Memory: 15M/331M
+[INFO] ------------------------------------------------------------------------
+```
+
+### https://repo1.maven.org/maven2/io/fabric8/ipaas/platform/packages/ipaas-platform/1.0.32/
+
+__kubernetes__
+```
+fanhonglingdeMacBook-Pro:99-mirror fanhongling$ mvn dependency:get -DremoteRepositories=https://repo1.maven.org/maven2/ -Dartifact=io.fabric8.ipaas.platform.packages:ipaas-platform:1.0.32:yml:kubernetes
+[INFO] Scanning for projects...
+[INFO]                                                                         
+[INFO] ------------------------------------------------------------------------
+[INFO] Building Maven Stub Project (No POM) 1
+[INFO] ------------------------------------------------------------------------
+[INFO] 
+[INFO] --- maven-dependency-plugin:2.8:get (default-cli) @ standalone-pom ---
+[INFO] Resolving io.fabric8.ipaas.platform.packages:ipaas-platform:yml:kubernetes:1.0.32 with transitive dependencies
+Downloading: https://repo.maven.apache.org/maven2/io/fabric8/ipaas/platform/packages/ipaas-platform/1.0.32/ipaas-platform-1.0.32.pom
+Downloaded: https://repo.maven.apache.org/maven2/io/fabric8/ipaas/platform/packages/ipaas-platform/1.0.32/ipaas-platform-1.0.32.pom (4 KB at 0.1 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/fabric8/ipaas/platform/packages/packages/1.0.32/packages-1.0.32.pom
+Downloaded: https://repo.maven.apache.org/maven2/io/fabric8/ipaas/platform/packages/packages/1.0.32/packages-1.0.32.pom (2 KB at 0.7 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/fabric8/ipaas/platform/parent/1.0.32/parent-1.0.32.pom
+Downloaded: https://repo.maven.apache.org/maven2/io/fabric8/ipaas/platform/parent/1.0.32/parent-1.0.32.pom (10 KB at 4.1 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/fabric8/fabric8-project/2.2.183/fabric8-project-2.2.183.pom
+Downloaded: https://repo.maven.apache.org/maven2/io/fabric8/fabric8-project/2.2.183/fabric8-project-2.2.183.pom (79 KB at 2.0 KB/sec)
+Downloading: https://repo.maven.apache.org/maven2/io/fabric8/ipaas/platform/packages/ipaas-platform/1.0.32/ipaas-platform-1.0.32-kubernetes.yml
+Downloaded: https://repo.maven.apache.org/maven2/io/fabric8/ipaas/platform/packages/ipaas-platform/1.0.32/ipaas-platform-1.0.32-kubernetes.yml (47 KB at 8.6 KB/sec)
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time: 01:23 min
+[INFO] Finished at: 2017-05-25T20:37:15-07:00
+[INFO] Final Memory: 15M/331M
+[INFO] ------------------------------------------------------------------------
+```
+
+```
+fanhonglingdeMacBook-Pro:99-mirror fanhongling$ mvn dependency:get -DremoteRepositories=https://repo1.maven.org/maven2/ -Dartifact=io.fabric8.ipaas.platform.packages:ipaas-platform:1.0.32:yml:k8s-template
+[INFO] Scanning for projects...
+[INFO]                                                                         
+[INFO] ------------------------------------------------------------------------
+[INFO] Building Maven Stub Project (No POM) 1
+[INFO] ------------------------------------------------------------------------
+[INFO] 
+[INFO] --- maven-dependency-plugin:2.8:get (default-cli) @ standalone-pom ---
+[INFO] Resolving io.fabric8.ipaas.platform.packages:ipaas-platform:yml:k8s-template:1.0.32 with transitive dependencies
+Downloading: https://repo.maven.apache.org/maven2/io/fabric8/ipaas/platform/packages/ipaas-platform/1.0.32/ipaas-platform-1.0.32-k8s-template.yml
+Downloaded: https://repo.maven.apache.org/maven2/io/fabric8/ipaas/platform/packages/ipaas-platform/1.0.32/ipaas-platform-1.0.32-k8s-template.yml (47 KB at 5.0 KB/sec)
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time: 11.937 s
+[INFO] Finished at: 2017-05-25T20:39:52-07:00
+[INFO] Final Memory: 15M/331M
+[INFO] ------------------------------------------------------------------------
+```
+
+__openshift__
+```
+fanhonglingdeMacBook-Pro:99-mirror fanhongling$ mvn dependency:get -DremoteRepositories=https://repo1.maven.org/maven2/ -Dartifact=io.fabric8.ipaas.platform.packages:ipaas-platform:1.0.32:yml:openshift
+[INFO] Scanning for projects...
+[INFO]                                                                         
+[INFO] ------------------------------------------------------------------------
+[INFO] Building Maven Stub Project (No POM) 1
+[INFO] ------------------------------------------------------------------------
+[INFO] 
+[INFO] --- maven-dependency-plugin:2.8:get (default-cli) @ standalone-pom ---
+[INFO] Resolving io.fabric8.ipaas.platform.packages:ipaas-platform:yml:openshift:1.0.32 with transitive dependencies
+Downloading: https://repo.maven.apache.org/maven2/io/fabric8/ipaas/platform/packages/ipaas-platform/1.0.32/ipaas-platform-1.0.32-openshift.yml
+Downloaded: https://repo.maven.apache.org/maven2/io/fabric8/ipaas/platform/packages/ipaas-platform/1.0.32/ipaas-platform-1.0.32-openshift.yml (55 KB at 1.2 KB/sec)
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time: 46.478 s
+[INFO] Finished at: 2017-05-25T20:42:16-07:00
+[INFO] Final Memory: 15M/331M
+[INFO] ------------------------------------------------------------------------
+```
+
 ### https://repo1.maven.org/maven2/io/fabric8/forge/distro/distro/2.2.234/
 
 __zip__

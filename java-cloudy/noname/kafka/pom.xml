@@ -368,12 +368,10 @@
 				</executions>
 			</plugin>
 
-		    <plugins>
-		      <plugin>
-		        <groupId>org.apache.maven.plugins</groupId>
-		        <artifactId>maven-resources-plugin</artifactId>
-		        <version>3.0.2</version>
-		      </plugin>
+		    <plugin>
+		      <groupId>org.apache.maven.plugins</groupId>
+		      <artifactId>maven-resources-plugin</artifactId>
+		      <version>3.0.2</version>
 		      <configuration>
 			    <resources>
 			      <resource>
@@ -388,8 +386,9 @@
 			          <exclude>**/*.gif</exclude>
 			        </excludes>
 			      </resource>
-			    </resources>			    
-		    </plugins>
+			    </resources>		
+		      </configuration>					    
+		    </plugin>
 			<plugin>
 				<!--skip deploy -->
 				<groupId>org.apache.maven.plugins</groupId>
