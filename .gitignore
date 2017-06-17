@@ -4,6 +4,7 @@ java-devel/**/.settings/
 java-devel/**/target/
 **/.gradle
 **/*.war
+archetype-catalog.xml
 **/*.rtf
 
 /bin

@@ -1,0 +1,27 @@
+dockerauth:
+  image: cesanta/docker_auth:1
+  ports:
+    - "5001:5001"
+  volumes:
+    - /Users/fanhongling/Downloads/workspace/src/github.com/tangfeixiong/go-to-kubernetes/examples/docker-distribution:/svc_conf
+    - /var/log/docker_auth:/logs
+  command: /svc_conf/auth_config.yml
+  restart: always
+
+registry:
+  image: registry:2
+  ports:
+    - "5000:5000"
+  volumes:
+    - /Users/fanhongling/Downloads/99-mirror/registry-hub:/var/lib/registry
+    - /Users/fanhongling/Downloads/workspace/src/github.com/tangfeixiong/go-to-kubernetes/examples/docker-distribution:/certs:ro
+    - /Users/fanhongling/Downloads/workspace/src/github.com/tangfeixiong/go-to-kubernetes/examples/docker-distribution/registry_config.yml:/var/lib/registry/config.yml:ro
+  restart: always
+  environment:
+    - REGISTRY_STORAGE_FILESYSTEM_ROOTDIRECTORY=/var/lib/registry
+    - REGISTRY_HTTP_TLS_CERTIFICATE=/certs/server.cert
+    - REGISTRY_HTTP_TLS_KEY=/certs/server.key
+    - REGISTRY_AUTH_TOKEN_REALM=https://172.17.4.50:5001/auth
+    - REGISTRY_AUTH_TOKEN_SERVICE="Docker registry"
+    - REGISTRY_AUTH_TOKEN_ISSUER="Auth Service"
+    - REGISTRY_AUTH_TOKEN_ROOTCERTBUNDLE=/certs/server.cert

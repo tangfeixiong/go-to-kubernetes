@@ -2476,7 +2476,7 @@ NAME                          READY     STATUS    RESTARTS   AGE
 po/kube-dns-806549836-21l3d   2/3       Running   9          9m
 
 NAME           CLUSTER-IP      EXTERNAL-IP   PORT(S)         AGE
-svc/kube-dns   10.123.240.10   <none>        53/UDP,53/TCP   5m
+svc/kube-dns   10.3.0.10       <none>        53/UDP,53/TCP   5m
 
 NAME              DESIRED   CURRENT   UP-TO-DATE   AVAILABLE   AGE
 deploy/kube-dns   1         1         1            0           9m

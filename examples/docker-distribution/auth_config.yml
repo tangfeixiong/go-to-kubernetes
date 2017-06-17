@@ -1,0 +1,35 @@
+server:
+  addr: ":5001"
+  certificate: "/svc_conf/server.cert"
+  key: "/svc_conf/server.key"
+
+token:
+  issuer: "Auth Service"  # Must match issuer in the Registry config.
+  expiration: 900
+
+users:
+  # Password is specified as a BCrypt hash. Use htpasswd -B to generate.
+  "admin":
+    password: "$2a$10$2b2cU8CPhOTaGrs1HRQuAueS7JTT5ZHsHSzYiFPm1leZck7Mc8T4W"  # password
+  "test":
+    password: "$2y$05$WuwBasGDAgr.QCbGIjKJaep4dhxeai9gNZdmBnQXqpKly57oNutya"  # 123
+  "": {}
+  "tangfx":
+    password: "$2y$05$4ZsJkhDvni/shiLmm8UP7.nAcP4Mk.OAQuaHYjwQ8ACc8vgtoxaNC"  # tangfx
+
+acl:
+  - match: {account: "admin"}
+    actions: ["*"]
+    comment: "Admin has full access to everything."
+  - match: {account: "test", name: "test"}
+    actions: ["*"]
+    comment: "User \"test\" can pull stuff."
+  # All logged in users can pull all images.
+  - match: {account: "/.+/"}
+    actions: ["pull"]
+  # Anonymous users can pull "hello-world".
+  - match: {account: "", name: "hello-world"}
+    actions: ["pull"]
+  - match: {account: "tangfx"}
+    actions: ["*"]
+  # Access is denied by default.
