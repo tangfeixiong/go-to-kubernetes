@@ -2,7 +2,8 @@
 
 ## Contents of table
 
-
+* java
+* 
 
 ## Build Ship and Run
 
@@ -11,7 +12,9 @@ Clone sample repository
 [vagrant@localhost ~]$ git clone https://github.com/tangfeixiong/osev3-examples /Users/fanhongling/Downloads/workspace/src/github.com/tangfeixiong/osev3-examples
 ```
 
-### Java
+## Java
+
+### Build
 
 Package with `mvn`
 ```
@@ -134,7 +137,9 @@ Downloaded: https://repo.maven.apache.org/maven2/org/eclipse/aether/aether-util/
 [INFO] ------------------------------------------------------------------------
 ```
 
-Exec
+### Try
+
+Exec web
 ```
 [vagrant@localhost sample-microservices-springboot]$ java -jar web/target/web.jar --remoteHost=localhost --remotePort=9091 --server.port=8091
 
@@ -335,9 +340,9 @@ InMemoryMessageRepository.save[post]: Message{id=3, text='Hola', summary='OpenSh
 2017-06-17 06:03:15.682  INFO 16589 --- [           main] o.s.c.support.DefaultLifecycleProcessor  : Starting beans in phase 0
 2017-06-17 06:03:16.011  INFO 16589 --- [           main] s.b.c.e.t.TomcatEmbeddedServletContainer : Tomcat started on port(s): 9091 (http)
 2017-06-17 06:03:16.020  INFO 16589 --- [           main] c.o.e.m.r.InMemoryRepositoryApplication  : Started InMemoryRepositoryApplication in 11.389 seconds (JVM running for 13.751)
-``
+```
 
-Optional _ctrl-z_ bring process into _backgroud_ for next operation, and back to _foreground_ to terminate
+Alternatively, _ctrl-z_ bring process back into _backgroud_ and unblock console
 ```
 ^Z
 [1]+  已停止               java -jar repositories-mem/target/repositories-mem.jar --server.port=9091
@@ -345,7 +350,7 @@ Optional _ctrl-z_ bring process into _backgroud_ for next operation, and back to
 [1]+ java -jar repositories-mem/target/repositories-mem.jar --server.port=9091 &
 ```
 
-Next test
+Consle test
 ```
 [vagrant@localhost sample-microservices-springboot]$ curl http://localhost:9091
 2017-06-17 06:06:27.860  INFO 16589 --- [nio-9091-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring FrameworkServlet 'dispatcherServlet'
@@ -356,7 +361,7 @@ InMemoryMessageRepository.findAllIt
 [{"id":1,"text":"Hello","summary":"World","created":1497679393645},{"id":2,"text":"Hi","summary":"Universe","created":1497679393645},{"id":3,"text":"Hola","summary":"OpenShift","created":1497679393646}]
 ```
 
-Kill
+Then bring up to _foreground_ to terminate
 ```
 [vagrant@localhost sample-microservices-springboot]$ fg %1
 java -jar repositories-mem/target/repositories-mem.jar --server.port=9091
@@ -365,9 +370,9 @@ java -jar repositories-mem/target/repositories-mem.jar --server.port=9091
 2017-06-17 06:07:18.682  INFO 16589 --- [       Thread-2] o.s.j.e.a.AnnotationMBeanExporter        : Unregistering JMX-exposed beans on shutdown
 ```
 
-### Docker
+## Docker image
 
-__web prject__
+### web prject
 
 Build image
 ```
@@ -499,7 +504,7 @@ The push refers to a repository [172.17.4.50:5000/springboot-osev3-examples]
 web: digest: sha256:5263b25c25a3e6a53b00d6da78239cc12ba0c282749011e03084e4182ba70bf1 size: 1549
 ```
 
-__repository-mem project__
+### repository-mem project
 
 Build image (OpenJDK)
 ```
@@ -760,7 +765,7 @@ Run
 [{"id":1,"text":"Hello","summary":"World","created":1497678837211},{"id":2,"text":"Hi","summary":"Universe","created":1497678837211},{"id":3,"text":"Hola","summary":"OpenShift","created":1497678837211}][vagrant@localhost sample-microservices-springboot]$ 
 ```
 
-Droup
+Drop and clear
 ```
 [vagrant@localhost sample-microservices-springboot]$ docker stop osev3-examples-repo
 osev3-examples-repo
