@@ -1,11 +1,29 @@
 docker run -d -p 8081:8081 --name nexus fabric8/nexus:2.2.311
 
+```
+[vagrant@localhost ~]$ docker pull fabric8/nexus:2.2.311
+Trying to pull repository docker.io/fabric8/nexus ... 
+2.2.311: Pulling from docker.io/fabric8/nexus
+08d48e6f1cff: Pull complete 
+7696688751a7: Pull complete 
+c8c060269164: Pull complete 
+380e084290df: Pull complete 
+cc89147a4e4a: Pull complete 
+3d6b05a8528a: Pull complete 
+47123df133b9: Pull complete 
+40c1f9ea393a: Pull complete 
+dc68fccd9206: Pull complete 
+Digest: sha256:cdd99c37389e6623fec5650dcc13104beb801d8fe786fe478e2997ec397e11ad
+Status: Downloaded newer image for docker.io/fabric8/nexus:2.2.311
+```
+
+```
 vagrant@vagrant-ubuntu-trusty-64:/Users/fanhongling/Downloads/workspace/src/github.com/tangfeixiong/go-to-kubernetes/examples/nexus$ docker run -d -p 8081:8081 -v /Users/fanhongling/Downloads/99-mirror/0x2Em20x2Frepository:/sonatype-work/storage/2017ecp2 --name nexus fabric8/nexus:2.2.311
 a1a8b096283e0469e3206d5022fdea09d4e8b2040deaad3b2b62f2da9e8f7f32
+```
 
-
-vagrant@vagrant-ubuntu-trusty-64:/Users/fanhongling/Downloads/workspace/src/github.com/tangfeixiong/go-to-kubernetes/examples/gitlab$ cd ~/.m2/repository
-vagrant@vagrant-ubuntu-trusty-64:~/.m2/repository$ ls
+```
+vagrant@vagrant-ubuntu-trusty-64:/Users/fanhongling/Downloads/workspace/src/github.com/tangfeixiong/go-to-kubernetes/examples/gitlab$ ls ~/.m2/repository
 antlr                     commons-beanutils      commons-net                                                         jtidy     repository.xml
 aopalliance               commons-chain          commons-pool                                                        junit     rhino
 asm                       commons-cli            commons-validator                                                   kr        ring
@@ -22,7 +40,9 @@ clj-time                  commons-io             jakarta-regexp                 
 clout                     commons-jxpath         javax                                                               plexus    xml-resolver
 co                        commons-lang           jline                                                               redis     xpp3
 com                       commons-logging        joda-time                                                           regexp
+```
 
+```
 vagrant@vagrant-ubuntu-trusty-64:~/.m2/repository$ mvn archetype:crawl
 [INFO] Scanning for projects...
 Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-archetype-plugin/maven-metadata.xml
@@ -4237,3 +4257,4 @@ Downloaded: https://repo.maven.apache.org/maven2/org/codehaus/groovy/groovy/1.8.
 [INFO] Finished at: 2017-06-08T17:47:19+00:00
 [INFO] Final Memory: 12M/119M
 [INFO] ------------------------------------------------------------------------
+```
