@@ -10,6 +10,10 @@ Repo
 
 http://172.17.4.50:10080/root/osev3-examples/blob/master/spring-boot/sample-microservices-springboot
 
+该github master是 https://github.com/tangfeixiong/osev3-examples
+
+基于链接的[git操作](../gitlab)
+
 Job
 
 ![屏幕快照 2017-06-19 下午10.09.40.png](./屏幕快照%202017-06-19%20下午10.09.40.png)
