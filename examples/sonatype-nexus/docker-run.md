@@ -1,5 +1,8 @@
+## Instruction
+
 docker run -d -p 8081:8081 --name nexus fabric8/nexus:2.2.311
 
+Image
 ```
 [vagrant@localhost ~]$ docker pull fabric8/nexus:2.2.311
 Trying to pull repository docker.io/fabric8/nexus ... 
@@ -17,6 +20,7 @@ Digest: sha256:cdd99c37389e6623fec5650dcc13104beb801d8fe786fe478e2997ec397e11ad
 Status: Downloaded newer image for docker.io/fabric8/nexus:2.2.311
 ```
 
+Run
 ```
 vagrant@vagrant-ubuntu-trusty-64:/Users/fanhongling/Downloads/workspace/src/github.com/tangfeixiong/go-to-kubernetes/examples/nexus$ docker run -d -p 8081:8081 -v /Users/fanhongling/Downloads/99-mirror/0x2Em20x2Frepository:/sonatype-work/storage/2017ecp2 --name nexus fabric8/nexus:2.2.311
 a1a8b096283e0469e3206d5022fdea09d4e8b2040deaad3b2b62f2da9e8f7f32
@@ -42,6 +46,7 @@ co                        commons-lang           jline                          
 com                       commons-logging        joda-time                                                           regexp
 ```
 
+Optional
 ```
 vagrant@vagrant-ubuntu-trusty-64:~/.m2/repository$ mvn archetype:crawl
 [INFO] Scanning for projects...
