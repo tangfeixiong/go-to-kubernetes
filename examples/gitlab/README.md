@@ -112,11 +112,11 @@ __Milestone__
   - design
   - proposal
   - ...
-  project1
+- project1
   - src
   - ...
-  project2
-  ...
+- project2
+  - ...
 
 __使用gitlab wiki__
 
