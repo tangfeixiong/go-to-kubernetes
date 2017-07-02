@@ -6,6 +6,8 @@
 * Sonatype Nexus创建私有项目仓库
 * Gradle
 * 示例项目
+  1. [mvn](#使用mvn)
+  2. [gradle](#使用gradle)
 
 ## Maven及本地仓库
 
