@@ -389,6 +389,15 @@ Uploaded: http://172.17.4.50:8081/content/repositories/snapshots/com/openshift/e
 
 ### 使用gradle
 
+示例使用[osev3-exampls的cicd分支](https://github.com/tangfeixiong/osev3-examples/tree/cicd/spring-boot/sample-microservices-springboot)
+```
+[vagrant@localhost sample-microservices-springboot]$ git branch
+* cicd
+  master
+```
+
+更多操作请参考[hack.md]（https://github.com/tangfeixiong/osev3-examples/blob/cicd/spring-boot/sample-microservices-springboot/HACK.md）
+
 wrapper
 ```
 [vagrant@localhost sample-microservices-springboot]$ gradle wrapper --gradle-version 3.5
@@ -400,3 +409,72 @@ Total time: 6.283 secs
 
 This build could be faster, please consider using the Gradle Daemon: http://gradle.org/docs/2.5/userguide/gradle_daemon.html
 ```
+
+Build
+```
+fanhonglingdeMacBook-Pro:sample-microservices-springboot fanhongling$ gradle :web:build
+:web:bootBuildInfo UP-TO-DATE
+:web:compileJava UP-TO-DATE
+:web:processResources UP-TO-DATE
+:web:classes UP-TO-DATE
+:web:jar UP-TO-DATE
+:web:findMainClass
+:web:startScripts UP-TO-DATE
+:web:distTar
+:web:distZip
+:web:srcJar
+:web:bootRepackage
+:web:assemble
+:web:compileTestJava NO-SOURCE
+:web:processTestResources NO-SOURCE
+:web:testClasses UP-TO-DATE
+:web:test NO-SOURCE
+:web:check UP-TO-DATE
+:web:build
+
+BUILD SUCCESSFUL
+
+Total time: 5.08 secs
+fanhonglingdeMacBook-Pro:sample-microservices-springboot fanhongling$ ls web/build
+classes		distributions	install		libs		poms		resources	scripts		tmp
+fanhonglingdeMacBook-Pro:sample-microservices-springboot fanhongling$ ls web/build/libs/
+web-0.0.1-sources.jar	web-0.0.1.jar		web-0.0.1.jar.original
+```
+
+Intall
+```
+fanhonglingdeMacBook-Pro:sample-microservices-springboot fanhongling$ gradle :web:install
+:web:bootBuildInfo UP-TO-DATE
+:web:compileJava UP-TO-DATE
+:web:processResources UP-TO-DATE
+:web:classes UP-TO-DATE
+:web:jar
+:web:findMainClass
+:web:startScripts UP-TO-DATE
+:web:distTar
+:web:distZip
+:web:srcJar UP-TO-DATE
+:web:install
+
+BUILD SUCCESSFUL
+
+Total time: 5.428 secs
+fanhonglingdeMacBook-Pro:sample-microservices-springboot fanhongling$ ls ~/.m2/repository/com/openshift/evangelists/microservices-demo-springboot/web/
+0.0.1					maven-metadata-local.xml		maven-metadata-my-snapshots.xml.sha1
+0.0.1-SNAPSHOT				maven-metadata-my-snapshots.xml		resolver-status.properties
+fanhonglingdeMacBook-Pro:sample-microservices-springboot fanhongling$ ls ~/.m2/repository/com/openshift/evangelists/microservices-demo-springboot/web/0.0.1
+web-0.0.1-sources.jar	web-0.0.1.jar		web-0.0.1.pom		web-0.0.1.tar		web-0.0.1.zip
+```
+
+Upload
+```
+fanhonglingdeMacBook-Pro:sample-microservices-springboot fanhongling$ gradle :web:uploadArchives
+:web:uploadArchives
+Could not find metadata com.openshift.evangelists.microservices-demo-springboot:web/maven-metadata.xml in remote (http://172.17.4.50:8081/content/repositories/releases)
+
+BUILD SUCCESSFUL
+
+Total time: 5.691 secs
+```
+
+![屏幕快照 2017-07-02 上午1.28.03.png](./屏幕快照%202017-07-02%20上午1.28.03.png)
