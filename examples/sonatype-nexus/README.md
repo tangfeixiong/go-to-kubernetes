@@ -398,7 +398,7 @@ Uploaded: http://172.17.4.50:8081/content/repositories/snapshots/com/openshift/e
   master
 ```
 
-更多操作请参考[hack.md]（https://github.com/tangfeixiong/osev3-examples/blob/cicd/spring-boot/sample-microservices-springboot/HACK.md）
+更多操作请参考[hack.md](https://github.com/tangfeixiong/osev3-examples/blob/cicd/spring-boot/sample-microservices-springboot/HACK.md)
 
 wrapper
 ```
