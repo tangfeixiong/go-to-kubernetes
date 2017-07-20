@@ -64,22 +64,25 @@
 			<name>spring-libs-milestone</name>
 			<url>https://repo.spring.io/libs-milestone</url>
 	    </repository>
-        <repository>
-		    <id>spring-plugins-release</id>
-			<name>spring-plugins-release</name>
-			<url>https://repo.spring.io/plugins-release</url>
-	    </repository>
-        <repository>
-		    <id>spring-plugins-snapshot</id>
-			<name>spring-plugins-snapshot</name>
-			<url>https://repo.spring.io/plugins-snapshot</url>
-	    </repository>
 		<repository>
 		    <id>sonatype-snapshots</id>
 			<name>sonatype-snapshots</name>
 			<url>https://oss.sonatype.org/content/repositories/snapshots/</url>
 		</repository>	
     </repositories>
+	
+	<pluginRepositories>
+        <pluginRepository>
+		    <id>spring-plugins-milestone</id>
+			<name>spring-plugins-milestone</name>
+			<url>https://repo.spring.io/plugins-milestone</url>
+	    </pluginRepository>
+        <pluginRepository>
+		    <id>spring-plugins-snapshot</id>
+			<name>spring-plugins-snapshot</name>
+			<url>https://repo.spring.io/plugins-snapshot</url>
+	    </pluginRepository>
+   </pluginRepositories>	
 
 	<build>
 	  <!-- To define the plugin version in your parent POM -->

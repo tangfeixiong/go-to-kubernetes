@@ -796,7 +796,7 @@ Build
 ```
 fanhonglingdeMacBook-Pro:libs fanhongling$ cp ../../../../../Netflix/eureka/eureka-server/build/libs/eureka-server-1.6.3-SNAPSHOT.war .
 
-vagrant@vagrant-ubuntu-trusty-64:/work/src/github.com/tangfeixiong/go-to-kubernetes/examples/netflix$ docker build --rm=true -t tangfeixiong/netflix-eureka:1.6.3-SNAPSHOT -f /work/src/github.com/tangfeixiong/go-to-kubernetes/examples/netflix/Dockerfile.eureka /work/src/github.com/tangfeixiong/go-to-kubernetes/examples/netflix/
+vagrant@vagrant-ubuntu-trusty-64:/work/src/github.com/tangfeixiong/go-to-kubernetes/examples/netflix$ docker build --rm=true -t tangfeixiong/netflix-eureka:1.6.3-SNAPSHOT -f /Users/fanhongling/Downloads/workspace/src/github.com/tangfeixiong/go-to-kubernetes/examples/netflix/Dockerfile.eureka /Users/fanhongling/Downloads/workspace/src/github.com/tangfeixiong/go-to-kubernetes/examples/netflix/
 Sending build context to Docker daemon 19.43 MB
 Step 1 : FROM tomcat:8
  ---> 3695a0fe8320
