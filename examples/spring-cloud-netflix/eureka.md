@@ -1,4 +1,4 @@
-### Spring Cloud Eureka
+### Spring Cloud Netflix - Eureka
 
 project
 ```

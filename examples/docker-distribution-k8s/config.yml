@@ -7,18 +7,16 @@ storage:
     blobdescriptor: inmemory
   filesystem:
     rootdirectory: /var/lib/registry
-  delete:
-    enabled: true
 http:
   addr: :5000
   headers:
     X-Content-Type-Options: [nosniff]
 health:
   storagedriver:
-    enabled: true
+    enabled: false #true
     interval: 10s
     threshold: 3
-proxy:
-  remoteurl: https://registry-1.docker.io
-  # username: [username]
-  # password: [password]
+auth:
+  htpasswd:
+    realm: basic-realm
+    path: /auth/htpasswd

@@ -21,15 +21,21 @@ acl:
   - match: {account: "admin"}
     actions: ["*"]
     comment: "Admin has full access to everything."
+  - match: {account: "/.+/", name: "${account}/*"}
+    actions: ["*"]
+    comment: "Logged in users have full access to images that are in their 'namespace'"
+  - match: {account: "/.+/"}
+    actions: ["pull"]
+    comment: "Logged in users can pull all images."
+  - match: {account: "/.+/", type: "registry", name: "catalog"}
+    actions: ["*"]
+    comment: "Logged in users can query the catalog."
+  - match: {account: "", name: "hello-world"}
+    actions: ["pull"]
+    comment: "Anonymous users can pull \"hello-world\"."
   - match: {account: "test", name: "test"}
     actions: ["*"]
     comment: "User \"test\" can pull stuff."
-  # All logged in users can pull all images.
-  - match: {account: "/.+/"}
-    actions: ["pull"]
-  # Anonymous users can pull "hello-world".
-  - match: {account: "", name: "hello-world"}
-    actions: ["pull"]
   - match: {account: "tangfx"}
     actions: ["*"]
   # Access is denied by default.

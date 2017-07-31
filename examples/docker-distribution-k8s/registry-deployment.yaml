@@ -1,0 +1,73 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  labels:
+    app: registry
+    heritage: repository
+    name: registry
+  name: registry
+  # namespace: stackdocker
+spec:
+  replicas: 1
+  strategy: 
+    type: RollingUpdate
+  selector:
+    matchLabels:
+      name: registry
+  template:
+    metadata:
+      labels:
+        name: registry
+    spec:
+      containers:
+      - image: registry
+        imagePullPolicy: IfNotPresent
+        name: registry
+        env:
+        - name: REGISTRY_HTTP_TLS_CERTIFICATE
+          value: /certs/tls.crt
+        - name: REGISTRY_HTTP_TLS_KEY
+          value: /certs/tls.key
+        - name: DOCKER_REGISTRY_CONFIG
+          value: /etc/docker/registry/config.yml
+        - name: REGISTRY_STORAGE_FILESYSTEM_ROOTDIRECTORY
+          value: /var/lib/registry
+        ports:
+        - containerPort: 5000
+          hostPort: 5000
+        volumeMounts:
+        - mountPath: /auth
+          name: basic-realm
+          readOnly: true
+        - mountPath: /certs
+          name: selfsigned-tls
+          readOnly: true
+        - mountPath: /etc/docker/registry
+          name: config
+          readOnly: true
+        - mountPath: /var/lib/registry
+          name: repo
+      volumes:
+      - name: basic-realm
+        secret:
+          secretName: registry-htpasswd
+          items:
+          - key: htpasswd
+            path: htpasswd
+      - name: selfsigned-tls
+        secret:
+          secretName: registry-tls
+          items:
+          - key: tls.crt
+            path: tls.crt
+          - key: tls.key
+            path: tls.key
+      - configMap:
+          name: registry-config
+          items:
+          - key: configyml
+            path: config.yml
+        name: config
+      - hostPath:
+          path: /data/src/github.com/openshift/origin/registry-repo
+        name: repo
