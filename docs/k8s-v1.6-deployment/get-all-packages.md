@@ -395,6 +395,12 @@ vagrant@localhost:~$ ls -1 kube
 easy-rsa.tar.gz
 ```
 
+Hostname
+```
+[vagrant@localhost ~]$ hostname -I
+10.0.2.15 172.17.4.50 10.1.0.1 172.18.0.1 172.17.0.1
+```
+
 Generate, __Note: it is copyed from v1.5.7 hand-on, must change 172.17.4.200 -> 172.17.4.50 and 10.123.240.1 -> 10.3.0.1__
 ```
 vagrant@vagrant-ubuntu-trusty-64:~$ sudo DEBUG='true' CERT_DIR=/root CERT_GROUP=root /opt/kubernetes/saltbase/salt/generate-cert/make-ca-cert.sh 172.17.4.200 IP:10.123.240.1,DNS:kubernetes,DNS:kubernetes.default,DNS:kubernetes.default.svc,DNS:kubernetes.default.svc.cluster.local
