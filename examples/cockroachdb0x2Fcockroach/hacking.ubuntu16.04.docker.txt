@@ -1,0 +1,2453 @@
+Ubuntu Xenial Docker
+=====================
+
+[vagrant@bogon cockroachdb0x2Fcockroach]$ docker build --force-rm -t tangfeixiong/cockroach -f Dockerfile.ubuntu-xenial .
+Sending build context to Docker daemon 267.3 kB
+Step 1 : FROM ubuntu:16.04
+ ---> 747cb2d60bbe
+Step 2 : RUN apt-get update && apt-get install -y --no-install-recommends     apt-transport-https     ca-certificates     curl 	net-tools
+ ---> Running in f78617d27cfd
+Get:1 http://security.ubuntu.com/ubuntu xenial-security InRelease [102 kB]
+Get:2 http://archive.ubuntu.com/ubuntu xenial InRelease [247 kB]
+Get:3 http://security.ubuntu.com/ubuntu xenial-security/universe Sources [51.1 kB]
+Get:4 http://security.ubuntu.com/ubuntu xenial-security/main amd64 Packages [485 kB]
+Get:5 http://archive.ubuntu.com/ubuntu xenial-updates InRelease [102 kB]
+Get:6 http://security.ubuntu.com/ubuntu xenial-security/restricted amd64 Packages [12.9 kB]
+Get:7 http://security.ubuntu.com/ubuntu xenial-security/universe amd64 Packages [223 kB]
+Get:8 http://archive.ubuntu.com/ubuntu xenial-backports InRelease [102 kB]
+Get:9 http://security.ubuntu.com/ubuntu xenial-security/multiverse amd64 Packages [3485 B]
+Get:10 http://archive.ubuntu.com/ubuntu xenial/universe Sources [9802 kB]
+Get:11 http://archive.ubuntu.com/ubuntu xenial/main amd64 Packages [1558 kB]
+Get:12 http://archive.ubuntu.com/ubuntu xenial/restricted amd64 Packages [14.1 kB]
+Get:13 http://archive.ubuntu.com/ubuntu xenial/universe amd64 Packages [9827 kB]
+Get:14 http://archive.ubuntu.com/ubuntu xenial/multiverse amd64 Packages [176 kB]
+Get:15 http://archive.ubuntu.com/ubuntu xenial-updates/universe Sources [222 kB]
+Get:16 http://archive.ubuntu.com/ubuntu xenial-updates/main amd64 Packages [843 kB]
+Get:17 http://archive.ubuntu.com/ubuntu xenial-updates/restricted amd64 Packages [13.7 kB]
+Get:18 http://archive.ubuntu.com/ubuntu xenial-updates/universe amd64 Packages [696 kB]
+Get:19 http://archive.ubuntu.com/ubuntu xenial-updates/multiverse amd64 Packages [18.5 kB]
+Get:20 http://archive.ubuntu.com/ubuntu xenial-backports/main amd64 Packages [5176 B]
+Get:21 http://archive.ubuntu.com/ubuntu xenial-backports/universe amd64 Packages [6354 B]
+Fetched 24.5 MB in 1min 5s (374 kB/s)
+Reading package lists...
+Reading package lists...
+Building dependency tree...
+Reading state information...
+The following additional packages will be installed:
+  libasn1-8-heimdal libcurl3-gnutls libffi6 libgmp10 libgnutls30
+  libgssapi-krb5-2 libgssapi3-heimdal libhcrypto4-heimdal libheimbase1-heimdal
+  libheimntlm0-heimdal libhogweed4 libhx509-5-heimdal libidn11 libk5crypto3
+  libkeyutils1 libkrb5-26-heimdal libkrb5-3 libkrb5support0 libldap-2.4-2
+  libnettle6 libp11-kit0 libroken18-heimdal librtmp1 libsasl2-2
+  libsasl2-modules-db libsqlite3-0 libssl1.0.0 libtasn1-6 libwind0-heimdal
+  openssl
+Suggested packages:
+  gnutls-bin krb5-doc krb5-user
+Recommended packages:
+  krb5-locales libsasl2-modules
+The following NEW packages will be installed:
+  apt-transport-https ca-certificates curl libasn1-8-heimdal libcurl3-gnutls
+  libffi6 libgmp10 libgnutls30 libgssapi-krb5-2 libgssapi3-heimdal
+  libhcrypto4-heimdal libheimbase1-heimdal libheimntlm0-heimdal libhogweed4
+  libhx509-5-heimdal libidn11 libk5crypto3 libkeyutils1 libkrb5-26-heimdal
+  libkrb5-3 libkrb5support0 libldap-2.4-2 libnettle6 libp11-kit0
+  libroken18-heimdal librtmp1 libsasl2-2 libsasl2-modules-db libsqlite3-0
+  libssl1.0.0 libtasn1-6 libwind0-heimdal net-tools openssl
+0 upgraded, 34 newly installed, 0 to remove and 4 not upgraded.
+Need to get 5481 kB of archives.
+After this operation, 16.9 MB of additional disk space will be used.
+Get:1 http://archive.ubuntu.com/ubuntu xenial/main amd64 libffi6 amd64 3.2.1-4 [17.8 kB]
+Get:2 http://archive.ubuntu.com/ubuntu xenial/main amd64 libgmp10 amd64 2:6.1.0+dfsg-2 [240 kB]
+Get:3 http://archive.ubuntu.com/ubuntu xenial-updates/main amd64 libnettle6 amd64 3.2-1ubuntu0.16.04.1 [93.5 kB]
+Get:4 http://archive.ubuntu.com/ubuntu xenial-updates/main amd64 libhogweed4 amd64 3.2-1ubuntu0.16.04.1 [136 kB]
+Get:5 http://archive.ubuntu.com/ubuntu xenial-updates/main amd64 libidn11 amd64 1.32-3ubuntu1.2 [46.5 kB]
+Get:6 http://archive.ubuntu.com/ubuntu xenial-updates/main amd64 libp11-kit0 amd64 0.23.2-5~ubuntu16.04.1 [105 kB]
+Get:7 http://archive.ubuntu.com/ubuntu xenial-updates/main amd64 libtasn1-6 amd64 4.7-3ubuntu0.16.04.2 [43.3 kB]
+Get:8 http://archive.ubuntu.com/ubuntu xenial-updates/main amd64 libgnutls30 amd64 3.4.10-4ubuntu1.4 [548 kB]
+Get:9 http://archive.ubuntu.com/ubuntu xenial/main amd64 libsqlite3-0 amd64 3.11.0-1ubuntu1 [396 kB]
+Get:10 http://archive.ubuntu.com/ubuntu xenial-updates/main amd64 libssl1.0.0 amd64 1.0.2g-1ubuntu4.8 [1081 kB]
+Get:11 http://archive.ubuntu.com/ubuntu xenial/main amd64 net-tools amd64 1.60-26ubuntu1 [175 kB]
+Get:12 http://archive.ubuntu.com/ubuntu xenial-updates/main amd64 libkrb5support0 amd64 1.13.2+dfsg-5ubuntu2 [30.8 kB]
+Get:13 http://archive.ubuntu.com/ubuntu xenial-updates/main amd64 libk5crypto3 amd64 1.13.2+dfsg-5ubuntu2 [81.2 kB]
+Get:14 http://archive.ubuntu.com/ubuntu xenial/main amd64 libkeyutils1 amd64 1.5.9-8ubuntu1 [9904 B]
+Get:15 http://archive.ubuntu.com/ubuntu xenial-updates/main amd64 libkrb5-3 amd64 1.13.2+dfsg-5ubuntu2 [273 kB]
+Get:15 http://archive.ubuntu.com/ubuntu xenial-updates/main amd64 libkrb5-3 amd64 1.13.2+dfsg-5ubuntu2 [273 kB]
+Get:16 http://archive.ubuntu.com/ubuntu xenial-updates/main amd64 libgssapi-krb5-2 amd64 1.13.2+dfsg-5ubuntu2 [120 kB]
+Get:17 http://archive.ubuntu.com/ubuntu xenial-updates/main amd64 libroken18-heimdal amd64 1.7~git20150920+dfsg-4ubuntu1.16.04.1 [41.4 kB]
+Get:18 http://archive.ubuntu.com/ubuntu xenial-updates/main amd64 libasn1-8-heimdal amd64 1.7~git20150920+dfsg-4ubuntu1.16.04.1 [174 kB]
+Get:19 http://archive.ubuntu.com/ubuntu xenial-updates/main amd64 libhcrypto4-heimdal amd64 1.7~git20150920+dfsg-4ubuntu1.16.04.1 [85.0 kB]
+Get:20 http://archive.ubuntu.com/ubuntu xenial-updates/main amd64 libheimbase1-heimdal amd64 1.7~git20150920+dfsg-4ubuntu1.16.04.1 [29.3 kB]
+Get:21 http://archive.ubuntu.com/ubuntu xenial-updates/main amd64 libwind0-heimdal amd64 1.7~git20150920+dfsg-4ubuntu1.16.04.1 [47.8 kB]
+Get:22 http://archive.ubuntu.com/ubuntu xenial-updates/main amd64 libhx509-5-heimdal amd64 1.7~git20150920+dfsg-4ubuntu1.16.04.1 [107 kB]
+Get:23 http://archive.ubuntu.com/ubuntu xenial-updates/main amd64 libkrb5-26-heimdal amd64 1.7~git20150920+dfsg-4ubuntu1.16.04.1 [202 kB]
+Get:24 http://archive.ubuntu.com/ubuntu xenial-updates/main amd64 libheimntlm0-heimdal amd64 1.7~git20150920+dfsg-4ubuntu1.16.04.1 [15.1 kB]
+Get:25 http://archive.ubuntu.com/ubuntu xenial-updates/main amd64 libgssapi3-heimdal amd64 1.7~git20150920+dfsg-4ubuntu1.16.04.1 [96.1 kB]
+Get:26 http://archive.ubuntu.com/ubuntu xenial/main amd64 libsasl2-modules-db amd64 2.1.26.dfsg1-14build1 [14.5 kB]
+Get:27 http://archive.ubuntu.com/ubuntu xenial/main amd64 libsasl2-2 amd64 2.1.26.dfsg1-14build1 [48.7 kB]
+Get:28 http://archive.ubuntu.com/ubuntu xenial-updates/main amd64 libldap-2.4-2 amd64 2.4.42+dfsg-2ubuntu3.2 [160 kB]
+Get:29 http://archive.ubuntu.com/ubuntu xenial-updates/main amd64 librtmp1 amd64 2.4+20151223.gitfa8646d-1ubuntu0.1 [54.4 kB]
+Get:30 http://archive.ubuntu.com/ubuntu xenial-updates/main amd64 libcurl3-gnutls amd64 7.47.0-1ubuntu2.4 [184 kB]
+Get:31 http://archive.ubuntu.com/ubuntu xenial-updates/main amd64 apt-transport-https amd64 1.2.24 [26.1 kB]
+Get:32 http://archive.ubuntu.com/ubuntu xenial-updates/main amd64 openssl amd64 1.0.2g-1ubuntu4.8 [492 kB]
+Get:33 http://archive.ubuntu.com/ubuntu xenial-updates/main amd64 ca-certificates all 20170717~16.04.1 [168 kB]
+Get:34 http://archive.ubuntu.com/ubuntu xenial-updates/main amd64 curl amd64 7.47.0-1ubuntu2.4 [139 kB]
+debconf: delaying package configuration, since apt-utils is not installed
+Fetched 5313 kB in 31s (169 kB/s)
+Selecting previously unselected package libffi6:amd64.
+(Reading database ... 4768 files and directories currently installed.)
+Preparing to unpack .../libffi6_3.2.1-4_amd64.deb ...
+Unpacking libffi6:amd64 (3.2.1-4) ...
+Selecting previously unselected package libgmp10:amd64.
+Preparing to unpack .../libgmp10_2%3a6.1.0+dfsg-2_amd64.deb ...
+Unpacking libgmp10:amd64 (2:6.1.0+dfsg-2) ...
+Selecting previously unselected package libnettle6:amd64.
+Preparing to unpack .../libnettle6_3.2-1ubuntu0.16.04.1_amd64.deb ...
+Unpacking libnettle6:amd64 (3.2-1ubuntu0.16.04.1) ...
+Selecting previously unselected package libhogweed4:amd64.
+Preparing to unpack .../libhogweed4_3.2-1ubuntu0.16.04.1_amd64.deb ...
+Unpacking libhogweed4:amd64 (3.2-1ubuntu0.16.04.1) ...
+Selecting previously unselected package libidn11:amd64.
+Preparing to unpack .../libidn11_1.32-3ubuntu1.2_amd64.deb ...
+Unpacking libidn11:amd64 (1.32-3ubuntu1.2) ...
+Selecting previously unselected package libp11-kit0:amd64.
+Preparing to unpack .../libp11-kit0_0.23.2-5~ubuntu16.04.1_amd64.deb ...
+Unpacking libp11-kit0:amd64 (0.23.2-5~ubuntu16.04.1) ...
+Selecting previously unselected package libtasn1-6:amd64.
+Preparing to unpack .../libtasn1-6_4.7-3ubuntu0.16.04.2_amd64.deb ...
+Unpacking libtasn1-6:amd64 (4.7-3ubuntu0.16.04.2) ...
+Selecting previously unselected package libgnutls30:amd64.
+Preparing to unpack .../libgnutls30_3.4.10-4ubuntu1.4_amd64.deb ...
+Unpacking libgnutls30:amd64 (3.4.10-4ubuntu1.4) ...
+Selecting previously unselected package libsqlite3-0:amd64.
+Preparing to unpack .../libsqlite3-0_3.11.0-1ubuntu1_amd64.deb ...
+Unpacking libsqlite3-0:amd64 (3.11.0-1ubuntu1) ...
+Selecting previously unselected package libssl1.0.0:amd64.
+Preparing to unpack .../libssl1.0.0_1.0.2g-1ubuntu4.8_amd64.deb ...
+Unpacking libssl1.0.0:amd64 (1.0.2g-1ubuntu4.8) ...
+Selecting previously unselected package net-tools.
+Preparing to unpack .../net-tools_1.60-26ubuntu1_amd64.deb ...
+Unpacking net-tools (1.60-26ubuntu1) ...
+Selecting previously unselected package libkrb5support0:amd64.
+Preparing to unpack .../libkrb5support0_1.13.2+dfsg-5ubuntu2_amd64.deb ...
+Unpacking libkrb5support0:amd64 (1.13.2+dfsg-5ubuntu2) ...
+Selecting previously unselected package libk5crypto3:amd64.
+Preparing to unpack .../libk5crypto3_1.13.2+dfsg-5ubuntu2_amd64.deb ...
+Unpacking libk5crypto3:amd64 (1.13.2+dfsg-5ubuntu2) ...
+Selecting previously unselected package libkeyutils1:amd64.
+Preparing to unpack .../libkeyutils1_1.5.9-8ubuntu1_amd64.deb ...
+Unpacking libkeyutils1:amd64 (1.5.9-8ubuntu1) ...
+Selecting previously unselected package libkrb5-3:amd64.
+Preparing to unpack .../libkrb5-3_1.13.2+dfsg-5ubuntu2_amd64.deb ...
+Unpacking libkrb5-3:amd64 (1.13.2+dfsg-5ubuntu2) ...
+Selecting previously unselected package libgssapi-krb5-2:amd64.
+Preparing to unpack .../libgssapi-krb5-2_1.13.2+dfsg-5ubuntu2_amd64.deb ...
+Unpacking libgssapi-krb5-2:amd64 (1.13.2+dfsg-5ubuntu2) ...
+Selecting previously unselected package libroken18-heimdal:amd64.
+Preparing to unpack .../libroken18-heimdal_1.7~git20150920+dfsg-4ubuntu1.16.04.1_amd64.deb ...
+Unpacking libroken18-heimdal:amd64 (1.7~git20150920+dfsg-4ubuntu1.16.04.1) ...
+Selecting previously unselected package libasn1-8-heimdal:amd64.
+Preparing to unpack .../libasn1-8-heimdal_1.7~git20150920+dfsg-4ubuntu1.16.04.1_amd64.deb ...
+Unpacking libasn1-8-heimdal:amd64 (1.7~git20150920+dfsg-4ubuntu1.16.04.1) ...
+Selecting previously unselected package libhcrypto4-heimdal:amd64.
+Preparing to unpack .../libhcrypto4-heimdal_1.7~git20150920+dfsg-4ubuntu1.16.04.1_amd64.deb ...
+Unpacking libhcrypto4-heimdal:amd64 (1.7~git20150920+dfsg-4ubuntu1.16.04.1) ...
+Selecting previously unselected package libheimbase1-heimdal:amd64.
+Preparing to unpack .../libheimbase1-heimdal_1.7~git20150920+dfsg-4ubuntu1.16.04.1_amd64.deb ...
+Unpacking libheimbase1-heimdal:amd64 (1.7~git20150920+dfsg-4ubuntu1.16.04.1) ...
+Selecting previously unselected package libwind0-heimdal:amd64.
+Preparing to unpack .../libwind0-heimdal_1.7~git20150920+dfsg-4ubuntu1.16.04.1_amd64.deb ...
+Unpacking libwind0-heimdal:amd64 (1.7~git20150920+dfsg-4ubuntu1.16.04.1) ...
+Selecting previously unselected package libhx509-5-heimdal:amd64.
+Preparing to unpack .../libhx509-5-heimdal_1.7~git20150920+dfsg-4ubuntu1.16.04.1_amd64.deb ...
+Unpacking libhx509-5-heimdal:amd64 (1.7~git20150920+dfsg-4ubuntu1.16.04.1) ...
+Selecting previously unselected package libkrb5-26-heimdal:amd64.
+Preparing to unpack .../libkrb5-26-heimdal_1.7~git20150920+dfsg-4ubuntu1.16.04.1_amd64.deb ...
+Unpacking libkrb5-26-heimdal:amd64 (1.7~git20150920+dfsg-4ubuntu1.16.04.1) ...
+Selecting previously unselected package libheimntlm0-heimdal:amd64.
+Preparing to unpack .../libheimntlm0-heimdal_1.7~git20150920+dfsg-4ubuntu1.16.04.1_amd64.deb ...
+Unpacking libheimntlm0-heimdal:amd64 (1.7~git20150920+dfsg-4ubuntu1.16.04.1) ...
+Selecting previously unselected package libgssapi3-heimdal:amd64.
+Preparing to unpack .../libgssapi3-heimdal_1.7~git20150920+dfsg-4ubuntu1.16.04.1_amd64.deb ...
+Unpacking libgssapi3-heimdal:amd64 (1.7~git20150920+dfsg-4ubuntu1.16.04.1) ...
+Selecting previously unselected package libsasl2-modules-db:amd64.
+Preparing to unpack .../libsasl2-modules-db_2.1.26.dfsg1-14build1_amd64.deb ...
+Unpacking libsasl2-modules-db:amd64 (2.1.26.dfsg1-14build1) ...
+Selecting previously unselected package libsasl2-2:amd64.
+Preparing to unpack .../libsasl2-2_2.1.26.dfsg1-14build1_amd64.deb ...
+Unpacking libsasl2-2:amd64 (2.1.26.dfsg1-14build1) ...
+Selecting previously unselected package libldap-2.4-2:amd64.
+Preparing to unpack .../libldap-2.4-2_2.4.42+dfsg-2ubuntu3.2_amd64.deb ...
+Unpacking libldap-2.4-2:amd64 (2.4.42+dfsg-2ubuntu3.2) ...
+Selecting previously unselected package librtmp1:amd64.
+Preparing to unpack .../librtmp1_2.4+20151223.gitfa8646d-1ubuntu0.1_amd64.deb ...
+Unpacking librtmp1:amd64 (2.4+20151223.gitfa8646d-1ubuntu0.1) ...
+Selecting previously unselected package libcurl3-gnutls:amd64.
+Preparing to unpack .../libcurl3-gnutls_7.47.0-1ubuntu2.4_amd64.deb ...
+Unpacking libcurl3-gnutls:amd64 (7.47.0-1ubuntu2.4) ...
+Selecting previously unselected package apt-transport-https.
+Preparing to unpack .../apt-transport-https_1.2.24_amd64.deb ...
+Unpacking apt-transport-https (1.2.24) ...
+Selecting previously unselected package openssl.
+Preparing to unpack .../openssl_1.0.2g-1ubuntu4.8_amd64.deb ...
+Unpacking openssl (1.0.2g-1ubuntu4.8) ...
+Selecting previously unselected package ca-certificates.
+Preparing to unpack .../ca-certificates_20170717~16.04.1_all.deb ...
+Unpacking ca-certificates (20170717~16.04.1) ...
+Selecting previously unselected package curl.
+Preparing to unpack .../curl_7.47.0-1ubuntu2.4_amd64.deb ...
+Unpacking curl (7.47.0-1ubuntu2.4) ...
+Processing triggers for libc-bin (2.23-0ubuntu9) ...
+Setting up libffi6:amd64 (3.2.1-4) ...
+Setting up libgmp10:amd64 (2:6.1.0+dfsg-2) ...
+Setting up libnettle6:amd64 (3.2-1ubuntu0.16.04.1) ...
+Setting up libhogweed4:amd64 (3.2-1ubuntu0.16.04.1) ...
+Setting up libidn11:amd64 (1.32-3ubuntu1.2) ...
+Setting up libp11-kit0:amd64 (0.23.2-5~ubuntu16.04.1) ...
+Setting up libtasn1-6:amd64 (4.7-3ubuntu0.16.04.2) ...
+Setting up libgnutls30:amd64 (3.4.10-4ubuntu1.4) ...
+Setting up libsqlite3-0:amd64 (3.11.0-1ubuntu1) ...
+Setting up libssl1.0.0:amd64 (1.0.2g-1ubuntu4.8) ...
+debconf: unable to initialize frontend: Dialog
+debconf: (TERM is not set, so the dialog frontend is not usable.)
+debconf: falling back to frontend: Readline
+debconf: unable to initialize frontend: Readline
+debconf: (Can't locate Term/ReadLine.pm in @INC (you may need to install the Term::ReadLine module) (@INC contains: /etc/perl /usr/local/lib/x86_64-linux-gnu/perl/5.22.1 /usr/local/share/perl/5.22.1 /usr/lib/x86_64-linux-gnu/perl5/5.22 /usr/share/perl5 /usr/lib/x86_64-linux-gnu/perl/5.22 /usr/share/perl/5.22 /usr/local/lib/site_perl /usr/lib/x86_64-linux-gnu/perl-base .) at /usr/share/perl5/Debconf/FrontEnd/Readline.pm line 7.)
+debconf: falling back to frontend: Teletype
+Setting up net-tools (1.60-26ubuntu1) ...
+Setting up libkrb5support0:amd64 (1.13.2+dfsg-5ubuntu2) ...
+Setting up libk5crypto3:amd64 (1.13.2+dfsg-5ubuntu2) ...
+Setting up libkeyutils1:amd64 (1.5.9-8ubuntu1) ...
+Setting up libkrb5-3:amd64 (1.13.2+dfsg-5ubuntu2) ...
+Setting up libgssapi-krb5-2:amd64 (1.13.2+dfsg-5ubuntu2) ...
+Setting up libroken18-heimdal:amd64 (1.7~git20150920+dfsg-4ubuntu1.16.04.1) ...
+Setting up libasn1-8-heimdal:amd64 (1.7~git20150920+dfsg-4ubuntu1.16.04.1) ...
+Setting up libhcrypto4-heimdal:amd64 (1.7~git20150920+dfsg-4ubuntu1.16.04.1) ...
+Setting up libheimbase1-heimdal:amd64 (1.7~git20150920+dfsg-4ubuntu1.16.04.1) ...
+Setting up libwind0-heimdal:amd64 (1.7~git20150920+dfsg-4ubuntu1.16.04.1) ...
+Setting up libhx509-5-heimdal:amd64 (1.7~git20150920+dfsg-4ubuntu1.16.04.1) ...
+Setting up libkrb5-26-heimdal:amd64 (1.7~git20150920+dfsg-4ubuntu1.16.04.1) ...
+Setting up libheimntlm0-heimdal:amd64 (1.7~git20150920+dfsg-4ubuntu1.16.04.1) ...
+Setting up libgssapi3-heimdal:amd64 (1.7~git20150920+dfsg-4ubuntu1.16.04.1) ...
+Setting up libsasl2-modules-db:amd64 (2.1.26.dfsg1-14build1) ...
+Setting up libsasl2-2:amd64 (2.1.26.dfsg1-14build1) ...
+Setting up libldap-2.4-2:amd64 (2.4.42+dfsg-2ubuntu3.2) ...
+Setting up librtmp1:amd64 (2.4+20151223.gitfa8646d-1ubuntu0.1) ...
+Setting up libcurl3-gnutls:amd64 (7.47.0-1ubuntu2.4) ...
+Setting up apt-transport-https (1.2.24) ...
+Setting up openssl (1.0.2g-1ubuntu4.8) ...
+Setting up ca-certificates (20170717~16.04.1) ...
+debconf: unable to initialize frontend: Dialog
+debconf: (TERM is not set, so the dialog frontend is not usable.)
+debconf: falling back to frontend: Readline
+debconf: unable to initialize frontend: Readline
+debconf: (Can't locate Term/ReadLine.pm in @INC (you may need to install the Term::ReadLine module) (@INC contains: /etc/perl /usr/local/lib/x86_64-linux-gnu/perl/5.22.1 /usr/local/share/perl/5.22.1 /usr/lib/x86_64-linux-gnu/perl5/5.22 /usr/share/perl5 /usr/lib/x86_64-linux-gnu/perl/5.22 /usr/share/perl/5.22 /usr/local/lib/site_perl /usr/lib/x86_64-linux-gnu/perl-base .) at /usr/share/perl5/Debconf/FrontEnd/Readline.pm line 7.)
+debconf: falling back to frontend: Teletype
+Setting up curl (7.47.0-1ubuntu2.4) ...
+Processing triggers for libc-bin (2.23-0ubuntu9) ...
+Processing triggers for ca-certificates (20170717~16.04.1) ...
+Updating certificates in /etc/ssl/certs...
+148 added, 0 removed; done.
+Running hooks in /etc/ca-certificates/update.d...
+done.
+ ---> c98adcccb2e9
+Removing intermediate container f78617d27cfd
+Step 3 : RUN curl -fsSL -O https://github.com/Yelp/dumb-init/releases/download/v1.2.0/dumb-init_1.2.0_amd64.deb  && dpkg -i dumb-init_1.2.0_amd64.deb && rm dumb-init_1.2.0_amd64.deb
+ ---> Running in c608732f5567
+Selecting previously unselected package dumb-init.
+(Reading database ... 5308 files and directories currently installed.)
+Preparing to unpack dumb-init_1.2.0_amd64.deb ...
+Unpacking dumb-init (1.2.0) ...
+Setting up dumb-init (1.2.0) ...
+ ---> e9bbbfddccaa
+Removing intermediate container c608732f5567
+Step 4 : ENTRYPOINT /usr/bin/dumb-init --
+ ---> Running in af503c30782f
+ ---> 530a7f2670a2
+Removing intermediate container af503c30782f
+Step 5 : RUN curl -fsSL https://deb.nodesource.com/gpgkey/nodesource.gpg.key | apt-key add -  && echo 'deb https://deb.nodesource.com/node_6.x xenial main' | tee /etc/apt/sources.list.d/nodesource.list  && curl -fsSL https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -  && echo 'deb https://dl.yarnpkg.com/debian/ stable main' | tee /etc/apt/sources.list.d/yarn.list
+ ---> Running in fcc64998ab6a
+OK
+deb https://deb.nodesource.com/node_6.x xenial main
+OK
+deb https://dl.yarnpkg.com/debian/ stable main
+ ---> d69b13c96a74
+Removing intermediate container fcc64998ab6a
+Step 6 : RUN apt-get update && apt-get install -y --no-install-recommends     autoconf     bison     bzip2     cmake     g++     git     libncurses-dev     make     nodejs     unzip     xz-utils     yarn
+ ---> Running in 33be701c4675
+Hit:1 http://security.ubuntu.com/ubuntu xenial-security InRelease
+Hit:2 http://archive.ubuntu.com/ubuntu xenial InRelease
+Get:3 https://deb.nodesource.com/node_6.x xenial InRelease [4646 B]
+Get:4 https://dl.yarnpkg.com/debian stable InRelease [11.5 kB]
+Hit:5 http://archive.ubuntu.com/ubuntu xenial-updates InRelease
+Get:6 https://deb.nodesource.com/node_6.x xenial/main amd64 Packages [1004 B]
+Get:7 https://dl.yarnpkg.com/debian stable/main amd64 Packages [6603 B]
+Hit:8 http://archive.ubuntu.com/ubuntu xenial-backports InRelease
+Get:9 https://dl.yarnpkg.com/debian stable/main all Packages [6603 B]
+Fetched 30.3 kB in 1s (20.1 kB/s)
+Reading package lists...
+Reading package lists...
+Building dependency tree...
+Reading state information...
+The following additional packages will be installed:
+  binutils cmake-data cpp cpp-5 g++-5 gcc gcc-5 git-man libarchive13 libasan2
+  libatomic1 libbison-dev libc-dev-bin libc6-dev libcc1-0 libcilkrts5 libcurl3
+  liberror-perl libexpat1 libgcc-5-dev libgdbm3 libgomp1 libicu55 libisl15
+  libitm1 libjsoncpp1 liblsan0 liblzo2-2 libmpc3 libmpfr4 libmpx0 libperl5.22
+  libpython2.7-minimal libquadmath0 libsigsegv2 libstdc++-5-dev libtinfo-dev
+  libtsan0 libubsan0 libxml2 linux-libc-dev m4 perl perl-modules-5.22
+  python-minimal python2.7-minimal
+Suggested packages:
+  autoconf-archive gnu-standards autoconf-doc libtool gettext binutils-doc
+  bison-doc bzip2-doc codeblocks eclipse ninja-build cpp-doc gcc-5-locales
+  g++-multilib g++-5-multilib gcc-5-doc libstdc++6-5-dbg gcc-multilib
+  manpages-dev automake flex gdb gcc-doc gcc-5-multilib libgcc1-dbg
+  libgomp1-dbg libitm1-dbg libatomic1-dbg libasan2-dbg liblsan0-dbg
+  libtsan0-dbg libubsan0-dbg libcilkrts5-dbg libmpx0-dbg libquadmath0-dbg
+  gettext-base git-daemon-run | git-daemon-sysvinit git-doc git-el git-email
+  git-gui gitk gitweb git-arch git-cvs git-mediawiki git-svn lrzip glibc-doc
+  ncurses-doc libstdc++-5-doc make-doc perl-doc libterm-readline-gnu-perl
+  | libterm-readline-perl-perl binfmt-support zip
+Recommended packages:
+  automake | automaken patch less rsync ssh-client manpages manpages-dev
+  libpython2.7-stdlib xml-core netbase rename python python2.7
+The following NEW packages will be installed:
+  autoconf binutils bison bzip2 cmake cmake-data cpp cpp-5 g++ g++-5 gcc gcc-5
+  git git-man libarchive13 libasan2 libatomic1 libbison-dev libc-dev-bin
+  libc6-dev libcc1-0 libcilkrts5 libcurl3 liberror-perl libexpat1 libgcc-5-dev
+  libgdbm3 libgomp1 libicu55 libisl15 libitm1 libjsoncpp1 liblsan0 liblzo2-2
+  libmpc3 libmpfr4 libmpx0 libncurses5-dev libperl5.22 libpython2.7-minimal
+  libquadmath0 libsigsegv2 libstdc++-5-dev libtinfo-dev libtsan0 libubsan0
+  libxml2 linux-libc-dev m4 make nodejs perl perl-modules-5.22 python-minimal
+  python2.7-minimal unzip xz-utils yarn
+0 upgraded, 58 newly installed, 0 to remove and 4 not upgraded.
+Need to get 72.5 MB of archives.
+After this operation, 318 MB of additional disk space will be used.
+Get:1 http://archive.ubuntu.com/ubuntu xenial/main amd64 libgdbm3 amd64 1.8.3-13.1 [16.9 kB]
+Get:2 https://deb.nodesource.com/node_6.x xenial/main amd64 nodejs amd64 6.11.5-1nodesource1 [9903 kB]
+Get:3 http://archive.ubuntu.com/ubuntu xenial-updates/main amd64 cmake-data all 3.5.1-1ubuntu3 [1121 kB]
+Get:4 https://dl.yarnpkg.com/debian stable/main amd64 yarn all 1.3.2-1 [670 kB]
+Get:5 http://archive.ubuntu.com/ubuntu xenial/main amd64 liblzo2-2 amd64 2.08-1.2 [48.7 kB]
+Get:6 http://archive.ubuntu.com/ubuntu xenial-updates/main amd64 libicu55 amd64 55.1-7ubuntu0.3 [7658 kB]
+Get:7 http://archive.ubuntu.com/ubuntu xenial-updates/main amd64 libxml2 amd64 2.9.3+dfsg1-1ubuntu0.3 [697 kB]
+Get:8 http://archive.ubuntu.com/ubuntu xenial-updates/main amd64 libarchive13 amd64 3.1.2-11ubuntu0.16.04.3 [262 kB]
+Get:9 http://archive.ubuntu.com/ubuntu xenial-updates/main amd64 libcurl3 amd64 7.47.0-1ubuntu2.4 [186 kB]
+Get:10 http://archive.ubuntu.com/ubuntu xenial-updates/main amd64 libexpat1 amd64 2.1.0-7ubuntu0.16.04.3 [71.2 kB]
+Get:11 http://archive.ubuntu.com/ubuntu xenial/main amd64 libjsoncpp1 amd64 1.7.2-1 [73.0 kB]
+Get:12 http://archive.ubuntu.com/ubuntu xenial-updates/main amd64 cmake amd64 3.5.1-1ubuntu3 [2623 kB]
+Get:13 http://archive.ubuntu.com/ubuntu xenial/main amd64 libsigsegv2 amd64 2.10-4 [14.1 kB]
+Get:14 http://archive.ubuntu.com/ubuntu xenial/main amd64 perl-modules-5.22 all 5.22.1-9 [2641 kB]
+Get:15 http://archive.ubuntu.com/ubuntu xenial/main amd64 libperl5.22 amd64 5.22.1-9 [3371 kB]
+Get:16 http://archive.ubuntu.com/ubuntu xenial/main amd64 perl amd64 5.22.1-9 [237 kB]
+Get:17 http://archive.ubuntu.com/ubuntu xenial-updates/main amd64 libpython2.7-minimal amd64 2.7.12-1ubuntu0~16.04.1 [339 kB]
+Get:18 http://archive.ubuntu.com/ubuntu xenial-updates/main amd64 python2.7-minimal amd64 2.7.12-1ubuntu0~16.04.1 [1295 kB]
+Get:19 http://archive.ubuntu.com/ubuntu xenial/main amd64 libmpfr4 amd64 3.1.4-1 [191 kB]
+Get:20 http://archive.ubuntu.com/ubuntu xenial/main amd64 libmpc3 amd64 1.0.3-1 [39.7 kB]
+Get:21 http://archive.ubuntu.com/ubuntu xenial/main amd64 bzip2 amd64 1.0.6-8 [32.7 kB]
+Get:22 http://archive.ubuntu.com/ubuntu xenial/main amd64 m4 amd64 1.4.17-5 [195 kB]
+Get:23 http://archive.ubuntu.com/ubuntu xenial/main amd64 autoconf all 2.69-9 [321 kB]
+Get:24 http://archive.ubuntu.com/ubuntu xenial-updates/main amd64 binutils amd64 2.26.1-1ubuntu1~16.04.5 [2311 kB]
+Get:25 http://archive.ubuntu.com/ubuntu xenial/main amd64 libbison-dev amd64 2:3.0.4.dfsg-1 [338 kB]
+Get:26 http://archive.ubuntu.com/ubuntu xenial/main amd64 bison amd64 2:3.0.4.dfsg-1 [259 kB]
+Get:27 http://archive.ubuntu.com/ubuntu xenial/main amd64 libisl15 amd64 0.16.1-1 [524 kB]
+Get:28 http://archive.ubuntu.com/ubuntu xenial-updates/main amd64 cpp-5 amd64 5.4.0-6ubuntu1~16.04.5 [7786 kB]
+Get:29 http://archive.ubuntu.com/ubuntu xenial/main amd64 cpp amd64 4:5.3.1-1ubuntu1 [27.7 kB]
+Get:30 http://archive.ubuntu.com/ubuntu xenial-updates/main amd64 libcc1-0 amd64 5.4.0-6ubuntu1~16.04.5 [38.8 kB]
+Get:31 http://archive.ubuntu.com/ubuntu xenial-updates/main amd64 libgomp1 amd64 5.4.0-6ubuntu1~16.04.5 [55.1 kB]
+Get:32 http://archive.ubuntu.com/ubuntu xenial-updates/main amd64 libitm1 amd64 5.4.0-6ubuntu1~16.04.5 [27.4 kB]
+Get:33 http://archive.ubuntu.com/ubuntu xenial-updates/main amd64 libatomic1 amd64 5.4.0-6ubuntu1~16.04.5 [8920 B]
+Get:34 http://archive.ubuntu.com/ubuntu xenial-updates/main amd64 libasan2 amd64 5.4.0-6ubuntu1~16.04.5 [264 kB]
+Get:34 http://archive.ubuntu.com/ubuntu xenial-updates/main amd64 libasan2 amd64 5.4.0-6ubuntu1~16.04.5 [264 kB]
+Get:35 http://archive.ubuntu.com/ubuntu xenial-updates/main amd64 liblsan0 amd64 5.4.0-6ubuntu1~16.04.5 [105 kB]
+Get:36 http://archive.ubuntu.com/ubuntu xenial-updates/main amd64 libtsan0 amd64 5.4.0-6ubuntu1~16.04.5 [244 kB]
+Get:37 http://archive.ubuntu.com/ubuntu xenial-updates/main amd64 libubsan0 amd64 5.4.0-6ubuntu1~16.04.5 [95.3 kB]
+Get:38 http://archive.ubuntu.com/ubuntu xenial-updates/main amd64 libcilkrts5 amd64 5.4.0-6ubuntu1~16.04.5 [40.1 kB]
+Get:39 http://archive.ubuntu.com/ubuntu xenial-updates/main amd64 libmpx0 amd64 5.4.0-6ubuntu1~16.04.5 [9786 B]
+Get:40 http://archive.ubuntu.com/ubuntu xenial-updates/main amd64 libquadmath0 amd64 5.4.0-6ubuntu1~16.04.5 [131 kB]
+Get:41 http://archive.ubuntu.com/ubuntu xenial-updates/main amd64 libgcc-5-dev amd64 5.4.0-6ubuntu1~16.04.5 [2226 kB]
+Get:42 http://archive.ubuntu.com/ubuntu xenial-updates/main amd64 gcc-5 amd64 5.4.0-6ubuntu1~16.04.5 [8638 kB]
+Get:43 http://archive.ubuntu.com/ubuntu xenial/main amd64 gcc amd64 4:5.3.1-1ubuntu1 [5244 B]
+Get:44 http://archive.ubuntu.com/ubuntu xenial-updates/main amd64 libc-dev-bin amd64 2.23-0ubuntu9 [68.6 kB]
+Get:45 http://archive.ubuntu.com/ubuntu xenial-updates/main amd64 linux-libc-dev amd64 4.4.0-98.121 [843 kB]
+Get:46 http://archive.ubuntu.com/ubuntu xenial-updates/main amd64 libc6-dev amd64 2.23-0ubuntu9 [2082 kB]
+Get:47 http://archive.ubuntu.com/ubuntu xenial-updates/main amd64 libstdc++-5-dev amd64 5.4.0-6ubuntu1~16.04.5 [1430 kB]
+Get:48 http://archive.ubuntu.com/ubuntu xenial-updates/main amd64 g++-5 amd64 5.4.0-6ubuntu1~16.04.5 [8435 kB]
+Get:49 http://archive.ubuntu.com/ubuntu xenial/main amd64 g++ amd64 4:5.3.1-1ubuntu1 [1504 B]
+Get:50 http://archive.ubuntu.com/ubuntu xenial/main amd64 liberror-perl all 0.17-1.2 [19.6 kB]
+Get:51 http://archive.ubuntu.com/ubuntu xenial-updates/main amd64 git-man all 1:2.7.4-0ubuntu1.3 [736 kB]
+Get:52 http://archive.ubuntu.com/ubuntu xenial-updates/main amd64 git amd64 1:2.7.4-0ubuntu1.3 [3102 kB]
+Get:53 http://archive.ubuntu.com/ubuntu xenial/main amd64 libtinfo-dev amd64 6.0+20160213-1ubuntu1 [77.4 kB]
+Get:54 http://archive.ubuntu.com/ubuntu xenial/main amd64 libncurses5-dev amd64 6.0+20160213-1ubuntu1 [175 kB]
+Get:55 http://archive.ubuntu.com/ubuntu xenial/main amd64 make amd64 4.1-6 [151 kB]
+Get:56 http://archive.ubuntu.com/ubuntu xenial/main amd64 python-minimal amd64 2.7.11-1 [28.2 kB]
+Get:57 http://archive.ubuntu.com/ubuntu xenial/main amd64 unzip amd64 6.0-20ubuntu1 [158 kB]
+Get:58 http://archive.ubuntu.com/ubuntu xenial/main amd64 xz-utils amd64 5.1.1alpha+20120614-2ubuntu2 [78.8 kB]
+debconf: delaying package configuration, since apt-utils is not installed
+Fetched 72.5 MB in 4min 39s (259 kB/s)
+Selecting previously unselected package libgdbm3:amd64.
+(Reading database ... 5314 files and directories currently installed.)
+Preparing to unpack .../libgdbm3_1.8.3-13.1_amd64.deb ...
+Unpacking libgdbm3:amd64 (1.8.3-13.1) ...
+Selecting previously unselected package cmake-data.
+Preparing to unpack .../cmake-data_3.5.1-1ubuntu3_all.deb ...
+Unpacking cmake-data (3.5.1-1ubuntu3) ...
+Selecting previously unselected package liblzo2-2:amd64.
+Preparing to unpack .../liblzo2-2_2.08-1.2_amd64.deb ...
+Unpacking liblzo2-2:amd64 (2.08-1.2) ...
+Selecting previously unselected package libicu55:amd64.
+Preparing to unpack .../libicu55_55.1-7ubuntu0.3_amd64.deb ...
+Unpacking libicu55:amd64 (55.1-7ubuntu0.3) ...
+Selecting previously unselected package libxml2:amd64.
+Preparing to unpack .../libxml2_2.9.3+dfsg1-1ubuntu0.3_amd64.deb ...
+Unpacking libxml2:amd64 (2.9.3+dfsg1-1ubuntu0.3) ...
+Selecting previously unselected package libarchive13:amd64.
+Preparing to unpack .../libarchive13_3.1.2-11ubuntu0.16.04.3_amd64.deb ...
+Unpacking libarchive13:amd64 (3.1.2-11ubuntu0.16.04.3) ...
+Selecting previously unselected package libcurl3:amd64.
+Preparing to unpack .../libcurl3_7.47.0-1ubuntu2.4_amd64.deb ...
+Unpacking libcurl3:amd64 (7.47.0-1ubuntu2.4) ...
+Selecting previously unselected package libexpat1:amd64.
+Preparing to unpack .../libexpat1_2.1.0-7ubuntu0.16.04.3_amd64.deb ...
+Unpacking libexpat1:amd64 (2.1.0-7ubuntu0.16.04.3) ...
+Selecting previously unselected package libjsoncpp1:amd64.
+Preparing to unpack .../libjsoncpp1_1.7.2-1_amd64.deb ...
+Unpacking libjsoncpp1:amd64 (1.7.2-1) ...
+Selecting previously unselected package cmake.
+Preparing to unpack .../cmake_3.5.1-1ubuntu3_amd64.deb ...
+Unpacking cmake (3.5.1-1ubuntu3) ...
+Selecting previously unselected package libsigsegv2:amd64.
+Preparing to unpack .../libsigsegv2_2.10-4_amd64.deb ...
+Unpacking libsigsegv2:amd64 (2.10-4) ...
+Selecting previously unselected package perl-modules-5.22.
+Preparing to unpack .../perl-modules-5.22_5.22.1-9_all.deb ...
+Unpacking perl-modules-5.22 (5.22.1-9) ...
+Selecting previously unselected package libperl5.22:amd64.
+Preparing to unpack .../libperl5.22_5.22.1-9_amd64.deb ...
+Unpacking libperl5.22:amd64 (5.22.1-9) ...
+Selecting previously unselected package perl.
+Preparing to unpack .../perl_5.22.1-9_amd64.deb ...
+Unpacking perl (5.22.1-9) ...
+Selecting previously unselected package libpython2.7-minimal:amd64.
+Preparing to unpack .../libpython2.7-minimal_2.7.12-1ubuntu0~16.04.1_amd64.deb ...
+Unpacking libpython2.7-minimal:amd64 (2.7.12-1ubuntu0~16.04.1) ...
+Selecting previously unselected package python2.7-minimal.
+Preparing to unpack .../python2.7-minimal_2.7.12-1ubuntu0~16.04.1_amd64.deb ...
+Unpacking python2.7-minimal (2.7.12-1ubuntu0~16.04.1) ...
+Selecting previously unselected package libmpfr4:amd64.
+Preparing to unpack .../libmpfr4_3.1.4-1_amd64.deb ...
+Unpacking libmpfr4:amd64 (3.1.4-1) ...
+Selecting previously unselected package libmpc3:amd64.
+Preparing to unpack .../libmpc3_1.0.3-1_amd64.deb ...
+Unpacking libmpc3:amd64 (1.0.3-1) ...
+Selecting previously unselected package bzip2.
+Preparing to unpack .../bzip2_1.0.6-8_amd64.deb ...
+Unpacking bzip2 (1.0.6-8) ...
+Selecting previously unselected package m4.
+Preparing to unpack .../archives/m4_1.4.17-5_amd64.deb ...
+Unpacking m4 (1.4.17-5) ...
+Selecting previously unselected package autoconf.
+Preparing to unpack .../autoconf_2.69-9_all.deb ...
+Unpacking autoconf (2.69-9) ...
+Selecting previously unselected package binutils.
+Preparing to unpack .../binutils_2.26.1-1ubuntu1~16.04.5_amd64.deb ...
+Unpacking binutils (2.26.1-1ubuntu1~16.04.5) ...
+Selecting previously unselected package libbison-dev:amd64.
+Preparing to unpack .../libbison-dev_2%3a3.0.4.dfsg-1_amd64.deb ...
+Unpacking libbison-dev:amd64 (2:3.0.4.dfsg-1) ...
+Selecting previously unselected package bison.
+Preparing to unpack .../bison_2%3a3.0.4.dfsg-1_amd64.deb ...
+Unpacking bison (2:3.0.4.dfsg-1) ...
+Selecting previously unselected package libisl15:amd64.
+Preparing to unpack .../libisl15_0.16.1-1_amd64.deb ...
+Unpacking libisl15:amd64 (0.16.1-1) ...
+Selecting previously unselected package cpp-5.
+Preparing to unpack .../cpp-5_5.4.0-6ubuntu1~16.04.5_amd64.deb ...
+Unpacking cpp-5 (5.4.0-6ubuntu1~16.04.5) ...
+Selecting previously unselected package cpp.
+Preparing to unpack .../cpp_4%3a5.3.1-1ubuntu1_amd64.deb ...
+Unpacking cpp (4:5.3.1-1ubuntu1) ...
+Selecting previously unselected package libcc1-0:amd64.
+Preparing to unpack .../libcc1-0_5.4.0-6ubuntu1~16.04.5_amd64.deb ...
+Unpacking libcc1-0:amd64 (5.4.0-6ubuntu1~16.04.5) ...
+Selecting previously unselected package libgomp1:amd64.
+Preparing to unpack .../libgomp1_5.4.0-6ubuntu1~16.04.5_amd64.deb ...
+Unpacking libgomp1:amd64 (5.4.0-6ubuntu1~16.04.5) ...
+Selecting previously unselected package libitm1:amd64.
+Preparing to unpack .../libitm1_5.4.0-6ubuntu1~16.04.5_amd64.deb ...
+Unpacking libitm1:amd64 (5.4.0-6ubuntu1~16.04.5) ...
+Selecting previously unselected package libatomic1:amd64.
+Preparing to unpack .../libatomic1_5.4.0-6ubuntu1~16.04.5_amd64.deb ...
+Unpacking libatomic1:amd64 (5.4.0-6ubuntu1~16.04.5) ...
+Selecting previously unselected package libasan2:amd64.
+Preparing to unpack .../libasan2_5.4.0-6ubuntu1~16.04.5_amd64.deb ...
+Unpacking libasan2:amd64 (5.4.0-6ubuntu1~16.04.5) ...
+Selecting previously unselected package liblsan0:amd64.
+Preparing to unpack .../liblsan0_5.4.0-6ubuntu1~16.04.5_amd64.deb ...
+Unpacking liblsan0:amd64 (5.4.0-6ubuntu1~16.04.5) ...
+Selecting previously unselected package libtsan0:amd64.
+Preparing to unpack .../libtsan0_5.4.0-6ubuntu1~16.04.5_amd64.deb ...
+Unpacking libtsan0:amd64 (5.4.0-6ubuntu1~16.04.5) ...
+Selecting previously unselected package libubsan0:amd64.
+Preparing to unpack .../libubsan0_5.4.0-6ubuntu1~16.04.5_amd64.deb ...
+Unpacking libubsan0:amd64 (5.4.0-6ubuntu1~16.04.5) ...
+Selecting previously unselected package libcilkrts5:amd64.
+Preparing to unpack .../libcilkrts5_5.4.0-6ubuntu1~16.04.5_amd64.deb ...
+Unpacking libcilkrts5:amd64 (5.4.0-6ubuntu1~16.04.5) ...
+Selecting previously unselected package libmpx0:amd64.
+Preparing to unpack .../libmpx0_5.4.0-6ubuntu1~16.04.5_amd64.deb ...
+Unpacking libmpx0:amd64 (5.4.0-6ubuntu1~16.04.5) ...
+Selecting previously unselected package libquadmath0:amd64.
+Preparing to unpack .../libquadmath0_5.4.0-6ubuntu1~16.04.5_amd64.deb ...
+Unpacking libquadmath0:amd64 (5.4.0-6ubuntu1~16.04.5) ...
+Selecting previously unselected package libgcc-5-dev:amd64.
+Preparing to unpack .../libgcc-5-dev_5.4.0-6ubuntu1~16.04.5_amd64.deb ...
+Unpacking libgcc-5-dev:amd64 (5.4.0-6ubuntu1~16.04.5) ...
+Selecting previously unselected package gcc-5.
+Preparing to unpack .../gcc-5_5.4.0-6ubuntu1~16.04.5_amd64.deb ...
+Unpacking gcc-5 (5.4.0-6ubuntu1~16.04.5) ...
+Selecting previously unselected package gcc.
+Preparing to unpack .../gcc_4%3a5.3.1-1ubuntu1_amd64.deb ...
+Unpacking gcc (4:5.3.1-1ubuntu1) ...
+Selecting previously unselected package libc-dev-bin.
+Preparing to unpack .../libc-dev-bin_2.23-0ubuntu9_amd64.deb ...
+Unpacking libc-dev-bin (2.23-0ubuntu9) ...
+Selecting previously unselected package linux-libc-dev:amd64.
+Preparing to unpack .../linux-libc-dev_4.4.0-98.121_amd64.deb ...
+Unpacking linux-libc-dev:amd64 (4.4.0-98.121) ...
+Selecting previously unselected package libc6-dev:amd64.
+Preparing to unpack .../libc6-dev_2.23-0ubuntu9_amd64.deb ...
+Unpacking libc6-dev:amd64 (2.23-0ubuntu9) ...
+Selecting previously unselected package libstdc++-5-dev:amd64.
+Preparing to unpack .../libstdc++-5-dev_5.4.0-6ubuntu1~16.04.5_amd64.deb ...
+Unpacking libstdc++-5-dev:amd64 (5.4.0-6ubuntu1~16.04.5) ...
+Selecting previously unselected package g++-5.
+Preparing to unpack .../g++-5_5.4.0-6ubuntu1~16.04.5_amd64.deb ...
+Unpacking g++-5 (5.4.0-6ubuntu1~16.04.5) ...
+Selecting previously unselected package g++.
+Preparing to unpack .../g++_4%3a5.3.1-1ubuntu1_amd64.deb ...
+Unpacking g++ (4:5.3.1-1ubuntu1) ...
+Selecting previously unselected package liberror-perl.
+Preparing to unpack .../liberror-perl_0.17-1.2_all.deb ...
+Unpacking liberror-perl (0.17-1.2) ...
+Selecting previously unselected package git-man.
+Preparing to unpack .../git-man_1%3a2.7.4-0ubuntu1.3_all.deb ...
+Unpacking git-man (1:2.7.4-0ubuntu1.3) ...
+Selecting previously unselected package git.
+Preparing to unpack .../git_1%3a2.7.4-0ubuntu1.3_amd64.deb ...
+Unpacking git (1:2.7.4-0ubuntu1.3) ...
+Selecting previously unselected package libtinfo-dev:amd64.
+Preparing to unpack .../libtinfo-dev_6.0+20160213-1ubuntu1_amd64.deb ...
+Unpacking libtinfo-dev:amd64 (6.0+20160213-1ubuntu1) ...
+Selecting previously unselected package libncurses5-dev:amd64.
+Preparing to unpack .../libncurses5-dev_6.0+20160213-1ubuntu1_amd64.deb ...
+Unpacking libncurses5-dev:amd64 (6.0+20160213-1ubuntu1) ...
+Selecting previously unselected package make.
+Preparing to unpack .../archives/make_4.1-6_amd64.deb ...
+Unpacking make (4.1-6) ...
+Selecting previously unselected package python-minimal.
+Preparing to unpack .../python-minimal_2.7.11-1_amd64.deb ...
+Unpacking python-minimal (2.7.11-1) ...
+Selecting previously unselected package nodejs.
+Preparing to unpack .../nodejs_6.11.5-1nodesource1_amd64.deb ...
+Unpacking nodejs (6.11.5-1nodesource1) ...
+Selecting previously unselected package unzip.
+Preparing to unpack .../unzip_6.0-20ubuntu1_amd64.deb ...
+Unpacking unzip (6.0-20ubuntu1) ...
+Selecting previously unselected package xz-utils.
+Preparing to unpack .../xz-utils_5.1.1alpha+20120614-2ubuntu2_amd64.deb ...
+Unpacking xz-utils (5.1.1alpha+20120614-2ubuntu2) ...
+Selecting previously unselected package yarn.
+Preparing to unpack .../archives/yarn_1.3.2-1_all.deb ...
+Unpacking yarn (1.3.2-1) ...
+Processing triggers for libc-bin (2.23-0ubuntu9) ...
+Setting up libgdbm3:amd64 (1.8.3-13.1) ...
+Setting up cmake-data (3.5.1-1ubuntu3) ...
+Setting up liblzo2-2:amd64 (2.08-1.2) ...
+Setting up libicu55:amd64 (55.1-7ubuntu0.3) ...
+Setting up libxml2:amd64 (2.9.3+dfsg1-1ubuntu0.3) ...
+Setting up libarchive13:amd64 (3.1.2-11ubuntu0.16.04.3) ...
+Setting up libcurl3:amd64 (7.47.0-1ubuntu2.4) ...
+Setting up libexpat1:amd64 (2.1.0-7ubuntu0.16.04.3) ...
+Setting up libjsoncpp1:amd64 (1.7.2-1) ...
+Setting up cmake (3.5.1-1ubuntu3) ...
+Setting up libsigsegv2:amd64 (2.10-4) ...
+Setting up perl-modules-5.22 (5.22.1-9) ...
+Setting up libperl5.22:amd64 (5.22.1-9) ...
+Setting up perl (5.22.1-9) ...
+update-alternatives: using /usr/bin/prename to provide /usr/bin/rename (rename) in auto mode
+Setting up libpython2.7-minimal:amd64 (2.7.12-1ubuntu0~16.04.1) ...
+Setting up python2.7-minimal (2.7.12-1ubuntu0~16.04.1) ...
+Linking and byte-compiling packages for runtime python2.7...
+Setting up libmpfr4:amd64 (3.1.4-1) ...
+Setting up libmpc3:amd64 (1.0.3-1) ...
+Setting up bzip2 (1.0.6-8) ...
+Setting up m4 (1.4.17-5) ...
+Setting up autoconf (2.69-9) ...
+Setting up binutils (2.26.1-1ubuntu1~16.04.5) ...
+Setting up libbison-dev:amd64 (2:3.0.4.dfsg-1) ...
+Setting up bison (2:3.0.4.dfsg-1) ...
+update-alternatives: using /usr/bin/bison.yacc to provide /usr/bin/yacc (yacc) in auto mode
+Setting up libisl15:amd64 (0.16.1-1) ...
+Setting up cpp-5 (5.4.0-6ubuntu1~16.04.5) ...
+Setting up cpp (4:5.3.1-1ubuntu1) ...
+Setting up libcc1-0:amd64 (5.4.0-6ubuntu1~16.04.5) ...
+Setting up libgomp1:amd64 (5.4.0-6ubuntu1~16.04.5) ...
+Setting up libitm1:amd64 (5.4.0-6ubuntu1~16.04.5) ...
+Setting up libatomic1:amd64 (5.4.0-6ubuntu1~16.04.5) ...
+Setting up libasan2:amd64 (5.4.0-6ubuntu1~16.04.5) ...
+Setting up liblsan0:amd64 (5.4.0-6ubuntu1~16.04.5) ...
+Setting up libtsan0:amd64 (5.4.0-6ubuntu1~16.04.5) ...
+Setting up libubsan0:amd64 (5.4.0-6ubuntu1~16.04.5) ...
+Setting up libcilkrts5:amd64 (5.4.0-6ubuntu1~16.04.5) ...
+Setting up libmpx0:amd64 (5.4.0-6ubuntu1~16.04.5) ...
+Setting up libquadmath0:amd64 (5.4.0-6ubuntu1~16.04.5) ...
+Setting up libgcc-5-dev:amd64 (5.4.0-6ubuntu1~16.04.5) ...
+Setting up gcc-5 (5.4.0-6ubuntu1~16.04.5) ...
+Setting up gcc (4:5.3.1-1ubuntu1) ...
+Setting up libc-dev-bin (2.23-0ubuntu9) ...
+Setting up linux-libc-dev:amd64 (4.4.0-98.121) ...
+Setting up libc6-dev:amd64 (2.23-0ubuntu9) ...
+Setting up libstdc++-5-dev:amd64 (5.4.0-6ubuntu1~16.04.5) ...
+Setting up g++-5 (5.4.0-6ubuntu1~16.04.5) ...
+Setting up g++ (4:5.3.1-1ubuntu1) ...
+update-alternatives: using /usr/bin/g++ to provide /usr/bin/c++ (c++) in auto mode
+Setting up liberror-perl (0.17-1.2) ...
+Setting up git-man (1:2.7.4-0ubuntu1.3) ...
+Setting up git (1:2.7.4-0ubuntu1.3) ...
+Setting up libtinfo-dev:amd64 (6.0+20160213-1ubuntu1) ...
+Setting up libncurses5-dev:amd64 (6.0+20160213-1ubuntu1) ...
+Setting up make (4.1-6) ...
+Setting up python-minimal (2.7.11-1) ...
+Setting up nodejs (6.11.5-1nodesource1) ...
+Setting up unzip (6.0-20ubuntu1) ...
+Setting up xz-utils (5.1.1alpha+20120614-2ubuntu2) ...
+update-alternatives: using /usr/bin/xz to provide /usr/bin/lzma (lzma) in auto mode
+Setting up yarn (1.3.2-1) ...
+Processing triggers for libc-bin (2.23-0ubuntu9) ...
+ ---> 526b1480620c
+Removing intermediate container 33be701c4675
+Step 7 : ENV GOPATH /go
+ ---> Running in ce420f8790b9
+ ---> a77341933cb2
+Removing intermediate container ce420f8790b9
+Step 8 : ENV PATH $GOPATH/bin:/usr/local/go/bin:$PATH
+ ---> Running in 8067efa7827b
+ ---> 8bad426f18de
+Removing intermediate container 8067efa7827b
+Step 9 : RUN mkdir -p "$GOPATH/src" "$GOPATH/bin" && chmod -R 777 "$GOPATH"
+ ---> Running in 54497f939453
+ ---> a0a5c2bf711d
+Removing intermediate container 54497f939453
+Step 10 : WORKDIR $GOPATH
+ ---> Running in b169a1de5669
+ ---> 3095922607ef
+Removing intermediate container b169a1de5669
+Step 11 : RUN curl -fsSL         http://172.17.4.50:48080/Downloads/99-mirror/https0x3A0x2F0x2Fgolang.org0x2Fdl/go1.9.2.linux-amd64.tar.gz     | gunzip | tar -x -C /usr/local
+ ---> Running in 9a771f4f4b98
+ ---> 44f16314cbe2
+Removing intermediate container 9a771f4f4b98
+Step 12 : RUN git clone --depth=1 https://github.com/cockroachdb/cockroach $GOPATH/src/github.com/cockroachdb/cockroach
+ ---> Running in ffd247d3dd97
+Cloning into '/go/src/github.com/cockroachdb/cockroach'...
+ ---> ff862a320e8e
+Removing intermediate container ffd247d3dd97
+Step 13 : WORKDIR $GOPATH/src/github.com/cockroachdb/cockroach
+ ---> Running in 605e1881be91
+ ---> 0545c7714b19
+Removing intermediate container 605e1881be91
+Step 14 : RUN make build     && mv cockroach /usr/local/bin
+ ---> Running in e7247f934626
+GOPATH set to /go
+Running make with -j2
+installing githooks/post-rewrite
+installing githooks/post-checkout
+installing githooks/post-merge
+git submodule update --init
+GEN pkg/cli/zcgo_flags.go
+GEN pkg/server/status/zcgo_flags.go
+GEN pkg/storage/engine/zcgo_flags.go
+Submodule 'c-deps/jemalloc' (https://github.com/cockroachdb/jemalloc.git) registered for path 'c-deps/jemalloc'
+GEN pkg/ccl/storageccl/engineccl/zcgo_flags.go
+Submodule 'c-deps/protobuf' (https://github.com/cockroachdb/protobuf.git) registered for path 'c-deps/protobuf'
+GEN pkg/cli/zcgo_flags_x86_64_linux_gnu.go
+Submodule 'c-deps/rocksdb' (https://github.com/cockroachdb/rocksdb.git) registered for path 'c-deps/rocksdb'
+GEN pkg/server/status/zcgo_flags_x86_64_linux_gnu.go
+Submodule 'c-deps/snappy' (https://github.com/cockroachdb/snappy.git) registered for path 'c-deps/snappy'
+GEN pkg/storage/engine/zcgo_flags_x86_64_linux_gnu.go
+Submodule 'vendor' (https://github.com/cockroachdb/vendored) registered for path 'vendor'
+GEN pkg/ccl/storageccl/engineccl/zcgo_flags_x86_64_linux_gnu.go
+Cloning into 'c-deps/jemalloc'...
+fatal: No names found, cannot describe anything.
+Submodule path 'c-deps/jemalloc': checked out '04380e79f1e2428bd0ad000bbc6e3d2dfc6b66a5'
+Cloning into 'c-deps/protobuf'...
+Submodule path 'c-deps/protobuf': checked out 'b04e5cba356212e4e8c66c61bbe0c3a20537c5b9'
+Cloning into 'c-deps/rocksdb'...
+Submodule path 'c-deps/rocksdb': checked out '8c03973dfca2ff3fd3995f5e1219565a646d30be'
+Cloning into 'c-deps/snappy'...
+Submodule path 'c-deps/snappy': checked out 'b02bfa754ebf27921d8da3bd2517eab445b84ff9'
+Cloning into 'vendor'...
+Submodule path 'vendor': checked out 'acf9a82d99e10457b9f77e55408d3ade16e3f31d'
+github.com/cockroachdb/cockroach/vendor/golang.org/x/tools/go/buildutil
+github.com/cockroachdb/cockroach/vendor/golang.org/x/tools/go/ast/astutil
+github.com/cockroachdb/cockroach/vendor/github.com/kisielk/gotool/internal/load
+github.com/cockroachdb/cockroach/vendor/golang.org/x/tools/go/loader
+github.com/cockroachdb/cockroach/vendor/github.com/kisielk/gotool
+github.com/cockroachdb/cockroach/vendor/github.com/cockroachdb/returncheck
+github.com/cockroachdb/cockroach/pkg/cmd/returncheck
+github.com/cockroachdb/cockroach/vendor/github.com/pkg/errors
+github.com/cockroachdb/cockroach/vendor/github.com/Masterminds/semver
+github.com/cockroachdb/cockroach/vendor/github.com/golang/dep/internal/fs
+github.com/cockroachdb/cockroach/vendor/github.com/Masterminds/vcs
+github.com/cockroachdb/cockroach/vendor/github.com/armon/go-radix
+github.com/cockroachdb/cockroach/vendor/github.com/boltdb/bolt
+github.com/cockroachdb/cockroach/vendor/github.com/golang/protobuf/proto
+github.com/cockroachdb/cockroach/vendor/github.com/golang/dep/internal/gps/paths
+github.com/cockroachdb/cockroach/vendor/github.com/golang/dep/internal/gps/pkgtree
+github.com/cockroachdb/cockroach/vendor/github.com/jmank88/nuts
+github.com/cockroachdb/cockroach/vendor/github.com/nightlyone/lockfile
+github.com/cockroachdb/cockroach/vendor/github.com/sdboyer/constext
+github.com/cockroachdb/cockroach/vendor/golang.org/x/net/context
+github.com/cockroachdb/cockroach/vendor/golang.org/x/sync/errgroup
+github.com/cockroachdb/cockroach/vendor/github.com/pelletier/go-toml
+github.com/cockroachdb/cockroach/vendor/github.com/golang/dep/internal/gps/internal/pb
+github.com/cockroachdb/cockroach/vendor/github.com/golang/dep/internal/gps
+github.com/cockroachdb/cockroach/vendor/github.com/go-yaml/yaml
+github.com/cockroachdb/cockroach/vendor/github.com/client9/misspell
+github.com/cockroachdb/cockroach/vendor/github.com/client9/misspell/cmd/misspell
+github.com/cockroachdb/cockroach/vendor/github.com/golang/dep
+github.com/cockroachdb/cockroach/vendor/github.com/golang/dep/internal/feedback
+github.com/cockroachdb/cockroach/vendor/github.com/golang/dep/internal/importers/base
+github.com/cockroachdb/cockroach/vendor/github.com/golang/dep/internal/importers/glide
+github.com/cockroachdb/cockroach/vendor/github.com/golang/dep/internal/importers/godep
+github.com/cockroachdb/cockroach/vendor/github.com/golang/dep/internal/importers/govend
+github.com/cockroachdb/cockroach/vendor/github.com/golang/dep/internal/importers/gvt
+github.com/cockroachdb/cockroach/vendor/github.com/golang/dep/internal/importers/vndr
+github.com/cockroachdb/cockroach/vendor/github.com/cockroachdb/crlfmt
+github.com/cockroachdb/cockroach/vendor/github.com/golang/dep/internal/importers
+github.com/cockroachdb/cockroach/vendor/github.com/golang/dep/cmd/dep
+github.com/cockroachdb/cockroach/vendor/github.com/cockroachdb/stress
+github.com/cockroachdb/cockroach/vendor/golang.org/x/tools/go/gcimporter15
+github.com/cockroachdb/cockroach/vendor/golang.org/x/tools/go/gcexportdata
+github.com/cockroachdb/cockroach/vendor/github.com/golang/lint
+github.com/cockroachdb/cockroach/vendor/github.com/golang/lint/golint
+github.com/cockroachdb/cockroach/vendor/github.com/google/pprof/internal/elfexec
+github.com/cockroachdb/cockroach/vendor/github.com/google/pprof/profile
+github.com/cockroachdb/cockroach/vendor/github.com/ianlancetaylor/demangle
+github.com/cockroachdb/cockroach/vendor/github.com/google/pprof/internal/plugin
+github.com/cockroachdb/cockroach/vendor/github.com/google/pprof/internal/measurement
+github.com/cockroachdb/cockroach/vendor/github.com/google/pprof/internal/graph
+github.com/cockroachdb/cockroach/vendor/github.com/google/pprof/internal/report
+github.com/cockroachdb/cockroach/vendor/github.com/google/pprof/internal/binutils
+github.com/cockroachdb/cockroach/vendor/github.com/google/pprof/internal/symbolz
+github.com/cockroachdb/cockroach/vendor/github.com/google/pprof/third_party/svg
+github.com/cockroachdb/cockroach/vendor/github.com/golang/glog
+github.com/cockroachdb/cockroach/vendor/github.com/google/pprof/internal/symbolizer
+github.com/cockroachdb/cockroach/vendor/github.com/google/pprof/internal/driver
+github.com/cockroachdb/cockroach/vendor/github.com/golang/protobuf/protoc-gen-go/descriptor
+github.com/cockroachdb/cockroach/vendor/github.com/golang/protobuf/protoc-gen-go/plugin
+github.com/cockroachdb/cockroach/vendor/github.com/golang/protobuf/protoc-gen-go/generator
+github.com/cockroachdb/cockroach/vendor/github.com/google/pprof/driver
+github.com/cockroachdb/cockroach/vendor/github.com/google/pprof
+github.com/cockroachdb/cockroach/vendor/github.com/grpc-ecosystem/grpc-gateway/utilities
+github.com/cockroachdb/cockroach/vendor/github.com/grpc-ecosystem/grpc-gateway/protoc-gen-grpc-gateway/httprule
+github.com/cockroachdb/cockroach/vendor/google.golang.org/genproto/googleapis/api/annotations
+github.com/cockroachdb/cockroach/vendor/github.com/grpc-ecosystem/grpc-gateway/protoc-gen-grpc-gateway/descriptor
+github.com/cockroachdb/cockroach/vendor/github.com/grpc-ecosystem/grpc-gateway/protoc-gen-grpc-gateway/generator
+github.com/cockroachdb/cockroach/vendor/github.com/grpc-ecosystem/grpc-gateway/protoc-gen-grpc-gateway/gengateway
+github.com/cockroachdb/cockroach/vendor/github.com/grpc-ecosystem/grpc-gateway/protoc-gen-grpc-gateway
+github.com/cockroachdb/cockroach/vendor/github.com/jteeuwen/go-bindata
+github.com/cockroachdb/cockroach/vendor/github.com/jteeuwen/go-bindata/go-bindata
+github.com/cockroachdb/cockroach/vendor/github.com/kisielk/errcheck/internal/errcheck
+github.com/cockroachdb/cockroach/vendor/golang.org/x/tools/cover
+github.com/cockroachdb/cockroach/vendor/github.com/mattn/goveralls
+github.com/cockroachdb/cockroach/vendor/github.com/kisielk/errcheck
+github.com/cockroachdb/cockroach/vendor/github.com/mibk/dupl/suffixtree
+github.com/cockroachdb/cockroach/vendor/github.com/mibk/dupl/syntax
+github.com/cockroachdb/cockroach/vendor/github.com/mibk/dupl/syntax/golang
+github.com/cockroachdb/cockroach/vendor/github.com/mibk/dupl/job
+github.com/cockroachdb/cockroach/vendor/github.com/mibk/dupl/output
+github.com/cockroachdb/cockroach/vendor/github.com/wadey/gocovmerge
+github.com/cockroachdb/cockroach/vendor/github.com/mibk/dupl
+github.com/cockroachdb/cockroach/vendor/golang.org/x/perf/internal/stats
+github.com/cockroachdb/cockroach/vendor/golang.org/x/perf/storage/benchfmt
+github.com/cockroachdb/cockroach/vendor/golang.org/x/tools/imports
+github.com/cockroachdb/cockroach/vendor/golang.org/x/perf/benchstat
+github.com/cockroachdb/cockroach/vendor/golang.org/x/perf/cmd/benchstat
+github.com/cockroachdb/cockroach/vendor/golang.org/x/tools/cmd/goimports
+github.com/cockroachdb/cockroach/vendor/golang.org/x/tools/cmd/goyacc
+github.com/cockroachdb/cockroach/vendor/golang.org/x/tools/cmd/stringer
+touch /go/src/github.com/cockroachdb/cockroach/bin/.bootstrap
+cd /go/src/github.com/cockroachdb/cockroach/c-deps/jemalloc && autoconf
+rm -rf /go/native/x86_64-linux-gnu/protobuf
+mkdir -p /go/native/x86_64-linux-gnu/protobuf
+cd /go/native/x86_64-linux-gnu/protobuf && cmake  -Dprotobuf_BUILD_TESTS=OFF /go/src/github.com/cockroachdb/cockroach/c-deps/protobuf/cmake
+-- The C compiler identification is GNU 5.4.0
+rm -rf /go/native/x86_64-linux-gnu/snappy
+mkdir -p /go/native/x86_64-linux-gnu/snappy
+cd /go/native/x86_64-linux-gnu/snappy && cmake  /go/src/github.com/cockroachdb/cockroach/c-deps/snappy
+-- The CXX compiler identification is GNU 5.4.0
+-- Check for working C compiler: /usr/bin/cc
+-- The C compiler identification is GNU 5.4.0
+-- The CXX compiler identification is GNU 5.4.0
+-- Check for working C compiler: /usr/bin/cc
+-- Check for working C compiler: /usr/bin/cc -- works
+-- Detecting C compiler ABI info
+-- Check for working C compiler: /usr/bin/cc -- works
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Detecting C compile features
+-- Detecting C compiler ABI info - done
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Check for working CXX compiler: /usr/bin/c++
+-- Detecting C compile features - done
+-- Check for working CXX compiler: /usr/bin/c++
+-- Check for working CXX compiler: /usr/bin/c++ -- works
+-- Detecting CXX compiler ABI info
+-- Check for working CXX compiler: /usr/bin/c++ -- works
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Detecting CXX compile features
+-- Detecting CXX compiler ABI info - done
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Check if the system is big endian
+-- Searching 16 bit integer
+-- Detecting CXX compile features - done
+-- Looking for sys/types.h
+-- Looking for pthread.h
+-- Looking for sys/types.h - found
+-- Looking for stdint.h
+-- Looking for pthread.h - found
+-- Looking for pthread_create
+-- Looking for stdint.h - found
+-- Looking for stddef.h
+-- Looking for pthread_create - not found
+-- Looking for pthread_create in pthreads
+-- Looking for stddef.h - found
+-- Check size of unsigned short
+-- Looking for pthread_create in pthreads - not found
+-- Looking for pthread_create in pthread
+-- Check size of unsigned short - done
+-- Using unsigned short
+-- Looking for pthread_create in pthread - found
+-- Found Threads: TRUE  
+-- Could NOT find ZLIB (missing:  ZLIB_LIBRARY ZLIB_INCLUDE_DIR) 
+-- Configuring done
+-- Check if the system is big endian - little endian
+-- Looking for byteswap.h
+-- Looking for byteswap.h - found
+-- Looking for sys/endian.h
+-- Generating done
+-- Build files have been written to: /go/native/x86_64-linux-gnu/protobuf
+rm -rf /go/native/x86_64-linux-gnu/libroach
+mkdir -p /go/native/x86_64-linux-gnu/libroach
+cd /go/native/x86_64-linux-gnu/libroach && cmake  /go/src/github.com/cockroachdb/cockroach/c-deps/libroach -DCMAKE_BUILD_TYPE=Release
+-- Looking for sys/endian.h - not found
+-- Looking for sys/mman.h
+-- The C compiler identification is GNU 5.4.0
+-- Looking for sys/mman.h - found
+-- Looking for sys/resource.h
+-- The CXX compiler identification is GNU 5.4.0
+-- Check for working C compiler: /usr/bin/cc
+-- Looking for sys/resource.h - found
+-- Looking for sys/time.h
+-- Check for working C compiler: /usr/bin/cc -- works
+-- Detecting C compiler ABI info
+-- Looking for sys/time.h - found
+-- Looking for sys/uio.h
+-- Detecting C compiler ABI info - done
+-- Looking for sys/uio.h - found
+-- Looking for unistd.h
+-- Detecting C compile features
+-- Looking for unistd.h - found
+-- Looking for windows.h
+-- Looking for windows.h - not found
+-- Looking for zlibVersion in z
+-- Looking for zlibVersion in z - not found
+-- Looking for lzo1x_1_15_compress in lzo2
+-- Detecting C compile features - done
+-- Check for working CXX compiler: /usr/bin/c++
+-- Looking for lzo1x_1_15_compress in lzo2 - not found
+-- Performing Test HAVE_BUILTIN_EXPECT
+-- Check for working CXX compiler: /usr/bin/c++ -- works
+-- Detecting CXX compiler ABI info
+-- Performing Test HAVE_BUILTIN_EXPECT - Success
+-- Performing Test HAVE_BUILTIN_CTZ
+-- Performing Test HAVE_BUILTIN_CTZ - Success
+-- Detecting CXX compiler ABI info - done
+-- Looking for mmap
+-- Detecting CXX compile features
+-- Looking for mmap - found
+-- Looking for sysconf
+-- Looking for sysconf - found
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /go/native/x86_64-linux-gnu/snappy
+rm -rf /go/native/x86_64-linux-gnu/jemalloc
+mkdir -p /go/native/x86_64-linux-gnu/jemalloc
+cd /go/native/x86_64-linux-gnu/jemalloc && /go/src/github.com/cockroachdb/cockroach/c-deps/jemalloc/configure  --enable-prof
+-- Detecting CXX compile features - done
+-- Configuring done
+checking for xsltproc... false
+checking for gcc... gcc
+-- Generating done
+-- Build files have been written to: /go/native/x86_64-linux-gnu/libroach
+checking whether the C compiler works... yes
+checking for C compiler default output file name... a.out
+checking for suffix of executables... 
+checking whether we are cross compiling... Scanning dependencies of target libprotobuf
+no
+checking for suffix of object files... o
+checking whether we are using the GNU C compiler... [  2%] Building CXX object CMakeFiles/libprotobuf.dir/go/src/github.com/cockroachdb/cockroach/c-deps/protobuf/src/google/protobuf/arena.cc.o
+yes
+checking whether gcc accepts -g... yes
+checking for gcc option to accept ISO C89... none needed
+checking whether compiler is cray... no
+checking whether compiler supports -std=gnu11... yes
+checking whether compiler supports -Wall... yes
+checking whether compiler supports -Werror=declaration-after-statement... yes
+checking whether compiler supports -Wshorten-64-to-32... no
+checking whether compiler supports -Wsign-compare... yes
+checking whether compiler supports -pipe... yes
+checking whether compiler supports -g3... yes
+checking how to run the C preprocessor... gcc -E
+checking for grep that handles long lines and -e... /bin/grep
+checking for egrep... /bin/grep -E
+checking for ANSI C header files... yes
+checking for sys/types.h... [  2%] Building CXX object CMakeFiles/libprotobuf.dir/go/src/github.com/cockroachdb/cockroach/c-deps/protobuf/src/google/protobuf/arenastring.cc.o
+yes
+checking for sys/stat.h... yes
+checking for stdlib.h... yes
+checking for string.h... yes
+checking for memory.h... yes
+checking for strings.h... yes
+checking for inttypes.h... yes
+checking for stdint.h... [  5%] Building CXX object CMakeFiles/libprotobuf.dir/go/src/github.com/cockroachdb/cockroach/c-deps/protobuf/src/google/protobuf/extension_set.cc.o
+yes
+checking for unistd.h... yes
+checking whether byte ordering is bigendian... no
+checking size of void *... 8
+checking size of int... 4
+checking size of long... 8
+checking size of long long... 8
+checking size of intmax_t... 8
+checking build system type... x86_64-pc-linux-gnu
+checking host system type... x86_64-pc-linux-gnu
+checking whether pause instruction is compilable... yes
+checking for ar... ar
+checking malloc.h usability... yes
+checking malloc.h presence... yes
+checking for malloc.h... yes
+checking whether malloc_usable_size definition can use const argument... no
+checking for library containing log... -lm
+checking whether __attribute__ syntax is compilable... yes
+checking whether compiler supports -fvisibility=hidden... yes
+checking whether compiler supports -Werror... yes
+checking whether compiler supports -herror_on_warning... no
+checking whether tls_model attribute is compilable... yes
+checking whether compiler supports -Werror... yes
+checking whether compiler supports -herror_on_warning... no
+checking whether alloc_size attribute is compilable... yes
+checking whether compiler supports -Werror... yes
+checking whether compiler supports -herror_on_warning... no
+checking whether format(gnu_printf, ...) attribute is compilable... yes
+checking whether compiler supports -Werror... yes
+checking whether compiler supports -herror_on_warning... no
+checking whether format(printf, ...) attribute is compilable... yes
+checking for a BSD-compatible install... /usr/bin/install -c
+checking for ranlib... ranlib
+checking for ld... /usr/bin/ld
+checking for autoconf... /usr/bin/autoconf
+checking for memalign... yes
+checking for valloc... yes
+checking whether compiler supports -O3... yes
+checking whether compiler supports -funroll-loops... yes
+checking unwind.h usability... yes
+checking unwind.h presence... yes
+checking for unwind.h... yes
+checking for _Unwind_Backtrace in -lgcc... yes
+checking configured backtracing method... libgcc
+checking for sbrk... [  5%] Building CXX object CMakeFiles/libprotobuf.dir/go/src/github.com/cockroachdb/cockroach/c-deps/protobuf/src/google/protobuf/generated_message_table_driven_lite.cc.o
+yes
+checking whether utrace(2) is compilable... no
+checking whether valgrind is compilable... no
+checking whether a program using __builtin_unreachable is compilable... yes
+checking whether a program using __builtin_ffsl is compilable... yes
+checking LG_PAGE... 12
+Missing VERSION file, and unable to generate it; creating bogus VERSION
+checking pthread.h usability... yes
+checking pthread.h presence... yes
+checking for pthread.h... yes
+checking for pthread_create in -lpthread... yes
+checking whether pthread_atfork(3) is compilable... yes
+checking for library containing clock_gettime... none required
+checking whether clock_gettime(CLOCK_MONOTONIC_COARSE, ...) is compilable... yes
+checking whether clock_gettime(CLOCK_MONOTONIC, ...) is compilable... yes
+checking whether mach_absolute_time() is compilable... no
+checking whether compiler supports -Werror... yes
+checking whether syscall(2) is compilable... yes
+checking for secure_getenv... yes
+checking for issetugid... no
+checking for _malloc_thread_cleanup... [  7%] Building CXX object CMakeFiles/libprotobuf.dir/go/src/github.com/cockroachdb/cockroach/c-deps/protobuf/src/google/protobuf/generated_message_util.cc.o
+no
+checking for _pthread_mutex_init_calloc_cb... no
+checking for TLS... yes
+checking whether C11 atomics is compilable... yes
+checking whether atomic(9) is compilable... no
+checking whether Darwin OSAtomic*() is compilable... no
+checking whether madvise(2) is compilable... yes
+checking whether madvise(..., MADV_FREE) is compilable... no
+checking whether madvise(..., MADV_DONTNEED) is compilable... yes
+checking whether madvise(..., MADV_[NO]HUGEPAGE) is compilable... yes
+checking whether to force 32-bit __sync_{add,sub}_and_fetch()... no
+checking whether to force 64-bit __sync_{add,sub}_and_fetch()... no
+checking for __builtin_clz... yes
+checking whether Darwin os_unfair_lock_*() is compilable... no
+checking whether Darwin OSSpin*() is compilable... no
+checking whether glibc malloc hook is compilable... yes
+checking whether glibc memalign hook is compilable... yes
+checking whether pthreads adaptive mutexes is compilable... yes
+checking for stdbool.h that conforms to C99... yes
+checking for _Bool... yes
+[  7%] Building CXX object CMakeFiles/libprotobuf.dir/go/src/github.com/cockroachdb/cockroach/c-deps/protobuf/src/google/protobuf/io/coded_stream.cc.o
+configure: creating ./config.status
+config.status: creating Makefile
+config.status: creating jemalloc.pc
+config.status: creating doc/html.xsl
+config.status: creating doc/manpages.xsl
+config.status: creating doc/jemalloc.xml
+config.status: creating include/jemalloc/jemalloc_macros.h
+config.status: creating include/jemalloc/jemalloc_protos.h
+[ 10%] Building CXX object CMakeFiles/libprotobuf.dir/go/src/github.com/cockroachdb/cockroach/c-deps/protobuf/src/google/protobuf/io/zero_copy_stream.cc.o
+config.status: creating include/jemalloc/jemalloc_typedefs.h
+config.status: creating include/jemalloc/internal/jemalloc_internal.h
+config.status: creating test/test.sh
+config.status: creating test/include/test/jemalloc_test.h
+config.status: creating config.stamp
+config.status: creating bin/jemalloc-config
+config.status: creating bin/jemalloc.sh
+config.status: creating bin/jeprof
+config.status: creating include/jemalloc/jemalloc_defs.h
+config.status: creating include/jemalloc/internal/jemalloc_internal_defs.h
+[ 10%] Building CXX object CMakeFiles/libprotobuf.dir/go/src/github.com/cockroachdb/cockroach/c-deps/protobuf/src/google/protobuf/io/zero_copy_stream_impl_lite.cc.o
+config.status: creating test/include/test/jemalloc_test_defs.h
+config.status: executing include/jemalloc/internal/private_namespace.h commands
+config.status: executing include/jemalloc/internal/private_unnamespace.h commands
+config.status: executing include/jemalloc/internal/public_symbols.txt commands
+config.status: executing include/jemalloc/internal/public_namespace.h commands
+config.status: executing include/jemalloc/internal/public_unnamespace.h commands
+config.status: executing include/jemalloc/internal/size_classes.h commands
+[ 12%] Building CXX object CMakeFiles/libprotobuf.dir/go/src/github.com/cockroachdb/cockroach/c-deps/protobuf/src/google/protobuf/message_lite.cc.o
+config.status: executing include/jemalloc/jemalloc_protos_jet.h commands
+config.status: executing include/jemalloc/jemalloc_rename.h commands
+config.status: executing include/jemalloc/jemalloc_mangle.h commands
+[ 12%] Building CXX object CMakeFiles/libprotobuf.dir/go/src/github.com/cockroachdb/cockroach/c-deps/protobuf/src/google/protobuf/repeated_field.cc.o
+config.status: executing include/jemalloc/jemalloc_mangle_jet.h commands
+config.status: executing include/jemalloc/jemalloc.h commands
+===============================================================================
+jemalloc version   : 0.0.0-0-g0000000000000000000000000000000000000000
+library revision   : 2
+
+CONFIG             : --enable-prof
+CC                 : gcc
+CONFIGURE_CFLAGS   : -std=gnu11 -Wall -Werror=declaration-after-statement -Wsign-compare -pipe -g3 -fvisibility=hidden -O3 -funroll-loops
+SPECIFIED_CFLAGS   : 
+EXTRA_CFLAGS       : 
+CPPFLAGS           : -D_GNU_SOURCE -D_REENTRANT
+LDFLAGS            : 
+EXTRA_LDFLAGS      : 
+LIBS               : -lm  -lgcc -lm -lpthread
+RPATH_EXTRA        : 
+
+XSLTPROC           : false
+XSLROOT            : 
+
+PREFIX             : /usr/local
+BINDIR             : /usr/local/bin
+DATADIR            : /usr/local/share
+INCLUDEDIR         : /usr/local/include
+LIBDIR             : /usr/local/lib
+MANDIR             : /usr/local/share/man
+
+srcroot            : /go/src/github.com/cockroachdb/cockroach/c-deps/jemalloc/
+abs_srcroot        : /go/src/github.com/cockroachdb/cockroach/c-deps/jemalloc/
+objroot            : 
+abs_objroot        : /go/native/x86_64-linux-gnu/jemalloc/
+
+JEMALLOC_PREFIX    : 
+JEMALLOC_PRIVATE_NAMESPACE
+                   : je_
+install_suffix     : 
+malloc_conf        : 
+autogen            : 0
+cc-silence         : 1
+debug              : 0
+code-coverage      : 0
+stats              : 1
+prof               : 1
+prof-libunwind     : 0
+prof-libgcc        : 1
+prof-gcc           : 0
+tcache             : 1
+thp                : 1
+fill               : 1
+utrace             : 0
+valgrind           : 0
+xmalloc            : 0
+munmap             : 0
+lazy_lock          : 0
+tls                : 1
+cache-oblivious    : 1
+===============================================================================
+Scanning dependencies of target snappy
+[ 20%] Building CXX object CMakeFiles/snappy.dir/snappy-c.cc.o
+[ 15%] Building CXX object CMakeFiles/libprotobuf.dir/go/src/github.com/cockroachdb/cockroach/c-deps/protobuf/src/google/protobuf/stubs/atomicops_internals_x86_gcc.cc.o
+[ 40%] Building CXX object CMakeFiles/snappy.dir/snappy-sinksource.cc.o
+[ 60%] Building CXX object CMakeFiles/snappy.dir/snappy-stubs-internal.cc.o
+[ 15%] Building CXX object CMakeFiles/libprotobuf.dir/go/src/github.com/cockroachdb/cockroach/c-deps/protobuf/src/google/protobuf/stubs/atomicops_internals_x86_msvc.cc.o
+[ 80%] Building CXX object CMakeFiles/snappy.dir/snappy.cc.o
+[ 17%] Building CXX object CMakeFiles/libprotobuf.dir/go/src/github.com/cockroachdb/cockroach/c-deps/protobuf/src/google/protobuf/stubs/bytestream.cc.o
+[100%] Linking CXX static library libsnappy.a
+[100%] Built target snappy
+[ 17%] Building CXX object CMakeFiles/libprotobuf.dir/go/src/github.com/cockroachdb/cockroach/c-deps/protobuf/src/google/protobuf/stubs/common.cc.o
+Scanning dependencies of target roach
+[  7%] Building CXX object CMakeFiles/roach.dir/db.cc.o
+[ 20%] Building CXX object CMakeFiles/libprotobuf.dir/go/src/github.com/cockroachdb/cockroach/c-deps/protobuf/src/google/protobuf/stubs/int128.cc.o
+[ 20%] Building CXX object CMakeFiles/libprotobuf.dir/go/src/github.com/cockroachdb/cockroach/c-deps/protobuf/src/google/protobuf/stubs/io_win32.cc.o
+[ 22%] Building CXX object CMakeFiles/libprotobuf.dir/go/src/github.com/cockroachdb/cockroach/c-deps/protobuf/src/google/protobuf/stubs/once.cc.o
+[ 22%] Building CXX object CMakeFiles/libprotobuf.dir/go/src/github.com/cockroachdb/cockroach/c-deps/protobuf/src/google/protobuf/stubs/status.cc.o
+[ 25%] Building CXX object CMakeFiles/libprotobuf.dir/go/src/github.com/cockroachdb/cockroach/c-deps/protobuf/src/google/protobuf/stubs/statusor.cc.o
+[ 25%] Building CXX object CMakeFiles/libprotobuf.dir/go/src/github.com/cockroachdb/cockroach/c-deps/protobuf/src/google/protobuf/stubs/stringpiece.cc.o
+[ 27%] Building CXX object CMakeFiles/libprotobuf.dir/go/src/github.com/cockroachdb/cockroach/c-deps/protobuf/src/google/protobuf/stubs/stringprintf.cc.o
+[ 27%] Building CXX object CMakeFiles/libprotobuf.dir/go/src/github.com/cockroachdb/cockroach/c-deps/protobuf/src/google/protobuf/stubs/structurally_valid.cc.o
+[ 30%] Building CXX object CMakeFiles/libprotobuf.dir/go/src/github.com/cockroachdb/cockroach/c-deps/protobuf/src/google/protobuf/stubs/strutil.cc.o
+[ 30%] Building CXX object CMakeFiles/libprotobuf.dir/go/src/github.com/cockroachdb/cockroach/c-deps/protobuf/src/google/protobuf/stubs/time.cc.o
+[ 32%] Building CXX object CMakeFiles/libprotobuf.dir/go/src/github.com/cockroachdb/cockroach/c-deps/protobuf/src/google/protobuf/wire_format_lite.cc.o
+[ 32%] Building CXX object CMakeFiles/libprotobuf.dir/go/src/github.com/cockroachdb/cockroach/c-deps/protobuf/src/google/protobuf/any.cc.o
+[ 35%] Building CXX object CMakeFiles/libprotobuf.dir/go/src/github.com/cockroachdb/cockroach/c-deps/protobuf/src/google/protobuf/any.pb.cc.o
+[ 35%] Building CXX object CMakeFiles/libprotobuf.dir/go/src/github.com/cockroachdb/cockroach/c-deps/protobuf/src/google/protobuf/api.pb.cc.o
+[ 15%] Building CXX object CMakeFiles/roach.dir/encoding.cc.o
+[ 23%] Building CXX object CMakeFiles/roach.dir/eventlistener.cc.o
+[ 37%] Building CXX object CMakeFiles/libprotobuf.dir/go/src/github.com/cockroachdb/cockroach/c-deps/protobuf/src/google/protobuf/compiler/importer.cc.o
+[ 30%] Building CXX object CMakeFiles/roach.dir/protos/cockroach/pkg/roachpb/data.pb.cc.o
+[ 37%] Building CXX object CMakeFiles/libprotobuf.dir/go/src/github.com/cockroachdb/cockroach/c-deps/protobuf/src/google/protobuf/compiler/parser.cc.o
+[ 40%] Building CXX object CMakeFiles/libprotobuf.dir/go/src/github.com/cockroachdb/cockroach/c-deps/protobuf/src/google/protobuf/descriptor.cc.o
+[ 38%] Building CXX object CMakeFiles/roach.dir/protos/cockroach/pkg/roachpb/internal.pb.cc.o
+[ 46%] Building CXX object CMakeFiles/roach.dir/protos/cockroach/pkg/roachpb/metadata.pb.cc.o
+[ 40%] Building CXX object CMakeFiles/libprotobuf.dir/go/src/github.com/cockroachdb/cockroach/c-deps/protobuf/src/google/protobuf/descriptor.pb.cc.o
+[ 53%] Building CXX object CMakeFiles/roach.dir/protos/cockroach/pkg/storage/engine/enginepb/mvcc.pb.cc.o
+[ 40%] Building CXX object CMakeFiles/libprotobuf.dir/go/src/github.com/cockroachdb/cockroach/c-deps/protobuf/src/google/protobuf/descriptor_database.cc.o
+[ 42%] Building CXX object CMakeFiles/libprotobuf.dir/go/src/github.com/cockroachdb/cockroach/c-deps/protobuf/src/google/protobuf/duration.pb.cc.o
+[ 61%] Building CXX object CMakeFiles/roach.dir/protos/cockroach/pkg/storage/engine/enginepb/mvcc3.pb.cc.o
+[ 42%] Building CXX object CMakeFiles/libprotobuf.dir/go/src/github.com/cockroachdb/cockroach/c-deps/protobuf/src/google/protobuf/dynamic_message.cc.o
+[ 45%] Building CXX object CMakeFiles/libprotobuf.dir/go/src/github.com/cockroachdb/cockroach/c-deps/protobuf/src/google/protobuf/empty.pb.cc.o
+[ 69%] Building CXX object CMakeFiles/roach.dir/protos/cockroach/pkg/storage/engine/enginepb/rocksdb.pb.cc.o
+[ 45%] Building CXX object CMakeFiles/libprotobuf.dir/go/src/github.com/cockroachdb/cockroach/c-deps/protobuf/src/google/protobuf/extension_set_heavy.cc.o
+[ 47%] Building CXX object CMakeFiles/libprotobuf.dir/go/src/github.com/cockroachdb/cockroach/c-deps/protobuf/src/google/protobuf/field_mask.pb.cc.o
+[ 76%] Building CXX object CMakeFiles/roach.dir/protos/cockroach/pkg/util/hlc/legacy_timestamp.pb.cc.o
+[ 47%] Building CXX object CMakeFiles/libprotobuf.dir/go/src/github.com/cockroachdb/cockroach/c-deps/protobuf/src/google/protobuf/generated_message_reflection.cc.o
+[ 84%] Building CXX object CMakeFiles/roach.dir/protos/cockroach/pkg/util/hlc/timestamp.pb.cc.o
+[ 50%] Building CXX object CMakeFiles/libprotobuf.dir/go/src/github.com/cockroachdb/cockroach/c-deps/protobuf/src/google/protobuf/generated_message_table_driven.cc.o
+[ 92%] Building CXX object CMakeFiles/roach.dir/protos/cockroach/pkg/util/unresolved_addr.pb.cc.o
+[ 50%] Building CXX object CMakeFiles/libprotobuf.dir/go/src/github.com/cockroachdb/cockroach/c-deps/protobuf/src/google/protobuf/io/gzip_stream.cc.o
+[ 52%] Building CXX object CMakeFiles/libprotobuf.dir/go/src/github.com/cockroachdb/cockroach/c-deps/protobuf/src/google/protobuf/io/printer.cc.o
+[ 52%] Building CXX object CMakeFiles/libprotobuf.dir/go/src/github.com/cockroachdb/cockroach/c-deps/protobuf/src/google/protobuf/io/strtod.cc.o
+[ 55%] Building CXX object CMakeFiles/libprotobuf.dir/go/src/github.com/cockroachdb/cockroach/c-deps/protobuf/src/google/protobuf/io/tokenizer.cc.o
+[100%] Linking CXX static library libroach.a
+[100%] Built target roach
+[ 55%] Building CXX object CMakeFiles/libprotobuf.dir/go/src/github.com/cockroachdb/cockroach/c-deps/protobuf/src/google/protobuf/io/zero_copy_stream_impl.cc.o
+[ 57%] Building CXX object CMakeFiles/libprotobuf.dir/go/src/github.com/cockroachdb/cockroach/c-deps/protobuf/src/google/protobuf/map_field.cc.o
+[ 57%] Building CXX object CMakeFiles/libprotobuf.dir/go/src/github.com/cockroachdb/cockroach/c-deps/protobuf/src/google/protobuf/message.cc.o
+[ 60%] Building CXX object CMakeFiles/libprotobuf.dir/go/src/github.com/cockroachdb/cockroach/c-deps/protobuf/src/google/protobuf/reflection_ops.cc.o
+[ 60%] Building CXX object CMakeFiles/libprotobuf.dir/go/src/github.com/cockroachdb/cockroach/c-deps/protobuf/src/google/protobuf/service.cc.o
+[ 62%] Building CXX object CMakeFiles/libprotobuf.dir/go/src/github.com/cockroachdb/cockroach/c-deps/protobuf/src/google/protobuf/source_context.pb.cc.o
+[ 62%] Building CXX object CMakeFiles/libprotobuf.dir/go/src/github.com/cockroachdb/cockroach/c-deps/protobuf/src/google/protobuf/struct.pb.cc.o
+[ 65%] Building CXX object CMakeFiles/libprotobuf.dir/go/src/github.com/cockroachdb/cockroach/c-deps/protobuf/src/google/protobuf/stubs/mathlimits.cc.o
+[ 65%] Building CXX object CMakeFiles/libprotobuf.dir/go/src/github.com/cockroachdb/cockroach/c-deps/protobuf/src/google/protobuf/stubs/substitute.cc.o
+[ 67%] Building CXX object CMakeFiles/libprotobuf.dir/go/src/github.com/cockroachdb/cockroach/c-deps/protobuf/src/google/protobuf/text_format.cc.o
+[ 67%] Building CXX object CMakeFiles/libprotobuf.dir/go/src/github.com/cockroachdb/cockroach/c-deps/protobuf/src/google/protobuf/timestamp.pb.cc.o
+[ 70%] Building CXX object CMakeFiles/libprotobuf.dir/go/src/github.com/cockroachdb/cockroach/c-deps/protobuf/src/google/protobuf/type.pb.cc.o
+[ 70%] Building CXX object CMakeFiles/libprotobuf.dir/go/src/github.com/cockroachdb/cockroach/c-deps/protobuf/src/google/protobuf/unknown_field_set.cc.o
+[ 72%] Building CXX object CMakeFiles/libprotobuf.dir/go/src/github.com/cockroachdb/cockroach/c-deps/protobuf/src/google/protobuf/util/delimited_message_util.cc.o
+[ 72%] Building CXX object CMakeFiles/libprotobuf.dir/go/src/github.com/cockroachdb/cockroach/c-deps/protobuf/src/google/protobuf/util/field_comparator.cc.o
+[ 75%] Building CXX object CMakeFiles/libprotobuf.dir/go/src/github.com/cockroachdb/cockroach/c-deps/protobuf/src/google/protobuf/util/field_mask_util.cc.o
+[ 75%] Building CXX object CMakeFiles/libprotobuf.dir/go/src/github.com/cockroachdb/cockroach/c-deps/protobuf/src/google/protobuf/util/internal/datapiece.cc.o
+[ 77%] Building CXX object CMakeFiles/libprotobuf.dir/go/src/github.com/cockroachdb/cockroach/c-deps/protobuf/src/google/protobuf/util/internal/default_value_objectwriter.cc.o
+gcc -std=gnu11 -Wall -Werror=declaration-after-statement -Wsign-compare -pipe -g3 -fvisibility=hidden -O3 -funroll-loops -c -D_GNU_SOURCE -D_REENTRANT -I/go/src/github.com/cockroachdb/cockroach/c-deps/jemalloc/include -Iinclude -o src/jemalloc.o /go/src/github.com/cockroachdb/cockroach/c-deps/jemalloc/src/jemalloc.c
+[ 77%] Building CXX object CMakeFiles/libprotobuf.dir/go/src/github.com/cockroachdb/cockroach/c-deps/protobuf/src/google/protobuf/util/internal/error_listener.cc.o
+[ 80%] Building CXX object CMakeFiles/libprotobuf.dir/go/src/github.com/cockroachdb/cockroach/c-deps/protobuf/src/google/protobuf/util/internal/field_mask_utility.cc.o
+[ 80%] Building CXX object CMakeFiles/libprotobuf.dir/go/src/github.com/cockroachdb/cockroach/c-deps/protobuf/src/google/protobuf/util/internal/json_escaping.cc.o
+[ 82%] Building CXX object CMakeFiles/libprotobuf.dir/go/src/github.com/cockroachdb/cockroach/c-deps/protobuf/src/google/protobuf/util/internal/json_objectwriter.cc.o
+[ 82%] Building CXX object CMakeFiles/libprotobuf.dir/go/src/github.com/cockroachdb/cockroach/c-deps/protobuf/src/google/protobuf/util/internal/json_stream_parser.cc.o
+[ 82%] Building CXX object CMakeFiles/libprotobuf.dir/go/src/github.com/cockroachdb/cockroach/c-deps/protobuf/src/google/protobuf/util/internal/object_writer.cc.o
+[ 85%] Building CXX object CMakeFiles/libprotobuf.dir/go/src/github.com/cockroachdb/cockroach/c-deps/protobuf/src/google/protobuf/util/internal/proto_writer.cc.o
+gcc -std=gnu11 -Wall -Werror=declaration-after-statement -Wsign-compare -pipe -g3 -fvisibility=hidden -O3 -funroll-loops -c -D_GNU_SOURCE -D_REENTRANT -I/go/src/github.com/cockroachdb/cockroach/c-deps/jemalloc/include -Iinclude -o src/arena.o /go/src/github.com/cockroachdb/cockroach/c-deps/jemalloc/src/arena.c
+[ 85%] Building CXX object CMakeFiles/libprotobuf.dir/go/src/github.com/cockroachdb/cockroach/c-deps/protobuf/src/google/protobuf/util/internal/protostream_objectsource.cc.o
+[ 87%] Building CXX object CMakeFiles/libprotobuf.dir/go/src/github.com/cockroachdb/cockroach/c-deps/protobuf/src/google/protobuf/util/internal/protostream_objectwriter.cc.o
+[ 87%] Building CXX object CMakeFiles/libprotobuf.dir/go/src/github.com/cockroachdb/cockroach/c-deps/protobuf/src/google/protobuf/util/internal/type_info.cc.o
+gcc -std=gnu11 -Wall -Werror=declaration-after-statement -Wsign-compare -pipe -g3 -fvisibility=hidden -O3 -funroll-loops -c -D_GNU_SOURCE -D_REENTRANT -I/go/src/github.com/cockroachdb/cockroach/c-deps/jemalloc/include -Iinclude -o src/atomic.o /go/src/github.com/cockroachdb/cockroach/c-deps/jemalloc/src/atomic.c
+gcc -std=gnu11 -Wall -Werror=declaration-after-statement -Wsign-compare -pipe -g3 -fvisibility=hidden -O3 -funroll-loops -c -D_GNU_SOURCE -D_REENTRANT -I/go/src/github.com/cockroachdb/cockroach/c-deps/jemalloc/include -Iinclude -o src/base.o /go/src/github.com/cockroachdb/cockroach/c-deps/jemalloc/src/base.c
+[ 90%] Building CXX object CMakeFiles/libprotobuf.dir/go/src/github.com/cockroachdb/cockroach/c-deps/protobuf/src/google/protobuf/util/internal/type_info_test_helper.cc.o
+gcc -std=gnu11 -Wall -Werror=declaration-after-statement -Wsign-compare -pipe -g3 -fvisibility=hidden -O3 -funroll-loops -c -D_GNU_SOURCE -D_REENTRANT -I/go/src/github.com/cockroachdb/cockroach/c-deps/jemalloc/include -Iinclude -o src/bitmap.o /go/src/github.com/cockroachdb/cockroach/c-deps/jemalloc/src/bitmap.c
+gcc -std=gnu11 -Wall -Werror=declaration-after-statement -Wsign-compare -pipe -g3 -fvisibility=hidden -O3 -funroll-loops -c -D_GNU_SOURCE -D_REENTRANT -I/go/src/github.com/cockroachdb/cockroach/c-deps/jemalloc/include -Iinclude -o src/chunk.o /go/src/github.com/cockroachdb/cockroach/c-deps/jemalloc/src/chunk.c
+[ 90%] Building CXX object CMakeFiles/libprotobuf.dir/go/src/github.com/cockroachdb/cockroach/c-deps/protobuf/src/google/protobuf/util/internal/utility.cc.o
+gcc -std=gnu11 -Wall -Werror=declaration-after-statement -Wsign-compare -pipe -g3 -fvisibility=hidden -O3 -funroll-loops -c -D_GNU_SOURCE -D_REENTRANT -I/go/src/github.com/cockroachdb/cockroach/c-deps/jemalloc/include -Iinclude -o src/chunk_dss.o /go/src/github.com/cockroachdb/cockroach/c-deps/jemalloc/src/chunk_dss.c
+gcc -std=gnu11 -Wall -Werror=declaration-after-statement -Wsign-compare -pipe -g3 -fvisibility=hidden -O3 -funroll-loops -c -D_GNU_SOURCE -D_REENTRANT -I/go/src/github.com/cockroachdb/cockroach/c-deps/jemalloc/include -Iinclude -o src/chunk_mmap.o /go/src/github.com/cockroachdb/cockroach/c-deps/jemalloc/src/chunk_mmap.c
+gcc -std=gnu11 -Wall -Werror=declaration-after-statement -Wsign-compare -pipe -g3 -fvisibility=hidden -O3 -funroll-loops -c -D_GNU_SOURCE -D_REENTRANT -I/go/src/github.com/cockroachdb/cockroach/c-deps/jemalloc/include -Iinclude -o src/ckh.o /go/src/github.com/cockroachdb/cockroach/c-deps/jemalloc/src/ckh.c
+[ 92%] Building CXX object CMakeFiles/libprotobuf.dir/go/src/github.com/cockroachdb/cockroach/c-deps/protobuf/src/google/protobuf/util/json_util.cc.o
+gcc -std=gnu11 -Wall -Werror=declaration-after-statement -Wsign-compare -pipe -g3 -fvisibility=hidden -O3 -funroll-loops -c -D_GNU_SOURCE -D_REENTRANT -I/go/src/github.com/cockroachdb/cockroach/c-deps/jemalloc/include -Iinclude -o src/ctl.o /go/src/github.com/cockroachdb/cockroach/c-deps/jemalloc/src/ctl.c
+[ 92%] Building CXX object CMakeFiles/libprotobuf.dir/go/src/github.com/cockroachdb/cockroach/c-deps/protobuf/src/google/protobuf/util/message_differencer.cc.o
+[ 95%] Building CXX object CMakeFiles/libprotobuf.dir/go/src/github.com/cockroachdb/cockroach/c-deps/protobuf/src/google/protobuf/util/time_util.cc.o
+gcc -std=gnu11 -Wall -Werror=declaration-after-statement -Wsign-compare -pipe -g3 -fvisibility=hidden -O3 -funroll-loops -c -D_GNU_SOURCE -D_REENTRANT -I/go/src/github.com/cockroachdb/cockroach/c-deps/jemalloc/include -Iinclude -o src/extent.o /go/src/github.com/cockroachdb/cockroach/c-deps/jemalloc/src/extent.c
+[ 95%] Building CXX object CMakeFiles/libprotobuf.dir/go/src/github.com/cockroachdb/cockroach/c-deps/protobuf/src/google/protobuf/util/type_resolver_util.cc.o
+[ 97%] Building CXX object CMakeFiles/libprotobuf.dir/go/src/github.com/cockroachdb/cockroach/c-deps/protobuf/src/google/protobuf/wire_format.cc.o
+gcc -std=gnu11 -Wall -Werror=declaration-after-statement -Wsign-compare -pipe -g3 -fvisibility=hidden -O3 -funroll-loops -c -D_GNU_SOURCE -D_REENTRANT -I/go/src/github.com/cockroachdb/cockroach/c-deps/jemalloc/include -Iinclude -o src/hash.o /go/src/github.com/cockroachdb/cockroach/c-deps/jemalloc/src/hash.c
+gcc -std=gnu11 -Wall -Werror=declaration-after-statement -Wsign-compare -pipe -g3 -fvisibility=hidden -O3 -funroll-loops -c -D_GNU_SOURCE -D_REENTRANT -I/go/src/github.com/cockroachdb/cockroach/c-deps/jemalloc/include -Iinclude -o src/huge.o /go/src/github.com/cockroachdb/cockroach/c-deps/jemalloc/src/huge.c
+gcc -std=gnu11 -Wall -Werror=declaration-after-statement -Wsign-compare -pipe -g3 -fvisibility=hidden -O3 -funroll-loops -c -D_GNU_SOURCE -D_REENTRANT -I/go/src/github.com/cockroachdb/cockroach/c-deps/jemalloc/include -Iinclude -o src/mb.o /go/src/github.com/cockroachdb/cockroach/c-deps/jemalloc/src/mb.c
+[ 97%] Building CXX object CMakeFiles/libprotobuf.dir/go/src/github.com/cockroachdb/cockroach/c-deps/protobuf/src/google/protobuf/wrappers.pb.cc.o
+gcc -std=gnu11 -Wall -Werror=declaration-after-statement -Wsign-compare -pipe -g3 -fvisibility=hidden -O3 -funroll-loops -c -D_GNU_SOURCE -D_REENTRANT -I/go/src/github.com/cockroachdb/cockroach/c-deps/jemalloc/include -Iinclude -o src/mutex.o /go/src/github.com/cockroachdb/cockroach/c-deps/jemalloc/src/mutex.c
+gcc -std=gnu11 -Wall -Werror=declaration-after-statement -Wsign-compare -pipe -g3 -fvisibility=hidden -O3 -funroll-loops -c -D_GNU_SOURCE -D_REENTRANT -I/go/src/github.com/cockroachdb/cockroach/c-deps/jemalloc/include -Iinclude -o src/nstime.o /go/src/github.com/cockroachdb/cockroach/c-deps/jemalloc/src/nstime.c
+gcc -std=gnu11 -Wall -Werror=declaration-after-statement -Wsign-compare -pipe -g3 -fvisibility=hidden -O3 -funroll-loops -c -D_GNU_SOURCE -D_REENTRANT -I/go/src/github.com/cockroachdb/cockroach/c-deps/jemalloc/include -Iinclude -o src/pages.o /go/src/github.com/cockroachdb/cockroach/c-deps/jemalloc/src/pages.c
+gcc -std=gnu11 -Wall -Werror=declaration-after-statement -Wsign-compare -pipe -g3 -fvisibility=hidden -O3 -funroll-loops -c -D_GNU_SOURCE -D_REENTRANT -I/go/src/github.com/cockroachdb/cockroach/c-deps/jemalloc/include -Iinclude -o src/prng.o /go/src/github.com/cockroachdb/cockroach/c-deps/jemalloc/src/prng.c
+gcc -std=gnu11 -Wall -Werror=declaration-after-statement -Wsign-compare -pipe -g3 -fvisibility=hidden -O3 -funroll-loops -c -D_GNU_SOURCE -D_REENTRANT -I/go/src/github.com/cockroachdb/cockroach/c-deps/jemalloc/include -Iinclude -o src/prof.o /go/src/github.com/cockroachdb/cockroach/c-deps/jemalloc/src/prof.c
+[100%] Linking CXX static library libprotobuf.a
+[100%] Built target libprotobuf
+[ 86%] Built target roach
+Scanning dependencies of target roachccl
+[ 93%] Building CXX object CMakeFiles/roachccl.dir/ccl/db.cc.o
+[100%] Linking CXX static library libroachccl.a
+[100%] Built target roachccl
+make -C ./pkg/ui generate
+make[1]: Entering directory '/go/src/github.com/cockroachdb/cockroach/pkg/ui'
+make -C ../../.. -f cockroach/build/protobuf.mk
+make[2]: Entering directory '/go/src/github.com/cockroachdb'
+gcc -std=gnu11 -Wall -Werror=declaration-after-statement -Wsign-compare -pipe -g3 -fvisibility=hidden -O3 -funroll-loops -c -D_GNU_SOURCE -D_REENTRANT -I/go/src/github.com/cockroachdb/cockroach/c-deps/jemalloc/include -Iinclude -o src/quarantine.o /go/src/github.com/cockroachdb/cockroach/c-deps/jemalloc/src/quarantine.c
+[ 45%] Built target libprotobuf
+Scanning dependencies of target js_embed
+[ 45%] Building CXX object CMakeFiles/js_embed.dir/go/src/github.com/cockroachdb/cockroach/c-deps/protobuf/src/google/protobuf/compiler/js/embed.cc.o
+[ 45%] Linking CXX executable js_embed
+[ 45%] Built target js_embed
+[ 46%] Generating /go/src/github.com/cockroachdb/cockroach/c-deps/protobuf/src/google/protobuf/compiler/js/well_known_types_embed.cc
+gcc -std=gnu11 -Wall -Werror=declaration-after-statement -Wsign-compare -pipe -g3 -fvisibility=hidden -O3 -funroll-loops -c -D_GNU_SOURCE -D_REENTRANT -I/go/src/github.com/cockroachdb/cockroach/c-deps/jemalloc/include -Iinclude -o src/rtree.o /go/src/github.com/cockroachdb/cockroach/c-deps/jemalloc/src/rtree.c
+Scanning dependencies of target libprotoc
+[ 46%] Building CXX object CMakeFiles/libprotoc.dir/go/src/github.com/cockroachdb/cockroach/c-deps/protobuf/src/google/protobuf/compiler/code_generator.cc.o
+gcc -std=gnu11 -Wall -Werror=declaration-after-statement -Wsign-compare -pipe -g3 -fvisibility=hidden -O3 -funroll-loops -c -D_GNU_SOURCE -D_REENTRANT -I/go/src/github.com/cockroachdb/cockroach/c-deps/jemalloc/include -Iinclude -o src/stats.o /go/src/github.com/cockroachdb/cockroach/c-deps/jemalloc/src/stats.c
+[ 47%] Building CXX object CMakeFiles/libprotoc.dir/go/src/github.com/cockroachdb/cockroach/c-deps/protobuf/src/google/protobuf/compiler/command_line_interface.cc.o
+gcc -std=gnu11 -Wall -Werror=declaration-after-statement -Wsign-compare -pipe -g3 -fvisibility=hidden -O3 -funroll-loops -c -D_GNU_SOURCE -D_REENTRANT -I/go/src/github.com/cockroachdb/cockroach/c-deps/jemalloc/include -Iinclude -o src/spin.o /go/src/github.com/cockroachdb/cockroach/c-deps/jemalloc/src/spin.c
+gcc -std=gnu11 -Wall -Werror=declaration-after-statement -Wsign-compare -pipe -g3 -fvisibility=hidden -O3 -funroll-loops -c -D_GNU_SOURCE -D_REENTRANT -I/go/src/github.com/cockroachdb/cockroach/c-deps/jemalloc/include -Iinclude -o src/tcache.o /go/src/github.com/cockroachdb/cockroach/c-deps/jemalloc/src/tcache.c
+gcc -std=gnu11 -Wall -Werror=declaration-after-statement -Wsign-compare -pipe -g3 -fvisibility=hidden -O3 -funroll-loops -c -D_GNU_SOURCE -D_REENTRANT -I/go/src/github.com/cockroachdb/cockroach/c-deps/jemalloc/include -Iinclude -o src/ticker.o /go/src/github.com/cockroachdb/cockroach/c-deps/jemalloc/src/ticker.c
+gcc -std=gnu11 -Wall -Werror=declaration-after-statement -Wsign-compare -pipe -g3 -fvisibility=hidden -O3 -funroll-loops -c -D_GNU_SOURCE -D_REENTRANT -I/go/src/github.com/cockroachdb/cockroach/c-deps/jemalloc/include -Iinclude -o src/tsd.o /go/src/github.com/cockroachdb/cockroach/c-deps/jemalloc/src/tsd.c
+gcc -std=gnu11 -Wall -Werror=declaration-after-statement -Wsign-compare -pipe -g3 -fvisibility=hidden -O3 -funroll-loops -c -D_GNU_SOURCE -D_REENTRANT -I/go/src/github.com/cockroachdb/cockroach/c-deps/jemalloc/include -Iinclude -o src/util.o /go/src/github.com/cockroachdb/cockroach/c-deps/jemalloc/src/util.c
+gcc -std=gnu11 -Wall -Werror=declaration-after-statement -Wsign-compare -pipe -g3 -fvisibility=hidden -O3 -funroll-loops -c -D_GNU_SOURCE -D_REENTRANT -I/go/src/github.com/cockroachdb/cockroach/c-deps/jemalloc/include -Iinclude -o src/witness.o /go/src/github.com/cockroachdb/cockroach/c-deps/jemalloc/src/witness.c
+[ 47%] Building CXX object CMakeFiles/libprotoc.dir/go/src/github.com/cockroachdb/cockroach/c-deps/protobuf/src/google/protobuf/compiler/cpp/cpp_enum.cc.o
+gcc -std=gnu11 -Wall -Werror=declaration-after-statement -Wsign-compare -pipe -g3 -fvisibility=hidden -O3 -funroll-loops -fPIC -DPIC -c -D_GNU_SOURCE -D_REENTRANT -I/go/src/github.com/cockroachdb/cockroach/c-deps/jemalloc/include -Iinclude -o src/jemalloc.pic.o /go/src/github.com/cockroachdb/cockroach/c-deps/jemalloc/src/jemalloc.c
+[ 48%] Building CXX object CMakeFiles/libprotoc.dir/go/src/github.com/cockroachdb/cockroach/c-deps/protobuf/src/google/protobuf/compiler/cpp/cpp_enum_field.cc.o
+[ 48%] Building CXX object CMakeFiles/libprotoc.dir/go/src/github.com/cockroachdb/cockroach/c-deps/protobuf/src/google/protobuf/compiler/cpp/cpp_extension.cc.o
+[ 50%] Building CXX object CMakeFiles/libprotoc.dir/go/src/github.com/cockroachdb/cockroach/c-deps/protobuf/src/google/protobuf/compiler/cpp/cpp_field.cc.o
+[ 50%] Building CXX object CMakeFiles/libprotoc.dir/go/src/github.com/cockroachdb/cockroach/c-deps/protobuf/src/google/protobuf/compiler/cpp/cpp_file.cc.o
+gcc -std=gnu11 -Wall -Werror=declaration-after-statement -Wsign-compare -pipe -g3 -fvisibility=hidden -O3 -funroll-loops -fPIC -DPIC -c -D_GNU_SOURCE -D_REENTRANT -I/go/src/github.com/cockroachdb/cockroach/c-deps/jemalloc/include -Iinclude -o src/arena.pic.o /go/src/github.com/cockroachdb/cockroach/c-deps/jemalloc/src/arena.c
+[ 51%] Building CXX object CMakeFiles/libprotoc.dir/go/src/github.com/cockroachdb/cockroach/c-deps/protobuf/src/google/protobuf/compiler/cpp/cpp_generator.cc.o
+[ 51%] Building CXX object CMakeFiles/libprotoc.dir/go/src/github.com/cockroachdb/cockroach/c-deps/protobuf/src/google/protobuf/compiler/cpp/cpp_helpers.cc.o
+[ 52%] Building CXX object CMakeFiles/libprotoc.dir/go/src/github.com/cockroachdb/cockroach/c-deps/protobuf/src/google/protobuf/compiler/cpp/cpp_map_field.cc.o
+gcc -std=gnu11 -Wall -Werror=declaration-after-statement -Wsign-compare -pipe -g3 -fvisibility=hidden -O3 -funroll-loops -fPIC -DPIC -c -D_GNU_SOURCE -D_REENTRANT -I/go/src/github.com/cockroachdb/cockroach/c-deps/jemalloc/include -Iinclude -o src/atomic.pic.o /go/src/github.com/cockroachdb/cockroach/c-deps/jemalloc/src/atomic.c
+gcc -std=gnu11 -Wall -Werror=declaration-after-statement -Wsign-compare -pipe -g3 -fvisibility=hidden -O3 -funroll-loops -fPIC -DPIC -c -D_GNU_SOURCE -D_REENTRANT -I/go/src/github.com/cockroachdb/cockroach/c-deps/jemalloc/include -Iinclude -o src/base.pic.o /go/src/github.com/cockroachdb/cockroach/c-deps/jemalloc/src/base.c
+[ 52%] Building CXX object CMakeFiles/libprotoc.dir/go/src/github.com/cockroachdb/cockroach/c-deps/protobuf/src/google/protobuf/compiler/cpp/cpp_message.cc.o
+gcc -std=gnu11 -Wall -Werror=declaration-after-statement -Wsign-compare -pipe -g3 -fvisibility=hidden -O3 -funroll-loops -fPIC -DPIC -c -D_GNU_SOURCE -D_REENTRANT -I/go/src/github.com/cockroachdb/cockroach/c-deps/jemalloc/include -Iinclude -o src/bitmap.pic.o /go/src/github.com/cockroachdb/cockroach/c-deps/jemalloc/src/bitmap.c
+gcc -std=gnu11 -Wall -Werror=declaration-after-statement -Wsign-compare -pipe -g3 -fvisibility=hidden -O3 -funroll-loops -fPIC -DPIC -c -D_GNU_SOURCE -D_REENTRANT -I/go/src/github.com/cockroachdb/cockroach/c-deps/jemalloc/include -Iinclude -o src/chunk.pic.o /go/src/github.com/cockroachdb/cockroach/c-deps/jemalloc/src/chunk.c
+gcc -std=gnu11 -Wall -Werror=declaration-after-statement -Wsign-compare -pipe -g3 -fvisibility=hidden -O3 -funroll-loops -fPIC -DPIC -c -D_GNU_SOURCE -D_REENTRANT -I/go/src/github.com/cockroachdb/cockroach/c-deps/jemalloc/include -Iinclude -o src/chunk_dss.pic.o /go/src/github.com/cockroachdb/cockroach/c-deps/jemalloc/src/chunk_dss.c
+gcc -std=gnu11 -Wall -Werror=declaration-after-statement -Wsign-compare -pipe -g3 -fvisibility=hidden -O3 -funroll-loops -fPIC -DPIC -c -D_GNU_SOURCE -D_REENTRANT -I/go/src/github.com/cockroachdb/cockroach/c-deps/jemalloc/include -Iinclude -o src/chunk_mmap.pic.o /go/src/github.com/cockroachdb/cockroach/c-deps/jemalloc/src/chunk_mmap.c
+gcc -std=gnu11 -Wall -Werror=declaration-after-statement -Wsign-compare -pipe -g3 -fvisibility=hidden -O3 -funroll-loops -fPIC -DPIC -c -D_GNU_SOURCE -D_REENTRANT -I/go/src/github.com/cockroachdb/cockroach/c-deps/jemalloc/include -Iinclude -o src/ckh.pic.o /go/src/github.com/cockroachdb/cockroach/c-deps/jemalloc/src/ckh.c
+gcc -std=gnu11 -Wall -Werror=declaration-after-statement -Wsign-compare -pipe -g3 -fvisibility=hidden -O3 -funroll-loops -fPIC -DPIC -c -D_GNU_SOURCE -D_REENTRANT -I/go/src/github.com/cockroachdb/cockroach/c-deps/jemalloc/include -Iinclude -o src/ctl.pic.o /go/src/github.com/cockroachdb/cockroach/c-deps/jemalloc/src/ctl.c
+[ 53%] Building CXX object CMakeFiles/libprotoc.dir/go/src/github.com/cockroachdb/cockroach/c-deps/protobuf/src/google/protobuf/compiler/cpp/cpp_message_field.cc.o
+[ 53%] Building CXX object CMakeFiles/libprotoc.dir/go/src/github.com/cockroachdb/cockroach/c-deps/protobuf/src/google/protobuf/compiler/cpp/cpp_primitive_field.cc.o
+[ 54%] Building CXX object CMakeFiles/libprotoc.dir/go/src/github.com/cockroachdb/cockroach/c-deps/protobuf/src/google/protobuf/compiler/cpp/cpp_service.cc.o
+gcc -std=gnu11 -Wall -Werror=declaration-after-statement -Wsign-compare -pipe -g3 -fvisibility=hidden -O3 -funroll-loops -fPIC -DPIC -c -D_GNU_SOURCE -D_REENTRANT -I/go/src/github.com/cockroachdb/cockroach/c-deps/jemalloc/include -Iinclude -o src/extent.pic.o /go/src/github.com/cockroachdb/cockroach/c-deps/jemalloc/src/extent.c
+[ 54%] Building CXX object CMakeFiles/libprotoc.dir/go/src/github.com/cockroachdb/cockroach/c-deps/protobuf/src/google/protobuf/compiler/cpp/cpp_string_field.cc.o
+gcc -std=gnu11 -Wall -Werror=declaration-after-statement -Wsign-compare -pipe -g3 -fvisibility=hidden -O3 -funroll-loops -fPIC -DPIC -c -D_GNU_SOURCE -D_REENTRANT -I/go/src/github.com/cockroachdb/cockroach/c-deps/jemalloc/include -Iinclude -o src/hash.pic.o /go/src/github.com/cockroachdb/cockroach/c-deps/jemalloc/src/hash.c
+[ 55%] Building CXX object CMakeFiles/libprotoc.dir/go/src/github.com/cockroachdb/cockroach/c-deps/protobuf/src/google/protobuf/compiler/csharp/csharp_doc_comment.cc.o
+gcc -std=gnu11 -Wall -Werror=declaration-after-statement -Wsign-compare -pipe -g3 -fvisibility=hidden -O3 -funroll-loops -fPIC -DPIC -c -D_GNU_SOURCE -D_REENTRANT -I/go/src/github.com/cockroachdb/cockroach/c-deps/jemalloc/include -Iinclude -o src/huge.pic.o /go/src/github.com/cockroachdb/cockroach/c-deps/jemalloc/src/huge.c
+[ 55%] Building CXX object CMakeFiles/libprotoc.dir/go/src/github.com/cockroachdb/cockroach/c-deps/protobuf/src/google/protobuf/compiler/csharp/csharp_enum.cc.o
+gcc -std=gnu11 -Wall -Werror=declaration-after-statement -Wsign-compare -pipe -g3 -fvisibility=hidden -O3 -funroll-loops -fPIC -DPIC -c -D_GNU_SOURCE -D_REENTRANT -I/go/src/github.com/cockroachdb/cockroach/c-deps/jemalloc/include -Iinclude -o src/mb.pic.o /go/src/github.com/cockroachdb/cockroach/c-deps/jemalloc/src/mb.c
+gcc -std=gnu11 -Wall -Werror=declaration-after-statement -Wsign-compare -pipe -g3 -fvisibility=hidden -O3 -funroll-loops -fPIC -DPIC -c -D_GNU_SOURCE -D_REENTRANT -I/go/src/github.com/cockroachdb/cockroach/c-deps/jemalloc/include -Iinclude -o src/mutex.pic.o /go/src/github.com/cockroachdb/cockroach/c-deps/jemalloc/src/mutex.c
+[ 56%] Building CXX object CMakeFiles/libprotoc.dir/go/src/github.com/cockroachdb/cockroach/c-deps/protobuf/src/google/protobuf/compiler/csharp/csharp_enum_field.cc.o
+gcc -std=gnu11 -Wall -Werror=declaration-after-statement -Wsign-compare -pipe -g3 -fvisibility=hidden -O3 -funroll-loops -fPIC -DPIC -c -D_GNU_SOURCE -D_REENTRANT -I/go/src/github.com/cockroachdb/cockroach/c-deps/jemalloc/include -Iinclude -o src/nstime.pic.o /go/src/github.com/cockroachdb/cockroach/c-deps/jemalloc/src/nstime.c
+gcc -std=gnu11 -Wall -Werror=declaration-after-statement -Wsign-compare -pipe -g3 -fvisibility=hidden -O3 -funroll-loops -fPIC -DPIC -c -D_GNU_SOURCE -D_REENTRANT -I/go/src/github.com/cockroachdb/cockroach/c-deps/jemalloc/include -Iinclude -o src/pages.pic.o /go/src/github.com/cockroachdb/cockroach/c-deps/jemalloc/src/pages.c
+gcc -std=gnu11 -Wall -Werror=declaration-after-statement -Wsign-compare -pipe -g3 -fvisibility=hidden -O3 -funroll-loops -fPIC -DPIC -c -D_GNU_SOURCE -D_REENTRANT -I/go/src/github.com/cockroachdb/cockroach/c-deps/jemalloc/include -Iinclude -o src/prng.pic.o /go/src/github.com/cockroachdb/cockroach/c-deps/jemalloc/src/prng.c
+[ 56%] Building CXX object CMakeFiles/libprotoc.dir/go/src/github.com/cockroachdb/cockroach/c-deps/protobuf/src/google/protobuf/compiler/csharp/csharp_field_base.cc.o
+gcc -std=gnu11 -Wall -Werror=declaration-after-statement -Wsign-compare -pipe -g3 -fvisibility=hidden -O3 -funroll-loops -fPIC -DPIC -c -D_GNU_SOURCE -D_REENTRANT -I/go/src/github.com/cockroachdb/cockroach/c-deps/jemalloc/include -Iinclude -o src/prof.pic.o /go/src/github.com/cockroachdb/cockroach/c-deps/jemalloc/src/prof.c
+[ 57%] Building CXX object CMakeFiles/libprotoc.dir/go/src/github.com/cockroachdb/cockroach/c-deps/protobuf/src/google/protobuf/compiler/csharp/csharp_generator.cc.o
+[ 57%] Building CXX object CMakeFiles/libprotoc.dir/go/src/github.com/cockroachdb/cockroach/c-deps/protobuf/src/google/protobuf/compiler/csharp/csharp_helpers.cc.o
+gcc -std=gnu11 -Wall -Werror=declaration-after-statement -Wsign-compare -pipe -g3 -fvisibility=hidden -O3 -funroll-loops -fPIC -DPIC -c -D_GNU_SOURCE -D_REENTRANT -I/go/src/github.com/cockroachdb/cockroach/c-deps/jemalloc/include -Iinclude -o src/quarantine.pic.o /go/src/github.com/cockroachdb/cockroach/c-deps/jemalloc/src/quarantine.c
+gcc -std=gnu11 -Wall -Werror=declaration-after-statement -Wsign-compare -pipe -g3 -fvisibility=hidden -O3 -funroll-loops -fPIC -DPIC -c -D_GNU_SOURCE -D_REENTRANT -I/go/src/github.com/cockroachdb/cockroach/c-deps/jemalloc/include -Iinclude -o src/rtree.pic.o /go/src/github.com/cockroachdb/cockroach/c-deps/jemalloc/src/rtree.c
+[ 59%] Building CXX object CMakeFiles/libprotoc.dir/go/src/github.com/cockroachdb/cockroach/c-deps/protobuf/src/google/protobuf/compiler/csharp/csharp_map_field.cc.o
+gcc -std=gnu11 -Wall -Werror=declaration-after-statement -Wsign-compare -pipe -g3 -fvisibility=hidden -O3 -funroll-loops -fPIC -DPIC -c -D_GNU_SOURCE -D_REENTRANT -I/go/src/github.com/cockroachdb/cockroach/c-deps/jemalloc/include -Iinclude -o src/stats.pic.o /go/src/github.com/cockroachdb/cockroach/c-deps/jemalloc/src/stats.c
+[ 59%] Building CXX object CMakeFiles/libprotoc.dir/go/src/github.com/cockroachdb/cockroach/c-deps/protobuf/src/google/protobuf/compiler/csharp/csharp_message.cc.o
+gcc -std=gnu11 -Wall -Werror=declaration-after-statement -Wsign-compare -pipe -g3 -fvisibility=hidden -O3 -funroll-loops -fPIC -DPIC -c -D_GNU_SOURCE -D_REENTRANT -I/go/src/github.com/cockroachdb/cockroach/c-deps/jemalloc/include -Iinclude -o src/spin.pic.o /go/src/github.com/cockroachdb/cockroach/c-deps/jemalloc/src/spin.c
+gcc -std=gnu11 -Wall -Werror=declaration-after-statement -Wsign-compare -pipe -g3 -fvisibility=hidden -O3 -funroll-loops -fPIC -DPIC -c -D_GNU_SOURCE -D_REENTRANT -I/go/src/github.com/cockroachdb/cockroach/c-deps/jemalloc/include -Iinclude -o src/tcache.pic.o /go/src/github.com/cockroachdb/cockroach/c-deps/jemalloc/src/tcache.c
+[ 60%] Building CXX object CMakeFiles/libprotoc.dir/go/src/github.com/cockroachdb/cockroach/c-deps/protobuf/src/google/protobuf/compiler/csharp/csharp_message_field.cc.o
+gcc -std=gnu11 -Wall -Werror=declaration-after-statement -Wsign-compare -pipe -g3 -fvisibility=hidden -O3 -funroll-loops -fPIC -DPIC -c -D_GNU_SOURCE -D_REENTRANT -I/go/src/github.com/cockroachdb/cockroach/c-deps/jemalloc/include -Iinclude -o src/ticker.pic.o /go/src/github.com/cockroachdb/cockroach/c-deps/jemalloc/src/ticker.c
+gcc -std=gnu11 -Wall -Werror=declaration-after-statement -Wsign-compare -pipe -g3 -fvisibility=hidden -O3 -funroll-loops -fPIC -DPIC -c -D_GNU_SOURCE -D_REENTRANT -I/go/src/github.com/cockroachdb/cockroach/c-deps/jemalloc/include -Iinclude -o src/tsd.pic.o /go/src/github.com/cockroachdb/cockroach/c-deps/jemalloc/src/tsd.c
+gcc -std=gnu11 -Wall -Werror=declaration-after-statement -Wsign-compare -pipe -g3 -fvisibility=hidden -O3 -funroll-loops -fPIC -DPIC -c -D_GNU_SOURCE -D_REENTRANT -I/go/src/github.com/cockroachdb/cockroach/c-deps/jemalloc/include -Iinclude -o src/util.pic.o /go/src/github.com/cockroachdb/cockroach/c-deps/jemalloc/src/util.c
+[ 60%] Building CXX object CMakeFiles/libprotoc.dir/go/src/github.com/cockroachdb/cockroach/c-deps/protobuf/src/google/protobuf/compiler/csharp/csharp_primitive_field.cc.o
+gcc -std=gnu11 -Wall -Werror=declaration-after-statement -Wsign-compare -pipe -g3 -fvisibility=hidden -O3 -funroll-loops -fPIC -DPIC -c -D_GNU_SOURCE -D_REENTRANT -I/go/src/github.com/cockroachdb/cockroach/c-deps/jemalloc/include -Iinclude -o src/witness.pic.o /go/src/github.com/cockroachdb/cockroach/c-deps/jemalloc/src/witness.c
+ar crus lib/libjemalloc.a src/jemalloc.o src/arena.o src/atomic.o src/base.o src/bitmap.o src/chunk.o src/chunk_dss.o src/chunk_mmap.o src/ckh.o src/ctl.o src/extent.o src/hash.o src/huge.o src/mb.o src/mutex.o src/nstime.o src/pages.o src/prng.o src/prof.o src/quarantine.o src/rtree.o src/stats.o src/spin.o src/tcache.o src/ticker.o src/tsd.o src/util.o src/witness.o
+ar: `u' modifier ignored since `D' is the default (see `U')
+[ 61%] Building CXX object CMakeFiles/libprotoc.dir/go/src/github.com/cockroachdb/cockroach/c-deps/protobuf/src/google/protobuf/compiler/csharp/csharp_reflection_class.cc.o
+ar crus lib/libjemalloc_pic.a src/jemalloc.pic.o src/arena.pic.o src/atomic.pic.o src/base.pic.o src/bitmap.pic.o src/chunk.pic.o src/chunk_dss.pic.o src/chunk_mmap.pic.o src/ckh.pic.o src/ctl.pic.o src/extent.pic.o src/hash.pic.o src/huge.pic.o src/mb.pic.o src/mutex.pic.o src/nstime.pic.o src/pages.pic.o src/prng.pic.o src/prof.pic.o src/quarantine.pic.o src/rtree.pic.o src/stats.pic.o src/spin.pic.o src/tcache.pic.o src/ticker.pic.o src/tsd.pic.o src/util.pic.o src/witness.pic.o
+ar: `u' modifier ignored since `D' is the default (see `U')
+rm -rf /go/native/x86_64-linux-gnu/rocksdb
+mkdir -p /go/native/x86_64-linux-gnu/rocksdb
+cd /go/native/x86_64-linux-gnu/rocksdb && cmake  /go/src/github.com/cockroachdb/cockroach/c-deps/rocksdb \
+  -DWITH_SSE42=OFF \
+  -DSNAPPY_LIBRARIES=/go/native/x86_64-linux-gnu/snappy/libsnappy.a -DSNAPPY_INCLUDE_DIR="/go/src/github.com/cockroachdb/cockroach/c-deps/snappy;/go/native/x86_64-linux-gnu/snappy" -DWITH_SNAPPY=ON \
+  -DJEMALLOC_LIBRARIES=/go/native/x86_64-linux-gnu/jemalloc/lib/libjemalloc.a -DJEMALLOC_INCLUDE_DIR=/go/native/x86_64-linux-gnu/jemalloc/include -DWITH_JEMALLOC=ON \
+  -DCMAKE_CXX_FLAGS="-msse3 -DNDEBUG"
+-- The C compiler identification is GNU 5.4.0
+-- The CXX compiler identification is GNU 5.4.0
+-- Check for working C compiler: /usr/bin/cc
+-- Check for working C compiler: /usr/bin/cc -- works
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Check for working CXX compiler: /usr/bin/c++
+[ 61%] Building CXX object CMakeFiles/libprotoc.dir/go/src/github.com/cockroachdb/cockroach/c-deps/protobuf/src/google/protobuf/compiler/csharp/csharp_repeated_enum_field.cc.o
+-- Check for working CXX compiler: /usr/bin/c++ -- works
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Found jemalloc: /go/native/x86_64-linux-gnu/jemalloc/lib/libjemalloc.a  
+-- Found snappy: /go/native/x86_64-linux-gnu/snappy/libsnappy.a  
+-- Found Git: /usr/bin/git (found version "2.7.4") 
+-- Performing Test HAVE_OMIT_LEAF_FRAME_POINTER
+[ 61%] Building CXX object CMakeFiles/libprotoc.dir/go/src/github.com/cockroachdb/cockroach/c-deps/protobuf/src/google/protobuf/compiler/csharp/csharp_repeated_message_field.cc.o
+-- Performing Test HAVE_OMIT_LEAF_FRAME_POINTER - Success
+-- Performing Test HAVE_FALLOCATE
+-- Performing Test HAVE_FALLOCATE - Success
+-- Looking for malloc_usable_size
+-- Looking for malloc_usable_size - found
+-- Looking for pthread.h
+-- Looking for pthread.h - found
+-- Looking for pthread_create
+-- Looking for pthread_create - not found
+-- Looking for pthread_create in pthreads
+-- Looking for pthread_create in pthreads - not found
+-- Looking for pthread_create in pthread
+-- Looking for pthread_create in pthread - found
+-- Found Threads: TRUE  
+-- JNI library is disabled
+-- Configuring done
+[ 62%] Building CXX object CMakeFiles/libprotoc.dir/go/src/github.com/cockroachdb/cockroach/c-deps/protobuf/src/google/protobuf/compiler/csharp/csharp_repeated_primitive_field.cc.o
+-- Generating done
+-- Build files have been written to: /go/native/x86_64-linux-gnu/rocksdb
+Scanning dependencies of target build_version
+[  0%] Building CXX object CMakeFiles/build_version.dir/build_version.cc.o
+[  0%] Built target build_version
+[ 62%] Building CXX object CMakeFiles/libprotoc.dir/go/src/github.com/cockroachdb/cockroach/c-deps/protobuf/src/google/protobuf/compiler/csharp/csharp_source_generator_base.cc.o
+Scanning dependencies of target rocksdb
+[  0%] Building CXX object CMakeFiles/rocksdb.dir/cache/clock_cache.cc.o
+[ 63%] Building CXX object CMakeFiles/libprotoc.dir/go/src/github.com/cockroachdb/cockroach/c-deps/protobuf/src/google/protobuf/compiler/csharp/csharp_wrapper_field.cc.o
+[  0%] Building CXX object CMakeFiles/rocksdb.dir/cache/lru_cache.cc.o
+[ 63%] Building CXX object CMakeFiles/libprotoc.dir/go/src/github.com/cockroachdb/cockroach/c-deps/protobuf/src/google/protobuf/compiler/java/java_context.cc.o
+[ 64%] Building CXX object CMakeFiles/libprotoc.dir/go/src/github.com/cockroachdb/cockroach/c-deps/protobuf/src/google/protobuf/compiler/java/java_doc_comment.cc.o
+[  0%] Building CXX object CMakeFiles/rocksdb.dir/cache/sharded_cache.cc.o
+[ 64%] Building CXX object CMakeFiles/libprotoc.dir/go/src/github.com/cockroachdb/cockroach/c-deps/protobuf/src/google/protobuf/compiler/java/java_enum.cc.o
+[  3%] Building CXX object CMakeFiles/rocksdb.dir/db/builder.cc.o
+[ 65%] Building CXX object CMakeFiles/libprotoc.dir/go/src/github.com/cockroachdb/cockroach/c-deps/protobuf/src/google/protobuf/compiler/java/java_enum_field.cc.o
+[ 65%] Building CXX object CMakeFiles/libprotoc.dir/go/src/github.com/cockroachdb/cockroach/c-deps/protobuf/src/google/protobuf/compiler/java/java_enum_field_lite.cc.o
+[ 67%] Building CXX object CMakeFiles/libprotoc.dir/go/src/github.com/cockroachdb/cockroach/c-deps/protobuf/src/google/protobuf/compiler/java/java_enum_lite.cc.o
+[ 67%] Building CXX object CMakeFiles/libprotoc.dir/go/src/github.com/cockroachdb/cockroach/c-deps/protobuf/src/google/protobuf/compiler/java/java_extension.cc.o
+[  3%] Building CXX object CMakeFiles/rocksdb.dir/db/c.cc.o
+[ 68%] Building CXX object CMakeFiles/libprotoc.dir/go/src/github.com/cockroachdb/cockroach/c-deps/protobuf/src/google/protobuf/compiler/java/java_extension_lite.cc.o
+[ 68%] Building CXX object CMakeFiles/libprotoc.dir/go/src/github.com/cockroachdb/cockroach/c-deps/protobuf/src/google/protobuf/compiler/java/java_field.cc.o
+[ 69%] Building CXX object CMakeFiles/libprotoc.dir/go/src/github.com/cockroachdb/cockroach/c-deps/protobuf/src/google/protobuf/compiler/java/java_file.cc.o
+[ 69%] Building CXX object CMakeFiles/libprotoc.dir/go/src/github.com/cockroachdb/cockroach/c-deps/protobuf/src/google/protobuf/compiler/java/java_generator.cc.o
+[ 70%] Building CXX object CMakeFiles/libprotoc.dir/go/src/github.com/cockroachdb/cockroach/c-deps/protobuf/src/google/protobuf/compiler/java/java_generator_factory.cc.o
+[ 70%] Building CXX object CMakeFiles/libprotoc.dir/go/src/github.com/cockroachdb/cockroach/c-deps/protobuf/src/google/protobuf/compiler/java/java_helpers.cc.o
+[  3%] Building CXX object CMakeFiles/rocksdb.dir/db/column_family.cc.o
+[ 71%] Building CXX object CMakeFiles/libprotoc.dir/go/src/github.com/cockroachdb/cockroach/c-deps/protobuf/src/google/protobuf/compiler/java/java_lazy_message_field.cc.o
+[ 71%] Building CXX object CMakeFiles/libprotoc.dir/go/src/github.com/cockroachdb/cockroach/c-deps/protobuf/src/google/protobuf/compiler/java/java_lazy_message_field_lite.cc.o
+[ 72%] Building CXX object CMakeFiles/libprotoc.dir/go/src/github.com/cockroachdb/cockroach/c-deps/protobuf/src/google/protobuf/compiler/java/java_map_field.cc.o
+[ 72%] Building CXX object CMakeFiles/libprotoc.dir/go/src/github.com/cockroachdb/cockroach/c-deps/protobuf/src/google/protobuf/compiler/java/java_map_field_lite.cc.o
+[ 73%] Building CXX object CMakeFiles/libprotoc.dir/go/src/github.com/cockroachdb/cockroach/c-deps/protobuf/src/google/protobuf/compiler/java/java_message.cc.o
+[ 73%] Building CXX object CMakeFiles/libprotoc.dir/go/src/github.com/cockroachdb/cockroach/c-deps/protobuf/src/google/protobuf/compiler/java/java_message_builder.cc.o
+[ 75%] Building CXX object CMakeFiles/libprotoc.dir/go/src/github.com/cockroachdb/cockroach/c-deps/protobuf/src/google/protobuf/compiler/java/java_message_builder_lite.cc.o
+[ 75%] Building CXX object CMakeFiles/libprotoc.dir/go/src/github.com/cockroachdb/cockroach/c-deps/protobuf/src/google/protobuf/compiler/java/java_message_field.cc.o
+[ 76%] Building CXX object CMakeFiles/libprotoc.dir/go/src/github.com/cockroachdb/cockroach/c-deps/protobuf/src/google/protobuf/compiler/java/java_message_field_lite.cc.o
+[  3%] Building CXX object CMakeFiles/rocksdb.dir/db/compacted_db_impl.cc.o
+[ 76%] Building CXX object CMakeFiles/libprotoc.dir/go/src/github.com/cockroachdb/cockroach/c-deps/protobuf/src/google/protobuf/compiler/java/java_message_lite.cc.o
+[ 77%] Building CXX object CMakeFiles/libprotoc.dir/go/src/github.com/cockroachdb/cockroach/c-deps/protobuf/src/google/protobuf/compiler/java/java_name_resolver.cc.o
+[ 77%] Building CXX object CMakeFiles/libprotoc.dir/go/src/github.com/cockroachdb/cockroach/c-deps/protobuf/src/google/protobuf/compiler/java/java_primitive_field.cc.o
+[ 78%] Building CXX object CMakeFiles/libprotoc.dir/go/src/github.com/cockroachdb/cockroach/c-deps/protobuf/src/google/protobuf/compiler/java/java_primitive_field_lite.cc.o
+[ 78%] Building CXX object CMakeFiles/libprotoc.dir/go/src/github.com/cockroachdb/cockroach/c-deps/protobuf/src/google/protobuf/compiler/java/java_service.cc.o
+[  3%] Building CXX object CMakeFiles/rocksdb.dir/db/compaction.cc.o
+[ 79%] Building CXX object CMakeFiles/libprotoc.dir/go/src/github.com/cockroachdb/cockroach/c-deps/protobuf/src/google/protobuf/compiler/java/java_shared_code_generator.cc.o
+[ 79%] Building CXX object CMakeFiles/libprotoc.dir/go/src/github.com/cockroachdb/cockroach/c-deps/protobuf/src/google/protobuf/compiler/java/java_string_field.cc.o
+[ 80%] Building CXX object CMakeFiles/libprotoc.dir/go/src/github.com/cockroachdb/cockroach/c-deps/protobuf/src/google/protobuf/compiler/java/java_string_field_lite.cc.o
+[  3%] Building CXX object CMakeFiles/rocksdb.dir/db/compaction_iterator.cc.o
+[ 80%] Building CXX object CMakeFiles/libprotoc.dir/go/src/github.com/cockroachdb/cockroach/c-deps/protobuf/src/google/protobuf/compiler/javanano/javanano_enum.cc.o
+[ 80%] Building CXX object CMakeFiles/libprotoc.dir/go/src/github.com/cockroachdb/cockroach/c-deps/protobuf/src/google/protobuf/compiler/javanano/javanano_enum_field.cc.o
+[ 81%] Building CXX object CMakeFiles/libprotoc.dir/go/src/github.com/cockroachdb/cockroach/c-deps/protobuf/src/google/protobuf/compiler/javanano/javanano_extension.cc.o
+[ 81%] Building CXX object CMakeFiles/libprotoc.dir/go/src/github.com/cockroachdb/cockroach/c-deps/protobuf/src/google/protobuf/compiler/javanano/javanano_field.cc.o
+[  6%] Building CXX object CMakeFiles/rocksdb.dir/db/compaction_job.cc.o
+[ 82%] Building CXX object CMakeFiles/libprotoc.dir/go/src/github.com/cockroachdb/cockroach/c-deps/protobuf/src/google/protobuf/compiler/javanano/javanano_file.cc.o
+[ 82%] Building CXX object CMakeFiles/libprotoc.dir/go/src/github.com/cockroachdb/cockroach/c-deps/protobuf/src/google/protobuf/compiler/javanano/javanano_generator.cc.o
+[ 84%] Building CXX object CMakeFiles/libprotoc.dir/go/src/github.com/cockroachdb/cockroach/c-deps/protobuf/src/google/protobuf/compiler/javanano/javanano_helpers.cc.o
+[ 84%] Building CXX object CMakeFiles/libprotoc.dir/go/src/github.com/cockroachdb/cockroach/c-deps/protobuf/src/google/protobuf/compiler/javanano/javanano_map_field.cc.o
+[ 85%] Building CXX object CMakeFiles/libprotoc.dir/go/src/github.com/cockroachdb/cockroach/c-deps/protobuf/src/google/protobuf/compiler/javanano/javanano_message.cc.o
+[ 85%] Building CXX object CMakeFiles/libprotoc.dir/go/src/github.com/cockroachdb/cockroach/c-deps/protobuf/src/google/protobuf/compiler/javanano/javanano_message_field.cc.o
+[ 86%] Building CXX object CMakeFiles/libprotoc.dir/go/src/github.com/cockroachdb/cockroach/c-deps/protobuf/src/google/protobuf/compiler/javanano/javanano_primitive_field.cc.o
+[  6%] Building CXX object CMakeFiles/rocksdb.dir/db/compaction_picker.cc.o
+[ 86%] Building CXX object CMakeFiles/libprotoc.dir/go/src/github.com/cockroachdb/cockroach/c-deps/protobuf/src/google/protobuf/compiler/js/js_generator.cc.o
+[ 87%] Building CXX object CMakeFiles/libprotoc.dir/go/src/github.com/cockroachdb/cockroach/c-deps/protobuf/src/google/protobuf/compiler/js/well_known_types_embed.cc.o
+[ 87%] Building CXX object CMakeFiles/libprotoc.dir/go/src/github.com/cockroachdb/cockroach/c-deps/protobuf/src/google/protobuf/compiler/objectivec/objectivec_enum.cc.o
+[ 88%] Building CXX object CMakeFiles/libprotoc.dir/go/src/github.com/cockroachdb/cockroach/c-deps/protobuf/src/google/protobuf/compiler/objectivec/objectivec_enum_field.cc.o
+[ 88%] Building CXX object CMakeFiles/libprotoc.dir/go/src/github.com/cockroachdb/cockroach/c-deps/protobuf/src/google/protobuf/compiler/objectivec/objectivec_extension.cc.o
+[  6%] Building CXX object CMakeFiles/rocksdb.dir/db/compaction_picker_universal.cc.o
+[ 89%] Building CXX object CMakeFiles/libprotoc.dir/go/src/github.com/cockroachdb/cockroach/c-deps/protobuf/src/google/protobuf/compiler/objectivec/objectivec_field.cc.o
+[ 89%] Building CXX object CMakeFiles/libprotoc.dir/go/src/github.com/cockroachdb/cockroach/c-deps/protobuf/src/google/protobuf/compiler/objectivec/objectivec_file.cc.o
+[ 90%] Building CXX object CMakeFiles/libprotoc.dir/go/src/github.com/cockroachdb/cockroach/c-deps/protobuf/src/google/protobuf/compiler/objectivec/objectivec_generator.cc.o
+[  6%] Building CXX object CMakeFiles/rocksdb.dir/db/convenience.cc.o
+[ 90%] Building CXX object CMakeFiles/libprotoc.dir/go/src/github.com/cockroachdb/cockroach/c-deps/protobuf/src/google/protobuf/compiler/objectivec/objectivec_helpers.cc.o
+[ 92%] Building CXX object CMakeFiles/libprotoc.dir/go/src/github.com/cockroachdb/cockroach/c-deps/protobuf/src/google/protobuf/compiler/objectivec/objectivec_map_field.cc.o
+[ 92%] Building CXX object CMakeFiles/libprotoc.dir/go/src/github.com/cockroachdb/cockroach/c-deps/protobuf/src/google/protobuf/compiler/objectivec/objectivec_message.cc.o
+[  6%] Building CXX object CMakeFiles/rocksdb.dir/db/db_filesnapshot.cc.o
+[ 93%] Building CXX object CMakeFiles/libprotoc.dir/go/src/github.com/cockroachdb/cockroach/c-deps/protobuf/src/google/protobuf/compiler/objectivec/objectivec_message_field.cc.o
+[ 93%] Building CXX object CMakeFiles/libprotoc.dir/go/src/github.com/cockroachdb/cockroach/c-deps/protobuf/src/google/protobuf/compiler/objectivec/objectivec_oneof.cc.o
+[ 94%] Building CXX object CMakeFiles/libprotoc.dir/go/src/github.com/cockroachdb/cockroach/c-deps/protobuf/src/google/protobuf/compiler/objectivec/objectivec_primitive_field.cc.o
+[  6%] Building CXX object CMakeFiles/rocksdb.dir/db/db_impl.cc.o
+[ 94%] Building CXX object CMakeFiles/libprotoc.dir/go/src/github.com/cockroachdb/cockroach/c-deps/protobuf/src/google/protobuf/compiler/php/php_generator.cc.o
+[ 95%] Building CXX object CMakeFiles/libprotoc.dir/go/src/github.com/cockroachdb/cockroach/c-deps/protobuf/src/google/protobuf/compiler/plugin.cc.o
+[ 95%] Building CXX object CMakeFiles/libprotoc.dir/go/src/github.com/cockroachdb/cockroach/c-deps/protobuf/src/google/protobuf/compiler/plugin.pb.cc.o
+[ 96%] Building CXX object CMakeFiles/libprotoc.dir/go/src/github.com/cockroachdb/cockroach/c-deps/protobuf/src/google/protobuf/compiler/python/python_generator.cc.o
+[ 96%] Building CXX object CMakeFiles/libprotoc.dir/go/src/github.com/cockroachdb/cockroach/c-deps/protobuf/src/google/protobuf/compiler/ruby/ruby_generator.cc.o
+[ 97%] Building CXX object CMakeFiles/libprotoc.dir/go/src/github.com/cockroachdb/cockroach/c-deps/protobuf/src/google/protobuf/compiler/subprocess.cc.o
+[ 97%] Building CXX object CMakeFiles/libprotoc.dir/go/src/github.com/cockroachdb/cockroach/c-deps/protobuf/src/google/protobuf/compiler/zip_writer.cc.o
+[ 98%] Linking CXX static library libprotoc.a
+[ 98%] Built target libprotoc
+Scanning dependencies of target protoc
+[ 98%] Building CXX object CMakeFiles/protoc.dir/go/src/github.com/cockroachdb/cockroach/c-deps/protobuf/src/google/protobuf/compiler/main.cc.o
+[100%] Linking CXX executable protoc
+[100%] Built target protoc
+github.com/cockroachdb/cockroach/vendor/github.com/gogo/protobuf/proto
+github.com/cockroachdb/cockroach/vendor/github.com/gogo/protobuf/protoc-gen-gogo/descriptor
+github.com/cockroachdb/cockroach/vendor/github.com/gogo/protobuf/gogoproto
+github.com/cockroachdb/cockroach/vendor/github.com/gogo/protobuf/protoc-gen-gogo/plugin
+github.com/cockroachdb/cockroach/vendor/github.com/gogo/protobuf/vanity
+github.com/cockroachdb/cockroach/vendor/github.com/gogo/protobuf/protoc-gen-gogo/generator
+github.com/cockroachdb/cockroach/vendor/github.com/gogo/protobuf/plugin/testgen
+github.com/cockroachdb/cockroach/vendor/github.com/gogo/protobuf/plugin/defaultcheck
+github.com/cockroachdb/cockroach/vendor/github.com/gogo/protobuf/plugin/embedcheck
+github.com/cockroachdb/cockroach/vendor/github.com/gogo/protobuf/plugin/enumstringer
+github.com/cockroachdb/cockroach/vendor/github.com/gogo/protobuf/plugin/marshalto
+github.com/cockroachdb/cockroach/vendor/github.com/gogo/protobuf/plugin/compare
+github.com/cockroachdb/cockroach/vendor/github.com/gogo/protobuf/plugin/description
+github.com/cockroachdb/cockroach/vendor/github.com/gogo/protobuf/plugin/equal
+[  6%] Building CXX object CMakeFiles/rocksdb.dir/db/db_impl_write.cc.o
+github.com/cockroachdb/cockroach/vendor/github.com/gogo/protobuf/plugin/face
+github.com/cockroachdb/cockroach/vendor/github.com/gogo/protobuf/plugin/gostring
+github.com/cockroachdb/cockroach/vendor/github.com/gogo/protobuf/plugin/oneofcheck
+github.com/cockroachdb/cockroach/vendor/github.com/gogo/protobuf/plugin/populate
+github.com/cockroachdb/cockroach/vendor/github.com/gogo/protobuf/plugin/size
+github.com/cockroachdb/cockroach/vendor/github.com/gogo/protobuf/plugin/stringer
+github.com/cockroachdb/cockroach/vendor/github.com/gogo/protobuf/plugin/union
+github.com/cockroachdb/cockroach/vendor/github.com/gogo/protobuf/plugin/unmarshal
+github.com/cockroachdb/cockroach/vendor/github.com/gogo/protobuf/protoc-gen-gogo/grpc
+github.com/cockroachdb/cockroach/vendor/github.com/gogo/protobuf/vanity/command
+github.com/cockroachdb/cockroach/pkg/cmd/protoc-gen-gogoroach
+(cd ./cockroach && git ls-files --exclude-standard --cached --others -- '*.pb.gw.go' | xargs rm -f)
+/go/native/x86_64-linux-gnu/protobuf/protoc -I.:./cockroach/vendor/github.com/../github.com/gogo/protobuf:./cockroach/vendor/github.com/../github.com/gogo/protobuf/protobuf:./cockroach/vendor/github.com/coreos:./cockroach/vendor/github.com/../github.com/grpc-ecosystem/grpc-gateway/third_party/googleapis --grpc-gateway_out=logtostderr=true,request_context=true:. ./cockroach/pkg/server/serverpb/admin.proto ./cockroach/pkg/server/serverpb/status.proto ./cockroach/pkg/server/serverpb/authentication.proto
+/go/native/x86_64-linux-gnu/protobuf/protoc -I.:./cockroach/vendor/github.com/../github.com/gogo/protobuf:./cockroach/vendor/github.com/../github.com/gogo/protobuf/protobuf:./cockroach/vendor/github.com/coreos:./cockroach/vendor/github.com/../github.com/grpc-ecosystem/grpc-gateway/third_party/googleapis --grpc-gateway_out=logtostderr=true,request_context=true:. ./cockroach/pkg/ts/tspb/timeseries.proto
+touch /go/src/github.com/cockroachdb/cockroach/bin/.gw_protobuf_sources
+(cd ./cockroach && git ls-files --exclude-standard --cached --others -- '*.pb.h' '*.pb.cc' | xargs rm -f)
+mkdir -p /go/src/github.com/cockroachdb/cockroach/c-deps/libroach/protos
+/go/native/x86_64-linux-gnu/protobuf/protoc -I.:./cockroach/vendor/github.com/../github.com/gogo/protobuf:./cockroach/vendor/github.com/../github.com/gogo/protobuf/protobuf --cpp_out=lite:/go/src/github.com/cockroachdb/cockroach/c-deps/libroach/protos ./cockroach/pkg/roachpb/data.proto ./cockroach/pkg/roachpb/internal.proto ./cockroach/pkg/roachpb/metadata.proto ./cockroach/pkg/storage/engine/enginepb/mvcc.proto ./cockroach/pkg/storage/engine/enginepb/mvcc3.proto ./cockroach/pkg/storage/engine/enginepb/rocksdb.proto ./cockroach/pkg/util/hlc/legacy_timestamp.proto ./cockroach/pkg/util/hlc/timestamp.proto ./cockroach/pkg/util/unresolved_addr.proto
+cockroach/pkg/storage/engine/enginepb/mvcc.proto: warning: Import cockroach/pkg/util/hlc/timestamp.proto but not used.
+sed -i -E '/gogoproto/d' /go/src/github.com/cockroachdb/cockroach/c-deps/libroach/protos/cockroach/pkg/roachpb/data.pb.h /go/src/github.com/cockroachdb/cockroach/c-deps/libroach/protos/cockroach/pkg/roachpb/internal.pb.h /go/src/github.com/cockroachdb/cockroach/c-deps/libroach/protos/cockroach/pkg/roachpb/metadata.pb.h /go/src/github.com/cockroachdb/cockroach/c-deps/libroach/protos/cockroach/pkg/storage/engine/enginepb/mvcc.pb.h /go/src/github.com/cockroachdb/cockroach/c-deps/libroach/protos/cockroach/pkg/storage/engine/enginepb/mvcc3.pb.h /go/src/github.com/cockroachdb/cockroach/c-deps/libroach/protos/cockroach/pkg/storage/engine/enginepb/rocksdb.pb.h /go/src/github.com/cockroachdb/cockroach/c-deps/libroach/protos/cockroach/pkg/util/hlc/legacy_timestamp.pb.h /go/src/github.com/cockroachdb/cockroach/c-deps/libroach/protos/cockroach/pkg/util/hlc/timestamp.pb.h /go/src/github.com/cockroachdb/cockroach/c-deps/libroach/protos/cockroach/pkg/util/unresolved_addr.pb.h /go/src/github.com/cockroachdb/cockroach/c-deps/libroach/protos/cockroach/pkg/roachpb/data.pb.cc /go/src/github.com/cockroachdb/cockroach/c-deps/libroach/protos/cockroach/pkg/roachpb/internal.pb.cc /go/src/github.com/cockroachdb/cockroach/c-deps/libroach/protos/cockroach/pkg/roachpb/metadata.pb.cc /go/src/github.com/cockroachdb/cockroach/c-deps/libroach/protos/cockroach/pkg/storage/engine/enginepb/mvcc.pb.cc /go/src/github.com/cockroachdb/cockroach/c-deps/libroach/protos/cockroach/pkg/storage/engine/enginepb/mvcc3.pb.cc /go/src/github.com/cockroachdb/cockroach/c-deps/libroach/protos/cockroach/pkg/storage/engine/enginepb/rocksdb.pb.cc /go/src/github.com/cockroachdb/cockroach/c-deps/libroach/protos/cockroach/pkg/util/hlc/legacy_timestamp.pb.cc /go/src/github.com/cockroachdb/cockroach/c-deps/libroach/protos/cockroach/pkg/util/hlc/timestamp.pb.cc /go/src/github.com/cockroachdb/cockroach/c-deps/libroach/protos/cockroach/pkg/util/unresolved_addr.pb.cc
+touch /go/src/github.com/cockroachdb/cockroach/bin/.cpp_protobuf_sources
+./cockroach/build/node-run.sh yarn install --cwd ./cockroach/pkg/ui
+yarn install v1.3.2
+[1/5] Validating package.json...
+[2/5] Resolving packages...
+[3/5] Fetching packages...
+[ 10%] Building CXX object CMakeFiles/rocksdb.dir/db/db_impl_compaction_flush.cc.o
+[ 10%] Building CXX object CMakeFiles/rocksdb.dir/db/db_impl_files.cc.o
+[ 10%] Building CXX object CMakeFiles/rocksdb.dir/db/db_impl_open.cc.o
+[ 10%] Building CXX object CMakeFiles/rocksdb.dir/db/db_impl_debug.cc.o
+[ 10%] Building CXX object CMakeFiles/rocksdb.dir/db/db_impl_experimental.cc.o
+[ 10%] Building CXX object CMakeFiles/rocksdb.dir/db/db_impl_readonly.cc.o
+[ 10%] Building CXX object CMakeFiles/rocksdb.dir/db/db_info_dumper.cc.o
+[ 13%] Building CXX object CMakeFiles/rocksdb.dir/db/db_iter.cc.o
+[ 13%] Building CXX object CMakeFiles/rocksdb.dir/db/dbformat.cc.o
+[ 13%] Building CXX object CMakeFiles/rocksdb.dir/db/event_helpers.cc.o
+[ 13%] Building CXX object CMakeFiles/rocksdb.dir/db/experimental.cc.o
+[ 13%] Building CXX object CMakeFiles/rocksdb.dir/db/external_sst_file_ingestion_job.cc.o
+[ 13%] Building CXX object CMakeFiles/rocksdb.dir/db/file_indexer.cc.o
+[ 13%] Building CXX object CMakeFiles/rocksdb.dir/db/flush_job.cc.o
+info fsevents@1.1.1: The platform "linux" is incompatible with this module.
+info "fsevents@1.1.1" is an optional dependency and failed compatibility check. Excluding it from installation.
+[4/5] Linking dependencies...
+warning "karma-webpack > webpack-dev-middleware@1.10.1" has incorrect peer dependency "webpack@1 || ^2.1.0-beta || ^2.2.0-rc.0".
+[ 16%] Building CXX object CMakeFiles/rocksdb.dir/db/flush_scheduler.cc.o
+[ 16%] Building CXX object CMakeFiles/rocksdb.dir/db/forward_iterator.cc.o
+[ 16%] Building CXX object CMakeFiles/rocksdb.dir/db/internal_stats.cc.o
+[ 16%] Building CXX object CMakeFiles/rocksdb.dir/db/log_reader.cc.o
+[ 16%] Building CXX object CMakeFiles/rocksdb.dir/db/log_writer.cc.o
+[ 16%] Building CXX object CMakeFiles/rocksdb.dir/db/malloc_stats.cc.o
+[ 16%] Building CXX object CMakeFiles/rocksdb.dir/db/managed_iterator.cc.o
+[ 20%] Building CXX object CMakeFiles/rocksdb.dir/db/memtable.cc.o
+[5/5] Building fresh packages...
+[ 20%] Building CXX object CMakeFiles/rocksdb.dir/db/memtable_list.cc.o
+[ 20%] Building CXX object CMakeFiles/rocksdb.dir/db/merge_helper.cc.o
+[ 20%] Building CXX object CMakeFiles/rocksdb.dir/db/merge_operator.cc.o
+[ 20%] Building CXX object CMakeFiles/rocksdb.dir/db/range_del_aggregator.cc.o
+[ 20%] Building CXX object CMakeFiles/rocksdb.dir/db/repair.cc.o
+[ 20%] Building CXX object CMakeFiles/rocksdb.dir/db/snapshot_impl.cc.o
+[ 23%] Building CXX object CMakeFiles/rocksdb.dir/db/table_cache.cc.o
+[ 23%] Building CXX object CMakeFiles/rocksdb.dir/db/table_properties_collector.cc.o
+[ 23%] Building CXX object CMakeFiles/rocksdb.dir/db/transaction_log_impl.cc.o
+[ 23%] Building CXX object CMakeFiles/rocksdb.dir/db/version_builder.cc.o
+[ 23%] Building CXX object CMakeFiles/rocksdb.dir/db/version_edit.cc.o
+[ 23%] Building CXX object CMakeFiles/rocksdb.dir/db/version_set.cc.o
+[ 23%] Building CXX object CMakeFiles/rocksdb.dir/db/wal_manager.cc.o
+[ 26%] Building CXX object CMakeFiles/rocksdb.dir/db/write_batch.cc.o
+[ 26%] Building CXX object CMakeFiles/rocksdb.dir/db/write_batch_base.cc.o
+[ 26%] Building CXX object CMakeFiles/rocksdb.dir/db/write_controller.cc.o
+[ 26%] Building CXX object CMakeFiles/rocksdb.dir/db/write_thread.cc.o
+[ 26%] Building CXX object CMakeFiles/rocksdb.dir/env/env.cc.o
+[ 26%] Building CXX object CMakeFiles/rocksdb.dir/env/env_chroot.cc.o
+[ 26%] Building CXX object CMakeFiles/rocksdb.dir/env/env_hdfs.cc.o
+[ 30%] Building CXX object CMakeFiles/rocksdb.dir/env/mock_env.cc.o
+[ 30%] Building CXX object CMakeFiles/rocksdb.dir/memtable/hash_cuckoo_rep.cc.o
+[ 30%] Building CXX object CMakeFiles/rocksdb.dir/memtable/hash_linklist_rep.cc.o
+[ 30%] Building CXX object CMakeFiles/rocksdb.dir/memtable/hash_skiplist_rep.cc.o
+[ 30%] Building CXX object CMakeFiles/rocksdb.dir/memtable/memtable_allocator.cc.o
+[ 30%] Building CXX object CMakeFiles/rocksdb.dir/memtable/skiplistrep.cc.o
+[ 30%] Building CXX object CMakeFiles/rocksdb.dir/memtable/vectorrep.cc.o
+[ 33%] Building CXX object CMakeFiles/rocksdb.dir/monitoring/histogram.cc.o
+[ 33%] Building CXX object CMakeFiles/rocksdb.dir/monitoring/histogram_windowing.cc.o
+[ 33%] Building CXX object CMakeFiles/rocksdb.dir/monitoring/instrumented_mutex.cc.o
+[ 33%] Building CXX object CMakeFiles/rocksdb.dir/monitoring/iostats_context.cc.o
+[ 33%] Building CXX object CMakeFiles/rocksdb.dir/monitoring/perf_context.cc.o
+[ 33%] Building CXX object CMakeFiles/rocksdb.dir/monitoring/perf_level.cc.o
+[ 33%] Building CXX object CMakeFiles/rocksdb.dir/monitoring/statistics.cc.o
+[ 36%] Building CXX object CMakeFiles/rocksdb.dir/monitoring/thread_status_impl.cc.o
+Done in 146.90s.
+# Prevent ProtobufJS from trying to install its own packages because a) the
+# the feature is buggy, and b) it introduces an unnecessary dependency on NPM.
+# Additionally pin a known-good version of jsdoc.
+# See: https://github.com/dcodeIO/protobuf.js/issues/716.
+cp ./cockroach/pkg/ui/node_modules/protobufjs/cli/{package.standalone.json,package.json}
+./cockroach/build/node-run.sh yarn add jsdoc@3.4.3 --cwd ./cockroach/pkg/ui/node_modules/protobufjs/cli
+[ 36%] Building CXX object CMakeFiles/rocksdb.dir/monitoring/thread_status_updater.cc.o
+yarn add v1.3.2
+info No lockfile found.
+[1/4] Resolving packages...
+[ 36%] Building CXX object CMakeFiles/rocksdb.dir/monitoring/thread_status_util.cc.o
+[ 36%] Building CXX object CMakeFiles/rocksdb.dir/monitoring/thread_status_util_debug.cc.o
+[ 36%] Building CXX object CMakeFiles/rocksdb.dir/options/cf_options.cc.o
+[ 36%] Building CXX object CMakeFiles/rocksdb.dir/options/db_options.cc.o
+[ 36%] Building CXX object CMakeFiles/rocksdb.dir/options/options.cc.o
+[2/4] Fetching packages...
+[ 40%] Building CXX object CMakeFiles/rocksdb.dir/options/options_helper.cc.o
+[3/4] Linking dependencies...
+[4/4] Building fresh packages...
+success Saved lockfile.
+success Saved 65 new dependencies.
+├─ acorn-jsx@3.0.1
+├─ acorn@3.3.0
+├─ align-text@0.1.4
+├─ ansi-regex@2.1.1
+├─ ansi-styles@2.2.1
+├─ balanced-match@1.0.0
+├─ bluebird@3.4.7
+├─ brace-expansion@1.1.8
+├─ camelcase@1.2.1
+├─ catharsis@0.8.9
+├─ center-align@0.1.3
+├─ chalk@1.1.3
+├─ cliui@2.1.0
+├─ concat-map@0.0.1
+├─ decamelize@1.2.0
+├─ deep-is@0.1.3
+├─ escape-string-regexp@1.0.5
+├─ escodegen@1.9.0
+├─ espree@3.5.1
+├─ esprima@3.1.3
+├─ estraverse@4.2.0
+├─ esutils@2.0.2
+├─ fast-levenshtein@2.0.6
+├─ fs.realpath@1.0.0
+├─ glob@7.1.2
+├─ graceful-fs@4.1.11
+├─ has-ansi@2.0.0
+├─ inflight@1.0.6
+├─ inherits@2.0.3
+├─ is-buffer@1.1.6
+├─ js2xmlparser@1.0.0
+├─ jsdoc@3.4.3
+├─ kind-of@3.2.2
+├─ klaw@1.3.1
+├─ lazy-cache@1.0.4
+├─ levn@0.3.0
+├─ longest@1.0.1
+├─ marked@0.3.6
+├─ minimatch@3.0.4
+├─ minimist@1.2.0
+├─ mkdirp@0.5.1
+├─ once@1.4.0
+├─ optionator@0.8.2
+├─ os-tmpdir@1.0.2
+├─ path-is-absolute@1.0.1
+├─ prelude-ls@1.1.2
+├─ repeat-string@1.6.1
+├─ requizzle@0.2.1
+├─ right-align@0.1.3
+├─ semver@5.4.1
+├─ source-map@0.5.7
+├─ strip-ansi@3.0.1
+├─ strip-json-comments@2.0.1
+├─ supports-color@2.0.0
+├─ taffydb@2.6.2
+├─ tmp@0.0.31
+├─ type-check@0.3.2
+├─ uglify-js@2.8.29
+├─ uglify-to-browserify@1.0.2
+├─ underscore-contrib@0.3.0
+├─ underscore@1.6.0
+├─ window-size@0.1.0
+├─ wordwrap@1.0.0
+├─ wrappy@1.0.2
+└─ yargs@3.10.0
+Done in 11.45s.
+./cockroach/build/node-run.sh yarn install --cwd ./cockroach/pkg/ui/node_modules/protobufjs/cli
+yarn install v1.3.2
+[1/4] Resolving packages...
+success Already up-to-date.
+Done in 0.37s.
+rm -rf ./cockroach/pkg/ui/node_modules/@types/node
+touch cockroach/pkg/ui/yarn.installed
+(cd ./cockroach && git ls-files --exclude-standard --cached --others -- '*.pb.go' | xargs rm -f)
+for dir in ./cockroach/pkg/acceptance/cluster/ ./cockroach/pkg/build/ ./cockroach/pkg/ccl/sqlccl/ ./cockroach/pkg/ccl/utilccl/licenseccl/ ./cockroach/pkg/config/ ./cockroach/pkg/gossip/ ./cockroach/pkg/internal/client/ ./cockroach/pkg/roachpb/ ./cockroach/pkg/rpc/ ./cockroach/pkg/server/diagnosticspb/ ./cockroach/pkg/server/serverpb/ ./cockroach/pkg/server/status/ ./cockroach/pkg/settings/cluster/ ./cockroach/pkg/sql/distsqlrun/ ./cockroach/pkg/sql/jobs/ ./cockroach/pkg/sql/pgwire/pgerror/ ./cockroach/pkg/sql/sqlbase/ ./cockroach/pkg/storage/ ./cockroach/pkg/storage/engine/enginepb/ ./cockroach/pkg/storage/storagebase/ ./cockroach/pkg/ts/tspb/ ./cockroach/pkg/util/ ./cockroach/pkg/util/hlc/ ./cockroach/pkg/util/log/ ./cockroach/pkg/util/protoutil/ ./cockroach/pkg/util/tracing/; do \
+  /go/native/x86_64-linux-gnu/protobuf/protoc -I.:./cockroach/vendor/github.com/../github.com/gogo/protobuf:./cockroach/vendor/github.com/../github.com/gogo/protobuf/protobuf:./cockroach/vendor/github.com/coreos:./cockroach/vendor/github.com/../github.com/grpc-ecosystem/grpc-gateway/third_party/googleapis --plugin=/go/src/github.com/cockroachdb/cockroach/bin/protoc-gen-gogoroach --gogoroach_out=Mgoogle/api/annotations.proto=github.com/grpc-ecosystem/grpc-gateway/third_party/googleapis/google/api,Mgoogle/protobuf/timestamp.proto=github.com/gogo/protobuf/types,,plugins=grpc,import_prefix=github.com/cockroachdb/:./cockroach/.. $dir/*.proto; \
+done
+[ 40%] Building CXX object CMakeFiles/rocksdb.dir/options/options_parser.cc.o
+sed -i '/import _/d' ./cockroach/pkg/acceptance/cluster/testconfig.pb.go ./cockroach/pkg/build/info.pb.go ./cockroach/pkg/ccl/sqlccl/backup.pb.go ./cockroach/pkg/ccl/utilccl/licenseccl/license.pb.go ./cockroach/pkg/config/system.pb.go ./cockroach/pkg/config/zone.pb.go ./cockroach/pkg/gossip/gossip.pb.go ./cockroach/pkg/internal/client/lease.pb.go ./cockroach/pkg/roachpb/api.pb.go ./cockroach/pkg/roachpb/app_stats.pb.go ./cockroach/pkg/roachpb/csv.pb.go ./cockroach/pkg/roachpb/data.pb.go ./cockroach/pkg/roachpb/errors.pb.go ./cockroach/pkg/roachpb/internal.pb.go ./cockroach/pkg/roachpb/internal_raft.pb.go ./cockroach/pkg/roachpb/metadata.pb.go ./cockroach/pkg/rpc/heartbeat.pb.go ./cockroach/pkg/server/diagnosticspb/diagnostics.pb.go ./cockroach/pkg/server/serverpb/admin.pb.go ./cockroach/pkg/server/serverpb/authentication.pb.go ./cockroach/pkg/server/serverpb/init.pb.go ./cockroach/pkg/server/serverpb/status.pb.go ./cockroach/pkg/server/status/status.pb.go ./cockroach/pkg/settings/cluster/cluster_version.pb.go ./cockroach/pkg/sql/distsqlrun/api.pb.go ./cockroach/pkg/sql/distsqlrun/data.pb.go ./cockroach/pkg/sql/distsqlrun/processors.pb.go ./cockroach/pkg/sql/jobs/jobs.pb.go ./cockroach/pkg/sql/pgwire/pgerror/errors.pb.go ./cockroach/pkg/sql/sqlbase/encoded_datum.pb.go ./cockroach/pkg/sql/sqlbase/privilege.pb.go ./cockroach/pkg/sql/sqlbase/structured.pb.go ./cockroach/pkg/storage/api.pb.go ./cockroach/pkg/storage/engine/enginepb/mvcc.pb.go ./cockroach/pkg/storage/engine/enginepb/mvcc3.pb.go ./cockroach/pkg/storage/engine/enginepb/rocksdb.pb.go ./cockroach/pkg/storage/lease_status.pb.go ./cockroach/pkg/storage/liveness.pb.go ./cockroach/pkg/storage/log.pb.go ./cockroach/pkg/storage/raft.pb.go ./cockroach/pkg/storage/storagebase/proposer_kv.pb.go ./cockroach/pkg/storage/storagebase/state.pb.go ./cockroach/pkg/ts/tspb/timeseries.pb.go ./cockroach/pkg/util/hlc/legacy_timestamp.pb.go ./cockroach/pkg/util/hlc/timestamp.pb.go ./cockroach/pkg/util/log/log.pb.go ./cockroach/pkg/util/protoutil/clone.pb.go ./cockroach/pkg/util/tracing/recorded_span.pb.go ./cockroach/pkg/util/unresolved_addr.pb.go
+sed -i -E 's!import (fmt|math) "github.com/cockroachdb/(fmt|math)"! !g' ./cockroach/pkg/acceptance/cluster/testconfig.pb.go ./cockroach/pkg/build/info.pb.go ./cockroach/pkg/ccl/sqlccl/backup.pb.go ./cockroach/pkg/ccl/utilccl/licenseccl/license.pb.go ./cockroach/pkg/config/system.pb.go ./cockroach/pkg/config/zone.pb.go ./cockroach/pkg/gossip/gossip.pb.go ./cockroach/pkg/internal/client/lease.pb.go ./cockroach/pkg/roachpb/api.pb.go ./cockroach/pkg/roachpb/app_stats.pb.go ./cockroach/pkg/roachpb/csv.pb.go ./cockroach/pkg/roachpb/data.pb.go ./cockroach/pkg/roachpb/errors.pb.go ./cockroach/pkg/roachpb/internal.pb.go ./cockroach/pkg/roachpb/internal_raft.pb.go ./cockroach/pkg/roachpb/metadata.pb.go ./cockroach/pkg/rpc/heartbeat.pb.go ./cockroach/pkg/server/diagnosticspb/diagnostics.pb.go ./cockroach/pkg/server/serverpb/admin.pb.go ./cockroach/pkg/server/serverpb/authentication.pb.go ./cockroach/pkg/server/serverpb/init.pb.go ./cockroach/pkg/server/serverpb/status.pb.go ./cockroach/pkg/server/status/status.pb.go ./cockroach/pkg/settings/cluster/cluster_version.pb.go ./cockroach/pkg/sql/distsqlrun/api.pb.go ./cockroach/pkg/sql/distsqlrun/data.pb.go ./cockroach/pkg/sql/distsqlrun/processors.pb.go ./cockroach/pkg/sql/jobs/jobs.pb.go ./cockroach/pkg/sql/pgwire/pgerror/errors.pb.go ./cockroach/pkg/sql/sqlbase/encoded_datum.pb.go ./cockroach/pkg/sql/sqlbase/privilege.pb.go ./cockroach/pkg/sql/sqlbase/structured.pb.go ./cockroach/pkg/storage/api.pb.go ./cockroach/pkg/storage/engine/enginepb/mvcc.pb.go ./cockroach/pkg/storage/engine/enginepb/mvcc3.pb.go ./cockroach/pkg/storage/engine/enginepb/rocksdb.pb.go ./cockroach/pkg/storage/lease_status.pb.go ./cockroach/pkg/storage/liveness.pb.go ./cockroach/pkg/storage/log.pb.go ./cockroach/pkg/storage/raft.pb.go ./cockroach/pkg/storage/storagebase/proposer_kv.pb.go ./cockroach/pkg/storage/storagebase/state.pb.go ./cockroach/pkg/ts/tspb/timeseries.pb.go ./cockroach/pkg/util/hlc/legacy_timestamp.pb.go ./cockroach/pkg/util/hlc/timestamp.pb.go ./cockroach/pkg/util/log/log.pb.go ./cockroach/pkg/util/protoutil/clone.pb.go ./cockroach/pkg/util/tracing/recorded_span.pb.go ./cockroach/pkg/util/unresolved_addr.pb.go
+sed -i -E 's!cockroachdb/(etcd)!coreos/\1!g' ./cockroach/pkg/acceptance/cluster/testconfig.pb.go ./cockroach/pkg/build/info.pb.go ./cockroach/pkg/ccl/sqlccl/backup.pb.go ./cockroach/pkg/ccl/utilccl/licenseccl/license.pb.go ./cockroach/pkg/config/system.pb.go ./cockroach/pkg/config/zone.pb.go ./cockroach/pkg/gossip/gossip.pb.go ./cockroach/pkg/internal/client/lease.pb.go ./cockroach/pkg/roachpb/api.pb.go ./cockroach/pkg/roachpb/app_stats.pb.go ./cockroach/pkg/roachpb/csv.pb.go ./cockroach/pkg/roachpb/data.pb.go ./cockroach/pkg/roachpb/errors.pb.go ./cockroach/pkg/roachpb/internal.pb.go ./cockroach/pkg/roachpb/internal_raft.pb.go ./cockroach/pkg/roachpb/metadata.pb.go ./cockroach/pkg/rpc/heartbeat.pb.go ./cockroach/pkg/server/diagnosticspb/diagnostics.pb.go ./cockroach/pkg/server/serverpb/admin.pb.go ./cockroach/pkg/server/serverpb/authentication.pb.go ./cockroach/pkg/server/serverpb/init.pb.go ./cockroach/pkg/server/serverpb/status.pb.go ./cockroach/pkg/server/status/status.pb.go ./cockroach/pkg/settings/cluster/cluster_version.pb.go ./cockroach/pkg/sql/distsqlrun/api.pb.go ./cockroach/pkg/sql/distsqlrun/data.pb.go ./cockroach/pkg/sql/distsqlrun/processors.pb.go ./cockroach/pkg/sql/jobs/jobs.pb.go ./cockroach/pkg/sql/pgwire/pgerror/errors.pb.go ./cockroach/pkg/sql/sqlbase/encoded_datum.pb.go ./cockroach/pkg/sql/sqlbase/privilege.pb.go ./cockroach/pkg/sql/sqlbase/structured.pb.go ./cockroach/pkg/storage/api.pb.go ./cockroach/pkg/storage/engine/enginepb/mvcc.pb.go ./cockroach/pkg/storage/engine/enginepb/mvcc3.pb.go ./cockroach/pkg/storage/engine/enginepb/rocksdb.pb.go ./cockroach/pkg/storage/lease_status.pb.go ./cockroach/pkg/storage/liveness.pb.go ./cockroach/pkg/storage/log.pb.go ./cockroach/pkg/storage/raft.pb.go ./cockroach/pkg/storage/storagebase/proposer_kv.pb.go ./cockroach/pkg/storage/storagebase/state.pb.go ./cockroach/pkg/ts/tspb/timeseries.pb.go ./cockroach/pkg/util/hlc/legacy_timestamp.pb.go ./cockroach/pkg/util/hlc/timestamp.pb.go ./cockroach/pkg/util/log/log.pb.go ./cockroach/pkg/util/protoutil/clone.pb.go ./cockroach/pkg/util/tracing/recorded_span.pb.go ./cockroach/pkg/util/unresolved_addr.pb.go
+sed -i -E 's!github.com/cockroachdb/(bytes|encoding/binary|errors|fmt|io|math|github\.com|(google\.)?golang\.org)!\1!g' ./cockroach/pkg/acceptance/cluster/testconfig.pb.go ./cockroach/pkg/build/info.pb.go ./cockroach/pkg/ccl/sqlccl/backup.pb.go ./cockroach/pkg/ccl/utilccl/licenseccl/license.pb.go ./cockroach/pkg/config/system.pb.go ./cockroach/pkg/config/zone.pb.go ./cockroach/pkg/gossip/gossip.pb.go ./cockroach/pkg/internal/client/lease.pb.go ./cockroach/pkg/roachpb/api.pb.go ./cockroach/pkg/roachpb/app_stats.pb.go ./cockroach/pkg/roachpb/csv.pb.go ./cockroach/pkg/roachpb/data.pb.go ./cockroach/pkg/roachpb/errors.pb.go ./cockroach/pkg/roachpb/internal.pb.go ./cockroach/pkg/roachpb/internal_raft.pb.go ./cockroach/pkg/roachpb/metadata.pb.go ./cockroach/pkg/rpc/heartbeat.pb.go ./cockroach/pkg/server/diagnosticspb/diagnostics.pb.go ./cockroach/pkg/server/serverpb/admin.pb.go ./cockroach/pkg/server/serverpb/authentication.pb.go ./cockroach/pkg/server/serverpb/init.pb.go ./cockroach/pkg/server/serverpb/status.pb.go ./cockroach/pkg/server/status/status.pb.go ./cockroach/pkg/settings/cluster/cluster_version.pb.go ./cockroach/pkg/sql/distsqlrun/api.pb.go ./cockroach/pkg/sql/distsqlrun/data.pb.go ./cockroach/pkg/sql/distsqlrun/processors.pb.go ./cockroach/pkg/sql/jobs/jobs.pb.go ./cockroach/pkg/sql/pgwire/pgerror/errors.pb.go ./cockroach/pkg/sql/sqlbase/encoded_datum.pb.go ./cockroach/pkg/sql/sqlbase/privilege.pb.go ./cockroach/pkg/sql/sqlbase/structured.pb.go ./cockroach/pkg/storage/api.pb.go ./cockroach/pkg/storage/engine/enginepb/mvcc.pb.go ./cockroach/pkg/storage/engine/enginepb/mvcc3.pb.go ./cockroach/pkg/storage/engine/enginepb/rocksdb.pb.go ./cockroach/pkg/storage/lease_status.pb.go ./cockroach/pkg/storage/liveness.pb.go ./cockroach/pkg/storage/log.pb.go ./cockroach/pkg/storage/raft.pb.go ./cockroach/pkg/storage/storagebase/proposer_kv.pb.go ./cockroach/pkg/storage/storagebase/state.pb.go ./cockroach/pkg/ts/tspb/timeseries.pb.go ./cockroach/pkg/util/hlc/legacy_timestamp.pb.go ./cockroach/pkg/util/hlc/timestamp.pb.go ./cockroach/pkg/util/log/log.pb.go ./cockroach/pkg/util/protoutil/clone.pb.go ./cockroach/pkg/util/tracing/recorded_span.pb.go ./cockroach/pkg/util/unresolved_addr.pb.go
+gofmt -s -w ./cockroach/pkg/acceptance/cluster/testconfig.pb.go ./cockroach/pkg/build/info.pb.go ./cockroach/pkg/ccl/sqlccl/backup.pb.go ./cockroach/pkg/ccl/utilccl/licenseccl/license.pb.go ./cockroach/pkg/config/system.pb.go ./cockroach/pkg/config/zone.pb.go ./cockroach/pkg/gossip/gossip.pb.go ./cockroach/pkg/internal/client/lease.pb.go ./cockroach/pkg/roachpb/api.pb.go ./cockroach/pkg/roachpb/app_stats.pb.go ./cockroach/pkg/roachpb/csv.pb.go ./cockroach/pkg/roachpb/data.pb.go ./cockroach/pkg/roachpb/errors.pb.go ./cockroach/pkg/roachpb/internal.pb.go ./cockroach/pkg/roachpb/internal_raft.pb.go ./cockroach/pkg/roachpb/metadata.pb.go ./cockroach/pkg/rpc/heartbeat.pb.go ./cockroach/pkg/server/diagnosticspb/diagnostics.pb.go ./cockroach/pkg/server/serverpb/admin.pb.go ./cockroach/pkg/server/serverpb/authentication.pb.go ./cockroach/pkg/server/serverpb/init.pb.go ./cockroach/pkg/server/serverpb/status.pb.go ./cockroach/pkg/server/status/status.pb.go ./cockroach/pkg/settings/cluster/cluster_version.pb.go ./cockroach/pkg/sql/distsqlrun/api.pb.go ./cockroach/pkg/sql/distsqlrun/data.pb.go ./cockroach/pkg/sql/distsqlrun/processors.pb.go ./cockroach/pkg/sql/jobs/jobs.pb.go ./cockroach/pkg/sql/pgwire/pgerror/errors.pb.go ./cockroach/pkg/sql/sqlbase/encoded_datum.pb.go ./cockroach/pkg/sql/sqlbase/privilege.pb.go ./cockroach/pkg/sql/sqlbase/structured.pb.go ./cockroach/pkg/storage/api.pb.go ./cockroach/pkg/storage/engine/enginepb/mvcc.pb.go ./cockroach/pkg/storage/engine/enginepb/mvcc3.pb.go ./cockroach/pkg/storage/engine/enginepb/rocksdb.pb.go ./cockroach/pkg/storage/lease_status.pb.go ./cockroach/pkg/storage/liveness.pb.go ./cockroach/pkg/storage/log.pb.go ./cockroach/pkg/storage/raft.pb.go ./cockroach/pkg/storage/storagebase/proposer_kv.pb.go ./cockroach/pkg/storage/storagebase/state.pb.go ./cockroach/pkg/ts/tspb/timeseries.pb.go ./cockroach/pkg/util/hlc/legacy_timestamp.pb.go ./cockroach/pkg/util/hlc/timestamp.pb.go ./cockroach/pkg/util/log/log.pb.go ./cockroach/pkg/util/protoutil/clone.pb.go ./cockroach/pkg/util/tracing/recorded_span.pb.go ./cockroach/pkg/util/unresolved_addr.pb.go
+touch /go/src/github.com/cockroachdb/cockroach/bin/.go_protobuf_sources
+# Add comment recognized by reviewable.
+echo '// GENERATED FILE DO NOT EDIT' > cockroach/pkg/ui/src/js/protos.js
+./cockroach/build/node-run.sh ./cockroach/pkg/ui/node_modules/.bin/pbjs -t static-module -w es6 --strict-long --keep-case --path ./cockroach/.. --path ./cockroach/vendor/github.com/../github.com/gogo/protobuf --path ./cockroach/vendor/github.com/coreos --path ./cockroach/vendor/github.com/../github.com/grpc-ecosystem/grpc-gateway/third_party/googleapis ./cockroach/pkg/server/serverpb/admin.proto ./cockroach/pkg/server/serverpb/status.proto ./cockroach/pkg/server/serverpb/authentication.proto ./cockroach/pkg/ts/tspb/timeseries.proto >> cockroach/pkg/ui/src/js/protos.js
+[ 40%] Building CXX object CMakeFiles/rocksdb.dir/options/options_sanity_check.cc.o
+[ 40%] Building CXX object CMakeFiles/rocksdb.dir/port/stack_trace.cc.o
+[ 40%] Building CXX object CMakeFiles/rocksdb.dir/table/adaptive_table_factory.cc.o
+[ 40%] Building CXX object CMakeFiles/rocksdb.dir/table/block.cc.o
+# Add comment recognized by reviewable.
+echo '// GENERATED FILE DO NOT EDIT' > cockroach/pkg/ui/src/js/protos.d.ts
+./cockroach/build/node-run.sh ./cockroach/pkg/ui/node_modules/.bin/pbts ./cockroach/pkg/ui/src/js/protos.js >> cockroach/pkg/ui/src/js/protos.d.ts
+[ 43%] Building CXX object CMakeFiles/rocksdb.dir/table/block_based_filter_block.cc.o
+[ 43%] Building CXX object CMakeFiles/rocksdb.dir/table/block_based_table_builder.cc.o
+[ 43%] Building CXX object CMakeFiles/rocksdb.dir/table/block_based_table_factory.cc.o
+[ 43%] Building CXX object CMakeFiles/rocksdb.dir/table/block_based_table_reader.cc.o
+make[2]: Leaving directory '/go/src/github.com/cockroachdb'
+../../build/node-run.sh ./node_modules/.bin/webpack -p --config webpack.protos.js
+[ 43%] Building CXX object CMakeFiles/rocksdb.dir/table/block_builder.cc.o
+[ 43%] Building CXX object CMakeFiles/rocksdb.dir/table/block_prefix_index.cc.o
+[ 43%] Building CXX object CMakeFiles/rocksdb.dir/table/bloom_block.cc.o
+[ 46%] Building CXX object CMakeFiles/rocksdb.dir/table/cuckoo_table_builder.cc.o
+[ 46%] Building CXX object CMakeFiles/rocksdb.dir/table/cuckoo_table_factory.cc.o
+[BABEL] Note: The code generator has deoptimised the styling of "/go/src/github.com/cockroachdb/cockroach/pkg/ui/src/js/protos.js" as it exceeds the max of "500KB".
+[ 46%] Building CXX object CMakeFiles/rocksdb.dir/table/cuckoo_table_reader.cc.o
+[ 46%] Building CXX object CMakeFiles/rocksdb.dir/table/flush_block_policy.cc.o
+[ 46%] Building CXX object CMakeFiles/rocksdb.dir/table/format.cc.o
+[ 46%] Building CXX object CMakeFiles/rocksdb.dir/table/full_filter_block.cc.o
+[ 46%] Building CXX object CMakeFiles/rocksdb.dir/table/get_context.cc.o
+[ 50%] Building CXX object CMakeFiles/rocksdb.dir/table/index_builder.cc.o
+[ 50%] Building CXX object CMakeFiles/rocksdb.dir/table/iterator.cc.o
+[ 50%] Building CXX object CMakeFiles/rocksdb.dir/table/merging_iterator.cc.o
+[ 50%] Building CXX object CMakeFiles/rocksdb.dir/table/meta_blocks.cc.o
+Hash: 7b7c118c7541c8f6714b
+Version: webpack 3.8.1
+Time: 27561ms
+        Asset     Size  Chunks                    Chunk Names
+protos.dll.js  1.02 MB       0  [emitted]  [big]  protos
+  [25] dll protos 12 bytes {0} [built]
+  [26] ./src/js/protos.js 2.68 MB {0} [built]
+  [31] (webpack)/buildin/global.js 823 bytes {0} [built]
+    + 43 hidden modules
+../../build/node-run.sh ./node_modules/.bin/webpack -p --config webpack.vendor.js
+[ 50%] Building CXX object CMakeFiles/rocksdb.dir/table/partitioned_filter_block.cc.o
+[ 50%] Building CXX object CMakeFiles/rocksdb.dir/table/persistent_cache_helper.cc.o
+[ 50%] Building CXX object CMakeFiles/rocksdb.dir/table/plain_table_builder.cc.o
+[ 53%] Building CXX object CMakeFiles/rocksdb.dir/table/plain_table_factory.cc.o
+[ 53%] Building CXX object CMakeFiles/rocksdb.dir/table/plain_table_index.cc.o
+[ 53%] Building CXX object CMakeFiles/rocksdb.dir/table/plain_table_key_coding.cc.o
+[ 53%] Building CXX object CMakeFiles/rocksdb.dir/table/plain_table_reader.cc.o
+[ 53%] Building CXX object CMakeFiles/rocksdb.dir/table/sst_file_writer.cc.o
+[ 53%] Building CXX object CMakeFiles/rocksdb.dir/table/table_properties.cc.o
+[ 53%] Building CXX object CMakeFiles/rocksdb.dir/table/two_level_iterator.cc.o
+[ 56%] Building CXX object CMakeFiles/rocksdb.dir/tools/db_bench_tool.cc.o
+[ 56%] Building CXX object CMakeFiles/rocksdb.dir/tools/dump/db_dump_tool.cc.o
+[ 56%] Building CXX object CMakeFiles/rocksdb.dir/tools/ldb_cmd.cc.o
+Hash: 8f64f7053c1a0b4a3764
+Version: webpack 3.8.1
+Time: 32743ms
+        Asset     Size  Chunks                    Chunk Names
+vendor.dll.js  2.16 MB       0  [emitted]  [big]  vendor
+  [15] (webpack)/buildin/global.js 488 bytes {0} [built]
+  [59] (webpack)/buildin/module.js 495 bytes {0} [built]
+ [388] dll vendor 12 bytes {0} [built]
+ [870] ./node_modules/moment/locale ^\.\/.*$ 2.79 kB {0} [optional] [built]
+    + 919 hidden modules
+find dist -mindepth 1 -not -name '*.dll.js' -delete
+../../build/node-run.sh ./node_modules/.bin/webpack --config webpack.app.js
+[ 56%] Building CXX object CMakeFiles/rocksdb.dir/tools/ldb_tool.cc.o
+ts-loader: Using typescript@2.3.0 and /go/src/github.com/cockroachdb/cockroach/pkg/ui/tsconfig.json
+[ 56%] Building CXX object CMakeFiles/rocksdb.dir/tools/sst_dump_tool.cc.o
+[ 56%] Building CXX object CMakeFiles/rocksdb.dir/util/arena.cc.o
+[ 56%] Building CXX object CMakeFiles/rocksdb.dir/util/auto_roll_logger.cc.o
+[ 60%] Building CXX object CMakeFiles/rocksdb.dir/util/bloom.cc.o
+[ 60%] Building CXX object CMakeFiles/rocksdb.dir/util/coding.cc.o
+[ 60%] Building CXX object CMakeFiles/rocksdb.dir/util/compaction_job_stats_impl.cc.o
+[ 60%] Building CXX object CMakeFiles/rocksdb.dir/util/comparator.cc.o
+[ 60%] Building CXX object CMakeFiles/rocksdb.dir/util/concurrent_arena.cc.o
+[ 60%] Building CXX object CMakeFiles/rocksdb.dir/util/crc32c.cc.o
+[ 60%] Building CXX object CMakeFiles/rocksdb.dir/util/delete_scheduler.cc.o
+[ 63%] Building CXX object CMakeFiles/rocksdb.dir/util/dynamic_bloom.cc.o
+[ 63%] Building CXX object CMakeFiles/rocksdb.dir/util/event_logger.cc.o
+[ 63%] Building CXX object CMakeFiles/rocksdb.dir/util/file_reader_writer.cc.o
+[ 63%] Building CXX object CMakeFiles/rocksdb.dir/util/file_util.cc.o
+[ 63%] Building CXX object CMakeFiles/rocksdb.dir/util/filename.cc.o
+Hash: 7bc10a51d9a0d26bd72d
+Version: webpack 3.8.1
+Time: 23201ms
+                                                                  Asset       Size  Chunks                    Chunk Names
+             icons-cb87052ba245b4fbd603d2bf284dce81/favicon-230x230.png    18.2 kB          [emitted]         
+      icons-cb87052ba245b4fbd603d2bf284dce81/apple-touch-icon-57x57.png    2.95 kB          [emitted]         
+      icons-cb87052ba245b4fbd603d2bf284dce81/apple-touch-icon-72x72.png    3.88 kB          [emitted]         
+      icons-cb87052ba245b4fbd603d2bf284dce81/apple-touch-icon-76x76.png    4.17 kB          [emitted]         
+    icons-cb87052ba245b4fbd603d2bf284dce81/apple-touch-icon-114x114.png    7.19 kB          [emitted]         
+    icons-cb87052ba245b4fbd603d2bf284dce81/apple-touch-icon-120x120.png    7.67 kB          [emitted]         
+    icons-cb87052ba245b4fbd603d2bf284dce81/apple-touch-icon-144x144.png    10.4 kB          [emitted]         
+    icons-cb87052ba245b4fbd603d2bf284dce81/apple-touch-icon-152x152.png    11.3 kB          [emitted]         
+    icons-cb87052ba245b4fbd603d2bf284dce81/apple-touch-icon-167x167.png    13.2 kB          [emitted]         
+    icons-cb87052ba245b4fbd603d2bf284dce81/apple-touch-icon-180x180.png    14.6 kB          [emitted]         
+            icons-cb87052ba245b4fbd603d2bf284dce81/apple-touch-icon.png    14.6 kB          [emitted]         
+icons-cb87052ba245b4fbd603d2bf284dce81/apple-touch-icon-precomposed.png    14.6 kB          [emitted]         
+               icons-cb87052ba245b4fbd603d2bf284dce81/favicon-16x16.png  598 bytes          [emitted]         
+               icons-cb87052ba245b4fbd603d2bf284dce81/favicon-32x32.png    1.45 kB          [emitted]         
+               icons-cb87052ba245b4fbd603d2bf284dce81/favicon-96x96.png    4.92 kB          [emitted]         
+      icons-cb87052ba245b4fbd603d2bf284dce81/apple-touch-icon-60x60.png    3.03 kB          [emitted]         
+                     icons-cb87052ba245b4fbd603d2bf284dce81/favicon.ico    33.3 kB          [emitted]         
+                                   554f370d0fd6e0b022c36689cfd8190b.gif    35.8 kB          [emitted]         
+                                 c9cbbdc3762c340d5d37073a54971487.woff2     185 kB          [emitted]         
+                                  2ce4d82354fdf1be1788c526d94eefc1.woff     310 kB          [emitted]  [big]  
+                                 cccb897485813c7c256901dbca54ecf2.woff2     185 kB          [emitted]         
+                                  d878b6c29b10beca227e9eef4246111b.woff     310 kB          [emitted]  [big]  
+                                 0996d39c4cf5d223a14559dfa37047fd.woff2     182 kB          [emitted]         
+                                  acbd6ecc97c80340e9bf00ea80063234.woff     306 kB          [emitted]  [big]  
+                                 bd03a2cc277bbbc338d464e679fe9942.woff2     183 kB          [emitted]         
+                                  27bd77b9162d388cb8d4c4217c7c5e2a.woff     309 kB          [emitted]  [big]  
+                                  5d4981a99e52bb068c3d6d1311b134b6.woff    12.6 kB          [emitted]         
+                                   a9fa3652453bf8456eacc0577a531938.svg    16.2 kB          [emitted]         
+                                                              bundle.js    1.22 MB       0  [emitted]  [big]  main
+                                                             index.html     2.6 kB          [emitted]         
+  [13] ./src/util/constants.ts 487 bytes {0} [built]
+  [30] ./src/redux/alerts.ts 12.3 kB {0} [built]
+  [72] ./src/views/cluster/containers/nodeOverview/index.tsx 12.2 kB {0} [built]
+  [84] multi ./src/index.tsx 28 bytes {0} [built]
+  [85] ./src/index.tsx 8.4 kB {0} [built]
+ [200] ./src/views/devtools/containers/raft/index.tsx 3.48 kB {0} [built]
+ [201] ./src/views/devtools/containers/raftRanges/index.tsx 17.1 kB {0} [built]
+ [203] ./src/views/devtools/containers/raftMessages/index.tsx 9.77 kB {0} [built]
+ [205] ./src/views/devtools/containers/clusterViz/index.tsx 3.13 kB {0} [built]
+ [215] ./src/views/reports/containers/problemRanges/index.tsx 9.59 kB {0} [built]
+ [217] ./src/views/reports/containers/network/index.tsx 21.1 kB {0} [built]
+ [218] ./src/views/reports/containers/nodes/index.tsx 14.5 kB {0} [built]
+ [219] ./src/views/reports/containers/certificates/index.tsx 11.5 kB {0} [built]
+ [220] ./src/views/reports/containers/range/index.tsx 10 kB {0} [built]
+ [226] ./src/views/reports/containers/commandQueue/index.tsx 6.83 kB {0} [built]
+    + 227 hidden modules
+Child favicons-webpack-plugin for "iconstats-[hash].json":
+                                                                      Asset       Size  Chunks             Chunk Names
+        icons-cb87052ba245b4fbd603d2bf284dce81/apple-touch-icon-167x167.png    13.2 kB          [emitted]  
+          icons-cb87052ba245b4fbd603d2bf284dce81/apple-touch-icon-57x57.png    2.95 kB          [emitted]  
+          icons-cb87052ba245b4fbd603d2bf284dce81/apple-touch-icon-72x72.png    3.88 kB          [emitted]  
+          icons-cb87052ba245b4fbd603d2bf284dce81/apple-touch-icon-76x76.png    4.17 kB          [emitted]  
+        icons-cb87052ba245b4fbd603d2bf284dce81/apple-touch-icon-114x114.png    7.19 kB          [emitted]  
+        icons-cb87052ba245b4fbd603d2bf284dce81/apple-touch-icon-120x120.png    7.67 kB          [emitted]  
+        icons-cb87052ba245b4fbd603d2bf284dce81/apple-touch-icon-144x144.png    10.4 kB          [emitted]  
+        icons-cb87052ba245b4fbd603d2bf284dce81/apple-touch-icon-152x152.png    11.3 kB          [emitted]  
+          icons-cb87052ba245b4fbd603d2bf284dce81/apple-touch-icon-60x60.png    3.03 kB          [emitted]  
+        icons-cb87052ba245b4fbd603d2bf284dce81/apple-touch-icon-180x180.png    14.6 kB          [emitted]  
+                icons-cb87052ba245b4fbd603d2bf284dce81/apple-touch-icon.png    14.6 kB          [emitted]  
+    icons-cb87052ba245b4fbd603d2bf284dce81/apple-touch-icon-precomposed.png    14.6 kB          [emitted]  
+                   icons-cb87052ba245b4fbd603d2bf284dce81/favicon-16x16.png  598 bytes          [emitted]  
+                   icons-cb87052ba245b4fbd603d2bf284dce81/favicon-32x32.png    1.45 kB          [emitted]  
+                   icons-cb87052ba245b4fbd603d2bf284dce81/favicon-96x96.png    4.92 kB          [emitted]  
+                 icons-cb87052ba245b4fbd603d2bf284dce81/favicon-230x230.png    18.2 kB          [emitted]  
+                         icons-cb87052ba245b4fbd603d2bf284dce81/favicon.ico    33.3 kB          [emitted]  
+     + 1 hidden asset
+       [0] ./node_modules/favicons-webpack-plugin/lib/favicons.js?{"outputFilePrefix":"icons-[hash]/","icons":{"android":false,"appleIcon":true,"appleStartup":false,"coast":false,"favicons":true,"firefox":false,"opengraph":false,"twitter":false,"yandex":false,"windows":false},"background":"#fff","persistentCache":false,"appName":"Cockroach Console"}!./logo.png 3.06 kB {0} [built]
+Child html-webpack-plugin for "index.html":
+     1 asset
+       [2] (webpack)/buildin/global.js 488 bytes {0} [built]
+       [3] (webpack)/buildin/module.js 495 bytes {0} [built]
+        + 2 hidden modules
+go-bindata -nometadata -pkg ui -o embedded.go -prefix dist dist/...
+# Add comment recognized by reviewable.
+echo '// GENERATED FILE DO NOT EDIT' >> embedded.go
+gofmt -s -w embedded.go
+goimports -w embedded.go
+[ 63%] Building CXX object CMakeFiles/rocksdb.dir/util/filter_policy.cc.o
+[ 63%] Building CXX object CMakeFiles/rocksdb.dir/util/hash.cc.o
+make[1]: Leaving directory '/go/src/github.com/cockroachdb/cockroach/pkg/ui'
+[ 66%] Building CXX object CMakeFiles/rocksdb.dir/util/log_buffer.cc.o
+[ 66%] Building CXX object CMakeFiles/rocksdb.dir/util/murmurhash.cc.o
+[ 66%] Building CXX object CMakeFiles/rocksdb.dir/util/random.cc.o
+[ 66%] Building CXX object CMakeFiles/rocksdb.dir/util/rate_limiter.cc.o
+[ 66%] Building CXX object CMakeFiles/rocksdb.dir/util/slice.cc.o
+[ 66%] Building CXX object CMakeFiles/rocksdb.dir/util/sst_file_manager_impl.cc.o
+[ 66%] Building CXX object CMakeFiles/rocksdb.dir/util/status.cc.o
+[ 70%] Building CXX object CMakeFiles/rocksdb.dir/util/status_message.cc.o
+[ 70%] Building CXX object CMakeFiles/rocksdb.dir/util/string_util.cc.o
+[ 70%] Building CXX object CMakeFiles/rocksdb.dir/util/sync_point.cc.o
+[ 70%] Building CXX object CMakeFiles/rocksdb.dir/util/testutil.cc.o
+[ 70%] Building CXX object CMakeFiles/rocksdb.dir/util/thread_local.cc.o
+[ 70%] Building CXX object CMakeFiles/rocksdb.dir/util/threadpool_imp.cc.o
+[ 70%] Building CXX object CMakeFiles/rocksdb.dir/util/transaction_test_util.cc.o
+[ 73%] Building CXX object CMakeFiles/rocksdb.dir/util/xxhash.cc.o
+[ 73%] Building CXX object CMakeFiles/rocksdb.dir/utilities/backupable/backupable_db.cc.o
+[ 73%] Building CXX object CMakeFiles/rocksdb.dir/utilities/blob_db/blob_db.cc.o
+[ 73%] Building CXX object CMakeFiles/rocksdb.dir/utilities/blob_db/blob_db_impl.cc.o
+[ 73%] Building CXX object CMakeFiles/rocksdb.dir/utilities/blob_db/blob_db_options_impl.cc.o
+[ 73%] Building CXX object CMakeFiles/rocksdb.dir/utilities/blob_db/blob_file.cc.o
+[ 73%] Building CXX object CMakeFiles/rocksdb.dir/utilities/blob_db/blob_log_reader.cc.o
+[ 76%] Building CXX object CMakeFiles/rocksdb.dir/utilities/blob_db/blob_log_writer.cc.o
+[ 76%] Building CXX object CMakeFiles/rocksdb.dir/utilities/blob_db/blob_log_format.cc.o
+[ 76%] Building CXX object CMakeFiles/rocksdb.dir/utilities/checkpoint/checkpoint_impl.cc.o
+[ 76%] Building CXX object CMakeFiles/rocksdb.dir/utilities/col_buf_decoder.cc.o
+[ 76%] Building CXX object CMakeFiles/rocksdb.dir/utilities/col_buf_encoder.cc.o
+[ 76%] Building CXX object CMakeFiles/rocksdb.dir/utilities/column_aware_encoding_util.cc.o
+[ 80%] Building CXX object CMakeFiles/rocksdb.dir/utilities/compaction_filters/remove_emptyvalue_compactionfilter.cc.o
+[ 80%] Building CXX object CMakeFiles/rocksdb.dir/utilities/date_tiered/date_tiered_db_impl.cc.o
+[ 80%] Building CXX object CMakeFiles/rocksdb.dir/utilities/debug.cc.o
+[ 80%] Building CXX object CMakeFiles/rocksdb.dir/utilities/document/document_db.cc.o
+[ 80%] Building CXX object CMakeFiles/rocksdb.dir/utilities/document/json_document.cc.o
+[ 80%] Building CXX object CMakeFiles/rocksdb.dir/utilities/document/json_document_builder.cc.o
+[ 80%] Building CXX object CMakeFiles/rocksdb.dir/utilities/env_mirror.cc.o
+[ 83%] Building CXX object CMakeFiles/rocksdb.dir/utilities/env_timed.cc.o
+[ 83%] Building CXX object CMakeFiles/rocksdb.dir/utilities/geodb/geodb_impl.cc.o
+[ 83%] Building CXX object CMakeFiles/rocksdb.dir/utilities/leveldb_options/leveldb_options.cc.o
+[ 83%] Building CXX object CMakeFiles/rocksdb.dir/utilities/lua/rocks_lua_compaction_filter.cc.o
+[ 83%] Building CXX object CMakeFiles/rocksdb.dir/utilities/memory/memory_util.cc.o
+[ 83%] Building CXX object CMakeFiles/rocksdb.dir/utilities/merge_operators/max.cc.o
+[ 83%] Building CXX object CMakeFiles/rocksdb.dir/utilities/merge_operators/put.cc.o
+[ 86%] Building CXX object CMakeFiles/rocksdb.dir/utilities/merge_operators/string_append/stringappend.cc.o
+[ 86%] Building CXX object CMakeFiles/rocksdb.dir/utilities/merge_operators/string_append/stringappend2.cc.o
+[ 86%] Building CXX object CMakeFiles/rocksdb.dir/utilities/merge_operators/uint64add.cc.o
+[ 86%] Building CXX object CMakeFiles/rocksdb.dir/utilities/option_change_migration/option_change_migration.cc.o
+[ 86%] Building CXX object CMakeFiles/rocksdb.dir/utilities/options/options_util.cc.o
+[ 86%] Building CXX object CMakeFiles/rocksdb.dir/utilities/persistent_cache/block_cache_tier.cc.o
+[ 86%] Building CXX object CMakeFiles/rocksdb.dir/utilities/persistent_cache/block_cache_tier_file.cc.o
+[ 90%] Building CXX object CMakeFiles/rocksdb.dir/utilities/persistent_cache/block_cache_tier_metadata.cc.o
+[ 90%] Building CXX object CMakeFiles/rocksdb.dir/utilities/persistent_cache/persistent_cache_tier.cc.o
+[ 90%] Building CXX object CMakeFiles/rocksdb.dir/utilities/persistent_cache/volatile_tier_impl.cc.o
+[ 90%] Building CXX object CMakeFiles/rocksdb.dir/utilities/redis/redis_lists.cc.o
+[ 90%] Building CXX object CMakeFiles/rocksdb.dir/utilities/simulator_cache/sim_cache.cc.o
+[ 90%] Building CXX object CMakeFiles/rocksdb.dir/utilities/spatialdb/spatial_db.cc.o
+[ 90%] Building CXX object CMakeFiles/rocksdb.dir/utilities/table_properties_collectors/compact_on_deletion_collector.cc.o
+[ 93%] Building CXX object CMakeFiles/rocksdb.dir/utilities/transactions/optimistic_transaction_db_impl.cc.o
+[ 93%] Building CXX object CMakeFiles/rocksdb.dir/utilities/transactions/optimistic_transaction_impl.cc.o
+[ 93%] Building CXX object CMakeFiles/rocksdb.dir/utilities/transactions/transaction_base.cc.o
+[ 93%] Building CXX object CMakeFiles/rocksdb.dir/utilities/transactions/transaction_db_impl.cc.o
+[ 93%] Building CXX object CMakeFiles/rocksdb.dir/utilities/transactions/transaction_db_mutex_impl.cc.o
+[ 93%] Building CXX object CMakeFiles/rocksdb.dir/utilities/transactions/transaction_impl.cc.o
+[ 93%] Building CXX object CMakeFiles/rocksdb.dir/utilities/transactions/transaction_lock_mgr.cc.o
+[ 96%] Building CXX object CMakeFiles/rocksdb.dir/utilities/transactions/transaction_util.cc.o
+[ 96%] Building CXX object CMakeFiles/rocksdb.dir/utilities/ttl/db_ttl_impl.cc.o
+[ 96%] Building CXX object CMakeFiles/rocksdb.dir/utilities/write_batch_with_index/write_batch_with_index.cc.o
+[ 96%] Building CXX object CMakeFiles/rocksdb.dir/utilities/write_batch_with_index/write_batch_with_index_internal.cc.o
+[ 96%] Building CXX object CMakeFiles/rocksdb.dir/port/port_posix.cc.o
+[ 96%] Building CXX object CMakeFiles/rocksdb.dir/env/env_posix.cc.o
+[ 96%] Building CXX object CMakeFiles/rocksdb.dir/env/io_posix.cc.o
+[100%] Linking CXX static library librocksdb.a
+[100%] Built target rocksdb
+go build -i -o ./cockroach -v  -tags ' make x86_64_linux_gnu' -ldflags ' -X github.com/cockroachdb/cockroach/pkg/build.typ=development -X "github.com/cockroachdb/cockroach/pkg/build.tag=e6562fe" -X "github.com/cockroachdb/cockroach/pkg/build.utcTime=2017/11/04 19:31:49" -X "github.com/cockroachdb/cockroach/pkg/build.rev=e6562feb2548f62705e07b4bbebb6e1717ab97ee" -X "github.com/cockroachdb/cockroach/pkg/build.baseBranch="' .
+github.com/cockroachdb/cockroach/vendor/github.com/dustin/go-humanize
+github.com/cockroachdb/cockroach/vendor/github.com/spf13/pflag
+github.com/cockroachdb/cockroach/pkg/util/syncutil
+github.com/cockroachdb/cockroach/vendor/github.com/hashicorp/go-version
+github.com/cockroachdb/cockroach/vendor/golang.org/x/net/http2/hpack
+github.com/cockroachdb/cockroach/vendor/golang.org/x/text/transform
+github.com/cockroachdb/cockroach/vendor/golang.org/x/text/unicode/bidi
+github.com/cockroachdb/cockroach/pkg/util/humanizeutil
+github.com/cockroachdb/cockroach/pkg/util/envutil
+github.com/cockroachdb/cockroach/pkg/build
+github.com/cockroachdb/cockroach/vendor/golang.org/x/text/secure/bidirule
+github.com/cockroachdb/cockroach/vendor/golang.org/x/text/unicode/norm
+github.com/cockroachdb/cockroach/pkg/ccl/buildccl
+github.com/cockroachdb/cockroach/vendor/golang.org/x/net/internal/timeseries
+github.com/cockroachdb/cockroach/vendor/golang.org/x/net/trace
+github.com/cockroachdb/cockroach/vendor/golang.org/x/net/idna
+github.com/cockroachdb/cockroach/vendor/golang.org/x/net/lex/httplex
+github.com/cockroachdb/cockroach/vendor/golang.org/x/net/http2
+github.com/cockroachdb/cockroach/vendor/google.golang.org/grpc/grpclog
+github.com/cockroachdb/cockroach/vendor/google.golang.org/grpc/connectivity
+github.com/cockroachdb/cockroach/vendor/google.golang.org/grpc/credentials
+github.com/cockroachdb/cockroach/vendor/google.golang.org/grpc/resolver
+github.com/cockroachdb/cockroach/vendor/google.golang.org/grpc/balancer
+github.com/cockroachdb/cockroach/vendor/google.golang.org/grpc/codes
+github.com/cockroachdb/cockroach/vendor/google.golang.org/grpc/grpclb/grpc_lb_v1/messages
+github.com/cockroachdb/cockroach/vendor/google.golang.org/grpc/internal
+github.com/cockroachdb/cockroach/vendor/google.golang.org/grpc/keepalive
+github.com/cockroachdb/cockroach/vendor/google.golang.org/grpc/metadata
+github.com/cockroachdb/cockroach/vendor/google.golang.org/grpc/naming
+github.com/cockroachdb/cockroach/vendor/google.golang.org/grpc/peer
+github.com/cockroachdb/cockroach/vendor/google.golang.org/grpc/stats
+github.com/cockroachdb/cockroach/vendor/github.com/golang/protobuf/ptypes/any
+github.com/cockroachdb/cockroach/vendor/github.com/golang/protobuf/ptypes/duration
+github.com/cockroachdb/cockroach/vendor/github.com/golang/protobuf/ptypes/timestamp
+github.com/cockroachdb/cockroach/vendor/github.com/golang/protobuf/ptypes
+github.com/cockroachdb/cockroach/vendor/google.golang.org/genproto/googleapis/rpc/status
+github.com/cockroachdb/cockroach/vendor/google.golang.org/grpc/status
+github.com/cockroachdb/cockroach/vendor/google.golang.org/grpc/tap
+github.com/cockroachdb/cockroach/vendor/cloud.google.com/go/internal/optional
+github.com/cockroachdb/cockroach/vendor/cloud.google.com/go/internal/version
+github.com/cockroachdb/cockroach/vendor/google.golang.org/api/googleapi/internal/uritemplates
+github.com/cockroachdb/cockroach/vendor/google.golang.org/api/googleapi
+github.com/cockroachdb/cockroach/vendor/google.golang.org/api/iterator
+github.com/cockroachdb/cockroach/vendor/golang.org/x/net/context/ctxhttp
+github.com/cockroachdb/cockroach/vendor/golang.org/x/oauth2/internal
+github.com/cockroachdb/cockroach/vendor/google.golang.org/grpc/transport
+github.com/cockroachdb/cockroach/vendor/golang.org/x/oauth2
+github.com/cockroachdb/cockroach/vendor/cloud.google.com/go/compute/metadata
+github.com/cockroachdb/cockroach/vendor/golang.org/x/oauth2/jws
+github.com/cockroachdb/cockroach/vendor/golang.org/x/oauth2/jwt
+github.com/cockroachdb/cockroach/vendor/golang.org/x/oauth2/google
+github.com/cockroachdb/cockroach/vendor/google.golang.org/api/gensupport
+github.com/cockroachdb/cockroach/vendor/google.golang.org/grpc
+github.com/cockroachdb/cockroach/vendor/google.golang.org/api/storage/v1
+github.com/cockroachdb/cockroach/vendor/google.golang.org/genproto/googleapis/iam/v1
+github.com/cockroachdb/cockroach/vendor/github.com/googleapis/gax-go
+github.com/cockroachdb/cockroach/vendor/cloud.google.com/go/iam
+github.com/cockroachdb/cockroach/vendor/cloud.google.com/go/internal
+github.com/cockroachdb/cockroach/vendor/google.golang.org/api/internal
+github.com/cockroachdb/cockroach/vendor/google.golang.org/api/googleapi/transport
+github.com/cockroachdb/cockroach/vendor/google.golang.org/api/option
+github.com/cockroachdb/cockroach/vendor/github.com/Azure/go-autorest/autorest/date
+github.com/cockroachdb/cockroach/vendor/google.golang.org/api/transport/http
+github.com/cockroachdb/cockroach/vendor/cloud.google.com/go/storage
+github.com/cockroachdb/cockroach/vendor/github.com/dgrijalva/jwt-go
+github.com/cockroachdb/cockroach/vendor/github.com/Azure/go-autorest/autorest/adal
+github.com/cockroachdb/cockroach/vendor/github.com/Azure/go-autorest/autorest
+github.com/cockroachdb/cockroach/vendor/github.com/satori/uuid
+github.com/cockroachdb/cockroach/vendor/github.com/aws/aws-sdk-go/aws/awserr
+github.com/cockroachdb/cockroach/vendor/github.com/aws/aws-sdk-go/internal/shareddefaults
+github.com/cockroachdb/cockroach/vendor/github.com/go-ini/ini
+github.com/cockroachdb/cockroach/vendor/github.com/Azure/go-autorest/autorest/azure
+github.com/cockroachdb/cockroach/vendor/github.com/aws/aws-sdk-go/aws/credentials
+github.com/cockroachdb/cockroach/vendor/github.com/Azure/azure-sdk-for-go/storage
+github.com/cockroachdb/cockroach/vendor/github.com/aws/aws-sdk-go/aws/endpoints
+github.com/cockroachdb/cockroach/vendor/github.com/aws/aws-sdk-go/aws
+github.com/cockroachdb/cockroach/vendor/github.com/aws/aws-sdk-go/aws/client/metadata
+github.com/cockroachdb/cockroach/vendor/github.com/jmespath/go-jmespath
+github.com/cockroachdb/cockroach/vendor/github.com/cockroachdb/apd
+github.com/cockroachdb/cockroach/vendor/github.com/aws/aws-sdk-go/aws/awsutil
+github.com/cockroachdb/cockroach/vendor/github.com/aws/aws-sdk-go/aws/request
+github.com/cockroachdb/cockroach/pkg/settings
+github.com/cockroachdb/cockroach/pkg/util/caller
+github.com/cockroachdb/cockroach/pkg/util/fileutil
+github.com/cockroachdb/cockroach/pkg/util/log/logflags
+github.com/cockroachdb/cockroach/pkg/util/timeutil
+github.com/cockroachdb/cockroach/vendor/github.com/gogo/protobuf/sortkeys
+github.com/cockroachdb/cockroach/vendor/github.com/gogo/protobuf/types
+github.com/cockroachdb/cockroach/vendor/github.com/aws/aws-sdk-go/aws/client
+github.com/cockroachdb/cockroach/vendor/github.com/aws/aws-sdk-go/aws/corehandlers
+github.com/cockroachdb/cockroach/vendor/github.com/aws/aws-sdk-go/private/protocol/rest
+github.com/cockroachdb/cockroach/vendor/github.com/aws/aws-sdk-go/aws/signer/v4
+github.com/cockroachdb/cockroach/vendor/github.com/aws/aws-sdk-go/private/protocol
+github.com/cockroachdb/cockroach/vendor/github.com/aws/aws-sdk-go/aws/ec2metadata
+github.com/cockroachdb/cockroach/vendor/github.com/aws/aws-sdk-go/private/protocol/query/queryutil
+github.com/cockroachdb/cockroach/vendor/github.com/aws/aws-sdk-go/private/protocol/xml/xmlutil
+github.com/cockroachdb/cockroach/vendor/github.com/aws/aws-sdk-go/aws/credentials/ec2rolecreds
+github.com/cockroachdb/cockroach/vendor/github.com/aws/aws-sdk-go/private/protocol/query
+github.com/cockroachdb/cockroach/vendor/github.com/aws/aws-sdk-go/aws/credentials/endpointcreds
+github.com/cockroachdb/cockroach/vendor/github.com/aws/aws-sdk-go/service/sts
+github.com/cockroachdb/cockroach/vendor/github.com/aws/aws-sdk-go/aws/defaults
+github.com/cockroachdb/cockroach/vendor/github.com/aws/aws-sdk-go/private/protocol/restxml
+github.com/cockroachdb/cockroach/vendor/github.com/aws/aws-sdk-go/aws/credentials/stscreds
+github.com/cockroachdb/cockroach/vendor/github.com/aws/aws-sdk-go/service/s3
+github.com/cockroachdb/cockroach/vendor/github.com/aws/aws-sdk-go/aws/session
+github.com/cockroachdb/cockroach/vendor/github.com/lightstep/lightstep-tracer-go/collectorpb
+github.com/cockroachdb/cockroach/vendor/github.com/lightstep/lightstep-tracer-go/thrift_0_9_2/lib/go/thrift
+github.com/cockroachdb/cockroach/vendor/github.com/lightstep/lightstep-tracer-go/lightstep_thrift
+github.com/cockroachdb/cockroach/vendor/github.com/lightstep/lightstep-tracer-go/lightsteppb
+github.com/cockroachdb/cockroach/vendor/github.com/opentracing/opentracing-go/log
+github.com/cockroachdb/cockroach/vendor/github.com/opentracing/opentracing-go
+github.com/cockroachdb/cockroach/vendor/github.com/aws/aws-sdk-go/service/s3/s3iface
+github.com/cockroachdb/cockroach/vendor/github.com/lightstep/lightstep-tracer-go
+github.com/cockroachdb/cockroach/vendor/github.com/aws/aws-sdk-go/service/s3/s3manager
+github.com/cockroachdb/cockroach/vendor/github.com/davecgh/go-spew/spew
+github.com/cockroachdb/cockroach/vendor/github.com/eapache/go-resiliency/breaker
+github.com/cockroachdb/cockroach/vendor/github.com/golang/snappy
+github.com/cockroachdb/cockroach/vendor/github.com/eapache/go-xerial-snappy
+github.com/cockroachdb/cockroach/vendor/github.com/eapache/queue
+github.com/cockroachdb/cockroach/vendor/github.com/pierrec/xxHash/xxHash32
+github.com/cockroachdb/cockroach/vendor/github.com/rcrowley/go-metrics
+github.com/cockroachdb/cockroach/vendor/github.com/pierrec/lz4
+github.com/cockroachdb/cockroach/vendor/github.com/apache/thrift/lib/go/thrift
+github.com/cockroachdb/cockroach/vendor/github.com/Shopify/sarama
+github.com/cockroachdb/cockroach/vendor/github.com/go-logfmt/logfmt
+github.com/cockroachdb/cockroach/vendor/github.com/opentracing-contrib/go-observer
+github.com/cockroachdb/cockroach/vendor/github.com/opentracing/opentracing-go/ext
+github.com/cockroachdb/cockroach/vendor/github.com/openzipkin/zipkin-go-opentracing/flag
+github.com/cockroachdb/cockroach/vendor/github.com/openzipkin/zipkin-go-opentracing/thrift/gen-go/scribe
+github.com/cockroachdb/cockroach/vendor/github.com/openzipkin/zipkin-go-opentracing/thrift/gen-go/zipkincore
+github.com/cockroachdb/cockroach/vendor/github.com/openzipkin/zipkin-go-opentracing/types
+github.com/cockroachdb/cockroach/vendor/github.com/openzipkin/zipkin-go-opentracing/wire
+github.com/cockroachdb/cockroach/vendor/github.com/certifi/gocertifi
+github.com/cockroachdb/cockroach/vendor/github.com/getsentry/raven-go
+github.com/cockroachdb/cockroach/vendor/github.com/openzipkin/zipkin-go-opentracing
+github.com/cockroachdb/cockroach/vendor/github.com/petermattis/goid
+github.com/cockroachdb/cockroach/vendor/golang.org/x/sys/unix
+github.com/cockroachdb/cockroach/pkg/util/tracing
+github.com/cockroachdb/cockroach/pkg/util/uint128
+github.com/cockroachdb/cockroach/vendor/github.com/satori/go.uuid
+github.com/cockroachdb/cockroach/pkg/util/uuid
+github.com/cockroachdb/cockroach/pkg/util/randutil
+github.com/cockroachdb/cockroach/pkg/util/log
+github.com/cockroachdb/cockroach/vendor/golang.org/x/tools/container/intsets
+github.com/cockroachdb/cockroach/pkg/util
+github.com/cockroachdb/cockroach/pkg/util/duration
+github.com/cockroachdb/cockroach/pkg/sql/pgwire/pgerror
+github.com/cockroachdb/cockroach/pkg/util/ipaddr
+github.com/cockroachdb/cockroach/pkg/util/encoding
+github.com/cockroachdb/cockroach/pkg/util/hlc
+github.com/cockroachdb/cockroach/pkg/storage/engine/enginepb
+github.com/cockroachdb/cockroach/vendor/github.com/biogo/store/llrb
+github.com/cockroachdb/cockroach/pkg/util/interval
+github.com/cockroachdb/cockroach/vendor/github.com/gogo/protobuf/jsonpb
+github.com/cockroachdb/cockroach/vendor/github.com/golang/protobuf/ptypes/struct
+github.com/cockroachdb/cockroach/vendor/github.com/golang/protobuf/jsonpb
+github.com/cockroachdb/cockroach/vendor/github.com/grpc-ecosystem/grpc-gateway/runtime/internal
+github.com/cockroachdb/cockroach/vendor/golang.org/x/sync/syncmap
+github.com/cockroachdb/cockroach/vendor/github.com/VividCortex/ewma
+github.com/cockroachdb/cockroach/vendor/github.com/codahale/hdrhistogram
+github.com/cockroachdb/cockroach/vendor/github.com/prometheus/client_model/go
+github.com/cockroachdb/cockroach/vendor/github.com/grpc-ecosystem/grpc-gateway/runtime
+github.com/cockroachdb/cockroach/vendor/github.com/matttproud/golang_protobuf_extensions/pbutil
+github.com/cockroachdb/cockroach/vendor/github.com/prometheus/common/internal/bitbucket.org/ww/goautoneg
+github.com/cockroachdb/cockroach/vendor/github.com/prometheus/common/model
+github.com/cockroachdb/cockroach/vendor/github.com/prometheus/common/expfmt
+github.com/cockroachdb/cockroach/pkg/util/protoutil
+github.com/cockroachdb/cockroach/pkg/roachpb
+github.com/cockroachdb/cockroach/pkg/util/metric
+github.com/cockroachdb/cockroach/vendor/golang.org/x/crypto/blowfish
+github.com/cockroachdb/cockroach/vendor/golang.org/x/crypto/bcrypt
+github.com/cockroachdb/cockroach/vendor/golang.org/x/crypto/ssh/terminal
+github.com/cockroachdb/cockroach/vendor/github.com/kr/text
+github.com/cockroachdb/cockroach/vendor/github.com/kr/pretty
+github.com/cockroachdb/cockroach/vendor/golang.org/x/time/rate
+github.com/cockroachdb/cockroach/pkg/util/mon
+github.com/cockroachdb/cockroach/pkg/util/retry
+github.com/cockroachdb/cockroach/pkg/sql/privilege
+github.com/cockroachdb/cockroach/pkg/util/cache
+github.com/cockroachdb/cockroach/pkg/util/stringencoding
+github.com/cockroachdb/cockroach/pkg/util/json
+github.com/cockroachdb/cockroach/vendor/github.com/knz/strtime
+github.com/cockroachdb/cockroach/vendor/github.com/lib/pq/oid
+github.com/cockroachdb/cockroach/vendor/golang.org/x/text/internal/tag
+github.com/cockroachdb/cockroach/vendor/golang.org/x/text/language
+github.com/cockroachdb/cockroach/vendor/golang.org/x/text/internal/colltab
+github.com/cockroachdb/cockroach/vendor/golang.org/x/text/collate
+github.com/cockroachdb/cockroach/pkg/util/stop
+github.com/cockroachdb/cockroach/pkg/security
+github.com/cockroachdb/cockroach/pkg/settings/cluster
+github.com/cockroachdb/cockroach/pkg/keys
+github.com/cockroachdb/cockroach/pkg/base
+github.com/cockroachdb/cockroach/vendor/gopkg.in/yaml.v2
+github.com/cockroachdb/cockroach/pkg/internal/client
+github.com/cockroachdb/cockroach/pkg/util/bufalloc
+github.com/cockroachdb/cockroach/pkg/sql/parser
+github.com/cockroachdb/cockroach/vendor/github.com/elastic/gosigar
+github.com/cockroachdb/cockroach/vendor/github.com/golang/leveldb/db
+github.com/cockroachdb/cockroach/vendor/github.com/golang/leveldb/memfs
+github.com/cockroachdb/cockroach/vendor/github.com/golang/leveldb/crc
+github.com/cockroachdb/cockroach/vendor/github.com/golang/leveldb/table
+github.com/cockroachdb/cockroach/pkg/gossip/resolver
+github.com/cockroachdb/cockroach/vendor/github.com/cenk/backoff
+github.com/cockroachdb/cockroach/vendor/github.com/cockroachdb/cmux
+github.com/cockroachdb/cockroach/pkg/util/netutil
+github.com/cockroachdb/cockroach/pkg/util/grpcutil
+github.com/cockroachdb/cockroach/vendor/github.com/facebookgo/clock
+github.com/cockroachdb/cockroach/vendor/github.com/grpc-ecosystem/grpc-opentracing/go/otgrpc
+github.com/cockroachdb/cockroach/vendor/github.com/montanaflynn/stats
+github.com/cockroachdb/cockroach/vendor/github.com/rubyist/circuitbreaker
+github.com/cockroachdb/cockroach/pkg/rpc
+github.com/cockroachdb/cockroach/pkg/storage/storagebase
+github.com/cockroachdb/cockroach/vendor/github.com/coreos/etcd/raft/raftpb
+github.com/cockroachdb/cockroach/vendor/github.com/google/btree
+github.com/cockroachdb/cockroach/pkg/storage/tscache
+github.com/cockroachdb/cockroach/pkg/storage/txnwait
+github.com/cockroachdb/cockroach/pkg/util/shuffle
+github.com/cockroachdb/cockroach/vendor/github.com/coreos/etcd/raft
+github.com/cockroachdb/cockroach/pkg/ccl/utilccl/licenseccl
+github.com/cockroachdb/cockroach/pkg/util/syncutil/singleflight
+github.com/cockroachdb/cockroach/pkg/ts/tspb
+github.com/cockroachdb/cockroach/pkg/util/contextutil
+github.com/cockroachdb/cockroach/vendor/github.com/lib/pq
+github.com/cockroachdb/cockroach/pkg/ui
+github.com/cockroachdb/cockroach/pkg/util/httputil
+github.com/cockroachdb/cockroach/pkg/util/sdnotify
+github.com/cockroachdb/cockroach/vendor/github.com/elazarl/go-bindata-assetfs
+github.com/cockroachdb/cockroach/vendor/github.com/mitchellh/reflectwalk
+github.com/cockroachdb/cockroach/vendor/github.com/rcrowley/go-metrics/exp
+github.com/cockroachdb/cockroach/pkg/ccl/utilccl/intervalccl
+github.com/cockroachdb/cockroach/vendor/github.com/backtrace-labs/go-bcd
+github.com/cockroachdb/cockroach/pkg/cli/cliflags
+github.com/cockroachdb/cockroach/vendor/github.com/ianlancetaylor/cgosymbolizer
+github.com/cockroachdb/cockroach/vendor/github.com/knz/go-libedit/common
+github.com/cockroachdb/cockroach/vendor/github.com/knz/go-libedit/unix
+github.com/cockroachdb/cockroach/pkg/config
+github.com/cockroachdb/cockroach/pkg/storage/engine
+github.com/cockroachdb/cockroach/pkg/ccl/storageccl/engineccl
+github.com/cockroachdb/cockroach/pkg/sql/sqlbase
+github.com/cockroachdb/cockroach/pkg/gossip
+github.com/cockroachdb/cockroach/pkg/sql/sqlutil
+github.com/cockroachdb/cockroach/pkg/storage/abortspan
+github.com/cockroachdb/cockroach/pkg/storage/stateloader
+github.com/cockroachdb/cockroach/pkg/kv
+github.com/cockroachdb/cockroach/pkg/storage
+github.com/cockroachdb/cockroach/pkg/server/diagnosticspb
+github.com/cockroachdb/cockroach/vendor/github.com/knz/go-libedit
+github.com/cockroachdb/cockroach/vendor/github.com/mattn/go-isatty
+github.com/cockroachdb/cockroach/vendor/github.com/mattn/go-runewidth
+github.com/cockroachdb/cockroach/vendor/github.com/olekukonko/tablewriter
+github.com/cockroachdb/cockroach/vendor/github.com/spf13/cobra
+github.com/cockroachdb/cockroach/vendor/github.com/russross/blackfriday
+github.com/cockroachdb/cockroach/vendor/github.com/cpuguy83/go-md2man/md2man
+github.com/cockroachdb/cockroach/vendor/github.com/spf13/cobra/doc
+github.com/cockroachdb/cockroach/pkg/ccl/storageccl
+github.com/cockroachdb/cockroach/pkg/server/status
+github.com/cockroachdb/cockroach/pkg/sql/jobs
+github.com/cockroachdb/cockroach/pkg/ts
+github.com/cockroachdb/cockroach/pkg/server/serverpb
+github.com/cockroachdb/cockroach/pkg/sql/distsqlrun
+github.com/cockroachdb/cockroach/pkg/sql/distsqlplan
+github.com/cockroachdb/cockroach/pkg/sql
+github.com/cockroachdb/cockroach/pkg/sql/pgwire
+github.com/cockroachdb/cockroach/pkg/sqlmigrations
+github.com/cockroachdb/cockroach/pkg/server
+github.com/cockroachdb/cockroach/pkg/ccl/utilccl
+github.com/cockroachdb/cockroach/pkg/cli
+github.com/cockroachdb/cockroach/pkg/ccl/sqlccl
+github.com/cockroachdb/cockroach/pkg/ccl/cliccl
+github.com/cockroachdb/cockroach/pkg/ccl
+github.com/cockroachdb/cockroach
+ ---> 1749def7c03b
+Removing intermediate container e7247f934626
+Step 15 : WORKDIR $GOPATH
+ ---> Running in d52208aac122
+ ---> cf6e33fc6294
+Removing intermediate container d52208aac122
+Step 16 : RUN apt-get autoremove -y gcc g++ 	&& echo "clean up gcc/g++/golang library, and repository source."
+ ---> Running in aa5ce36799b6
+Reading package lists...
+Building dependency tree...
+Reading state information...
+The following packages will be REMOVED:
+  binutils cpp cpp-5 g++ g++-5 gcc gcc-5 libasan2 libatomic1 libcc1-0
+  libcilkrts5 libgcc-5-dev libgomp1 libisl15 libitm1 liblsan0 libmpc3 libmpfr4
+  libmpx0 libquadmath0 libstdc++-5-dev libtsan0 libubsan0
+0 upgraded, 0 newly installed, 23 to remove and 4 not upgraded.
+After this operation, 118 MB disk space will be freed.
+(Reading database ... 16254 files and directories currently installed.)
+Removing g++ (4:5.3.1-1ubuntu1) ...
+Removing g++-5 (5.4.0-6ubuntu1~16.04.5) ...
+Removing gcc (4:5.3.1-1ubuntu1) ...
+Removing gcc-5 (5.4.0-6ubuntu1~16.04.5) ...
+Removing binutils (2.26.1-1ubuntu1~16.04.5) ...
+Removing cpp (4:5.3.1-1ubuntu1) ...
+Removing cpp-5 (5.4.0-6ubuntu1~16.04.5) ...
+Removing libstdc++-5-dev:amd64 (5.4.0-6ubuntu1~16.04.5) ...
+Removing libgcc-5-dev:amd64 (5.4.0-6ubuntu1~16.04.5) ...
+Removing libasan2:amd64 (5.4.0-6ubuntu1~16.04.5) ...
+Removing libatomic1:amd64 (5.4.0-6ubuntu1~16.04.5) ...
+Removing libcc1-0:amd64 (5.4.0-6ubuntu1~16.04.5) ...
+Removing libcilkrts5:amd64 (5.4.0-6ubuntu1~16.04.5) ...
+Removing libgomp1:amd64 (5.4.0-6ubuntu1~16.04.5) ...
+Removing libisl15:amd64 (0.16.1-1) ...
+Removing libitm1:amd64 (5.4.0-6ubuntu1~16.04.5) ...
+Removing liblsan0:amd64 (5.4.0-6ubuntu1~16.04.5) ...
+Removing libmpc3:amd64 (1.0.3-1) ...
+Removing libmpfr4:amd64 (3.1.4-1) ...
+Removing libmpx0:amd64 (5.4.0-6ubuntu1~16.04.5) ...
+Removing libquadmath0:amd64 (5.4.0-6ubuntu1~16.04.5) ...
+Removing libtsan0:amd64 (5.4.0-6ubuntu1~16.04.5) ...
+Removing libubsan0:amd64 (5.4.0-6ubuntu1~16.04.5) ...
+Processing triggers for libc-bin (2.23-0ubuntu9) ...
+clean up gcc/g++/golang library, and repository source.
+ ---> a6aed2298485
+Removing intermediate container aa5ce36799b6
+Step 17 : CMD cockroach
+ ---> Running in f97d590f1e70
+ ---> b011d8a88d61
+Removing intermediate container f97d590f1e70
+Successfully built b011d8a88d61
+
+
+
+
+[vagrant@localhost cockroachdb0x2Fcockroach]$ docker images tangfeixiong/cockroach
+REPOSITORY               TAG                 IMAGE ID            CREATED             SIZE
+tangfeixiong/cockroach   latest              b011d8a88d61        11 seconds ago      2.422 GB
+
+
+
+
+[vagrant@localhost cockroachdb0x2Fcockroach]$ docker run -ti --rm tangfeixiong/cockroach
+CockroachDB command-line interface and server.
+
+Usage:
+  cockroach [command]
+
+Available Commands:
+  start       start a node
+  init        initialize a cluster
+  cert        create ca, node, and client certs
+  quit        drain and shutdown node
+
+  sql         open a sql shell
+  user        get, set, list and remove users
+  zone        get, set, list and remove zones
+  node        list, inspect or remove nodes
+  dump        dump sql tables
+
+  gen         generate auxiliary files
+  version     output version information
+  debug       debugging commands
+  load        loading commands
+  help        Help about any command
+
+Flags:
+  -h, --help                             help for cockroach
+      --log-backtrace-at traceLocation   when logging hits line file:N, emit a stack trace (default :0)
+      --log-dir string                   if non-empty, write log files in this directory
+      --log-dir-max-size bytes           maximum combined size of all log files (default 100 MiB)
+      --log-file-max-size bytes          maximum size of each log file (default 10 MiB)
+      --log-file-verbosity Severity      minimum verbosity of messages written to the log file (default INFO)
+      --logtostderr Severity[=DEFAULT]   logs at or above this threshold go to stderr (default NONE)
+      --no-color                         disable standard error log colorization
+      --verbosity level                  log level for V logs
+      --vmodule moduleSpec               comma-separated list of pattern=N settings for file-filtered logging
+
+Use "cockroach [command] --help" for more information about a command.
+
+
+
+
+[vagrant@localhost cockroachdb0x2Fcockroach]$ docker run -ti --rm tangfeixiong/cockroach cockroach version
+Build Tag:    e6562fe
+Build Time:   2017/11/04 19:31:49
+Distribution: CCL
+Platform:     linux amd64
+Go Version:   go1.9.2
+C Compiler:   gcc 5.4.0 20160609
+Build SHA-1:  e6562feb2548f62705e07b4bbebb6e1717ab97ee
+Build Type:   development
+
+
+
+
+[vagrant@localhost cockroachdb0x2Fcockroach]$ docker-compose up roach1
+Recreating cockroachdb0x2fcockroach_roach1_1 ... 
+Recreating cockroachdb0x2fcockroach_roach1_1 ... done
+Attaching to cockroachdb0x2fcockroach_roach1_1
+roach1_1  | *
+roach1_1  | * WARNING: RUNNING IN INSECURE MODE!
+roach1_1  | * 
+roach1_1  | * - Your cluster is open for any client that can access <all your IP addresses>.
+roach1_1  | * - Any user, even root, can log in without providing a password.
+roach1_1  | * - Any user, connecting as root, can read or write any data in your cluster.
+roach1_1  | * - There is no network encryption nor authentication, and thus no confidentiality.
+roach1_1  | * 
+roach1_1  | * Check out how to secure your cluster: https://www.cockroachlabs.com/docs/dev/secure-a-cluster.html
+roach1_1  | *
+roach1_1  | CockroachDB node starting at 2017-11-04 20:46:24.396734422 +0000 UTC (took 2.2s)
+roach1_1  | build:      CCL e6562fe @ 2017/11/04 19:31:49 (go1.9.2)
+roach1_1  | admin:      http://7634ff5b9219:8080
+roach1_1  | sql:        postgresql://root@7634ff5b9219:26257?application_name=cockroach&sslmode=disable
+roach1_1  | logs:       /go/cockroach-data/logs
+roach1_1  | temp dir:   /go/cockroach-data/cockroach-temp834217533
+roach1_1  | store[0]:   path=/go/cockroach-data
+roach1_1  | status:     initialized new cluster
+roach1_1  | clusterID:  009f66c6-5242-4ff1-8456-25bf877ca6c7
+roach1_1  | nodeID:     1
+
+
+
+
+[vagrant@localhost cockroachdb0x2Fcockroach]$ docker-compose up 
+Creating network "cockroachdb0x2fcockroach_default" with the default driver
+Creating cockroachdb0x2fcockroach_roach1_1 ... 
+Creating cockroachdb0x2fcockroach_roach1_1 ... done
+Creating cockroachdb0x2fcockroach_roach2_1 ... 
+Creating cockroachdb0x2fcockroach_roach3_1 ... 
+Creating cockroachdb0x2fcockroach_roach2_1
+Creating cockroachdb0x2fcockroach_roach3_1 ... done
+Attaching to cockroachdb0x2fcockroach_roach1_1, cockroachdb0x2fcockroach_roach2_1, cockroachdb0x2fcockroach_roach3_1
+roach1_1  | *
+roach1_1  | * WARNING: RUNNING IN INSECURE MODE!
+roach1_1  | * 
+roach1_1  | * - Your cluster is open for any client that can access <all your IP addresses>.
+roach1_1  | * - Any user, even root, can log in without providing a password.
+roach1_1  | * - Any user, connecting as root, can read or write any data in your cluster.
+roach1_1  | * - There is no network encryption nor authentication, and thus no confidentiality.
+roach1_1  | * 
+roach1_1  | * Check out how to secure your cluster: https://www.cockroachlabs.com/docs/dev/secure-a-cluster.html
+roach1_1  | *
+roach2_1  | *
+roach2_1  | * WARNING: RUNNING IN INSECURE MODE!
+roach2_1  | * 
+roach2_1  | * - Your cluster is open for any client that can access <all your IP addresses>.
+roach2_1  | * - Any user, even root, can log in without providing a password.
+roach2_1  | * - Any user, connecting as root, can read or write any data in your cluster.
+roach2_1  | * - There is no network encryption nor authentication, and thus no confidentiality.
+roach2_1  | * 
+roach2_1  | * Check out how to secure your cluster: https://www.cockroachlabs.com/docs/dev/secure-a-cluster.html
+roach2_1  | *
+roach3_1  | *
+roach3_1  | * WARNING: RUNNING IN INSECURE MODE!
+roach3_1  | * 
+roach3_1  | * - Your cluster is open for any client that can access <all your IP addresses>.
+roach3_1  | * - Any user, even root, can log in without providing a password.
+roach3_1  | * - Any user, connecting as root, can read or write any data in your cluster.
+roach3_1  | * - There is no network encryption nor authentication, and thus no confidentiality.
+roach3_1  | * 
+roach3_1  | * Check out how to secure your cluster: https://www.cockroachlabs.com/docs/dev/secure-a-cluster.html
+roach3_1  | *
+roach1_1  | CockroachDB node starting at 2017-11-04 20:55:50.436821144 +0000 UTC (took 4.2s)
+roach1_1  | build:      CCL e6562fe @ 2017/11/04 19:31:49 (go1.9.2)
+roach1_1  | admin:      http://b64a14af7293:8080
+roach1_1  | sql:        postgresql://root@b64a14af7293:26257?application_name=cockroach&sslmode=disable
+roach1_1  | logs:       /go/cockroach-data/logs
+roach1_1  | temp dir:   /go/cockroach-data/cockroach-temp494048067
+roach1_1  | store[0]:   path=/go/cockroach-data
+roach1_1  | status:     initialized new cluster
+roach1_1  | clusterID:  011663ea-9e91-4429-8ddf-ff362be57005
+roach1_1  | nodeID:     1
+roach3_1  | CockroachDB node starting at 2017-11-04 20:55:50.63172533 +0000 UTC (took 1.6s)
+roach3_1  | build:      CCL e6562fe @ 2017/11/04 19:31:49 (go1.9.2)
+roach3_1  | admin:      http://a5be6ed6fc1c:8080
+roach3_1  | sql:        postgresql://root@a5be6ed6fc1c:26257?application_name=cockroach&sslmode=disable
+roach3_1  | logs:       /go/cockroach-data/logs
+roach3_1  | temp dir:   /go/cockroach-data/cockroach-temp604892992
+roach3_1  | store[0]:   path=/go/cockroach-data
+roach3_1  | status:     initialized new node, joined pre-existing cluster
+roach3_1  | clusterID:  011663ea-9e91-4429-8ddf-ff362be57005
+roach3_1  | nodeID:     3
+roach2_1  | CockroachDB node starting at 2017-11-04 20:55:50.864824865 +0000 UTC (took 2.7s)
+roach2_1  | build:      CCL e6562fe @ 2017/11/04 19:31:49 (go1.9.2)
+roach2_1  | admin:      http://7b98d4714db4:8080
+roach2_1  | sql:        postgresql://root@7b98d4714db4:26257?application_name=cockroach&sslmode=disable
+roach2_1  | logs:       /go/cockroach-data/logs
+roach2_1  | temp dir:   /go/cockroach-data/cockroach-temp060518366
+roach2_1  | store[0]:   path=/go/cockroach-data
+roach2_1  | status:     initialized new node, joined pre-existing cluster
+roach2_1  | clusterID:  011663ea-9e91-4429-8ddf-ff362be57005
+roach2_1  | nodeID:     2
+
+
+
+
+[vagrant@localhost ~]$ docker exec -it cockroachdb0x2fcockroach_roach1_1 cockroach sql --insecure
+# Welcome to the cockroach SQL interface.
+# All statements must be terminated by a semicolon.
+# To exit: CTRL + D.
+#
+# Server version: CockroachDB CCL e6562fe (linux amd64, built 2017/11/04 19:31:49, go1.9.2) (same version as client)
+# Cluster ID: 011663ea-9e91-4429-8ddf-ff362be57005
+#
+# Enter \? for a brief introduction.
+#
+root@:26257/> create database bank;
+CREATE DATABASE
+
+Time: 160.758197ms
+
+root@:26257/> create table bank.accounts (id int primary key, balance decimal);
+CREATE TABLE
+
+Time: 207.428263ms
+
+root@:26257/> insert into bank.accounts values (1, 123.45);
+INSERT 1
+
+Time: 159.574012ms
+
+root@:26257/> select * from bank.accounts where id=1;
++----+---------+
+| id | balance |
++----+---------+
+|  1 |  123.45 |
++----+---------+
+(1 row)
+
+Time: 3.374356ms
+
+root@:26257/> \q
+
+
+
+
+[vagrant@localhost ~]$ docker exec -it cockroachdb0x2fcockroach_roach2_1 cockroach sql --insecure
+# Welcome to the cockroach SQL interface.
+# All statements must be terminated by a semicolon.
+# To exit: CTRL + D.
+#
+# Server version: CockroachDB CCL e6562fe (linux amd64, built 2017/11/04 19:31:49, go1.9.2) (same version as client)
+# Cluster ID: 011663ea-9e91-4429-8ddf-ff362be57005
+#
+# Enter \? for a brief introduction.
+#
+root@:26257/> select * from bank.accounts;
++----+---------+
+| id | balance |
++----+---------+
+|  1 |  123.45 |
++----+---------+
+(1 row)
+
+Time: 98.645126ms
+
+root@:26257/> \q
+
+
+
+
+[vagrant@localhost ~]$ docker exec -it cockroachdb0x2fcockroach_roach3_1 cockroach sql --insecure
+# Welcome to the cockroach SQL interface.
+# All statements must be terminated by a semicolon.
+# To exit: CTRL + D.
+#
+# Server version: CockroachDB CCL e6562fe (linux amd64, built 2017/11/04 19:31:49, go1.9.2) (same version as client)
+# Cluster ID: 011663ea-9e91-4429-8ddf-ff362be57005
+#
+# Enter \? for a brief introduction.
+#
+root@:26257/> select * from bank.accounts;
++----+---------+
+| id | balance |
++----+---------+
+|  1 |  123.45 |
++----+---------+
+(1 row)
+
+Time: 46.622231ms
+
+root@:26257/> \q

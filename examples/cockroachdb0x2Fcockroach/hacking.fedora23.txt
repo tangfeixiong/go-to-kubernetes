@@ -1,0 +1,1266 @@
+Fedora 23
+===========
+
+[vagrant@bogon ~]$ go version
+go version go1.9.2 linux/amd64
+[vagrant@bogon ~]$ node --version
+v6.9.5
+[vagrant@bogon ~]$ yarn --version
+0.24.6
+[vagrant@bogon ~]$ cmake --version
+cmake version 3.4.3
+
+CMake suite maintained and supported by Kitware (kitware.com/cmake).
+[vagrant@bogon ~]$ gcc --version
+gcc (GCC) 5.3.1 20151207 (Red Hat 5.3.1-2)
+Copyright © 2015 Free Software Foundation, Inc.
+本程序是自由软件；请参看源代码的版权声明。本软件没有任何担保；
+包括没有适销性和某一专用目的下的适用性担保。
+
+
+
+
+[vagrant@bogon ~]$ dnf search gcc
+Yarn Repository                                                                                                   127 kB/s | 362 kB     00:02    
+Fedora 23 - x86_64                                                                                                323 kB/s |  43 MB     02:15    
+Node.js Packages for Fedora Core 23 - x86_64                                                                      381 kB/s | 632 kB     00:01    
+added from: http://dl.google.com/linux/chrome/rpm/stable/x86_64                                                    26 kB/s | 3.8 kB     00:00    
+Docker Repository                                                                                                  20 kB/s |  18 kB     00:00    
+同步仓库 'kubernetes' 的缓存失败，来自 'http://yum.kubernetes.io/repos/kubernetes-el7-x86_64'：Cannot download repomd.xml: Cannot download repodata/repomd.xml: All mirrors were tried，禁用。
+Fedora 23 - x86_64 - Updates                                                                                      508 kB/s |  25 MB     00:50    
+google-chrome                                                                                                      29 kB/s | 3.8 kB     00:00    
+上次元数据过期检查在 0:00:00 前执行于 Sat Nov  4 08:24:42 2017。
+================================================================= N/S 匹配：gcc ==================================================================
+gcc.i686 : Various compilers (C, C++, Objective-C, Java, ...)
+gcc.x86_64 : Various compilers (C, C++, Objective-C, Java, ...)
+gcc-c++.i686 : C++ support for GCC
+gcc-c++.x86_64 : C++ support for GCC
+
+
+[vagrant@bogon ~]$ dnf list gcc-c++
+同步仓库 'kubernetes' 的缓存失败，来自 'http://yum.kubernetes.io/repos/kubernetes-el7-x86_64'：Cannot download repomd.xml: Cannot download repodata/repomd.xml: All mirrors were tried，禁用。
+上次元数据过期检查在 0:02:24 前执行于 Sat Nov  4 08:24:42 2017。
+已安装的软件包
+gcc-c++.x86_64                                                        5.3.1-2.fc23                                                        @updates
+可安装的软件包
+gcc-c++.i686                                                          5.3.1-6.fc23                                                        updates 
+gcc-c++.x86_64                                                        5.3.1-6.fc23                                                        updates 
+
+
+
+
+[vagrant@bogon cockroach]$ git log
+commit 546a3474bfe2af9c275db4e28408100c730906eb
+Author: Nikhil Benesch <nikhil.benesch@gmail.com>
+Date:   Tue Sep 26 11:21:43 2017 -0400
+
+    Merge pull request #18766 from benesch/codeowners-sql-async-split
+    
+    CODEOWNERS: split cluster jobs from sql-async-prs
+
+
+
+
+[vagrant@bogon cockroach]$ make build
+GOPATH set to /Users/fanhongling/go
+Running make with -j2
+GEN pkg/cli/zcgo_flags.go
+GEN pkg/server/status/zcgo_flags.go
+GEN pkg/storage/engine/zcgo_flags.go
+GEN pkg/ccl/storageccl/engineccl/zcgo_flags.go
+GEN pkg/cli/zcgo_flags_x86_64_redhat_linux.go
+GEN pkg/server/status/zcgo_flags_x86_64_redhat_linux.go
+GEN pkg/storage/engine/zcgo_flags_x86_64_redhat_linux.go
+GEN pkg/ccl/storageccl/engineccl/zcgo_flags_x86_64_redhat_linux.go
+installing githooks/post-rewrite
+installing githooks/post-checkout
+installing githooks/post-merge
+git submodule update --init
+fatal: 没有发现名称，无法描述任何东西。
+子模组 'c-deps/jemalloc' (https://github.com/cockroachdb/jemalloc.git) 未对路径 'c-deps/jemalloc' 注册
+子模组 'c-deps/protobuf' (https://github.com/cockroachdb/protobuf.git) 未对路径 'c-deps/protobuf' 注册
+子模组 'c-deps/rocksdb' (https://github.com/cockroachdb/rocksdb.git) 未对路径 'c-deps/rocksdb' 注册
+子模组 'c-deps/snappy' (https://github.com/cockroachdb/snappy.git) 未对路径 'c-deps/snappy' 注册
+子模组 'vendor' (https://github.com/cockroachdb/vendored) 未对路径 'vendor' 注册
+正克隆到 'c-deps/jemalloc'...
+remote: Counting objects: 16622, done.
+remote: Total 16622 (delta 0), reused 0 (delta 0), pack-reused 16622
+接收对象中: 100% (16622/16622), 7.02 MiB | 455.00 KiB/s, 完成.
+处理 delta 中: 100% (11862/11862), 完成.
+检查连接... 完成。
+子模组路径 'c-deps/jemalloc'：检出 '04380e79f1e2428bd0ad000bbc6e3d2dfc6b66a5'
+正克隆到 'c-deps/protobuf'...
+remote: Counting objects: 46037, done.
+remote: Compressing objects: 100% (4/4), done.
+remote: Total 46037 (delta 3), reused 1 (delta 1), pack-reused 46032
+接收对象中: 100% (46037/46037), 40.00 MiB | 537.00 KiB/s, 完成.
+处理 delta 中: 100% (31050/31050), 完成.
+检查连接... 完成。
+子模组路径 'c-deps/protobuf'：检出 '5532abc15b97f3489183b266b41844306052a3fa'
+正克隆到 'c-deps/rocksdb'...
+remote: Counting objects: 53050, done.
+remote: Compressing objects: 100% (3/3), done.
+remote: Total 53050 (delta 0), reused 0 (delta 0), pack-reused 53047
+接收对象中: 100% (53050/53050), 51.17 MiB | 1005.00 KiB/s, 完成.
+处理 delta 中: 100% (39705/39705), 完成.
+检查连接... 完成。
+子模组路径 'c-deps/rocksdb'：检出 '8c03973dfca2ff3fd3995f5e1219565a646d30be'
+正克隆到 'c-deps/snappy'...
+remote: Counting objects: 699, done.
+remote: Total 699 (delta 0), reused 0 (delta 0), pack-reused 699
+接收对象中: 100% (699/699), 2.26 MiB | 413.00 KiB/s, 完成.
+处理 delta 中: 100% (472/472), 完成.
+检查连接... 完成。
+子模组路径 'c-deps/snappy'：检出 '41e12f946060fa2d8fd105a85be81393ea4c6627'
+正克隆到 'vendor'...
+remote: Counting objects: 54818, done.
+remote: Compressing objects: 100% (506/506), done.
+remote: Total 54818 (delta 126), reused 325 (delta 51), pack-reused 54181
+接收对象中: 100% (54818/54818), 101.66 MiB | 690.00 KiB/s, 完成.
+处理 delta 中: 100% (24726/24726), 完成.
+检查连接... 完成。
+子模组路径 'vendor'：检出 '029c47e016ef0dfe34a346eac9e67987ab1de4ef'
+github.com/cockroachdb/cockroach/vendor/golang.org/x/tools/go/ast/astutil
+github.com/cockroachdb/cockroach/vendor/golang.org/x/tools/go/buildutil
+github.com/cockroachdb/cockroach/vendor/golang.org/x/tools/go/types/typeutil
+github.com/cockroachdb/cockroach/vendor/golang.org/x/tools/go/loader
+github.com/cockroachdb/cockroach/vendor/honnef.co/go/tools/ssa
+github.com/cockroachdb/cockroach/vendor/github.com/kisielk/gotool
+github.com/cockroachdb/cockroach/vendor/honnef.co/go/tools/gcsizes
+github.com/cockroachdb/cockroach/vendor/github.com/cockroachdb/returncheck
+github.com/cockroachdb/cockroach/pkg/cmd/returncheck
+github.com/cockroachdb/cockroach/vendor/github.com/go-yaml/yaml
+github.com/cockroachdb/cockroach/vendor/honnef.co/go/tools/ssa/ssautil
+github.com/cockroachdb/cockroach/vendor/honnef.co/go/tools/lint
+github.com/cockroachdb/cockroach/vendor/honnef.co/go/tools/callgraph
+github.com/cockroachdb/cockroach/vendor/honnef.co/go/tools/callgraph/static
+github.com/cockroachdb/cockroach/vendor/honnef.co/go/tools/lint/lintutil
+github.com/cockroachdb/cockroach/vendor/honnef.co/go/tools/internal/sharedcheck
+github.com/cockroachdb/cockroach/vendor/honnef.co/go/tools/simple
+github.com/cockroachdb/cockroach/vendor/honnef.co/go/tools/staticcheck/vrp
+github.com/cockroachdb/cockroach/vendor/honnef.co/go/tools/unused
+github.com/cockroachdb/cockroach/vendor/github.com/Masterminds/vcs
+github.com/cockroachdb/cockroach/vendor/honnef.co/go/tools/functions
+github.com/cockroachdb/cockroach/vendor/honnef.co/go/tools/staticcheck
+github.com/cockroachdb/cockroach/vendor/github.com/pkg/errors
+github.com/cockroachdb/cockroach/vendor/github.com/golang/dep/internal/fs
+github.com/cockroachdb/cockroach/vendor/github.com/Masterminds/semver
+github.com/cockroachdb/cockroach/vendor/github.com/armon/go-radix
+github.com/cockroachdb/cockroach/vendor/github.com/golang/dep/internal/gps/paths
+github.com/cockroachdb/cockroach/vendor/github.com/golang/dep/internal/gps/pkgtree
+github.com/cockroachdb/cockroach/pkg/cmd/metacheck
+github.com/cockroachdb/cockroach/vendor/github.com/sdboyer/constext
+github.com/cockroachdb/cockroach/vendor/github.com/golang/dep/internal/gps
+github.com/cockroachdb/cockroach/vendor/github.com/pelletier/go-buffruneio
+github.com/cockroachdb/cockroach/vendor/github.com/pelletier/go-toml
+github.com/cockroachdb/cockroach/vendor/github.com/golang/dep/internal/feedback
+github.com/cockroachdb/cockroach/vendor/github.com/client9/misspell
+github.com/cockroachdb/cockroach/vendor/github.com/golang/dep
+github.com/cockroachdb/cockroach/vendor/github.com/golang/dep/cmd/dep
+github.com/cockroachdb/cockroach/vendor/github.com/client9/misspell/cmd/misspell
+github.com/cockroachdb/cockroach/vendor/github.com/cockroachdb/crlfmt
+github.com/cockroachdb/cockroach/vendor/github.com/cockroachdb/stress
+github.com/cockroachdb/cockroach/vendor/golang.org/x/tools/go/gcimporter15
+github.com/cockroachdb/cockroach/vendor/github.com/google/pprof/internal/elfexec
+github.com/cockroachdb/cockroach/vendor/github.com/google/pprof/profile
+github.com/cockroachdb/cockroach/vendor/golang.org/x/tools/go/gcexportdata
+github.com/cockroachdb/cockroach/vendor/github.com/golang/lint
+github.com/cockroachdb/cockroach/vendor/github.com/google/pprof/internal/plugin
+github.com/cockroachdb/cockroach/vendor/github.com/golang/lint/golint
+github.com/cockroachdb/cockroach/vendor/github.com/ianlancetaylor/demangle
+github.com/cockroachdb/cockroach/vendor/github.com/google/pprof/internal/measurement
+github.com/cockroachdb/cockroach/vendor/github.com/google/pprof/internal/graph
+github.com/cockroachdb/cockroach/vendor/github.com/google/pprof/internal/binutils
+github.com/cockroachdb/cockroach/vendor/github.com/google/pprof/internal/report
+github.com/cockroachdb/cockroach/vendor/github.com/google/pprof/internal/symbolz
+github.com/cockroachdb/cockroach/vendor/github.com/google/pprof/internal/symbolizer
+github.com/cockroachdb/cockroach/vendor/github.com/google/pprof/third_party/svg
+github.com/cockroachdb/cockroach/vendor/github.com/golang/glog
+github.com/cockroachdb/cockroach/vendor/github.com/google/pprof/internal/driver
+github.com/cockroachdb/cockroach/vendor/github.com/golang/protobuf/proto
+github.com/cockroachdb/cockroach/vendor/github.com/google/pprof/driver
+github.com/cockroachdb/cockroach/vendor/github.com/google/pprof
+github.com/cockroachdb/cockroach/vendor/github.com/golang/protobuf/protoc-gen-go/descriptor
+github.com/cockroachdb/cockroach/vendor/github.com/golang/protobuf/protoc-gen-go/plugin
+github.com/cockroachdb/cockroach/vendor/github.com/golang/protobuf/protoc-gen-go/generator
+github.com/cockroachdb/cockroach/vendor/github.com/grpc-ecosystem/grpc-gateway/utilities
+github.com/cockroachdb/cockroach/vendor/github.com/grpc-ecosystem/grpc-gateway/protoc-gen-grpc-gateway/httprule
+github.com/cockroachdb/cockroach/vendor/google.golang.org/genproto/googleapis/api/annotations
+github.com/cockroachdb/cockroach/vendor/github.com/jteeuwen/go-bindata
+github.com/cockroachdb/cockroach/vendor/github.com/jteeuwen/go-bindata/go-bindata
+github.com/cockroachdb/cockroach/vendor/github.com/grpc-ecosystem/grpc-gateway/protoc-gen-grpc-gateway/descriptor
+github.com/cockroachdb/cockroach/vendor/github.com/kisielk/errcheck/internal/errcheck
+github.com/cockroachdb/cockroach/vendor/github.com/grpc-ecosystem/grpc-gateway/protoc-gen-grpc-gateway/generator
+github.com/cockroachdb/cockroach/vendor/github.com/grpc-ecosystem/grpc-gateway/protoc-gen-grpc-gateway/gengateway
+github.com/cockroachdb/cockroach/vendor/github.com/kisielk/errcheck
+github.com/cockroachdb/cockroach/vendor/github.com/grpc-ecosystem/grpc-gateway/protoc-gen-grpc-gateway
+github.com/cockroachdb/cockroach/vendor/golang.org/x/tools/cover
+github.com/cockroachdb/cockroach/vendor/github.com/mattn/goveralls
+github.com/cockroachdb/cockroach/vendor/golang.org/x/text/transform
+github.com/cockroachdb/cockroach/vendor/golang.org/x/text/width
+github.com/cockroachdb/cockroach/vendor/github.com/mdempsky/unconvert
+github.com/cockroachdb/cockroach/vendor/github.com/mibk/dupl/suffixtree
+github.com/cockroachdb/cockroach/vendor/github.com/mibk/dupl/syntax
+github.com/cockroachdb/cockroach/vendor/github.com/mibk/dupl/syntax/golang
+github.com/cockroachdb/cockroach/vendor/github.com/mibk/dupl/job
+github.com/cockroachdb/cockroach/vendor/github.com/mibk/dupl/output
+github.com/cockroachdb/cockroach/vendor/github.com/wadey/gocovmerge
+github.com/cockroachdb/cockroach/vendor/github.com/mibk/dupl
+github.com/cockroachdb/cockroach/vendor/golang.org/x/perf/internal/stats
+github.com/cockroachdb/cockroach/vendor/golang.org/x/perf/storage/benchfmt
+github.com/cockroachdb/cockroach/vendor/golang.org/x/tools/imports
+github.com/cockroachdb/cockroach/vendor/golang.org/x/perf/benchstat
+github.com/cockroachdb/cockroach/vendor/golang.org/x/perf/cmd/benchstat
+github.com/cockroachdb/cockroach/vendor/golang.org/x/tools/cmd/goimports
+github.com/cockroachdb/cockroach/vendor/golang.org/x/tools/cmd/goyacc
+github.com/cockroachdb/cockroach/vendor/golang.org/x/tools/cmd/stringer
+touch /Users/fanhongling/go/src/github.com/cockroachdb/cockroach/bin/.bootstrap
+cd /Users/fanhongling/go/src/github.com/cockroachdb/cockroach/c-deps/jemalloc && autoconf
+rm -rf /Users/fanhongling/go/native/x86_64-redhat-linux/protobuf
+mkdir -p /Users/fanhongling/go/native/x86_64-redhat-linux/protobuf
+mkdir: 无法创建目录"/Users/fanhongling/go/native": 权限不够
+build/common.mk:365: recipe for target '/Users/fanhongling/go/native/x86_64-redhat-linux/protobuf/Makefile' failed
+make: *** [/Users/fanhongling/go/native/x86_64-redhat-linux/protobuf/Makefile] Error 1
+make: *** 正在等待未完成的任务....
+
+
+
+[vagrant@bogon cockroach]$ sudo mkdir /Users/fanhongling/go/native
+[vagrant@bogon cockroach]$ sudo chown vagrant: /Users/fanhongling/go/native
+
+
+[vagrant@bogon cockroach]$ make build
+GOPATH set to /Users/fanhongling/go
+Running make with -j2
+GEN pkg/cli/zcgo_flags.go
+GEN pkg/server/status/zcgo_flags.go
+GEN pkg/storage/engine/zcgo_flags.go
+GEN pkg/ccl/storageccl/engineccl/zcgo_flags.go
+rm -rf /Users/fanhongling/go/native/x86_64-redhat-linux/jemalloc
+mkdir -p /Users/fanhongling/go/native/x86_64-redhat-linux/jemalloc
+fatal: 没有发现名称，无法描述任何东西。
+rm -rf /Users/fanhongling/go/native/x86_64-redhat-linux/protobuf
+mkdir -p /Users/fanhongling/go/native/x86_64-redhat-linux/protobuf
+cd /Users/fanhongling/go/native/x86_64-redhat-linux/jemalloc && /Users/fanhongling/go/src/github.com/cockroachdb/cockroach/c-deps/jemalloc/configure  --enable-prof
+cd /Users/fanhongling/go/native/x86_64-redhat-linux/protobuf && cmake  -Dprotobuf_BUILD_TESTS=OFF /Users/fanhongling/go/src/github.com/cockroachdb/cockroach/c-deps/protobuf/cmake
+-- The C compiler identification is GNU 5.3.1
+checking for xsltproc... /bin/xsltproc
+checking for gcc... gcc
+checking whether the C compiler works... yes
+checking for C compiler default output file name... a.out
+checking for suffix of executables... 
+checking whether we are cross compiling... -- The CXX compiler identification is GNU 5.3.1
+-- Check for working C compiler: /bin/cc
+no
+checking for suffix of object files... -- Check for working C compiler: /bin/cc -- works
+-- Detecting C compiler ABI info
+o
+checking whether we are using the GNU C compiler... yes
+checking whether gcc accepts -g... yes
+checking for gcc option to accept ISO C89... -- Detecting C compiler ABI info - done
+none needed
+checking whether compiler is cray... -- Detecting C compile features
+no
+checking whether compiler supports -std=gnu11... yes
+checking whether compiler supports -Wall... yes
+checking whether compiler supports -Werror=declaration-after-statement... yes
+checking whether compiler supports -Wshorten-64-to-32... no
+checking whether compiler supports -Wsign-compare... yes
+checking whether compiler supports -pipe... yes
+checking whether compiler supports -g3... yes
+checking how to run the C preprocessor... gcc -E
+-- Detecting C compile features - done
+-- Check for working CXX compiler: /bin/c++
+checking for grep that handles long lines and -e... /bin/grep
+checking for egrep... /bin/grep -E
+checking for ANSI C header files... -- Check for working CXX compiler: /bin/c++ -- works
+-- Detecting CXX compiler ABI info
+yes
+checking for sys/types.h... yes
+checking for sys/stat.h... yes
+-- Detecting CXX compiler ABI info - done
+checking for stdlib.h... -- Detecting CXX compile features
+yes
+checking for string.h... yes
+checking for memory.h... yes
+checking for strings.h... yes
+checking for inttypes.h... yes
+checking for stdint.h... yes
+checking for unistd.h... yes
+checking whether byte ordering is bigendian... no
+checking size of void *... -- Detecting CXX compile features - done
+-- Looking for pthread.h
+8
+checking size of int... -- Looking for pthread.h - found
+-- Looking for pthread_create
+4
+checking size of long... -- Looking for pthread_create - not found
+-- Looking for pthread_create in pthreads
+8
+checking size of long long... -- Looking for pthread_create in pthreads - not found
+-- Looking for pthread_create in pthread
+8
+checking size of intmax_t... 8
+-- Looking for pthread_create in pthread - found
+-- Found Threads: TRUE  
+checking build system type... x86_64-pc-linux-gnu
+checking host system type... x86_64-pc-linux-gnu
+checking whether pause instruction is compilable... -- Found ZLIB: /lib64/libz.so (found version "1.2.8") 
+yes
+checking for ar... ar
+checking malloc.h usability... yes
+checking malloc.h presence... yes
+checking for malloc.h... yes
+checking whether malloc_usable_size definition can use const argument... no
+checking for library containing log... -lm
+checking whether __attribute__ syntax is compilable... -- Configuring done
+yes
+checking whether compiler supports -fvisibility=hidden... yes
+checking whether compiler supports -Werror... yes
+checking whether compiler supports -herror_on_warning... no
+checking whether tls_model attribute is compilable... yes
+checking whether compiler supports -Werror... yes
+checking whether compiler supports -herror_on_warning... no
+checking whether alloc_size attribute is compilable... -- Generating done
+-- Build files have been written to: /Users/fanhongling/go/native/x86_64-redhat-linux/protobuf
+rm -rf /Users/fanhongling/go/native/x86_64-redhat-linux/snappy
+mkdir -p /Users/fanhongling/go/native/x86_64-redhat-linux/snappy
+cd /Users/fanhongling/go/native/x86_64-redhat-linux/snappy && cmake  /Users/fanhongling/go/src/github.com/cockroachdb/cockroach/c-deps/snappy
+yes
+checking whether compiler supports -Werror... yes
+checking whether compiler supports -herror_on_warning... no
+checking whether format(gnu_printf, ...) attribute is compilable... -- The C compiler identification is GNU 5.3.1
+yes
+checking whether compiler supports -Werror... yes
+checking whether compiler supports -herror_on_warning... no
+-- The CXX compiler identification is GNU 5.3.1
+checking whether format(printf, ...) attribute is compilable... -- Check for working C compiler: /bin/cc
+yes
+checking for a BSD-compatible install... -- Check for working C compiler: /bin/cc -- works
+/bin/install -c
+checking for ranlib... -- Detecting C compiler ABI info
+ranlib
+checking for ld... /bin/ld
+checking for autoconf... /bin/autoconf
+checking for memalign... -- Detecting C compiler ABI info - done
+-- Detecting C compile features
+yes
+checking for valloc... yes
+checking whether compiler supports -O3... yes
+checking whether compiler supports -funroll-loops... yes
+checking unwind.h usability... yes
+checking unwind.h presence... yes
+checking for unwind.h... yes
+checking for _Unwind_Backtrace in -lgcc... yes
+checking configured backtracing method... libgcc
+checking for sbrk... -- Detecting C compile features - done
+-- Check for working CXX compiler: /bin/c++
+yes
+checking whether utrace(2) is compilable... no
+checking whether valgrind is compilable... no
+checking whether a program using __builtin_unreachable is compilable... yes
+checking whether a program using __builtin_ffsl is compilable... -- Check for working CXX compiler: /bin/c++ -- works
+-- Detecting CXX compiler ABI info
+yes
+checking LG_PAGE... -- Detecting CXX compiler ABI info - done
+-- Detecting CXX compile features
+12
+Missing VERSION file, and unable to generate it; creating bogus VERSION
+checking pthread.h usability... yes
+checking pthread.h presence... yes
+checking for pthread.h... yes
+checking for pthread_create in -lpthread... yes
+checking whether pthread_atfork(3) is compilable... yes
+checking for library containing clock_gettime... none required
+checking whether clock_gettime(CLOCK_MONOTONIC_COARSE, ...) is compilable... yes
+checking whether clock_gettime(CLOCK_MONOTONIC, ...) is compilable... -- Detecting CXX compile features - done
+-- Check if the system is big endian
+-- Searching 16 bit integer
+-- Looking for sys/types.h
+yes
+checking whether mach_absolute_time() is compilable... no
+checking whether compiler supports -Werror... yes
+checking whether syscall(2) is compilable... -- Looking for sys/types.h - found
+-- Looking for stdint.h
+yes
+checking for secure_getenv... -- Looking for stdint.h - found
+-- Looking for stddef.h
+yes
+checking for issetugid... -- Looking for stddef.h - found
+-- Check size of unsigned short
+no
+checking for _malloc_thread_cleanup... no
+checking for _pthread_mutex_init_calloc_cb... -- Check size of unsigned short - done
+-- Using unsigned short
+no
+checking for TLS... -- Check if the system is big endian - little endian
+yes
+-- Looking for include file byteswap.h
+checking whether C11 atomics is compilable... yes
+checking whether atomic(9) is compilable... no
+checking whether Darwin OSAtomic*() is compilable... -- Looking for include file byteswap.h - found
+-- Looking for include file dlfcn.h
+no
+checking whether madvise(2) is compilable... yes
+checking whether madvise(..., MADV_FREE) is compilable... -- Looking for include file dlfcn.h - found
+-- Looking for include file inttypes.h
+no
+checking whether madvise(..., MADV_DONTNEED) is compilable... yes
+checking whether madvise(..., MADV_[NO]HUGEPAGE) is compilable... -- Looking for include file inttypes.h - found
+-- Looking for include file memory.h
+yes
+checking whether to force 32-bit __sync_{add,sub}_and_fetch()... -- Looking for include file memory.h - found
+-- Looking for include file stdlib.h
+no
+checking whether to force 64-bit __sync_{add,sub}_and_fetch()... no
+checking for __builtin_clz... -- Looking for include file stdlib.h - found
+-- Looking for include file strings.h
+yes
+checking whether Darwin os_unfair_lock_*() is compilable... no
+checking whether Darwin OSSpin*() is compilable... no
+checking whether glibc malloc hook is compilable... -- Looking for include file strings.h - found
+-- Looking for include file string.h
+yes
+checking whether glibc memalign hook is compilable... -- Looking for include file string.h - found
+-- Looking for include file sys/byteswap.h
+yes
+checking whether pthreads adaptive mutexes is compilable... -- Looking for include file sys/byteswap.h - not found
+-- Looking for include file sys/endian.h
+-- Looking for include file sys/endian.h - not found
+-- Looking for include file sys/mman.h
+yes
+checking for stdbool.h that conforms to C99... yes
+checking for _Bool... -- Looking for include file sys/mman.h - found
+-- Looking for include file sys/resource.h
+yes
+configure: creating ./config.status
+-- Looking for include file sys/resource.h - found
+-- Looking for include file sys/stat.h
+-- Looking for include file sys/stat.h - found
+-- Looking for include file sys/time.h
+config.status: creating Makefile
+config.status: creating jemalloc.pc
+config.status: creating doc/html.xsl
+-- Looking for include file sys/time.h - found
+-- Looking for include file sys/uio.h
+config.status: creating doc/manpages.xsl
+config.status: creating doc/jemalloc.xml
+-- Looking for include file sys/uio.h - found
+-- Looking for include file unistd.h
+config.status: creating include/jemalloc/jemalloc_macros.h
+config.status: creating include/jemalloc/jemalloc_protos.h
+config.status: creating include/jemalloc/jemalloc_typedefs.h
+config.status: creating include/jemalloc/internal/jemalloc_internal.h
+-- Looking for include file unistd.h - found
+-- Looking for include file windows.h
+config.status: creating test/test.sh
+-- Looking for include file windows.h - not found
+-- Looking for zlibVersion in z
+config.status: creating test/include/test/jemalloc_test.h
+config.status: creating config.stamp
+config.status: creating bin/jemalloc-config
+-- Looking for zlibVersion in z - found
+-- Looking for lzo1x_1_15_compress in lzo2
+config.status: creating bin/jemalloc.sh
+config.status: creating bin/jeprof
+-- Looking for lzo1x_1_15_compress in lzo2 - not found
+-- Performing Test HAVE_BUILTIN_EXPECT
+config.status: creating include/jemalloc/jemalloc_defs.h
+config.status: creating include/jemalloc/internal/jemalloc_internal_defs.h
+config.status: creating test/include/test/jemalloc_test_defs.h
+config.status: executing include/jemalloc/internal/private_namespace.h commands
+config.status: executing include/jemalloc/internal/private_unnamespace.h commands
+-- Performing Test HAVE_BUILTIN_EXPECT - Success
+-- Performing Test HAVE_BUILTIN_CTZ
+config.status: executing include/jemalloc/internal/public_symbols.txt commands
+config.status: executing include/jemalloc/internal/public_namespace.h commands
+-- Performing Test HAVE_BUILTIN_CTZ - Success
+config.status: executing include/jemalloc/internal/public_unnamespace.h commands
+config.status: executing include/jemalloc/internal/size_classes.h commands
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /Users/fanhongling/go/native/x86_64-redhat-linux/snappy
+rm -rf /Users/fanhongling/go/native/x86_64-redhat-linux/libroach
+mkdir -p /Users/fanhongling/go/native/x86_64-redhat-linux/libroach
+cd /Users/fanhongling/go/native/x86_64-redhat-linux/libroach && cmake  /Users/fanhongling/go/src/github.com/cockroachdb/cockroach/c-deps/libroach -DCMAKE_BUILD_TYPE=Release
+config.status: executing include/jemalloc/jemalloc_protos_jet.h commands
+-- The C compiler identification is GNU 5.3.1
+config.status: executing include/jemalloc/jemalloc_rename.h commands
+-- The CXX compiler identification is GNU 5.3.1
+-- Check for working C compiler: /bin/cc
+-- Check for working C compiler: /bin/cc -- works
+-- Detecting C compiler ABI info
+config.status: executing include/jemalloc/jemalloc_mangle.h commands
+-- Detecting C compiler ABI info - done
+-- Detecting C compile features
+config.status: executing include/jemalloc/jemalloc_mangle_jet.h commands
+-- Detecting C compile features - done
+-- Check for working CXX compiler: /bin/c++
+config.status: executing include/jemalloc/jemalloc.h commands
+-- Check for working CXX compiler: /bin/c++ -- works
+-- Detecting CXX compiler ABI info
+===============================================================================
+jemalloc version   : 0.0.0-0-g0000000000000000000000000000000000000000
+library revision   : 2
+
+CONFIG             : --enable-prof
+CC                 : gcc
+CONFIGURE_CFLAGS   : -std=gnu11 -Wall -Werror=declaration-after-statement -Wsign-compare -pipe -g3 -fvisibility=hidden -O3 -funroll-loops
+SPECIFIED_CFLAGS   : 
+EXTRA_CFLAGS       : 
+CPPFLAGS           : -D_GNU_SOURCE -D_REENTRANT
+LDFLAGS            : 
+EXTRA_LDFLAGS      : 
+LIBS               : -lm  -lgcc -lm -lpthread
+RPATH_EXTRA        : 
+
+XSLTPROC           : /bin/xsltproc
+XSLROOT            : 
+
+PREFIX             : /usr/local
+BINDIR             : /usr/local/bin
+DATADIR            : /usr/local/share
+INCLUDEDIR         : /usr/local/include
+LIBDIR             : /usr/local/lib
+MANDIR             : /usr/local/share/man
+
+srcroot            : /Users/fanhongling/go/src/github.com/cockroachdb/cockroach/c-deps/jemalloc/
+abs_srcroot        : /Users/fanhongling/go/src/github.com/cockroachdb/cockroach/c-deps/jemalloc/
+objroot            : 
+abs_objroot        : /Users/fanhongling/go/native/x86_64-redhat-linux/jemalloc/
+
+JEMALLOC_PREFIX    : 
+JEMALLOC_PRIVATE_NAMESPACE
+                   : je_
+install_suffix     : 
+malloc_conf        : 
+autogen            : 0
+cc-silence         : 1
+debug              : 0
+code-coverage      : 0
+stats              : 1
+prof               : 1
+prof-libunwind     : 0
+prof-libgcc        : 1
+prof-gcc           : 0
+tcache             : 1
+thp                : 1
+fill               : 1
+utrace             : 0
+valgrind           : 0
+xmalloc            : 0
+munmap             : 0
+lazy_lock          : 0
+tls                : 1
+cache-oblivious    : 1
+===============================================================================
+gcc -std=gnu11 -Wall -Werror=declaration-after-statement -Wsign-compare -pipe -g3 -fvisibility=hidden -O3 -funroll-loops -c -D_GNU_SOURCE -D_REENTRANT -I/Users/fanhongling/go/src/github.com/cockroachdb/cockroach/c-deps/jemalloc/include -Iinclude -o src/jemalloc.o /Users/fanhongling/go/src/github.com/cockroachdb/cockroach/c-deps/jemalloc/src/jemalloc.c
+-- Detecting CXX compiler ABI info - done
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /Users/fanhongling/go/native/x86_64-redhat-linux/libroach
+Scanning dependencies of target libprotobuf
+[  2%] Building CXX object CMakeFiles/libprotobuf.dir/Users/fanhongling/go/src/github.com/cockroachdb/cockroach/c-deps/protobuf/src/google/protobuf/arena.cc.o
+[  2%] Building CXX object CMakeFiles/libprotobuf.dir/Users/fanhongling/go/src/github.com/cockroachdb/cockroach/c-deps/protobuf/src/google/protobuf/arenastring.cc.o
+[  5%] Building CXX object CMakeFiles/libprotobuf.dir/Users/fanhongling/go/src/github.com/cockroachdb/cockroach/c-deps/protobuf/src/google/protobuf/extension_set.cc.o
+gcc -std=gnu11 -Wall -Werror=declaration-after-statement -Wsign-compare -pipe -g3 -fvisibility=hidden -O3 -funroll-loops -c -D_GNU_SOURCE -D_REENTRANT -I/Users/fanhongling/go/src/github.com/cockroachdb/cockroach/c-deps/jemalloc/include -Iinclude -o src/arena.o /Users/fanhongling/go/src/github.com/cockroachdb/cockroach/c-deps/jemalloc/src/arena.c
+[  5%] Building CXX object CMakeFiles/libprotobuf.dir/Users/fanhongling/go/src/github.com/cockroachdb/cockroach/c-deps/protobuf/src/google/protobuf/generated_message_util.cc.o
+[  7%] Building CXX object CMakeFiles/libprotobuf.dir/Users/fanhongling/go/src/github.com/cockroachdb/cockroach/c-deps/protobuf/src/google/protobuf/io/coded_stream.cc.o
+[  7%] Building CXX object CMakeFiles/libprotobuf.dir/Users/fanhongling/go/src/github.com/cockroachdb/cockroach/c-deps/protobuf/src/google/protobuf/io/zero_copy_stream.cc.o
+[ 10%] Building CXX object CMakeFiles/libprotobuf.dir/Users/fanhongling/go/src/github.com/cockroachdb/cockroach/c-deps/protobuf/src/google/protobuf/io/zero_copy_stream_impl_lite.cc.o
+[ 10%] Building CXX object CMakeFiles/libprotobuf.dir/Users/fanhongling/go/src/github.com/cockroachdb/cockroach/c-deps/protobuf/src/google/protobuf/message_lite.cc.o
+[ 12%] Building CXX object CMakeFiles/libprotobuf.dir/Users/fanhongling/go/src/github.com/cockroachdb/cockroach/c-deps/protobuf/src/google/protobuf/repeated_field.cc.o
+[ 12%] Building CXX object CMakeFiles/libprotobuf.dir/Users/fanhongling/go/src/github.com/cockroachdb/cockroach/c-deps/protobuf/src/google/protobuf/stubs/atomicops_internals_x86_gcc.cc.o
+[ 15%] Building CXX object CMakeFiles/libprotobuf.dir/Users/fanhongling/go/src/github.com/cockroachdb/cockroach/c-deps/protobuf/src/google/protobuf/stubs/atomicops_internals_x86_msvc.cc.o
+[ 15%] Building CXX object CMakeFiles/libprotobuf.dir/Users/fanhongling/go/src/github.com/cockroachdb/cockroach/c-deps/protobuf/src/google/protobuf/stubs/bytestream.cc.o
+gcc -std=gnu11 -Wall -Werror=declaration-after-statement -Wsign-compare -pipe -g3 -fvisibility=hidden -O3 -funroll-loops -c -D_GNU_SOURCE -D_REENTRANT -I/Users/fanhongling/go/src/github.com/cockroachdb/cockroach/c-deps/jemalloc/include -Iinclude -o src/atomic.o /Users/fanhongling/go/src/github.com/cockroachdb/cockroach/c-deps/jemalloc/src/atomic.c
+[ 17%] Building CXX object CMakeFiles/libprotobuf.dir/Users/fanhongling/go/src/github.com/cockroachdb/cockroach/c-deps/protobuf/src/google/protobuf/stubs/common.cc.o
+[ 17%] Building CXX object CMakeFiles/libprotobuf.dir/Users/fanhongling/go/src/github.com/cockroachdb/cockroach/c-deps/protobuf/src/google/protobuf/stubs/int128.cc.o
+gcc -std=gnu11 -Wall -Werror=declaration-after-statement -Wsign-compare -pipe -g3 -fvisibility=hidden -O3 -funroll-loops -c -D_GNU_SOURCE -D_REENTRANT -I/Users/fanhongling/go/src/github.com/cockroachdb/cockroach/c-deps/jemalloc/include -Iinclude -o src/base.o /Users/fanhongling/go/src/github.com/cockroachdb/cockroach/c-deps/jemalloc/src/base.c
+[ 20%] Building CXX object CMakeFiles/libprotobuf.dir/Users/fanhongling/go/src/github.com/cockroachdb/cockroach/c-deps/protobuf/src/google/protobuf/stubs/once.cc.o
+[ 20%] Building CXX object CMakeFiles/libprotobuf.dir/Users/fanhongling/go/src/github.com/cockroachdb/cockroach/c-deps/protobuf/src/google/protobuf/stubs/status.cc.o
+gcc -std=gnu11 -Wall -Werror=declaration-after-statement -Wsign-compare -pipe -g3 -fvisibility=hidden -O3 -funroll-loops -c -D_GNU_SOURCE -D_REENTRANT -I/Users/fanhongling/go/src/github.com/cockroachdb/cockroach/c-deps/jemalloc/include -Iinclude -o src/bitmap.o /Users/fanhongling/go/src/github.com/cockroachdb/cockroach/c-deps/jemalloc/src/bitmap.c
+[ 23%] Building CXX object CMakeFiles/libprotobuf.dir/Users/fanhongling/go/src/github.com/cockroachdb/cockroach/c-deps/protobuf/src/google/protobuf/stubs/statusor.cc.o
+[ 23%] Building CXX object CMakeFiles/libprotobuf.dir/Users/fanhongling/go/src/github.com/cockroachdb/cockroach/c-deps/protobuf/src/google/protobuf/stubs/stringpiece.cc.o
+gcc -std=gnu11 -Wall -Werror=declaration-after-statement -Wsign-compare -pipe -g3 -fvisibility=hidden -O3 -funroll-loops -c -D_GNU_SOURCE -D_REENTRANT -I/Users/fanhongling/go/src/github.com/cockroachdb/cockroach/c-deps/jemalloc/include -Iinclude -o src/chunk.o /Users/fanhongling/go/src/github.com/cockroachdb/cockroach/c-deps/jemalloc/src/chunk.c
+[ 25%] Building CXX object CMakeFiles/libprotobuf.dir/Users/fanhongling/go/src/github.com/cockroachdb/cockroach/c-deps/protobuf/src/google/protobuf/stubs/stringprintf.cc.o
+[ 25%] Building CXX object CMakeFiles/libprotobuf.dir/Users/fanhongling/go/src/github.com/cockroachdb/cockroach/c-deps/protobuf/src/google/protobuf/stubs/structurally_valid.cc.o
+[ 28%] Building CXX object CMakeFiles/libprotobuf.dir/Users/fanhongling/go/src/github.com/cockroachdb/cockroach/c-deps/protobuf/src/google/protobuf/stubs/strutil.cc.o
+gcc -std=gnu11 -Wall -Werror=declaration-after-statement -Wsign-compare -pipe -g3 -fvisibility=hidden -O3 -funroll-loops -c -D_GNU_SOURCE -D_REENTRANT -I/Users/fanhongling/go/src/github.com/cockroachdb/cockroach/c-deps/jemalloc/include -Iinclude -o src/chunk_dss.o /Users/fanhongling/go/src/github.com/cockroachdb/cockroach/c-deps/jemalloc/src/chunk_dss.c
+[ 28%] Building CXX object CMakeFiles/libprotobuf.dir/Users/fanhongling/go/src/github.com/cockroachdb/cockroach/c-deps/protobuf/src/google/protobuf/stubs/time.cc.o
+gcc -std=gnu11 -Wall -Werror=declaration-after-statement -Wsign-compare -pipe -g3 -fvisibility=hidden -O3 -funroll-loops -c -D_GNU_SOURCE -D_REENTRANT -I/Users/fanhongling/go/src/github.com/cockroachdb/cockroach/c-deps/jemalloc/include -Iinclude -o src/chunk_mmap.o /Users/fanhongling/go/src/github.com/cockroachdb/cockroach/c-deps/jemalloc/src/chunk_mmap.c
+[ 30%] Building CXX object CMakeFiles/libprotobuf.dir/Users/fanhongling/go/src/github.com/cockroachdb/cockroach/c-deps/protobuf/src/google/protobuf/wire_format_lite.cc.o
+gcc -std=gnu11 -Wall -Werror=declaration-after-statement -Wsign-compare -pipe -g3 -fvisibility=hidden -O3 -funroll-loops -c -D_GNU_SOURCE -D_REENTRANT -I/Users/fanhongling/go/src/github.com/cockroachdb/cockroach/c-deps/jemalloc/include -Iinclude -o src/ckh.o /Users/fanhongling/go/src/github.com/cockroachdb/cockroach/c-deps/jemalloc/src/ckh.c
+[ 30%] Building CXX object CMakeFiles/libprotobuf.dir/Users/fanhongling/go/src/github.com/cockroachdb/cockroach/c-deps/protobuf/src/google/protobuf/any.cc.o
+[ 33%] Building CXX object CMakeFiles/libprotobuf.dir/Users/fanhongling/go/src/github.com/cockroachdb/cockroach/c-deps/protobuf/src/google/protobuf/any.pb.cc.o
+gcc -std=gnu11 -Wall -Werror=declaration-after-statement -Wsign-compare -pipe -g3 -fvisibility=hidden -O3 -funroll-loops -c -D_GNU_SOURCE -D_REENTRANT -I/Users/fanhongling/go/src/github.com/cockroachdb/cockroach/c-deps/jemalloc/include -Iinclude -o src/ctl.o /Users/fanhongling/go/src/github.com/cockroachdb/cockroach/c-deps/jemalloc/src/ctl.c
+[ 33%] Building CXX object CMakeFiles/libprotobuf.dir/Users/fanhongling/go/src/github.com/cockroachdb/cockroach/c-deps/protobuf/src/google/protobuf/api.pb.cc.o
+[ 35%] Building CXX object CMakeFiles/libprotobuf.dir/Users/fanhongling/go/src/github.com/cockroachdb/cockroach/c-deps/protobuf/src/google/protobuf/compiler/importer.cc.o
+[ 35%] Building CXX object CMakeFiles/libprotobuf.dir/Users/fanhongling/go/src/github.com/cockroachdb/cockroach/c-deps/protobuf/src/google/protobuf/compiler/parser.cc.o
+gcc -std=gnu11 -Wall -Werror=declaration-after-statement -Wsign-compare -pipe -g3 -fvisibility=hidden -O3 -funroll-loops -c -D_GNU_SOURCE -D_REENTRANT -I/Users/fanhongling/go/src/github.com/cockroachdb/cockroach/c-deps/jemalloc/include -Iinclude -o src/extent.o /Users/fanhongling/go/src/github.com/cockroachdb/cockroach/c-deps/jemalloc/src/extent.c
+[ 38%] Building CXX object CMakeFiles/libprotobuf.dir/Users/fanhongling/go/src/github.com/cockroachdb/cockroach/c-deps/protobuf/src/google/protobuf/descriptor.cc.o
+gcc -std=gnu11 -Wall -Werror=declaration-after-statement -Wsign-compare -pipe -g3 -fvisibility=hidden -O3 -funroll-loops -c -D_GNU_SOURCE -D_REENTRANT -I/Users/fanhongling/go/src/github.com/cockroachdb/cockroach/c-deps/jemalloc/include -Iinclude -o src/hash.o /Users/fanhongling/go/src/github.com/cockroachdb/cockroach/c-deps/jemalloc/src/hash.c
+gcc -std=gnu11 -Wall -Werror=declaration-after-statement -Wsign-compare -pipe -g3 -fvisibility=hidden -O3 -funroll-loops -c -D_GNU_SOURCE -D_REENTRANT -I/Users/fanhongling/go/src/github.com/cockroachdb/cockroach/c-deps/jemalloc/include -Iinclude -o src/huge.o /Users/fanhongling/go/src/github.com/cockroachdb/cockroach/c-deps/jemalloc/src/huge.c
+gcc -std=gnu11 -Wall -Werror=declaration-after-statement -Wsign-compare -pipe -g3 -fvisibility=hidden -O3 -funroll-loops -c -D_GNU_SOURCE -D_REENTRANT -I/Users/fanhongling/go/src/github.com/cockroachdb/cockroach/c-deps/jemalloc/include -Iinclude -o src/mb.o /Users/fanhongling/go/src/github.com/cockroachdb/cockroach/c-deps/jemalloc/src/mb.c
+gcc -std=gnu11 -Wall -Werror=declaration-after-statement -Wsign-compare -pipe -g3 -fvisibility=hidden -O3 -funroll-loops -c -D_GNU_SOURCE -D_REENTRANT -I/Users/fanhongling/go/src/github.com/cockroachdb/cockroach/c-deps/jemalloc/include -Iinclude -o src/mutex.o /Users/fanhongling/go/src/github.com/cockroachdb/cockroach/c-deps/jemalloc/src/mutex.c
+gcc -std=gnu11 -Wall -Werror=declaration-after-statement -Wsign-compare -pipe -g3 -fvisibility=hidden -O3 -funroll-loops -c -D_GNU_SOURCE -D_REENTRANT -I/Users/fanhongling/go/src/github.com/cockroachdb/cockroach/c-deps/jemalloc/include -Iinclude -o src/nstime.o /Users/fanhongling/go/src/github.com/cockroachdb/cockroach/c-deps/jemalloc/src/nstime.c
+gcc -std=gnu11 -Wall -Werror=declaration-after-statement -Wsign-compare -pipe -g3 -fvisibility=hidden -O3 -funroll-loops -c -D_GNU_SOURCE -D_REENTRANT -I/Users/fanhongling/go/src/github.com/cockroachdb/cockroach/c-deps/jemalloc/include -Iinclude -o src/pages.o /Users/fanhongling/go/src/github.com/cockroachdb/cockroach/c-deps/jemalloc/src/pages.c
+[ 38%] Building CXX object CMakeFiles/libprotobuf.dir/Users/fanhongling/go/src/github.com/cockroachdb/cockroach/c-deps/protobuf/src/google/protobuf/descriptor.pb.cc.o
+gcc -std=gnu11 -Wall -Werror=declaration-after-statement -Wsign-compare -pipe -g3 -fvisibility=hidden -O3 -funroll-loops -c -D_GNU_SOURCE -D_REENTRANT -I/Users/fanhongling/go/src/github.com/cockroachdb/cockroach/c-deps/jemalloc/include -Iinclude -o src/prng.o /Users/fanhongling/go/src/github.com/cockroachdb/cockroach/c-deps/jemalloc/src/prng.c
+gcc -std=gnu11 -Wall -Werror=declaration-after-statement -Wsign-compare -pipe -g3 -fvisibility=hidden -O3 -funroll-loops -c -D_GNU_SOURCE -D_REENTRANT -I/Users/fanhongling/go/src/github.com/cockroachdb/cockroach/c-deps/jemalloc/include -Iinclude -o src/prof.o /Users/fanhongling/go/src/github.com/cockroachdb/cockroach/c-deps/jemalloc/src/prof.c
+[ 41%] Building CXX object CMakeFiles/libprotobuf.dir/Users/fanhongling/go/src/github.com/cockroachdb/cockroach/c-deps/protobuf/src/google/protobuf/descriptor_database.cc.o
+gcc -std=gnu11 -Wall -Werror=declaration-after-statement -Wsign-compare -pipe -g3 -fvisibility=hidden -O3 -funroll-loops -c -D_GNU_SOURCE -D_REENTRANT -I/Users/fanhongling/go/src/github.com/cockroachdb/cockroach/c-deps/jemalloc/include -Iinclude -o src/quarantine.o /Users/fanhongling/go/src/github.com/cockroachdb/cockroach/c-deps/jemalloc/src/quarantine.c
+gcc -std=gnu11 -Wall -Werror=declaration-after-statement -Wsign-compare -pipe -g3 -fvisibility=hidden -O3 -funroll-loops -c -D_GNU_SOURCE -D_REENTRANT -I/Users/fanhongling/go/src/github.com/cockroachdb/cockroach/c-deps/jemalloc/include -Iinclude -o src/rtree.o /Users/fanhongling/go/src/github.com/cockroachdb/cockroach/c-deps/jemalloc/src/rtree.c
+[ 41%] Building CXX object CMakeFiles/libprotobuf.dir/Users/fanhongling/go/src/github.com/cockroachdb/cockroach/c-deps/protobuf/src/google/protobuf/duration.pb.cc.o
+gcc -std=gnu11 -Wall -Werror=declaration-after-statement -Wsign-compare -pipe -g3 -fvisibility=hidden -O3 -funroll-loops -c -D_GNU_SOURCE -D_REENTRANT -I/Users/fanhongling/go/src/github.com/cockroachdb/cockroach/c-deps/jemalloc/include -Iinclude -o src/stats.o /Users/fanhongling/go/src/github.com/cockroachdb/cockroach/c-deps/jemalloc/src/stats.c
+[ 43%] Building CXX object CMakeFiles/libprotobuf.dir/Users/fanhongling/go/src/github.com/cockroachdb/cockroach/c-deps/protobuf/src/google/protobuf/dynamic_message.cc.o
+gcc -std=gnu11 -Wall -Werror=declaration-after-statement -Wsign-compare -pipe -g3 -fvisibility=hidden -O3 -funroll-loops -c -D_GNU_SOURCE -D_REENTRANT -I/Users/fanhongling/go/src/github.com/cockroachdb/cockroach/c-deps/jemalloc/include -Iinclude -o src/spin.o /Users/fanhongling/go/src/github.com/cockroachdb/cockroach/c-deps/jemalloc/src/spin.c
+gcc -std=gnu11 -Wall -Werror=declaration-after-statement -Wsign-compare -pipe -g3 -fvisibility=hidden -O3 -funroll-loops -c -D_GNU_SOURCE -D_REENTRANT -I/Users/fanhongling/go/src/github.com/cockroachdb/cockroach/c-deps/jemalloc/include -Iinclude -o src/tcache.o /Users/fanhongling/go/src/github.com/cockroachdb/cockroach/c-deps/jemalloc/src/tcache.c
+[ 43%] Building CXX object CMakeFiles/libprotobuf.dir/Users/fanhongling/go/src/github.com/cockroachdb/cockroach/c-deps/protobuf/src/google/protobuf/empty.pb.cc.o
+[ 46%] Building CXX object CMakeFiles/libprotobuf.dir/Users/fanhongling/go/src/github.com/cockroachdb/cockroach/c-deps/protobuf/src/google/protobuf/extension_set_heavy.cc.o
+gcc -std=gnu11 -Wall -Werror=declaration-after-statement -Wsign-compare -pipe -g3 -fvisibility=hidden -O3 -funroll-loops -c -D_GNU_SOURCE -D_REENTRANT -I/Users/fanhongling/go/src/github.com/cockroachdb/cockroach/c-deps/jemalloc/include -Iinclude -o src/ticker.o /Users/fanhongling/go/src/github.com/cockroachdb/cockroach/c-deps/jemalloc/src/ticker.c
+gcc -std=gnu11 -Wall -Werror=declaration-after-statement -Wsign-compare -pipe -g3 -fvisibility=hidden -O3 -funroll-loops -c -D_GNU_SOURCE -D_REENTRANT -I/Users/fanhongling/go/src/github.com/cockroachdb/cockroach/c-deps/jemalloc/include -Iinclude -o src/tsd.o /Users/fanhongling/go/src/github.com/cockroachdb/cockroach/c-deps/jemalloc/src/tsd.c
+[ 46%] Building CXX object CMakeFiles/libprotobuf.dir/Users/fanhongling/go/src/github.com/cockroachdb/cockroach/c-deps/protobuf/src/google/protobuf/field_mask.pb.cc.o
+gcc -std=gnu11 -Wall -Werror=declaration-after-statement -Wsign-compare -pipe -g3 -fvisibility=hidden -O3 -funroll-loops -c -D_GNU_SOURCE -D_REENTRANT -I/Users/fanhongling/go/src/github.com/cockroachdb/cockroach/c-deps/jemalloc/include -Iinclude -o src/util.o /Users/fanhongling/go/src/github.com/cockroachdb/cockroach/c-deps/jemalloc/src/util.c
+[ 48%] Building CXX object CMakeFiles/libprotobuf.dir/Users/fanhongling/go/src/github.com/cockroachdb/cockroach/c-deps/protobuf/src/google/protobuf/generated_message_reflection.cc.o
+gcc -std=gnu11 -Wall -Werror=declaration-after-statement -Wsign-compare -pipe -g3 -fvisibility=hidden -O3 -funroll-loops -c -D_GNU_SOURCE -D_REENTRANT -I/Users/fanhongling/go/src/github.com/cockroachdb/cockroach/c-deps/jemalloc/include -Iinclude -o src/witness.o /Users/fanhongling/go/src/github.com/cockroachdb/cockroach/c-deps/jemalloc/src/witness.c
+gcc -std=gnu11 -Wall -Werror=declaration-after-statement -Wsign-compare -pipe -g3 -fvisibility=hidden -O3 -funroll-loops -fPIC -DPIC -c -D_GNU_SOURCE -D_REENTRANT -I/Users/fanhongling/go/src/github.com/cockroachdb/cockroach/c-deps/jemalloc/include -Iinclude -o src/jemalloc.pic.o /Users/fanhongling/go/src/github.com/cockroachdb/cockroach/c-deps/jemalloc/src/jemalloc.c
+[ 48%] Building CXX object CMakeFiles/libprotobuf.dir/Users/fanhongling/go/src/github.com/cockroachdb/cockroach/c-deps/protobuf/src/google/protobuf/generated_message_table_driven.cc.o
+[ 51%] Building CXX object CMakeFiles/libprotobuf.dir/Users/fanhongling/go/src/github.com/cockroachdb/cockroach/c-deps/protobuf/src/google/protobuf/io/gzip_stream.cc.o
+[ 51%] Building CXX object CMakeFiles/libprotobuf.dir/Users/fanhongling/go/src/github.com/cockroachdb/cockroach/c-deps/protobuf/src/google/protobuf/io/printer.cc.o
+[ 53%] Building CXX object CMakeFiles/libprotobuf.dir/Users/fanhongling/go/src/github.com/cockroachdb/cockroach/c-deps/protobuf/src/google/protobuf/io/strtod.cc.o
+[ 53%] Building CXX object CMakeFiles/libprotobuf.dir/Users/fanhongling/go/src/github.com/cockroachdb/cockroach/c-deps/protobuf/src/google/protobuf/io/tokenizer.cc.o
+[ 56%] Building CXX object CMakeFiles/libprotobuf.dir/Users/fanhongling/go/src/github.com/cockroachdb/cockroach/c-deps/protobuf/src/google/protobuf/io/zero_copy_stream_impl.cc.o
+[ 56%] Building CXX object CMakeFiles/libprotobuf.dir/Users/fanhongling/go/src/github.com/cockroachdb/cockroach/c-deps/protobuf/src/google/protobuf/map_field.cc.o
+gcc -std=gnu11 -Wall -Werror=declaration-after-statement -Wsign-compare -pipe -g3 -fvisibility=hidden -O3 -funroll-loops -fPIC -DPIC -c -D_GNU_SOURCE -D_REENTRANT -I/Users/fanhongling/go/src/github.com/cockroachdb/cockroach/c-deps/jemalloc/include -Iinclude -o src/arena.pic.o /Users/fanhongling/go/src/github.com/cockroachdb/cockroach/c-deps/jemalloc/src/arena.c
+[ 58%] Building CXX object CMakeFiles/libprotobuf.dir/Users/fanhongling/go/src/github.com/cockroachdb/cockroach/c-deps/protobuf/src/google/protobuf/message.cc.o
+[ 58%] Building CXX object CMakeFiles/libprotobuf.dir/Users/fanhongling/go/src/github.com/cockroachdb/cockroach/c-deps/protobuf/src/google/protobuf/reflection_ops.cc.o
+[ 61%] Building CXX object CMakeFiles/libprotobuf.dir/Users/fanhongling/go/src/github.com/cockroachdb/cockroach/c-deps/protobuf/src/google/protobuf/service.cc.o
+[ 61%] Building CXX object CMakeFiles/libprotobuf.dir/Users/fanhongling/go/src/github.com/cockroachdb/cockroach/c-deps/protobuf/src/google/protobuf/source_context.pb.cc.o
+[ 64%] Building CXX object CMakeFiles/libprotobuf.dir/Users/fanhongling/go/src/github.com/cockroachdb/cockroach/c-deps/protobuf/src/google/protobuf/struct.pb.cc.o
+gcc -std=gnu11 -Wall -Werror=declaration-after-statement -Wsign-compare -pipe -g3 -fvisibility=hidden -O3 -funroll-loops -fPIC -DPIC -c -D_GNU_SOURCE -D_REENTRANT -I/Users/fanhongling/go/src/github.com/cockroachdb/cockroach/c-deps/jemalloc/include -Iinclude -o src/atomic.pic.o /Users/fanhongling/go/src/github.com/cockroachdb/cockroach/c-deps/jemalloc/src/atomic.c
+gcc -std=gnu11 -Wall -Werror=declaration-after-statement -Wsign-compare -pipe -g3 -fvisibility=hidden -O3 -funroll-loops -fPIC -DPIC -c -D_GNU_SOURCE -D_REENTRANT -I/Users/fanhongling/go/src/github.com/cockroachdb/cockroach/c-deps/jemalloc/include -Iinclude -o src/base.pic.o /Users/fanhongling/go/src/github.com/cockroachdb/cockroach/c-deps/jemalloc/src/base.c
+[ 64%] Building CXX object CMakeFiles/libprotobuf.dir/Users/fanhongling/go/src/github.com/cockroachdb/cockroach/c-deps/protobuf/src/google/protobuf/stubs/mathlimits.cc.o
+[ 66%] Building CXX object CMakeFiles/libprotobuf.dir/Users/fanhongling/go/src/github.com/cockroachdb/cockroach/c-deps/protobuf/src/google/protobuf/stubs/substitute.cc.o
+gcc -std=gnu11 -Wall -Werror=declaration-after-statement -Wsign-compare -pipe -g3 -fvisibility=hidden -O3 -funroll-loops -fPIC -DPIC -c -D_GNU_SOURCE -D_REENTRANT -I/Users/fanhongling/go/src/github.com/cockroachdb/cockroach/c-deps/jemalloc/include -Iinclude -o src/bitmap.pic.o /Users/fanhongling/go/src/github.com/cockroachdb/cockroach/c-deps/jemalloc/src/bitmap.c
+[ 66%] Building CXX object CMakeFiles/libprotobuf.dir/Users/fanhongling/go/src/github.com/cockroachdb/cockroach/c-deps/protobuf/src/google/protobuf/text_format.cc.o
+gcc -std=gnu11 -Wall -Werror=declaration-after-statement -Wsign-compare -pipe -g3 -fvisibility=hidden -O3 -funroll-loops -fPIC -DPIC -c -D_GNU_SOURCE -D_REENTRANT -I/Users/fanhongling/go/src/github.com/cockroachdb/cockroach/c-deps/jemalloc/include -Iinclude -o src/chunk.pic.o /Users/fanhongling/go/src/github.com/cockroachdb/cockroach/c-deps/jemalloc/src/chunk.c
+gcc -std=gnu11 -Wall -Werror=declaration-after-statement -Wsign-compare -pipe -g3 -fvisibility=hidden -O3 -funroll-loops -fPIC -DPIC -c -D_GNU_SOURCE -D_REENTRANT -I/Users/fanhongling/go/src/github.com/cockroachdb/cockroach/c-deps/jemalloc/include -Iinclude -o src/chunk_dss.pic.o /Users/fanhongling/go/src/github.com/cockroachdb/cockroach/c-deps/jemalloc/src/chunk_dss.c
+[ 69%] Building CXX object CMakeFiles/libprotobuf.dir/Users/fanhongling/go/src/github.com/cockroachdb/cockroach/c-deps/protobuf/src/google/protobuf/timestamp.pb.cc.o
+gcc -std=gnu11 -Wall -Werror=declaration-after-statement -Wsign-compare -pipe -g3 -fvisibility=hidden -O3 -funroll-loops -fPIC -DPIC -c -D_GNU_SOURCE -D_REENTRANT -I/Users/fanhongling/go/src/github.com/cockroachdb/cockroach/c-deps/jemalloc/include -Iinclude -o src/chunk_mmap.pic.o /Users/fanhongling/go/src/github.com/cockroachdb/cockroach/c-deps/jemalloc/src/chunk_mmap.c
+[ 69%] Building CXX object CMakeFiles/libprotobuf.dir/Users/fanhongling/go/src/github.com/cockroachdb/cockroach/c-deps/protobuf/src/google/protobuf/type.pb.cc.o
+gcc -std=gnu11 -Wall -Werror=declaration-after-statement -Wsign-compare -pipe -g3 -fvisibility=hidden -O3 -funroll-loops -fPIC -DPIC -c -D_GNU_SOURCE -D_REENTRANT -I/Users/fanhongling/go/src/github.com/cockroachdb/cockroach/c-deps/jemalloc/include -Iinclude -o src/ckh.pic.o /Users/fanhongling/go/src/github.com/cockroachdb/cockroach/c-deps/jemalloc/src/ckh.c
+gcc -std=gnu11 -Wall -Werror=declaration-after-statement -Wsign-compare -pipe -g3 -fvisibility=hidden -O3 -funroll-loops -fPIC -DPIC -c -D_GNU_SOURCE -D_REENTRANT -I/Users/fanhongling/go/src/github.com/cockroachdb/cockroach/c-deps/jemalloc/include -Iinclude -o src/ctl.pic.o /Users/fanhongling/go/src/github.com/cockroachdb/cockroach/c-deps/jemalloc/src/ctl.c
+[ 71%] Building CXX object CMakeFiles/libprotobuf.dir/Users/fanhongling/go/src/github.com/cockroachdb/cockroach/c-deps/protobuf/src/google/protobuf/unknown_field_set.cc.o
+[ 71%] Building CXX object CMakeFiles/libprotobuf.dir/Users/fanhongling/go/src/github.com/cockroachdb/cockroach/c-deps/protobuf/src/google/protobuf/util/delimited_message_util.cc.o
+[ 74%] Building CXX object CMakeFiles/libprotobuf.dir/Users/fanhongling/go/src/github.com/cockroachdb/cockroach/c-deps/protobuf/src/google/protobuf/util/field_comparator.cc.o
+[ 74%] Building CXX object CMakeFiles/libprotobuf.dir/Users/fanhongling/go/src/github.com/cockroachdb/cockroach/c-deps/protobuf/src/google/protobuf/util/field_mask_util.cc.o
+[ 76%] Building CXX object CMakeFiles/libprotobuf.dir/Users/fanhongling/go/src/github.com/cockroachdb/cockroach/c-deps/protobuf/src/google/protobuf/util/internal/datapiece.cc.o
+gcc -std=gnu11 -Wall -Werror=declaration-after-statement -Wsign-compare -pipe -g3 -fvisibility=hidden -O3 -funroll-loops -fPIC -DPIC -c -D_GNU_SOURCE -D_REENTRANT -I/Users/fanhongling/go/src/github.com/cockroachdb/cockroach/c-deps/jemalloc/include -Iinclude -o src/extent.pic.o /Users/fanhongling/go/src/github.com/cockroachdb/cockroach/c-deps/jemalloc/src/extent.c
+[ 76%] Building CXX object CMakeFiles/libprotobuf.dir/Users/fanhongling/go/src/github.com/cockroachdb/cockroach/c-deps/protobuf/src/google/protobuf/util/internal/default_value_objectwriter.cc.o
+gcc -std=gnu11 -Wall -Werror=declaration-after-statement -Wsign-compare -pipe -g3 -fvisibility=hidden -O3 -funroll-loops -fPIC -DPIC -c -D_GNU_SOURCE -D_REENTRANT -I/Users/fanhongling/go/src/github.com/cockroachdb/cockroach/c-deps/jemalloc/include -Iinclude -o src/hash.pic.o /Users/fanhongling/go/src/github.com/cockroachdb/cockroach/c-deps/jemalloc/src/hash.c
+gcc -std=gnu11 -Wall -Werror=declaration-after-statement -Wsign-compare -pipe -g3 -fvisibility=hidden -O3 -funroll-loops -fPIC -DPIC -c -D_GNU_SOURCE -D_REENTRANT -I/Users/fanhongling/go/src/github.com/cockroachdb/cockroach/c-deps/jemalloc/include -Iinclude -o src/huge.pic.o /Users/fanhongling/go/src/github.com/cockroachdb/cockroach/c-deps/jemalloc/src/huge.c
+[ 79%] Building CXX object CMakeFiles/libprotobuf.dir/Users/fanhongling/go/src/github.com/cockroachdb/cockroach/c-deps/protobuf/src/google/protobuf/util/internal/error_listener.cc.o
+[ 79%] Building CXX object CMakeFiles/libprotobuf.dir/Users/fanhongling/go/src/github.com/cockroachdb/cockroach/c-deps/protobuf/src/google/protobuf/util/internal/field_mask_utility.cc.o
+[ 82%] Building CXX object CMakeFiles/libprotobuf.dir/Users/fanhongling/go/src/github.com/cockroachdb/cockroach/c-deps/protobuf/src/google/protobuf/util/internal/json_escaping.cc.o
+[ 82%] Building CXX object CMakeFiles/libprotobuf.dir/Users/fanhongling/go/src/github.com/cockroachdb/cockroach/c-deps/protobuf/src/google/protobuf/util/internal/json_objectwriter.cc.o
+gcc -std=gnu11 -Wall -Werror=declaration-after-statement -Wsign-compare -pipe -g3 -fvisibility=hidden -O3 -funroll-loops -fPIC -DPIC -c -D_GNU_SOURCE -D_REENTRANT -I/Users/fanhongling/go/src/github.com/cockroachdb/cockroach/c-deps/jemalloc/include -Iinclude -o src/mb.pic.o /Users/fanhongling/go/src/github.com/cockroachdb/cockroach/c-deps/jemalloc/src/mb.c
+gcc -std=gnu11 -Wall -Werror=declaration-after-statement -Wsign-compare -pipe -g3 -fvisibility=hidden -O3 -funroll-loops -fPIC -DPIC -c -D_GNU_SOURCE -D_REENTRANT -I/Users/fanhongling/go/src/github.com/cockroachdb/cockroach/c-deps/jemalloc/include -Iinclude -o src/mutex.pic.o /Users/fanhongling/go/src/github.com/cockroachdb/cockroach/c-deps/jemalloc/src/mutex.c
+[ 84%] Building CXX object CMakeFiles/libprotobuf.dir/Users/fanhongling/go/src/github.com/cockroachdb/cockroach/c-deps/protobuf/src/google/protobuf/util/internal/json_stream_parser.cc.o
+gcc -std=gnu11 -Wall -Werror=declaration-after-statement -Wsign-compare -pipe -g3 -fvisibility=hidden -O3 -funroll-loops -fPIC -DPIC -c -D_GNU_SOURCE -D_REENTRANT -I/Users/fanhongling/go/src/github.com/cockroachdb/cockroach/c-deps/jemalloc/include -Iinclude -o src/nstime.pic.o /Users/fanhongling/go/src/github.com/cockroachdb/cockroach/c-deps/jemalloc/src/nstime.c
+[ 84%] Building CXX object CMakeFiles/libprotobuf.dir/Users/fanhongling/go/src/github.com/cockroachdb/cockroach/c-deps/protobuf/src/google/protobuf/util/internal/object_writer.cc.o
+[ 84%] Building CXX object CMakeFiles/libprotobuf.dir/Users/fanhongling/go/src/github.com/cockroachdb/cockroach/c-deps/protobuf/src/google/protobuf/util/internal/proto_writer.cc.o
+gcc -std=gnu11 -Wall -Werror=declaration-after-statement -Wsign-compare -pipe -g3 -fvisibility=hidden -O3 -funroll-loops -fPIC -DPIC -c -D_GNU_SOURCE -D_REENTRANT -I/Users/fanhongling/go/src/github.com/cockroachdb/cockroach/c-deps/jemalloc/include -Iinclude -o src/pages.pic.o /Users/fanhongling/go/src/github.com/cockroachdb/cockroach/c-deps/jemalloc/src/pages.c
+gcc -std=gnu11 -Wall -Werror=declaration-after-statement -Wsign-compare -pipe -g3 -fvisibility=hidden -O3 -funroll-loops -fPIC -DPIC -c -D_GNU_SOURCE -D_REENTRANT -I/Users/fanhongling/go/src/github.com/cockroachdb/cockroach/c-deps/jemalloc/include -Iinclude -o src/prng.pic.o /Users/fanhongling/go/src/github.com/cockroachdb/cockroach/c-deps/jemalloc/src/prng.c
+[ 87%] Building CXX object CMakeFiles/libprotobuf.dir/Users/fanhongling/go/src/github.com/cockroachdb/cockroach/c-deps/protobuf/src/google/protobuf/util/internal/protostream_objectsource.cc.o
+gcc -std=gnu11 -Wall -Werror=declaration-after-statement -Wsign-compare -pipe -g3 -fvisibility=hidden -O3 -funroll-loops -fPIC -DPIC -c -D_GNU_SOURCE -D_REENTRANT -I/Users/fanhongling/go/src/github.com/cockroachdb/cockroach/c-deps/jemalloc/include -Iinclude -o src/prof.pic.o /Users/fanhongling/go/src/github.com/cockroachdb/cockroach/c-deps/jemalloc/src/prof.c
+[ 87%] Building CXX object CMakeFiles/libprotobuf.dir/Users/fanhongling/go/src/github.com/cockroachdb/cockroach/c-deps/protobuf/src/google/protobuf/util/internal/protostream_objectwriter.cc.o
+gcc -std=gnu11 -Wall -Werror=declaration-after-statement -Wsign-compare -pipe -g3 -fvisibility=hidden -O3 -funroll-loops -fPIC -DPIC -c -D_GNU_SOURCE -D_REENTRANT -I/Users/fanhongling/go/src/github.com/cockroachdb/cockroach/c-deps/jemalloc/include -Iinclude -o src/quarantine.pic.o /Users/fanhongling/go/src/github.com/cockroachdb/cockroach/c-deps/jemalloc/src/quarantine.c
+[ 89%] Building CXX object CMakeFiles/libprotobuf.dir/Users/fanhongling/go/src/github.com/cockroachdb/cockroach/c-deps/protobuf/src/google/protobuf/util/internal/type_info.cc.o
+gcc -std=gnu11 -Wall -Werror=declaration-after-statement -Wsign-compare -pipe -g3 -fvisibility=hidden -O3 -funroll-loops -fPIC -DPIC -c -D_GNU_SOURCE -D_REENTRANT -I/Users/fanhongling/go/src/github.com/cockroachdb/cockroach/c-deps/jemalloc/include -Iinclude -o src/rtree.pic.o /Users/fanhongling/go/src/github.com/cockroachdb/cockroach/c-deps/jemalloc/src/rtree.c
+[ 89%] Building CXX object CMakeFiles/libprotobuf.dir/Users/fanhongling/go/src/github.com/cockroachdb/cockroach/c-deps/protobuf/src/google/protobuf/util/internal/type_info_test_helper.cc.o
+gcc -std=gnu11 -Wall -Werror=declaration-after-statement -Wsign-compare -pipe -g3 -fvisibility=hidden -O3 -funroll-loops -fPIC -DPIC -c -D_GNU_SOURCE -D_REENTRANT -I/Users/fanhongling/go/src/github.com/cockroachdb/cockroach/c-deps/jemalloc/include -Iinclude -o src/stats.pic.o /Users/fanhongling/go/src/github.com/cockroachdb/cockroach/c-deps/jemalloc/src/stats.c
+[ 92%] Building CXX object CMakeFiles/libprotobuf.dir/Users/fanhongling/go/src/github.com/cockroachdb/cockroach/c-deps/protobuf/src/google/protobuf/util/internal/utility.cc.o
+gcc -std=gnu11 -Wall -Werror=declaration-after-statement -Wsign-compare -pipe -g3 -fvisibility=hidden -O3 -funroll-loops -fPIC -DPIC -c -D_GNU_SOURCE -D_REENTRANT -I/Users/fanhongling/go/src/github.com/cockroachdb/cockroach/c-deps/jemalloc/include -Iinclude -o src/spin.pic.o /Users/fanhongling/go/src/github.com/cockroachdb/cockroach/c-deps/jemalloc/src/spin.c
+[ 92%] Building CXX object CMakeFiles/libprotobuf.dir/Users/fanhongling/go/src/github.com/cockroachdb/cockroach/c-deps/protobuf/src/google/protobuf/util/json_util.cc.o
+gcc -std=gnu11 -Wall -Werror=declaration-after-statement -Wsign-compare -pipe -g3 -fvisibility=hidden -O3 -funroll-loops -fPIC -DPIC -c -D_GNU_SOURCE -D_REENTRANT -I/Users/fanhongling/go/src/github.com/cockroachdb/cockroach/c-deps/jemalloc/include -Iinclude -o src/tcache.pic.o /Users/fanhongling/go/src/github.com/cockroachdb/cockroach/c-deps/jemalloc/src/tcache.c
+[ 94%] Building CXX object CMakeFiles/libprotobuf.dir/Users/fanhongling/go/src/github.com/cockroachdb/cockroach/c-deps/protobuf/src/google/protobuf/util/message_differencer.cc.o
+gcc -std=gnu11 -Wall -Werror=declaration-after-statement -Wsign-compare -pipe -g3 -fvisibility=hidden -O3 -funroll-loops -fPIC -DPIC -c -D_GNU_SOURCE -D_REENTRANT -I/Users/fanhongling/go/src/github.com/cockroachdb/cockroach/c-deps/jemalloc/include -Iinclude -o src/ticker.pic.o /Users/fanhongling/go/src/github.com/cockroachdb/cockroach/c-deps/jemalloc/src/ticker.c
+gcc -std=gnu11 -Wall -Werror=declaration-after-statement -Wsign-compare -pipe -g3 -fvisibility=hidden -O3 -funroll-loops -fPIC -DPIC -c -D_GNU_SOURCE -D_REENTRANT -I/Users/fanhongling/go/src/github.com/cockroachdb/cockroach/c-deps/jemalloc/include -Iinclude -o src/tsd.pic.o /Users/fanhongling/go/src/github.com/cockroachdb/cockroach/c-deps/jemalloc/src/tsd.c
+[ 94%] Building CXX object CMakeFiles/libprotobuf.dir/Users/fanhongling/go/src/github.com/cockroachdb/cockroach/c-deps/protobuf/src/google/protobuf/util/time_util.cc.o
+gcc -std=gnu11 -Wall -Werror=declaration-after-statement -Wsign-compare -pipe -g3 -fvisibility=hidden -O3 -funroll-loops -fPIC -DPIC -c -D_GNU_SOURCE -D_REENTRANT -I/Users/fanhongling/go/src/github.com/cockroachdb/cockroach/c-deps/jemalloc/include -Iinclude -o src/util.pic.o /Users/fanhongling/go/src/github.com/cockroachdb/cockroach/c-deps/jemalloc/src/util.c
+[ 97%] Building CXX object CMakeFiles/libprotobuf.dir/Users/fanhongling/go/src/github.com/cockroachdb/cockroach/c-deps/protobuf/src/google/protobuf/util/type_resolver_util.cc.o
+[ 97%] Building CXX object CMakeFiles/libprotobuf.dir/Users/fanhongling/go/src/github.com/cockroachdb/cockroach/c-deps/protobuf/src/google/protobuf/wire_format.cc.o
+gcc -std=gnu11 -Wall -Werror=declaration-after-statement -Wsign-compare -pipe -g3 -fvisibility=hidden -O3 -funroll-loops -fPIC -DPIC -c -D_GNU_SOURCE -D_REENTRANT -I/Users/fanhongling/go/src/github.com/cockroachdb/cockroach/c-deps/jemalloc/include -Iinclude -o src/witness.pic.o /Users/fanhongling/go/src/github.com/cockroachdb/cockroach/c-deps/jemalloc/src/witness.c
+ar crus lib/libjemalloc.a src/jemalloc.o src/arena.o src/atomic.o src/base.o src/bitmap.o src/chunk.o src/chunk_dss.o src/chunk_mmap.o src/ckh.o src/ctl.o src/extent.o src/hash.o src/huge.o src/mb.o src/mutex.o src/nstime.o src/pages.o src/prng.o src/prof.o src/quarantine.o src/rtree.o src/stats.o src/spin.o src/tcache.o src/ticker.o src/tsd.o src/util.o src/witness.o
+ar: `u' modifier ignored since `D' is the default (see `U')
+ar crus lib/libjemalloc_pic.a src/jemalloc.pic.o src/arena.pic.o src/atomic.pic.o src/base.pic.o src/bitmap.pic.o src/chunk.pic.o src/chunk_dss.pic.o src/chunk_mmap.pic.o src/ckh.pic.o src/ctl.pic.o src/extent.pic.o src/hash.pic.o src/huge.pic.o src/mb.pic.o src/mutex.pic.o src/nstime.pic.o src/pages.pic.o src/prng.pic.o src/prof.pic.o src/quarantine.pic.o src/rtree.pic.o src/stats.pic.o src/spin.pic.o src/tcache.pic.o src/ticker.pic.o src/tsd.pic.o src/util.pic.o src/witness.pic.o
+ar: `u' modifier ignored since `D' is the default (see `U')
+Scanning dependencies of target snappy
+[ 12%] Building CXX object CMakeFiles/snappy.dir/snappy-c.cc.o
+[ 25%] Building CXX object CMakeFiles/snappy.dir/snappy-sinksource.cc.o
+[ 37%] Building CXX object CMakeFiles/snappy.dir/snappy-stubs-internal.cc.o
+[ 50%] Building CXX object CMakeFiles/snappy.dir/snappy.cc.o
+[100%] Building CXX object CMakeFiles/libprotobuf.dir/Users/fanhongling/go/src/github.com/cockroachdb/cockroach/c-deps/protobuf/src/google/protobuf/wrappers.pb.cc.o
+[ 62%] Linking CXX static library libsnappy.a
+[ 62%] Built target snappy
+Scanning dependencies of target snappy-unittest
+[ 75%] Building CXX object CMakeFiles/snappy-unittest.dir/snappy_unittest.cc.o
+[100%] Linking CXX static library libprotobuf.a
+[ 87%] Building CXX object CMakeFiles/snappy-unittest.dir/snappy-test.cc.o
+[100%] Built target libprotobuf
+Scanning dependencies of target roach
+[100%] Linking CXX executable snappy-unittest
+[100%] Built target snappy-unittest
+rm -rf /Users/fanhongling/go/native/x86_64-redhat-linux/rocksdb
+mkdir -p /Users/fanhongling/go/native/x86_64-redhat-linux/rocksdb
+cd /Users/fanhongling/go/native/x86_64-redhat-linux/rocksdb && cmake  /Users/fanhongling/go/src/github.com/cockroachdb/cockroach/c-deps/rocksdb \
+  -DWITH_SSE42=OFF \
+  -DSNAPPY_LIBRARIES=/Users/fanhongling/go/native/x86_64-redhat-linux/snappy/libsnappy.a -DSNAPPY_INCLUDE_DIR="/Users/fanhongling/go/src/github.com/cockroachdb/cockroach/c-deps/snappy;/Users/fanhongling/go/native/x86_64-redhat-linux/snappy" -DWITH_SNAPPY=ON \
+  -DJEMALLOC_LIBRARIES=/Users/fanhongling/go/native/x86_64-redhat-linux/jemalloc/lib/libjemalloc.a -DJEMALLOC_INCLUDE_DIR=/Users/fanhongling/go/native/x86_64-redhat-linux/jemalloc/include -DWITH_JEMALLOC=ON \
+  -DCMAKE_CXX_FLAGS="-msse3 -DNDEBUG"
+-- The C compiler identification is GNU 5.3.1
+-- The CXX compiler identification is GNU 5.3.1
+-- Check for working C compiler: /bin/cc
+-- Check for working C compiler: /bin/cc -- works
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Check for working CXX compiler: /bin/c++
+[  9%] Building CXX object CMakeFiles/roach.dir/db.cc.o
+-- Check for working CXX compiler: /bin/c++ -- works
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Found jemalloc: /Users/fanhongling/go/native/x86_64-redhat-linux/jemalloc/lib/libjemalloc.a  
+-- Found snappy: /Users/fanhongling/go/native/x86_64-redhat-linux/snappy/libsnappy.a  
+-- Found Git: /bin/git (found version "2.5.0") 
+-- Performing Test HAVE_OMIT_LEAF_FRAME_POINTER
+-- Performing Test HAVE_OMIT_LEAF_FRAME_POINTER - Success
+-- Performing Test HAVE_FALLOCATE
+-- Performing Test HAVE_FALLOCATE - Success
+-- Looking for malloc_usable_size
+-- Looking for malloc_usable_size - found
+-- Looking for pthread.h
+-- Looking for pthread.h - found
+-- Looking for pthread_create
+-- Looking for pthread_create - not found
+-- Looking for pthread_create in pthreads
+-- Looking for pthread_create in pthreads - not found
+-- Looking for pthread_create in pthread
+-- Looking for pthread_create in pthread - found
+-- Found Threads: TRUE  
+-- JNI library is disabled
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /Users/fanhongling/go/native/x86_64-redhat-linux/rocksdb
+Scanning dependencies of target build_version
+[  0%] Building CXX object CMakeFiles/build_version.dir/build_version.cc.o
+[  0%] Built target build_version
+Scanning dependencies of target rocksdb
+[ 18%] Building CXX object CMakeFiles/roach.dir/encoding.cc.o
+[ 27%] Building CXX object CMakeFiles/roach.dir/eventlistener.cc.o
+[ 36%] Building CXX object CMakeFiles/roach.dir/protos/cockroach/pkg/roachpb/data.pb.cc.o
+[ 45%] Building CXX object CMakeFiles/roach.dir/protos/cockroach/pkg/roachpb/internal.pb.cc.o
+[ 54%] Building CXX object CMakeFiles/roach.dir/protos/cockroach/pkg/roachpb/metadata.pb.cc.o
+[ 63%] Building CXX object CMakeFiles/roach.dir/protos/cockroach/pkg/storage/engine/enginepb/mvcc.pb.cc.o
+[ 72%] Building CXX object CMakeFiles/roach.dir/protos/cockroach/pkg/storage/engine/enginepb/rocksdb.pb.cc.o
+[ 81%] Building CXX object CMakeFiles/roach.dir/protos/cockroach/pkg/util/hlc/timestamp.pb.cc.o
+[ 90%] Building CXX object CMakeFiles/roach.dir/protos/cockroach/pkg/util/unresolved_addr.pb.cc.o
+[100%] Linking CXX static library libroach.a
+[100%] Built target roach
+[ 84%] Built target roach
+Scanning dependencies of target roachccl
+[ 92%] Building CXX object CMakeFiles/roachccl.dir/ccl/db.cc.o
+[100%] Linking CXX static library libroachccl.a
+[  0%] Building CXX object CMakeFiles/rocksdb.dir/cache/clock_cache.cc.o
+[100%] Built target roachccl
+[  0%] Building CXX object CMakeFiles/rocksdb.dir/cache/lru_cache.cc.o
+[  0%] Building CXX object CMakeFiles/rocksdb.dir/cache/sharded_cache.cc.o
+[  3%] Building CXX object CMakeFiles/rocksdb.dir/db/builder.cc.o
+[  3%] Building CXX object CMakeFiles/rocksdb.dir/db/c.cc.o
+[  3%] Building CXX object CMakeFiles/rocksdb.dir/db/column_family.cc.o
+[  3%] Building CXX object CMakeFiles/rocksdb.dir/db/compacted_db_impl.cc.o
+[  3%] Building CXX object CMakeFiles/rocksdb.dir/db/compaction.cc.o
+[  3%] Building CXX object CMakeFiles/rocksdb.dir/db/compaction_iterator.cc.o
+[  6%] Building CXX object CMakeFiles/rocksdb.dir/db/compaction_job.cc.o
+[  6%] Building CXX object CMakeFiles/rocksdb.dir/db/compaction_picker.cc.o
+[  6%] Building CXX object CMakeFiles/rocksdb.dir/db/compaction_picker_universal.cc.o
+[  6%] Building CXX object CMakeFiles/rocksdb.dir/db/convenience.cc.o
+[  6%] Building CXX object CMakeFiles/rocksdb.dir/db/db_filesnapshot.cc.o
+[  6%] Building CXX object CMakeFiles/rocksdb.dir/db/db_impl.cc.o
+[  6%] Building CXX object CMakeFiles/rocksdb.dir/db/db_impl_write.cc.o
+[ 10%] Building CXX object CMakeFiles/rocksdb.dir/db/db_impl_compaction_flush.cc.o
+[ 10%] Building CXX object CMakeFiles/rocksdb.dir/db/db_impl_files.cc.o
+[ 10%] Building CXX object CMakeFiles/rocksdb.dir/db/db_impl_open.cc.o
+[ 10%] Building CXX object CMakeFiles/rocksdb.dir/db/db_impl_debug.cc.o
+[ 10%] Building CXX object CMakeFiles/rocksdb.dir/db/db_impl_experimental.cc.o
+[ 10%] Building CXX object CMakeFiles/rocksdb.dir/db/db_impl_readonly.cc.o
+[ 10%] Building CXX object CMakeFiles/rocksdb.dir/db/db_info_dumper.cc.o
+[ 13%] Building CXX object CMakeFiles/rocksdb.dir/db/db_iter.cc.o
+[ 13%] Building CXX object CMakeFiles/rocksdb.dir/db/dbformat.cc.o
+[ 13%] Building CXX object CMakeFiles/rocksdb.dir/db/event_helpers.cc.o
+[ 13%] Building CXX object CMakeFiles/rocksdb.dir/db/experimental.cc.o
+[ 13%] Building CXX object CMakeFiles/rocksdb.dir/db/external_sst_file_ingestion_job.cc.o
+[ 13%] Building CXX object CMakeFiles/rocksdb.dir/db/file_indexer.cc.o
+[ 13%] Building CXX object CMakeFiles/rocksdb.dir/db/flush_job.cc.o
+[ 16%] Building CXX object CMakeFiles/rocksdb.dir/db/flush_scheduler.cc.o
+[ 16%] Building CXX object CMakeFiles/rocksdb.dir/db/forward_iterator.cc.o
+[ 16%] Building CXX object CMakeFiles/rocksdb.dir/db/internal_stats.cc.o
+[ 16%] Building CXX object CMakeFiles/rocksdb.dir/db/log_reader.cc.o
+[ 16%] Building CXX object CMakeFiles/rocksdb.dir/db/log_writer.cc.o
+[ 16%] Building CXX object CMakeFiles/rocksdb.dir/db/malloc_stats.cc.o
+[ 16%] Building CXX object CMakeFiles/rocksdb.dir/db/managed_iterator.cc.o
+[ 20%] Building CXX object CMakeFiles/rocksdb.dir/db/memtable.cc.o
+[ 20%] Building CXX object CMakeFiles/rocksdb.dir/db/memtable_list.cc.o
+[ 20%] Building CXX object CMakeFiles/rocksdb.dir/db/merge_helper.cc.o
+[ 20%] Building CXX object CMakeFiles/rocksdb.dir/db/merge_operator.cc.o
+[ 20%] Building CXX object CMakeFiles/rocksdb.dir/db/range_del_aggregator.cc.o
+[ 20%] Building CXX object CMakeFiles/rocksdb.dir/db/repair.cc.o
+[ 20%] Building CXX object CMakeFiles/rocksdb.dir/db/snapshot_impl.cc.o
+[ 23%] Building CXX object CMakeFiles/rocksdb.dir/db/table_cache.cc.o
+[ 23%] Building CXX object CMakeFiles/rocksdb.dir/db/table_properties_collector.cc.o
+[ 23%] Building CXX object CMakeFiles/rocksdb.dir/db/transaction_log_impl.cc.o
+[ 23%] Building CXX object CMakeFiles/rocksdb.dir/db/version_builder.cc.o
+[ 23%] Building CXX object CMakeFiles/rocksdb.dir/db/version_edit.cc.o
+[ 23%] Building CXX object CMakeFiles/rocksdb.dir/db/version_set.cc.o
+[ 23%] Building CXX object CMakeFiles/rocksdb.dir/db/wal_manager.cc.o
+[ 26%] Building CXX object CMakeFiles/rocksdb.dir/db/write_batch.cc.o
+[ 26%] Building CXX object CMakeFiles/rocksdb.dir/db/write_batch_base.cc.o
+[ 26%] Building CXX object CMakeFiles/rocksdb.dir/db/write_controller.cc.o
+[ 26%] Building CXX object CMakeFiles/rocksdb.dir/db/write_thread.cc.o
+[ 26%] Building CXX object CMakeFiles/rocksdb.dir/env/env.cc.o
+[ 26%] Building CXX object CMakeFiles/rocksdb.dir/env/env_chroot.cc.o
+[ 26%] Building CXX object CMakeFiles/rocksdb.dir/env/env_hdfs.cc.o
+[ 30%] Building CXX object CMakeFiles/rocksdb.dir/env/mock_env.cc.o
+[ 30%] Building CXX object CMakeFiles/rocksdb.dir/memtable/hash_cuckoo_rep.cc.o
+[ 30%] Building CXX object CMakeFiles/rocksdb.dir/memtable/hash_linklist_rep.cc.o
+[ 30%] Building CXX object CMakeFiles/rocksdb.dir/memtable/hash_skiplist_rep.cc.o
+[ 30%] Building CXX object CMakeFiles/rocksdb.dir/memtable/memtable_allocator.cc.o
+[ 30%] Building CXX object CMakeFiles/rocksdb.dir/memtable/skiplistrep.cc.o
+[ 30%] Building CXX object CMakeFiles/rocksdb.dir/memtable/vectorrep.cc.o
+[ 33%] Building CXX object CMakeFiles/rocksdb.dir/monitoring/histogram.cc.o
+[ 33%] Building CXX object CMakeFiles/rocksdb.dir/monitoring/histogram_windowing.cc.o
+[ 33%] Building CXX object CMakeFiles/rocksdb.dir/monitoring/instrumented_mutex.cc.o
+[ 33%] Building CXX object CMakeFiles/rocksdb.dir/monitoring/iostats_context.cc.o
+[ 33%] Building CXX object CMakeFiles/rocksdb.dir/monitoring/perf_context.cc.o
+[ 33%] Building CXX object CMakeFiles/rocksdb.dir/monitoring/perf_level.cc.o
+[ 33%] Building CXX object CMakeFiles/rocksdb.dir/monitoring/statistics.cc.o
+[ 36%] Building CXX object CMakeFiles/rocksdb.dir/monitoring/thread_status_impl.cc.o
+[ 36%] Building CXX object CMakeFiles/rocksdb.dir/monitoring/thread_status_updater.cc.o
+[ 36%] Building CXX object CMakeFiles/rocksdb.dir/monitoring/thread_status_util.cc.o
+[ 36%] Building CXX object CMakeFiles/rocksdb.dir/monitoring/thread_status_util_debug.cc.o
+[ 36%] Building CXX object CMakeFiles/rocksdb.dir/options/cf_options.cc.o
+[ 36%] Building CXX object CMakeFiles/rocksdb.dir/options/db_options.cc.o
+[ 36%] Building CXX object CMakeFiles/rocksdb.dir/options/options.cc.o
+[ 40%] Building CXX object CMakeFiles/rocksdb.dir/options/options_helper.cc.o
+[ 40%] Building CXX object CMakeFiles/rocksdb.dir/options/options_parser.cc.o
+[ 40%] Building CXX object CMakeFiles/rocksdb.dir/options/options_sanity_check.cc.o
+[ 40%] Building CXX object CMakeFiles/rocksdb.dir/port/stack_trace.cc.o
+[ 40%] Building CXX object CMakeFiles/rocksdb.dir/table/adaptive_table_factory.cc.o
+[ 40%] Building CXX object CMakeFiles/rocksdb.dir/table/block.cc.o
+[ 43%] Building CXX object CMakeFiles/rocksdb.dir/table/block_based_filter_block.cc.o
+[ 43%] Building CXX object CMakeFiles/rocksdb.dir/table/block_based_table_builder.cc.o
+[ 43%] Building CXX object CMakeFiles/rocksdb.dir/table/block_based_table_factory.cc.o
+[ 43%] Building CXX object CMakeFiles/rocksdb.dir/table/block_based_table_reader.cc.o
+[ 43%] Building CXX object CMakeFiles/rocksdb.dir/table/block_builder.cc.o
+[ 43%] Building CXX object CMakeFiles/rocksdb.dir/table/block_prefix_index.cc.o
+[ 43%] Building CXX object CMakeFiles/rocksdb.dir/table/bloom_block.cc.o
+[ 46%] Building CXX object CMakeFiles/rocksdb.dir/table/cuckoo_table_builder.cc.o
+[ 46%] Building CXX object CMakeFiles/rocksdb.dir/table/cuckoo_table_factory.cc.o
+[ 46%] Building CXX object CMakeFiles/rocksdb.dir/table/cuckoo_table_reader.cc.o
+[ 46%] Building CXX object CMakeFiles/rocksdb.dir/table/flush_block_policy.cc.o
+[ 46%] Building CXX object CMakeFiles/rocksdb.dir/table/format.cc.o
+[ 46%] Building CXX object CMakeFiles/rocksdb.dir/table/full_filter_block.cc.o
+[ 46%] Building CXX object CMakeFiles/rocksdb.dir/table/get_context.cc.o
+[ 50%] Building CXX object CMakeFiles/rocksdb.dir/table/index_builder.cc.o
+[ 50%] Building CXX object CMakeFiles/rocksdb.dir/table/iterator.cc.o
+[ 50%] Building CXX object CMakeFiles/rocksdb.dir/table/merging_iterator.cc.o
+[ 50%] Building CXX object CMakeFiles/rocksdb.dir/table/meta_blocks.cc.o
+[ 50%] Building CXX object CMakeFiles/rocksdb.dir/table/partitioned_filter_block.cc.o
+[ 50%] Building CXX object CMakeFiles/rocksdb.dir/table/persistent_cache_helper.cc.o
+[ 50%] Building CXX object CMakeFiles/rocksdb.dir/table/plain_table_builder.cc.o
+[ 53%] Building CXX object CMakeFiles/rocksdb.dir/table/plain_table_factory.cc.o
+[ 53%] Building CXX object CMakeFiles/rocksdb.dir/table/plain_table_index.cc.o
+[ 53%] Building CXX object CMakeFiles/rocksdb.dir/table/plain_table_key_coding.cc.o
+[ 53%] Building CXX object CMakeFiles/rocksdb.dir/table/plain_table_reader.cc.o
+[ 53%] Building CXX object CMakeFiles/rocksdb.dir/table/sst_file_writer.cc.o
+[ 53%] Building CXX object CMakeFiles/rocksdb.dir/table/table_properties.cc.o
+[ 53%] Building CXX object CMakeFiles/rocksdb.dir/table/two_level_iterator.cc.o
+[ 56%] Building CXX object CMakeFiles/rocksdb.dir/tools/db_bench_tool.cc.o
+[ 56%] Building CXX object CMakeFiles/rocksdb.dir/tools/dump/db_dump_tool.cc.o
+[ 56%] Building CXX object CMakeFiles/rocksdb.dir/tools/ldb_cmd.cc.o
+[ 56%] Building CXX object CMakeFiles/rocksdb.dir/tools/ldb_tool.cc.o
+[ 56%] Building CXX object CMakeFiles/rocksdb.dir/tools/sst_dump_tool.cc.o
+[ 56%] Building CXX object CMakeFiles/rocksdb.dir/util/arena.cc.o
+[ 56%] Building CXX object CMakeFiles/rocksdb.dir/util/auto_roll_logger.cc.o
+[ 60%] Building CXX object CMakeFiles/rocksdb.dir/util/bloom.cc.o
+[ 60%] Building CXX object CMakeFiles/rocksdb.dir/util/coding.cc.o
+[ 60%] Building CXX object CMakeFiles/rocksdb.dir/util/compaction_job_stats_impl.cc.o
+[ 60%] Building CXX object CMakeFiles/rocksdb.dir/util/comparator.cc.o
+[ 60%] Building CXX object CMakeFiles/rocksdb.dir/util/concurrent_arena.cc.o
+[ 60%] Building CXX object CMakeFiles/rocksdb.dir/util/crc32c.cc.o
+[ 60%] Building CXX object CMakeFiles/rocksdb.dir/util/delete_scheduler.cc.o
+[ 63%] Building CXX object CMakeFiles/rocksdb.dir/util/dynamic_bloom.cc.o
+[ 63%] Building CXX object CMakeFiles/rocksdb.dir/util/event_logger.cc.o
+[ 63%] Building CXX object CMakeFiles/rocksdb.dir/util/file_reader_writer.cc.o
+[ 63%] Building CXX object CMakeFiles/rocksdb.dir/util/file_util.cc.o
+[ 63%] Building CXX object CMakeFiles/rocksdb.dir/util/filename.cc.o
+[ 63%] Building CXX object CMakeFiles/rocksdb.dir/util/filter_policy.cc.o
+[ 63%] Building CXX object CMakeFiles/rocksdb.dir/util/hash.cc.o
+[ 66%] Building CXX object CMakeFiles/rocksdb.dir/util/log_buffer.cc.o
+[ 66%] Building CXX object CMakeFiles/rocksdb.dir/util/murmurhash.cc.o
+[ 66%] Building CXX object CMakeFiles/rocksdb.dir/util/random.cc.o
+[ 66%] Building CXX object CMakeFiles/rocksdb.dir/util/rate_limiter.cc.o
+[ 66%] Building CXX object CMakeFiles/rocksdb.dir/util/slice.cc.o
+[ 66%] Building CXX object CMakeFiles/rocksdb.dir/util/sst_file_manager_impl.cc.o
+[ 66%] Building CXX object CMakeFiles/rocksdb.dir/util/status.cc.o
+[ 70%] Building CXX object CMakeFiles/rocksdb.dir/util/status_message.cc.o
+[ 70%] Building CXX object CMakeFiles/rocksdb.dir/util/string_util.cc.o
+[ 70%] Building CXX object CMakeFiles/rocksdb.dir/util/sync_point.cc.o
+[ 70%] Building CXX object CMakeFiles/rocksdb.dir/util/testutil.cc.o
+[ 70%] Building CXX object CMakeFiles/rocksdb.dir/util/thread_local.cc.o
+[ 70%] Building CXX object CMakeFiles/rocksdb.dir/util/threadpool_imp.cc.o
+[ 70%] Building CXX object CMakeFiles/rocksdb.dir/util/transaction_test_util.cc.o
+[ 73%] Building CXX object CMakeFiles/rocksdb.dir/util/xxhash.cc.o
+[ 73%] Building CXX object CMakeFiles/rocksdb.dir/utilities/backupable/backupable_db.cc.o
+[ 73%] Building CXX object CMakeFiles/rocksdb.dir/utilities/blob_db/blob_db.cc.o
+[ 73%] Building CXX object CMakeFiles/rocksdb.dir/utilities/blob_db/blob_db_impl.cc.o
+[ 73%] Building CXX object CMakeFiles/rocksdb.dir/utilities/blob_db/blob_db_options_impl.cc.o
+[ 73%] Building CXX object CMakeFiles/rocksdb.dir/utilities/blob_db/blob_file.cc.o
+[ 73%] Building CXX object CMakeFiles/rocksdb.dir/utilities/blob_db/blob_log_reader.cc.o
+[ 76%] Building CXX object CMakeFiles/rocksdb.dir/utilities/blob_db/blob_log_writer.cc.o
+[ 76%] Building CXX object CMakeFiles/rocksdb.dir/utilities/blob_db/blob_log_format.cc.o
+[ 76%] Building CXX object CMakeFiles/rocksdb.dir/utilities/checkpoint/checkpoint_impl.cc.o
+[ 76%] Building CXX object CMakeFiles/rocksdb.dir/utilities/col_buf_decoder.cc.o
+[ 76%] Building CXX object CMakeFiles/rocksdb.dir/utilities/col_buf_encoder.cc.o
+[ 76%] Building CXX object CMakeFiles/rocksdb.dir/utilities/column_aware_encoding_util.cc.o
+[ 80%] Building CXX object CMakeFiles/rocksdb.dir/utilities/compaction_filters/remove_emptyvalue_compactionfilter.cc.o
+[ 80%] Building CXX object CMakeFiles/rocksdb.dir/utilities/date_tiered/date_tiered_db_impl.cc.o
+[ 80%] Building CXX object CMakeFiles/rocksdb.dir/utilities/debug.cc.o
+[ 80%] Building CXX object CMakeFiles/rocksdb.dir/utilities/document/document_db.cc.o
+[ 80%] Building CXX object CMakeFiles/rocksdb.dir/utilities/document/json_document.cc.o
+[ 80%] Building CXX object CMakeFiles/rocksdb.dir/utilities/document/json_document_builder.cc.o
+[ 80%] Building CXX object CMakeFiles/rocksdb.dir/utilities/env_mirror.cc.o
+[ 83%] Building CXX object CMakeFiles/rocksdb.dir/utilities/env_timed.cc.o
+[ 83%] Building CXX object CMakeFiles/rocksdb.dir/utilities/geodb/geodb_impl.cc.o
+[ 83%] Building CXX object CMakeFiles/rocksdb.dir/utilities/leveldb_options/leveldb_options.cc.o
+[ 83%] Building CXX object CMakeFiles/rocksdb.dir/utilities/lua/rocks_lua_compaction_filter.cc.o
+[ 83%] Building CXX object CMakeFiles/rocksdb.dir/utilities/memory/memory_util.cc.o
+[ 83%] Building CXX object CMakeFiles/rocksdb.dir/utilities/merge_operators/max.cc.o
+[ 83%] Building CXX object CMakeFiles/rocksdb.dir/utilities/merge_operators/put.cc.o
+[ 86%] Building CXX object CMakeFiles/rocksdb.dir/utilities/merge_operators/string_append/stringappend.cc.o
+[ 86%] Building CXX object CMakeFiles/rocksdb.dir/utilities/merge_operators/string_append/stringappend2.cc.o
+[ 86%] Building CXX object CMakeFiles/rocksdb.dir/utilities/merge_operators/uint64add.cc.o
+[ 86%] Building CXX object CMakeFiles/rocksdb.dir/utilities/option_change_migration/option_change_migration.cc.o
+[ 86%] Building CXX object CMakeFiles/rocksdb.dir/utilities/options/options_util.cc.o
+[ 86%] Building CXX object CMakeFiles/rocksdb.dir/utilities/persistent_cache/block_cache_tier.cc.o
+[ 86%] Building CXX object CMakeFiles/rocksdb.dir/utilities/persistent_cache/block_cache_tier_file.cc.o
+[ 90%] Building CXX object CMakeFiles/rocksdb.dir/utilities/persistent_cache/block_cache_tier_metadata.cc.o
+[ 90%] Building CXX object CMakeFiles/rocksdb.dir/utilities/persistent_cache/persistent_cache_tier.cc.o
+[ 90%] Building CXX object CMakeFiles/rocksdb.dir/utilities/persistent_cache/volatile_tier_impl.cc.o
+[ 90%] Building CXX object CMakeFiles/rocksdb.dir/utilities/redis/redis_lists.cc.o
+[ 90%] Building CXX object CMakeFiles/rocksdb.dir/utilities/simulator_cache/sim_cache.cc.o
+[ 90%] Building CXX object CMakeFiles/rocksdb.dir/utilities/spatialdb/spatial_db.cc.o
+[ 90%] Building CXX object CMakeFiles/rocksdb.dir/utilities/table_properties_collectors/compact_on_deletion_collector.cc.o
+[ 93%] Building CXX object CMakeFiles/rocksdb.dir/utilities/transactions/optimistic_transaction_db_impl.cc.o
+[ 93%] Building CXX object CMakeFiles/rocksdb.dir/utilities/transactions/optimistic_transaction_impl.cc.o
+[ 93%] Building CXX object CMakeFiles/rocksdb.dir/utilities/transactions/transaction_base.cc.o
+[ 93%] Building CXX object CMakeFiles/rocksdb.dir/utilities/transactions/transaction_db_impl.cc.o
+[ 93%] Building CXX object CMakeFiles/rocksdb.dir/utilities/transactions/transaction_db_mutex_impl.cc.o
+[ 93%] Building CXX object CMakeFiles/rocksdb.dir/utilities/transactions/transaction_impl.cc.o
+[ 93%] Building CXX object CMakeFiles/rocksdb.dir/utilities/transactions/transaction_lock_mgr.cc.o
+[ 96%] Building CXX object CMakeFiles/rocksdb.dir/utilities/transactions/transaction_util.cc.o
+[ 96%] Building CXX object CMakeFiles/rocksdb.dir/utilities/ttl/db_ttl_impl.cc.o
+[ 96%] Building CXX object CMakeFiles/rocksdb.dir/utilities/write_batch_with_index/write_batch_with_index.cc.o
+[ 96%] Building CXX object CMakeFiles/rocksdb.dir/utilities/write_batch_with_index/write_batch_with_index_internal.cc.o
+[ 96%] Building CXX object CMakeFiles/rocksdb.dir/port/port_posix.cc.o
+[ 96%] Building CXX object CMakeFiles/rocksdb.dir/env/env_posix.cc.o
+[ 96%] Building CXX object CMakeFiles/rocksdb.dir/env/io_posix.cc.o
+[100%] Linking CXX static library librocksdb.a
+[100%] Built target rocksdb
+go build -i -o ./cockroach -v  -tags ' make x86_64_redhat_linux' -ldflags ' -X github.com/cockroachdb/cockroach/pkg/build.typ=development -X "github.com/cockroachdb/cockroach/pkg/build.tag=546a347" -X "github.com/cockroachdb/cockroach/pkg/build.utcTime=2017/11/04 08:56:32" -X "github.com/cockroachdb/cockroach/pkg/build.rev=546a3474bfe2af9c275db4e28408100c730906eb" -X "github.com/cockroachdb/cockroach/pkg/build.baseBranch="' .
+github.com/cockroachdb/cockroach/vendor/github.com/dustin/go-humanize
+github.com/cockroachdb/cockroach/vendor/github.com/spf13/pflag
+github.com/cockroachdb/cockroach/pkg/util/syncutil
+github.com/cockroachdb/cockroach/vendor/github.com/gogo/protobuf/proto
+github.com/cockroachdb/cockroach/pkg/util/humanizeutil
+github.com/cockroachdb/cockroach/pkg/util/envutil
+github.com/cockroachdb/cockroach/vendor/github.com/hashicorp/go-version
+github.com/cockroachdb/cockroach/vendor/golang.org/x/net/context
+github.com/cockroachdb/cockroach/vendor/golang.org/x/net/http2/hpack
+github.com/cockroachdb/cockroach/vendor/golang.org/x/text/unicode/bidi
+github.com/cockroachdb/cockroach/vendor/golang.org/x/text/secure/bidirule
+github.com/cockroachdb/cockroach/vendor/golang.org/x/text/unicode/norm
+github.com/cockroachdb/cockroach/pkg/build
+github.com/cockroachdb/cockroach/vendor/golang.org/x/net/idna
+github.com/cockroachdb/cockroach/pkg/ccl/buildccl
+github.com/cockroachdb/cockroach/vendor/golang.org/x/net/internal/timeseries
+github.com/cockroachdb/cockroach/vendor/golang.org/x/net/lex/httplex
+github.com/cockroachdb/cockroach/vendor/golang.org/x/net/trace
+github.com/cockroachdb/cockroach/vendor/golang.org/x/net/http2
+github.com/cockroachdb/cockroach/vendor/google.golang.org/grpc/codes
+github.com/cockroachdb/cockroach/vendor/google.golang.org/grpc/credentials
+github.com/cockroachdb/cockroach/vendor/google.golang.org/grpc/grpclb/grpc_lb_v1
+github.com/cockroachdb/cockroach/vendor/google.golang.org/grpc/grpclog
+github.com/cockroachdb/cockroach/vendor/google.golang.org/grpc/internal
+github.com/cockroachdb/cockroach/vendor/google.golang.org/grpc/keepalive
+github.com/cockroachdb/cockroach/vendor/google.golang.org/grpc/metadata
+github.com/cockroachdb/cockroach/vendor/google.golang.org/grpc/naming
+github.com/cockroachdb/cockroach/vendor/google.golang.org/grpc/peer
+github.com/cockroachdb/cockroach/vendor/google.golang.org/grpc/stats
+github.com/cockroachdb/cockroach/vendor/github.com/golang/protobuf/ptypes/any
+github.com/cockroachdb/cockroach/vendor/google.golang.org/genproto/googleapis/rpc/status
+github.com/cockroachdb/cockroach/vendor/google.golang.org/grpc/status
+github.com/cockroachdb/cockroach/vendor/google.golang.org/grpc/tap
+github.com/cockroachdb/cockroach/vendor/cloud.google.com/go/internal/optional
+github.com/cockroachdb/cockroach/vendor/cloud.google.com/go/internal/version
+github.com/cockroachdb/cockroach/vendor/google.golang.org/api/googleapi/internal/uritemplates
+github.com/cockroachdb/cockroach/vendor/google.golang.org/api/googleapi
+github.com/cockroachdb/cockroach/vendor/google.golang.org/grpc/transport
+github.com/cockroachdb/cockroach/vendor/google.golang.org/api/iterator
+github.com/cockroachdb/cockroach/vendor/golang.org/x/oauth2/internal
+github.com/cockroachdb/cockroach/vendor/golang.org/x/oauth2
+github.com/cockroachdb/cockroach/vendor/golang.org/x/net/context/ctxhttp
+github.com/cockroachdb/cockroach/vendor/google.golang.org/api/gensupport
+github.com/cockroachdb/cockroach/vendor/google.golang.org/api/storage/v1
+github.com/cockroachdb/cockroach/vendor/google.golang.org/grpc
+github.com/cockroachdb/cockroach/vendor/cloud.google.com/go/compute/metadata
+github.com/cockroachdb/cockroach/vendor/google.golang.org/genproto/googleapis/iam/v1
+github.com/cockroachdb/cockroach/vendor/github.com/googleapis/gax-go
+github.com/cockroachdb/cockroach/vendor/cloud.google.com/go/internal
+github.com/cockroachdb/cockroach/vendor/cloud.google.com/go/iam
+github.com/cockroachdb/cockroach/vendor/google.golang.org/api/internal
+github.com/cockroachdb/cockroach/vendor/golang.org/x/oauth2/jws
+github.com/cockroachdb/cockroach/vendor/google.golang.org/api/option
+github.com/cockroachdb/cockroach/vendor/golang.org/x/oauth2/jwt
+github.com/cockroachdb/cockroach/vendor/google.golang.org/api/googleapi/transport
+github.com/cockroachdb/cockroach/vendor/golang.org/x/oauth2/google
+github.com/cockroachdb/cockroach/vendor/github.com/Azure/go-autorest/autorest
+github.com/cockroachdb/cockroach/vendor/google.golang.org/grpc/credentials/oauth
+github.com/cockroachdb/cockroach/vendor/google.golang.org/api/transport
+github.com/cockroachdb/cockroach/vendor/github.com/Azure/go-autorest/autorest/date
+github.com/cockroachdb/cockroach/vendor/cloud.google.com/go/storage
+github.com/cockroachdb/cockroach/vendor/github.com/dgrijalva/jwt-go
+github.com/cockroachdb/cockroach/vendor/github.com/Azure/go-autorest/autorest/azure
+github.com/cockroachdb/cockroach/vendor/github.com/cockroachdb/apd
+github.com/cockroachdb/cockroach/vendor/github.com/Azure/azure-sdk-for-go/storage
+github.com/cockroachdb/cockroach/pkg/settings
+github.com/cockroachdb/cockroach/pkg/util/caller
+github.com/cockroachdb/cockroach/pkg/util/fileutil
+github.com/cockroachdb/cockroach/pkg/util/log/logflags
+github.com/cockroachdb/cockroach/vendor/github.com/gogo/protobuf/sortkeys
+github.com/cockroachdb/cockroach/vendor/github.com/gogo/protobuf/types
+github.com/cockroachdb/cockroach/vendor/github.com/golang/protobuf/ptypes/timestamp
+github.com/cockroachdb/cockroach/vendor/github.com/lightstep/lightstep-tracer-go/lightsteppb
+github.com/cockroachdb/cockroach/vendor/github.com/opentracing/opentracing-go/log
+github.com/cockroachdb/cockroach/vendor/github.com/opentracing/opentracing-go
+github.com/cockroachdb/cockroach/vendor/github.com/lightstep/lightstep-tracer-go/basictracer
+github.com/cockroachdb/cockroach/vendor/github.com/lightstep/lightstep-tracer-go/collectorpb
+github.com/cockroachdb/cockroach/vendor/github.com/lightstep/lightstep-tracer-go/thrift_0_9_2/lib/go/thrift
+github.com/cockroachdb/cockroach/vendor/github.com/davecgh/go-spew/spew
+github.com/cockroachdb/cockroach/vendor/github.com/eapache/go-resiliency/breaker
+github.com/cockroachdb/cockroach/vendor/github.com/golang/snappy
+github.com/cockroachdb/cockroach/vendor/github.com/eapache/go-xerial-snappy
+github.com/cockroachdb/cockroach/vendor/github.com/eapache/queue
+github.com/cockroachdb/cockroach/vendor/github.com/pierrec/xxHash/xxHash32
+github.com/cockroachdb/cockroach/vendor/github.com/pierrec/lz4
+github.com/cockroachdb/cockroach/vendor/github.com/rcrowley/go-metrics
+github.com/cockroachdb/cockroach/vendor/github.com/lightstep/lightstep-tracer-go/lightstep_thrift
+github.com/cockroachdb/cockroach/vendor/github.com/Shopify/sarama
+github.com/cockroachdb/cockroach/vendor/github.com/lightstep/lightstep-tracer-go/thrift_rpc
+github.com/cockroachdb/cockroach/vendor/github.com/lightstep/lightstep-tracer-go
+github.com/cockroachdb/cockroach/vendor/github.com/apache/thrift/lib/go/thrift
+github.com/cockroachdb/cockroach/vendor/github.com/go-logfmt/logfmt
+github.com/cockroachdb/cockroach/vendor/github.com/opentracing/opentracing-go/ext
+github.com/cockroachdb/cockroach/vendor/github.com/openzipkin/zipkin-go-opentracing/flag
+github.com/cockroachdb/cockroach/vendor/github.com/openzipkin/zipkin-go-opentracing/types
+github.com/cockroachdb/cockroach/vendor/github.com/openzipkin/zipkin-go-opentracing/wire
+github.com/cockroachdb/cockroach/vendor/github.com/certifi/gocertifi
+github.com/cockroachdb/cockroach/vendor/github.com/getsentry/raven-go
+github.com/cockroachdb/cockroach/vendor/github.com/petermattis/goid
+github.com/cockroachdb/cockroach/vendor/golang.org/x/sys/unix
+github.com/cockroachdb/cockroach/vendor/github.com/openzipkin/zipkin-go-opentracing/_thrift/gen-go/scribe
+github.com/cockroachdb/cockroach/vendor/github.com/openzipkin/zipkin-go-opentracing/_thrift/gen-go/zipkincore
+github.com/cockroachdb/cockroach/pkg/util/timeutil
+github.com/cockroachdb/cockroach/pkg/util/uint128
+github.com/cockroachdb/cockroach/vendor/github.com/satori/go.uuid
+github.com/cockroachdb/cockroach/vendor/github.com/openzipkin/zipkin-go-opentracing
+github.com/cockroachdb/cockroach/pkg/util/uuid
+github.com/cockroachdb/cockroach/pkg/util/randutil
+github.com/cockroachdb/cockroach/pkg/util
+github.com/cockroachdb/cockroach/pkg/util/duration
+github.com/cockroachdb/cockroach/pkg/util/ipaddr
+github.com/cockroachdb/cockroach/pkg/util/encoding
+github.com/cockroachdb/cockroach/pkg/util/tracing
+github.com/cockroachdb/cockroach/vendor/github.com/biogo/store/llrb
+github.com/cockroachdb/cockroach/pkg/util/interval
+github.com/cockroachdb/cockroach/vendor/github.com/gogo/protobuf/jsonpb
+github.com/cockroachdb/cockroach/pkg/util/httputil
+github.com/cockroachdb/cockroach/pkg/util/log
+github.com/cockroachdb/cockroach/vendor/github.com/golang/protobuf/jsonpb
+github.com/cockroachdb/cockroach/vendor/github.com/grpc-ecosystem/grpc-gateway/runtime/internal
+github.com/cockroachdb/cockroach/vendor/github.com/grpc-ecosystem/grpc-gateway/runtime
+github.com/cockroachdb/cockroach/pkg/util/hlc
+github.com/cockroachdb/cockroach/pkg/util/protoutil
+github.com/cockroachdb/cockroach/pkg/storage/engine/enginepb
+github.com/cockroachdb/cockroach/vendor/github.com/rlmcpherson/s3gof3r
+github.com/cockroachdb/cockroach/vendor/github.com/VividCortex/ewma
+github.com/cockroachdb/cockroach/vendor/github.com/codahale/hdrhistogram
+github.com/cockroachdb/cockroach/vendor/github.com/prometheus/client_model/go
+github.com/cockroachdb/cockroach/pkg/roachpb
+github.com/cockroachdb/cockroach/vendor/github.com/matttproud/golang_protobuf_extensions/pbutil
+github.com/cockroachdb/cockroach/vendor/github.com/prometheus/common/internal/bitbucket.org/ww/goautoneg
+github.com/cockroachdb/cockroach/vendor/github.com/prometheus/common/model
+github.com/cockroachdb/cockroach/vendor/github.com/prometheus/common/expfmt
+github.com/cockroachdb/cockroach/pkg/util/metric
+github.com/cockroachdb/cockroach/vendor/golang.org/x/crypto/blowfish
+github.com/cockroachdb/cockroach/vendor/golang.org/x/crypto/bcrypt
+github.com/cockroachdb/cockroach/vendor/golang.org/x/crypto/ssh/terminal
+github.com/cockroachdb/cockroach/vendor/golang.org/x/time/rate
+github.com/cockroachdb/cockroach/pkg/util/retry
+github.com/cockroachdb/cockroach/vendor/gopkg.in/yaml.v2
+github.com/cockroachdb/cockroach/pkg/util/bufalloc
+github.com/cockroachdb/cockroach/vendor/github.com/elastic/gosigar
+github.com/cockroachdb/cockroach/vendor/github.com/golang/leveldb/db
+github.com/cockroachdb/cockroach/vendor/github.com/golang/leveldb/memfs
+github.com/cockroachdb/cockroach/vendor/github.com/golang/leveldb/crc
+github.com/cockroachdb/cockroach/vendor/github.com/golang/leveldb/table
+github.com/cockroachdb/cockroach/pkg/sql/pgwire/pgerror
+github.com/cockroachdb/cockroach/pkg/sql/mon
+github.com/cockroachdb/cockroach/pkg/sql/privilege
+github.com/cockroachdb/cockroach/pkg/util/cache
+github.com/cockroachdb/cockroach/vendor/github.com/knz/strtime
+github.com/cockroachdb/cockroach/vendor/github.com/lib/pq/oid
+github.com/cockroachdb/cockroach/pkg/util/stop
+github.com/cockroachdb/cockroach/pkg/settings/cluster
+github.com/cockroachdb/cockroach/pkg/security
+github.com/cockroachdb/cockroach/pkg/keys
+github.com/cockroachdb/cockroach/pkg/base
+github.com/cockroachdb/cockroach/pkg/config
+github.com/cockroachdb/cockroach/pkg/internal/client
+github.com/cockroachdb/cockroach/pkg/storage/engine
+github.com/cockroachdb/cockroach/vendor/golang.org/x/text/internal/tag
+github.com/cockroachdb/cockroach/vendor/golang.org/x/text/language
+github.com/cockroachdb/cockroach/vendor/golang.org/x/text/internal/colltab
+github.com/cockroachdb/cockroach/vendor/golang.org/x/text/collate
+github.com/cockroachdb/cockroach/pkg/ccl/storageccl/engineccl
+github.com/cockroachdb/cockroach/pkg/sql/parser
+github.com/cockroachdb/cockroach/pkg/gossip/resolver
+github.com/cockroachdb/cockroach/vendor/github.com/cenk/backoff
+github.com/cockroachdb/cockroach/vendor/github.com/cockroachdb/cmux
+github.com/cockroachdb/cockroach/pkg/util/netutil
+github.com/cockroachdb/cockroach/pkg/util/grpcutil
+github.com/cockroachdb/cockroach/vendor/github.com/facebookgo/clock
+github.com/cockroachdb/cockroach/vendor/github.com/grpc-ecosystem/grpc-opentracing/go/otgrpc
+github.com/cockroachdb/cockroach/vendor/github.com/montanaflynn/stats
+github.com/cockroachdb/cockroach/vendor/github.com/rubyist/circuitbreaker
+github.com/cockroachdb/cockroach/vendor/golang.org/x/sync/syncmap
+github.com/cockroachdb/cockroach/pkg/rpc
+github.com/cockroachdb/cockroach/pkg/gossip
+github.com/cockroachdb/cockroach/pkg/storage/storagebase
+github.com/cockroachdb/cockroach/pkg/util/shuffle
+github.com/cockroachdb/cockroach/vendor/github.com/coreos/etcd/raft/raftpb
+github.com/cockroachdb/cockroach/vendor/github.com/coreos/etcd/raft
+github.com/cockroachdb/cockroach/vendor/github.com/google/btree
+github.com/cockroachdb/cockroach/vendor/github.com/kr/text
+github.com/cockroachdb/cockroach/vendor/github.com/kr/pretty
+github.com/cockroachdb/cockroach/vendor/golang.org/x/sync/errgroup
+github.com/cockroachdb/cockroach/pkg/ccl/utilccl/licenseccl
+github.com/cockroachdb/cockroach/pkg/util/syncutil/singleflight
+github.com/cockroachdb/cockroach/pkg/kv
+github.com/cockroachdb/cockroach/pkg/ts/tspb
+github.com/cockroachdb/cockroach/vendor/github.com/lib/pq
+github.com/cockroachdb/cockroach/pkg/sql/sqlbase
+github.com/cockroachdb/cockroach/pkg/sql/sqlutil
+github.com/cockroachdb/cockroach/pkg/storage
+github.com/cockroachdb/cockroach/pkg/server/diagnosticspb
+github.com/cockroachdb/cockroach/pkg/ui
+github.com/cockroachdb/cockroach/pkg/util/sdnotify
+github.com/cockroachdb/cockroach/vendor/github.com/elazarl/go-bindata-assetfs
+github.com/cockroachdb/cockroach/vendor/github.com/mitchellh/reflectwalk
+github.com/cockroachdb/cockroach/vendor/github.com/rcrowley/go-metrics/exp
+github.com/cockroachdb/cockroach/pkg/ccl/utilccl/intervalccl
+github.com/cockroachdb/cockroach/vendor/github.com/backtrace-labs/go-bcd
+github.com/cockroachdb/cockroach/vendor/github.com/chzyer/readline
+github.com/cockroachdb/cockroach/pkg/cli/cliflags
+github.com/cockroachdb/cockroach/vendor/github.com/ianlancetaylor/cgosymbolizer
+github.com/cockroachdb/cockroach/pkg/ccl/storageccl
+github.com/cockroachdb/cockroach/pkg/server/status
+github.com/cockroachdb/cockroach/pkg/sql/jobs
+github.com/cockroachdb/cockroach/pkg/ts
+github.com/cockroachdb/cockroach/pkg/server/serverpb
+github.com/cockroachdb/cockroach/pkg/sql/distsqlrun
+github.com/cockroachdb/cockroach/vendor/github.com/mattn/go-isatty
+github.com/cockroachdb/cockroach/vendor/github.com/mattn/go-runewidth
+github.com/cockroachdb/cockroach/vendor/github.com/olekukonko/tablewriter
+github.com/cockroachdb/cockroach/vendor/github.com/spf13/cobra
+github.com/cockroachdb/cockroach/vendor/github.com/russross/blackfriday
+github.com/cockroachdb/cockroach/pkg/sql/distsqlplan
+github.com/cockroachdb/cockroach/vendor/github.com/cpuguy83/go-md2man/md2man
+github.com/cockroachdb/cockroach/vendor/github.com/spf13/cobra/doc
+github.com/cockroachdb/cockroach/pkg/sql
+github.com/cockroachdb/cockroach/pkg/sql/pgwire
+github.com/cockroachdb/cockroach/pkg/sqlmigrations
+github.com/cockroachdb/cockroach/pkg/server
+github.com/cockroachdb/cockroach/pkg/ccl/utilccl
+github.com/cockroachdb/cockroach/pkg/cli
+github.com/cockroachdb/cockroach/pkg/ccl/sqlccl
+github.com/cockroachdb/cockroach/pkg/ccl/cliccl
+github.com/cockroachdb/cockroach/pkg/ccl
+github.com/cockroachdb/cockroach
+
+
+
+
+[vagrant@bogon cockroach]$ ls -lh cockroach 
+-rwxr-xr-x. 1 vagrant vagrant 64M 11月  4 08:57 cockroach
+[vagrant@bogon cockroach]$ ./cockroach version
+Build Tag:    546a347
+Build Time:   2017/11/04 08:56:32
+Distribution: CCL
+Platform:     linux amd64
+Go Version:   go1.9.2
+C Compiler:   gcc 5.3.1 20151207 (Red Hat 5.3.1-2)
+Build SHA-1:  546a3474bfe2af9c275db4e28408100c730906eb
+Build Type:   development
+[vagrant@bogon cockroach]$ ./cockroach help
+CockroachDB command-line interface and server.
+
+Usage:
+  cockroach [command]
+
+Available Commands:
+  start       start a node
+  init        initialize a cluster
+  cert        create ca, node, and client certs
+  quit        drain and shutdown node
+
+  sql         open a sql shell
+  user        get, set, list and remove users
+  zone        get, set, list and remove zones
+  node        list, inspect or remove nodes
+  dump        dump sql tables
+
+  gen         generate auxiliary files
+  version     output version information
+  debug       debugging commands
+  load        loading commands
+  help        Help about any command
+
+Flags:
+      --log-backtrace-at traceLocation   when logging hits line file:N, emit a stack trace (default :0)
+      --log-dir string                   if non-empty, write log files in this directory
+      --log-dir-max-size bytes           maximum combined size of all log files (default 100 MiB)
+      --log-file-max-size bytes          maximum size of each log file (default 10 MiB)
+      --log-file-verbosity Severity      minimum verbosity of messages written to the log file (default INFO)
+      --logtostderr Severity[=DEFAULT]   logs at or above this threshold go to stderr (default NONE)
+      --no-color                         disable standard error log colorization
+      --verbosity level                  log level for V logs
+      --vmodule moduleSpec               comma-separated list of pattern=N settings for file-filtered logging
+
+Use "cockroach [command] --help" for more information about a command.

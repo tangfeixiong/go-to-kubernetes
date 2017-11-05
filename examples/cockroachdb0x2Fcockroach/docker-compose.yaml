@@ -1,0 +1,39 @@
+version: '2'
+
+services:
+  roach1:
+    command:
+    - cockroach
+    - start
+    - --insecure
+    image: tangfeixiong/cockroach:latest
+    ports:
+    - "26257:26257"
+    - "58080:8080"
+    restart: always
+    volumes:
+    - roach1-data:/cockroach/cockroach-data
+  roach2:
+    command:
+    - cockroach
+    - start
+    - --insecure
+    - --join=roach1
+    depends_on:
+    - roach1
+    image: tangfeixiong/cockroach:latest
+    restart: always
+  roach3:
+    command:
+    - cockroach
+    - start
+    - --insecure
+    - --join=roach1
+    depends_on:
+    - roach1
+    image: tangfeixiong/cockroach:latest
+    restart: always
+
+volumes:
+    roach1-data:
+   
