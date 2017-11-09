@@ -1,0 +1,627 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<filelists xmlns="http://linux.duke.edu/metadata/filelists" packages="78">
+<package pkgid="5116fa4b73c700823cfc76b3cedff6622f2fbd0a3d2fa09bce6d93329771e291" name="kubeadm" arch="x86_64">
+  <version epoch="0" ver="1.6.0" rel="0"></version>
+  <file>/etc/systemd/system/kubelet.service.d/10-kubeadm.conf</file>
+  <file>/usr/bin/kubeadm</file>
+</package><package pkgid="23961d0f7dca1ed118b948195f2fb5dd7a07503d69d7d8ab4433219ea98d033e" name="kubeadm" arch="x86_64">
+  <version epoch="0" ver="1.6.1" rel="0"></version>
+  <file>/etc/systemd/system/kubelet.service.d/10-kubeadm.conf</file>
+  <file>/usr/bin/kubeadm</file>
+</package><package pkgid="415bc9f86ecfc3b195f22d25fb599e19080d301358c145539d154be95f1985f5" name="kubeadm" arch="x86_64">
+  <version epoch="0" ver="1.6.2" rel="0"></version>
+  <file>/etc/systemd/system/kubelet.service.d/10-kubeadm.conf</file>
+  <file>/usr/bin/kubeadm</file>
+</package><package pkgid="81158f40764a08356242a53ef4bf7e3c219f48f364c55260db571cae51ce6eec" name="kubeadm" arch="x86_64">
+  <version epoch="0" ver="1.6.3" rel="0"></version>
+  <file>/etc/systemd/system/kubelet.service.d/10-kubeadm.conf</file>
+  <file>/usr/bin/kubeadm</file>
+</package><package pkgid="0c37012e387fae5fd0d66b5d4664f495ab19fbb709df655533b2b2ecb1a05cd8" name="kubeadm" arch="x86_64">
+  <version epoch="0" ver="1.6.4" rel="0"></version>
+  <file>/etc/systemd/system/kubelet.service.d/10-kubeadm.conf</file>
+  <file>/usr/bin/kubeadm</file>
+</package><package pkgid="5e62d624af011598f2df59c7759bf6ff4a6bba5675f0c07a2fb18e3c468ea41c" name="kubeadm" arch="x86_64">
+  <version epoch="0" ver="1.6.5" rel="0"></version>
+  <file>/etc/systemd/system/kubelet.service.d/10-kubeadm.conf</file>
+  <file>/usr/bin/kubeadm</file>
+</package><package pkgid="03ea47d2b0f1912c3a721c2b7353ead2e28a154b6c883200492db0558f6b09f2" name="kubeadm" arch="x86_64">
+  <version epoch="0" ver="1.6.6" rel="0"></version>
+  <file>/etc/systemd/system/kubelet.service.d/10-kubeadm.conf</file>
+  <file>/usr/bin/kubeadm</file>
+</package><package pkgid="6b36b8d9783ee59480bda0caabcb9ce95a6bf69c62ea38e7bb0cee65174fe479" name="kubeadm" arch="x86_64">
+  <version epoch="0" ver="1.6.7" rel="0"></version>
+  <file>/etc/systemd/system/kubelet.service.d/10-kubeadm.conf</file>
+  <file>/usr/bin/kubeadm</file>
+</package><package pkgid="c10b6d67b13101afd0270873972f10b14e9719ad8564797cc6609f7c58ae033c" name="kubeadm" arch="x86_64">
+  <version epoch="0" ver="1.6.11" rel="0"></version>
+  <file>/etc/systemd/system/kubelet.service.d/10-kubeadm.conf</file>
+  <file>/usr/bin/kubeadm</file>
+</package><package pkgid="fda8179e8174e43c17662d3a019f54e862d270fbfc07c3f7a88a58a033198153" name="kubeadm" arch="x86_64">
+  <version epoch="0" ver="1.6.12" rel="0"></version>
+  <file>/etc/systemd/system/kubelet.service.d/10-kubeadm.conf</file>
+  <file>/usr/bin/kubeadm</file>
+</package><package pkgid="cb7034dff51af01c237e03ea342dc74269b46cce1e43bb0ab9ef1d6f006ebda9" name="kubeadm" arch="x86_64">
+  <version epoch="0" ver="1.7.0" rel="0"></version>
+  <file>/etc/systemd/system/kubelet.service.d/10-kubeadm.conf</file>
+  <file>/usr/bin/kubeadm</file>
+</package><package pkgid="77bea7f33178ab4feb6afaf31c6c779511498ef47dec433eb5464909f7a26dc3" name="kubeadm" arch="x86_64">
+  <version epoch="0" ver="1.7.1" rel="0"></version>
+  <file>/etc/systemd/system/kubelet.service.d/10-kubeadm.conf</file>
+  <file>/usr/bin/kubeadm</file>
+</package><package pkgid="1a6f5f73f43077a50d877df505481e5a3d765c979b89fda16b8b9622b9ebd9a4" name="kubeadm" arch="x86_64">
+  <version epoch="0" ver="1.7.2" rel="0"></version>
+  <file>/etc/systemd/system/kubelet.service.d/10-kubeadm.conf</file>
+  <file>/usr/bin/kubeadm</file>
+</package><package pkgid="f7ec56b0f36a81c0f91bcf26e05f23088082b468b77dac576dc505444dd8cd48" name="kubeadm" arch="x86_64">
+  <version epoch="0" ver="1.7.3" rel="1"></version>
+  <file>/etc/systemd/system/kubelet.service.d/10-kubeadm.conf</file>
+  <file>/usr/bin/kubeadm</file>
+</package><package pkgid="f0a51fcde5e3b329050d7a6cf70f04a6cdf09eacfbad55f4324bfa2ea4312d0e" name="kubeadm" arch="x86_64">
+  <version epoch="0" ver="1.7.4" rel="0"></version>
+  <file>/etc/systemd/system/kubelet.service.d/10-kubeadm.conf</file>
+  <file>/usr/bin/kubeadm</file>
+</package><package pkgid="02f3a7ff6e04943bd288ff302f449b600e8db3d19868dfe4308d0d902c0ba927" name="kubeadm" arch="x86_64">
+  <version epoch="0" ver="1.7.5" rel="0"></version>
+  <file>/etc/systemd/system/kubelet.service.d/10-kubeadm.conf</file>
+  <file>/usr/bin/kubeadm</file>
+</package><package pkgid="4ff875dc8857b85c490b42b750527ba20a154a49a8dacd256d16cbbf5e708dfd" name="kubeadm" arch="x86_64">
+  <version epoch="0" ver="1.7.6" rel="1"></version>
+  <file>/etc/systemd/system/kubelet.service.d/10-kubeadm.conf</file>
+  <file>/usr/bin/kubeadm</file>
+</package><package pkgid="2bb9ddc5197dec31ac73a549067ab9b6a529cc31275f9223ff04efbfb5451602" name="kubeadm" arch="x86_64">
+  <version epoch="0" ver="1.7.7" rel="1"></version>
+  <file>/etc/systemd/system/kubelet.service.d/10-kubeadm.conf</file>
+  <file>/usr/bin/kubeadm</file>
+</package><package pkgid="8af3d230e7c1c775124b518aa0d69fa911e761e7b22fd081bfae8dece2381970" name="kubeadm" arch="x86_64">
+  <version epoch="0" ver="1.7.8" rel="1"></version>
+  <file>/etc/systemd/system/kubelet.service.d/10-kubeadm.conf</file>
+  <file>/usr/bin/kubeadm</file>
+</package><package pkgid="c0638ef93a73ad4343fe3c2b8105e3826605e2fe000017324b3328975aa36a82" name="kubeadm" arch="x86_64">
+  <version epoch="0" ver="1.7.10" rel="0"></version>
+  <file>/etc/systemd/system/kubelet.service.d/10-kubeadm.conf</file>
+  <file>/usr/bin/kubeadm</file>
+</package><package pkgid="ee93b5249497dba6488262bd2b56e32438a69f78993eb973bafa52d72f9b883a" name="kubeadm" arch="x86_64">
+  <version epoch="0" ver="1.8.0" rel="0"></version>
+  <file>/etc/systemd/system/kubelet.service.d/10-kubeadm.conf</file>
+  <file>/usr/bin/kubeadm</file>
+</package><package pkgid="7fe94dd0f828ef64d4ccdfef160417457309b904758ddf10c040612d7e5ef441" name="kubeadm" arch="x86_64">
+  <version epoch="0" ver="1.8.0" rel="1"></version>
+  <file>/etc/systemd/system/kubelet.service.d/10-kubeadm.conf</file>
+  <file>/usr/bin/kubeadm</file>
+</package><package pkgid="0f7d8ea10144399f3d60446fab5469395afb809c175bdc0eae4d12c1fcc3cb62" name="kubeadm" arch="x86_64">
+  <version epoch="0" ver="1.8.1" rel="0"></version>
+  <file>/etc/systemd/system/kubelet.service.d/10-kubeadm.conf</file>
+  <file>/usr/bin/kubeadm</file>
+</package><package pkgid="d64bc1d0ca27196030c6f574252a0872b998b29be90c6cb7e97b91cd0bc78fed" name="kubeadm" arch="x86_64">
+  <version epoch="0" ver="1.8.2" rel="0"></version>
+  <file>/etc/systemd/system/kubelet.service.d/10-kubeadm.conf</file>
+  <file>/usr/bin/kubeadm</file>
+</package><package pkgid="fd9b1e2215cab6da7adc6e87e2710b91ecfda3b617edfe7e71c92277301a63ab" name="kubectl" arch="x86_64">
+  <version epoch="0" ver="1.5.4" rel="0"></version>
+  <file>/usr/bin/kubectl</file>
+</package><package pkgid="e6aef7b2b7d9e5bd4db1e5747ebbc9f1f97bbfb8c7817ad68028565ca263a672" name="kubectl" arch="x86_64">
+  <version epoch="0" ver="1.6.0" rel="0"></version>
+  <file>/usr/bin/kubectl</file>
+</package><package pkgid="9d1ccf0877dfc4228a923a9614661b27d663694680e2bc0a1c184aa937fbf7f2" name="kubectl" arch="x86_64">
+  <version epoch="0" ver="1.6.1" rel="0"></version>
+  <file>/usr/bin/kubectl</file>
+</package><package pkgid="ff72cbf0dfa986c36097a5c3ac2301ecb73ed28df8db86e13641a79e9df9b3ea" name="kubectl" arch="x86_64">
+  <version epoch="0" ver="1.6.2" rel="0"></version>
+  <file>/usr/bin/kubectl</file>
+</package><package pkgid="d5cc6bb2e439298eb1b3e45c3ac58010580c1d3c3a2fa71040a7c73b1dc22881" name="kubectl" arch="x86_64">
+  <version epoch="0" ver="1.6.3" rel="0"></version>
+  <file>/usr/bin/kubectl</file>
+</package><package pkgid="9fcf36d1acf5e17c4aec783e956b8b70ab0e91693d394e6268c16533fe8a71a9" name="kubectl" arch="x86_64">
+  <version epoch="0" ver="1.6.4" rel="0"></version>
+  <file>/usr/bin/kubectl</file>
+</package><package pkgid="504e6824515b1b91702d1cd9aa8701fbcb2fabeb61e8395204f4e2cd07f7dfb7" name="kubectl" arch="x86_64">
+  <version epoch="0" ver="1.6.5" rel="0"></version>
+  <file>/usr/bin/kubectl</file>
+</package><package pkgid="b9584919848f1cc3096ec8cd0bbeceb95ea0786df339eb4883556a4a89f51010" name="kubectl" arch="x86_64">
+  <version epoch="0" ver="1.6.6" rel="0"></version>
+  <file>/usr/bin/kubectl</file>
+</package><package pkgid="b542021d5f32457f8c1f6f726aaa077eec66b0906440a020cfada28275df50f7" name="kubectl" arch="x86_64">
+  <version epoch="0" ver="1.6.7" rel="0"></version>
+  <file>/usr/bin/kubectl</file>
+</package><package pkgid="9b3b2d1cbe36086a7008d261594b31bb3e085e8c170aa319e1befebe604a99a7" name="kubectl" arch="x86_64">
+  <version epoch="0" ver="1.6.11" rel="0"></version>
+  <file>/usr/bin/kubectl</file>
+</package><package pkgid="712b311a1853d2b73be6729f57fc448ebc8818f0a9236cbbf1f11c6db3c3d8dc" name="kubectl" arch="x86_64">
+  <version epoch="0" ver="1.6.12" rel="0"></version>
+  <file>/usr/bin/kubectl</file>
+</package><package pkgid="888aff6bf68f988e7480efd06f38852eef8a44eed1baaa62f3ec4fbb07c35f7d" name="kubectl" arch="x86_64">
+  <version epoch="0" ver="1.7.0" rel="0"></version>
+  <file>/usr/bin/kubectl</file>
+</package><package pkgid="b8a64634ad1555e15a61b84685fd04959435ed6374b25e369f5bda89c8f03a6b" name="kubectl" arch="x86_64">
+  <version epoch="0" ver="1.7.1" rel="0"></version>
+  <file>/usr/bin/kubectl</file>
+</package><package pkgid="dc8329515fc3245404fea51839241b58774e577d7736f99f21276e764c309db5" name="kubectl" arch="x86_64">
+  <version epoch="0" ver="1.7.2" rel="0"></version>
+  <file>/usr/bin/kubectl</file>
+</package><package pkgid="c8a50a1ce9c948e7a238b02d3967d220e71e13e1ac8916a961176726eabe8aa1" name="kubectl" arch="x86_64">
+  <version epoch="0" ver="1.7.3" rel="1"></version>
+  <file>/usr/bin/kubectl</file>
+</package><package pkgid="041d5a6813dab590b160865fea7259bc2db762a9667379d03aca8d4596a3cccd" name="kubectl" arch="x86_64">
+  <version epoch="0" ver="1.7.4" rel="0"></version>
+  <file>/usr/bin/kubectl</file>
+</package><package pkgid="c2d4b7c1f39ca9532a2965ea513fcd900fdcdd8785639c8fbf69f30780cae764" name="kubectl" arch="x86_64">
+  <version epoch="0" ver="1.7.5" rel="0"></version>
+  <file>/usr/bin/kubectl</file>
+</package><package pkgid="71aa78fc7472de3664511c88f9d58d9a9c6922f26d67323869b5a661b106e0d0" name="kubectl" arch="x86_64">
+  <version epoch="0" ver="1.7.6" rel="1"></version>
+  <file>/usr/bin/kubectl</file>
+</package><package pkgid="4af2eb4114017f12fb36b92a85c8149de6c54020a73061f3666d033bfde8f3e3" name="kubectl" arch="x86_64">
+  <version epoch="0" ver="1.7.7" rel="1"></version>
+  <file>/usr/bin/kubectl</file>
+</package><package pkgid="761837737577fe362b16ff2b1fc34c383d86b0f9f746a9901c62587fd5f4e0f6" name="kubectl" arch="x86_64">
+  <version epoch="0" ver="1.7.8" rel="1"></version>
+  <file>/usr/bin/kubectl</file>
+</package><package pkgid="ef4f06f44a3e9412735722d5625f814505054bd5f672ccad3e631470e5da9cd0" name="kubectl" arch="x86_64">
+  <version epoch="0" ver="1.7.10" rel="0"></version>
+  <file>/usr/bin/kubectl</file>
+</package><package pkgid="582709dfb1c59f85c78f7db2c7609a1f3bf7308b73255bdbc910695b31b8660f" name="kubectl" arch="x86_64">
+  <version epoch="0" ver="1.8.0" rel="0"></version>
+  <file>/usr/bin/kubectl</file>
+</package><package pkgid="0ee48e6b4033fdf520f5893759b0665090ffb83eefdbe3f0b41edf54f2247ee4" name="kubectl" arch="x86_64">
+  <version epoch="0" ver="1.8.1" rel="0"></version>
+  <file>/usr/bin/kubectl</file>
+</package><package pkgid="3cc05eb1b1565779e8033743f1a2b9c8fb4e3b432421719ec56a3024d33dfccc" name="kubectl" arch="x86_64">
+  <version epoch="0" ver="1.8.2" rel="0"></version>
+  <file>/usr/bin/kubectl</file>
+</package><package pkgid="2e63c1f9436c6413a4ea0f45145b97c6dbf55e9bb2a251adc38db1292bbd6ed1" name="kubelet" arch="x86_64">
+  <version epoch="0" ver="1.5.4" rel="0"></version>
+  <file>/etc/systemd/system/kubelet.service</file>
+  <file>/usr/bin/kubelet</file>
+  <file type="dir">/etc/kubernetes/manifests</file>
+</package><package pkgid="af8567f1ba6f8dc1d43b60702d45c02aca88607b0e721d76897e70f6a6e53115" name="kubelet" arch="x86_64">
+  <version epoch="0" ver="1.6.0" rel="0"></version>
+  <file>/etc/systemd/system/kubelet.service</file>
+  <file>/usr/bin/kubelet</file>
+  <file type="dir">/etc/kubernetes/manifests</file>
+</package><package pkgid="cde0b9092d421800f7207df677d6a1f321c82179e89a24e4b3c009a875e62c91" name="kubelet" arch="x86_64">
+  <version epoch="0" ver="1.6.1" rel="0"></version>
+  <file>/etc/systemd/system/kubelet.service</file>
+  <file>/usr/bin/kubelet</file>
+  <file type="dir">/etc/kubernetes/manifests</file>
+</package><package pkgid="a8a2b37431da90798331a67b8b452572a72173414b1543368786e356f23bc4ce" name="kubelet" arch="x86_64">
+  <version epoch="0" ver="1.6.2" rel="0"></version>
+  <file>/etc/systemd/system/kubelet.service</file>
+  <file>/usr/bin/kubelet</file>
+  <file type="dir">/etc/kubernetes/manifests</file>
+</package><package pkgid="b610c239bd57c3ca0dcae3f4d4ae60a0a1eab99c7b059cf1b0fe8dd7267c3f73" name="kubelet" arch="x86_64">
+  <version epoch="0" ver="1.6.3" rel="0"></version>
+  <file>/etc/systemd/system/kubelet.service</file>
+  <file>/usr/bin/kubelet</file>
+  <file type="dir">/etc/kubernetes/manifests</file>
+</package><package pkgid="08706c8f6fbce961cd8994043cd27204f2bd3b47afd54cbd8755dae4b6cc4279" name="kubelet" arch="x86_64">
+  <version epoch="0" ver="1.6.4" rel="0"></version>
+  <file>/etc/systemd/system/kubelet.service</file>
+  <file>/usr/bin/kubelet</file>
+  <file type="dir">/etc/kubernetes/manifests</file>
+</package><package pkgid="7d43767d519f9f76605408517c999631e3835621afa8f5e80b9b8fd0925842ca" name="kubelet" arch="x86_64">
+  <version epoch="0" ver="1.6.5" rel="0"></version>
+  <file>/etc/systemd/system/kubelet.service</file>
+  <file>/usr/bin/kubelet</file>
+  <file type="dir">/etc/kubernetes/manifests</file>
+</package><package pkgid="f2c5f556143a820ed5bbb6a0ac7601f68dea8b28c8edc5db0a0d5d0ad4e94fd0" name="kubelet" arch="x86_64">
+  <version epoch="0" ver="1.6.6" rel="0"></version>
+  <file>/etc/systemd/system/kubelet.service</file>
+  <file>/usr/bin/kubelet</file>
+  <file type="dir">/etc/kubernetes/manifests</file>
+</package><package pkgid="b58a3f13d494458fbe23dbf22abc0213dc2c9ffb1e30f76dad3d7321d0715444" name="kubelet" arch="x86_64">
+  <version epoch="0" ver="1.6.7" rel="0"></version>
+  <file>/etc/systemd/system/kubelet.service</file>
+  <file>/usr/bin/kubelet</file>
+  <file type="dir">/etc/kubernetes/manifests</file>
+</package><package pkgid="254343aac568684ff6bdf75e69c015127b45cd8a6e7f9b0eff335b0a082b3117" name="kubelet" arch="x86_64">
+  <version epoch="0" ver="1.6.11" rel="0"></version>
+  <file>/etc/systemd/system/kubelet.service</file>
+  <file>/usr/bin/kubelet</file>
+  <file type="dir">/etc/kubernetes/manifests</file>
+</package><package pkgid="f469e89265a9a215358f6d2e541c0d5dd4f6b522fcbbe401117ce656b3aba931" name="kubelet" arch="x86_64">
+  <version epoch="0" ver="1.6.12" rel="0"></version>
+  <file>/etc/systemd/system/kubelet.service</file>
+  <file>/usr/bin/kubelet</file>
+  <file type="dir">/etc/kubernetes/manifests</file>
+</package><package pkgid="8f94c56214c25f72f999f8a9c099275c2e1b99110a155679c1eda293192c26a7" name="kubelet" arch="x86_64">
+  <version epoch="0" ver="1.7.0" rel="0"></version>
+  <file>/etc/systemd/system/kubelet.service</file>
+  <file>/usr/bin/kubelet</file>
+  <file type="dir">/etc/kubernetes/manifests</file>
+</package><package pkgid="30136924ea242fee92df3aaf0297365dc58e8d1260b7bde66c94bda5a42a6f04" name="kubelet" arch="x86_64">
+  <version epoch="0" ver="1.7.1" rel="0"></version>
+  <file>/etc/systemd/system/kubelet.service</file>
+  <file>/usr/bin/kubelet</file>
+  <file type="dir">/etc/kubernetes/manifests</file>
+</package><package pkgid="1e508e26f2b02971a7ff5f034b48a6077d613e0b222e0ec973351117b4ff45ea" name="kubelet" arch="x86_64">
+  <version epoch="0" ver="1.7.2" rel="0"></version>
+  <file>/etc/systemd/system/kubelet.service</file>
+  <file>/usr/bin/kubelet</file>
+  <file type="dir">/etc/kubernetes/manifests</file>
+</package><package pkgid="28b76e6e1c2ec397a9b6111045316a0943da73dd5602ee8e53752cdca62409e6" name="kubelet" arch="x86_64">
+  <version epoch="0" ver="1.7.3" rel="1"></version>
+  <file>/etc/systemd/system/kubelet.service</file>
+  <file>/usr/bin/kubelet</file>
+  <file type="dir">/etc/kubernetes/manifests</file>
+</package><package pkgid="4f60c17a926175fb9abcfdd487cebafbbbce0e2248d2b99c189ae0877376b88d" name="kubelet" arch="x86_64">
+  <version epoch="0" ver="1.7.4" rel="0"></version>
+  <file>/etc/systemd/system/kubelet.service</file>
+  <file>/usr/bin/kubelet</file>
+  <file type="dir">/etc/kubernetes/manifests</file>
+</package><package pkgid="c87d884d28952332d952d5f7f294ead1838a8e1219d2fc75923a5be06903afaf" name="kubelet" arch="x86_64">
+  <version epoch="0" ver="1.7.5" rel="0"></version>
+  <file>/etc/systemd/system/kubelet.service</file>
+  <file>/usr/bin/kubelet</file>
+  <file type="dir">/etc/kubernetes/manifests</file>
+</package><package pkgid="f049d9a0a9172b00aa2725c86a0de6f4ee51571105344b31b0b2523be9fda635" name="kubelet" arch="x86_64">
+  <version epoch="0" ver="1.7.6" rel="1"></version>
+  <file>/etc/systemd/system/kubelet.service</file>
+  <file>/usr/bin/kubelet</file>
+  <file type="dir">/etc/kubernetes/manifests</file>
+</package><package pkgid="45bd874fbf333c3e2595da358ce7ad3220af46b1ff69d69f57f882dee0db52a8" name="kubelet" arch="x86_64">
+  <version epoch="0" ver="1.7.7" rel="1"></version>
+  <file>/etc/systemd/system/kubelet.service</file>
+  <file>/usr/bin/kubelet</file>
+  <file type="dir">/etc/kubernetes/manifests</file>
+</package><package pkgid="305fd1a89e9da295f56ac2df41dd73e521e29c768c57074a365096d713bfe928" name="kubelet" arch="x86_64">
+  <version epoch="0" ver="1.7.8" rel="1"></version>
+  <file>/etc/systemd/system/kubelet.service</file>
+  <file>/usr/bin/kubelet</file>
+  <file type="dir">/etc/kubernetes/manifests</file>
+</package><package pkgid="b7127de06c5bec3e197d279ac910b7a119fa2f799fb18ca3ec11499506396957" name="kubelet" arch="x86_64">
+  <version epoch="0" ver="1.7.10" rel="0"></version>
+  <file>/etc/systemd/system/kubelet.service</file>
+  <file>/usr/bin/kubelet</file>
+  <file type="dir">/etc/kubernetes/manifests</file>
+</package><package pkgid="d51b547da5980e2f6bfd33a382779194a0eacecac999ca726f85ef76183a9033" name="kubelet" arch="x86_64">
+  <version epoch="0" ver="1.8.0" rel="0"></version>
+  <file>/etc/systemd/system/kubelet.service</file>
+  <file>/usr/bin/kubelet</file>
+  <file type="dir">/etc/kubernetes/manifests</file>
+</package><package pkgid="a35571037b554243d386436ff729c90a3cb270f5797b7cd254ef0afbd4e706bf" name="kubelet" arch="x86_64">
+  <version epoch="0" ver="1.8.1" rel="0"></version>
+  <file>/etc/systemd/system/kubelet.service</file>
+  <file>/usr/bin/kubelet</file>
+  <file type="dir">/etc/kubernetes/manifests</file>
+</package><package pkgid="7d976686554e598267d8c5eb030f2a8f4e575f47015ecf94459913b80c9e5bb8" name="kubelet" arch="x86_64">
+  <version epoch="0" ver="1.8.2" rel="0"></version>
+  <file>/etc/systemd/system/kubelet.service</file>
+  <file>/usr/bin/kubelet</file>
+  <file type="dir">/etc/kubernetes/manifests</file>
+</package><package pkgid="0c923b191423caccc65c550ef07ce61b97f991ad54785dab70dc07a5763f4222" name="kubernetes-cni" arch="x86_64">
+  <version epoch="0" ver="0.3.0.1" rel="0.07a8a2"></version>
+  <file>/opt/cni/bin/bridge</file>
+  <file>/opt/cni/bin/cnitool</file>
+  <file>/opt/cni/bin/dhcp</file>
+  <file>/opt/cni/bin/flannel</file>
+  <file>/opt/cni/bin/host-local</file>
+  <file>/opt/cni/bin/ipvlan</file>
+  <file>/opt/cni/bin/loopback</file>
+  <file>/opt/cni/bin/macvlan</file>
+  <file>/opt/cni/bin/noop</file>
+  <file>/opt/cni/bin/ptp</file>
+  <file>/opt/cni/bin/tuning</file>
+  <file type="dir">/opt/cni</file>
+  <file type="dir">/opt/cni/bin</file>
+</package><package pkgid="e7a4403227dd24036f3b0615663a371c4e07a95be5fee53505e647fd8ae58aa6" name="kubernetes-cni" arch="x86_64">
+  <version epoch="0" ver="0.5.1" rel="0"></version>
+  <file>/opt/cni/bin/bridge</file>
+  <file>/opt/cni/bin/cnitool</file>
+  <file>/opt/cni/bin/dhcp</file>
+  <file>/opt/cni/bin/flannel</file>
+  <file>/opt/cni/bin/host-local</file>
+  <file>/opt/cni/bin/ipvlan</file>
+  <file>/opt/cni/bin/loopback</file>
+  <file>/opt/cni/bin/macvlan</file>
+  <file>/opt/cni/bin/noop</file>
+  <file>/opt/cni/bin/ptp</file>
+  <file>/opt/cni/bin/tuning</file>
+  <file type="dir">/opt/cni</file>
+  <file type="dir">/opt/cni/bin</file>
+</package><package pkgid="79f9ba89dbe7000e7dfeda9b119f711bb626fe2c2d56abeb35141142cda00342" name="kubernetes-cni" arch="x86_64">
+  <version epoch="0" ver="0.5.1" rel="1"></version>
+  <file>/opt/cni/bin/bridge</file>
+  <file>/opt/cni/bin/cnitool</file>
+  <file>/opt/cni/bin/dhcp</file>
+  <file>/opt/cni/bin/flannel</file>
+  <file>/opt/cni/bin/host-local</file>
+  <file>/opt/cni/bin/ipvlan</file>
+  <file>/opt/cni/bin/loopback</file>
+  <file>/opt/cni/bin/macvlan</file>
+  <file>/opt/cni/bin/noop</file>
+  <file>/opt/cni/bin/ptp</file>
+  <file>/opt/cni/bin/tuning</file>
+  <file type="dir">/opt/cni</file>
+  <file type="dir">/opt/cni/bin</file>
+</package><package pkgid="fd5f5da2d1a262fa687404d34e72813520274364557e648bc64a8136f1a02630" name="rkt" arch="x86_64">
+  <version epoch="0" ver="1.25.0" rel="1"></version>
+  <file>/usr/bin/rkt</file>
+  <file>/usr/lib/rkt/stage1-images/stage1-coreos.aci</file>
+  <file>/usr/lib/rkt/stage1-images/stage1-fly.aci</file>
+  <file>/usr/lib/rkt/stage1-images/stage1-kvm.aci</file>
+  <file>/usr/lib/systemd/system/rkt-api-tcp.socket</file>
+  <file>/usr/lib/systemd/system/rkt-api.service</file>
+  <file>/usr/lib/systemd/system/rkt-gc.service</file>
+  <file>/usr/lib/systemd/system/rkt-gc.timer</file>
+  <file>/usr/lib/systemd/system/rkt-metadata.service</file>
+  <file>/usr/lib/systemd/system/rkt-metadata.socket</file>
+  <file>/usr/lib/tmpfiles.d/rkt.conf</file>
+  <file>/usr/share/bash-completion/completions/rkt</file>
+  <file>/usr/share/doc/rkt/README.md</file>
+  <file>/usr/share/doc/rkt/api-service.md</file>
+  <file>/usr/share/doc/rkt/app-container.md</file>
+  <file>/usr/share/doc/rkt/app-environment.md</file>
+  <file>/usr/share/doc/rkt/attach.md</file>
+  <file>/usr/share/doc/rkt/build-configure.md</file>
+  <file>/usr/share/doc/rkt/capabilities-guide.md</file>
+  <file>/usr/share/doc/rkt/cat-manifest.md</file>
+  <file>/usr/share/doc/rkt/commands.md</file>
+  <file>/usr/share/doc/rkt/config.md</file>
+  <file>/usr/share/doc/rkt/configuration.md</file>
+  <file>/usr/share/doc/rkt/dependencies.md</file>
+  <file>/usr/share/doc/rkt/distributions.md</file>
+  <file>/usr/share/doc/rkt/dns.md</file>
+  <file>/usr/share/doc/rkt/enter.md</file>
+  <file>/usr/share/doc/rkt/examples-bridge.md</file>
+  <file>/usr/share/doc/rkt/export.md</file>
+  <file>/usr/share/doc/rkt/fetch.md</file>
+  <file>/usr/share/doc/rkt/fly.md</file>
+  <file>/usr/share/doc/rkt/gc.md</file>
+  <file>/usr/share/doc/rkt/getting-started-guide.md</file>
+  <file>/usr/share/doc/rkt/hacking.md</file>
+  <file>/usr/share/doc/rkt/image-fetching-behavior.md</file>
+  <file>/usr/share/doc/rkt/image.md</file>
+  <file>/usr/share/doc/rkt/install-rkt-in-coreos.md</file>
+  <file>/usr/share/doc/rkt/list.md</file>
+  <file>/usr/share/doc/rkt/metadata-service.md</file>
+  <file>/usr/share/doc/rkt/overriding-defaults.md</file>
+  <file>/usr/share/doc/rkt/overview.md</file>
+  <file>/usr/share/doc/rkt/packaging.md</file>
+  <file>/usr/share/doc/rkt/prepare.md</file>
+  <file>/usr/share/doc/rkt/resolv-conf-logic.dot</file>
+  <file>/usr/share/doc/rkt/resolv-conf-logic.png</file>
+  <file>/usr/share/doc/rkt/rkt-1-4-0-benchmarks.md</file>
+  <file>/usr/share/doc/rkt/rkt-build-rkt.md</file>
+  <file>/usr/share/doc/rkt/rkt-vs-docker-fetch.png</file>
+  <file>/usr/share/doc/rkt/rkt-vs-docker-process-model.png</file>
+  <file>/usr/share/doc/rkt/rkt-vs-other-projects.md</file>
+  <file>/usr/share/doc/rkt/rm.md</file>
+  <file>/usr/share/doc/rkt/run-prepared.md</file>
+  <file>/usr/share/doc/rkt/run.md</file>
+  <file>/usr/share/doc/rkt/running-docker-images.md</file>
+  <file>/usr/share/doc/rkt/running-fly-stage1.md</file>
+  <file>/usr/share/doc/rkt/running-kvm-stage1.md</file>
+  <file>/usr/share/doc/rkt/seccomp-guide.md</file>
+  <file>/usr/share/doc/rkt/selinux.md</file>
+  <file>/usr/share/doc/rkt/signing-and-verification-guide.md</file>
+  <file>/usr/share/doc/rkt/status.md</file>
+  <file>/usr/share/doc/rkt/stop.md</file>
+  <file>/usr/share/doc/rkt/trust.md</file>
+  <file>/usr/share/doc/rkt/trying-out-rkt.md</file>
+  <file>/usr/share/doc/rkt/using-rkt-with-kubernetes.md</file>
+  <file>/usr/share/doc/rkt/using-rkt-with-nomad.md</file>
+  <file>/usr/share/doc/rkt/using-rkt-with-systemd.md</file>
+  <file>/usr/share/doc/rkt/version.md</file>
+  <file>/usr/share/man/man1/rkt.1</file>
+  <file>/usr/share/man/man1/rkt_api-service.1</file>
+  <file>/usr/share/man/man1/rkt_cat-manifest.1</file>
+  <file>/usr/share/man/man1/rkt_config.1</file>
+  <file>/usr/share/man/man1/rkt_enter.1</file>
+  <file>/usr/share/man/man1/rkt_export.1</file>
+  <file>/usr/share/man/man1/rkt_fetch.1</file>
+  <file>/usr/share/man/man1/rkt_gc.1</file>
+  <file>/usr/share/man/man1/rkt_image.1</file>
+  <file>/usr/share/man/man1/rkt_image_cat-manifest.1</file>
+  <file>/usr/share/man/man1/rkt_image_export.1</file>
+  <file>/usr/share/man/man1/rkt_image_extract.1</file>
+  <file>/usr/share/man/man1/rkt_image_gc.1</file>
+  <file>/usr/share/man/man1/rkt_image_list.1</file>
+  <file>/usr/share/man/man1/rkt_image_render.1</file>
+  <file>/usr/share/man/man1/rkt_image_rm.1</file>
+  <file>/usr/share/man/man1/rkt_list.1</file>
+  <file>/usr/share/man/man1/rkt_metadata-service.1</file>
+  <file>/usr/share/man/man1/rkt_prepare.1</file>
+  <file>/usr/share/man/man1/rkt_rm.1</file>
+  <file>/usr/share/man/man1/rkt_run-prepared.1</file>
+  <file>/usr/share/man/man1/rkt_run.1</file>
+  <file>/usr/share/man/man1/rkt_status.1</file>
+  <file>/usr/share/man/man1/rkt_stop.1</file>
+  <file>/usr/share/man/man1/rkt_trust.1</file>
+  <file>/usr/share/man/man1/rkt_version.1</file>
+</package><package pkgid="7a382e59dc2c39a66083e03ec061f33771e4a7130c98cd0ef61492b2196c0378" name="rkt" arch="x86_64">
+  <version epoch="0" ver="1.26.0" rel="1"></version>
+  <file>/usr/bin/rkt</file>
+  <file>/usr/lib/rkt/stage1-images/stage1-coreos.aci</file>
+  <file>/usr/lib/rkt/stage1-images/stage1-fly.aci</file>
+  <file>/usr/lib/rkt/stage1-images/stage1-kvm.aci</file>
+  <file>/usr/lib/systemd/system/rkt-api-tcp.socket</file>
+  <file>/usr/lib/systemd/system/rkt-api.service</file>
+  <file>/usr/lib/systemd/system/rkt-gc.service</file>
+  <file>/usr/lib/systemd/system/rkt-gc.timer</file>
+  <file>/usr/lib/systemd/system/rkt-metadata.service</file>
+  <file>/usr/lib/systemd/system/rkt-metadata.socket</file>
+  <file>/usr/lib/tmpfiles.d/rkt.conf</file>
+  <file>/usr/share/bash-completion/completions/rkt</file>
+  <file>/usr/share/doc/rkt/README.md</file>
+  <file>/usr/share/doc/rkt/api-service.md</file>
+  <file>/usr/share/doc/rkt/app-container.md</file>
+  <file>/usr/share/doc/rkt/app-environment.md</file>
+  <file>/usr/share/doc/rkt/attach.md</file>
+  <file>/usr/share/doc/rkt/build-configure.md</file>
+  <file>/usr/share/doc/rkt/capabilities-guide.md</file>
+  <file>/usr/share/doc/rkt/cat-manifest.md</file>
+  <file>/usr/share/doc/rkt/commands.md</file>
+  <file>/usr/share/doc/rkt/config.md</file>
+  <file>/usr/share/doc/rkt/configuration.md</file>
+  <file>/usr/share/doc/rkt/dependencies.md</file>
+  <file>/usr/share/doc/rkt/distributions.md</file>
+  <file>/usr/share/doc/rkt/dns.md</file>
+  <file>/usr/share/doc/rkt/enter.md</file>
+  <file>/usr/share/doc/rkt/examples-bridge.md</file>
+  <file>/usr/share/doc/rkt/export.md</file>
+  <file>/usr/share/doc/rkt/fetch.md</file>
+  <file>/usr/share/doc/rkt/fly.md</file>
+  <file>/usr/share/doc/rkt/gc.md</file>
+  <file>/usr/share/doc/rkt/getting-started-guide.md</file>
+  <file>/usr/share/doc/rkt/hacking.md</file>
+  <file>/usr/share/doc/rkt/image-fetching-behavior.md</file>
+  <file>/usr/share/doc/rkt/image.md</file>
+  <file>/usr/share/doc/rkt/install-rkt-in-coreos.md</file>
+  <file>/usr/share/doc/rkt/integrations.md</file>
+  <file>/usr/share/doc/rkt/list.md</file>
+  <file>/usr/share/doc/rkt/metadata-service.md</file>
+  <file>/usr/share/doc/rkt/overriding-defaults.md</file>
+  <file>/usr/share/doc/rkt/overview.md</file>
+  <file>/usr/share/doc/rkt/packaging.md</file>
+  <file>/usr/share/doc/rkt/prepare.md</file>
+  <file>/usr/share/doc/rkt/production-users.md</file>
+  <file>/usr/share/doc/rkt/resolv-conf-logic.dot</file>
+  <file>/usr/share/doc/rkt/resolv-conf-logic.png</file>
+  <file>/usr/share/doc/rkt/rkt-1-4-0-benchmarks.md</file>
+  <file>/usr/share/doc/rkt/rkt-build-rkt.md</file>
+  <file>/usr/share/doc/rkt/rkt-vs-docker-fetch.png</file>
+  <file>/usr/share/doc/rkt/rkt-vs-docker-process-model.png</file>
+  <file>/usr/share/doc/rkt/rkt-vs-other-projects.md</file>
+  <file>/usr/share/doc/rkt/rm.md</file>
+  <file>/usr/share/doc/rkt/run-prepared.md</file>
+  <file>/usr/share/doc/rkt/run.md</file>
+  <file>/usr/share/doc/rkt/running-docker-images.md</file>
+  <file>/usr/share/doc/rkt/running-fly-stage1.md</file>
+  <file>/usr/share/doc/rkt/running-kvm-stage1.md</file>
+  <file>/usr/share/doc/rkt/seccomp-guide.md</file>
+  <file>/usr/share/doc/rkt/selinux.md</file>
+  <file>/usr/share/doc/rkt/signing-and-verification-guide.md</file>
+  <file>/usr/share/doc/rkt/status.md</file>
+  <file>/usr/share/doc/rkt/stop.md</file>
+  <file>/usr/share/doc/rkt/trust.md</file>
+  <file>/usr/share/doc/rkt/trying-out-rkt.md</file>
+  <file>/usr/share/doc/rkt/using-rkt-with-kubernetes.md</file>
+  <file>/usr/share/doc/rkt/using-rkt-with-nomad.md</file>
+  <file>/usr/share/doc/rkt/using-rkt-with-systemd.md</file>
+  <file>/usr/share/doc/rkt/version.md</file>
+  <file>/usr/share/man/man1/rkt.1</file>
+  <file>/usr/share/man/man1/rkt_api-service.1</file>
+  <file>/usr/share/man/man1/rkt_cat-manifest.1</file>
+  <file>/usr/share/man/man1/rkt_config.1</file>
+  <file>/usr/share/man/man1/rkt_enter.1</file>
+  <file>/usr/share/man/man1/rkt_export.1</file>
+  <file>/usr/share/man/man1/rkt_fetch.1</file>
+  <file>/usr/share/man/man1/rkt_gc.1</file>
+  <file>/usr/share/man/man1/rkt_image.1</file>
+  <file>/usr/share/man/man1/rkt_image_cat-manifest.1</file>
+  <file>/usr/share/man/man1/rkt_image_export.1</file>
+  <file>/usr/share/man/man1/rkt_image_extract.1</file>
+  <file>/usr/share/man/man1/rkt_image_gc.1</file>
+  <file>/usr/share/man/man1/rkt_image_list.1</file>
+  <file>/usr/share/man/man1/rkt_image_render.1</file>
+  <file>/usr/share/man/man1/rkt_image_rm.1</file>
+  <file>/usr/share/man/man1/rkt_image_verify.1</file>
+  <file>/usr/share/man/man1/rkt_list.1</file>
+  <file>/usr/share/man/man1/rkt_metadata-service.1</file>
+  <file>/usr/share/man/man1/rkt_prepare.1</file>
+  <file>/usr/share/man/man1/rkt_rm.1</file>
+  <file>/usr/share/man/man1/rkt_run-prepared.1</file>
+  <file>/usr/share/man/man1/rkt_run.1</file>
+  <file>/usr/share/man/man1/rkt_status.1</file>
+  <file>/usr/share/man/man1/rkt_stop.1</file>
+  <file>/usr/share/man/man1/rkt_trust.1</file>
+  <file>/usr/share/man/man1/rkt_version.1</file>
+</package><package pkgid="01b97b0ddb967d0ed9fd78327a784efbfea8cd0d9789f5bab8b9bbfe94477c60" name="rkt" arch="x86_64">
+  <version epoch="0" ver="1.27.0" rel="1"></version>
+  <file>/usr/bin/rkt</file>
+  <file>/usr/lib/rkt/stage1-images/stage1-coreos.aci</file>
+  <file>/usr/lib/rkt/stage1-images/stage1-fly.aci</file>
+  <file>/usr/lib/rkt/stage1-images/stage1-kvm.aci</file>
+  <file>/usr/lib/systemd/system/rkt-api-tcp.socket</file>
+  <file>/usr/lib/systemd/system/rkt-api.service</file>
+  <file>/usr/lib/systemd/system/rkt-gc.service</file>
+  <file>/usr/lib/systemd/system/rkt-gc.timer</file>
+  <file>/usr/lib/systemd/system/rkt-metadata.service</file>
+  <file>/usr/lib/systemd/system/rkt-metadata.socket</file>
+  <file>/usr/lib/tmpfiles.d/rkt.conf</file>
+  <file>/usr/share/bash-completion/completions/rkt</file>
+  <file>/usr/share/doc/rkt/README.md</file>
+  <file>/usr/share/doc/rkt/api-service.md</file>
+  <file>/usr/share/doc/rkt/app-container.md</file>
+  <file>/usr/share/doc/rkt/app-environment.md</file>
+  <file>/usr/share/doc/rkt/attach.md</file>
+  <file>/usr/share/doc/rkt/build-configure.md</file>
+  <file>/usr/share/doc/rkt/capabilities-guide.md</file>
+  <file>/usr/share/doc/rkt/cat-manifest.md</file>
+  <file>/usr/share/doc/rkt/commands.md</file>
+  <file>/usr/share/doc/rkt/config.md</file>
+  <file>/usr/share/doc/rkt/configuration.md</file>
+  <file>/usr/share/doc/rkt/dependencies.md</file>
+  <file>/usr/share/doc/rkt/distributions.md</file>
+  <file>/usr/share/doc/rkt/dns.md</file>
+  <file>/usr/share/doc/rkt/enter.md</file>
+  <file>/usr/share/doc/rkt/examples-bridge.md</file>
+  <file>/usr/share/doc/rkt/export.md</file>
+  <file>/usr/share/doc/rkt/fetch.md</file>
+  <file>/usr/share/doc/rkt/fly.md</file>
+  <file>/usr/share/doc/rkt/gc.md</file>
+  <file>/usr/share/doc/rkt/getting-started-guide.md</file>
+  <file>/usr/share/doc/rkt/hacking.md</file>
+  <file>/usr/share/doc/rkt/image-fetching-behavior.md</file>
+  <file>/usr/share/doc/rkt/image.md</file>
+  <file>/usr/share/doc/rkt/install-rkt-in-coreos.md</file>
+  <file>/usr/share/doc/rkt/integrations.md</file>
+  <file>/usr/share/doc/rkt/list.md</file>
+  <file>/usr/share/doc/rkt/metadata-service.md</file>
+  <file>/usr/share/doc/rkt/overriding-defaults.md</file>
+  <file>/usr/share/doc/rkt/overview.md</file>
+  <file>/usr/share/doc/rkt/packaging.md</file>
+  <file>/usr/share/doc/rkt/prepare.md</file>
+  <file>/usr/share/doc/rkt/production-users.md</file>
+  <file>/usr/share/doc/rkt/resolv-conf-logic.dot</file>
+  <file>/usr/share/doc/rkt/resolv-conf-logic.png</file>
+  <file>/usr/share/doc/rkt/rkt-1-4-0-benchmarks.md</file>
+  <file>/usr/share/doc/rkt/rkt-build-rkt.md</file>
+  <file>/usr/share/doc/rkt/rkt-vs-docker-fetch.png</file>
+  <file>/usr/share/doc/rkt/rkt-vs-docker-process-model.png</file>
+  <file>/usr/share/doc/rkt/rkt-vs-other-projects.md</file>
+  <file>/usr/share/doc/rkt/rm.md</file>
+  <file>/usr/share/doc/rkt/run-prepared.md</file>
+  <file>/usr/share/doc/rkt/run.md</file>
+  <file>/usr/share/doc/rkt/running-docker-images.md</file>
+  <file>/usr/share/doc/rkt/running-fly-stage1.md</file>
+  <file>/usr/share/doc/rkt/running-kvm-stage1.md</file>
+  <file>/usr/share/doc/rkt/seccomp-guide.md</file>
+  <file>/usr/share/doc/rkt/selinux.md</file>
+  <file>/usr/share/doc/rkt/signing-and-verification-guide.md</file>
+  <file>/usr/share/doc/rkt/status.md</file>
+  <file>/usr/share/doc/rkt/stop.md</file>
+  <file>/usr/share/doc/rkt/trust.md</file>
+  <file>/usr/share/doc/rkt/trying-out-rkt.md</file>
+  <file>/usr/share/doc/rkt/using-rkt-with-kubernetes.md</file>
+  <file>/usr/share/doc/rkt/using-rkt-with-nomad.md</file>
+  <file>/usr/share/doc/rkt/using-rkt-with-systemd.md</file>
+  <file>/usr/share/doc/rkt/version.md</file>
+  <file>/usr/share/man/man1/rkt.1</file>
+  <file>/usr/share/man/man1/rkt_api-service.1</file>
+  <file>/usr/share/man/man1/rkt_cat-manifest.1</file>
+  <file>/usr/share/man/man1/rkt_config.1</file>
+  <file>/usr/share/man/man1/rkt_enter.1</file>
+  <file>/usr/share/man/man1/rkt_export.1</file>
+  <file>/usr/share/man/man1/rkt_fetch.1</file>
+  <file>/usr/share/man/man1/rkt_gc.1</file>
+  <file>/usr/share/man/man1/rkt_image.1</file>
+  <file>/usr/share/man/man1/rkt_image_cat-manifest.1</file>
+  <file>/usr/share/man/man1/rkt_image_export.1</file>
+  <file>/usr/share/man/man1/rkt_image_extract.1</file>
+  <file>/usr/share/man/man1/rkt_image_gc.1</file>
+  <file>/usr/share/man/man1/rkt_image_list.1</file>
+  <file>/usr/share/man/man1/rkt_image_render.1</file>
+  <file>/usr/share/man/man1/rkt_image_rm.1</file>
+  <file>/usr/share/man/man1/rkt_image_verify.1</file>
+  <file>/usr/share/man/man1/rkt_list.1</file>
+  <file>/usr/share/man/man1/rkt_metadata-service.1</file>
+  <file>/usr/share/man/man1/rkt_prepare.1</file>
+  <file>/usr/share/man/man1/rkt_rm.1</file>
+  <file>/usr/share/man/man1/rkt_run-prepared.1</file>
+  <file>/usr/share/man/man1/rkt_run.1</file>
+  <file>/usr/share/man/man1/rkt_status.1</file>
+  <file>/usr/share/man/man1/rkt_stop.1</file>
+  <file>/usr/share/man/man1/rkt_trust.1</file>
+  <file>/usr/share/man/man1/rkt_version.1</file>
+</package></filelists>

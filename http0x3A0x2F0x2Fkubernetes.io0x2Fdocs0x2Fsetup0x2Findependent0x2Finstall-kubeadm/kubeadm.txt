@@ -1,0 +1,287 @@
+
+
+https://www.cncf.io/blog/2017/11/07/kubeadm-v1-8-released-introducing-easy-upgrades-kubernetes-clusters/
+```
+root@kubeadm-18-upgrade-ubuntu:~# # Hello and welcome to this screencast! Today we're gonna spin up a v1.7.5 cluster with kubeadm, and then upgrade it to v1.8.0
+root@kubeadm-18-upgrade-ubuntu:~# kubeadm version
+kubeadm version: &version.Info{Major:"1", Minor:"7", GitVersion:"v1.7.5", GitCommit:"17d7182a7ccbb167074be7a87f0a68bd00d58d97", GitTreeState:"clean", BuildDate:"2017-08-31T08:56:23Z", GoVersion:"go1.8.3",
+ Compiler:"gc", Platform:"linux/amd64"}
+root@kubeadm-18-upgrade-ubuntu:~# kubeadm init --apiserver-bind-port 443 --kubernetes-version v1.7.5
+[kubeadm] WARNING: kubeadm is in beta, please do not use it for production clusters.
+[init] Using Kubernetes version: v1.7.5
+[init] Using Authorization modes: [Node RBAC]
+[preflight] Running pre-flight checks
+[preflight] WARNING: docker service is not enabled, please run 'systemctl enable docker.service'
+[preflight] Starting the kubelet service
+[kubeadm] WARNING: starting in 1.8, tokens expire after 24 hours by default (if you require a non-expiring token use --token-ttl 0)
+[certificates] Generated CA certificate and key.
+[certificates] Generated API server certificate and key.
+[certificates] API Server serving cert is signed for DNS names [kubeadm-18-upgrade-ubuntu kubernetes kubernetes.default kubernetes.default.svc kubernetes.default.svc.cluster.local] and IPs [10.96.0.1 10.1
+32.0.10]
+[certificates] Generated API server kubelet client certificate and key.
+[certificates] Generated service account token signing key and public key.
+[certificates] Generated front-proxy CA certificate and key.
+[certificates] Generated front-proxy client certificate and key.
+[certificates] Valid certificates and keys now exist in "/etc/kubernetes/pki"
+[kubeconfig] Wrote KubeConfig file to disk: "/etc/kubernetes/admin.conf"
+[kubeconfig] Wrote KubeConfig file to disk: "/etc/kubernetes/kubelet.conf"
+[kubeconfig] Wrote KubeConfig file to disk: "/etc/kubernetes/controller-manager.conf"
+[kubeconfig] Wrote KubeConfig file to disk: "/etc/kubernetes/scheduler.conf"
+[apiclient] Created API client, waiting for the control plane to become ready
+[apiclient] All control plane components are healthy after 30.501356 seconds
+[token] Using token: 65170c.38f249274c1bc858
+[apiconfig] Created RBAC rules
+[addons] Applied essential addon: kube-proxy
+[addons] Applied essential addon: kube-dns
+
+Your Kubernetes master has initialized successfully!
+
+To start using your cluster, you need to run (as a regular user):
+
+  mkdir -p $HOME/.kube
+  sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+  sudo chown $(id -u):$(id -g) $HOME/.kube/config
+
+You should now deploy a pod network to the cluster.
+Run "kubectl apply -f [podnetwork].yaml" with one of the options listed at:
+  http://kubernetes.io/docs/admin/addons/
+
+You can now join any number of machines by running the following on each node
+as root:
+
+  kubeadm join --token 65170c.38f249274c1bc858 10.132.0.10:443
+
+root@kubeadm-18-upgrade-ubuntu:~# export KUBECONFIG=/etc/kubernetes/admin.conf
+root@kubeadm-18-upgrade-ubuntu:~# # Install a Pod Networking Solution, in this case Weave Net
+root@kubeadm-18-upgrade-ubuntu:~# kubectl apply -f https://git.io/weave-kube-1.6
+serviceaccount "weave-net" created
+clusterrole "weave-net" created
+clusterrolebinding "weave-net" created
+daemonset "weave-net" created
+root@kubeadm-18-upgrade-ubuntu:~# kubectl version
+Client Version: version.Info{Major:"1", Minor:"7", GitVersion:"v1.7.5", GitCommit:"17d7182a7ccbb167074be7a87f0a68bd00d58d97", GitTreeState:"clean", BuildDate:"2017-08-31T09:14:02Z", GoVersion:"go1.8.3", C
+ompiler:"gc", Platform:"linux/amd64"}
+Server Version: version.Info{Major:"1", Minor:"7", GitVersion:"v1.7.5", GitCommit:"17d7182a7ccbb167074be7a87f0a68bd00d58d97", GitTreeState:"clean", BuildDate:"2017-08-31T08:56:23Z", GoVersion:"go1.8.3", C
+ompiler:"gc", Platform:"linux/amd64"}
+root@kubeadm-18-upgrade-ubuntu:~# kubectl get nodes
+NAME                        STATUS     AGE       VERSION
+kubeadm-18-upgrade-ubuntu   NotReady   34s       v1.7.5
+root@kubeadm-18-upgrade-ubuntu:~# kubectl get pods
+No resources found.
+root@kubeadm-18-upgrade-ubuntu:~# # It takes some seconds to install the networking solution
+root@kubeadm-18-upgrade-ubuntu:~# kubectl get nodes
+NAME                        STATUS    AGE       VERSION
+kubeadm-18-upgrade-ubuntu   Ready     1m        v1.7.5
+root@kubeadm-18-upgrade-ubuntu:~# # Upgrade cluster to v1.8.0
+root@kubeadm-18-upgrade-ubuntu:~# # Get the latest kubeadm binary so you can upgrade the control plane
+root@kubeadm-18-upgrade-ubuntu:~# curl -sSL https://dl.k8s.io/release/v1.8.0/bin/linux/amd64/kubeadm > /usr/bin/kubeadm
+root@kubeadm-18-upgrade-ubuntu:~# kubeadm version
+kubeadm version: &version.Info{Major:"1", Minor:"8", GitVersion:"v1.8.0", GitCommit:"6e937839ac04a38cac63e6a7a306c5d035fe7b0a", GitTreeState:"clean", BuildDate:"2017-09-28T22:46:41Z", GoVersion:"go1.8.3",
+ Compiler:"gc", Platform:"linux/amd64"}
+root@kubeadm-18-upgrade-ubuntu:~# kubectl version
+Client Version: version.Info{Major:"1", Minor:"7", GitVersion:"v1.7.5", GitCommit:"17d7182a7ccbb167074be7a87f0a68bd00d58d97", GitTreeState:"clean", BuildDate:"2017-08-31T09:14:02Z", GoVersion:"go1.8.3", C
+ompiler:"gc", Platform:"linux/amd64"}
+Server Version: version.Info{Major:"1", Minor:"7", GitVersion:"v1.7.5", GitCommit:"17d7182a7ccbb167074be7a87f0a68bd00d58d97", GitTreeState:"clean", BuildDate:"2017-08-31T08:56:23Z", GoVersion:"go1.8.3", C
+ompiler:"gc", Platform:"linux/amd64"}
+root@kubeadm-18-upgrade-ubuntu:~# kubeadm config upload from-flags --apiserver-bind-port 443
+[uploadconfig] Storing the configuration used in ConfigMap "kubeadm-config" in the "kube-system" Namespace
+root@kubeadm-18-upgrade-ubuntu:~# kubeadm upgrade plan
+[preflight] Running pre-flight checks
+[upgrade] Making sure the cluster is healthy:
+[upgrade/health] Checking API Server health: Healthy
+[upgrade/health] Checking Node health: All Nodes are healthy
+[upgrade/health] Checking Static Pod manifests exists on disk: All manifests exist on disk
+[upgrade/config] Making sure the configuration is correct:
+[upgrade/config] Reading configuration from the cluster...
+[upgrade/config] FYI: You can look at this config file with 'kubectl -n kube-system get cm kubeadm-config -oyaml'
+[upgrade] Fetching available versions to upgrade to:
+[upgrade/versions] Cluster version: v1.7.5
+[upgrade/versions] kubeadm version: v1.8.0
+[upgrade/versions] Latest stable version: v1.8.0
+[upgrade/versions] Latest version in the v1.7 series: v1.7.7
+
+Components that must be upgraded manually after you've upgraded the control plane with 'kubeadm upgrade apply':
+COMPONENT   CURRENT      AVAILABLE
+Kubelet     1 x v1.7.5   v1.7.7
+
+Upgrade to the latest version in the v1.7 series:
+
+COMPONENT            CURRENT   AVAILABLE
+API Server           v1.7.5    v1.7.7
+Controller Manager   v1.7.5    v1.7.7
+Scheduler            v1.7.5    v1.7.7
+Kube Proxy           v1.7.5    v1.7.7
+Kube DNS             1.14.5    1.14.5
+
+You can now apply the upgrade by executing the following command:
+
+        kubeadm upgrade apply v1.7.7
+
+_____________________________________________________________________
+
+Components that must be upgraded manually after you've upgraded the control plane with 'kubeadm upgrade apply':
+COMPONENT   CURRENT      AVAILABLE
+Kubelet     1 x v1.7.5   v1.8.0
+
+Upgrade to the latest stable version:
+
+COMPONENT            CURRENT   AVAILABLE
+API Server           v1.7.5    v1.8.0
+Controller Manager   v1.7.5    v1.8.0
+Scheduler            v1.7.5    v1.8.0
+Kube Proxy           v1.7.5    v1.8.0
+Kube DNS             1.14.5    1.14.5
+
+You can now apply the upgrade by executing the following command:
+
+        kubeadm upgrade apply v1.8.0
+
+_____________________________________________________________________
+
+root@kubeadm-18-upgrade-ubuntu:~# kubeadm upgrade apply v1.8.0
+[preflight] Running pre-flight checks
+[upgrade] Making sure the cluster is healthy:
+[upgrade/health] Checking API Server health: Healthy
+[upgrade/health] Checking Node health: All Nodes are healthy
+[upgrade/health] Checking Static Pod manifests exists on disk: All manifests exist on disk
+[upgrade/config] Making sure the configuration is correct:
+[upgrade/config] Reading configuration from the cluster...
+[upgrade/config] FYI: You can look at this config file with 'kubectl -n kube-system get cm kubeadm-config -oyaml'
+[upgrade/version] You have chosen to upgrade to version "v1.8.0"
+[upgrade/versions] Cluster version: v1.7.5
+[upgrade/versions] kubeadm version: v1.8.0
+[upgrade/confirm] Are you sure you want to proceed with the upgrade? [y/N]: y
+[upgrade/prepull] Will prepull images for components [kube-apiserver kube-controller-manager kube-scheduler]
+[upgrade/prepull] Prepulling image for component kube-scheduler.
+[upgrade/prepull] Prepulling image for component kube-apiserver.
+[upgrade/prepull] Prepulling image for component kube-controller-manager.
+[apiclient] Found 0 Pods for label selector k8s-app=upgrade-prepull-kube-scheduler
+[apiclient] Found 0 Pods for label selector k8s-app=upgrade-prepull-kube-controller-manager
+[apiclient] Found 1 Pods for label selector k8s-app=upgrade-prepull-kube-apiserver
+[apiclient] Found 1 Pods for label selector k8s-app=upgrade-prepull-kube-scheduler
+[apiclient] Found 1 Pods for label selector k8s-app=upgrade-prepull-kube-controller-manager
+[upgrade/prepull] Prepulled image for component kube-scheduler.
+[upgrade/prepull] Prepulled image for component kube-controller-manager.
+[upgrade/prepull] Prepulled image for component kube-apiserver.
+[upgrade/prepull] Successfully prepulled the images for all the control plane components
+[upgrade/apply] Upgrading your Static Pod-hosted control plane to version "v1.8.0"...
+[upgrade/staticpods] Writing upgraded Static Pod manifests to "/etc/kubernetes/tmp/kubeadm-upgraded-manifests654702114"
+[controlplane] Wrote Static Pod manifest for component kube-apiserver to "/etc/kubernetes/tmp/kubeadm-upgraded-manifests654702114/kube-apiserver.yaml"
+[controlplane] Wrote Static Pod manifest for component kube-controller-manager to "/etc/kubernetes/tmp/kubeadm-upgraded-manifests654702114/kube-controller-manager.yaml"
+[controlplane] Wrote Static Pod manifest for component kube-scheduler to "/etc/kubernetes/tmp/kubeadm-upgraded-manifests654702114/kube-scheduler.yaml"
+[upgrade/staticpods] Moved upgraded manifest to "/etc/kubernetes/manifests/kube-apiserver.yaml" and backed up old manifest to "/etc/kubernetes/tmp/kubeadm-backup-manifests911763225/kube-apiserver.yaml"
+[upgrade/staticpods] Waiting for the kubelet to restart the component
+[apiclient] Found 1 Pods for label selector component=kube-apiserver
+[upgrade/staticpods] Component "kube-apiserver" upgraded successfully!
+[upgrade/staticpods] Moved upgraded manifest to "/etc/kubernetes/manifests/kube-controller-manager.yaml" and backed up old manifest to "/etc/kubernetes/tmp/kubeadm-backup-manifests911763225/kube-controlle
+r-manager.yaml"
+[upgrade/staticpods] Waiting for the kubelet to restart the component
+[apiclient] Found 1 Pods for label selector component=kube-controller-manager
+[upgrade/staticpods] Component "kube-controller-manager" upgraded successfully!
+[upgrade/staticpods] Moved upgraded manifest to "/etc/kubernetes/manifests/kube-scheduler.yaml" and backed up old manifest to "/etc/kubernetes/tmp/kubeadm-backup-manifests911763225/kube-scheduler.yaml"
+[upgrade/staticpods] Waiting for the kubelet to restart the component
+[apiclient] Found 1 Pods for label selector component=kube-scheduler
+[upgrade/staticpods] Component "kube-scheduler" upgraded successfully!
+[uploadconfig] Storing the configuration used in ConfigMap "kubeadm-config" in the "kube-system" Namespace
+[bootstraptoken] Configured RBAC rules to allow Node Bootstrap tokens to post CSRs in order for nodes to get long term certificate credentials
+[bootstraptoken] Configured RBAC rules to allow the csrapprover controller automatically approve CSRs from a Node Bootstrap Token
+[addons] Applied essential addon: kube-dns
+[addons] Applied essential addon: kube-proxy
+
+[upgrade/successful] SUCCESS! Your cluster was upgraded to "v1.8.0". Enjoy!
+
+[upgrade/kubelet] Now that your control plane is upgraded, please proceed with upgrading your kubelets in turn.
+root@kubeadm-18-upgrade-ubuntu:~# kubectl version
+Client Version: version.Info{Major:"1", Minor:"7", GitVersion:"v1.7.5", GitCommit:"17d7182a7ccbb167074be7a87f0a68bd00d58d97", GitTreeState:"clean", BuildDate:"2017-08-31T09:14:02Z", GoVersion:"go1.8.3", C
+ompiler:"gc", Platform:"linux/amd64"}
+Server Version: version.Info{Major:"1", Minor:"8", GitVersion:"v1.8.0", GitCommit:"6e937839ac04a38cac63e6a7a306c5d035fe7b0a", GitTreeState:"clean", BuildDate:"2017-09-28T22:46:41Z", GoVersion:"go1.8.3", C
+ompiler:"gc", Platform:"linux/amd64"}
+root@kubeadm-18-upgrade-ubuntu:~# # Woot! We've upgraded the control plane to v1.8.0!
+root@kubeadm-18-upgrade-ubuntu:~# kubectl get nodes
+NAME                        STATUS    AGE       VERSION
+kubeadm-18-upgrade-ubuntu   Ready     2m        v1.7.5
+root@kubeadm-18-upgrade-ubuntu:~# # Let's upgrade the kubelet as well
+root@kubeadm-18-upgrade-ubuntu:~# kubectl create clusterrolebinding kubeadm:node-autoapprove-certificate-rotation --clusterrole=system:certificates.k8s.io:certificatesigningrequests:selfnodeclient --group
+=system:nodes
+clusterrolebinding "kubeadm:node-autoapprove-certificate-rotation" created
+root@kubeadm-18-upgrade-ubuntu:~# kubelet --version
+Kubernetes v1.7.5
+root@kubeadm-18-upgrade-ubuntu:~# kubectl drain kubeadm-18-upgrade-ubuntu --ignore-daemonsets
+node "kubeadm-18-upgrade-ubuntu" cordoned
+error: pods not managed by ReplicationController, ReplicaSet, Job, DaemonSet or StatefulSet (use --force to override): etcd-kubeadm-18-upgrade-ubuntu, kube-apiserver-kubeadm-18-upgrade-ubuntu, kube-contro
+ller-manager-kubeadm-18-upgrade-ubuntu, kube-scheduler-kubeadm-18-upgrade-ubuntu
+root@kubeadm-18-upgrade-ubuntu:~# # We can ignore that error for the master, it is expected as some Static Pods are run there
+root@kubeadm-18-upgrade-ubuntu:~#
+root@kubeadm-18-upgrade-ubuntu:~# apt-get update && apt-get upgrade
+Hit:1 http://europe-west1.gce.archive.ubuntu.com/ubuntu zesty InRelease
+Get:2 http://europe-west1.gce.archive.ubuntu.com/ubuntu zesty-updates InRelease [89.2 kB]
+Get:3 http://europe-west1.gce.archive.ubuntu.com/ubuntu zesty-backports InRelease [89.2 kB]
+Hit:4 http://ppa.launchpad.net/zanchey/asciinema/ubuntu zesty InRelease
+Get:5 http://security.ubuntu.com/ubuntu zesty-security InRelease [89.2 kB]
+Hit:6 http://archive.canonical.com/ubuntu zesty InRelease
+Hit:7 https://packages.cloud.google.com/apt kubernetes-xenial InRelease
+Fetched 268 kB in 0s (376 kB/s)
+Reading package lists... Done
+Reading package lists... Done
+Building dependency tree
+Reading state information... Done
+Calculating upgrade... Done
+The following packages have been kept back:
+  linux-headers-generic linux-headers-virtual linux-image-virtual linux-virtual
+The following packages will be upgraded:
+  kubeadm kubectl kubelet
+3 upgraded, 0 newly installed, 0 to remove and 4 not upgraded.
+Need to get 0 B/45.9 MB of archives.
+After this operation, 36.2 MB of additional disk space will be used.
+Do you want to continue? [Y/n] y
+perl: warning: Setting locale failed.
+perl: warning: Please check that your locale settings:
+        LANGUAGE = (unset),
+        LC_ALL = (unset),
+        LC_TIME = "fi_FI.UTF-8",
+        LC_MONETARY = "fi_FI.UTF-8",
+        LC_ADDRESS = "fi_FI.UTF-8",
+        LC_TELEPHONE = "fi_FI.UTF-8",
+        LC_NAME = "fi_FI.UTF-8",
+        LC_MEASUREMENT = "fi_FI.UTF-8",
+        LC_IDENTIFICATION = "fi_FI.UTF-8",
+        LC_NUMERIC = "fi_FI.UTF-8",
+        LC_PAPER = "fi_FI.UTF-8",
+        LANG = "en_US.UTF-8"
+    are supported and installed on your system.
+perl: warning: Falling back to a fallback locale ("en_US.UTF-8").
+locale: Cannot set LC_ALL to default locale: No such file or directory
+(Reading database ... 68052 files and directories currently installed.)
+Preparing to unpack .../kubelet_1.8.0-00_amd64.deb ...
+Unpacking kubelet (1.8.0-00) over (1.7.5-00) ...
+Preparing to unpack .../kubectl_1.8.0-00_amd64.deb ...
+Unpacking kubectl (1.8.0-00) over (1.7.5-00) ...
+Preparing to unpack .../kubeadm_1.8.0-00_amd64.deb ...
+Unpacking kubeadm (1.8.0-00) over (1.7.5-00) ...
+Setting up kubelet (1.8.0-00) ...
+Setting up kubectl (1.8.0-00) ...
+Setting up kubeadm (1.8.0-00) ...
+Installing new version of config file /etc/systemd/system/kubelet.service.d/10-kubeadm.conf ...
+root@kubeadm-18-upgrade-ubuntu:~# kubelet --version
+Kubernetes v1.8.0
+root@kubeadm-18-upgrade-ubuntu:~# kubectl uncordon kubeadm-18-upgrade-ubuntu
+The connection to the server 10.132.0.10:443 was refused - did you specify the right host or port?
+root@kubeadm-18-upgrade-ubuntu:~# kubectl uncordon kubeadm-18-upgrade-ubuntu
+The connection to the server 10.132.0.10:443 was refused - did you specify the right host or port?
+root@kubeadm-18-upgrade-ubuntu:~# kubectl uncordon kubeadm-18-upgrade-ubuntu
+node "kubeadm-18-upgrade-ubuntu" uncordoned
+root@kubeadm-18-upgrade-ubuntu:~# kubectl uncordon kubeadm-18-upgrade-ubuntu
+node "kubeadm-18-upgrade-ubuntu" already uncordoned
+root@kubeadm-18-upgrade-ubuntu:~# kubectl get nodes
+NAME                        STATUS    ROLES     AGE       VERSION
+kubeadm-18-upgrade-ubuntu   Ready     master    3m        v1.8.0
+root@kubeadm-18-upgrade-ubuntu:~# kubectl version
+Client Version: version.Info{Major:"1", Minor:"8", GitVersion:"v1.8.0", GitCommit:"6e937839ac04a38cac63e6a7a306c5d035fe7b0a", GitTreeState:"clean", BuildDate:"2017-09-28T22:57:57Z", GoVersion:"go1.8.3", C
+ompiler:"gc", Platform:"linux/amd64"}
+Server Version: version.Info{Major:"1", Minor:"8", GitVersion:"v1.8.0", GitCommit:"6e937839ac04a38cac63e6a7a306c5d035fe7b0a", GitTreeState:"clean", BuildDate:"2017-09-28T22:46:41Z", GoVersion:"go1.8.3", C
+ompiler:"gc", Platform:"linux/amd64"}
+root@kubeadm-18-upgrade-ubuntu:~# kubeadm version
+kubeadm version: &version.Info{Major:"1", Minor:"8", GitVersion:"v1.8.0", GitCommit:"6e937839ac04a38cac63e6a7a306c5d035fe7b0a", GitTreeState:"clean", BuildDate:"2017-09-28T22:46:41Z", GoVersion:"go1.8.3",
+ Compiler:"gc", Platform:"linux/amd64"}
+root@kubeadm-18-upgrade-ubuntu:~# # Woot, all components are upgraded to v1.8.0!
+```

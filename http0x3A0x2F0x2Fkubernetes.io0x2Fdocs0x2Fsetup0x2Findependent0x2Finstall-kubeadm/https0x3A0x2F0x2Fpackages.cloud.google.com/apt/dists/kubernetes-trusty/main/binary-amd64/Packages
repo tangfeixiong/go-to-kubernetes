@@ -1,0 +1,27 @@
+Package: kubectl
+Version: 1.5.6-00
+Installed-Size: 49202
+Maintainer: Kubernetes Authors <kubernetes-dev+release@googlegroups.com>
+Architecture: amd64
+Description: Kubernetes Command Line Tool
+ The Kubernetes command line tool for interacting with the Kubernetes API.
+Homepage: https://kubernetes.io
+Filename: pool/kubectl_1.5.6-00_amd64_620d1f16fcf779e72e778fd000b247612eabb351e054573b1153df8f6aad1342.deb
+Priority: optional
+SHA256: 620d1f16fcf779e72e778fd000b247612eabb351e054573b1153df8f6aad1342
+Section: misc
+Size: 7951580
+
+Package: kubectl
+Version: 1.6.0-00
+Installed-Size: 69065
+Maintainer: Kubernetes Authors <kubernetes-dev+release@googlegroups.com>
+Architecture: amd64
+Description: Kubernetes Command Line Tool
+ The Kubernetes command line tool for interacting with the Kubernetes API.
+Homepage: https://kubernetes.io
+Filename: pool/kubectl_1.6.0-00_amd64_7021195dccb229242f160a98c069ccfe3097b3af1549b81940d201313238b519.deb
+Priority: optional
+SHA256: 7021195dccb229242f160a98c069ccfe3097b3af1549b81940d201313238b519
+Section: misc
+Size: 9656918

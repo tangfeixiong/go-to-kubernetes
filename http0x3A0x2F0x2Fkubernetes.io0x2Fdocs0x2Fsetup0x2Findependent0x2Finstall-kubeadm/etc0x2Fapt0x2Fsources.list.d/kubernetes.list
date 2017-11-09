@@ -1,0 +1,8 @@
+### ubuntu
+#deb http://apt.kubernetes.io/ kubernetes-trusty main
+deb http://apt.kubernetes.io/ kubernetes-xenial main
+
+### debian
+#deb http://apt.kubernetes.io/ kubernetes-wheezy main
+#deb http://apt.kubernetes.io/ kubernetes-jessie main
+#deb http://apt.kubernetes.io/ kubernetes-stretch main

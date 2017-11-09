@@ -1,21 +1,23 @@
-java-devel/https%3A%2F%2Fgist.github.com%2Fferronrsmith%2F9328204/src
-java-devel/**/.project
-java-devel/**/.settings/
-java-devel/**/target/
-**/.gradle
-**/*.war
+java/https0x3A0x2F0x2Fgist.github.com0x2Fferronrsmith0x2F9328204/src
+.project/
+.settings/
+target/
+.gradle
+*.war
 archetype-catalog.xml
-**/*.rtf
+*.rtf
 
 /bin
 /rootfs/kubectl
 /rootfs/exec2hterm
 /rootfs/.gotty
 
-/http%3A%2F%2Fyum.kubernetes.io
-/https%3A%2F%2Fpackages.cloud.google.com
 /vendor
 vendor.txt
+
+#http0x3A0x2F0x2Fkubernetes.io0x2Fdocs0x2Fsetup0x2Findependent0x2Finstall-kubeadm/
+http0x3A0x2F0x2Fkubernetes.io0x2Fdocs0x2Fsetup0x2Findependent0x2Finstall-kubeadm/https0x3A0x2F0x2Fpackages.cloud.google.com/apt/pool/
+http0x3A0x2F0x2Fkubernetes.io0x2Fdocs0x2Fsetup0x2Findependent0x2Finstall-kubeadm/https0x3A0x2F0x2Fpackages.cloud.google.com/yum/pool/
 
 # Mac
 .DS_Store

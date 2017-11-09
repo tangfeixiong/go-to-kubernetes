@@ -1,0 +1,77 @@
+Codename: kubernetes-trusty
+Date: Tue, 28 Mar 2017 23:55:32 UTC
+Description: kubernetes-trusty
+Label: kubernetes-trusty
+Origin: kubernetes-trusty
+Suite: kubernetes-trusty
+Components: main
+Architectures: amd64 arm64 armhf i386
+MD5Sum:
+ 77ef66452eeadc6eb392bd6767fc8421 1053 main/binary-amd64/Packages
+ 4fb69c9e85dd95134ac7e2b1eb9a09ae 458 main/binary-amd64/Packages.gz
+ ab0780047c07ac1e1a0d634e6e5ba198 207 main/binary-amd64/Release
+ d8ff36c2b771e84f7ba9613229c681ae 1053 main/binary-arm64/Packages
+ 94fa456a585e063b69bd946e079afa06 455 main/binary-arm64/Packages.gz
+ 40a3cce2265bcba700b9bc3bd93469ce 207 main/binary-arm64/Release
+ 82329f0ea3e1d5b12b70ee29da0597e8 1053 main/binary-armhf/Packages
+ 60bcb8a0b66e0832c5d9c0f3a7aff305 456 main/binary-armhf/Packages.gz
+ 7d06f967a13e2f1abb6e0c8aced85560 207 main/binary-armhf/Release
+ d41d8cd98f00b204e9800998ecf8427e 0 main/binary-i386/Packages
+ febef808ae5397ea4ee7ee40e5fd39e0 23 main/binary-i386/Packages.gz
+ 40ef48649de46770164f04560c659c39 206 main/binary-i386/Release
+ d41d8cd98f00b204e9800998ecf8427e 0 main/debian-installer/binary-amd64/Packages
+ febef808ae5397ea4ee7ee40e5fd39e0 23 main/debian-installer/binary-amd64/Packages.gz
+ d41d8cd98f00b204e9800998ecf8427e 0 main/debian-installer/binary-arm64/Packages
+ febef808ae5397ea4ee7ee40e5fd39e0 23 main/debian-installer/binary-arm64/Packages.gz
+ d41d8cd98f00b204e9800998ecf8427e 0 main/debian-installer/binary-armhf/Packages
+ febef808ae5397ea4ee7ee40e5fd39e0 23 main/debian-installer/binary-armhf/Packages.gz
+ d41d8cd98f00b204e9800998ecf8427e 0 main/debian-installer/binary-i386/Packages
+ febef808ae5397ea4ee7ee40e5fd39e0 23 main/debian-installer/binary-i386/Packages.gz
+ d41d8cd98f00b204e9800998ecf8427e 0 main/source/Sources
+ febef808ae5397ea4ee7ee40e5fd39e0 23 main/source/Sources.gz
+SHA1:
+ c1da609d6ec8fd6959c835672d1e76dfd56200fc 1053 main/binary-amd64/Packages
+ 78b117b6c562b8747188e4c3f5222755503877e5 458 main/binary-amd64/Packages.gz
+ 8c67b5496dca33790e3c36cc3e50d69101406d13 207 main/binary-amd64/Release
+ 603e806d2c9ee7124268e0470c1d1b1101a0e36c 1053 main/binary-arm64/Packages
+ 6b1012cc114b495296d2796939824e928c16fbed 455 main/binary-arm64/Packages.gz
+ 873128a3b4a0fcf51f8c155d2904639ce6a498f5 207 main/binary-arm64/Release
+ e9bfb7b1d857fce3d7d036e2d28c130655bbdac6 1053 main/binary-armhf/Packages
+ c14348088f03036155adac8ad122684158cfafd4 456 main/binary-armhf/Packages.gz
+ 5f7299fb80990644e72da2be5316e0be763ef775 207 main/binary-armhf/Release
+ da39a3ee5e6b4b0d3255bfef95601890afd80709 0 main/binary-i386/Packages
+ 59f5877e03b380c6c94aae6d8bf1f2aa4f140f4a 23 main/binary-i386/Packages.gz
+ 9bd1e1e233d80bfd14f658b8bd5ac5c7a22f2cb3 206 main/binary-i386/Release
+ da39a3ee5e6b4b0d3255bfef95601890afd80709 0 main/debian-installer/binary-amd64/Packages
+ 59f5877e03b380c6c94aae6d8bf1f2aa4f140f4a 23 main/debian-installer/binary-amd64/Packages.gz
+ da39a3ee5e6b4b0d3255bfef95601890afd80709 0 main/debian-installer/binary-arm64/Packages
+ 59f5877e03b380c6c94aae6d8bf1f2aa4f140f4a 23 main/debian-installer/binary-arm64/Packages.gz
+ da39a3ee5e6b4b0d3255bfef95601890afd80709 0 main/debian-installer/binary-armhf/Packages
+ 59f5877e03b380c6c94aae6d8bf1f2aa4f140f4a 23 main/debian-installer/binary-armhf/Packages.gz
+ da39a3ee5e6b4b0d3255bfef95601890afd80709 0 main/debian-installer/binary-i386/Packages
+ 59f5877e03b380c6c94aae6d8bf1f2aa4f140f4a 23 main/debian-installer/binary-i386/Packages.gz
+ da39a3ee5e6b4b0d3255bfef95601890afd80709 0 main/source/Sources
+ 59f5877e03b380c6c94aae6d8bf1f2aa4f140f4a 23 main/source/Sources.gz
+SHA256:
+ 5bdc0601ace9b1e921aec06933c2afba3ca8f98df85da8ef81c2bcb26d30d67d 1053 main/binary-amd64/Packages
+ fe7a45a0d6b314c713a6696c4eab900f87d6089035deb056ab97941c3d44c276 458 main/binary-amd64/Packages.gz
+ 1c1b46e040396c46c98bf2d3a1376771d067b0c9ec4c34b35da851701a88e812 207 main/binary-amd64/Release
+ e6bc98b5c37b97943afbb919b419c79d1f705f02e36412460adb9db94d70a3c5 1053 main/binary-arm64/Packages
+ 72c086ea9698cd5da0256048c245281a0637097ab348b7b09179cd3751e7823c 455 main/binary-arm64/Packages.gz
+ eab769ddac10377a7dd15501e61f7bc451257e5c795dbc0b653e18504fa46503 207 main/binary-arm64/Release
+ dace7529c23ed7081327571f47ce21b0d85f2b24f6216011042dc78a25edfff8 1053 main/binary-armhf/Packages
+ 2991b7c0dd70aeae1dfbbee0239c32ddb674d1fb9e26f0ec529c910eb7e8e429 456 main/binary-armhf/Packages.gz
+ 97cfced0e5112ec0252b03fa52fbe3fa861894bff4f92a028e64c3da6e70fe40 207 main/binary-armhf/Release
+ e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855 0 main/binary-i386/Packages
+ 81da0491c5af5635831f6a3febb5d9bfd66987ba3ecc42e58dc3d80938c25705 23 main/binary-i386/Packages.gz
+ b4683865a963737b1a4c021b499e0acfcf722fab1a9a71d7b6efb27cda1f674b 206 main/binary-i386/Release
+ e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855 0 main/debian-installer/binary-amd64/Packages
+ 81da0491c5af5635831f6a3febb5d9bfd66987ba3ecc42e58dc3d80938c25705 23 main/debian-installer/binary-amd64/Packages.gz
+ e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855 0 main/debian-installer/binary-arm64/Packages
+ 81da0491c5af5635831f6a3febb5d9bfd66987ba3ecc42e58dc3d80938c25705 23 main/debian-installer/binary-arm64/Packages.gz
+ e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855 0 main/debian-installer/binary-armhf/Packages
+ 81da0491c5af5635831f6a3febb5d9bfd66987ba3ecc42e58dc3d80938c25705 23 main/debian-installer/binary-armhf/Packages.gz
+ e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855 0 main/debian-installer/binary-i386/Packages
+ 81da0491c5af5635831f6a3febb5d9bfd66987ba3ecc42e58dc3d80938c25705 23 main/debian-installer/binary-i386/Packages.gz
+ e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855 0 main/source/Sources
+ 81da0491c5af5635831f6a3febb5d9bfd66987ba3ecc42e58dc3d80938c25705 23 main/source/Sources.gz

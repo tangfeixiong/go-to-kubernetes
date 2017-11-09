@@ -1,0 +1,8 @@
+Codename: kubernetes-trusty
+Date: Tue, 28 Mar 2017 23:55:32 UTC
+Description: kubernetes-trusty
+Label: kubernetes-trusty
+Origin: kubernetes-trusty
+Suite: kubernetes-trusty
+Component: main
+Architecture: amd64
