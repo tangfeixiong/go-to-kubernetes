@@ -152,12 +152,16 @@ packages
 
 dnf
 ```
-[vagrant@localhost ~]$ sudo dnf list --verbose | grep kube
+[vagrant@localhost ~]$ dnf list --verbose | grep kube
 导入 GPG 公钥 0xA7317B0F:
  Userid: "Google Cloud Packages Automatic Signing Key <gc-team@google.com>"
  指纹: D0BC 747F D8CA F711 7500 D6FA 3746 C208 A731 7B0F
  来自: https://packages.cloud.google.com/yum/doc/yum-key.gpg
 ^C^C已终止。
+```
+
+Root
+```
 [vagrant@localhost ~]$ sudo dnf --help
 usage: dnf [options] COMMAND
 
