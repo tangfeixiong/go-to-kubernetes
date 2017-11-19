@@ -2,24 +2,30 @@
 
 ## Tables of Content
 
-[Documentation](./docs)
+[Deployment](./docs)
 
-* DevOps动手部署Kubernetes v1.5.7 － Hand-on: Deploying Kubernetes v1.5.7
-* HandsOn - CentOS Installation
 * [CentOS DevOps - CentOS Everything ISO media repo](./docs/centos-devops-iso-repo.md)
 * [CentOS DevOps - YUM repo mirror](./docs/centos-devops-sync-repo.md)
 * [CentOS HandsOn - Docker installation](./docs/centos-devops-install-docker.md)
 * [CentOS DevOps - Etcd2 installation](./docs/kubernetes-devops-install-etcd.md)
-* [CentOS DevOps - Kubernetes master installation](./docs/kubernetes-devops-install-master.md)
-* [CentOS DevOps - GlusterFS](./docs/glusterfs)
-* [CentOS DevOps - Hadoop HDFS](./docs/hadoop)
-* Java示例io.fabric8:kubernetes-client项目的example - [Java example of Fabric8 kubernetes-client project](./java-devel)
+* [Kubernetes v1.3 DevOps - Kubernetes master deployment](./docs/kubernetes-v1.3-devops-install-master.md)
+* [Kubernetes v1.5.7 DevOps - bash部署](./docs/k8s-v1.5.7-deployment)
+* [Kubernetes v1.6 DevOps - bash部署](./docs/k8s-v1.6-deployment)
+* [Kubernetes v1.7 DevOps - bash部署](./docs/k8s-v1.7-Hand-on)
+* [Kubernetes v1.8 DevOps - kubeadm部署](./docs/k8s-v1.8.2-devops)
 
 [Clustering examples in Kubernetes](./examples)
 
 * 示例K8s的ElasticSearch日志分析平台 —— ElasticSearch With StorageClass and StatefulSet [Hand-on](./example/elasticsearch)
 * 示例k8s编排Kafka集群 —— Deploying Kafka into Kubernetes - [Hand-on](./examples/kafka)
 * 以及Kafka在k8s上使用Prometheus和Grafana去度量和监控 —— Kafka metrics with Prometheus and Grafana into Kubernetes
+
+Others
+
+* [CentOS DevOps - GlusterFS](./docs/glusterfs)
+* [CentOS DevOps - Hadoop HDFS](./docs/hadoop)
+* Java示例io.fabric8:kubernetes-client项目的example - [Java example of Fabric8 kubernetes-client project](./java-devel)
+
 
 ## Golang
 

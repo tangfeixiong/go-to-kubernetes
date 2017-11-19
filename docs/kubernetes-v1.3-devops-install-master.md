@@ -7,23 +7,34 @@ Host
 ```
 [root@localhost 1.3.10]# hostname -I | awk '{print $1}'
 192.168.2.20
+```
 
 ```
 [root@localhost releases%2Fdownload%2Fv1.3.10]# tar -C /opt -xzf kubernetes.tar.gz kubernetes/server/kubernetes-server-linux-amd64.tar.gz
+```
 
+```
 [root@localhost server]# tar -C /opt -zxf kubernetes-server-linux-amd64.tar.gz 
+```
 
+```
 [root@localhost bin]# docker load -i kube-apiserver.tar 
 [root@localhost bin]# docker images
 REPOSITORY                                TAG                                IMAGE ID            CREATED             SIZE
 tangfeixiong/netcat-hello-http            gitrev-7257e93                     bbadd9f66ea9        3 months ago        13.46 MB
 gcr.io/google_containers/kube-apiserver   dc8bf1d543f71874b3150cdb1bf60205   febba0bcdbe6        3 months ago        111.1 MB
+```
+
+```
 [root@localhost bin]# docker load -i kube-controller-manager.tar 
 [root@localhost bin]# docker images
 REPOSITORY                                         TAG                                IMAGE ID            CREATED             SIZE
 tangfeixiong/netcat-hello-http                     gitrev-7257e93                     bbadd9f66ea9        3 months ago        13.46 MB
 gcr.io/google_containers/kube-apiserver            dc8bf1d543f71874b3150cdb1bf60205   febba0bcdbe6        3 months ago        111.1 MB
 gcr.io/google_containers/kube-controller-manager   6322fd6f4db015a29561a4881ff9c372   48e123fa9aa3        3 months ago        101.1 MB
+```
+
+```
 [root@localhost bin]# docker load -i kube-scheduler.tar 
 [root@localhost bin]# docker images
 REPOSITORY                                         TAG                                IMAGE ID            CREATED             SIZE
@@ -31,6 +42,9 @@ tangfeixiong/netcat-hello-http                     gitrev-7257e93               
 gcr.io/google_containers/kube-apiserver            dc8bf1d543f71874b3150cdb1bf60205   febba0bcdbe6        3 months ago        111.1 MB
 gcr.io/google_containers/kube-scheduler            ec4cd4e378c840237c447cfa147f98a9   1dc259d4b9fb        3 months ago        60.08 MB
 gcr.io/google_containers/kube-controller-manager   6322fd6f4db015a29561a4881ff9c372   48e123fa9aa3        3 months ago        101.1 MB
+```
+
+```
 [root@localhost bin]# docker load -i kube-proxy.tar 
 [root@localhost docker-images]# docker images
 REPOSITORY                                         TAG                                IMAGE ID            CREATED             SIZE
