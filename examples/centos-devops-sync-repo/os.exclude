@@ -3,3 +3,7 @@
 LiveOS/
 images/
 isolinux/
+
+*.el7.i686.rpm
+*-debug-*.el7.x86_64.rpm
+*-src-*.el7.x86_64.rpm
