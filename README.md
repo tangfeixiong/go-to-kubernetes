@@ -2,17 +2,17 @@
 
 ## Tables of Content
 
-[Deployment](./docs)
+[Documentation](./docs)
 
-* [CentOS DevOps - CentOS Everything ISO media repo](./docs/centos-devops-iso-repo.md)
-* [CentOS DevOps - YUM repo mirror](./docs/centos-devops-sync-repo.md)
-* [CentOS HandsOn - Docker installation](./docs/centos-devops-install-docker.md)
-* [CentOS DevOps - Etcd2 installation](./docs/kubernetes-devops-install-etcd.md)
-* [Kubernetes v1.3 DevOps - Kubernetes master deployment](./docs/kubernetes-v1.3-devops-install-master.md)
-* [Kubernetes v1.5.7 DevOps - bash部署](./docs/k8s-v1.5.7-deployment)
-* [Kubernetes v1.6 DevOps - bash部署](./docs/k8s-v1.6-deployment)
-* [Kubernetes v1.7 DevOps - bash部署](./docs/k8s-v1.7-Hand-on)
-* [Kubernetes v1.8 DevOps - kubeadm部署](./docs/k8s-v1.8.2-devops)
+* CentOS DevOps - CentOS Everything ISO media repo
+* CentOS DevOps - YUM repo mirror
+* CentOS HandsOn - Docker installation
+* CentOS DevOps - Etcd2 installation
+* Kubernetes v1.3 DevOps - Kubernetes master deployment
+* Kubernetes v1.5.7 DevOps - bash部署
+* Kubernetes v1.6 DevOps - bash部署
+* Kubernetes v1.7 DevOps - bash部署
+* Kubernetes v1.8 DevOps - kubeadm部署
 
 [Clustering examples in Kubernetes](./examples)
 

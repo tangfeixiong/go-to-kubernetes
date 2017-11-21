@@ -1,5 +1,4 @@
-# go-for-kubernetes
-Learning, exercising and working on Kubernetes
+# Learning Kubernetes
 
 ## Install a Docker-based Kubernetes cluster
 

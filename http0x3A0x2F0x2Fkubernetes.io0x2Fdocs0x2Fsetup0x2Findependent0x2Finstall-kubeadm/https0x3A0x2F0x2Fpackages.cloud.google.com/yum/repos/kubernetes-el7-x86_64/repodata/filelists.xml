@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<filelists xmlns="http://linux.duke.edu/metadata/filelists" packages="78">
+<filelists xmlns="http://linux.duke.edu/metadata/filelists" packages="84">
 <package pkgid="5116fa4b73c700823cfc76b3cedff6622f2fbd0a3d2fa09bce6d93329771e291" name="kubeadm" arch="x86_64">
   <version epoch="0" ver="1.6.0" rel="0"></version>
   <file>/etc/systemd/system/kubelet.service.d/10-kubeadm.conf</file>
@@ -96,6 +96,14 @@
   <version epoch="0" ver="1.8.2" rel="0"></version>
   <file>/etc/systemd/system/kubelet.service.d/10-kubeadm.conf</file>
   <file>/usr/bin/kubeadm</file>
+</package><package pkgid="cab6b288e91e613d81c63101c7d293059a4a9f2c0795228042c880f770a9ec60" name="kubeadm" arch="x86_64">
+  <version epoch="0" ver="1.8.3" rel="0"></version>
+  <file>/etc/systemd/system/kubelet.service.d/10-kubeadm.conf</file>
+  <file>/usr/bin/kubeadm</file>
+</package><package pkgid="aeaad1e283c54876b759a089f152228d7cd4c049f271125c23623995b8e76f96" name="kubeadm" arch="x86_64">
+  <version epoch="0" ver="1.8.4" rel="0"></version>
+  <file>/etc/systemd/system/kubelet.service.d/10-kubeadm.conf</file>
+  <file>/usr/bin/kubeadm</file>
 </package><package pkgid="fd9b1e2215cab6da7adc6e87e2710b91ecfda3b617edfe7e71c92277301a63ab" name="kubectl" arch="x86_64">
   <version epoch="0" ver="1.5.4" rel="0"></version>
   <file>/usr/bin/kubectl</file>
@@ -167,6 +175,12 @@
   <file>/usr/bin/kubectl</file>
 </package><package pkgid="3cc05eb1b1565779e8033743f1a2b9c8fb4e3b432421719ec56a3024d33dfccc" name="kubectl" arch="x86_64">
   <version epoch="0" ver="1.8.2" rel="0"></version>
+  <file>/usr/bin/kubectl</file>
+</package><package pkgid="ae43f92f96e828779f9744b3660e207199d97dda22eb44c054d2f3150da76b94" name="kubectl" arch="x86_64">
+  <version epoch="0" ver="1.8.3" rel="0"></version>
+  <file>/usr/bin/kubectl</file>
+</package><package pkgid="a9db28728641ddbf7f025b8b496804d82a396d0ccb178fffd124623fb2f999ea" name="kubectl" arch="x86_64">
+  <version epoch="0" ver="1.8.4" rel="0"></version>
   <file>/usr/bin/kubectl</file>
 </package><package pkgid="2e63c1f9436c6413a4ea0f45145b97c6dbf55e9bb2a251adc38db1292bbd6ed1" name="kubelet" arch="x86_64">
   <version epoch="0" ver="1.5.4" rel="0"></version>
@@ -285,6 +299,16 @@
   <file type="dir">/etc/kubernetes/manifests</file>
 </package><package pkgid="7d976686554e598267d8c5eb030f2a8f4e575f47015ecf94459913b80c9e5bb8" name="kubelet" arch="x86_64">
   <version epoch="0" ver="1.8.2" rel="0"></version>
+  <file>/etc/systemd/system/kubelet.service</file>
+  <file>/usr/bin/kubelet</file>
+  <file type="dir">/etc/kubernetes/manifests</file>
+</package><package pkgid="a53acfe63a475bf61661036c12890217f4921a6d6d6c3e6ecb4c598fc11cac19" name="kubelet" arch="x86_64">
+  <version epoch="0" ver="1.8.3" rel="0"></version>
+  <file>/etc/systemd/system/kubelet.service</file>
+  <file>/usr/bin/kubelet</file>
+  <file type="dir">/etc/kubernetes/manifests</file>
+</package><package pkgid="1acca81eb5cf99453f30466876ff03146112b7f12c625cb48f12508684e02665" name="kubelet" arch="x86_64">
+  <version epoch="0" ver="1.8.4" rel="0"></version>
   <file>/etc/systemd/system/kubelet.service</file>
   <file>/usr/bin/kubelet</file>
   <file type="dir">/etc/kubernetes/manifests</file>

@@ -2,9 +2,9 @@
 
 ## Table of Contents
 
-[CentOS/Fedora](#rpm)
+[Mirroring Kubernetes repository for CentOS/Fedora](#rpm)
 
-[Ubuntu/Debian](#deb)
+[Mirroring Kubernetes repository for Ubuntu/Debian](#deb)
 
 ## RPM
 
@@ -23,7 +23,7 @@ gpg
 ```
 repos
 ```
-[vagrant@localhost http0x3A0x2F0x2Fkubernetes.io0x2Fdocs0x2Fsetup0x2Findependent0x2Finstall-kubeadm]$ ./yum-repos-curl.sh 
+[vagrant@localhost http0x3A0x2F0x2Fkubernetes.io0x2Fdocs0x2Fsetup0x2Findependent0x2Finstall-kubeadm]$ ./yum-repos-el7-curl.sh 
   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
                                  Dload  Upload   Total   Spent    Left  Speed
 100 36002  100 36002    0     0   7422      0  0:00:04  0:00:04 --:--:--  7638
@@ -50,24 +50,7 @@ repos
 100   454  100   454    0     0    470      0 --:--:-- --:--:-- --:--:--   469
 ```
 
-pool
-```
-[vagrant@localhost http0x3A0x2F0x2Fkubernetes.io0x2Fdocs0x2Fsetup0x2Findependent0x2Finstall-kubeadm]$ ./yum-pool-curl.sh 
-  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
-                                 Dload  Upload   Total   Spent    Left  Speed
-100 14.8M  100 14.8M    0     0  25283      0  0:10:17  0:10:17 --:--:-- 10791
-  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
-                                 Dload  Upload   Total   Spent    Left  Speed
-100 7440k  100 7440k    0     0  27799      0  0:04:34  0:04:34 --:--:-- 35923
-  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
-                                 Dload  Upload   Total   Spent    Left  Speed
-100 15.7M  100 15.7M    0     0  20183      0  0:13:39  0:13:39 --:--:-- 11534
-  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
-                                 Dload  Upload   Total   Spent    Left  Speed
-100 7619k  100 7619k    0     0  21753      0  0:05:58  0:05:58 --:--:-- 37329
-```
-
-packages
+packages (note: just less and equal than v1.8.4)
 ```
 [vagrant@localhost http0x3A0x2F0x2Fkubernetes.io0x2Fdocs0x2Fsetup0x2Findependent0x2Finstall-kubeadm]$ egrep '^  <location href=".*\.rpm"></location>' https0x3A0x2F0x2Fpackages.cloud.google.com/yum/repos/kubernetes-el7-x86_64/repodata/primary.xml
   <location href="../../pool/5116fa4b73c700823cfc76b3cedff6622f2fbd0a3d2fa09bce6d93329771e291-kubeadm-1.6.0-0.x86_64.rpm"></location>
@@ -94,6 +77,8 @@ packages
   <location href="../../pool/7fe94dd0f828ef64d4ccdfef160417457309b904758ddf10c040612d7e5ef441-kubeadm-1.8.0-1.x86_64.rpm"></location>
   <location href="../../pool/0f7d8ea10144399f3d60446fab5469395afb809c175bdc0eae4d12c1fcc3cb62-kubeadm-1.8.1-0.x86_64.rpm"></location>
   <location href="../../pool/d64bc1d0ca27196030c6f574252a0872b998b29be90c6cb7e97b91cd0bc78fed-kubeadm-1.8.2-0.x86_64.rpm"></location>
+  <location href="../../pool/cab6b288e91e613d81c63101c7d293059a4a9f2c0795228042c880f770a9ec60-kubeadm-1.8.3-0.x86_64.rpm"></location>
+  <location href="../../pool/aeaad1e283c54876b759a089f152228d7cd4c049f271125c23623995b8e76f96-kubeadm-1.8.4-0.x86_64.rpm"></location>
   <location href="../../pool/fd9b1e2215cab6da7adc6e87e2710b91ecfda3b617edfe7e71c92277301a63ab-kubectl-1.5.4-0.x86_64.rpm"></location>
   <location href="../../pool/e6aef7b2b7d9e5bd4db1e5747ebbc9f1f97bbfb8c7817ad68028565ca263a672-kubectl-1.6.0-0.x86_64.rpm"></location>
   <location href="../../pool/9d1ccf0877dfc4228a923a9614661b27d663694680e2bc0a1c184aa937fbf7f2-kubectl-1.6.1-0.x86_64.rpm"></location>
@@ -118,6 +103,8 @@ packages
   <location href="../../pool/582709dfb1c59f85c78f7db2c7609a1f3bf7308b73255bdbc910695b31b8660f-kubectl-1.8.0-0.x86_64.rpm"></location>
   <location href="../../pool/0ee48e6b4033fdf520f5893759b0665090ffb83eefdbe3f0b41edf54f2247ee4-kubectl-1.8.1-0.x86_64.rpm"></location>
   <location href="../../pool/3cc05eb1b1565779e8033743f1a2b9c8fb4e3b432421719ec56a3024d33dfccc-kubectl-1.8.2-0.x86_64.rpm"></location>
+  <location href="../../pool/ae43f92f96e828779f9744b3660e207199d97dda22eb44c054d2f3150da76b94-kubectl-1.8.3-0.x86_64.rpm"></location>
+  <location href="../../pool/a9db28728641ddbf7f025b8b496804d82a396d0ccb178fffd124623fb2f999ea-kubectl-1.8.4-0.x86_64.rpm"></location>
   <location href="../../pool/2e63c1f9436c6413a4ea0f45145b97c6dbf55e9bb2a251adc38db1292bbd6ed1-kubelet-1.5.4-0.x86_64.rpm"></location>
   <location href="../../pool/af8567f1ba6f8dc1d43b60702d45c02aca88607b0e721d76897e70f6a6e53115-kubelet-1.6.0-0.x86_64.rpm"></location>
   <location href="../../pool/cde0b9092d421800f7207df677d6a1f321c82179e89a24e4b3c009a875e62c91-kubelet-1.6.1-0.x86_64.rpm"></location>
@@ -142,6 +129,8 @@ packages
   <location href="../../pool/d51b547da5980e2f6bfd33a382779194a0eacecac999ca726f85ef76183a9033-kubelet-1.8.0-0.x86_64.rpm"></location>
   <location href="../../pool/a35571037b554243d386436ff729c90a3cb270f5797b7cd254ef0afbd4e706bf-kubelet-1.8.1-0.x86_64.rpm"></location>
   <location href="../../pool/7d976686554e598267d8c5eb030f2a8f4e575f47015ecf94459913b80c9e5bb8-kubelet-1.8.2-0.x86_64.rpm"></location>
+  <location href="../../pool/a53acfe63a475bf61661036c12890217f4921a6d6d6c3e6ecb4c598fc11cac19-kubelet-1.8.3-0.x86_64.rpm"></location>
+  <location href="../../pool/1acca81eb5cf99453f30466876ff03146112b7f12c625cb48f12508684e02665-kubelet-1.8.4-0.x86_64.rpm"></location>
   <location href="../../pool/0c923b191423caccc65c550ef07ce61b97f991ad54785dab70dc07a5763f4222-kubernetes-cni-0.3.0.1-0.07a8a2.x86_64.rpm"></location>
   <location href="../../pool/e7a4403227dd24036f3b0615663a371c4e07a95be5fee53505e647fd8ae58aa6-kubernetes-cni-0.5.1-0.x86_64.rpm"></location>
   <location href="../../pool/79f9ba89dbe7000e7dfeda9b119f711bb626fe2c2d56abeb35141142cda00342-kubernetes-cni-0.5.1-1.x86_64.rpm"></location>
@@ -150,7 +139,139 @@ packages
   <location href="../../pool/01b97b0ddb967d0ed9fd78327a784efbfea8cd0d9789f5bab8b9bbfe94477c60-rkt-1.27.0-1.x86_64.rpm"></location>
 ```
 
-dnf
+or
+```
+[vagrant@localhost http0x3A0x2F0x2Fkubernetes.io0x2Fdocs0x2Fsetup0x2Findependent0x2Finstall-kubeadm]$ egrep '^  <location href=".*\.rpm"></location>' https0x3A0x2F0x2Fpackages.cloud.google.com/yum/repos/kubernetes-el7-x86_64/repodata/primary.xml | cut -d '"' -f 2
+../../pool/5116fa4b73c700823cfc76b3cedff6622f2fbd0a3d2fa09bce6d93329771e291-kubeadm-1.6.0-0.x86_64.rpm
+../../pool/23961d0f7dca1ed118b948195f2fb5dd7a07503d69d7d8ab4433219ea98d033e-kubeadm-1.6.1-0.x86_64.rpm
+../../pool/415bc9f86ecfc3b195f22d25fb599e19080d301358c145539d154be95f1985f5-kubeadm-1.6.2-0.x86_64.rpm
+../../pool/81158f40764a08356242a53ef4bf7e3c219f48f364c55260db571cae51ce6eec-kubeadm-1.6.3-0.x86_64.rpm
+../../pool/0c37012e387fae5fd0d66b5d4664f495ab19fbb709df655533b2b2ecb1a05cd8-kubeadm-1.6.4-0.x86_64.rpm
+../../pool/5e62d624af011598f2df59c7759bf6ff4a6bba5675f0c07a2fb18e3c468ea41c-kubeadm-1.6.5-0.x86_64.rpm
+../../pool/03ea47d2b0f1912c3a721c2b7353ead2e28a154b6c883200492db0558f6b09f2-kubeadm-1.6.6-0.x86_64.rpm
+../../pool/6b36b8d9783ee59480bda0caabcb9ce95a6bf69c62ea38e7bb0cee65174fe479-kubeadm-1.6.7-0.x86_64.rpm
+../../pool/c10b6d67b13101afd0270873972f10b14e9719ad8564797cc6609f7c58ae033c-kubeadm-1.6.11-0.x86_64.rpm
+../../pool/fda8179e8174e43c17662d3a019f54e862d270fbfc07c3f7a88a58a033198153-kubeadm-1.6.12-0.x86_64.rpm
+../../pool/cb7034dff51af01c237e03ea342dc74269b46cce1e43bb0ab9ef1d6f006ebda9-kubeadm-1.7.0-0.x86_64.rpm
+../../pool/77bea7f33178ab4feb6afaf31c6c779511498ef47dec433eb5464909f7a26dc3-kubeadm-1.7.1-0.x86_64.rpm
+../../pool/1a6f5f73f43077a50d877df505481e5a3d765c979b89fda16b8b9622b9ebd9a4-kubeadm-1.7.2-0.x86_64.rpm
+../../pool/f7ec56b0f36a81c0f91bcf26e05f23088082b468b77dac576dc505444dd8cd48-kubeadm-1.7.3-1.x86_64.rpm
+../../pool/f0a51fcde5e3b329050d7a6cf70f04a6cdf09eacfbad55f4324bfa2ea4312d0e-kubeadm-1.7.4-0.x86_64.rpm
+../../pool/02f3a7ff6e04943bd288ff302f449b600e8db3d19868dfe4308d0d902c0ba927-kubeadm-1.7.5-0.x86_64.rpm
+../../pool/4ff875dc8857b85c490b42b750527ba20a154a49a8dacd256d16cbbf5e708dfd-kubeadm-1.7.6-1.x86_64.rpm
+../../pool/2bb9ddc5197dec31ac73a549067ab9b6a529cc31275f9223ff04efbfb5451602-kubeadm-1.7.7-1.x86_64.rpm
+../../pool/8af3d230e7c1c775124b518aa0d69fa911e761e7b22fd081bfae8dece2381970-kubeadm-1.7.8-1.x86_64.rpm
+../../pool/c0638ef93a73ad4343fe3c2b8105e3826605e2fe000017324b3328975aa36a82-kubeadm-1.7.10-0.x86_64.rpm
+../../pool/ee93b5249497dba6488262bd2b56e32438a69f78993eb973bafa52d72f9b883a-kubeadm-1.8.0-0.x86_64.rpm
+../../pool/7fe94dd0f828ef64d4ccdfef160417457309b904758ddf10c040612d7e5ef441-kubeadm-1.8.0-1.x86_64.rpm
+../../pool/0f7d8ea10144399f3d60446fab5469395afb809c175bdc0eae4d12c1fcc3cb62-kubeadm-1.8.1-0.x86_64.rpm
+../../pool/d64bc1d0ca27196030c6f574252a0872b998b29be90c6cb7e97b91cd0bc78fed-kubeadm-1.8.2-0.x86_64.rpm
+../../pool/cab6b288e91e613d81c63101c7d293059a4a9f2c0795228042c880f770a9ec60-kubeadm-1.8.3-0.x86_64.rpm
+../../pool/aeaad1e283c54876b759a089f152228d7cd4c049f271125c23623995b8e76f96-kubeadm-1.8.4-0.x86_64.rpm
+../../pool/fd9b1e2215cab6da7adc6e87e2710b91ecfda3b617edfe7e71c92277301a63ab-kubectl-1.5.4-0.x86_64.rpm
+../../pool/e6aef7b2b7d9e5bd4db1e5747ebbc9f1f97bbfb8c7817ad68028565ca263a672-kubectl-1.6.0-0.x86_64.rpm
+../../pool/9d1ccf0877dfc4228a923a9614661b27d663694680e2bc0a1c184aa937fbf7f2-kubectl-1.6.1-0.x86_64.rpm
+../../pool/ff72cbf0dfa986c36097a5c3ac2301ecb73ed28df8db86e13641a79e9df9b3ea-kubectl-1.6.2-0.x86_64.rpm
+../../pool/d5cc6bb2e439298eb1b3e45c3ac58010580c1d3c3a2fa71040a7c73b1dc22881-kubectl-1.6.3-0.x86_64.rpm
+../../pool/9fcf36d1acf5e17c4aec783e956b8b70ab0e91693d394e6268c16533fe8a71a9-kubectl-1.6.4-0.x86_64.rpm
+../../pool/504e6824515b1b91702d1cd9aa8701fbcb2fabeb61e8395204f4e2cd07f7dfb7-kubectl-1.6.5-0.x86_64.rpm
+../../pool/b9584919848f1cc3096ec8cd0bbeceb95ea0786df339eb4883556a4a89f51010-kubectl-1.6.6-0.x86_64.rpm
+../../pool/b542021d5f32457f8c1f6f726aaa077eec66b0906440a020cfada28275df50f7-kubectl-1.6.7-0.x86_64.rpm
+../../pool/9b3b2d1cbe36086a7008d261594b31bb3e085e8c170aa319e1befebe604a99a7-kubectl-1.6.11-0.x86_64.rpm
+../../pool/712b311a1853d2b73be6729f57fc448ebc8818f0a9236cbbf1f11c6db3c3d8dc-kubectl-1.6.12-0.x86_64.rpm
+../../pool/888aff6bf68f988e7480efd06f38852eef8a44eed1baaa62f3ec4fbb07c35f7d-kubectl-1.7.0-0.x86_64.rpm
+../../pool/b8a64634ad1555e15a61b84685fd04959435ed6374b25e369f5bda89c8f03a6b-kubectl-1.7.1-0.x86_64.rpm
+../../pool/dc8329515fc3245404fea51839241b58774e577d7736f99f21276e764c309db5-kubectl-1.7.2-0.x86_64.rpm
+../../pool/c8a50a1ce9c948e7a238b02d3967d220e71e13e1ac8916a961176726eabe8aa1-kubectl-1.7.3-1.x86_64.rpm
+../../pool/041d5a6813dab590b160865fea7259bc2db762a9667379d03aca8d4596a3cccd-kubectl-1.7.4-0.x86_64.rpm
+../../pool/c2d4b7c1f39ca9532a2965ea513fcd900fdcdd8785639c8fbf69f30780cae764-kubectl-1.7.5-0.x86_64.rpm
+../../pool/71aa78fc7472de3664511c88f9d58d9a9c6922f26d67323869b5a661b106e0d0-kubectl-1.7.6-1.x86_64.rpm
+../../pool/4af2eb4114017f12fb36b92a85c8149de6c54020a73061f3666d033bfde8f3e3-kubectl-1.7.7-1.x86_64.rpm
+../../pool/761837737577fe362b16ff2b1fc34c383d86b0f9f746a9901c62587fd5f4e0f6-kubectl-1.7.8-1.x86_64.rpm
+../../pool/ef4f06f44a3e9412735722d5625f814505054bd5f672ccad3e631470e5da9cd0-kubectl-1.7.10-0.x86_64.rpm
+../../pool/582709dfb1c59f85c78f7db2c7609a1f3bf7308b73255bdbc910695b31b8660f-kubectl-1.8.0-0.x86_64.rpm
+../../pool/0ee48e6b4033fdf520f5893759b0665090ffb83eefdbe3f0b41edf54f2247ee4-kubectl-1.8.1-0.x86_64.rpm
+../../pool/3cc05eb1b1565779e8033743f1a2b9c8fb4e3b432421719ec56a3024d33dfccc-kubectl-1.8.2-0.x86_64.rpm
+../../pool/ae43f92f96e828779f9744b3660e207199d97dda22eb44c054d2f3150da76b94-kubectl-1.8.3-0.x86_64.rpm
+../../pool/a9db28728641ddbf7f025b8b496804d82a396d0ccb178fffd124623fb2f999ea-kubectl-1.8.4-0.x86_64.rpm
+../../pool/2e63c1f9436c6413a4ea0f45145b97c6dbf55e9bb2a251adc38db1292bbd6ed1-kubelet-1.5.4-0.x86_64.rpm
+../../pool/af8567f1ba6f8dc1d43b60702d45c02aca88607b0e721d76897e70f6a6e53115-kubelet-1.6.0-0.x86_64.rpm
+../../pool/cde0b9092d421800f7207df677d6a1f321c82179e89a24e4b3c009a875e62c91-kubelet-1.6.1-0.x86_64.rpm
+../../pool/a8a2b37431da90798331a67b8b452572a72173414b1543368786e356f23bc4ce-kubelet-1.6.2-0.x86_64.rpm
+../../pool/b610c239bd57c3ca0dcae3f4d4ae60a0a1eab99c7b059cf1b0fe8dd7267c3f73-kubelet-1.6.3-0.x86_64.rpm
+../../pool/08706c8f6fbce961cd8994043cd27204f2bd3b47afd54cbd8755dae4b6cc4279-kubelet-1.6.4-0.x86_64.rpm
+../../pool/7d43767d519f9f76605408517c999631e3835621afa8f5e80b9b8fd0925842ca-kubelet-1.6.5-0.x86_64.rpm
+../../pool/f2c5f556143a820ed5bbb6a0ac7601f68dea8b28c8edc5db0a0d5d0ad4e94fd0-kubelet-1.6.6-0.x86_64.rpm
+../../pool/b58a3f13d494458fbe23dbf22abc0213dc2c9ffb1e30f76dad3d7321d0715444-kubelet-1.6.7-0.x86_64.rpm
+../../pool/254343aac568684ff6bdf75e69c015127b45cd8a6e7f9b0eff335b0a082b3117-kubelet-1.6.11-0.x86_64.rpm
+../../pool/f469e89265a9a215358f6d2e541c0d5dd4f6b522fcbbe401117ce656b3aba931-kubelet-1.6.12-0.x86_64.rpm
+../../pool/8f94c56214c25f72f999f8a9c099275c2e1b99110a155679c1eda293192c26a7-kubelet-1.7.0-0.x86_64.rpm
+../../pool/30136924ea242fee92df3aaf0297365dc58e8d1260b7bde66c94bda5a42a6f04-kubelet-1.7.1-0.x86_64.rpm
+../../pool/1e508e26f2b02971a7ff5f034b48a6077d613e0b222e0ec973351117b4ff45ea-kubelet-1.7.2-0.x86_64.rpm
+../../pool/28b76e6e1c2ec397a9b6111045316a0943da73dd5602ee8e53752cdca62409e6-kubelet-1.7.3-1.x86_64.rpm
+../../pool/4f60c17a926175fb9abcfdd487cebafbbbce0e2248d2b99c189ae0877376b88d-kubelet-1.7.4-0.x86_64.rpm
+../../pool/c87d884d28952332d952d5f7f294ead1838a8e1219d2fc75923a5be06903afaf-kubelet-1.7.5-0.x86_64.rpm
+../../pool/f049d9a0a9172b00aa2725c86a0de6f4ee51571105344b31b0b2523be9fda635-kubelet-1.7.6-1.x86_64.rpm
+../../pool/45bd874fbf333c3e2595da358ce7ad3220af46b1ff69d69f57f882dee0db52a8-kubelet-1.7.7-1.x86_64.rpm
+../../pool/305fd1a89e9da295f56ac2df41dd73e521e29c768c57074a365096d713bfe928-kubelet-1.7.8-1.x86_64.rpm
+../../pool/b7127de06c5bec3e197d279ac910b7a119fa2f799fb18ca3ec11499506396957-kubelet-1.7.10-0.x86_64.rpm
+../../pool/d51b547da5980e2f6bfd33a382779194a0eacecac999ca726f85ef76183a9033-kubelet-1.8.0-0.x86_64.rpm
+../../pool/a35571037b554243d386436ff729c90a3cb270f5797b7cd254ef0afbd4e706bf-kubelet-1.8.1-0.x86_64.rpm
+../../pool/7d976686554e598267d8c5eb030f2a8f4e575f47015ecf94459913b80c9e5bb8-kubelet-1.8.2-0.x86_64.rpm
+../../pool/a53acfe63a475bf61661036c12890217f4921a6d6d6c3e6ecb4c598fc11cac19-kubelet-1.8.3-0.x86_64.rpm
+../../pool/1acca81eb5cf99453f30466876ff03146112b7f12c625cb48f12508684e02665-kubelet-1.8.4-0.x86_64.rpm
+../../pool/0c923b191423caccc65c550ef07ce61b97f991ad54785dab70dc07a5763f4222-kubernetes-cni-0.3.0.1-0.07a8a2.x86_64.rpm
+../../pool/e7a4403227dd24036f3b0615663a371c4e07a95be5fee53505e647fd8ae58aa6-kubernetes-cni-0.5.1-0.x86_64.rpm
+../../pool/79f9ba89dbe7000e7dfeda9b119f711bb626fe2c2d56abeb35141142cda00342-kubernetes-cni-0.5.1-1.x86_64.rpm
+../../pool/fd5f5da2d1a262fa687404d34e72813520274364557e648bc64a8136f1a02630-rkt-1.25.0-1.x86_64.rpm
+../../pool/7a382e59dc2c39a66083e03ec061f33771e4a7130c98cd0ef61492b2196c0378-rkt-1.26.0-1.x86_64.rpm
+../../pool/01b97b0ddb967d0ed9fd78327a784efbfea8cd0d9789f5bab8b9bbfe94477c60-rkt-1.27.0-1.x86_64.rpm
+```
+
+pool, for example cni 0.3/0.5
+```
+[vagrant@localhost http0x3A0x2F0x2Fkubernetes.io0x2Fdocs0x2Fsetup0x2Findependent0x2Finstall-kubeadm]$ ./yum-pool-cni-curl.sh 
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100  9.8M  100  9.8M    0     0  60589      0  0:02:49  0:02:49 --:--:--  118k
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100 7617k  100 7617k    0     0  79571      0  0:01:38  0:01:38 --:--:-- 95605
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100 7619k  100 7619k    0     0  68644      0  0:01:53  0:01:53 --:--:-- 80336
+```
+
+pool, for example k8s v1.8.2
+```
+[vagrant@localhost http0x3A0x2F0x2Fkubernetes.io0x2Fdocs0x2Fsetup0x2Findependent0x2Finstall-kubeadm]$ ./yum-pool-v1_8_2-curl.sh 
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100 14.8M  100 14.8M    0     0  25283      0  0:10:17  0:10:17 --:--:-- 10791
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100 7440k  100 7440k    0     0  27799      0  0:04:34  0:04:34 --:--:-- 35923
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100 15.7M  100 15.7M    0     0  20183      0  0:13:39  0:13:39 --:--:-- 11534
+```
+
+### Fedora 23
+
+Online `dnf`
+```
+[vagrant@localhost http0x3A0x2F0x2Fkubernetes.io0x2Fdocs0x2Fsetup0x2Findependent0x2Finstall-kubeadm]$ cat /etc/yum.repos.d/kubernetes.repo 
+[kubernetes]
+name=Kubernetes
+#baseurl=http://yum.kubernetes.io/repos/kubernetes-el7-x86_64
+baseurl=https://packages.cloud.google.com/yum/repos/kubernetes-el7-x86_64
+enabled=1
+gpgcheck=1
+repo_gpgcheck=1
+gpgkey=https://packages.cloud.google.com/yum/doc/yum-key.gpg
+    https://packages.cloud.google.com/yum/doc/rpm-package-key.gpg
+```
+
 ```
 [vagrant@localhost ~]$ dnf list --verbose | grep kube
 导入 GPG 公钥 0xA7317B0F:
@@ -160,7 +281,101 @@ dnf
 ^C^C已终止。
 ```
 
-Root
+```
+[vagrant@localhost ~]$ sudo dnf list --verbose | grep kube
+导入 GPG 公钥 0xA7317B0F:
+ Userid: "Google Cloud Packages Automatic Signing Key <gc-team@google.com>"
+ 指纹: D0BC 747F D8CA F711 7500 D6FA 3746 C208 A731 7B0F
+ 来自: https://packages.cloud.google.com/yum/doc/yum-key.gpg
+确定吗？[y/N]： y
+导入 GPG 公钥 0x3E1BA8D5:
+ Userid: "Google Cloud Packages RPM Signing Key <gc-team@google.com>"
+ 指纹: 3749 E1BA 95A8 6CE0 5454 6ED2 F09C 394C 3E1B A8D5
+ 来自: https://packages.cloud.google.com/yum/doc/rpm-package-key.gpg
+确定吗？[y/N]： y
+kubernetes：正在使用截止于 Wed Oct  1 11:06:17 47844245 的元数据。
+cockpit-kubernetes.x86_64                0.96-1.fc23                     updates
+kubeadm.x86_64                           1.8.2-0                         kubernetes
+kubectl.x86_64                           1.8.2-0                         kubernetes
+kubelet.x86_64                           1.8.2-0                         kubernetes
+kubernetes.x86_64                        1.2.0-0.26.git4a3f9c5.fc23      updates
+kubernetes-ansible.noarch                0.6.0-0.2.gitd65ebd5.fc23       updates
+kubernetes-client.x86_64                 1.2.0-0.26.git4a3f9c5.fc23      updates
+kubernetes-cni.x86_64                    0.5.1-1                         kubernetes
+kubernetes-devel.x86_64                  1.1.0-0.5.gite44c8e6.fc23       fedora 
+kubernetes-devel.noarch                  1.2.0-0.26.git4a3f9c5.fc23      updates
+kubernetes-master.x86_64                 1.2.0-0.26.git4a3f9c5.fc23      updates
+kubernetes-node.x86_64                   1.2.0-0.26.git4a3f9c5.fc23      updates
+kubernetes-unit-test.x86_64              1.2.0-0.26.git4a3f9c5.fc23      updates
+rkt.x86_64                               1.27.0-1                        kubernetes
+```
+
+Offline
+```
+[vagrant@localhost http0x3A0x2F0x2Fkubernetes.io0x2Fdocs0x2Fsetup0x2Findependent0x2Finstall-kubeadm]$ echo -e "\n[kubernetes-offline]\nname=Kubernetes Offline\nbaseurl=file:///Users/fanhongling/Downloads/workspace/src/github.com/tangfeixiong/go-to-kubernetes/http0x3A0x2F0x2Fkubernetes.io0x2Fdocs0x2Fsetup0x2Findependent0x2Finstall-kubeadm/https0x3A0x2F0x2Fpackages.cloud.google.com/yum/repos/kubernetes-el7-x86_64\nenabled=0\ngpgcheck=0\n" | sudo tee -a /etc/yum.repos.d/kubernetes.repo 
+
+[kubernetes-offline]
+name=Kubernetes Offline
+baseurl=file:///Users/fanhongling/Downloads/workspace/src/github.com/tangfeixiong/go-to-kubernetes/http0x3A0x2F0x2Fkubernetes.io0x2Fdocs0x2Fsetup0x2Findependent0x2Finstall-kubeadm/https0x3A0x2F0x2Fpackages.cloud.google.com/yum/repos/kubernetes-el7-x86_64
+enabled=0
+gpgcheck=0
+```
+
+```
+[vagrant@localhost http0x3A0x2F0x2Fkubernetes.io0x2Fdocs0x2Fsetup0x2Findependent0x2Finstall-kubeadm]$ sudo dnf --disablerepo kubernetes --enablerepo kubernetes-offline list | grep kube
+cockpit-kubernetes.x86_64                0.96-1.fc23                     updates
+kubeadm.x86_64                           1.8.4-0                         kubernetes-offline
+kubectl.x86_64                           1.8.4-0                         kubernetes-offline
+kubelet.x86_64                           1.8.4-0                         kubernetes-offline
+kubernetes.x86_64                        1.2.0-0.26.git4a3f9c5.fc23      updates
+kubernetes-ansible.noarch                0.6.0-0.2.gitd65ebd5.fc23       updates
+kubernetes-client.x86_64                 1.2.0-0.26.git4a3f9c5.fc23      updates
+kubernetes-cni.x86_64                    0.5.1-1                         kubernetes-offline
+kubernetes-devel.x86_64                  1.1.0-0.5.gite44c8e6.fc23       fedora 
+kubernetes-devel.noarch                  1.2.0-0.26.git4a3f9c5.fc23      updates
+kubernetes-master.x86_64                 1.2.0-0.26.git4a3f9c5.fc23      updates
+kubernetes-node.x86_64                   1.2.0-0.26.git4a3f9c5.fc23      updates
+kubernetes-unit-test.x86_64              1.2.0-0.26.git4a3f9c5.fc23      updates
+rkt.x86_64                               1.27.0-1                        kubernetes-offline
+```
+
+Local HTTP
+```
+[vagrant@localhost http0x3A0x2F0x2Fkubernetes.io0x2Fdocs0x2Fsetup0x2Findependent0x2Finstall-kubeadm]$ curl -L http://172.17.4.50:48080/Downloads/workspace/src/github.com/tangfeixiong/go-to-kubernetes/http0x3A0x2F0x2Fkubernetes.io0x2Fdocs0x2Fsetup0x2Findependent0x2Finstall-kubeadm/https0x3A0x2F0x2Fpackages.cloud.google.com/yum/repos/kubernetes-el7-x86_64
+<pre>
+<a href="repodata/">repodata/</a>
+</pre>
+```
+
+```
+[vagrant@localhost http0x3A0x2F0x2Fkubernetes.io0x2Fdocs0x2Fsetup0x2Findependent0x2Finstall-kubeadm]$ echo -e "\n[kubernetes-172-17-4-50]\nname=Kubernetes local http\nbaseurl=http://172.17.4.50:48080/Downloads/workspace/src/github.com/tangfeixiong/go-to-kubernetes/http0x3A0x2F0x2Fkubernetes.io0x2Fdocs0x2Fsetup0x2Findependent0x2Finstall-kubeadm/https0x3A0x2F0x2Fpackages.cloud.google.com/yum/repos/kubernetes-el7-x86_64\nenabled=0\ngpgcheck=0\n" | sudo tee -a /etc/yum.repos.d/kubernetes.repo 
+
+[kubernetes-172-17-4-50]
+name=Kubernetes local http
+baseurl=http://172.17.4.50:48080/Downloads/workspace/src/github.com/tangfeixiong/go-to-kubernetes/http0x3A0x2F0x2Fkubernetes.io0x2Fdocs0x2Fsetup0x2Findependent0x2Finstall-kubeadm/https0x3A0x2F0x2Fpackages.cloud.google.com/yum/repos/kubernetes-el7-x86_64
+enabled=0
+gpgcheck=0
+```
+
+```
+[vagrant@localhost http0x3A0x2F0x2Fkubernetes.io0x2Fdocs0x2Fsetup0x2Findependent0x2Finstall-kubeadm]$ sudo dnf --disablerepo kubernetes --enablerepo kubernetes-172-17-4-50 list | grep kube
+cockpit-kubernetes.x86_64                0.96-1.fc23                     updates
+kubeadm.x86_64                           1.8.4-0                         kubernetes-172-17-4-50
+kubectl.x86_64                           1.8.4-0                         kubernetes-172-17-4-50
+kubelet.x86_64                           1.8.4-0                         kubernetes-172-17-4-50
+kubernetes.x86_64                        1.2.0-0.26.git4a3f9c5.fc23      updates
+kubernetes-ansible.noarch                0.6.0-0.2.gitd65ebd5.fc23       updates
+kubernetes-client.x86_64                 1.2.0-0.26.git4a3f9c5.fc23      updates
+kubernetes-cni.x86_64                    0.5.1-1                         kubernetes-172-17-4-50
+kubernetes-devel.x86_64                  1.1.0-0.5.gite44c8e6.fc23       fedora 
+kubernetes-devel.noarch                  1.2.0-0.26.git4a3f9c5.fc23      updates
+kubernetes-master.x86_64                 1.2.0-0.26.git4a3f9c5.fc23      updates
+kubernetes-node.x86_64                   1.2.0-0.26.git4a3f9c5.fc23      updates
+kubernetes-unit-test.x86_64              1.2.0-0.26.git4a3f9c5.fc23      updates
+rkt.x86_64                               1.27.0-1                        kubernetes-172-17-4-50
+```
+
+commands
 ```
 [vagrant@localhost ~]$ sudo dnf --help
 usage: dnf [options] COMMAND
@@ -253,26 +468,6 @@ optional arguments:
  指纹: 3749 E1BA 95A8 6CE0 5454 6ED2 F09C 394C 3E1B A8D5
  来自: https://packages.cloud.google.com/yum/doc/rpm-package-key.gpg
 确定吗？[y/N]： y
-```
-
-After import gpg
-```
-[vagrant@localhost ~]$ sudo dnf list --verbose | grep kube
-kubernetes：正在使用截止于 Wed Oct  1 11:06:17 47844245 的元数据。
-cockpit-kubernetes.x86_64                0.96-1.fc23                     updates
-kubeadm.x86_64                           1.8.2-0                         kubernetes
-kubectl.x86_64                           1.8.2-0                         kubernetes
-kubelet.x86_64                           1.8.2-0                         kubernetes
-kubernetes.x86_64                        1.2.0-0.26.git4a3f9c5.fc23      updates
-kubernetes-ansible.noarch                0.6.0-0.2.gitd65ebd5.fc23       updates
-kubernetes-client.x86_64                 1.2.0-0.26.git4a3f9c5.fc23      updates
-kubernetes-cni.x86_64                    0.5.1-1                         kubernetes
-kubernetes-devel.x86_64                  1.1.0-0.5.gite44c8e6.fc23       fedora 
-kubernetes-devel.noarch                  1.2.0-0.26.git4a3f9c5.fc23      updates
-kubernetes-master.x86_64                 1.2.0-0.26.git4a3f9c5.fc23      updates
-kubernetes-node.x86_64                   1.2.0-0.26.git4a3f9c5.fc23      updates
-kubernetes-unit-test.x86_64              1.2.0-0.26.git4a3f9c5.fc23      updates
-rkt.x86_64                               1.27.0-1                        kubernetes
 ```
 
 ## DEB
