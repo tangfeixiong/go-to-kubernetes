@@ -2,7 +2,7 @@
 Hash: SHA256
 
 Codename: kubernetes-xenial
-Date: Fri, 03 Nov 2017 23:45:36 UTC
+Date: Mon, 20 Nov 2017 19:32:10 UTC
 Description: kubernetes-xenial
 Label: kubernetes-xenial
 Origin: kubernetes-xenial
@@ -10,24 +10,24 @@ Suite: kubernetes-xenial
 Components: main
 Architectures: amd64 arm64 armhf i386 ppc64el s390x
 MD5Sum:
- c6f18dac91d8b08b414c12468993ea0f 52080 main/binary-amd64/Packages
- 03648059518c5b622fc3903ef67cfa4d 7460 main/binary-amd64/Packages.gz
- ff622502425c23728d43ce151a9945eb 207 main/binary-amd64/Release
- 37fe2a2ad8ec650375a3e7039cdc2a60 49225 main/binary-arm64/Packages
- e1ff00635653e42b10455fd6c8af779f 6174 main/binary-arm64/Packages.gz
- 687c66695f389a6a545b5e19e2623473 207 main/binary-arm64/Release
- 2cc7eedd100d5b8f0a430f1b02c2484c 49220 main/binary-armhf/Packages
- 77f1ce813db3136675b19ead4d2bbf62 6153 main/binary-armhf/Packages.gz
- 545b1735de2ce0a80deb90d799b1338b 207 main/binary-armhf/Release
+ 515a87e9cfd99244649179fb1dfbb10e 55608 main/binary-amd64/Packages
+ 7ac874c151b8a9cdf9a3630389fdc2a1 7846 main/binary-amd64/Packages.gz
+ 20ab65e51c398c12b4155f329596584c 207 main/binary-amd64/Release
+ 03411bc045aa3ec31d8ad8cd0efbdd18 52753 main/binary-arm64/Packages
+ 98eeaa94a752df0f91e46f77f7bf4ef5 6574 main/binary-arm64/Packages.gz
+ 1f5860172b9820d90ab795e4109eed4c 207 main/binary-arm64/Release
+ ff36a6b646241027fac4a30c50223fb7 52748 main/binary-armhf/Packages
+ a7097fdf709183b0b3c1f2ebe5891fe2 6561 main/binary-armhf/Packages.gz
+ ea0b57c2c62cad91971ccff8e97a4bf7 207 main/binary-armhf/Release
  d41d8cd98f00b204e9800998ecf8427e 0 main/binary-i386/Packages
  febef808ae5397ea4ee7ee40e5fd39e0 23 main/binary-i386/Packages.gz
- af10f7503a94dec33682760bbcbb901a 206 main/binary-i386/Release
- 9ba0f0770ace610657238bf3d4b9cb93 38894 main/binary-ppc64el/Packages
- eb9bd9bc008d5b7ae21e8e04dc034300 5017 main/binary-ppc64el/Packages.gz
- 7c82e9d391cbaaf2b5928dc7ef04fcb0 209 main/binary-ppc64el/Release
- 22dc25ec9cb1f3b24b3649119b8fce65 38630 main/binary-s390x/Packages
- dd00346cb5220c022bec8e98ef755ab0 4964 main/binary-s390x/Packages.gz
- 4c250d80666d331074a3973e651bda5b 207 main/binary-s390x/Release
+ b97810c6f1990bb343b5cad5291f744f 206 main/binary-i386/Release
+ 67235b6621d51fa78f983db8612f5697 42446 main/binary-ppc64el/Packages
+ 38d7d9bc0750757edd639dd1b6de4189 5398 main/binary-ppc64el/Packages.gz
+ 9394e30a976597f9eb94b05b1a3bf321 209 main/binary-ppc64el/Release
+ 8b95dd3db734d65d12f6914db1cb4da4 42158 main/binary-s390x/Packages
+ c7fd132ae557445e57e8e595f7edd288 5375 main/binary-s390x/Packages.gz
+ 4faab4d4fb35a264cd223521b9751587 207 main/binary-s390x/Release
  d41d8cd98f00b204e9800998ecf8427e 0 main/debian-installer/binary-amd64/Packages
  febef808ae5397ea4ee7ee40e5fd39e0 23 main/debian-installer/binary-amd64/Packages.gz
  d41d8cd98f00b204e9800998ecf8427e 0 main/debian-installer/binary-arm64/Packages
@@ -43,24 +43,24 @@ MD5Sum:
  d41d8cd98f00b204e9800998ecf8427e 0 main/source/Sources
  febef808ae5397ea4ee7ee40e5fd39e0 23 main/source/Sources.gz
 SHA1:
- e23a342ad82d1036c0ed04d6c43c80031d7e3c6c 52080 main/binary-amd64/Packages
- d74851cd4471d1bf6c01e4c00514ce2e7d8505dd 7460 main/binary-amd64/Packages.gz
- b02f55c6fb972ca3feb6f5cbfd0e4a0e1c167de6 207 main/binary-amd64/Release
- 43a0fccc37110825999eb14d4ea03f406768feb8 49225 main/binary-arm64/Packages
- c989afc4bab77bda08f77d164e4fbfd1f2f6460e 6174 main/binary-arm64/Packages.gz
- a263939199a4ad0a9bae88d07bef012597934fd4 207 main/binary-arm64/Release
- 88bbfb8a2bc6f9c799a80cf084816ebad4aeb815 49220 main/binary-armhf/Packages
- b96982246988ee688f80d73ea9a259c992206125 6153 main/binary-armhf/Packages.gz
- 85aefe0e43eb73a178dfce005653e4dd58c34642 207 main/binary-armhf/Release
+ e282586a98348ff52ebcb787a2d3b83aad69b115 55608 main/binary-amd64/Packages
+ 7ca6b3320322364ac0a72c9ef6720eb8f5886ee1 7846 main/binary-amd64/Packages.gz
+ 4928b1916a257e066cfac0c906547042311392f9 207 main/binary-amd64/Release
+ 24b2f295fd7001c315684efec2689c2c28636664 52753 main/binary-arm64/Packages
+ 559400727eec0c937b318fe2b8c96a75b16f1148 6574 main/binary-arm64/Packages.gz
+ 9e6e35511dd14dc648fccca157b54501552b2b9d 207 main/binary-arm64/Release
+ 5496707f99787787c3c9a851d274b880cfb7d0f3 52748 main/binary-armhf/Packages
+ ef81d16c83bc55bdde462a73989b7b6e4d2ac7b8 6561 main/binary-armhf/Packages.gz
+ fcac1a8c257510c045f4452d6493255555f5b167 207 main/binary-armhf/Release
  da39a3ee5e6b4b0d3255bfef95601890afd80709 0 main/binary-i386/Packages
  59f5877e03b380c6c94aae6d8bf1f2aa4f140f4a 23 main/binary-i386/Packages.gz
- 0575699a51013949ad8f15b9ab73cb468882a664 206 main/binary-i386/Release
- 6b4e105f930cf746a246cdb627c3b2d74b2c6e6a 38894 main/binary-ppc64el/Packages
- b615d07edea935b70a93480652f86ebd25d45b67 5017 main/binary-ppc64el/Packages.gz
- 428c76126bb28b3b961a3393cc22229ba532d8be 209 main/binary-ppc64el/Release
- ead486ed2439f65bd0f0b45de20e71e95cbffb61 38630 main/binary-s390x/Packages
- e64143f62ccf604647ed0f9713697272cd265682 4964 main/binary-s390x/Packages.gz
- d7361af6be1580083474bbb85512164101040d44 207 main/binary-s390x/Release
+ 03a2bf6dca2b5704d8dff47b7ebcd03a911deb61 206 main/binary-i386/Release
+ cdda55847dfe5cd7901afa449bf8bfeacfc424e2 42446 main/binary-ppc64el/Packages
+ ad17ba6c09e39ccd8d2f09f3d242bf70f7a2541a 5398 main/binary-ppc64el/Packages.gz
+ 3d29c57f1d37c1bde9286c079ed829f8930b97bc 209 main/binary-ppc64el/Release
+ 18a448a3d12b200795dc70f5d54984760b246d0c 42158 main/binary-s390x/Packages
+ 27cbab1ca6a218c1d26c543b85f519737a72735c 5375 main/binary-s390x/Packages.gz
+ 3f08ac750179123b01a4d75576ca52d90f5bc3be 207 main/binary-s390x/Release
  da39a3ee5e6b4b0d3255bfef95601890afd80709 0 main/debian-installer/binary-amd64/Packages
  59f5877e03b380c6c94aae6d8bf1f2aa4f140f4a 23 main/debian-installer/binary-amd64/Packages.gz
  da39a3ee5e6b4b0d3255bfef95601890afd80709 0 main/debian-installer/binary-arm64/Packages
@@ -76,24 +76,24 @@ SHA1:
  da39a3ee5e6b4b0d3255bfef95601890afd80709 0 main/source/Sources
  59f5877e03b380c6c94aae6d8bf1f2aa4f140f4a 23 main/source/Sources.gz
 SHA256:
- cbc9ebe975afa5866e1d55694411ff11693fe20debda2e77ca25b8d93a7fe497 52080 main/binary-amd64/Packages
- db3da751b57080139336ea4b4452f1e6c1b6abaa37c4cbe89053d24cc432eb4d 7460 main/binary-amd64/Packages.gz
- 37e2a6363515981603983650f65c7465da3fb05f74a057cbd460228c63b7ae18 207 main/binary-amd64/Release
- 386e11281260abc0a4bbf8deff7227bf0e2ef5d1b27c925355be7a02ec1b498c 49225 main/binary-arm64/Packages
- b621573c96e7fc86dc5c88d264d79e601b0e0305e40d47ba1d7edbe606d06a71 6174 main/binary-arm64/Packages.gz
- 2f1a2422e0b4a568fa620998f33154edab2e4509a506dd1a3fbcf33c7ba40bbd 207 main/binary-arm64/Release
- ff7dafa14c9840f1f91f61b88441a34c9ee765b4b35a51f0bc37a1c3351378e9 49220 main/binary-armhf/Packages
- c0c9b7c215169114dc4a1a95339f5a37f47a50893d44364a5425903cb9942484 6153 main/binary-armhf/Packages.gz
- 8a07dc39108b37ed11127e4249ee3a80a8207a81f933c86c41eb57ccea3fbbce 207 main/binary-armhf/Release
+ 42e14a8ad0d9fbde21cc331c0baccc8ab8df811a6bd6b4d8f874ee990f167dfb 55608 main/binary-amd64/Packages
+ 5f73878634f08dbd1628c709ba2cd7f58784c227cfa022b309a8fb273140cde9 7846 main/binary-amd64/Packages.gz
+ 770b1517994e46e5839e34cfe8a05e6538a8cc0832911e8c5428c80b12b3108a 207 main/binary-amd64/Release
+ 8029c51aaed2d6959db00f60947433e430c8b5387f65b4eab381e33fc300776c 52753 main/binary-arm64/Packages
+ 7b8a5a7d1a92a0286278f878111b7b3b1e4ff864fa59f64fc8a0052166345271 6574 main/binary-arm64/Packages.gz
+ 47d67b80a996547fff3e1e42e6f365e0de6616d233c251a354620210f06c249c 207 main/binary-arm64/Release
+ e69a8fd206bdf3e9ce3d11f3786c864e141180afb3095648fdfba59581f0d7c4 52748 main/binary-armhf/Packages
+ be26a290befa39aecfb2c2e4f25da9e1d8e8e20c2d9aefcfef50e2725c4344fe 6561 main/binary-armhf/Packages.gz
+ fe9b53b42249b39646929300464ffea3fae94a6215293139c534f0a9d324493b 207 main/binary-armhf/Release
  e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855 0 main/binary-i386/Packages
  81da0491c5af5635831f6a3febb5d9bfd66987ba3ecc42e58dc3d80938c25705 23 main/binary-i386/Packages.gz
- edb3e3bca18087440b02dd6ffb6019d7c14e578a48e1a8a6b0bb949884ca9676 206 main/binary-i386/Release
- c743d0fc5fd89999b1efc0e1bf3e3dfca08227c28c0346f5338a168566136acd 38894 main/binary-ppc64el/Packages
- 502b0f45ba7107349d60984a3d5973758b71b69582fc1e9f2668ec1684277970 5017 main/binary-ppc64el/Packages.gz
- c85dc4fb1ab1a800cc40fd731647d7e356022b376695a9d0c2280c1793b44749 209 main/binary-ppc64el/Release
- 0cda488fdaa26719db12cadfed0d27b1f111897c3f6bce970ce0d1e25675636c 38630 main/binary-s390x/Packages
- 1b1ab5a38f489418969fe353f3bf693130114addd74a2ab6200049da0d5b43f4 4964 main/binary-s390x/Packages.gz
- 44f056f1db5d8ec605bfdb2055495d52ca75963e3bf33fa15dcac6bdb1336aa8 207 main/binary-s390x/Release
+ d179d6565595779af09dcc06725269d4c245bc3d9a01c1f9db48c6893b92729f 206 main/binary-i386/Release
+ 34e7a634b3095a01d520d8c4acd3932af796a75728e4655230caa94582797378 42446 main/binary-ppc64el/Packages
+ 8ba9f03e118619cc464fdf2f4a788dd90772fc849a2572cbf26c028d84f8b8e4 5398 main/binary-ppc64el/Packages.gz
+ 09fdadb1f0ced53255a948e8c4a52fcb83e1d17beae4497a441a9d5fc47fb234 209 main/binary-ppc64el/Release
+ 3f5eddcee294f6b6fc1dd3644c164bfdaa7fd31d73630b1b417ac37c7eba7385 42158 main/binary-s390x/Packages
+ 0a04c037129902474982dd5e82206a9dc66fb1e0060891ef31745337c28a1d94 5375 main/binary-s390x/Packages.gz
+ 3cf65f42b7a5877654407bbb00be0f54aab9e4597d348b93742d6590b67642e4 207 main/binary-s390x/Release
  e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855 0 main/debian-installer/binary-amd64/Packages
  81da0491c5af5635831f6a3febb5d9bfd66987ba3ecc42e58dc3d80938c25705 23 main/debian-installer/binary-amd64/Packages.gz
  e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855 0 main/debian-installer/binary-arm64/Packages
@@ -110,11 +110,11 @@ SHA256:
  81da0491c5af5635831f6a3febb5d9bfd66987ba3ecc42e58dc3d80938c25705 23 main/source/Sources.gz
 -----BEGIN PGP SIGNATURE-----
 
-wsBcBAEBCAAQBQJaAn8ICRA3RsIIpzF7DwAAtd0IAAGSJe+mHf9XgXfJD9/t5LP9
-Owkk3lyz0KGAST8ouZNz5fnDYlgNxhjy0z0tBrRZXJNEmrHLefqvdmuB76fTP4De
-3Piacjc2BuslKJdjbKltLx7T8Yp5V15JZ8vaXSeJci2U9yZRrH0QZMGs4DV4o+CW
-/uDyc8Q/nDtDvK3+0yihiV0cFImRooCO50rf/kLsfLAiGLcvRSl5MMpYbelvgfh2
-9ZUIPumCrFhb5HctLWGXCsIaCZ618QYpNL8kEJEQB9ANwb8Fsz44jAeJrAf69ACJ
-VzT15PZGj3UzvGAws8IevJYeWeRKXNE0QDKeV0h1jHg7avL5+Hh01cV6NNeFOy4=
-=IxUL
+wsBcBAEBCAAQBQJaEy5aCRA3RsIIpzF7DwAAX9wIAJVIB03XcfD2p7t7+FcI7yH4
+OJ1mJrOiNz4LD2gXnfdeaqbMUYt6bnSybUnwqaDPptDq+OqdpNVchLmzNW+OZhfM
+McoeoT5upG8Mp0EGFacmMBZ6SiTtbDxRcZ9RbgHPFwqn018/pQwtVa6uGeXPlWEw
+czWsqNzpWhHD/tV71D4ChKfaJjMG1jZdQPxrMAZRlq4f/hqfpQFiOARJX48dcdgR
+IW/1mg0qNyiFvOE3JqovgShK5xomOT1lcZ4Ao6qirnJQhjwaENzsKb2VMpZQ8Rdm
+56wHVHTtOObqrPVbWcc1YOLnS3ov+LiBkO7JSr7ghxLOSxGOvkmmadSsRj8UZNQ=
+=/mSs
 -----END PGP SIGNATURE-----

@@ -488,239 +488,64 @@ fanhonglingdeMacBook-Pro:http0x3A0x2F0x2Fkubernetes.io0x2Fdocs0x2Fsetup0x2Findep
 
 dists
 ```
-[vagrant@localhost http0x3A0x2F0x2Fkubernetes.io0x2Fdocs0x2Fsetup0x2Findependent0x2Finstall-kubeadm]$ ./download-apt-dists.sh 
---2017-11-08 18:47:36--  https://packages.cloud.google.com/apt/dists
-正在解析主机 packages.cloud.google.com (packages.cloud.google.com)... 172.217.25.238, 2404:6800:4004:81b::200e
-正在连接 packages.cloud.google.com (packages.cloud.google.com)|172.217.25.238|:443... 已连接。
-已发出 HTTP 请求，正在等待回应... 200 OK
-长度：17757 (17K) [text/html]
-正在保存至: “/Users/fanhongling/Downloads/workspace/src/github.com/tangfeixiong/go-to-kubernetes/http0x3A0x2F0x2Fkubernetes.io0x2Fdocs0x2Fsetup0x2Findependent0x2Finstall-kubeadm/https0x3A0x2F0x2Fpackages.cloud.google.com/apt/dists/dists”
-
-dists                                100%[====================================================================>]  17.34K  10.8KB/s    in 1.6s    
-
-缺少“Last-modified”文件头 -- 关闭时间戳标记。
-2017-11-08 18:47:40 (10.8 KB/s) - 已保存 “/Users/fanhongling/Downloads/workspace/src/github.com/tangfeixiong/go-to-kubernetes/http0x3A0x2F0x2Fkubernetes.io0x2Fdocs0x2Fsetup0x2Findependent0x2Finstall-kubeadm/https0x3A0x2F0x2Fpackages.cloud.google.com/apt/dists/dists” [17757/17757])
-
-正在载入 robots.txt；请忽略错误消息。
---2017-11-08 18:47:40--  https://packages.cloud.google.com/robots.txt
-再次使用存在的到 packages.cloud.google.com:443 的连接。
-已发出 HTTP 请求，正在等待回应... 404 Not Found
-2017-11-08 18:47:41 错误 404：Not Found。
-
-正在删除 /Users/fanhongling/Downloads/workspace/src/github.com/tangfeixiong/go-to-kubernetes/http0x3A0x2F0x2Fkubernetes.io0x2Fdocs0x2Fsetup0x2Findependent0x2Finstall-kubeadm/https0x3A0x2F0x2Fpackages.cloud.google.com/apt/dists/dists 因为它应该被指定了拒绝下载。
-
---2017-11-08 18:47:41--  https://packages.cloud.google.com/apt/dists/kubernetes-trusty
-再次使用存在的到 packages.cloud.google.com:443 的连接。
-已发出 HTTP 请求，正在等待回应... 200 OK
-长度：403 [text/html]
-正在保存至: “/Users/fanhongling/Downloads/workspace/src/github.com/tangfeixiong/go-to-kubernetes/http0x3A0x2F0x2Fkubernetes.io0x2Fdocs0x2Fsetup0x2Findependent0x2Finstall-kubeadm/https0x3A0x2F0x2Fpackages.cloud.google.com/apt/dists/kubernetes-trusty”
-
-kubernetes-trusty                    100%[====================================================================>]     403  --.-KB/s    in 0s      
-
-缺少“Last-modified”文件头 -- 关闭时间戳标记。
-2017-11-08 18:47:41 (27.2 MB/s) - 已保存 “/Users/fanhongling/Downloads/workspace/src/github.com/tangfeixiong/go-to-kubernetes/http0x3A0x2F0x2Fkubernetes.io0x2Fdocs0x2Fsetup0x2Findependent0x2Finstall-kubeadm/https0x3A0x2F0x2Fpackages.cloud.google.com/apt/dists/kubernetes-trusty” [403/403])
-
---2017-11-08 18:47:41--  https://packages.cloud.google.com/apt/dists/kubernetes-xenial
-再次使用存在的到 packages.cloud.google.com:443 的连接。
-已发出 HTTP 请求，正在等待回应... 200 OK
-长度：403 [text/html]
-正在保存至: “/Users/fanhongling/Downloads/workspace/src/github.com/tangfeixiong/go-to-kubernetes/http0x3A0x2F0x2Fkubernetes.io0x2Fdocs0x2Fsetup0x2Findependent0x2Finstall-kubeadm/https0x3A0x2F0x2Fpackages.cloud.google.com/apt/dists/kubernetes-xenial”
-
-kubernetes-xenial                    100%[====================================================================>]     403  --.-KB/s    in 0s      
-
-缺少“Last-modified”文件头 -- 关闭时间戳标记。
-2017-11-08 18:47:42 (4.23 MB/s) - 已保存 “/Users/fanhongling/Downloads/workspace/src/github.com/tangfeixiong/go-to-kubernetes/http0x3A0x2F0x2Fkubernetes.io0x2Fdocs0x2Fsetup0x2Findependent0x2Finstall-kubeadm/https0x3A0x2F0x2Fpackages.cloud.google.com/apt/dists/kubernetes-xenial” [403/403])
-
---2017-11-08 18:47:42--  https://packages.cloud.google.com/apt/dists/kubernetes-trusty/InRelease
-再次使用存在的到 packages.cloud.google.com:443 的连接。
-已发出 HTTP 请求，正在等待回应... 200 OK
-长度：6296 (6.1K) [text/plain]
-正在保存至: “/Users/fanhongling/Downloads/workspace/src/github.com/tangfeixiong/go-to-kubernetes/http0x3A0x2F0x2Fkubernetes.io0x2Fdocs0x2Fsetup0x2Findependent0x2Finstall-kubeadm/https0x3A0x2F0x2Fpackages.cloud.google.com/apt/dists/kubernetes-trusty/InRelease”
-
-kubernetes-trusty/InRelease          100%[====================================================================>]   6.15K  --.-KB/s    in 0.001s  
-
-2017-11-08 18:47:43 (4.30 MB/s) - 已保存 “/Users/fanhongling/Downloads/workspace/src/github.com/tangfeixiong/go-to-kubernetes/http0x3A0x2F0x2Fkubernetes.io0x2Fdocs0x2Fsetup0x2Findependent0x2Finstall-kubeadm/https0x3A0x2F0x2Fpackages.cloud.google.com/apt/dists/kubernetes-trusty/InRelease” [6296/6296])
-
---2017-11-08 18:47:43--  https://packages.cloud.google.com/apt/dists/kubernetes-trusty/Release
-再次使用存在的到 packages.cloud.google.com:443 的连接。
-已发出 HTTP 请求，正在等待回应... 200 OK
-长度：5793 (5.7K) [text/plain]
-正在保存至: “/Users/fanhongling/Downloads/workspace/src/github.com/tangfeixiong/go-to-kubernetes/http0x3A0x2F0x2Fkubernetes.io0x2Fdocs0x2Fsetup0x2Findependent0x2Finstall-kubeadm/https0x3A0x2F0x2Fpackages.cloud.google.com/apt/dists/kubernetes-trusty/Release”
-
-kubernetes-trusty/Release            100%[====================================================================>]   5.66K  --.-KB/s    in 0.001s  
-
-2017-11-08 18:47:44 (8.08 MB/s) - 已保存 “/Users/fanhongling/Downloads/workspace/src/github.com/tangfeixiong/go-to-kubernetes/http0x3A0x2F0x2Fkubernetes.io0x2Fdocs0x2Fsetup0x2Findependent0x2Finstall-kubeadm/https0x3A0x2F0x2Fpackages.cloud.google.com/apt/dists/kubernetes-trusty/Release” [5793/5793])
-
---2017-11-08 18:47:44--  https://packages.cloud.google.com/apt/dists/kubernetes-trusty/Release.gpg
-再次使用存在的到 packages.cloud.google.com:443 的连接。
-已发出 HTTP 请求，正在等待回应... 200 OK
-长度：454 [application/pgp-signature]
-正在保存至: “/Users/fanhongling/Downloads/workspace/src/github.com/tangfeixiong/go-to-kubernetes/http0x3A0x2F0x2Fkubernetes.io0x2Fdocs0x2Fsetup0x2Findependent0x2Finstall-kubeadm/https0x3A0x2F0x2Fpackages.cloud.google.com/apt/dists/kubernetes-trusty/Release.gpg”
-
-kubernetes-trusty/Release.gpg        100%[====================================================================>]     454  --.-KB/s    in 0s      
-
-2017-11-08 18:47:45 (32.3 MB/s) - 已保存 “/Users/fanhongling/Downloads/workspace/src/github.com/tangfeixiong/go-to-kubernetes/http0x3A0x2F0x2Fkubernetes.io0x2Fdocs0x2Fsetup0x2Findependent0x2Finstall-kubeadm/https0x3A0x2F0x2Fpackages.cloud.google.com/apt/dists/kubernetes-trusty/Release.gpg” [454/454])
-
---2017-11-08 18:47:45--  https://packages.cloud.google.com/apt/dists/kubernetes-trusty/main
-再次使用存在的到 packages.cloud.google.com:443 的连接。
-已发出 HTTP 请求，正在等待回应... 200 OK
-长度：546 [text/html]
-正在保存至: “/Users/fanhongling/Downloads/workspace/src/github.com/tangfeixiong/go-to-kubernetes/http0x3A0x2F0x2Fkubernetes.io0x2Fdocs0x2Fsetup0x2Findependent0x2Finstall-kubeadm/https0x3A0x2F0x2Fpackages.cloud.google.com/apt/dists/kubernetes-trusty/main”
-
-kubernetes-trusty/main               100%[====================================================================>]     546  --.-KB/s    in 0s      
-
-缺少“Last-modified”文件头 -- 关闭时间戳标记。
-2017-11-08 18:47:49 (30.6 MB/s) - 已保存 “/Users/fanhongling/Downloads/workspace/src/github.com/tangfeixiong/go-to-kubernetes/http0x3A0x2F0x2Fkubernetes.io0x2Fdocs0x2Fsetup0x2Findependent0x2Finstall-kubeadm/https0x3A0x2F0x2Fpackages.cloud.google.com/apt/dists/kubernetes-trusty/main” [546/546])
-
---2017-11-08 18:47:49--  https://packages.cloud.google.com/apt/dists/kubernetes-xenial/InRelease
-再次使用存在的到 packages.cloud.google.com:443 的连接。
-已发出 HTTP 请求，正在等待回应... 200 OK
-长度：8942 (8.7K) [text/plain]
-正在保存至: “/Users/fanhongling/Downloads/workspace/src/github.com/tangfeixiong/go-to-kubernetes/http0x3A0x2F0x2Fkubernetes.io0x2Fdocs0x2Fsetup0x2Findependent0x2Finstall-kubeadm/https0x3A0x2F0x2Fpackages.cloud.google.com/apt/dists/kubernetes-xenial/InRelease”
-
-kubernetes-xenial/InRelease          100%[====================================================================>]   8.73K  --.-KB/s    in 0.001s  
-
-2017-11-08 18:47:51 (8.24 MB/s) - 已保存 “/Users/fanhongling/Downloads/workspace/src/github.com/tangfeixiong/go-to-kubernetes/http0x3A0x2F0x2Fkubernetes.io0x2Fdocs0x2Fsetup0x2Findependent0x2Finstall-kubeadm/https0x3A0x2F0x2Fpackages.cloud.google.com/apt/dists/kubernetes-xenial/InRelease” [8942/8942])
-
---2017-11-08 18:47:51--  https://packages.cloud.google.com/apt/dists/kubernetes-xenial/Release
-再次使用存在的到 packages.cloud.google.com:443 的连接。
-已发出 HTTP 请求，正在等待回应... 200 OK
-长度：8439 (8.2K) [text/plain]
-正在保存至: “/Users/fanhongling/Downloads/workspace/src/github.com/tangfeixiong/go-to-kubernetes/http0x3A0x2F0x2Fkubernetes.io0x2Fdocs0x2Fsetup0x2Findependent0x2Finstall-kubeadm/https0x3A0x2F0x2Fpackages.cloud.google.com/apt/dists/kubernetes-xenial/Release”
-
-kubernetes-xenial/Release            100%[====================================================================>]   8.24K  --.-KB/s    in 0.03s   
-
-2017-11-08 18:47:52 (239 KB/s) - 已保存 “/Users/fanhongling/Downloads/workspace/src/github.com/tangfeixiong/go-to-kubernetes/http0x3A0x2F0x2Fkubernetes.io0x2Fdocs0x2Fsetup0x2Findependent0x2Finstall-kubeadm/https0x3A0x2F0x2Fpackages.cloud.google.com/apt/dists/kubernetes-xenial/Release” [8439/8439])
-
---2017-11-08 18:47:52--  https://packages.cloud.google.com/apt/dists/kubernetes-xenial/Release.gpg
-再次使用存在的到 packages.cloud.google.com:443 的连接。
-已发出 HTTP 请求，正在等待回应... 200 OK
-长度：454 [application/pgp-signature]
-正在保存至: “/Users/fanhongling/Downloads/workspace/src/github.com/tangfeixiong/go-to-kubernetes/http0x3A0x2F0x2Fkubernetes.io0x2Fdocs0x2Fsetup0x2Findependent0x2Finstall-kubeadm/https0x3A0x2F0x2Fpackages.cloud.google.com/apt/dists/kubernetes-xenial/Release.gpg”
-
-kubernetes-xenial/Release.gpg        100%[====================================================================>]     454  --.-KB/s    in 0s      
-
-2017-11-08 18:47:58 (38.1 MB/s) - 已保存 “/Users/fanhongling/Downloads/workspace/src/github.com/tangfeixiong/go-to-kubernetes/http0x3A0x2F0x2Fkubernetes.io0x2Fdocs0x2Fsetup0x2Findependent0x2Finstall-kubeadm/https0x3A0x2F0x2Fpackages.cloud.google.com/apt/dists/kubernetes-xenial/Release.gpg” [454/454])
-
---2017-11-08 18:47:58--  https://packages.cloud.google.com/apt/dists/kubernetes-xenial/main
-再次使用存在的到 packages.cloud.google.com:443 的连接。
-已发出 HTTP 请求，正在等待回应... 200 OK
-长度：650 [text/html]
-正在保存至: “/Users/fanhongling/Downloads/workspace/src/github.com/tangfeixiong/go-to-kubernetes/http0x3A0x2F0x2Fkubernetes.io0x2Fdocs0x2Fsetup0x2Findependent0x2Finstall-kubeadm/https0x3A0x2F0x2Fpackages.cloud.google.com/apt/dists/kubernetes-xenial/main”
-
-kubernetes-xenial/main               100%[====================================================================>]     650  --.-KB/s    in 0s      
-
-缺少“Last-modified”文件头 -- 关闭时间戳标记。
-2017-11-08 18:47:59 (56.4 MB/s) - 已保存 “/Users/fanhongling/Downloads/workspace/src/github.com/tangfeixiong/go-to-kubernetes/http0x3A0x2F0x2Fkubernetes.io0x2Fdocs0x2Fsetup0x2Findependent0x2Finstall-kubeadm/https0x3A0x2F0x2Fpackages.cloud.google.com/apt/dists/kubernetes-xenial/main” [650/650])
-
---2017-11-08 18:47:59--  https://packages.cloud.google.com/apt/dists/kubernetes-trusty/main/binary-amd64
-再次使用存在的到 packages.cloud.google.com:443 的连接。
-已发出 HTTP 请求，正在等待回应... 200 OK
-长度：421 [text/html]
-正在保存至: “/Users/fanhongling/Downloads/workspace/src/github.com/tangfeixiong/go-to-kubernetes/http0x3A0x2F0x2Fkubernetes.io0x2Fdocs0x2Fsetup0x2Findependent0x2Finstall-kubeadm/https0x3A0x2F0x2Fpackages.cloud.google.com/apt/dists/kubernetes-trusty/main/binary-amd64”
-
-kubernetes-trusty/main/binary-amd64  100%[====================================================================>]     421  --.-KB/s    in 0s      
-
-缺少“Last-modified”文件头 -- 关闭时间戳标记。
-2017-11-08 18:48:00 (30.0 MB/s) - 已保存 “/Users/fanhongling/Downloads/workspace/src/github.com/tangfeixiong/go-to-kubernetes/http0x3A0x2F0x2Fkubernetes.io0x2Fdocs0x2Fsetup0x2Findependent0x2Finstall-kubeadm/https0x3A0x2F0x2Fpackages.cloud.google.com/apt/dists/kubernetes-trusty/main/binary-amd64” [421/421])
-
---2017-11-08 18:48:00--  https://packages.cloud.google.com/apt/dists/kubernetes-xenial/main/binary-amd64
-再次使用存在的到 packages.cloud.google.com:443 的连接。
-已发出 HTTP 请求，正在等待回应... 200 OK
-长度：421 [text/html]
-正在保存至: “/Users/fanhongling/Downloads/workspace/src/github.com/tangfeixiong/go-to-kubernetes/http0x3A0x2F0x2Fkubernetes.io0x2Fdocs0x2Fsetup0x2Findependent0x2Finstall-kubeadm/https0x3A0x2F0x2Fpackages.cloud.google.com/apt/dists/kubernetes-xenial/main/binary-amd64”
-
-kubernetes-xenial/main/binary-amd64  100%[====================================================================>]     421  --.-KB/s    in 0s      
-
-缺少“Last-modified”文件头 -- 关闭时间戳标记。
-2017-11-08 18:48:01 (5.51 MB/s) - 已保存 “/Users/fanhongling/Downloads/workspace/src/github.com/tangfeixiong/go-to-kubernetes/http0x3A0x2F0x2Fkubernetes.io0x2Fdocs0x2Fsetup0x2Findependent0x2Finstall-kubeadm/https0x3A0x2F0x2Fpackages.cloud.google.com/apt/dists/kubernetes-xenial/main/binary-amd64” [421/421])
-
---2017-11-08 18:48:01--  https://packages.cloud.google.com/apt/dists/kubernetes-trusty/main/binary-amd64/Packages
-再次使用存在的到 packages.cloud.google.com:443 的连接。
-已发出 HTTP 请求，正在等待回应... 200 OK
-长度：1053 (1.0K) [text/plain]
-正在保存至: “/Users/fanhongling/Downloads/workspace/src/github.com/tangfeixiong/go-to-kubernetes/http0x3A0x2F0x2Fkubernetes.io0x2Fdocs0x2Fsetup0x2Findependent0x2Finstall-kubeadm/https0x3A0x2F0x2Fpackages.cloud.google.com/apt/dists/kubernetes-trusty/main/binary-amd64/Packages”
-
-kubernetes-trusty/main/binary-amd64/ 100%[====================================================================>]   1.03K  --.-KB/s    in 0s      
-
-2017-11-08 18:48:02 (4.00 MB/s) - 已保存 “/Users/fanhongling/Downloads/workspace/src/github.com/tangfeixiong/go-to-kubernetes/http0x3A0x2F0x2Fkubernetes.io0x2Fdocs0x2Fsetup0x2Findependent0x2Finstall-kubeadm/https0x3A0x2F0x2Fpackages.cloud.google.com/apt/dists/kubernetes-trusty/main/binary-amd64/Packages” [1053/1053])
-
---2017-11-08 18:48:02--  https://packages.cloud.google.com/apt/dists/kubernetes-trusty/main/binary-amd64/Packages.gz
-再次使用存在的到 packages.cloud.google.com:443 的连接。
-已发出 HTTP 请求，正在等待回应... 200 OK
-长度：458 [application/gzip]
-正在保存至: “/Users/fanhongling/Downloads/workspace/src/github.com/tangfeixiong/go-to-kubernetes/http0x3A0x2F0x2Fkubernetes.io0x2Fdocs0x2Fsetup0x2Findependent0x2Finstall-kubeadm/https0x3A0x2F0x2Fpackages.cloud.google.com/apt/dists/kubernetes-trusty/main/binary-amd64/Packages.gz”
-
-kubernetes-trusty/main/binary-amd64/ 100%[====================================================================>]     458  --.-KB/s    in 0s      
-
-2017-11-08 18:48:07 (32.1 MB/s) - 已保存 “/Users/fanhongling/Downloads/workspace/src/github.com/tangfeixiong/go-to-kubernetes/http0x3A0x2F0x2Fkubernetes.io0x2Fdocs0x2Fsetup0x2Findependent0x2Finstall-kubeadm/https0x3A0x2F0x2Fpackages.cloud.google.com/apt/dists/kubernetes-trusty/main/binary-amd64/Packages.gz” [458/458])
-
---2017-11-08 18:48:07--  https://packages.cloud.google.com/apt/dists/kubernetes-trusty/main/binary-amd64/Release
-再次使用存在的到 packages.cloud.google.com:443 的连接。
-已发出 HTTP 请求，正在等待回应... 200 OK
-长度：207 [text/plain]
-正在保存至: “/Users/fanhongling/Downloads/workspace/src/github.com/tangfeixiong/go-to-kubernetes/http0x3A0x2F0x2Fkubernetes.io0x2Fdocs0x2Fsetup0x2Findependent0x2Finstall-kubeadm/https0x3A0x2F0x2Fpackages.cloud.google.com/apt/dists/kubernetes-trusty/main/binary-amd64/Release”
-
-kubernetes-trusty/main/binary-amd64/ 100%[====================================================================>]     207  --.-KB/s    in 0s      
-
-2017-11-08 18:48:08 (13.4 MB/s) - 已保存 “/Users/fanhongling/Downloads/workspace/src/github.com/tangfeixiong/go-to-kubernetes/http0x3A0x2F0x2Fkubernetes.io0x2Fdocs0x2Fsetup0x2Findependent0x2Finstall-kubeadm/https0x3A0x2F0x2Fpackages.cloud.google.com/apt/dists/kubernetes-trusty/main/binary-amd64/Release” [207/207])
-
---2017-11-08 18:48:08--  https://packages.cloud.google.com/apt/dists/kubernetes-xenial/main/binary-amd64/Packages
-再次使用存在的到 packages.cloud.google.com:443 的连接。
-已发出 HTTP 请求，正在等待回应... 200 OK
-长度：52080 (51K) [text/plain]
-正在保存至: “/Users/fanhongling/Downloads/workspace/src/github.com/tangfeixiong/go-to-kubernetes/http0x3A0x2F0x2Fkubernetes.io0x2Fdocs0x2Fsetup0x2Findependent0x2Finstall-kubeadm/https0x3A0x2F0x2Fpackages.cloud.google.com/apt/dists/kubernetes-xenial/main/binary-amd64/Packages”
-
-kubernetes-xenial/main/binary-amd64/ 100%[====================================================================>]  50.86K  --.-KB/s    in 0.07s   
-
-2017-11-08 18:48:09 (778 KB/s) - 已保存 “/Users/fanhongling/Downloads/workspace/src/github.com/tangfeixiong/go-to-kubernetes/http0x3A0x2F0x2Fkubernetes.io0x2Fdocs0x2Fsetup0x2Findependent0x2Finstall-kubeadm/https0x3A0x2F0x2Fpackages.cloud.google.com/apt/dists/kubernetes-xenial/main/binary-amd64/Packages” [52080/52080])
-
---2017-11-08 18:48:09--  https://packages.cloud.google.com/apt/dists/kubernetes-xenial/main/binary-amd64/Packages.gz
-再次使用存在的到 packages.cloud.google.com:443 的连接。
-已发出 HTTP 请求，正在等待回应... 200 OK
-长度：7460 (7.3K) [application/gzip]
-正在保存至: “/Users/fanhongling/Downloads/workspace/src/github.com/tangfeixiong/go-to-kubernetes/http0x3A0x2F0x2Fkubernetes.io0x2Fdocs0x2Fsetup0x2Findependent0x2Finstall-kubeadm/https0x3A0x2F0x2Fpackages.cloud.google.com/apt/dists/kubernetes-xenial/main/binary-amd64/Packages.gz”
-
-kubernetes-xenial/main/binary-amd64/ 100%[====================================================================>]   7.29K  --.-KB/s    in 0.001s  
-
-2017-11-08 18:48:10 (9.28 MB/s) - 已保存 “/Users/fanhongling/Downloads/workspace/src/github.com/tangfeixiong/go-to-kubernetes/http0x3A0x2F0x2Fkubernetes.io0x2Fdocs0x2Fsetup0x2Findependent0x2Finstall-kubeadm/https0x3A0x2F0x2Fpackages.cloud.google.com/apt/dists/kubernetes-xenial/main/binary-amd64/Packages.gz” [7460/7460])
-
---2017-11-08 18:48:10--  https://packages.cloud.google.com/apt/dists/kubernetes-xenial/main/binary-amd64/Release
-再次使用存在的到 packages.cloud.google.com:443 的连接。
-已发出 HTTP 请求，正在等待回应... 200 OK
-长度：207 [text/plain]
-正在保存至: “/Users/fanhongling/Downloads/workspace/src/github.com/tangfeixiong/go-to-kubernetes/http0x3A0x2F0x2Fkubernetes.io0x2Fdocs0x2Fsetup0x2Findependent0x2Finstall-kubeadm/https0x3A0x2F0x2Fpackages.cloud.google.com/apt/dists/kubernetes-xenial/main/binary-amd64/Release”
-
-kubernetes-xenial/main/binary-amd64/ 100%[====================================================================>]     207  --.-KB/s    in 0s      
-
-2017-11-08 18:48:11 (15.9 MB/s) - 已保存 “/Users/fanhongling/Downloads/workspace/src/github.com/tangfeixiong/go-to-kubernetes/http0x3A0x2F0x2Fkubernetes.io0x2Fdocs0x2Fsetup0x2Findependent0x2Finstall-kubeadm/https0x3A0x2F0x2Fpackages.cloud.google.com/apt/dists/kubernetes-xenial/main/binary-amd64/Release” [207/207])
-
-下载完毕 --2017-11-08 18:48:11--
-总用时：35s
-下载了：19 个文件，1.7s (64.5 KB/s) 中的 110K
-```
-
-pool
-```
-[vagrant@localhost http0x3A0x2F0x2Fkubernetes.io0x2Fdocs0x2Fsetup0x2Findependent0x2Finstall-kubeadm]$ ./apt-pool-curl.sh 
+[vagrant@localhost http0x3A0x2F0x2Fkubernetes.io0x2Fdocs0x2Fsetup0x2Findependent0x2Finstall-kubeadm]$ ./apt-dists-curl.sh 
   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
                                  Dload  Upload   Total   Spent    Left  Speed
-100 13.7M  100 13.7M    0     0  23437      0  0:10:17  0:10:17 --:--:-- 29466
+100  6296  100  6296    0     0    426      0  0:00:14  0:00:14 --:--:--  1671
   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
                                  Dload  Upload   Total   Spent    Left  Speed
-100 17.2M  100 17.2M    0     0  24528      0  0:12:18  0:12:18 --:--:-- 13524
+100  5793  100  5793    0     0   1088      0  0:00:05  0:00:05 --:--:--  1532
   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
                                  Dload  Upload   Total   Spent    Left  Speed
-100 8407k  100 8407k    0     0  30637      0  0:04:41  0:04:40  0:00:01 24967
+100   454  100   454    0     0     19      0  0:00:23  0:00:23 --:--:--   110
   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
                                  Dload  Upload   Total   Spent    Left  Speed
-100 18.3M  100 18.3M    0     0  24360      0  0:13:08  0:13:08 --:--:-- 32846
+100  1053  100  1053    0     0     91      0  0:00:11  0:00:11 --:--:--   262
   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
                                  Dload  Upload   Total   Spent    Left  Speed
-100 5429k  100 5429k    0     0  28114      0  0:03:17  0:03:17 --:--:-- 38607
+100   458  100   458    0     0     28      0  0:00:16  0:00:16 --:--:--   107
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100   207  100   207    0     0     15      0  0:00:13  0:00:13 --:--:--    49
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:--  0:00:16 --:--:--     0
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100    23  100    23    0     0      2      0  0:00:11  0:00:08  0:00:03     6
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100  8942  100  8942    0     0    704      0  0:00:12  0:00:12 --:--:--  1933
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100  8439  100  8439    0     0   1028      0  0:00:08  0:00:08 --:--:--  2193
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100   454  100   454    0     0     49      0  0:00:09  0:00:09 --:--:--   107
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100 55608  100 55608    0     0   6037      0  0:00:09  0:00:09 --:--:-- 17794
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100  7846  100  7846    0     0   1863      0  0:00:04  0:00:04 --:--:--  1864
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100   207  100   207    0     0     33      0  0:00:06  0:00:06 --:--:--    59
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:--  0:00:09 --:--:--     0
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100    23  100    23    0     0      1      0  0:00:23  0:00:22  0:00:01     5
 ```
 
 Packages
+```
+[vagrant@localhost http0x3A0x2F0x2Fkubernetes.io0x2Fdocs0x2Fsetup0x2Findependent0x2Finstall-kubeadm]$ egrep '^Filename: pool/\S+deb' https0x3A0x2F0x2Fpackages.cloud.google.com/apt/dists/kubernetes-trusty/main/binary-amd64/Packages | awk '{print $2}'
+pool/kubectl_1.5.6-00_amd64_620d1f16fcf779e72e778fd000b247612eabb351e054573b1153df8f6aad1342.deb
+pool/kubectl_1.6.0-00_amd64_7021195dccb229242f160a98c069ccfe3097b3af1549b81940d201313238b519.deb
+```
+
 ```
 [vagrant@localhost http0x3A0x2F0x2Fkubernetes.io0x2Fdocs0x2Fsetup0x2Findependent0x2Finstall-kubeadm]$ egrep '^Filename: pool/\S+deb' https0x3A0x2F0x2Fpackages.cloud.google.com/apt/dists/kubernetes-xenial/main/binary-amd64/Packages | awk '{print $2}'
 pool/docker-engine_1.11.2-0~xenial_amd64_5554a8bc383e65fb10d556239c72b26457cc5d97f49e3a353c3382f8434e7d21.deb
@@ -748,6 +573,8 @@ pool/kubeadm_1.8.0-00_amd64_22842ddc6d1ffabc04718f384ac001ffa56324cc61e6c3a7c991
 pool/kubeadm_1.8.0-01_amd64_15e6b68827964187a6c3a60711fab285d06d19953f7473154d798ff52a418185.deb
 pool/kubeadm_1.8.1-01_amd64_5863420bee513756daf8cd08af801c5420397409191df19535d8c618a100989c.deb
 pool/kubeadm_1.8.2-00_amd64_e743a9538b855d08ddaa68e7910af2dfc2bb9c1a0938d79089b0a9d3f1c19dde.deb
+pool/kubeadm_1.8.3-00_amd64_a2cf7650f63eebb1b95887e2989c19d7f61b24f1da379d705bcb3e17123bbd75.deb
+pool/kubeadm_1.8.4-00_amd64_0088836fbb451bc49ece82f34c035f50f2e1dd4dea78f6d585574d585da11e8e.deb
 pool/kubectl_1.5.1-00_amd64_c188aff0b89c6164bf75a0ad2d16080082222c7dd04943b4895ffdedee523ecf.deb
 pool/kubectl_1.5.2-00_amd64_7ca7fea62ab4672bb09d49a0ec3a23d09386cb303f97713f6a4406459ef0a8e0.deb
 pool/kubectl_1.5.3-00_amd64_10ffbdd74343d2b8b3ba31adc7eeb37b690badd4ce7f9bfb9a54e86ee05d433d.deb
@@ -776,6 +603,8 @@ pool/kubectl_1.7.10-00_amd64_b725d080205ddf237a4df726dba6c81c9f56d1bc089a530e9f2
 pool/kubectl_1.8.0-00_amd64_9bd409d2a0300d4b550cd2a7fd2eca6437ea0767805f6fd807912b245ec949ed.deb
 pool/kubectl_1.8.1-00_amd64_c87f3e1e54ad045af07001028282f9b76e1c26425f6ccaeba52bb0a5fa93a6b9.deb
 pool/kubectl_1.8.2-00_amd64_b01f6fa567e98752181a3ad057275851e00aa5fa1a8db6eb5a6d81c0f499e1ec.deb
+pool/kubectl_1.8.3-00_amd64_4ea956fb6586472bfec46f099ad34fa83585969bcfaf2ff995dd66570f824a8b.deb
+pool/kubectl_1.8.4-00_amd64_b48511a481ddcfbf935ad935bc6c3992c1c4315fcd8f3f794e367b9b26b775be.deb
 pool/kubelet_1.5.1-00_amd64_bb82dd4bcf0c9bc813c599f62afa48832bf34302d723c5a38347c2754f3735e2.deb
 pool/kubelet_1.5.2-00_amd64_ac51b2e458539f4803b2d2b31b3fad0b6d503ca8ddc1994e55b4150f33909163.deb
 pool/kubelet_1.5.3-00_amd64_6df7dd70c4db4afb77bdf309569d5e9ad92e7319ab4d3b9bcd0bd56f457a8755.deb
@@ -804,6 +633,8 @@ pool/kubelet_1.7.10-00_amd64_4322e4474136b891848d5d67658b9cd22a41a834c88ecea382d
 pool/kubelet_1.8.0-00_amd64_00b7c77c924d654c7def52c83cfeb9a3d1836c1e7b40683c3fe8207b0bd299d1.deb
 pool/kubelet_1.8.1-00_amd64_c0f1902d204f6741eff08560120bfe193b992596068158a2042988203132cd51.deb
 pool/kubelet_1.8.2-00_amd64_9646b1262ea4c99a89e94801b150e355a4e984c462bf8fb8a2fe9a33dacd74e0.deb
+pool/kubelet_1.8.3-00_amd64_10bf853bba6b7713f8f3001f92612637ccee6893e699f7c41d91d2b4c3e6e25f.deb
+pool/kubelet_1.8.4-00_amd64_601882506070723b643552ae98325c849840b09b1fc1666de74c7b69a07f06df.deb
 pool/kubernetes-cni_0.3.0.1-07a8a2-00_amd64_9e41a275b2afeb51dcde86b922c056c7b6dc656b54dd66fa2f1a0bb8266e9c22.deb
 pool/kubernetes-cni_0.5.1-00_amd64_08cbe5c42366ec3184cc91a4353f6e066f2d7325b4db1cb4f87c7dcc8c0eb620.deb
 pool/rkt_1.25.0-1_amd64_65f4d768116520be6ee5d56ebcdce87b8b39fa2e41345b7c2960a01f91b7c081.deb
@@ -811,6 +642,33 @@ pool/rkt_1.26.0-1_amd64_af62ca3979b90f2fcbe7c48ba782dc1b0c4266832e7544ef4c69ce0a
 pool/rkt_1.27.0-1_amd64_b4f1d67b835d1f1b0263ddfc3f8df80cd7c9e36ac78d983e12aca5575835e122.deb
 pool/rkt_1.28.1-1_amd64_66ea8b0ef5724aa364a1273b794b2aaf5c302c774e076115adee8f7c04a0e0f9.deb
 pool/rkt_1.29.0-1_amd64_ea87d719359030f33fd48890875c934135c62eccda72c37d79ff604307b905b5.deb
+```
+
+pool
+```
+[vagrant@localhost http0x3A0x2F0x2Fkubernetes.io0x2Fdocs0x2Fsetup0x2Findependent0x2Finstall-kubeadm]$ ./apt-pool-cni-curl.sh 
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100 13.7M  100 13.7M    0     0  23437      0  0:10:17  0:10:17 --:--:-- 29466
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100 6942k  100 6942k    0     0  31373      0  0:03:46  0:03:46 --:--:--  122k
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100 5429k  100 5429k    0     0  28114      0  0:03:17  0:03:17 --:--:-- 38607
+```
+
+```
+[vagrant@localhost http0x3A0x2F0x2Fkubernetes.io0x2Fdocs0x2Fsetup0x2Findependent0x2Finstall-kubeadm]$ ./apt-pool-v1_8_4-curl.sh 
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100 17.2M  100 17.2M    0     0  38971      0  0:07:45  0:07:45 --:--:-- 44992
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100 8409k  100 8409k    0     0  59412      0  0:02:24  0:02:24 --:--:--  409k
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100 18.3M  100 18.3M    0     0  40909      0  0:07:49  0:07:49 --:--:-- 47686
 ```
 
 ### 3rd-party
