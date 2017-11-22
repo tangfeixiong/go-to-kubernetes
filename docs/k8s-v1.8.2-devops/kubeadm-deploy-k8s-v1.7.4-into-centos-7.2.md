@@ -538,6 +538,7 @@ b75fb0ab932f        gcr.io/google_containers/pause-amd64:3.0   "/pause"         
 [vagrant@openshiftdev ~]$ docker tag gcr.io/google_containers/kube-apiserver:v1.7.4 gcr.io/google_containers/kube-apiserver-amd64:v1.7.4
 [vagrant@openshiftdev ~]$ docker tag gcr.io/google_containers/kube-controller-manager:v1.7.4 gcr.io/google_containers/kube-controller-manager-amd64:v1.7.4
 [vagrant@openshiftdev ~]$ docker tag gcr.io/google_containers/kube-scheduler:v1.7.4 gcr.io/google_containers/kube-scheduler-amd64:v1.7.4
+[vagrant@openshiftdev ~]$ docker tag gcr.io/google_containers/kube-proxy:v1.7.4 gcr.io/google_containers/kube-proxy-amd64:v1.7.4
 ```
 
 ```
@@ -654,8 +655,10 @@ kube-controller-manager-openshiftdev.local   1/1       Running   1          5m
 kube-scheduler-openshiftdev.local            1/1       Running   1          4m
 ```
 
+Node not ready, because of CNI net
 ```
 [vagrant@openshiftdev ~]$ kubectl get nodes
 NAME                 STATUS     ROLES     AGE       VERSION
 openshiftdev.local   NotReady   <none>    5m        v1.8.2
 ```
+

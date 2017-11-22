@@ -1,4 +1,4 @@
-# 在CentOS 7离线环境安装Kubernetes
+# 安装Kubernetes(包括离线安装环境)
 
 ## Table of contents
 
@@ -8,9 +8,9 @@
 
 [CentOS 7.2示例](#CentOS-7.2示例)
 
-* 使用CentOS 7离线仓库安装Docker
-* [大小仅12MB的http服务器](#./my-minimal-http-file-server)
-* 安装kubeadm
+* http服务器容器(12MiB大小)
+* [使用CentOS 7离线仓库安装Docker](#install-docker)
+* [安装kubeadm v1.8.2](#install-kubeadm)
 
 [CentOS升级后](#centos-7-latest)
 
@@ -18,7 +18,7 @@
 
 使用发行包和bash配置请参见[../k8s-v1.7-hand-on](../k8s-v1.7-hand-on)/[../k8s-v1.6-deployment](../k8s-v1.6-deployment)/[../k8s-v1.5-deployment](../k8s-v1.5.7-deployment), 基于 https://github.com/kubernetes/kubernetes/tree/master/cluster/saltbase/salt 
 
-## Local CentOS 7 mirroring repository
+## Mirroring CentOS 7 latest repository
 
 脚本参见[../../examples/centos-devops-cync-repo](../../examples/centos-devops-cync-repo)
 
@@ -539,7 +539,7 @@ skopeo.x86_64 : Inspect Docker images and repositories on registries
 ```
 
 
-### Install kubernetes
+### Install kubeadm
 
 Local Kubernetes Repository
 ```
@@ -676,177 +676,3 @@ Complete!
 [vagrant@openshiftdev ~]$ kubeadm version
 kubeadm version: &version.Info{Major:"1", Minor:"8", GitVersion:"v1.8.2", GitCommit:"bdaeafa71f6c7c04636251031f93464384d54963", GitTreeState:"clean", BuildDate:"2017-10-24T19:38:10Z", GoVersion:"go1.8.3", Compiler:"gc", Platform:"linux/amd64"}
 ```
-
-
-
-
-## CentOS 7 Latest
-
-Upgrade docker
-```
-[vagrant@openshiftdev ~]$ sudo yum upgrade docker
-Loaded plugins: fastestmirror
-Loading mirror speeds from cached hostfile
- * base: centos.ustc.edu.cn
- * epel: mirrors.ustc.edu.cn
- * extras: centos.ustc.edu.cn
- * updates: centos.ustc.edu.cn
-Resolving Dependencies
---> Running transaction check
----> Package docker.x86_64 0:1.10.3-46.el7.centos.14 will be updated
----> Package docker.x86_64 2:1.12.6-61.git85d7426.el7.centos will be an update
---> Processing Dependency: docker-common = 2:1.12.6-61.git85d7426.el7.centos for package: 2:docker-1.12.6-61.git85d7426.el7.centos.x86_64
---> Processing Dependency: docker-client = 2:1.12.6-61.git85d7426.el7.centos for package: 2:docker-1.12.6-61.git85d7426.el7.centos.x86_64
---> Running transaction check
----> Package docker-client.x86_64 2:1.12.6-61.git85d7426.el7.centos will be installed
----> Package docker-common.x86_64 0:1.10.3-46.el7.centos.14 will be updated
----> Package docker-common.x86_64 2:1.12.6-61.git85d7426.el7.centos will be an update
---> Processing Dependency: oci-umount >= 2:2.0.0-1 for package: 2:docker-common-1.12.6-61.git85d7426.el7.centos.x86_64
---> Processing Dependency: oci-systemd-hook >= 1:0.1.4-9 for package: 2:docker-common-1.12.6-61.git85d7426.el7.centos.x86_64
---> Processing Dependency: oci-register-machine >= 1:0-3.10 for package: 2:docker-common-1.12.6-61.git85d7426.el7.centos.x86_64
---> Processing Dependency: container-storage-setup >= 0.7.0-1 for package: 2:docker-common-1.12.6-61.git85d7426.el7.centos.x86_64
---> Processing Dependency: container-selinux >= 2:2.21-2 for package: 2:docker-common-1.12.6-61.git85d7426.el7.centos.x86_64
---> Processing Dependency: skopeo-containers for package: 2:docker-common-1.12.6-61.git85d7426.el7.centos.x86_64
---> Running transaction check
----> Package container-selinux.noarch 2:2.28-1.git85ce147.el7 will be obsoleting
---> Processing Dependency: policycoreutils >= 2.5-11 for package: 2:container-selinux-2.28-1.git85ce147.el7.noarch
----> Package container-storage-setup.noarch 0:0.7.0-1.git4ca59c5.el7 will be installed
----> Package docker-selinux.x86_64 0:1.10.3-46.el7.centos.14 will be obsoleted
----> Package oci-register-machine.x86_64 1:0-1.8.gitaf6c129.el7 will be updated
----> Package oci-register-machine.x86_64 1:0-3.13.gitcd1e331.el7 will be an update
----> Package oci-systemd-hook.x86_64 1:0.1.4-4.git41491a3.el7 will be updated
----> Package oci-systemd-hook.x86_64 1:0.1.14-1.git1ba44c6.el7 will be an update
----> Package oci-umount.x86_64 2:2.0.0-1.git299e781.el7 will be installed
----> Package skopeo-containers.x86_64 1:0.1.24-1.dev.git28d4e08.el7 will be installed
---> Running transaction check
----> Package policycoreutils.x86_64 0:2.2.5-20.el7 will be updated
---> Processing Dependency: policycoreutils = 2.2.5-20.el7 for package: policycoreutils-python-2.2.5-20.el7.x86_64
----> Package policycoreutils.x86_64 0:2.5-17.1.el7 will be an update
---> Processing Dependency: libsepol >= 2.5-6 for package: policycoreutils-2.5-17.1.el7.x86_64
---> Processing Dependency: libselinux-utils >= 2.5-6 for package: policycoreutils-2.5-17.1.el7.x86_64
---> Processing Dependency: libsepol.so.1(LIBSEPOL_1.1)(64bit) for package: policycoreutils-2.5-17.1.el7.x86_64
---> Processing Dependency: libsepol.so.1(LIBSEPOL_1.0)(64bit) for package: policycoreutils-2.5-17.1.el7.x86_64
---> Processing Dependency: libsemanage.so.1(LIBSEMANAGE_1.1)(64bit) for package: policycoreutils-2.5-17.1.el7.x86_64
---> Running transaction check
----> Package libselinux-utils.x86_64 0:2.2.2-6.el7 will be updated
----> Package libselinux-utils.x86_64 0:2.5-11.el7 will be an update
---> Processing Dependency: libselinux(x86-64) = 2.5-11.el7 for package: libselinux-utils-2.5-11.el7.x86_64
----> Package libsemanage.x86_64 0:2.1.10-18.el7 will be updated
---> Processing Dependency: libsemanage = 2.1.10-18.el7 for package: libsemanage-python-2.1.10-18.el7.x86_64
----> Package libsemanage.x86_64 0:2.5-8.el7 will be an update
----> Package libsepol.x86_64 0:2.1.9-3.el7 will be updated
---> Processing Dependency: libsepol = 2.1.9-3.el7 for package: libsepol-devel-2.1.9-3.el7.x86_64
----> Package libsepol.x86_64 0:2.5-6.el7 will be an update
----> Package policycoreutils-python.x86_64 0:2.2.5-20.el7 will be updated
----> Package policycoreutils-python.x86_64 0:2.5-17.1.el7 will be an update
---> Processing Dependency: setools-libs >= 3.3.8-1 for package: policycoreutils-python-2.5-17.1.el7.x86_64
---> Running transaction check
----> Package libselinux.x86_64 0:2.2.2-6.el7 will be updated
---> Processing Dependency: libselinux = 2.2.2-6.el7 for package: libselinux-python-2.2.2-6.el7.x86_64
---> Processing Dependency: libselinux = 2.2.2-6.el7 for package: libselinux-devel-2.2.2-6.el7.x86_64
----> Package libselinux.x86_64 0:2.5-11.el7 will be an update
----> Package libsemanage-python.x86_64 0:2.1.10-18.el7 will be updated
----> Package libsemanage-python.x86_64 0:2.5-8.el7 will be an update
----> Package libsepol-devel.x86_64 0:2.1.9-3.el7 will be updated
----> Package libsepol-devel.x86_64 0:2.5-6.el7 will be an update
----> Package setools-libs.x86_64 0:3.3.7-46.el7 will be updated
----> Package setools-libs.x86_64 0:3.3.8-1.1.el7 will be an update
---> Running transaction check
----> Package libselinux-devel.x86_64 0:2.2.2-6.el7 will be updated
----> Package libselinux-devel.x86_64 0:2.5-11.el7 will be an update
----> Package libselinux-python.x86_64 0:2.2.2-6.el7 will be updated
----> Package libselinux-python.x86_64 0:2.5-11.el7 will be an update
---> Processing Conflict: libselinux-2.5-11.el7.x86_64 conflicts systemd < 219-20
---> Restarting Dependency Resolution with new changes.
---> Running transaction check
----> Package systemd.x86_64 0:219-19.el7_2.13 will be updated
---> Processing Dependency: systemd = 219-19.el7_2.13 for package: systemd-sysv-219-19.el7_2.13.x86_64
---> Processing Dependency: systemd = 219-19.el7_2.13 for package: systemd-devel-219-19.el7_2.13.x86_64
----> Package systemd.x86_64 0:219-42.el7_4.4 will be an update
---> Processing Dependency: systemd-libs = 219-42.el7_4.4 for package: systemd-219-42.el7_4.4.x86_64
---> Running transaction check
----> Package systemd-devel.x86_64 0:219-19.el7_2.13 will be updated
----> Package systemd-devel.x86_64 0:219-42.el7_4.4 will be an update
----> Package systemd-libs.x86_64 0:219-19.el7_2.13 will be updated
---> Processing Dependency: systemd-libs = 219-19.el7_2.13 for package: libgudev1-219-19.el7_2.13.x86_64
----> Package systemd-libs.x86_64 0:219-42.el7_4.4 will be an update
----> Package systemd-sysv.x86_64 0:219-19.el7_2.13 will be updated
----> Package systemd-sysv.x86_64 0:219-42.el7_4.4 will be an update
---> Running transaction check
----> Package libgudev1.x86_64 0:219-19.el7_2.13 will be updated
----> Package libgudev1.x86_64 0:219-42.el7_4.4 will be an update
---> Processing Conflict: systemd-219-42.el7_4.4.x86_64 conflicts dracut < 033-499
---> Restarting Dependency Resolution with new changes.
---> Running transaction check
----> Package dracut.x86_64 0:033-360.el7_2.1 will be updated
---> Processing Dependency: dracut = 033-360.el7_2.1 for package: dracut-config-rescue-033-360.el7_2.1.x86_64
---> Processing Dependency: dracut = 033-360.el7_2.1 for package: dracut-network-033-360.el7_2.1.x86_64
----> Package dracut.x86_64 0:033-502.el7 will be an update
---> Running transaction check
----> Package dracut-config-rescue.x86_64 0:033-360.el7_2.1 will be updated
----> Package dracut-config-rescue.x86_64 0:033-502.el7 will be an update
----> Package dracut-network.x86_64 0:033-360.el7_2.1 will be updated
----> Package dracut-network.x86_64 0:033-502.el7 will be an update
---> Processing Conflict: libsemanage-2.5-8.el7.x86_64 conflicts selinux-policy-base < 3.13.1-66
---> Restarting Dependency Resolution with new changes.
---> Running transaction check
----> Package selinux-policy-targeted.noarch 0:3.13.1-60.el7_2.9 will be updated
----> Package selinux-policy-targeted.noarch 0:3.13.1-166.el7_4.5 will be an update
---> Processing Dependency: selinux-policy = 3.13.1-166.el7_4.5 for package: selinux-policy-targeted-3.13.1-166.el7_4.5.noarch
---> Processing Dependency: selinux-policy = 3.13.1-166.el7_4.5 for package: selinux-policy-targeted-3.13.1-166.el7_4.5.noarch
---> Running transaction check
----> Package selinux-policy.noarch 0:3.13.1-60.el7_2.9 will be updated
----> Package selinux-policy.noarch 0:3.13.1-166.el7_4.5 will be an update
---> Finished Dependency Resolution
-
-Dependencies Resolved
-
-====================================================================================================================================
- Package                              Arch                Version                                        Repository            Size
-====================================================================================================================================
-Installing:
- container-selinux                    noarch              2:2.28-1.git85ce147.el7                        extras                29 k
-     replacing  docker-selinux.x86_64 1.10.3-46.el7.centos.14
-Updating:
- docker                               x86_64              2:1.12.6-61.git85d7426.el7.centos              extras                15 M
- dracut                               x86_64              033-502.el7                                    base                 321 k
- selinux-policy-targeted              noarch              3.13.1-166.el7_4.5                             updates              6.5 M
- systemd                              x86_64              219-42.el7_4.4                                 updates              5.2 M
-Installing for dependencies:
- container-storage-setup              noarch              0.7.0-1.git4ca59c5.el7                         extras                32 k
- docker-client                        x86_64              2:1.12.6-61.git85d7426.el7.centos              extras               3.4 M
- oci-umount                           x86_64              2:2.0.0-1.git299e781.el7                       extras                27 k
- skopeo-containers                    x86_64              1:0.1.24-1.dev.git28d4e08.el7                  extras               8.5 k
-Updating for dependencies:
- docker-common                        x86_64              2:1.12.6-61.git85d7426.el7.centos              extras                80 k
- dracut-config-rescue                 x86_64              033-502.el7                                    base                  55 k
- dracut-network                       x86_64              033-502.el7                                    base                  97 k
- libgudev1                            x86_64              219-42.el7_4.4                                 updates               83 k
- libselinux                           x86_64              2.5-11.el7                                     base                 162 k
- libselinux-devel                     x86_64              2.5-11.el7                                     base                 186 k
- libselinux-python                    x86_64              2.5-11.el7                                     base                 234 k
- libselinux-utils                     x86_64              2.5-11.el7                                     base                 151 k
- libsemanage                          x86_64              2.5-8.el7                                      base                 145 k
- libsemanage-python                   x86_64              2.5-8.el7                                      base                 104 k
- libsepol                             x86_64              2.5-6.el7                                      base                 288 k
- libsepol-devel                       x86_64              2.5-6.el7                                      base                  74 k
- oci-register-machine                 x86_64              1:0-3.13.gitcd1e331.el7                        extras               1.1 M
- oci-systemd-hook                     x86_64              1:0.1.14-1.git1ba44c6.el7                      extras                32 k
- policycoreutils                      x86_64              2.5-17.1.el7                                   base                 858 k
- policycoreutils-python               x86_64              2.5-17.1.el7                                   base                 446 k
- selinux-policy                       noarch              3.13.1-166.el7_4.5                             updates              436 k
- setools-libs                         x86_64              3.3.8-1.1.el7                                  base                 612 k
- systemd-devel                        x86_64              219-42.el7_4.4                                 updates              186 k
- systemd-libs                         x86_64              219-42.el7_4.4                                 updates              376 k
- systemd-sysv                         x86_64              219-42.el7_4.4                                 updates               70 k
-
-Transaction Summary
-====================================================================================================================================
-Install  1 Package  (+ 4 Dependent packages)
-Upgrade  4 Packages (+21 Dependent packages)
-
-Total download size: 36 M
-Is this ok [y/d/N]: 
-```
-
-### Kubernetes nightly

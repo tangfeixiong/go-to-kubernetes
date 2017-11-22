@@ -1,4 +1,8 @@
+__HELP__
+
 If environment is blocking to access google, Refer to [./kubernetes-pod-base-image.md](./kubernetes-pod-base-image.md) for same idea
+
+__For v1.8.4 and previous__
 
 Load from archive
 ```

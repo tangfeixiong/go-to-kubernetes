@@ -67,7 +67,7 @@ $ docker load -i gcr.io0x2Fgoogle_containers0x2Fpause-amd640x3A3.0.tar
 
 ## Issue
 
-May occured in old docker version at CentOS
+May occured in old docker version at Fedora23/CentOS7
 ```
 [vagrant@openshiftdev ~]$ docker load -i /vagrant_f/99-mirror/docker-images/gcr.io0x2Fgoogle_containers0x2Fpause-amd640x3A3.0.tar 
 Error response from daemon: invalid argument
