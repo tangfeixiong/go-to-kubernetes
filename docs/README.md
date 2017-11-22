@@ -1,5 +1,20 @@
+# DevOps
 
-__Kubernetes__
+## Kubernetes
+
+[准备gcr.io/google_containers/pause-amd64:3.0镜像](./kubernetes-pod-base-image.md)
+
+[准备gcr.io/google_containers/etcd:3.0.17镜像](./kubernetes-etcd-v3-image.md)
+
+Kubernetes v1.8.2
+
+* Firewalld and Selinux
+* Kubernetes DevOps with kubeadm
+* 查看证书签名细节(如SAN)
+
+Kubernetes v1.7
+
+* Kubernetes CI/CD from previous v1.6
 
 Kubernetes v1.6.2
 

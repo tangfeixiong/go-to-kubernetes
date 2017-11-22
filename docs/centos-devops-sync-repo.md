@@ -60,7 +60,7 @@ total size is 464,833,789  speedup is 35,137.48
 
 ```
 
-Find sync script in [/examples/centos-devops-sync-repo](/examples/centos-devops-sync-repo) dir.
+Find sync script in [/examples/centos7-yum-repo-mirror](/examples/centos7-yum-repo-mirror) dir.
 
 The mirror repos except __isos__ and __os__ (same with Everything ISO), and size is a bit larger
 

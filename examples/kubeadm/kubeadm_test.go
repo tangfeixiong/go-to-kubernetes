@@ -12,6 +12,10 @@ import (
 	kubeadmapiext "k8s.io/kubernetes/cmd/kubeadm/app/apis/kubeadm/v1alpha1"
 	// "k8s.io/kubernetes/cmd/kubeadm/app/cmd"
 	kubeadmconstants "k8s.io/kubernetes/cmd/kubeadm/app/constants"
+	certsphase "k8s.io/kubernetes/cmd/kubeadm/app/phases/certs"
+	controlplanephase "k8s.io/kubernetes/cmd/kubeadm/app/phases/controlplane"
+	etcdphase "k8s.io/kubernetes/cmd/kubeadm/app/phases/etcd"
+	kubeconfigphase "k8s.io/kubernetes/cmd/kubeadm/app/phases/kubeconfig"
 	configutil "k8s.io/kubernetes/cmd/kubeadm/app/util/config"
 	"k8s.io/kubernetes/pkg/api/legacyscheme"
 )
@@ -19,9 +23,13 @@ import (
 func Test_kubeadm_MasterConfiguration(t *testing.T) {
 	cfg := &kubeadmapiext.MasterConfiguration{}
 	legacyscheme.Scheme.Default(cfg)
-	cfg.API.AdvertiseAddress = "10.64.33.82"
+	cfg.API.AdvertiseAddress = "172.17.4.50"
 	cfg.API.BindPort = 443
-	cfg.KubernetesVersion = "v1.8.2"
+	cfg.KubernetesVersion = "stable-1.8"
+	cfg.Networking.ServiceSubnet = "10.96.0.0/12"
+	cfg.APIServerCertSANs = []string{"172.17.4.50", "10.96.0.1",
+		"kubernetes", "kubernetes.default", "kubernetes.default.svc", "kubernetes.default.svc.cluster.local"}
+	//cfg.Networking.DNSDomain = "cluster.local"
 
 	legacyscheme.Scheme.Default(cfg)
 	internalcfg := &kubeadmapi.MasterConfiguration{}
@@ -39,6 +47,7 @@ func Test_kubeadm_MasterConfiguration(t *testing.T) {
 	if err := i.Run(os.Stdout); err != nil {
 		t.Fatal(err)
 	}
+	fmt.Println("%+q", i.cfg)
 }
 
 // Init defines struct used by "kubeadm init" command
@@ -62,6 +71,37 @@ func (i *Init) Run(out io.Writer) error {
 	adminKubeConfigPath := filepath.Join(kubeConfigDir, kubeadmconstants.AdminKubeConfigFileName)
 
 	println(realCertsDir, certsDirToWriteTo, kubeConfigDir, manifestDir, adminKubeConfigPath)
+
+	if res, _ := certsphase.UsingExternalCA(i.cfg); !res {
+
+		// PHASE 1: Generate certificates
+		if err := certsphase.CreatePKIAssets(i.cfg); err != nil {
+			return err
+		}
+
+		// PHASE 2: Generate kubeconfig files for the admin and the kubelet
+		if err := kubeconfigphase.CreateInitKubeConfigFiles(kubeConfigDir, i.cfg); err != nil {
+			return err
+		}
+
+	} else {
+		fmt.Println("[externalca] The file 'ca.key' was not found, yet all other certificates are present. Using external CA mode - certificates or kubeconfig will not be generated.")
+	}
+
+	// Temporarily set cfg.CertificatesDir to the "real value" when writing controlplane manifests
+	// This is needed for writing the right kind of manifests
+	i.cfg.CertificatesDir = realCertsDir
+
+	// PHASE 3: Bootstrap the control plane
+	if err := controlplanephase.CreateInitStaticPodManifestFiles(manifestDir, i.cfg); err != nil {
+		return fmt.Errorf("error creating init static pod manifest files: %v", err)
+	}
+	// Add etcd static pod spec only if external etcd is not configured
+	if len(i.cfg.Etcd.Endpoints) == 0 {
+		if err := etcdphase.CreateLocalEtcdStaticPodManifestFile(manifestDir, i.cfg); err != nil {
+			return fmt.Errorf("error creating local etcd static pod manifest file: %v", err)
+		}
+	}
 
 	return nil
 }

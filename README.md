@@ -5,7 +5,7 @@
 [Documentation](./docs)
 
 * CentOS DevOps - CentOS Everything ISO media repo
-* CentOS DevOps - YUM repo mirror
+* CentOS DevOps - YUM repository mirror
 * CentOS HandsOn - Docker installation
 * CentOS DevOps - Etcd2 installation
 * Kubernetes v1.3 DevOps - Kubernetes master deployment
@@ -13,6 +13,8 @@
 * Kubernetes v1.6 DevOps - bash部署
 * Kubernetes v1.7 DevOps - bash部署
 * Kubernetes v1.8 DevOps - kubeadm部署
+
+[Kubernetes yum/apt repository mirror](./http0x3A0x2F0x2Fkubernetes.io0x2Fdocs0x2Fsetup0x2Findependent0x2Finstall-kubeadm)
 
 [Clustering examples in Kubernetes](./examples)
 
