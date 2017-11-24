@@ -1,0 +1,16 @@
+
+### ubuntu-trusty
+deb [ arch=amd64 ] https://apt.dockerproject.org/repo ubuntu-trusty main
+
+### ubuntu-xenial
+#deb [ arch=amd64 ] https://apt.dockerproject.org/repo ubuntu-xenial main
+
+### ubuntu-precise
+#deb [ arch=amd64 ] https://apt.dockerproject.org/repo ubuntu-precise main
+
+
+### debian-stretch
+#deb [ arch=amd64 ] https://apt.dockerproject.org/repo debian-stretch main
+
+### debian-jessie
+#deb [ arch=amd64 ] https://apt.dockerproject.org/repo debian-jessie main

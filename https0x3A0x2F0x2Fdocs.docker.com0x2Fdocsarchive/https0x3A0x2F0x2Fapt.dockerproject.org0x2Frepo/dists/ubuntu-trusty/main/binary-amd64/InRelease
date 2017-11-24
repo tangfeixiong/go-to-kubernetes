@@ -1,0 +1,46 @@
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA512
+
+Architectures: amd64 i386 armhf ppc64le s390x
+Codename: ubuntu-trusty
+Components: main
+Date: Fri, 05 May 2017 05:54:38 UTC
+Label: Docker APT Repository
+Origin: Docker
+Suite: ubuntu-trusty
+MD5Sum:
+ ddc2e8ad8930d4cd40d40f5410a6c5cb            50927 Packages
+ c6bb861f9505e1d7d212d5d89904ecf5             7033 Packages.bz2
+ 9a07f847d70f18bda2f56ef0d9a71267             7381 Packages.gz
+ d41d8cd98f00b204e9800998ecf8427e                0 Release
+SHA1:
+ 883d77205f4edd38681a23b5eb0060c6d9eb905e            50927 Packages
+ 2919aa58edd79c1cc9633cb674d24543f8e1fece             7033 Packages.bz2
+ f95af5fc4d315257508433cf29ea8a29ed11c48a             7381 Packages.gz
+ da39a3ee5e6b4b0d3255bfef95601890afd80709                0 Release
+SHA256:
+ 04f278ca9a7dbcbeb127cd2d38068d45eae020295bd8d56f918c8079a6c60da4            50927 Packages
+ f84209ffe2b4c62ef9e4618bd6ad2871c17c2b879110c411806a093384eac2d2             7033 Packages.bz2
+ 966e2ae0816f720a3d06d53b75772d6240a22bd96319e2fc66ad9ae49cf5d6e8             7381 Packages.gz
+ e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855                0 Release
+SHA512:
+ ca0722004ed88eb09a43acad8acd8da8bfa25c501acaa6f3c603ec109a6bb5453052a02235f27f7d8e47b6468b187d93dbdd01b04ee134f98c8fcd8eba500c68            50927 Packages
+ 6e450680f23e5ac9956e416a0d2e821b815b4d78df646f6b40f234057abc6ca11d574a625ec18092b4046ccd282de468537f259887054f754d900c4009959f0c             7033 Packages.bz2
+ b8b5a40bc22874c48a8ce543d64b738b9dc0c14ced08584e2fdcedc114b9b988e6d0f2b55689cc600b2b294c45e30409585408c40ccf0a34ba968ddd7a3dcd2b             7381 Packages.gz
+ cf83e1357eefb8bdf1542850d66d8007d620e4050b5715dc83f4a921d36ce9ce47d0d13c5d85f2b0ff8318d2877eec2f63b931bd47417a81a538327af927da3e                0 Release
+-----BEGIN PGP SIGNATURE-----
+
+iQIcBAEBCgAGBQJZDBPGAAoJEPdiIVcsUmCdQEIP/imoa+SfkYyHTFowDN4++87M
+YHa7aZI1Y3Cfa9+LYh1qc9vNKQw7xJjy9bg0Qx8w9gJtw2ktQkSNhqG8ytJpxb+v
+DV2mk8yGBhUZVcuk2GaSELRTjKUPxbPPJBOgnIZpfB88DoA/RRQ2xJqEmHOCo1Uc
+I102RTeYWZp3fuQJz4OEa//7stQGZihV/rfwdvAuFLDdikV9AOxW6GDNhZzeQfrr
+8QUOM7cMiYh96xhH7+/olPmOhrz04hy5Y3LFY9sCTBXi5s7lQ48qMzGJ4YuNi9Uu
+WhBkjcd3HY7htwPEYOQWGJWv9r/pZxjgyAG2yB7TCZqT2elsGObZdc9ZWWfTW7kE
+JNvi6yOH7MDBAvQAAnTYdCiVE4xFFUsBKwiG+CAY5FSOt0mAZAenqWIKtg++Gj1p
+0bDwR1k1pFvGPTkBOUMcoY8NOtVLQXjJibGO31AFw9QiVjl4xANwQntJZa2vgPwm
+uzYI+Wg9HicUZnR5S/m+7Dk4vWqrm5JUmI3294fp2nTDF+YJfKXKV23SZePqs9Mf
+W/NXKWCpQB+TVmeiPcq5cSHL/MWk0LRXn7dn/1jjM1/xCWoeZTCUb+LtA/ZqG9XI
+D4XLPZ0Lstb5onR0LtdcMuGfEPUx+fQPq3/2fDWZxWcQK1cOWxu/RMyFNMXjHvs6
+OR5+PFpqkxSJFl2E29NV
+=fMXx
+-----END PGP SIGNATURE-----

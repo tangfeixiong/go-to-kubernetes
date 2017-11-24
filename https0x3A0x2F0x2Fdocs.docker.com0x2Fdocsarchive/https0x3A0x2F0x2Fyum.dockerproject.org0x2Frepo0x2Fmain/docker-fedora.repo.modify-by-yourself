@@ -1,0 +1,18 @@
+[dockerrepo]
+name=Docker Repository
+baseurl=https://yum.dockerproject.org/repo/main/fedora/$releasever/
+enabled=1
+gpgcheck=1
+gpgkey=https://yum.dockerproject.org/gpg
+
+[dockerrepo-local-files]
+name=Docker Repository local files repo
+baseurl=file:///vagrant_drive_f/16-mirror/https0x3A0x2F0x2Fdocs.docker.com0x2Fdocsarchive/https0x3A0x2F0x2Fapt.dockerproject.org0x2Frepo
+enabled=0
+gpgcheck=0
+
+[dockerrepo-local-http]
+name=Docker Repository local files repo
+baseurl=http://10.64.33.82:48080/vagrant_f/16-mirror/https0x3A0x2F0x2Fdocs.docker.com0x2Fdocsarchive/https0x3A0x2F0x2Fapt.dockerproject.org0x2Frepo
+enabled=0
+gpgcheck=0

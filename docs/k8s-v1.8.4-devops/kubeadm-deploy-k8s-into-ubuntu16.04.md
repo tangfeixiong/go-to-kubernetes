@@ -8,6 +8,9 @@ kubedev-10-64-33-195
 
 ```
 ubuntu@ubuntu-xenial:~$ sudo hostname kubedev-10-64-33-195
+```
+
+```
 ubuntu@ubuntu-xenial:~$ hostname
 kubedev-10-64-33-195
 ```
@@ -445,6 +448,7 @@ gcr.io/google_containers/etcd-amd64                      3.0.17              243
 ubuntu@kubedev-10-64-33-195:~$ docker tag 99e59f495ffa gcr.io/google_containers/pause-amd64:3.0
 ```
 
+CoreOS flannel
 ```
 ubuntu@kubedev-10-64-33-195:~$ curl http://10.64.33.82:48080/vagrant_f/99-mirror/docker-images/quay.io0x2Fcoreos0x2Fflannel0x3Av0.9.0-amd64.tar | docker load
   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
@@ -459,6 +463,7 @@ d3e99a0118c5: Loading layer [==================================================>
 Loaded image: quay.io/coreos/flannel:v0.9.0-amd64
 ```
 
+flannel manifest
 ```
 ubuntu@kubedev-10-64-33-195:~$ curl http://10.64.33.82:48080/home/vagrant/kube-flannel.yaml -O
   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
@@ -466,6 +471,22 @@ ubuntu@kubedev-10-64-33-195:~$ curl http://10.64.33.82:48080/home/vagrant/kube-f
 100  2849  100  2849    0     0  19116      0 --:--:-- --:--:-- --:--:-- 19250
 ```
 
+weaveworks weave
+```
+ubuntu@kubedev-10-64-33-195:~$ curl http://10.64.33.82:48080/vagrant_f/99-mirror/docker-images/docker.io0x2Fweaveworks0x2Fweave-kube0x3A2.1.1.tar | docker load
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100 90.8M  100 90.8M    0     0  61.6M      0  0:00:01  0:00:01 --:--:-- 61.6M
+```
+
+```
+ubuntu@kubedev-10-64-33-195:~$ curl http://10.64.33.82:48080/vagrant_f/99-mirror/docker-images/docker.io0x2Fweaveworks0x2Fweave-npc0x3A2.1.1.tar | docker load
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100 44.7M  100 44.7M    0     0  55.6M      0 --:--:-- --:--:-- --:--:-- 55.7M
+```
+
+weave manifests
 ```
 ubuntu@kubedev-10-64-33-195:~$ curl http://10.64.33.82:48080/home/vagrant/weave-daemonset-k8s-1.6.yaml -O
   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
