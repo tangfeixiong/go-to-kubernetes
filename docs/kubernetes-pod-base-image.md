@@ -1,8 +1,8 @@
 # Help
 
-## Capable of accessing google
+## No problem accessing google container registry
 
-try
+do
 ```
 [vagrant@localhost go-to-kubernetes]$ docker pull gcr.io/google_containers/pause-amd64:3.0
 ```
@@ -16,7 +16,7 @@ gcr.io/google_containers/pause-amd64   3.0                 99e59f495ffa        1
 
 ## If not
 
-hub
+find
 ```
 [vagrant@localhost go-to-kubernetes]$ docker search pause-amd64
 INDEX       NAME                                  DESCRIPTION                                     STARS     OFFICIAL   AUTOMATED
@@ -47,38 +47,60 @@ docker.io   docker.io/wymr/pause-amd64            pause-amd64                   
 docker.io   docker.io/zengxin/pause-amd64         pause-amd64                                     0                    [OK]
 ```
 
-For example
+and
 ```
 $ docker pull docker.io/siriuszg/pause-amd64:3.0
+```
+
+then
+```
 $ docker tag docker.io/siriuszg/pause-amd64:3.0 gcr.io/google_containers/pause-amd64:3.0
 ```
 
-## Export as archive
+## Archiving
 
-For example
+Save to export
 ```
 $ docker save -o gcr.io0x2Fgoogle_containers0x2Fpause-amd640x3A3.0.tar gcr.io/google_containers/pause-amd64:3.0
 ```
 
-Copy and load
+Copy anywhere to import
 ```
 $ docker load -i gcr.io0x2Fgoogle_containers0x2Fpause-amd640x3A3.0.tar
 ```
 
+Or via local HTTP
+```
+$ curl -jkSL http://<local.http.addr>/<path/to/archive>.tar | docker load
+```
+
 ## Issue
 
-May occured in old docker version at Fedora23/CentOS7
+Maybe occur in some old version, in experience of Fedora/CentOS, for example
 ```
-[vagrant@openshiftdev ~]$ docker load -i /vagrant_f/99-mirror/docker-images/gcr.io0x2Fgoogle_containers0x2Fpause-amd640x3A3.0.tar 
+[vagrant@openshiftdev ~]$ docker save -o /vagrant_f/99-mirror/docker-images/gcr.io0x2Fgoogle_containers0x2Fpause-amd640x3A3.0.tar gcr.io/google_containers/pause-amd64:3.0
+```
+
+But
+```
+[vagrant@localhost ~]$ docker load -i /vagrant_f/99-mirror/docker-images/gcr.io0x2Fgoogle_containers0x2Fpause-amd640x3A3.0.tar 
 Error response from daemon: invalid argument
 ```
 
+Find like
 ```
-[vagrant@openshiftdev ~]$ docker images -f dangling=true
+[vagrant@localhost ~]$ docker images -f dangling=true
 REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
 <none>              <none>              99e59f495ffa        18 months ago       746.9 kB
 ```
 
+Correct
 ```
-[vagrant@openshiftdev ~]$ docker tag 99e59f495ffa gcr.io/google_containers/pause-amd64:3.0
+[vagrant@localhost ~]$ docker tag 99e59f495ffa gcr.io/google_containers/pause-amd64:3.0
 ```
+
+## History
+
+[pause:2.0](https://github.com/kubernetes/kubernetes/tree/release-1.2/build/pause)
+
+[pause:0.8.0](https://github.com/kubernetes/kubernetes/tree/release-1.1/build/pause)

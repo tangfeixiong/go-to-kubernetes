@@ -1,5 +1,5 @@
 ### ubuntu
-#deb http://apt.kubernetes.io/ kubernetes-trusty main
+#deb [ arch=amd64] http://apt.kubernetes.io/ kubernetes-trusty main
 deb http://apt.kubernetes.io/ kubernetes-xenial main
 
 ### debian

@@ -810,7 +810,12 @@ cluster is healthy
 
 ### networking
 
-flannel
+flannel, change arguments for support destination networking interface
+```
+ubuntu@kubedev-10-64-33-195:~$ egrep 'command: \[' kube-flannel.yaml 
+        command: [ "/opt/bin/flanneld", "--ip-masq", "--kube-subnet-mgr", "--iface=enp0s8", "--iface=eth1", "--iface-regex=10\\.64\\.33\\.[0-9]+" ]
+```
+
 ```
 ubuntu@kubedev-10-64-33-195:~$ kubectl create -f kube-flannel.yaml 
 clusterrole "flannel" created
