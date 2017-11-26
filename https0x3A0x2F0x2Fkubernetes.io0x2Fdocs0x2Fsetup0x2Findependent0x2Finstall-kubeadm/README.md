@@ -671,7 +671,7 @@ pool
 100 18.3M  100 18.3M    0     0  40909      0  0:07:49  0:07:49 --:--:-- 47686
 ```
 
-### 3rd-party
+### Deprecated
 
 Refer to http://linoxide.com/containers/setup-kubernetes-kubeadm-centos/
 ```

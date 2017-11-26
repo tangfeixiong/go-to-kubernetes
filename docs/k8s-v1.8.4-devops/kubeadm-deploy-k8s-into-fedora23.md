@@ -1,5 +1,11 @@
 # instruction
 
+Fedora
+```
+[vagrant@localhost ~]$ cat /etc/fedora-release 
+Fedora release 23 (Twenty Three)
+```
+
 Docker
 ```
 [vagrant@localhost ~]$ docker version
@@ -194,7 +200,7 @@ origin-deps-rhel7                                    OpenShift Origin Dependency
 *updates                                             Fedora 23 - x86_64 - Updates                                             21,532
 ```
 
-### install kubeadm
+### install kubeadm from local repository
 
 Using local repo
 ```
@@ -1552,4 +1558,88 @@ as root:
 [vagrant@localhost ~]$ kubectl get nodes
 NAME                   STATUS     ROLES     AGE       VERSION
 kubedev-10-64-33-199   NotReady   master    9m        v1.8.4
+```
+
+```
+[vagrant@localhost ~]$ kubectl get pods --namespace=kube-system
+NAME                                           READY     STATUS    RESTARTS   AGE
+etcd-kubedev-10-64-33-199                      1/1       Running   0          2h
+kube-apiserver-kubedev-10-64-33-199            1/1       Running   0          2h
+kube-controller-manager-kubedev-10-64-33-199   1/1       Running   0          2h
+kube-dns-545bc4bfd4-8zvmp                      0/3       Pending   0          2h
+kube-proxy-cdqcp                               1/1       Running   0          2h
+kube-scheduler-kubedev-10-64-33-199            1/1       Running   0          2h
+```
+
+### cni flannel
+
+change iface into kube-flannel.yaml
+```
+[vagrant@localhost ~]$ kubectl create -f kube-flannel.yaml 
+clusterrole "flannel" created
+clusterrolebinding "flannel" created
+serviceaccount "flannel" created
+configmap "kube-flannel-cfg" created
+daemonset "kube-flannel-ds" created
+```
+
+```
+[vagrant@localhost ~]$ kubectl get pods --namespace=kube-system
+NAME                                           READY     STATUS    RESTARTS   AGE
+etcd-kubedev-10-64-33-199                      1/1       Running   0          3h
+kube-apiserver-kubedev-10-64-33-199            1/1       Running   0          2h
+kube-controller-manager-kubedev-10-64-33-199   1/1       Running   0          2h
+kube-dns-545bc4bfd4-8zvmp                      3/3       Running   0          2h
+kube-flannel-ds-d6bb4                          1/1       Running   0          1m
+kube-proxy-cdqcp                               1/1       Running   0          2h
+kube-scheduler-kubedev-10-64-33-199            1/1       Running   0          2h
+```
+
+```
+[vagrant@localhost ~]$ kubectl get nodes
+NAME                   STATUS    ROLES     AGE       VERSION
+kubedev-10-64-33-199   Ready     master    3h        v1.8.4
+```
+
+```
+[vagrant@kubedev-10-64-33-199 ~]$ kubectl get cm/kubeadm-config -o yaml --namespace=kube-system
+apiVersion: v1
+data:
+  MasterConfiguration: |
+    api:
+      advertiseAddress: 10.64.33.199
+      bindPort: 443
+    apiServerCertSANs:
+    - 10.64.33.199
+    - 172.28.128.3
+    authorizationModes:
+    - Node
+    - RBAC
+    certificatesDir: /etc/kubernetes/pki
+    cloudProvider: ""
+    etcd:
+      caFile: ""
+      certFile: ""
+      dataDir: /var/lib/etcd
+      endpoints: null
+      image: ""
+      keyFile: ""
+    imageRepository: gcr.io/google_containers
+    kubernetesVersion: v1.8.4
+    networking:
+      dnsDomain: cluster.local
+      podSubnet: 10.244.0.0/16
+      serviceSubnet: 10.96.0.0/12
+    nodeName: kubedev-10-64-33-199
+    token: ""
+    tokenTTL: 24h0m0s
+    unifiedControlPlaneImage: ""
+kind: ConfigMap
+metadata:
+  creationTimestamp: 2017-11-24T10:51:14Z
+  name: kubeadm-config
+  namespace: kube-system
+  resourceVersion: "831"
+  selfLink: /api/v1/namespaces/kube-system/configmaps/kubeadm-config
+  uid: 6482c9d1-d105-11e7-b56d-080027242396
 ```

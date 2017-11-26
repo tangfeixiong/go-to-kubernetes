@@ -5,6 +5,7 @@ bin/
 
 vendor/
 vendor.txt
+usage.txt
 
 *.rtf
 

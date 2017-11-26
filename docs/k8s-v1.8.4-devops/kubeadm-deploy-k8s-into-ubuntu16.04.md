@@ -1,5 +1,24 @@
 # Instruction
 
+Ubuntu
+```
+ubuntu@kubedev-10-64-33-195:~$ cat /etc/os-release 
+NAME="Ubuntu"
+VERSION="16.04.3 LTS (Xenial Xerus)"
+ID=ubuntu
+ID_LIKE=debian
+PRETTY_NAME="Ubuntu 16.04.3 LTS"
+VERSION_ID="16.04"
+HOME_URL="http://www.ubuntu.com/"
+SUPPORT_URL="http://help.ubuntu.com/"
+BUG_REPORT_URL="http://bugs.launchpad.net/ubuntu/"
+VERSION_CODENAME=xenial
+UBUNTU_CODENAME=xenial
+```
+## Prerequisites
+
+### hostname and hosts
+
 hostname
 ```
 ubuntu@ubuntu-xenial:~$ echo "kubedev-10-64-33-195" | sudo tee /etc/hostname
@@ -21,12 +40,15 @@ sudo: unable to resolve host kubedev-10-64-33-195
 10.64.33.195    kubedev-10-64-33-195
 ```
 
+### firewall
 
-Firwall
+ufw
 ```
 ubuntu@ubuntu-xenial:~$ sudo ufw status
 Status: inactive
 ```
+
+## local apt repository
 
 APT repository, Using [http file server on previous node](../k8s-v1.8.2-devops)
 ```
@@ -294,18 +316,12 @@ ubuntu@kubedev-10-64-33-195:~$ kubeadm version
 kubeadm version: &version.Info{Major:"1", Minor:"8", GitVersion:"v1.8.4", GitCommit:"9befc2b8928a9426501d3bf62f72849d5cbcd5a3", GitTreeState:"clean", BuildDate:"2017-11-20T05:17:43Z", GoVersion:"go1.8.3", Compiler:"gc", Platform:"linux/amd64"}
 ```
 
+### installed
+
+kubeadm
 ```
-ubuntu@kubedev-10-64-33-195:~$ sudo cat /etc/systemd/system/kubelet.service.d/10-kubeadm.conf 
-[Service]
-Environment="KUBELET_KUBECONFIG_ARGS=--bootstrap-kubeconfig=/etc/kubernetes/bootstrap-kubelet.conf --kubeconfig=/etc/kubernetes/kubelet.conf"
-Environment="KUBELET_SYSTEM_PODS_ARGS=--pod-manifest-path=/etc/kubernetes/manifests --allow-privileged=true"
-Environment="KUBELET_NETWORK_ARGS=--network-plugin=cni --cni-conf-dir=/etc/cni/net.d --cni-bin-dir=/opt/cni/bin"
-Environment="KUBELET_DNS_ARGS=--cluster-dns=10.96.0.10 --cluster-domain=cluster.local"
-Environment="KUBELET_AUTHZ_ARGS=--authorization-mode=Webhook --client-ca-file=/etc/kubernetes/pki/ca.crt"
-Environment="KUBELET_CADVISOR_ARGS=--cadvisor-port=0"
-Environment="KUBELET_CERTIFICATE_ARGS=--rotate-certificates=true --cert-dir=/var/lib/kubelet/pki"
-ExecStart=
-ExecStart=/usr/bin/kubelet $KUBELET_KUBECONFIG_ARGS $KUBELET_SYSTEM_PODS_ARGS $KUBELET_NETWORK_ARGS $KUBELET_DNS_ARGS $KUBELET_AUTHZ_ARGS $KUBELET_CADVISOR_ARGS $KUBELET_CERTIFICATE_ARGS $KUBELET_EXTRA_ARGS
+ubuntu@kubedev-10-64-33-195:~$ which kubeadm
+/usr/bin/kubeadm
 ```
 
 ```
@@ -325,12 +341,44 @@ WantedBy=multi-user.target
 ```
 
 ```
+ubuntu@kubedev-10-64-33-195:~$ sudo cat /etc/systemd/system/kubelet.service.d/10-kubeadm.conf 
+[Service]
+Environment="KUBELET_KUBECONFIG_ARGS=--bootstrap-kubeconfig=/etc/kubernetes/bootstrap-kubelet.conf --kubeconfig=/etc/kubernetes/kubelet.conf"
+Environment="KUBELET_SYSTEM_PODS_ARGS=--pod-manifest-path=/etc/kubernetes/manifests --allow-privileged=true"
+Environment="KUBELET_NETWORK_ARGS=--network-plugin=cni --cni-conf-dir=/etc/cni/net.d --cni-bin-dir=/opt/cni/bin"
+Environment="KUBELET_DNS_ARGS=--cluster-dns=10.96.0.10 --cluster-domain=cluster.local"
+Environment="KUBELET_AUTHZ_ARGS=--authorization-mode=Webhook --client-ca-file=/etc/kubernetes/pki/ca.crt"
+Environment="KUBELET_CADVISOR_ARGS=--cadvisor-port=0"
+Environment="KUBELET_CERTIFICATE_ARGS=--rotate-certificates=true --cert-dir=/var/lib/kubelet/pki"
+ExecStart=
+ExecStart=/usr/bin/kubelet $KUBELET_KUBECONFIG_ARGS $KUBELET_SYSTEM_PODS_ARGS $KUBELET_NETWORK_ARGS $KUBELET_DNS_ARGS $KUBELET_AUTHZ_ARGS $KUBELET_CADVISOR_ARGS $KUBELET_CERTIFICATE_ARGS $KUBELET_EXTRA_ARGS
+```
+
+```
 ubuntu@kubedev-10-64-33-195:~$ ls /etc/kubernetes/
 manifests
 ubuntu@kubedev-10-64-33-195:~$ ls /etc/kubernetes/manifests/
 ```
 
-### Copy from previous http node
+kubelet
+```
+ubuntu@kubedev-10-64-33-195:~$ which kubelet
+/usr/bin/kubelet
+```
+
+kubectl
+```
+ubuntu@kubedev-10-64-33-195:~$ which kubectl
+/usr/bin/kubectl
+```
+
+cni
+```
+ubuntu@kubedev-10-64-33-195:~$ ls /opt/cni/bin/
+bridge  cnitool  dhcp  flannel  host-local  ipvlan  loopback  macvlan  noop  ptp  tuning  weave-ipam  weave-net  weave-plugin-2.1.1
+```
+
+### Load images via previous http node
 
 K8s images
 ```
@@ -384,6 +432,7 @@ ubuntu@kubedev-10-64-33-195:~$ docker rmi gcr.io/google_containers/kube-proxy:v1
 Untagged: gcr.io/google_containers/kube-proxy:v1.8.4
 ```
 
+etcd
 ```
 ubuntu@kubedev-10-64-33-195:~$ curl http://10.64.33.82:48080/vagrant_f/99-mirror/docker-images/gcr.io0x2Fgoogle_containers0x2Fetcd0x2E3.0.17.tar | docker load
   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
@@ -398,6 +447,7 @@ ubuntu@kubedev-10-64-33-195:~$ docker rmi gcr.io/google_containers/etcd:3.0.17
 Untagged: gcr.io/google_containers/etcd:3.0.17
 ```
 
+k8s adddons dns
 ```
 ubuntu@kubedev-10-64-33-195:~$ curl http://10.64.33.82:48080/vagrant_f/99-mirror/docker-images/gcr.io0x2Fgoogle_containers0x2Fk8s-dns-dnsmasq-nanny-amd640x3A1.14.5.tar | docker load
   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
@@ -428,6 +478,7 @@ acfc450a47fa: Loading layer [==================================================>
 Loaded image: gcr.io/google_containers/k8s-dns-sidecar-amd64:1.14.5
 ```
 
+pod base
 ```
 ubuntu@kubedev-10-64-33-195:~$ curl http://10.64.33.82:48080/vagrant_f/99-mirror/docker-images/gcr.io0x2Fgoogle_containers0x2Fpause-amd640x3A3.0.tar | docker load
   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
@@ -476,14 +527,16 @@ weaveworks weave
 ubuntu@kubedev-10-64-33-195:~$ curl http://10.64.33.82:48080/vagrant_f/99-mirror/docker-images/docker.io0x2Fweaveworks0x2Fweave-kube0x3A2.1.1.tar | docker load
   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
                                  Dload  Upload   Total   Spent    Left  Speed
-100 90.8M  100 90.8M    0     0  61.6M      0  0:00:01  0:00:01 --:--:-- 61.6M
+100 90.8M  100 90.8M    0     0  69.7M      0  0:00:01  0:00:01 --:--:-- 69.7M
+Loaded image: weaveworks/weave-kube:2.1.1
 ```
 
 ```
 ubuntu@kubedev-10-64-33-195:~$ curl http://10.64.33.82:48080/vagrant_f/99-mirror/docker-images/docker.io0x2Fweaveworks0x2Fweave-npc0x3A2.1.1.tar | docker load
   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
                                  Dload  Upload   Total   Spent    Left  Speed
-100 44.7M  100 44.7M    0     0  55.6M      0 --:--:-- --:--:-- --:--:-- 55.7M
+100 44.7M  100 44.7M    0     0  92.2M      0 --:--:-- --:--:-- --:--:-- 92.5M
+Loaded image: weaveworks/weave-npc:2.1.1
 ```
 
 weave manifests
@@ -505,6 +558,8 @@ gcr.io/google_containers/kube-apiserver-amd64            v1.8.4              10a
 gcr.io/google_containers/kube-controller-manager-amd64   v1.8.4              7058ac4d4af5        2 days ago          129 MB
 gcr.io/google_containers/kube-proxy-amd64                v1.8.4              65a61c14e8c2        2 days ago          93.2 MB
 gcr.io/google_containers/kube-scheduler-amd64            v1.8.4              0d985fed7f95        2 days ago          55 MB
+weaveworks/weave-npc                                     2.1.1               70a3a81a2ad5        6 days ago          46.6 MB
+weaveworks/weave-kube                                    2.1.1               bc65281cfd26        6 days ago          92.6 MB
 gcr.io/google_containers/k8s-dns-sidecar-amd64           1.14.5              fed89e8b4248        8 weeks ago         41.8 MB
 gcr.io/google_containers/k8s-dns-kube-dns-amd64          1.14.5              512cd7425a73        8 weeks ago         49.4 MB
 gcr.io/google_containers/k8s-dns-dnsmasq-nanny-amd64     1.14.5              459944ce8cc4        8 weeks ago         41.4 MB
@@ -513,7 +568,7 @@ gcr.io/google_containers/etcd-amd64                      3.0.17              243
 gcr.io/google_containers/pause-amd64                     3.0                 99e59f495ffa        18 months ago       747 kB
 ```
 
-### Deploy k8s
+## Deploy k8s
 
 networking
 ```
@@ -532,6 +587,9 @@ ubuntu@kubedev-10-64-33-195:~$ ip a show enp0s8; ip a show enp0s9
        valid_lft forever preferred_lft forever
 ```
 
+### install master
+
+init with kubeadm
 ```
 ubuntu@kubedev-10-64-33-195:~$ sudo kubeadm init --apiserver-advertise-address 10.64.33.195 --apiserver-bind-port 443 --apiserver-cert-extra-sans 10.64.33.195,172.28.128.6 --pod-network-cidr 10.244.0.0/16 --kubernetes-version v1.8.4 --skip-preflight-checks
 [kubeadm] WARNING: kubeadm is in beta, please do not use it for production clusters.
@@ -589,14 +647,17 @@ as root:
 ```
 
 ```
-ubuntu@kubedev-10-64-33-195:~$ sudo chmod o+r /etc/kubernetes/admin.conf 
+ubuntu@kubedev-10-64-33-195:~$ sudo chmod o+r /etc/kubernetes/admin.conf
+```
+
+```
 ubuntu@kubedev-10-64-33-195:~$ export KUBECONFIG=/etc/kubernetes/admin.conf 
+```
+
+```
 ubuntu@kubedev-10-64-33-195:~$ kubectl version
 Client Version: version.Info{Major:"1", Minor:"8", GitVersion:"v1.8.4", GitCommit:"9befc2b8928a9426501d3bf62f72849d5cbcd5a3", GitTreeState:"clean", BuildDate:"2017-11-20T05:28:34Z", GoVersion:"go1.8.3", Compiler:"gc", Platform:"linux/amd64"}
 Server Version: version.Info{Major:"1", Minor:"8", GitVersion:"v1.8.4", GitCommit:"9befc2b8928a9426501d3bf62f72849d5cbcd5a3", GitTreeState:"clean", BuildDate:"2017-11-20T05:17:43Z", GoVersion:"go1.8.3", Compiler:"gc", Platform:"linux/amd64"}
-ubuntu@kubedev-10-64-33-195:~$ kubectl get nodes
-NAME                   STATUS     ROLES     AGE       VERSION
-kubedev-10-64-33-195   NotReady   master    1m        v1.8.4
 ```
 
 ```
@@ -632,8 +693,15 @@ default       svc/kubernetes   ClusterIP   10.96.0.1    <none>        443/TCP   
 kube-system   svc/kube-dns     ClusterIP   10.96.0.10   <none>        53/UDP,53/TCP   2m
 ```
 
+### cni weave
 
 Node not ready, so install CNI network
+```
+ubuntu@kubedev-10-64-33-195:~$ kubectl get nodes
+NAME                   STATUS     ROLES     AGE       VERSION
+kubedev-10-64-33-195   NotReady   master    1m        v1.8.4
+```
+
 ```
 ubuntu@kubedev-10-64-33-195:~$ kubectl --namespace=kube-system create -f weave-daemonset-k8s-1.7.yaml 
 serviceaccount "weave-net" created
@@ -654,4 +722,10 @@ kube-dns-545bc4bfd4-6dhfr                      2/3       Running   0          9m
 kube-proxy-c9tfw                               1/1       Running   0          9m
 kube-scheduler-kubedev-10-64-33-195            1/1       Running   0          8m
 weave-net-qmbxs                                2/2       Running   0          1m
+```
+
+```
+ubuntu@kubedev-10-64-33-195:~$ kubectl get nodes
+NAME                   STATUS    ROLES     AGE       VERSION
+kubedev-10-64-33-195   Ready     master    1d        v1.8.4
 ```
