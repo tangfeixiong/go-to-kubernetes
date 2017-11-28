@@ -15,6 +15,14 @@ networking
 
 ### firewall and selinux
 
+```
+[vagrant@kubedev-10-64-33-82 ~]$ sudo systemctl disable firewalld
+[vagrant@kubedev-10-64-33-82 ~]$ sudo systemctl stop firewalld
+[vagrant@kubedev-10-64-33-82 ~]$ sudo getenforce
+Enforcing
+[vagrant@kubedev-10-64-33-82 ~]$ sudo setenforce 0
+```
+
 firewall
 ```
 [vagrant@kubedev-10-64-33-82 ~]$ sudo systemctl is-active firewalld.service
