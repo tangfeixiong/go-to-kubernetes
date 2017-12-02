@@ -8,6 +8,7 @@ vendor.txt
 usage.txt
 
 *.rtf
+*.bmp
 
 # Mac
 .DS_Store

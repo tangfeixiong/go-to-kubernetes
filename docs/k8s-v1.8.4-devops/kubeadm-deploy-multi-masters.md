@@ -1205,6 +1205,65 @@ kube-scheduler-kubedev-10-64-33-199            1/1       Running   11         1h
 kube-scheduler-kubedev-10-64-33-82             1/1       Running   32         3h        10.64.33.82    kubedev-10-64-33-82
 ```
 
+### Test 
+
+hello http
+```
+[vagrant@kubedev-10-64-33-199 ~]$ kubectl run hello --image=docker.io/tangfeixiong/netcat-hello-http
+deployment "hello" created
+```
+
+Tolerations
+```
+      tolerations:
+      - effect: NoSchedule
+        key: node-role.kubernetes.io/master
+```
+
+schedule on masters
+```
+[vagrant@kubedev-10-64-33-199 ~]$ kubectl get pods -o wide
+NAME                     READY     STATUS    RESTARTS   AGE       IP             NODE
+hello-5d8469b7bf-24qlh   1/1       Running   0          39m       10.244.2.63    kubedev-10-64-33-199
+hello-5d8469b7bf-ngsqj   1/1       Running   1          41m       10.244.1.197   kubedev-10-64-33-82
+hello-5d8469b7bf-v594p   1/1       Running   2          39m       10.244.0.241   kubedev-10-64-33-195
+```
+
+[vagrant@kubedev-10-64-33-199 ~]$ curl -L http://10.244.1.197; curl -L http://10.244.2.63; curl -L http://10.244.0.241
+<html><head><title>welcome</title></head><body><h1>hello world</h1></body></html>
+<html><head><title>welcome</title></head><body><h1>hello world</h1></body></html>
+<html><head><title>welcome</title></head><body><h1>hello world</h1></body></html>
+```
+
+service
+```
+[vagrant@kubedev-10-64-33-199 ~]$ kubectl expose deploy hello --port=80 --target-port=80
+service "hello" exposed
+```
+
+```
+[vagrant@kubedev-10-64-33-199 ~]$ curl http://10.101.79.240
+<html><head><title>welcome</title></head><body><h1>hello world</h1></body></html>
+```
+
+HA
+```
+ubuntu@kubedev-10-64-33-195:~$ sudo systemctl stop docker.service && sudo systemctl stop kubelet.service
+```
+
+```
+[vagrant@kubedev-10-64-33-82 ~]$ kubectl get nodes
+NAME                   STATUS     ROLES     AGE       VERSION
+kubedev-10-64-33-195   NotReady   master    5h        v1.8.4
+kubedev-10-64-33-199   Ready      master    5h        v1.8.4
+kubedev-10-64-33-82    Ready      master    5h        v1.8.4
+```
+
+```
+[vagrant@kubedev-10-64-33-199 ~]$ curl http://10.101.79.240
+<html><head><title>welcome</title></head><body><h1>hello world</h1></body></html>
+```
+
 ### summary
 
 nodes
@@ -1219,62 +1278,68 @@ kubedev-10-64-33-82    Ready     master    3h        v1.8.4    <none>        Cen
 node 0
 ```
 [vagrant@kubedev-10-64-33-82 ~]$ docker ps
-CONTAINER ID        IMAGE                                        COMMAND                  CREATED              STATUS              PORTS               NAMES
-3ff0f240571e        4c600a64a18a                                 "/opt/bin/flanneld --"   About a minute ago   Up About a minute                       k8s_kube-flannel_kube-flannel-ds-b5784_kube-system_a246b5e0-d3cf-11e7-b63a-024403e322ab_0
-c3cb26e1f6db        gcr.io/google_containers/pause-amd64:3.0     "/pause"                 About a minute ago   Up About a minute                       k8s_POD_kube-flannel-ds-b5784_kube-system_a246b5e0-d3cf-11e7-b63a-024403e322ab_0
-7c02dea0e5cc        fed89e8b4248                                 "/sidecar --v=2 --log"   3 minutes ago        Up 3 minutes                            k8s_sidecar_kube-dns-545bc4bfd4-wbdfl_kube-system_da15b25c-d3c2-11e7-9c69-080027eae602_1
-7d3d2058ed09        459944ce8cc4                                 "/dnsmasq-nanny -v=2 "   3 minutes ago        Up 3 minutes                            k8s_dnsmasq_kube-dns-545bc4bfd4-wbdfl_kube-system_da15b25c-d3c2-11e7-9c69-080027eae602_1
-f75b3775061a        512cd7425a73                                 "/kube-dns --domain=c"   3 minutes ago        Up 3 minutes                            k8s_kubedns_kube-dns-545bc4bfd4-wbdfl_kube-system_da15b25c-d3c2-11e7-9c69-080027eae602_1
-9f2a3204250b        65a61c14e8c2                                 "/usr/local/bin/kube-"   3 minutes ago        Up 3 minutes                            k8s_kube-proxy_kube-proxy-rv4qt_kube-system_da0658a5-d3c2-11e7-9c69-080027eae602_4
-49202ebc5709        gcr.io/google_containers/pause-amd64:3.0     "/pause"                 3 minutes ago        Up 3 minutes                            k8s_POD_kube-dns-545bc4bfd4-wbdfl_kube-system_da15b25c-d3c2-11e7-9c69-080027eae602_1
-d273af23fb6f        gcr.io/google_containers/pause-amd64:3.0     "/pause"                 3 minutes ago        Up 3 minutes                            k8s_POD_kube-proxy-rv4qt_kube-system_da0658a5-d3c2-11e7-9c69-080027eae602_4
-d8e36527465b        7058ac4d4af5                                 "kube-controller-mana"   3 minutes ago        Up 3 minutes                            k8s_kube-controller-manager_kube-controller-manager-kubedev-10-64-33-82_kube-system_2abd80eadd4e71350cbaac2862cae7c7_4
-5014d15c95c5        0d985fed7f95                                 "kube-scheduler --add"   3 minutes ago        Up 3 minutes                            k8s_kube-scheduler_kube-scheduler-kubedev-10-64-33-82_kube-system_e554495c6f8701f21accd04866090b05_32
-41087bf6fae1        10a052dccbc5                                 "kube-apiserver --all"   3 minutes ago        Up 3 minutes                            k8s_kube-apiserver_kube-apiserver-kubedev-10-64-33-82_kube-system_32325e2febd61625afff8b2e43041954_4
-af260880b247        gcr.io/google_containers/pause-amd64:3.0     "/pause"                 3 minutes ago        Up 3 minutes                            k8s_POD_kube-controller-manager-kubedev-10-64-33-82_kube-system_2abd80eadd4e71350cbaac2862cae7c7_4
-0b7378e9a168        gcr.io/google_containers/pause-amd64:3.0     "/pause"                 3 minutes ago        Up 3 minutes                            k8s_POD_kube-scheduler-kubedev-10-64-33-82_kube-system_e554495c6f8701f21accd04866090b05_9
-0fc8e028488e        gcr.io/google_containers/pause-amd64:3.0     "/pause"                 3 minutes ago        Up 3 minutes                            k8s_POD_kube-apiserver-kubedev-10-64-33-82_kube-system_32325e2febd61625afff8b2e43041954_4
-313248567a0f        gcr.io/google_containers/etcd-amd64:3.0.17   "etcd --listen-client"   3 hours ago          Up 12 minutes                           etcd
+CONTAINER ID        IMAGE                                        COMMAND                  CREATED             STATUS              PORTS               NAMES
+073da1c39849        29c91b3bcc05                                 "/bin/sh -c 'while tr"   31 minutes ago      Up 31 minutes                           k8s_hello_hello-5d8469b7bf-ngsqj_default_cafc17c0-d3d8-11e7-b63a-024403e322ab_1
+ce5934b3b264        4c600a64a18a                                 "/opt/bin/flanneld --"   31 minutes ago      Up 31 minutes                           k8s_kube-flannel_kube-flannel-ds-b5784_kube-system_a246b5e0-d3cf-11e7-b63a-024403e322ab_1
+6788938c2aa9        65a61c14e8c2                                 "/usr/local/bin/kube-"   31 minutes ago      Up 31 minutes                           k8s_kube-proxy_kube-proxy-rv4qt_kube-system_da0658a5-d3c2-11e7-9c69-080027eae602_5
+307999683b1b        fed89e8b4248                                 "/sidecar --v=2 --log"   31 minutes ago      Up 31 minutes                           k8s_sidecar_kube-dns-545bc4bfd4-wbdfl_kube-system_da15b25c-d3c2-11e7-9c69-080027eae602_2
+d6cfab4b92f5        gcr.io/google_containers/pause-amd64:3.0     "/pause"                 31 minutes ago      Up 31 minutes                           k8s_POD_kube-proxy-rv4qt_kube-system_da0658a5-d3c2-11e7-9c69-080027eae602_5
+833a3e364f6c        gcr.io/google_containers/pause-amd64:3.0     "/pause"                 31 minutes ago      Up 31 minutes                           k8s_POD_hello-5d8469b7bf-ngsqj_default_cafc17c0-d3d8-11e7-b63a-024403e322ab_1
+e0ce21a06731        gcr.io/google_containers/pause-amd64:3.0     "/pause"                 31 minutes ago      Up 31 minutes                           k8s_POD_kube-flannel-ds-b5784_kube-system_a246b5e0-d3cf-11e7-b63a-024403e322ab_1
+ad5c66a6fa79        459944ce8cc4                                 "/dnsmasq-nanny -v=2 "   31 minutes ago      Up 31 minutes                           k8s_dnsmasq_kube-dns-545bc4bfd4-wbdfl_kube-system_da15b25c-d3c2-11e7-9c69-080027eae602_2
+416f0ff37951        512cd7425a73                                 "/kube-dns --domain=c"   31 minutes ago      Up 31 minutes                           k8s_kubedns_kube-dns-545bc4bfd4-wbdfl_kube-system_da15b25c-d3c2-11e7-9c69-080027eae602_2
+afec066c4bd9        gcr.io/google_containers/pause-amd64:3.0     "/pause"                 31 minutes ago      Up 31 minutes                           k8s_POD_kube-dns-545bc4bfd4-wbdfl_kube-system_da15b25c-d3c2-11e7-9c69-080027eae602_2
+7fb2f1a4a40e        0d985fed7f95                                 "kube-scheduler --add"   31 minutes ago      Up 31 minutes                           k8s_kube-scheduler_kube-scheduler-kubedev-10-64-33-82_kube-system_e554495c6f8701f21accd04866090b05_33
+55e3a0ae3f31        7058ac4d4af5                                 "kube-controller-mana"   31 minutes ago      Up 31 minutes                           k8s_kube-controller-manager_kube-controller-manager-kubedev-10-64-33-82_kube-system_2abd80eadd4e71350cbaac2862cae7c7_5
+118e70ab4e5f        10a052dccbc5                                 "kube-apiserver --all"   31 minutes ago      Up 31 minutes                           k8s_kube-apiserver_kube-apiserver-kubedev-10-64-33-82_kube-system_32325e2febd61625afff8b2e43041954_5
+28c43cb61f8c        gcr.io/google_containers/pause-amd64:3.0     "/pause"                 31 minutes ago      Up 31 minutes                           k8s_POD_kube-scheduler-kubedev-10-64-33-82_kube-system_e554495c6f8701f21accd04866090b05_10
+45e7fa7b2a49        gcr.io/google_containers/pause-amd64:3.0     "/pause"                 31 minutes ago      Up 31 minutes                           k8s_POD_kube-controller-manager-kubedev-10-64-33-82_kube-system_2abd80eadd4e71350cbaac2862cae7c7_5
+be2c15559b7d        gcr.io/google_containers/pause-amd64:3.0     "/pause"                 31 minutes ago      Up 31 minutes                           k8s_POD_kube-apiserver-kubedev-10-64-33-82_kube-system_32325e2febd61625afff8b2e43041954_5
+313248567a0f        gcr.io/google_containers/etcd-amd64:3.0.17   "etcd --listen-client"   5 hours ago         Up 31 minutes                           etcd
 ```
 
 node 1
 ```
 [vagrant@kubedev-10-64-33-199 ~]$ docker ps
 CONTAINER ID        IMAGE                                        COMMAND                  CREATED             STATUS              PORTS                    NAMES
-c6e95b833c7d        4c600a64a18a                                 "/opt/bin/flanneld --"   3 minutes ago       Up 3 minutes                                 k8s_kube-flannel_kube-flannel-ds-tbzdp_kube-system_a24726f0-d3cf-11e7-b63a-024403e322ab_0
-523f5a75606b        gcr.io/google_containers/pause-amd64:3.0     "/pause"                 3 minutes ago       Up 3 minutes                                 k8s_POD_kube-flannel-ds-tbzdp_kube-system_a24726f0-d3cf-11e7-b63a-024403e322ab_0
-ee7bc696f10e        fed89e8b4248                                 "/sidecar --v=2 --log"   4 minutes ago       Up 4 minutes                                 k8s_sidecar_kube-dns-545bc4bfd4-sflc2_kube-system_09bca1bf-d3c7-11e7-a68d-024403e322ab_3
-b370cdb6939f        459944ce8cc4                                 "/dnsmasq-nanny -v=2 "   4 minutes ago       Up 4 minutes                                 k8s_dnsmasq_kube-dns-545bc4bfd4-sflc2_kube-system_09bca1bf-d3c7-11e7-a68d-024403e322ab_3
-5d7e88344722        65a61c14e8c2                                 "/usr/local/bin/kube-"   4 minutes ago       Up 4 minutes                                 k8s_kube-proxy_kube-proxy-nnjtz_kube-system_da068521-d3c2-11e7-9c69-080027eae602_11
-b1d513be87ea        512cd7425a73                                 "/kube-dns --domain=c"   4 minutes ago       Up 4 minutes                                 k8s_kubedns_kube-dns-545bc4bfd4-sflc2_kube-system_09bca1bf-d3c7-11e7-a68d-024403e322ab_5
-7115cc5d4fdd        gcr.io/google_containers/pause-amd64:3.0     "/pause"                 4 minutes ago       Up 4 minutes                                 k8s_POD_kube-proxy-nnjtz_kube-system_da068521-d3c2-11e7-9c69-080027eae602_13
-0dc1d6dbf38f        gcr.io/google_containers/pause-amd64:3.0     "/pause"                 4 minutes ago       Up 4 minutes                                 k8s_POD_kube-dns-545bc4bfd4-sflc2_kube-system_09bca1bf-d3c7-11e7-a68d-024403e322ab_568
-ba3fc8e555e9        7058ac4d4af5                                 "kube-controller-mana"   5 minutes ago       Up 4 minutes                                 k8s_kube-controller-manager_kube-controller-manager-kubedev-10-64-33-199_kube-system_d7178e08c00d6217be0c45efd8413533_10
-c4e4382674fa        0d985fed7f95                                 "kube-scheduler --add"   5 minutes ago       Up 5 minutes                                 k8s_kube-scheduler_kube-scheduler-kubedev-10-64-33-199_kube-system_e554495c6f8701f21accd04866090b05_11
-137af55e28d4        10a052dccbc5                                 "kube-apiserver --sec"   5 minutes ago       Up 5 minutes                                 k8s_kube-apiserver_kube-apiserver-kubedev-10-64-33-199_kube-system_32337c60b0b723900a81a9c2f48359dd_10
-b122d7a49d34        gcr.io/google_containers/pause-amd64:3.0     "/pause"                 5 minutes ago       Up 5 minutes                                 k8s_POD_kube-controller-manager-kubedev-10-64-33-199_kube-system_d7178e08c00d6217be0c45efd8413533_15
-24d953946248        gcr.io/google_containers/pause-amd64:3.0     "/pause"                 5 minutes ago       Up 5 minutes                                 k8s_POD_kube-scheduler-kubedev-10-64-33-199_kube-system_e554495c6f8701f21accd04866090b05_16
-84c5619e75a1        gcr.io/google_containers/pause-amd64:3.0     "/pause"                 5 minutes ago       Up 5 minutes                                 k8s_POD_kube-apiserver-kubedev-10-64-33-199_kube-system_32337c60b0b723900a81a9c2f48359dd_12
-f13b89af6c64        gcr.io/google_containers/etcd-amd64:3.0.17   "etcd --listen-client"   3 hours ago         Up 5 minutes                                 etcd
+30e5ea8bf227        29c91b3bcc05                                 "/bin/sh -c 'while tr"   52 minutes ago      Up 52 minutes                                k8s_hello_hello-5d8469b7bf-24qlh_default_0ef2cfb2-d3d9-11e7-b63a-024403e322ab_0
+a2fdff95b13b        gcr.io/google_containers/pause-amd64:3.0     "/pause"                 52 minutes ago      Up 52 minutes                                k8s_POD_hello-5d8469b7bf-24qlh_default_0ef2cfb2-d3d9-11e7-b63a-024403e322ab_0
+c6e95b833c7d        4c600a64a18a                                 "/opt/bin/flanneld --"   2 hours ago         Up 2 hours                                   k8s_kube-flannel_kube-flannel-ds-tbzdp_kube-system_a24726f0-d3cf-11e7-b63a-024403e322ab_0
+523f5a75606b        gcr.io/google_containers/pause-amd64:3.0     "/pause"                 2 hours ago         Up 2 hours                                   k8s_POD_kube-flannel-ds-tbzdp_kube-system_a24726f0-d3cf-11e7-b63a-024403e322ab_0
+ee7bc696f10e        fed89e8b4248                                 "/sidecar --v=2 --log"   2 hours ago         Up 2 hours                                   k8s_sidecar_kube-dns-545bc4bfd4-sflc2_kube-system_09bca1bf-d3c7-11e7-a68d-024403e322ab_3
+b370cdb6939f        459944ce8cc4                                 "/dnsmasq-nanny -v=2 "   2 hours ago         Up 2 hours                                   k8s_dnsmasq_kube-dns-545bc4bfd4-sflc2_kube-system_09bca1bf-d3c7-11e7-a68d-024403e322ab_3
+5d7e88344722        65a61c14e8c2                                 "/usr/local/bin/kube-"   2 hours ago         Up 2 hours                                   k8s_kube-proxy_kube-proxy-nnjtz_kube-system_da068521-d3c2-11e7-9c69-080027eae602_11
+b1d513be87ea        512cd7425a73                                 "/kube-dns --domain=c"   2 hours ago         Up 2 hours                                   k8s_kubedns_kube-dns-545bc4bfd4-sflc2_kube-system_09bca1bf-d3c7-11e7-a68d-024403e322ab_5
+7115cc5d4fdd        gcr.io/google_containers/pause-amd64:3.0     "/pause"                 2 hours ago         Up 2 hours                                   k8s_POD_kube-proxy-nnjtz_kube-system_da068521-d3c2-11e7-9c69-080027eae602_13
+0dc1d6dbf38f        gcr.io/google_containers/pause-amd64:3.0     "/pause"                 2 hours ago         Up 2 hours                                   k8s_POD_kube-dns-545bc4bfd4-sflc2_kube-system_09bca1bf-d3c7-11e7-a68d-024403e322ab_568
+ba3fc8e555e9        7058ac4d4af5                                 "kube-controller-mana"   2 hours ago         Up 2 hours                                   k8s_kube-controller-manager_kube-controller-manager-kubedev-10-64-33-199_kube-system_d7178e08c00d6217be0c45efd8413533_10
+c4e4382674fa        0d985fed7f95                                 "kube-scheduler --add"   2 hours ago         Up 2 hours                                   k8s_kube-scheduler_kube-scheduler-kubedev-10-64-33-199_kube-system_e554495c6f8701f21accd04866090b05_11
+137af55e28d4        10a052dccbc5                                 "kube-apiserver --sec"   2 hours ago         Up 2 hours                                   k8s_kube-apiserver_kube-apiserver-kubedev-10-64-33-199_kube-system_32337c60b0b723900a81a9c2f48359dd_10
+b122d7a49d34        gcr.io/google_containers/pause-amd64:3.0     "/pause"                 2 hours ago         Up 2 hours                                   k8s_POD_kube-controller-manager-kubedev-10-64-33-199_kube-system_d7178e08c00d6217be0c45efd8413533_15
+24d953946248        gcr.io/google_containers/pause-amd64:3.0     "/pause"                 2 hours ago         Up 2 hours                                   k8s_POD_kube-scheduler-kubedev-10-64-33-199_kube-system_e554495c6f8701f21accd04866090b05_16
+84c5619e75a1        gcr.io/google_containers/pause-amd64:3.0     "/pause"                 2 hours ago         Up 2 hours                                   k8s_POD_kube-apiserver-kubedev-10-64-33-199_kube-system_32337c60b0b723900a81a9c2f48359dd_12
+f13b89af6c64        gcr.io/google_containers/etcd-amd64:3.0.17   "etcd --listen-client"   5 hours ago         Up 2 hours                                   etcd
 ```
 
 node 2
 ```
 ubuntu@kubedev-10-64-33-195:~$ docker ps
-CONTAINER ID        IMAGE                                        COMMAND                  CREATED             STATUS              PORTS                      NAMES
-2abb962b5e0c        4c600a64a18a                                 "/opt/bin/flanneld..."   4 minutes ago       Up 4 minutes                                   k8s_kube-flannel_kube-flannel-ds-gk826_kube-system_a2450936-d3cf-11e7-b63a-024403e322ab_0
-9bd664b94540        gcr.io/google_containers/pause-amd64:3.0     "/pause"                 4 minutes ago       Up 4 minutes                                   k8s_POD_kube-flannel-ds-gk826_kube-system_a2450936-d3cf-11e7-b63a-024403e322ab_0
-5c9919257799        512cd7425a73                                 "/kube-dns --domai..."   5 minutes ago       Up 5 minutes                                   k8s_kubedns_kube-dns-545bc4bfd4-mqq8j_kube-system_5d8f8aac-d3c3-11e7-9c69-080027eae602_6
-825834b2329d        fed89e8b4248                                 "/sidecar --v=2 --..."   5 minutes ago       Up 5 minutes                                   k8s_sidecar_kube-dns-545bc4bfd4-mqq8j_kube-system_5d8f8aac-d3c3-11e7-9c69-080027eae602_5
-e8a0ce312c72        459944ce8cc4                                 "/dnsmasq-nanny -v..."   5 minutes ago       Up 5 minutes                                   k8s_dnsmasq_kube-dns-545bc4bfd4-mqq8j_kube-system_5d8f8aac-d3c3-11e7-9c69-080027eae602_5
-62c061da780c        65a61c14e8c2                                 "/usr/local/bin/ku..."   5 minutes ago       Up 5 minutes                                   k8s_kube-proxy_kube-proxy-4bmmw_kube-system_da0599c6-d3c2-11e7-9c69-080027eae602_4
-62dabffc713c        gcr.io/google_containers/pause-amd64:3.0     "/pause"                 5 minutes ago       Up 5 minutes                                   k8s_POD_kube-dns-545bc4bfd4-mqq8j_kube-system_5d8f8aac-d3c3-11e7-9c69-080027eae602_236
-f903760a482a        gcr.io/google_containers/pause-amd64:3.0     "/pause"                 5 minutes ago       Up 5 minutes                                   k8s_POD_kube-proxy-4bmmw_kube-system_da0599c6-d3c2-11e7-9c69-080027eae602_4
-57b093409179        7058ac4d4af5                                 "kube-controller-m..."   5 minutes ago       Up 5 minutes                                   k8s_kube-controller-manager_kube-controller-manager-kubedev-10-64-33-195_kube-system_bf5427c07fa2cd55ef80aee53d9204e5_3
-0a4f60e432fa        10a052dccbc5                                 "kube-apiserver --..."   5 minutes ago       Up 5 minutes                                   k8s_kube-apiserver_kube-apiserver-kubedev-10-64-33-195_kube-system_09ffa3ed2853c0d43bd972690ea51a62_3
-13c17a33851b        0d985fed7f95                                 "kube-scheduler --..."   5 minutes ago       Up 5 minutes                                   k8s_kube-scheduler_kube-scheduler-kubedev-10-64-33-195_kube-system_ca97fd23ad8837acfa829af8dfc86a7e_3
-b365344a1327        gcr.io/google_containers/pause-amd64:3.0     "/pause"                 5 minutes ago       Up 5 minutes                                   k8s_POD_kube-apiserver-kubedev-10-64-33-195_kube-system_09ffa3ed2853c0d43bd972690ea51a62_4
-8fed036058d5        gcr.io/google_containers/pause-amd64:3.0     "/pause"                 5 minutes ago       Up 5 minutes                                   k8s_POD_kube-scheduler-kubedev-10-64-33-195_kube-system_ca97fd23ad8837acfa829af8dfc86a7e_3
-3164d559f994        gcr.io/google_containers/pause-amd64:3.0     "/pause"                 5 minutes ago       Up 5 minutes                                   k8s_POD_kube-controller-manager-kubedev-10-64-33-195_kube-system_bf5427c07fa2cd55ef80aee53d9204e5_3
-55ea2b550443        gcr.io/google_containers/etcd-amd64:3.0.17   "etcd --listen-cli..."   3 hours ago         Up 8 minutes                                   etcd
+CONTAINER ID        IMAGE                                                                                                    COMMAND                  CREATED             STATUS              PORTS                      NAMES
+02bb4f7962fc        tangfeixiong/netcat-hello-http@sha256:9d4bc2407421b138b1f79f2c06ea701568a93dc9248d23810616a9b758701b51   "/bin/sh -c 'while..."   14 minutes ago      Up 14 minutes                                  k8s_hello_hello-5d8469b7bf-v594p_default_0ef46c56-d3d9-11e7-b63a-024403e322ab_2
+31d3f5305555        4c600a64a18a                                                                                             "/opt/bin/flanneld..."   14 minutes ago      Up 14 minutes                                  k8s_kube-flannel_kube-flannel-ds-gk826_kube-system_a2450936-d3cf-11e7-b63a-024403e322ab_2
+24801255ed6a        65a61c14e8c2                                                                                             "/usr/local/bin/ku..."   14 minutes ago      Up 14 minutes                                  k8s_kube-proxy_kube-proxy-4bmmw_kube-system_da0599c6-d3c2-11e7-9c69-080027eae602_6
+12da3efa1ea9        gcr.io/google_containers/pause-amd64:3.0                                                                 "/pause"                 14 minutes ago      Up 14 minutes                                  k8s_POD_kube-flannel-ds-gk826_kube-system_a2450936-d3cf-11e7-b63a-024403e322ab_2
+db8fe55edab3        fed89e8b4248                                                                                             "/sidecar --v=2 --..."   14 minutes ago      Up 14 minutes                                  k8s_sidecar_kube-dns-545bc4bfd4-mqq8j_kube-system_5d8f8aac-d3c3-11e7-9c69-080027eae602_7
+c995cf931af3        gcr.io/google_containers/pause-amd64:3.0                                                                 "/pause"                 14 minutes ago      Up 14 minutes                                  k8s_POD_kube-proxy-4bmmw_kube-system_da0599c6-d3c2-11e7-9c69-080027eae602_6
+e30d08076ac7        459944ce8cc4                                                                                             "/dnsmasq-nanny -v..."   14 minutes ago      Up 14 minutes                                  k8s_dnsmasq_kube-dns-545bc4bfd4-mqq8j_kube-system_5d8f8aac-d3c3-11e7-9c69-080027eae602_7
+da2e6fdf302a        512cd7425a73                                                                                             "/kube-dns --domai..."   14 minutes ago      Up 14 minutes                                  k8s_kubedns_kube-dns-545bc4bfd4-mqq8j_kube-system_5d8f8aac-d3c3-11e7-9c69-080027eae602_8
+3e7136e992db        gcr.io/google_containers/pause-amd64:3.0                                                                 "/pause"                 14 minutes ago      Up 14 minutes                                  k8s_POD_kube-dns-545bc4bfd4-mqq8j_kube-system_5d8f8aac-d3c3-11e7-9c69-080027eae602_238
+cc49117febe0        gcr.io/google_containers/pause-amd64:3.0                                                                 "/pause"                 14 minutes ago      Up 14 minutes                                  k8s_POD_hello-5d8469b7bf-v594p_default_0ef46c56-d3d9-11e7-b63a-024403e322ab_2
+582bda67675f        0d985fed7f95                                                                                             "kube-scheduler --..."   15 minutes ago      Up 15 minutes                                  k8s_kube-scheduler_kube-scheduler-kubedev-10-64-33-195_kube-system_ca97fd23ad8837acfa829af8dfc86a7e_5
+779d17784d4a        7058ac4d4af5                                                                                             "kube-controller-m..."   15 minutes ago      Up 15 minutes                                  k8s_kube-controller-manager_kube-controller-manager-kubedev-10-64-33-195_kube-system_bf5427c07fa2cd55ef80aee53d9204e5_5
+0d425dfac5ba        10a052dccbc5                                                                                             "kube-apiserver --..."   15 minutes ago      Up 15 minutes                                  k8s_kube-apiserver_kube-apiserver-kubedev-10-64-33-195_kube-system_09ffa3ed2853c0d43bd972690ea51a62_5
+62da00a6f963        gcr.io/google_containers/pause-amd64:3.0                                                                 "/pause"                 15 minutes ago      Up 15 minutes                                  k8s_POD_kube-apiserver-kubedev-10-64-33-195_kube-system_09ffa3ed2853c0d43bd972690ea51a62_6
+d5d3fca3edfb        gcr.io/google_containers/pause-amd64:3.0                                                                 "/pause"                 15 minutes ago      Up 15 minutes                                  k8s_POD_kube-scheduler-kubedev-10-64-33-195_kube-system_ca97fd23ad8837acfa829af8dfc86a7e_5
+f110177b764a        gcr.io/google_containers/pause-amd64:3.0                                                                 "/pause"                 15 minutes ago      Up 15 minutes                                  k8s_POD_kube-controller-manager-kubedev-10-64-33-195_kube-system_bf5427c07fa2cd55ef80aee53d9204e5_5
+55ea2b550443        gcr.io/google_containers/etcd-amd64:3.0.17                                                               "etcd --listen-cli..."   5 hours ago         Up 16 minutes                                  etcd
 ```

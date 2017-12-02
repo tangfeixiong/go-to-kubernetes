@@ -1,0 +1,26 @@
+syntax = "proto3";
+package pb;
+
+import "google/api/annotations.proto";
+
+//import "pb/reqresp.proto";
+
+service GorhService {
+    rpc WebsockifyVNC (VncReqResp) returns (VncReqResp) {
+        option (google.api.http) = {
+	        post: "/v1/vnc"
+            body: "*"
+        };
+    }
+}
+
+message VncReqResp {
+	string vnc_addr = 1;
+	string vnc_secret = 2;
+	string auth_token = 3;
+	int32 state_code = 4;
+	string state_message = 5;
+	string token = 6;
+	bytes thumbnail = 7;
+}
+
