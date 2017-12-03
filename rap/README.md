@@ -30,7 +30,6 @@ Browse http://172.17.4.50:10072/novnc/?token=070a1689-5372-4278-be6f-f1049b29569
 Active noVNC
 ![屏幕快照 2017-12-01 下午4.25.57.png](./屏幕快照%202017-12-01%20下午4.25.57.png)
 
-
 ## Build
 
 docker image

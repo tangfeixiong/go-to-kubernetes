@@ -18,12 +18,15 @@ import (
 
 	"github.com/pborman/uuid"
 
+	"golang.org/x/net/websocket"
+
 	"github.com/tangfeixiong/go-to-kubernetes/rap/pb"
 )
 
 type scheduler struct {
-	rr   *pb.VncReqResp
-	conn net.Conn
+	rr     *pb.VncReqResp
+	conn   net.Conn
+	wsconn *websocket.Conn
 }
 
 type WsnovncManager struct {
@@ -52,17 +55,15 @@ func FileServer(root http.FileSystem) /*http.Handler*/ *WsnovncManager {
 }
 
 func (f *WsnovncManager) ServeHTTP(w http.ResponseWriter, r *http.Request) {
-	//fmt.Println(r.URL, r.Header, r.Form)
 	if token := r.URL.Query().Get("token"); token != "" {
-		fmt.Println("vnc_token:", token)
+		fmt.Printf("request: %+v\n", r)
 		http.SetCookie(w, &http.Cookie{
-			Name:  "vnc_token",
+			Name:  "novnc_token",
 			Value: token,
+			Path:  "/websockify",
 		})
-		cookie, _ := r.Cookie("JSESSIONID")
-		if cookie != nil {
-			f.tokens[cookie.Value] = token
-		}
+	} else {
+		fmt.Printf("header referer: %+v\n", r.Header.Get("Referer"))
 	}
 	upath := r.URL.Path
 	if !strings.HasPrefix(upath, "/") {
@@ -95,20 +96,26 @@ func (mg *WsnovncManager) Dispatch(req *pb.VncReqResp) (*pb.VncReqResp, error) {
 	return resp, nil
 }
 
-func (mg *WsnovncManager) ValidateVNC(token string) (net.Conn, string) {
+func (mg *WsnovncManager) ValidateVNC(token string) (net.Conn, *websocket.Conn, string) {
 	if _, ok := mg.schedules[token]; !ok {
-		return nil, ""
+		return nil, nil, ""
 	}
 	if mg.schedules[token].rr == nil {
-		return nil, ""
+		return nil, nil, ""
 	}
-	return mg.schedules[token].conn, mg.schedules[token].rr.VncAddr
+	return mg.schedules[token].conn, mg.schedules[token].wsconn, mg.schedules[token].rr.VncAddr
 }
 
 func (mg *WsnovncManager) Token(id string) string {
 	return mg.tokens[id]
 }
 
-func (mg *WsnovncManager) Connection(token string, conn net.Conn) {
+func (mg *WsnovncManager) Connection(token string, conn net.Conn, wsconn *websocket.Conn) {
 	mg.schedules[token].conn = conn
+	mg.schedules[token].wsconn = wsconn
+}
+func (mg *WsnovncManager) Disconnection(token string) {
+	//delete(mg.schedules, token)
+	mg.schedules[token].conn = nil
+	mg.schedules[token].wsconn = nil
 }
