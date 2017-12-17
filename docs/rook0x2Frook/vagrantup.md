@@ -329,8 +329,8 @@ $ vagrant reload
 ==> default: Checking for guest additions in VM...
 ==> default: Configuring and enabling network interfaces...
 ==> default: Mounting shared folders...
-    default: /vagrant_drive_f => F:/
-    default: /vagrant_drive_g => G:/
+    default: /windows10_drive_f => F:/
+    default: /windows10_drive_g => G:/
 ==> default: Machine already provisioned. Run `vagrant provision` or use the `--provision`
 ==> default: flag to force provisioning. Provisioners marked to run always will still run.
 
@@ -343,6 +343,6 @@ Last login: Thu Dec 14 08:20:01 2017 from 10.0.2.2
 ```
 
 ```
-[vagrant@localhost ~]$ ls /vagrant_drive_g/work
+[vagrant@localhost ~]$ ls /windows10_drive_g/work
 bin  pkg  src
 ```

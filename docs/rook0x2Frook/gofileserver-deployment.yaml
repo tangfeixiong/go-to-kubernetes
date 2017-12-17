@@ -1,0 +1,48 @@
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: gofileserver
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: gofileserver
+    spec:
+    #  initContainers:
+    #  - name: sidecar
+    #    image: busybox
+    #    command:
+    #    - cp
+    #    args:
+    #    - -rf
+    #    - /tmp/go/bin
+    #    - /mnt
+    #    volumeMounts:
+    #    - name: download-sidecar
+    #      mountPath: /tmp/go
+    #    - name: download-store
+    #      mountPath: /mnt
+      containers:
+      - name: gofileserver
+        image: tangfeixiong/gofileserver
+        ports:
+        - containerPort: 48080
+          name: http
+          protocol: TCP
+        volumeMounts:
+        - name: download-store
+          mountPath: /mnt
+      volumes:
+        - name: download-sidecar
+          hostPath:
+            path: /home/vagrant/go
+        - name: download-store
+          flexVolume:
+            driver: rook.io/rook
+            fsType: ceph
+            options:
+              fsName: myfs # name of the filesystem specified in the filesystem CRD.
+              clusterName: rook # namespace where the Rook cluster is deployed
+              # by default the path is /, but you can override and mount a specific path of the filesystem by using the path attribute
+              # path: /some/path/inside/cephfs

@@ -45,8 +45,8 @@ Vagrant.configure("2") do |config|
   # argument is a set of non-required options.
   # config.vm.synced_folder "../data", "/vagrant_data"
   config.vm.synced_folder ".", "/vagrant", disabled: true
-  config.vm.synced_folder "f:/", "/vagrant_drive_f"
-  config.vm.synced_folder "g:/", "/vagrant_drive_g"
+  config.vm.synced_folder "f:/", "/windows10_drive_f"
+  config.vm.synced_folder "g:/", "/windows10_drive_g"
 
   # Provider-specific configuration so you can fine-tune various
   # backing providers for Vagrant. These expose provider-specific options.

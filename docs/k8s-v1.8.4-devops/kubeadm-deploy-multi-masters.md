@@ -443,7 +443,7 @@ Generate into CentOS
 apiVersion: kubeadm.k8s.io/v1alpha1
 kind: MasterConfiguration
 api:
-  advertiseAddress: 10.64.33.50
+  advertiseAddress: 10.64.33.82
   bindPort: 443
 etcd:
   endpoints:
@@ -466,12 +466,19 @@ kubernetesVersion: v1.8.4
 cloudProvider: ""
 nodeName: ""
 authorizationModes:
+#- AlwaysAllow
 - Node
 - RBAC
 token: ""
 tokenTTL: 24h0m0s
 apiServerExtraArgs:
   "admission-control": "Initializers,NamespaceLifecycle,LimitRanger,ServiceAccount,PersistentVolumeLabel,DefaultStorageClass,DefaultTolerationSeconds,NodeRestriction,ResourceQuota"
+  "allow-privileged": "true"
+  "anonymous-auth": "true"
+  "apiserver-count": "3"
+  "insecure-bind-address": "0.0.0.0"
+  "insecure-port": "8080"
+  "secure-port": "443"
 controllerManagerExtraArgs: null
 SchedulerExtraArgs: null
 apiServerExtraVolumes: null
@@ -483,6 +490,8 @@ apiServerCertSANs:
 - 10.64.33.195
 - 10.64.33.224
 - 10.64.33.240
+- 10.64.33.50
+- 172.28.128.50
 - kubedev-10-64-33-82
 - kubedev-10-64-33-199
 - kubedev-10-64-33-195
@@ -490,6 +499,7 @@ certificatesDir: /etc/kubernetes/pki
 imageRepository: gcr.io/google_containers
 unifiedControlPlaneImage: ""
 featureGates: null
+
 ```
 
 Copy into Fedora for example via local http

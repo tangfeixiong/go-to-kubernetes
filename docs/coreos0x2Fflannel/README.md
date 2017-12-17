@@ -1,6 +1,53 @@
-__HELP__
+## DevOps
 
-Kubernetes 1.6+, refer to https://github.com/coreos/flannel
+### Table of contents
+1. v0.9.1
+1. v0.9.0
+
+### v0.9.1
+
+Refer to https://github.com/coreos/flannel for Kubernetes 1.7+
+
+For kubernetes v1.9.0
+```
+[vagrant@kubedev-172-17-4-59 ~]$ curl -jkSL https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel.yml -o /tmp/kube-flannel.yaml  
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100  3215  100  3215    0     0   4040      0 --:--:-- --:--:-- --:--:--  4038
+```
+
+```
+[vagrant@kubedev-172-17-4-59 ~]$ img=$(cat /tmp/kube-flannel.yaml | grep ' image: ' | head -1 | awk '{print $2}');  ver=$(echo $img | awk -F'[:-]' '{print $2}' | cut -c2-); docker pull $img; mv /tmp/kube-flannel.yaml /Users/fanhongling/Downloads/workspace/src/github.com/tangfeixiong/go-to-kubernetes/docs/coreos0x2Fflannel/kube-flannel_${ver}.yaml
+Trying to pull repository quay.io/coreos/flannel ... 
+sha256:056cf57fd3bbe7264c0be1a3b34ec2e289b33e51c70f332f4e88aa83970ad891: Pulling from quay.io/coreos/flannel
+6d987f6f4279: Pull complete 
+16a827ca53c8: Pull complete 
+8f4dde5859ad: Pull complete 
+40db9b39f697: Pull complete 
+48f4941e520f: Pull complete 
+f77b10f3d93e: Pull complete 
+Digest: sha256:056cf57fd3bbe7264c0be1a3b34ec2e289b33e51c70f332f4e88aa83970ad891
+Status: Downloaded newer image for quay.io/coreos/flannel:v0.9.1-amd64
+```
+
+Legacy
+```
+[vagrant@kubedev-172-17-4-59 ~]$ curl -jkSL https://raw.githubusercontent.com/coreos/flannel/master/Documentation/k8s-manifests/kube-flannel-legacy.yml -o /Users/fanhongling/Downloads/workspace/src/github.com/tangfeixiong/go-to-kubernetes/docs/coreos0x2Fflannel/legacy/kube-flannel-legacy_${ver}.yaml
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100  2281  100  2281    0     0   3568      0 --:--:-- --:--:-- --:--:--  3564
+```
+
+```
+[vagrant@kubedev-172-17-4-59 ~]$ curl -jkSL https://raw.githubusercontent.com/coreos/flannel/master/Documentation/k8s-manifests/kube-flannel-rbac.yml -o /Users/fanhongling/Downloads/workspace/src/github.com/tangfeixiong/go-to-kubernetes/docs/coreos0x2Fflannel/legacy/kube-flannel-rbac_${ver}.yaml
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100   857  100   857    0     0   1099      0 --:--:-- --:--:-- --:--:--  1100
+```
+
+### v0,9.0
+
+For kubernetes v1.8.4
 ```
 fanhonglingdeMacBook-Pro:coreos0x2Fflannel fanhongling$ curl -jkSL https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel.yml | tee kube-flannel.yaml
   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
@@ -146,12 +193,11 @@ spec:
             name: kube-flannel-cfg
 ```
 
-Before 1.6
+Legacy, refert to (https://github.com/coreos/flannel/blob/master/Documentation/kubernetes.md
 ```
 fanhonglingdeMacBook-Pro:before1.6 fanhongling$ curl -jsSL https://raw.githubusercontent.com/coreos/flannel/master/Documentation/k8s-manifests/kube-flannel-legacy.yml -O
 ```
 
-And [if RBAC is required before 1.6](https://github.com/coreos/flannel/blob/master/Documentation/kubernetes.md)
 ```
 fanhonglingdeMacBook-Pro:before1.6 fanhongling$ curl -jsSL https://raw.githubusercontent.com/coreos/flannel/master/Documentation/k8s-manifests/kube-flannel-rbac.yml -O
 ```

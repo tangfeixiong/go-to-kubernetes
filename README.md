@@ -4,11 +4,10 @@
 
 [Documentation](./docs)
 
-* CentOS DevOps - CentOS Everything ISO media repo
-* CentOS DevOps - YUM repository mirror
+* CentOS DevOps - CentOS Everything ISO media as offline repository
+* CentOS DevOps - CentOS YUM repository mirror
 * CentOS HandsOn - Docker installation
-* CentOS DevOps - Etcd2 installation
-* Kubernetes v1.3 DevOps - Kubernetes master deployment
+* Deploy a minimal file server - Docker image serving HTTP worked as a local YUM repository mirror server
 * Kubernetes v1.5.7 DevOps - bash部署
 * Kubernetes v1.6 DevOps - bash部署
 * Kubernetes v1.7 DevOps - bash部署

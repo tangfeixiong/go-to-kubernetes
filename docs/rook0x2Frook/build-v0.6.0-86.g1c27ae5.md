@@ -1344,7 +1344,7 @@ no VPN: copy rook repository (vendor directory generated) into windows 10.
 
 go
 ```
-[vagrant@localhost ~]$ sudo tar -C /usr/local -xzf /vagrant_drive_f/99-mirror/https0x3A0x2F0x2Fgolang.org0x2Fdl/go1.9.2.linux-amd64.tar.gz 
+[vagrant@localhost ~]$ sudo tar -C /usr/local -xzf /windows10_drive_f/99-mirror/https0x3A0x2F0x2Fgolang.org0x2Fdl/go1.9.2.linux-amd64.tar.gz 
 ```
 
 ```
@@ -1360,7 +1360,7 @@ GOEXE=""
 GOHOSTARCH="amd64"
 GOHOSTOS="linux"
 GOOS="linux"
-GOPATH="/vagrant_drive_g/work"
+GOPATH="/windows10_drive_g/work"
 GORACE=""
 GOROOT="/usr/local/go"
 GOTOOLDIR="/usr/local/go/pkg/tool/linux_amd64"
@@ -1691,14 +1691,14 @@ amazonaws!!!
 
 run mini http
 ```
-[vagrant@localhost /] /vagrant_drive_f/99-mirror/linux-bin/gofileserver
+[vagrant@localhost /] /windows10_drive_f/99-mirror/linux-bin/gofileserver
 Listening at :48080
 ```
 
 modify Dockerfile of ./images/base line 28
 ```
 #ADD https://github.com/krallin/tini/releases/download/v0.14.0/tini-${ARCH} /tini
-ADD http://localhost:48080/vagrant_drive_f/99-mirror/https0x3A0x2F0x2Fgithub.com0x2Fkrallin0x2Ftini0x2Freleases0x2Fdownload/v0.14.0/tini-${ARCH} /tini
+ADD http://localhost:48080/windows10_drive_f/99-mirror/https0x3A0x2F0x2Fgithub.com0x2Fkrallin0x2Ftini0x2Freleases0x2Fdownload/v0.14.0/tini-${ARCH} /tini
 ```
 
 ```
@@ -1793,7 +1793,7 @@ Issue: SELinux
 Enter directory of images
 ```
 [vagrant@localhost images]$ make V=1 build
-make[1]: Entering directory '/vagrant_drive_g/work/src/github.com/rook/rook/images/base'
+make[1]: Entering directory '/windows10_drive_g/work/src/github.com/rook/rook/images/base'
 === docker build build-be9394dd/rootfs-builder-amd64
 Sending build context to Docker daemon 3.584 kB
 Step 1/3 : FROM ubuntu:zesty
@@ -1809,8 +1809,8 @@ Step 3/3 : RUN tar -czf /usr/share/copyrights.tar.xz /usr/share/doc/*/copyright 
  ---> Using cache
  ---> 8b040d721516
 Successfully built 8b040d721516
-make[2]: Entering directory '/vagrant_drive_g/work/src/github.com/rook/rook/images/base'
-make[2]: Leaving directory '/vagrant_drive_g/work/src/github.com/rook/rook/images/base'
+make[2]: Entering directory '/windows10_drive_g/work/src/github.com/rook/rook/images/base'
+make[2]: Leaving directory '/windows10_drive_g/work/src/github.com/rook/rook/images/base'
 === docker build build-be9394dd/base-amd64
 Sending build context to Docker daemon 3.584 kB
 Step 1/7 : FROM build-be9394dd/rootfs-amd64-8b040d721516
@@ -1821,7 +1821,7 @@ Step 2/7 : RUN HOST_IP=$(route -n | awk '/^0.0.0.0/ {print $2}') &&     echo "#!
 Step 3/7 : ARG ARCH
  ---> Using cache
  ---> cb5e0f44ebbb
-Step 4/7 : ADD http://localhost:48080/vagrant_drive_f/99-mirror/https0x3A0x2F0x2Fgithub.com0x2Fkrallin0x2Ftini0x2Freleases0x2Fdownload/v0.14.0/tini-${ARCH} /tini
+Step 4/7 : ADD http://localhost:48080/windows10_drive_f/99-mirror/https0x3A0x2F0x2Fgithub.com0x2Fkrallin0x2Ftini0x2Freleases0x2Fdownload/v0.14.0/tini-${ARCH} /tini
 Downloading [==================================================>] 19.89 kB/19.89 kB
  ---> Using cache
  ---> 39a370fa6cb6
@@ -1835,13 +1835,13 @@ Step 7/7 : CMD /bin/bash
  ---> Using cache
  ---> bdc3253aab81
 Successfully built bdc3253aab81
-make[2]: Entering directory '/vagrant_drive_g/work/src/github.com/rook/rook/images/base'
+make[2]: Entering directory '/windows10_drive_g/work/src/github.com/rook/rook/images/base'
 === caching image build-be9394dd/base-amd64
 === caching image build-be9394dd/rootfs-builder-amd64
 === caching image build-be9394dd/rootfs-amd64-8b040d721516
-make[2]: Leaving directory '/vagrant_drive_g/work/src/github.com/rook/rook/images/base'
-make[1]: Leaving directory '/vagrant_drive_g/work/src/github.com/rook/rook/images/base'
-make[1]: Entering directory '/vagrant_drive_g/work/src/github.com/rook/rook/images/cross-gnu'
+make[2]: Leaving directory '/windows10_drive_g/work/src/github.com/rook/rook/images/base'
+make[1]: Leaving directory '/windows10_drive_g/work/src/github.com/rook/rook/images/base'
+make[1]: Entering directory '/windows10_drive_g/work/src/github.com/rook/rook/images/cross-gnu'
 === docker build build-be9394dd/cross-gnu-amd64
 Sending build context to Docker daemon 13.82 kB
 Step 1/5 : FROM build-be9394dd/base-amd64
@@ -1859,11 +1859,11 @@ Step 5/5 : ENV TERM xterm
  ---> Using cache
  ---> c4a654332a52
 Successfully built c4a654332a52
-make[2]: Entering directory '/vagrant_drive_g/work/src/github.com/rook/rook/images/cross-gnu'
+make[2]: Entering directory '/windows10_drive_g/work/src/github.com/rook/rook/images/cross-gnu'
 === caching image build-be9394dd/cross-gnu-amd64
-make[2]: Leaving directory '/vagrant_drive_g/work/src/github.com/rook/rook/images/cross-gnu'
-make[1]: Leaving directory '/vagrant_drive_g/work/src/github.com/rook/rook/images/cross-gnu'
-make[1]: Entering directory '/vagrant_drive_g/work/src/github.com/rook/rook/images/ceph'
+make[2]: Leaving directory '/windows10_drive_g/work/src/github.com/rook/rook/images/cross-gnu'
+make[1]: Leaving directory '/windows10_drive_g/work/src/github.com/rook/rook/images/cross-gnu'
+make[1]: Entering directory '/windows10_drive_g/work/src/github.com/rook/rook/images/ceph'
 === docker build build-be9394dd/ceph-builder-amd64-tcmalloc-release
 Sending build context to Docker daemon 14.85 kB
 Step 1/16 : FROM build-be9394dd/cross-gnu-amd64
@@ -1915,8 +1915,8 @@ Step 16/16 : CMD /build/build-ceph.sh
  ---> c19572dcbeb0
 Removing intermediate container 6eebe764c7cb
 Successfully built c19572dcbeb0
-make[2]: Entering directory '/vagrant_drive_g/work/src/github.com/rook/rook/images/ceph'
-make[3]: Entering directory '/vagrant_drive_g/work/src/github.com/rook/rook/images/ceph'
+make[2]: Entering directory '/windows10_drive_g/work/src/github.com/rook/rook/images/ceph'
+make[3]: Entering directory '/windows10_drive_g/work/src/github.com/rook/rook/images/ceph'
 === building ceph from build-be9394dd/ceph-builder-amd64-tcmalloc-release
 Scanning dependencies of target civetweb_h
 [  0%] keep civetweb.h up-to-date
@@ -1933,20 +1933,20 @@ make[1]: *** [CMakeFiles/rook.dir/rule] Error 2
 Makefile:225: recipe for target 'rook' failed
 make: *** [rook] Error 2
 make[3]: *** [Makefile:76: ceph] Error 2
-make[3]: Leaving directory '/vagrant_drive_g/work/src/github.com/rook/rook/images/ceph'
+make[3]: Leaving directory '/windows10_drive_g/work/src/github.com/rook/rook/images/ceph'
 make[2]: *** [../image.mk:134: cache.lookup] Error 2
-make[2]: Leaving directory '/vagrant_drive_g/work/src/github.com/rook/rook/images/ceph'
+make[2]: Leaving directory '/windows10_drive_g/work/src/github.com/rook/rook/images/ceph'
 make[1]: *** [Makefile:63: do.build] Error 2
-make[1]: Leaving directory '/vagrant_drive_g/work/src/github.com/rook/rook/images/ceph'
+make[1]: Leaving directory '/windows10_drive_g/work/src/github.com/rook/rook/images/ceph'
 make: *** [Makefile:30: ceph.linux_amd64] Error 2
 ```
 
 Or 
 ```
 [vagrant@localhost rook]$ make V=1 build
-make[1]: Entering directory '/vagrant_drive_g/work/src/github.com/rook/rook'
-make[1]: Leaving directory '/vagrant_drive_g/work/src/github.com/rook/rook'
-make[1]: Entering directory '/vagrant_drive_g/work/src/github.com/rook/rook'
+make[1]: Entering directory '/windows10_drive_g/work/src/github.com/rook/rook'
+make[1]: Leaving directory '/windows10_drive_g/work/src/github.com/rook/rook'
+make[1]: Entering directory '/windows10_drive_g/work/src/github.com/rook/rook'
 === go vet
 /usr/local/go/pkg/tool/linux_amd64/vet -tags  cmd/rook/agent.go cmd/rook/api.go cmd/rook/main.go cmd/rook/mds.go cmd/rook/mgr.go cmd/rook/mon.go cmd/rook/operator.go cmd/rook/osd.go cmd/rook/rgw.go cmd/rook/version.go cmd/rook/mon_test.go
 /usr/local/go/pkg/tool/linux_amd64/vet -tags  cmd/rookctl/main.go
@@ -2016,21 +2016,21 @@ make[1]: Entering directory '/vagrant_drive_g/work/src/github.com/rook/rook'
 /usr/local/go/pkg/tool/linux_amd64/vet -tags  pkg/util/sys/device.go pkg/util/sys/kmod.go pkg/util/sys/log.go pkg/util/sys/parse.go pkg/util/sys/device_test.go pkg/util/sys/parse_test.go
 /usr/local/go/pkg/tool/linux_amd64/vet -tags  pkg/version/version.go
 /usr/local/go/pkg/tool/linux_amd64/vet -tags  tests/integration/base_block_test.go tests/integration/base_deploy_test.go tests/integration/base_file_test.go tests/integration/base_object_test.go tests/integration/block_createBlock_api_test.go tests/integration/block_createBlock_k8s_test.go tests/integration/helm_test.go tests/integration/mon_test.go tests/integration/multi_cluster_deploy_test.go tests/integration/pool_test.go tests/integration/smoke_test.go
-make[1]: Leaving directory '/vagrant_drive_g/work/src/github.com/rook/rook'
-make[1]: Entering directory '/vagrant_drive_g/work/src/github.com/rook/rook'
+make[1]: Leaving directory '/windows10_drive_g/work/src/github.com/rook/rook'
+make[1]: Entering directory '/windows10_drive_g/work/src/github.com/rook/rook'
 === go build linux_amd64
 WORK=/tmp/go-build347445997
 github.com/rook/rook/cmd/rookctl
 mkdir -p $WORK/github.com/rook/rook/cmd/rookctl/_obj/
 mkdir -p $WORK/github.com/rook/rook/cmd/rookctl/_obj/exe/
-cd /vagrant_drive_g/work/src/github.com/rook/rook/cmd/rookctl
-/usr/local/go/pkg/tool/linux_amd64/compile -o $WORK/github.com/rook/rook/cmd/rookctl.a -trimpath $WORK -goversion go1.9.2 -p main -complete -installsuffix static -buildid f6354b09596f83afa94584fa5609c39975903192 -D _/vagrant_drive_g/work/src/github.com/rook/rook/cmd/rookctl -I $WORK -I /vagrant_drive_g/work/src/github.com/rook/rook/.work/pkg/linux_amd64_static -pack ./main.go
+cd /windows10_drive_g/work/src/github.com/rook/rook/cmd/rookctl
+/usr/local/go/pkg/tool/linux_amd64/compile -o $WORK/github.com/rook/rook/cmd/rookctl.a -trimpath $WORK -goversion go1.9.2 -p main -complete -installsuffix static -buildid f6354b09596f83afa94584fa5609c39975903192 -D _/windows10_drive_g/work/src/github.com/rook/rook/cmd/rookctl -I $WORK -I /windows10_drive_g/work/src/github.com/rook/rook/.work/pkg/linux_amd64_static -pack ./main.go
 cd .
-/usr/local/go/pkg/tool/linux_amd64/link -o $WORK/github.com/rook/rook/cmd/rookctl/_obj/exe/a.out -L $WORK -L /vagrant_drive_g/work/src/github.com/rook/rook/.work/pkg/linux_amd64_static -installsuffix static -extld=gcc -buildmode=exe -buildid=f6354b09596f83afa94584fa5609c39975903192 -v -n -s -w -X github.com/rook/rook/pkg/version.Version=v0.6.0-86.g1c27ae5.dirty $WORK/github.com/rook/rook/cmd/rookctl.a
+/usr/local/go/pkg/tool/linux_amd64/link -o $WORK/github.com/rook/rook/cmd/rookctl/_obj/exe/a.out -L $WORK -L /windows10_drive_g/work/src/github.com/rook/rook/.work/pkg/linux_amd64_static -installsuffix static -extld=gcc -buildmode=exe -buildid=f6354b09596f83afa94584fa5609c39975903192 -v -n -s -w -X github.com/rook/rook/pkg/version.Version=v0.6.0-86.g1c27ae5.dirty $WORK/github.com/rook/rook/cmd/rookctl.a
 # github.com/rook/rook/cmd/rookctl
 HEADER = -H4 -T0x401000 -D0x0 -R0x1000
 searching for runtime.a in $WORK/runtime.a
-searching for runtime.a in /vagrant_drive_g/work/src/github.com/rook/rook/.work/pkg/linux_amd64_static/runtime.a
+searching for runtime.a in /windows10_drive_g/work/src/github.com/rook/rook/.work/pkg/linux_amd64_static/runtime.a
  0.00 deadcode
  0.07 pclntab=2967785 bytes, funcdata total 515575 bytes
  0.08 dodata
@@ -2043,20 +2043,20 @@ searching for runtime.a in /vagrant_drive_g/work/src/github.com/rook/rook/.work/
  0.17 cpu time
 172216 symbols
 300648 liveness data
-mkdir -p /vagrant_drive_g/work/src/github.com/rook/rook/_output/bin/linux_amd64/
-cp $WORK/github.com/rook/rook/cmd/rookctl/_obj/exe/a.out /vagrant_drive_g/work/src/github.com/rook/rook/_output/bin/linux_amd64/rookctl
+mkdir -p /windows10_drive_g/work/src/github.com/rook/rook/_output/bin/linux_amd64/
+cp $WORK/github.com/rook/rook/cmd/rookctl/_obj/exe/a.out /windows10_drive_g/work/src/github.com/rook/rook/_output/bin/linux_amd64/rookctl
 WORK=/tmp/go-build197029419
 github.com/rook/rook/cmd/rook
 mkdir -p $WORK/github.com/rook/rook/cmd/rook/_obj/
 mkdir -p $WORK/github.com/rook/rook/cmd/rook/_obj/exe/
-cd /vagrant_drive_g/work/src/github.com/rook/rook/cmd/rook
-/usr/local/go/pkg/tool/linux_amd64/compile -o $WORK/github.com/rook/rook/cmd/rook.a -trimpath $WORK -goversion go1.9.2 -p main -complete -installsuffix static -buildid 611a2e3a7bd98d5a558b67e7225ac4f0693b6e71 -importmap github.com/coreos/pkg/capnslog=github.com/rook/rook/vendor/github.com/coreos/pkg/capnslog -importmap github.com/go-ini/ini=github.com/rook/rook/vendor/github.com/go-ini/ini -importmap github.com/spf13/cobra=github.com/rook/rook/vendor/github.com/spf13/cobra -importmap github.com/spf13/pflag=github.com/rook/rook/vendor/github.com/spf13/pflag -importmap k8s.io/apiextensions-apiserver/pkg/client/clientset/clientset=github.com/rook/rook/vendor/k8s.io/apiextensions-apiserver/pkg/client/clientset/clientset -importmap k8s.io/client-go/kubernetes=github.com/rook/rook/vendor/k8s.io/client-go/kubernetes -importmap k8s.io/client-go/rest=github.com/rook/rook/vendor/k8s.io/client-go/rest -D _/vagrant_drive_g/work/src/github.com/rook/rook/cmd/rook -I $WORK -I /vagrant_drive_g/work/src/github.com/rook/rook/.work/pkg/linux_amd64_static -pack ./agent.go ./api.go ./main.go ./mds.go ./mgr.go ./mon.go ./operator.go ./osd.go ./rgw.go ./version.go
+cd /windows10_drive_g/work/src/github.com/rook/rook/cmd/rook
+/usr/local/go/pkg/tool/linux_amd64/compile -o $WORK/github.com/rook/rook/cmd/rook.a -trimpath $WORK -goversion go1.9.2 -p main -complete -installsuffix static -buildid 611a2e3a7bd98d5a558b67e7225ac4f0693b6e71 -importmap github.com/coreos/pkg/capnslog=github.com/rook/rook/vendor/github.com/coreos/pkg/capnslog -importmap github.com/go-ini/ini=github.com/rook/rook/vendor/github.com/go-ini/ini -importmap github.com/spf13/cobra=github.com/rook/rook/vendor/github.com/spf13/cobra -importmap github.com/spf13/pflag=github.com/rook/rook/vendor/github.com/spf13/pflag -importmap k8s.io/apiextensions-apiserver/pkg/client/clientset/clientset=github.com/rook/rook/vendor/k8s.io/apiextensions-apiserver/pkg/client/clientset/clientset -importmap k8s.io/client-go/kubernetes=github.com/rook/rook/vendor/k8s.io/client-go/kubernetes -importmap k8s.io/client-go/rest=github.com/rook/rook/vendor/k8s.io/client-go/rest -D _/windows10_drive_g/work/src/github.com/rook/rook/cmd/rook -I $WORK -I /windows10_drive_g/work/src/github.com/rook/rook/.work/pkg/linux_amd64_static -pack ./agent.go ./api.go ./main.go ./mds.go ./mgr.go ./mon.go ./operator.go ./osd.go ./rgw.go ./version.go
 cd .
-/usr/local/go/pkg/tool/linux_amd64/link -o $WORK/github.com/rook/rook/cmd/rook/_obj/exe/a.out -L $WORK -L /vagrant_drive_g/work/src/github.com/rook/rook/.work/pkg/linux_amd64_static -installsuffix static -extld=gcc -buildmode=exe -buildid=611a2e3a7bd98d5a558b67e7225ac4f0693b6e71 -v -n -s -w -X github.com/rook/rook/pkg/version.Version=v0.6.0-86.g1c27ae5.dirty $WORK/github.com/rook/rook/cmd/rook.a
+/usr/local/go/pkg/tool/linux_amd64/link -o $WORK/github.com/rook/rook/cmd/rook/_obj/exe/a.out -L $WORK -L /windows10_drive_g/work/src/github.com/rook/rook/.work/pkg/linux_amd64_static -installsuffix static -extld=gcc -buildmode=exe -buildid=611a2e3a7bd98d5a558b67e7225ac4f0693b6e71 -v -n -s -w -X github.com/rook/rook/pkg/version.Version=v0.6.0-86.g1c27ae5.dirty $WORK/github.com/rook/rook/cmd/rook.a
 # github.com/rook/rook/cmd/rook
 HEADER = -H4 -T0x401000 -D0x0 -R0x1000
 searching for runtime.a in $WORK/runtime.a
-searching for runtime.a in /vagrant_drive_g/work/src/github.com/rook/rook/.work/pkg/linux_amd64_static/runtime.a
+searching for runtime.a in /windows10_drive_g/work/src/github.com/rook/rook/.work/pkg/linux_amd64_static/runtime.a
  0.00 deadcode
  0.14 pclntab=6903753 bytes, funcdata total 1210944 bytes
  0.16 dodata
@@ -2069,20 +2069,20 @@ searching for runtime.a in /vagrant_drive_g/work/src/github.com/rook/rook/.work/
  0.32 cpu time
 312601 symbols
 652820 liveness data
-mkdir -p /vagrant_drive_g/work/src/github.com/rook/rook/_output/bin/linux_amd64/
-cp $WORK/github.com/rook/rook/cmd/rook/_obj/exe/a.out /vagrant_drive_g/work/src/github.com/rook/rook/_output/bin/linux_amd64/rook
+mkdir -p /windows10_drive_g/work/src/github.com/rook/rook/_output/bin/linux_amd64/
+cp $WORK/github.com/rook/rook/cmd/rook/_obj/exe/a.out /windows10_drive_g/work/src/github.com/rook/rook/_output/bin/linux_amd64/rook
 WORK=/tmp/go-build240532014
 github.com/rook/rook/cmd/rookflex
 mkdir -p $WORK/github.com/rook/rook/cmd/rookflex/_obj/
 mkdir -p $WORK/github.com/rook/rook/cmd/rookflex/_obj/exe/
-cd /vagrant_drive_g/work/src/github.com/rook/rook/cmd/rookflex
-/usr/local/go/pkg/tool/linux_amd64/compile -o $WORK/github.com/rook/rook/cmd/rookflex.a -trimpath $WORK -goversion go1.9.2 -p main -complete -installsuffix static -buildid d62fd78731a3d1dad081b2264f84b637a8503909 -D _/vagrant_drive_g/work/src/github.com/rook/rook/cmd/rookflex -I $WORK -I /vagrant_drive_g/work/src/github.com/rook/rook/.work/pkg/linux_amd64_static -pack ./main.go
+cd /windows10_drive_g/work/src/github.com/rook/rook/cmd/rookflex
+/usr/local/go/pkg/tool/linux_amd64/compile -o $WORK/github.com/rook/rook/cmd/rookflex.a -trimpath $WORK -goversion go1.9.2 -p main -complete -installsuffix static -buildid d62fd78731a3d1dad081b2264f84b637a8503909 -D _/windows10_drive_g/work/src/github.com/rook/rook/cmd/rookflex -I $WORK -I /windows10_drive_g/work/src/github.com/rook/rook/.work/pkg/linux_amd64_static -pack ./main.go
 cd .
-/usr/local/go/pkg/tool/linux_amd64/link -o $WORK/github.com/rook/rook/cmd/rookflex/_obj/exe/a.out -L $WORK -L /vagrant_drive_g/work/src/github.com/rook/rook/.work/pkg/linux_amd64_static -installsuffix static -extld=gcc -buildmode=exe -buildid=d62fd78731a3d1dad081b2264f84b637a8503909 -v -n -s -w -X github.com/rook/rook/pkg/version.Version=v0.6.0-86.g1c27ae5.dirty $WORK/github.com/rook/rook/cmd/rookflex.a
+/usr/local/go/pkg/tool/linux_amd64/link -o $WORK/github.com/rook/rook/cmd/rookflex/_obj/exe/a.out -L $WORK -L /windows10_drive_g/work/src/github.com/rook/rook/.work/pkg/linux_amd64_static -installsuffix static -extld=gcc -buildmode=exe -buildid=d62fd78731a3d1dad081b2264f84b637a8503909 -v -n -s -w -X github.com/rook/rook/pkg/version.Version=v0.6.0-86.g1c27ae5.dirty $WORK/github.com/rook/rook/cmd/rookflex.a
 # github.com/rook/rook/cmd/rookflex
 HEADER = -H4 -T0x401000 -D0x0 -R0x1000
 searching for runtime.a in $WORK/runtime.a
-searching for runtime.a in /vagrant_drive_g/work/src/github.com/rook/rook/.work/pkg/linux_amd64_static/runtime.a
+searching for runtime.a in /windows10_drive_g/work/src/github.com/rook/rook/.work/pkg/linux_amd64_static/runtime.a
  0.00 deadcode
  0.13 pclntab=6005816 bytes, funcdata total 1046956 bytes
  0.15 dodata
@@ -2095,26 +2095,26 @@ searching for runtime.a in /vagrant_drive_g/work/src/github.com/rook/rook/.work/
  0.26 cpu time
 307474 symbols
 552852 liveness data
-mkdir -p /vagrant_drive_g/work/src/github.com/rook/rook/_output/bin/linux_amd64/
-cp $WORK/github.com/rook/rook/cmd/rookflex/_obj/exe/a.out /vagrant_drive_g/work/src/github.com/rook/rook/_output/bin/linux_amd64/rookflex
+mkdir -p /windows10_drive_g/work/src/github.com/rook/rook/_output/bin/linux_amd64/
+cp $WORK/github.com/rook/rook/cmd/rookflex/_obj/exe/a.out /windows10_drive_g/work/src/github.com/rook/rook/_output/bin/linux_amd64/rookflex
 WORK=/tmp/go-build664582842
 WORK=/tmp/go-build992226513
 mkdir -p $WORK/github.com/rook/rook/tests/integration/_test/github.com/rook/rook/tests/
 github.com/rook/rook/tests/integration
 mkdir -p $WORK/github.com/rook/rook/tests/integration/_test/_obj_test/
-cd /vagrant_drive_g/work/src/github.com/rook/rook/tests/integration
-/usr/local/go/pkg/tool/linux_amd64/compile -o $WORK/github.com/rook/rook/tests/integration/_test/github.com/rook/rook/tests/integration.a -trimpath $WORK -goversion go1.9.2 -p github.com/rook/rook/tests/integration -complete -installsuffix static -buildid 759ee2c7d018c8ef170bbfcb8c761af1acc8ee10 -importmap github.com/coreos/pkg/capnslog=github.com/rook/rook/vendor/github.com/coreos/pkg/capnslog -importmap github.com/stretchr/testify/assert=github.com/rook/rook/vendor/github.com/stretchr/testify/assert -importmap github.com/stretchr/testify/require=github.com/rook/rook/vendor/github.com/stretchr/testify/require -importmap github.com/stretchr/testify/suite=github.com/rook/rook/vendor/github.com/stretchr/testify/suite -importmap k8s.io/api/core/v1=github.com/rook/rook/vendor/k8s.io/api/core/v1 -importmap k8s.io/apimachinery/pkg/apis/meta/v1=github.com/rook/rook/vendor/k8s.io/apimachinery/pkg/apis/meta/v1 -D _/vagrant_drive_g/work/src/github.com/rook/rook/tests/integration -I $WORK -I /vagrant_drive_g/work/src/github.com/rook/rook/.work/pkg/linux_amd64_static -pack ./base_block_test.go ./base_deploy_test.go ./base_file_test.go ./base_object_test.go ./block_createBlock_api_test.go ./block_createBlock_k8s_test.go ./helm_test.go ./mon_test.go ./multi_cluster_deploy_test.go ./pool_test.go ./smoke_test.go
+cd /windows10_drive_g/work/src/github.com/rook/rook/tests/integration
+/usr/local/go/pkg/tool/linux_amd64/compile -o $WORK/github.com/rook/rook/tests/integration/_test/github.com/rook/rook/tests/integration.a -trimpath $WORK -goversion go1.9.2 -p github.com/rook/rook/tests/integration -complete -installsuffix static -buildid 759ee2c7d018c8ef170bbfcb8c761af1acc8ee10 -importmap github.com/coreos/pkg/capnslog=github.com/rook/rook/vendor/github.com/coreos/pkg/capnslog -importmap github.com/stretchr/testify/assert=github.com/rook/rook/vendor/github.com/stretchr/testify/assert -importmap github.com/stretchr/testify/require=github.com/rook/rook/vendor/github.com/stretchr/testify/require -importmap github.com/stretchr/testify/suite=github.com/rook/rook/vendor/github.com/stretchr/testify/suite -importmap k8s.io/api/core/v1=github.com/rook/rook/vendor/k8s.io/api/core/v1 -importmap k8s.io/apimachinery/pkg/apis/meta/v1=github.com/rook/rook/vendor/k8s.io/apimachinery/pkg/apis/meta/v1 -D _/windows10_drive_g/work/src/github.com/rook/rook/tests/integration -I $WORK -I /windows10_drive_g/work/src/github.com/rook/rook/.work/pkg/linux_amd64_static -pack ./base_block_test.go ./base_deploy_test.go ./base_file_test.go ./base_object_test.go ./block_createBlock_api_test.go ./block_createBlock_k8s_test.go ./helm_test.go ./mon_test.go ./multi_cluster_deploy_test.go ./pool_test.go ./smoke_test.go
 testmain
 mkdir -p $WORK/github.com/rook/rook/tests/integration/_test/
 cd $WORK/github.com/rook/rook/tests/integration/_test
-/usr/local/go/pkg/tool/linux_amd64/compile -o ./main.a -trimpath $WORK -goversion go1.9.2 -p main -complete -installsuffix static -D "" -I . -I $WORK -I /vagrant_drive_g/work/src/github.com/rook/rook/.work/pkg/linux_amd64_static -pack ./_testmain.go
+/usr/local/go/pkg/tool/linux_amd64/compile -o ./main.a -trimpath $WORK -goversion go1.9.2 -p main -complete -installsuffix static -D "" -I . -I $WORK -I /windows10_drive_g/work/src/github.com/rook/rook/.work/pkg/linux_amd64_static -pack ./_testmain.go
 cd .
-/usr/local/go/pkg/tool/linux_amd64/link -o $WORK/github.com/rook/rook/tests/integration/_test/integration.test -L $WORK/github.com/rook/rook/tests/integration/_test -L $WORK -L /vagrant_drive_g/work/src/github.com/rook/rook/.work/pkg/linux_amd64_static -installsuffix static -extld=gcc -buildmode=exe -v -n -s -w -X github.com/rook/rook/pkg/version.Version=v0.6.0-86.g1c27ae5.dirty $WORK/github.com/rook/rook/tests/integration/_test/main.a
+/usr/local/go/pkg/tool/linux_amd64/link -o $WORK/github.com/rook/rook/tests/integration/_test/integration.test -L $WORK/github.com/rook/rook/tests/integration/_test -L $WORK -L /windows10_drive_g/work/src/github.com/rook/rook/.work/pkg/linux_amd64_static -installsuffix static -extld=gcc -buildmode=exe -v -n -s -w -X github.com/rook/rook/pkg/version.Version=v0.6.0-86.g1c27ae5.dirty $WORK/github.com/rook/rook/tests/integration/_test/main.a
 # testmain
 HEADER = -H4 -T0x401000 -D0x0 -R0x1000
 searching for runtime.a in $WORK/github.com/rook/rook/tests/integration/_test/runtime.a
 searching for runtime.a in $WORK/runtime.a
-searching for runtime.a in /vagrant_drive_g/work/src/github.com/rook/rook/.work/pkg/linux_amd64_static/runtime.a
+searching for runtime.a in /windows10_drive_g/work/src/github.com/rook/rook/.work/pkg/linux_amd64_static/runtime.a
  0.00 deadcode
  0.39 pclntab=6941320 bytes, funcdata total 1325065 bytes
  0.41 dodata
@@ -2127,26 +2127,26 @@ searching for runtime.a in /vagrant_drive_g/work/src/github.com/rook/rook/.work/
  0.54 cpu time
 313415 symbols
 786264 liveness data
-mkdir -p /vagrant_drive_g/work/src/github.com/rook/rook/_output/tests/linux_amd64/
-cp $WORK/github.com/rook/rook/tests/integration/_test/integration.test /vagrant_drive_g/work/src/github.com/rook/rook/_output/tests/linux_amd64/integration
+mkdir -p /windows10_drive_g/work/src/github.com/rook/rook/_output/tests/linux_amd64/
+cp $WORK/github.com/rook/rook/tests/integration/_test/integration.test /windows10_drive_g/work/src/github.com/rook/rook/_output/tests/linux_amd64/integration
 WORK=/tmp/go-build477059898
 WORK=/tmp/go-build025668945
 mkdir -p $WORK/github.com/rook/rook/tests/longhaul/_test/github.com/rook/rook/tests/
 github.com/rook/rook/tests/longhaul
 mkdir -p $WORK/github.com/rook/rook/tests/longhaul/_test/_obj_test/
-cd /vagrant_drive_g/work/src/github.com/rook/rook/tests/longhaul
-/usr/local/go/pkg/tool/linux_amd64/compile -o $WORK/github.com/rook/rook/tests/longhaul/_test/github.com/rook/rook/tests/longhaul.a -trimpath $WORK -goversion go1.9.2 -p github.com/rook/rook/tests/longhaul -complete -installsuffix static -buildid 759ee2c7d018c8ef170bbfcb8c761af1acc8ee10 -importmap github.com/coreos/pkg/capnslog=github.com/rook/rook/vendor/github.com/coreos/pkg/capnslog -importmap github.com/icrowley/fake=github.com/rook/rook/vendor/github.com/icrowley/fake -importmap github.com/stretchr/testify/assert=github.com/rook/rook/vendor/github.com/stretchr/testify/assert -importmap github.com/stretchr/testify/require=github.com/rook/rook/vendor/github.com/stretchr/testify/require -importmap github.com/stretchr/testify/suite=github.com/rook/rook/vendor/github.com/stretchr/testify/suite -importmap k8s.io/apimachinery/pkg/apis/meta/v1=github.com/rook/rook/vendor/k8s.io/apimachinery/pkg/apis/meta/v1 -D _/vagrant_drive_g/work/src/github.com/rook/rook/tests/longhaul -I $WORK -I /vagrant_drive_g/work/src/github.com/rook/rook/.work/pkg/linux_amd64_static -pack ./base_block_test.go ./base_object_test.go ./block_test.go ./block_with_fencing_test.go ./object_test.go
+cd /windows10_drive_g/work/src/github.com/rook/rook/tests/longhaul
+/usr/local/go/pkg/tool/linux_amd64/compile -o $WORK/github.com/rook/rook/tests/longhaul/_test/github.com/rook/rook/tests/longhaul.a -trimpath $WORK -goversion go1.9.2 -p github.com/rook/rook/tests/longhaul -complete -installsuffix static -buildid 759ee2c7d018c8ef170bbfcb8c761af1acc8ee10 -importmap github.com/coreos/pkg/capnslog=github.com/rook/rook/vendor/github.com/coreos/pkg/capnslog -importmap github.com/icrowley/fake=github.com/rook/rook/vendor/github.com/icrowley/fake -importmap github.com/stretchr/testify/assert=github.com/rook/rook/vendor/github.com/stretchr/testify/assert -importmap github.com/stretchr/testify/require=github.com/rook/rook/vendor/github.com/stretchr/testify/require -importmap github.com/stretchr/testify/suite=github.com/rook/rook/vendor/github.com/stretchr/testify/suite -importmap k8s.io/apimachinery/pkg/apis/meta/v1=github.com/rook/rook/vendor/k8s.io/apimachinery/pkg/apis/meta/v1 -D _/windows10_drive_g/work/src/github.com/rook/rook/tests/longhaul -I $WORK -I /windows10_drive_g/work/src/github.com/rook/rook/.work/pkg/linux_amd64_static -pack ./base_block_test.go ./base_object_test.go ./block_test.go ./block_with_fencing_test.go ./object_test.go
 testmain
 mkdir -p $WORK/github.com/rook/rook/tests/longhaul/_test/
 cd $WORK/github.com/rook/rook/tests/longhaul/_test
-/usr/local/go/pkg/tool/linux_amd64/compile -o ./main.a -trimpath $WORK -goversion go1.9.2 -p main -complete -installsuffix static -D "" -I . -I $WORK -I /vagrant_drive_g/work/src/github.com/rook/rook/.work/pkg/linux_amd64_static -pack ./_testmain.go
+/usr/local/go/pkg/tool/linux_amd64/compile -o ./main.a -trimpath $WORK -goversion go1.9.2 -p main -complete -installsuffix static -D "" -I . -I $WORK -I /windows10_drive_g/work/src/github.com/rook/rook/.work/pkg/linux_amd64_static -pack ./_testmain.go
 cd .
-/usr/local/go/pkg/tool/linux_amd64/link -o $WORK/github.com/rook/rook/tests/longhaul/_test/longhaul.test -L $WORK/github.com/rook/rook/tests/longhaul/_test -L $WORK -L /vagrant_drive_g/work/src/github.com/rook/rook/.work/pkg/linux_amd64_static -installsuffix static -extld=gcc -buildmode=exe -v -n -s -w -X github.com/rook/rook/pkg/version.Version=v0.6.0-86.g1c27ae5.dirty $WORK/github.com/rook/rook/tests/longhaul/_test/main.a
+/usr/local/go/pkg/tool/linux_amd64/link -o $WORK/github.com/rook/rook/tests/longhaul/_test/longhaul.test -L $WORK/github.com/rook/rook/tests/longhaul/_test -L $WORK -L /windows10_drive_g/work/src/github.com/rook/rook/.work/pkg/linux_amd64_static -installsuffix static -extld=gcc -buildmode=exe -v -n -s -w -X github.com/rook/rook/pkg/version.Version=v0.6.0-86.g1c27ae5.dirty $WORK/github.com/rook/rook/tests/longhaul/_test/main.a
 # testmain
 HEADER = -H4 -T0x401000 -D0x0 -R0x1000
 searching for runtime.a in $WORK/github.com/rook/rook/tests/longhaul/_test/runtime.a
 searching for runtime.a in $WORK/runtime.a
-searching for runtime.a in /vagrant_drive_g/work/src/github.com/rook/rook/.work/pkg/linux_amd64_static/runtime.a
+searching for runtime.a in /windows10_drive_g/work/src/github.com/rook/rook/.work/pkg/linux_amd64_static/runtime.a
  0.00 deadcode
  0.14 pclntab=6947469 bytes, funcdata total 1320265 bytes
  0.16 dodata
@@ -2159,11 +2159,11 @@ searching for runtime.a in /vagrant_drive_g/work/src/github.com/rook/rook/.work/
  0.29 cpu time
 312035 symbols
 781240 liveness data
-mkdir -p /vagrant_drive_g/work/src/github.com/rook/rook/_output/tests/linux_amd64/
-cp $WORK/github.com/rook/rook/tests/longhaul/_test/longhaul.test /vagrant_drive_g/work/src/github.com/rook/rook/_output/tests/linux_amd64/longhaul
-make[1]: Leaving directory '/vagrant_drive_g/work/src/github.com/rook/rook'
-make[1]: Entering directory '/vagrant_drive_g/work/src/github.com/rook/rook/images'
-make[2]: Entering directory '/vagrant_drive_g/work/src/github.com/rook/rook/images/base'
+mkdir -p /windows10_drive_g/work/src/github.com/rook/rook/_output/tests/linux_amd64/
+cp $WORK/github.com/rook/rook/tests/longhaul/_test/longhaul.test /windows10_drive_g/work/src/github.com/rook/rook/_output/tests/linux_amd64/longhaul
+make[1]: Leaving directory '/windows10_drive_g/work/src/github.com/rook/rook'
+make[1]: Entering directory '/windows10_drive_g/work/src/github.com/rook/rook/images'
+make[2]: Entering directory '/windows10_drive_g/work/src/github.com/rook/rook/images/base'
 === docker build build-be9394dd/rootfs-builder-amd64
 Sending build context to Docker daemon 3.584 kB
 Step 1/3 : FROM ubuntu:zesty
@@ -2179,8 +2179,8 @@ Step 3/3 : RUN tar -czf /usr/share/copyrights.tar.xz /usr/share/doc/*/copyright 
  ---> Using cache
  ---> 8b040d721516
 Successfully built 8b040d721516
-make[3]: Entering directory '/vagrant_drive_g/work/src/github.com/rook/rook/images/base'
-make[3]: Leaving directory '/vagrant_drive_g/work/src/github.com/rook/rook/images/base'
+make[3]: Entering directory '/windows10_drive_g/work/src/github.com/rook/rook/images/base'
+make[3]: Leaving directory '/windows10_drive_g/work/src/github.com/rook/rook/images/base'
 === docker build build-be9394dd/base-amd64
 Sending build context to Docker daemon 3.584 kB
 Step 1/7 : FROM build-be9394dd/rootfs-amd64-8b040d721516
@@ -2191,7 +2191,7 @@ Step 2/7 : RUN HOST_IP=$(route -n | awk '/^0.0.0.0/ {print $2}') &&     echo "#!
 Step 3/7 : ARG ARCH
  ---> Using cache
  ---> cb5e0f44ebbb
-Step 4/7 : ADD http://localhost:48080/vagrant_drive_f/99-mirror/https0x3A0x2F0x2Fgithub.com0x2Fkrallin0x2Ftini0x2Freleases0x2Fdownload/v0.14.0/tini-${ARCH} /tini
+Step 4/7 : ADD http://localhost:48080/windows10_drive_f/99-mirror/https0x3A0x2F0x2Fgithub.com0x2Fkrallin0x2Ftini0x2Freleases0x2Fdownload/v0.14.0/tini-${ARCH} /tini
 Downloading [==================================================>] 19.89 kB/19.89 kB
  ---> Using cache
  ---> 39a370fa6cb6
@@ -2205,13 +2205,13 @@ Step 7/7 : CMD /bin/bash
  ---> Using cache
  ---> bdc3253aab81
 Successfully built bdc3253aab81
-make[3]: Entering directory '/vagrant_drive_g/work/src/github.com/rook/rook/images/base'
+make[3]: Entering directory '/windows10_drive_g/work/src/github.com/rook/rook/images/base'
 === caching image build-be9394dd/base-amd64
 === caching image build-be9394dd/rootfs-builder-amd64
 === caching image build-be9394dd/rootfs-amd64-8b040d721516
-make[3]: Leaving directory '/vagrant_drive_g/work/src/github.com/rook/rook/images/base'
-make[2]: Leaving directory '/vagrant_drive_g/work/src/github.com/rook/rook/images/base'
-make[2]: Entering directory '/vagrant_drive_g/work/src/github.com/rook/rook/images/cross-gnu'
+make[3]: Leaving directory '/windows10_drive_g/work/src/github.com/rook/rook/images/base'
+make[2]: Leaving directory '/windows10_drive_g/work/src/github.com/rook/rook/images/base'
+make[2]: Entering directory '/windows10_drive_g/work/src/github.com/rook/rook/images/cross-gnu'
 === docker build build-be9394dd/cross-gnu-amd64
 Sending build context to Docker daemon 13.82 kB
 Step 1/5 : FROM build-be9394dd/base-amd64
@@ -2229,11 +2229,11 @@ Step 5/5 : ENV TERM xterm
  ---> Using cache
  ---> c4a654332a52
 Successfully built c4a654332a52
-make[3]: Entering directory '/vagrant_drive_g/work/src/github.com/rook/rook/images/cross-gnu'
+make[3]: Entering directory '/windows10_drive_g/work/src/github.com/rook/rook/images/cross-gnu'
 === caching image build-be9394dd/cross-gnu-amd64
-make[3]: Leaving directory '/vagrant_drive_g/work/src/github.com/rook/rook/images/cross-gnu'
-make[2]: Leaving directory '/vagrant_drive_g/work/src/github.com/rook/rook/images/cross-gnu'
-make[2]: Entering directory '/vagrant_drive_g/work/src/github.com/rook/rook/images/ceph'
+make[3]: Leaving directory '/windows10_drive_g/work/src/github.com/rook/rook/images/cross-gnu'
+make[2]: Leaving directory '/windows10_drive_g/work/src/github.com/rook/rook/images/cross-gnu'
+make[2]: Entering directory '/windows10_drive_g/work/src/github.com/rook/rook/images/ceph'
 === docker build build-be9394dd/ceph-builder-amd64-tcmalloc-release
 Sending build context to Docker daemon 14.85 kB
 Step 1/16 : FROM build-be9394dd/cross-gnu-amd64
@@ -2284,8 +2284,8 @@ Step 16/16 : CMD /build/build-ceph.sh
  ---> Using cache
  ---> c19572dcbeb0
 Successfully built c19572dcbeb0
-make[3]: Entering directory '/vagrant_drive_g/work/src/github.com/rook/rook/images/ceph'
-make[4]: Entering directory '/vagrant_drive_g/work/src/github.com/rook/rook/images/ceph'
+make[3]: Entering directory '/windows10_drive_g/work/src/github.com/rook/rook/images/ceph'
+make[4]: Entering directory '/windows10_drive_g/work/src/github.com/rook/rook/images/ceph'
 === building ceph from build-be9394dd/ceph-builder-amd64-tcmalloc-release
 Scanning dependencies of target civetweb_h
 [  0%] keep civetweb.h up-to-date
@@ -2302,13 +2302,13 @@ make[1]: *** [CMakeFiles/rook.dir/rule] Error 2
 Makefile:225: recipe for target 'rook' failed
 make: *** [rook] Error 2
 make[4]: *** [Makefile:76: ceph] Error 2
-make[4]: Leaving directory '/vagrant_drive_g/work/src/github.com/rook/rook/images/ceph'
+make[4]: Leaving directory '/windows10_drive_g/work/src/github.com/rook/rook/images/ceph'
 make[3]: *** [../image.mk:134: cache.lookup] Error 2
-make[3]: Leaving directory '/vagrant_drive_g/work/src/github.com/rook/rook/images/ceph'
+make[3]: Leaving directory '/windows10_drive_g/work/src/github.com/rook/rook/images/ceph'
 make[2]: *** [Makefile:63: do.build] Error 2
-make[2]: Leaving directory '/vagrant_drive_g/work/src/github.com/rook/rook/images/ceph'
+make[2]: Leaving directory '/windows10_drive_g/work/src/github.com/rook/rook/images/ceph'
 make[1]: *** [Makefile:30: ceph.linux_amd64] Error 2
-make[1]: Leaving directory '/vagrant_drive_g/work/src/github.com/rook/rook/images'
+make[1]: Leaving directory '/windows10_drive_g/work/src/github.com/rook/rook/images'
 make: *** [Makefile:114: build] Error 2
 ```
 
@@ -2322,7 +2322,7 @@ Permissive
 Build in docker require more resources, change VM memory size 8192, 2 cores
 ```
 [vagrant@localhost images]$ make V=1 build
-make[1]: Entering directory '/vagrant_drive_g/work/src/github.com/rook/rook/images/base'
+make[1]: Entering directory '/windows10_drive_g/work/src/github.com/rook/rook/images/base'
 === docker build build-be9394dd/rootfs-builder-amd64
 Sending build context to Docker daemon 3.584 kB
 Step 1/3 : FROM ubuntu:zesty
@@ -2338,8 +2338,8 @@ Step 3/3 : RUN tar -czf /usr/share/copyrights.tar.xz /usr/share/doc/*/copyright 
  ---> Using cache
  ---> 8b040d721516
 Successfully built 8b040d721516
-make[2]: Entering directory '/vagrant_drive_g/work/src/github.com/rook/rook/images/base'
-make[2]: Leaving directory '/vagrant_drive_g/work/src/github.com/rook/rook/images/base'
+make[2]: Entering directory '/windows10_drive_g/work/src/github.com/rook/rook/images/base'
+make[2]: Leaving directory '/windows10_drive_g/work/src/github.com/rook/rook/images/base'
 === docker build build-be9394dd/base-amd64
 Sending build context to Docker daemon 3.584 kB
 Step 1/7 : FROM build-be9394dd/rootfs-amd64-8b040d721516
@@ -2350,7 +2350,7 @@ Step 2/7 : RUN HOST_IP=$(route -n | awk '/^0.0.0.0/ {print $2}') &&     echo "#!
 Step 3/7 : ARG ARCH
  ---> Using cache
  ---> cb5e0f44ebbb
-Step 4/7 : ADD http://localhost:48080/vagrant_drive_f/99-mirror/https0x3A0x2F0x2Fgithub.com0x2Fkrallin0x2Ftini0x2Freleases0x2Fdownload/v0.14.0/tini-${ARCH} /tini
+Step 4/7 : ADD http://localhost:48080/windows10_drive_f/99-mirror/https0x3A0x2F0x2Fgithub.com0x2Fkrallin0x2Ftini0x2Freleases0x2Fdownload/v0.14.0/tini-${ARCH} /tini
 Downloading [==================================================>] 19.89 kB/19.89 kB
  ---> Using cache
  ---> 39a370fa6cb6
@@ -2364,13 +2364,13 @@ Step 7/7 : CMD /bin/bash
  ---> Using cache
  ---> bdc3253aab81
 Successfully built bdc3253aab81
-make[2]: Entering directory '/vagrant_drive_g/work/src/github.com/rook/rook/images/base'
+make[2]: Entering directory '/windows10_drive_g/work/src/github.com/rook/rook/images/base'
 === caching image build-be9394dd/base-amd64
 === caching image build-be9394dd/rootfs-builder-amd64
 === caching image build-be9394dd/rootfs-amd64-8b040d721516
-make[2]: Leaving directory '/vagrant_drive_g/work/src/github.com/rook/rook/images/base'
-make[1]: Leaving directory '/vagrant_drive_g/work/src/github.com/rook/rook/images/base'
-make[1]: Entering directory '/vagrant_drive_g/work/src/github.com/rook/rook/images/cross-gnu'
+make[2]: Leaving directory '/windows10_drive_g/work/src/github.com/rook/rook/images/base'
+make[1]: Leaving directory '/windows10_drive_g/work/src/github.com/rook/rook/images/base'
+make[1]: Entering directory '/windows10_drive_g/work/src/github.com/rook/rook/images/cross-gnu'
 === docker build build-be9394dd/cross-gnu-amd64
 Sending build context to Docker daemon 13.82 kB
 Step 1/5 : FROM build-be9394dd/base-amd64
@@ -2388,11 +2388,11 @@ Step 5/5 : ENV TERM xterm
  ---> Using cache
  ---> c4a654332a52
 Successfully built c4a654332a52
-make[2]: Entering directory '/vagrant_drive_g/work/src/github.com/rook/rook/images/cross-gnu'
+make[2]: Entering directory '/windows10_drive_g/work/src/github.com/rook/rook/images/cross-gnu'
 === caching image build-be9394dd/cross-gnu-amd64
-make[2]: Leaving directory '/vagrant_drive_g/work/src/github.com/rook/rook/images/cross-gnu'
-make[1]: Leaving directory '/vagrant_drive_g/work/src/github.com/rook/rook/images/cross-gnu'
-make[1]: Entering directory '/vagrant_drive_g/work/src/github.com/rook/rook/images/ceph'
+make[2]: Leaving directory '/windows10_drive_g/work/src/github.com/rook/rook/images/cross-gnu'
+make[1]: Leaving directory '/windows10_drive_g/work/src/github.com/rook/rook/images/cross-gnu'
+make[1]: Entering directory '/windows10_drive_g/work/src/github.com/rook/rook/images/ceph'
 === docker build build-be9394dd/ceph-builder-amd64-tcmalloc-release
 Sending build context to Docker daemon 14.85 kB
 Step 1/16 : FROM build-be9394dd/cross-gnu-amd64
@@ -2443,8 +2443,8 @@ Step 16/16 : CMD /build/build-ceph.sh
  ---> Using cache
  ---> c19572dcbeb0
 Successfully built c19572dcbeb0
-make[2]: Entering directory '/vagrant_drive_g/work/src/github.com/rook/rook/images/ceph'
-make[3]: Entering directory '/vagrant_drive_g/work/src/github.com/rook/rook/images/ceph'
+make[2]: Entering directory '/windows10_drive_g/work/src/github.com/rook/rook/images/ceph'
+make[3]: Entering directory '/windows10_drive_g/work/src/github.com/rook/rook/images/ceph'
 === building ceph from build-be9394dd/ceph-builder-amd64-tcmalloc-release
 Scanning dependencies of target civetweb_h
 [  0%] keep civetweb.h up-to-date
@@ -2917,18 +2917,18 @@ make[1]: *** [CMakeFiles/rook.dir/rule] Error 2
 Makefile:225: recipe for target 'rook' failed
 make: *** [rook] Error 2
 make[3]: *** [Makefile:76: ceph] Error 2
-make[3]: Leaving directory '/vagrant_drive_g/work/src/github.com/rook/rook/images/ceph'
+make[3]: Leaving directory '/windows10_drive_g/work/src/github.com/rook/rook/images/ceph'
 make[2]: *** [../image.mk:134: cache.lookup] Error 2
-make[2]: Leaving directory '/vagrant_drive_g/work/src/github.com/rook/rook/images/ceph'
+make[2]: Leaving directory '/windows10_drive_g/work/src/github.com/rook/rook/images/ceph'
 make[1]: *** [Makefile:63: do.build] Error 2
-make[1]: Leaving directory '/vagrant_drive_g/work/src/github.com/rook/rook/images/ceph'
+make[1]: Leaving directory '/windows10_drive_g/work/src/github.com/rook/rook/images/ceph'
 make: *** [Makefile:30: ceph.linux_amd64] Error 2
 ```
 
 Success
 ```
 [vagrant@localhost images]$ make V=1 ceph.linux_amd64
-make[1]: Entering directory '/vagrant_drive_g/work/src/github.com/rook/rook/images/base'
+make[1]: Entering directory '/windows10_drive_g/work/src/github.com/rook/rook/images/base'
 === docker build build-be9394dd/rootfs-builder-amd64
 Sending build context to Docker daemon 3.584 kB
 Step 1/3 : FROM ubuntu:zesty
@@ -2944,8 +2944,8 @@ Step 3/3 : RUN tar -czf /usr/share/copyrights.tar.xz /usr/share/doc/*/copyright 
  ---> Using cache
  ---> 8b040d721516
 Successfully built 8b040d721516
-make[2]: Entering directory '/vagrant_drive_g/work/src/github.com/rook/rook/images/base'
-make[2]: Leaving directory '/vagrant_drive_g/work/src/github.com/rook/rook/images/base'
+make[2]: Entering directory '/windows10_drive_g/work/src/github.com/rook/rook/images/base'
+make[2]: Leaving directory '/windows10_drive_g/work/src/github.com/rook/rook/images/base'
 === docker build build-be9394dd/base-amd64
 Sending build context to Docker daemon 3.584 kB
 Step 1/7 : FROM build-be9394dd/rootfs-amd64-8b040d721516
@@ -2956,7 +2956,7 @@ Step 2/7 : RUN HOST_IP=$(route -n | awk '/^0.0.0.0/ {print $2}') &&     echo "#!
 Step 3/7 : ARG ARCH
  ---> Using cache
  ---> cb5e0f44ebbb
-Step 4/7 : ADD http://localhost:48080/vagrant_drive_f/99-mirror/https0x3A0x2F0x2Fgithub.com0x2Fkrallin0x2Ftini0x2Freleases0x2Fdownload/v0.14.0/tini-${ARCH} /tini
+Step 4/7 : ADD http://localhost:48080/windows10_drive_f/99-mirror/https0x3A0x2F0x2Fgithub.com0x2Fkrallin0x2Ftini0x2Freleases0x2Fdownload/v0.14.0/tini-${ARCH} /tini
 Downloading [==================================================>] 19.89 kB/19.89 kB
  ---> Using cache
  ---> 39a370fa6cb6
@@ -2970,13 +2970,13 @@ Step 7/7 : CMD /bin/bash
  ---> Using cache
  ---> bdc3253aab81
 Successfully built bdc3253aab81
-make[2]: Entering directory '/vagrant_drive_g/work/src/github.com/rook/rook/images/base'
+make[2]: Entering directory '/windows10_drive_g/work/src/github.com/rook/rook/images/base'
 === caching image build-be9394dd/base-amd64
 === caching image build-be9394dd/rootfs-builder-amd64
 === caching image build-be9394dd/rootfs-amd64-8b040d721516
-make[2]: Leaving directory '/vagrant_drive_g/work/src/github.com/rook/rook/images/base'
-make[1]: Leaving directory '/vagrant_drive_g/work/src/github.com/rook/rook/images/base'
-make[1]: Entering directory '/vagrant_drive_g/work/src/github.com/rook/rook/images/cross-gnu'
+make[2]: Leaving directory '/windows10_drive_g/work/src/github.com/rook/rook/images/base'
+make[1]: Leaving directory '/windows10_drive_g/work/src/github.com/rook/rook/images/base'
+make[1]: Entering directory '/windows10_drive_g/work/src/github.com/rook/rook/images/cross-gnu'
 === docker build build-be9394dd/cross-gnu-amd64
 Sending build context to Docker daemon 13.82 kB
 Step 1/5 : FROM build-be9394dd/base-amd64
@@ -2994,11 +2994,11 @@ Step 5/5 : ENV TERM xterm
  ---> Using cache
  ---> c4a654332a52
 Successfully built c4a654332a52
-make[2]: Entering directory '/vagrant_drive_g/work/src/github.com/rook/rook/images/cross-gnu'
+make[2]: Entering directory '/windows10_drive_g/work/src/github.com/rook/rook/images/cross-gnu'
 === caching image build-be9394dd/cross-gnu-amd64
-make[2]: Leaving directory '/vagrant_drive_g/work/src/github.com/rook/rook/images/cross-gnu'
-make[1]: Leaving directory '/vagrant_drive_g/work/src/github.com/rook/rook/images/cross-gnu'
-make[1]: Entering directory '/vagrant_drive_g/work/src/github.com/rook/rook/images/ceph'
+make[2]: Leaving directory '/windows10_drive_g/work/src/github.com/rook/rook/images/cross-gnu'
+make[1]: Leaving directory '/windows10_drive_g/work/src/github.com/rook/rook/images/cross-gnu'
+make[1]: Entering directory '/windows10_drive_g/work/src/github.com/rook/rook/images/ceph'
 === docker build build-be9394dd/ceph-builder-amd64-tcmalloc-release
 Sending build context to Docker daemon 14.85 kB
 Step 1/16 : FROM build-be9394dd/cross-gnu-amd64
@@ -3049,8 +3049,8 @@ Step 16/16 : CMD /build/build-ceph.sh
  ---> Using cache
  ---> c19572dcbeb0
 Successfully built c19572dcbeb0
-make[2]: Entering directory '/vagrant_drive_g/work/src/github.com/rook/rook/images/ceph'
-make[3]: Entering directory '/vagrant_drive_g/work/src/github.com/rook/rook/images/ceph'
+make[2]: Entering directory '/windows10_drive_g/work/src/github.com/rook/rook/images/ceph'
+make[3]: Entering directory '/windows10_drive_g/work/src/github.com/rook/rook/images/ceph'
 === building ceph from build-be9394dd/ceph-builder-amd64-tcmalloc-release
 Scanning dependencies of target civetweb_h
 [  0%] keep civetweb.h up-to-date
@@ -6086,18 +6086,18 @@ Step 2/2 : COPY ceph-install.tar /
  ---> 62d5472affcf
 Removing intermediate container 87f4c36a4233
 Successfully built 62d5472affcf
-make[3]: Leaving directory '/vagrant_drive_g/work/src/github.com/rook/rook/images/ceph'
-make[2]: Leaving directory '/vagrant_drive_g/work/src/github.com/rook/rook/images/ceph'
-make[2]: Entering directory '/vagrant_drive_g/work/src/github.com/rook/rook/images/ceph'
+make[3]: Leaving directory '/windows10_drive_g/work/src/github.com/rook/rook/images/ceph'
+make[2]: Leaving directory '/windows10_drive_g/work/src/github.com/rook/rook/images/ceph'
+make[2]: Entering directory '/windows10_drive_g/work/src/github.com/rook/rook/images/ceph'
 === caching image build-be9394dd/ceph-builder-amd64-tcmalloc-release
 === caching image build-be9394dd/ceph-amd64-tcmalloc-release-c19572dcbeb0
-make[2]: Leaving directory '/vagrant_drive_g/work/src/github.com/rook/rook/images/ceph'
-make[1]: Leaving directory '/vagrant_drive_g/work/src/github.com/rook/rook/images/ceph'
+make[2]: Leaving directory '/windows10_drive_g/work/src/github.com/rook/rook/images/ceph'
+make[1]: Leaving directory '/windows10_drive_g/work/src/github.com/rook/rook/images/ceph'
 ```
 
 ```
 [vagrant@localhost images]$ make V=1 rook.linux_amd64
-make[1]: Entering directory '/vagrant_drive_g/work/src/github.com/rook/rook/images/base'
+make[1]: Entering directory '/windows10_drive_g/work/src/github.com/rook/rook/images/base'
 === docker build build-be9394dd/rootfs-builder-amd64
 Sending build context to Docker daemon 3.584 kB
 Step 1/3 : FROM ubuntu:zesty
@@ -6113,8 +6113,8 @@ Step 3/3 : RUN tar -czf /usr/share/copyrights.tar.xz /usr/share/doc/*/copyright 
  ---> Using cache
  ---> 8b040d721516
 Successfully built 8b040d721516
-make[2]: Entering directory '/vagrant_drive_g/work/src/github.com/rook/rook/images/base'
-make[2]: Leaving directory '/vagrant_drive_g/work/src/github.com/rook/rook/images/base'
+make[2]: Entering directory '/windows10_drive_g/work/src/github.com/rook/rook/images/base'
+make[2]: Leaving directory '/windows10_drive_g/work/src/github.com/rook/rook/images/base'
 === docker build build-be9394dd/base-amd64
 Sending build context to Docker daemon 3.584 kB
 Step 1/7 : FROM build-be9394dd/rootfs-amd64-8b040d721516
@@ -6125,7 +6125,7 @@ Step 2/7 : RUN HOST_IP=$(route -n | awk '/^0.0.0.0/ {print $2}') &&     echo "#!
 Step 3/7 : ARG ARCH
  ---> Using cache
  ---> cb5e0f44ebbb
-Step 4/7 : ADD http://localhost:48080/vagrant_drive_f/99-mirror/https0x3A0x2F0x2Fgithub.com0x2Fkrallin0x2Ftini0x2Freleases0x2Fdownload/v0.14.0/tini-${ARCH} /tini
+Step 4/7 : ADD http://localhost:48080/windows10_drive_f/99-mirror/https0x3A0x2F0x2Fgithub.com0x2Fkrallin0x2Ftini0x2Freleases0x2Fdownload/v0.14.0/tini-${ARCH} /tini
 Downloading [==================================================>] 19.89 kB/19.89 kB
  ---> Using cache
  ---> 39a370fa6cb6
@@ -6139,13 +6139,13 @@ Step 7/7 : CMD /bin/bash
  ---> Using cache
  ---> bdc3253aab81
 Successfully built bdc3253aab81
-make[2]: Entering directory '/vagrant_drive_g/work/src/github.com/rook/rook/images/base'
+make[2]: Entering directory '/windows10_drive_g/work/src/github.com/rook/rook/images/base'
 === caching image build-be9394dd/base-amd64
 === caching image build-be9394dd/rootfs-builder-amd64
 === caching image build-be9394dd/rootfs-amd64-8b040d721516
-make[2]: Leaving directory '/vagrant_drive_g/work/src/github.com/rook/rook/images/base'
-make[1]: Leaving directory '/vagrant_drive_g/work/src/github.com/rook/rook/images/base'
-make[1]: Entering directory '/vagrant_drive_g/work/src/github.com/rook/rook/images/cross-gnu'
+make[2]: Leaving directory '/windows10_drive_g/work/src/github.com/rook/rook/images/base'
+make[1]: Leaving directory '/windows10_drive_g/work/src/github.com/rook/rook/images/base'
+make[1]: Entering directory '/windows10_drive_g/work/src/github.com/rook/rook/images/cross-gnu'
 === docker build build-be9394dd/cross-gnu-amd64
 Sending build context to Docker daemon 13.82 kB
 Step 1/5 : FROM build-be9394dd/base-amd64
@@ -6163,11 +6163,11 @@ Step 5/5 : ENV TERM xterm
  ---> Using cache
  ---> c4a654332a52
 Successfully built c4a654332a52
-make[2]: Entering directory '/vagrant_drive_g/work/src/github.com/rook/rook/images/cross-gnu'
+make[2]: Entering directory '/windows10_drive_g/work/src/github.com/rook/rook/images/cross-gnu'
 === caching image build-be9394dd/cross-gnu-amd64
-make[2]: Leaving directory '/vagrant_drive_g/work/src/github.com/rook/rook/images/cross-gnu'
-make[1]: Leaving directory '/vagrant_drive_g/work/src/github.com/rook/rook/images/cross-gnu'
-make[1]: Entering directory '/vagrant_drive_g/work/src/github.com/rook/rook/images/ceph'
+make[2]: Leaving directory '/windows10_drive_g/work/src/github.com/rook/rook/images/cross-gnu'
+make[1]: Leaving directory '/windows10_drive_g/work/src/github.com/rook/rook/images/cross-gnu'
+make[1]: Entering directory '/windows10_drive_g/work/src/github.com/rook/rook/images/ceph'
 === docker build build-be9394dd/ceph-builder-amd64-tcmalloc-release
 Sending build context to Docker daemon 14.85 kB
 Step 1/16 : FROM build-be9394dd/cross-gnu-amd64
@@ -6218,16 +6218,16 @@ Step 16/16 : CMD /build/build-ceph.sh
  ---> Using cache
  ---> c19572dcbeb0
 Successfully built c19572dcbeb0
-make[2]: Entering directory '/vagrant_drive_g/work/src/github.com/rook/rook/images/ceph'
-make[2]: Leaving directory '/vagrant_drive_g/work/src/github.com/rook/rook/images/ceph'
-make[2]: Entering directory '/vagrant_drive_g/work/src/github.com/rook/rook/images/ceph'
+make[2]: Entering directory '/windows10_drive_g/work/src/github.com/rook/rook/images/ceph'
+make[2]: Leaving directory '/windows10_drive_g/work/src/github.com/rook/rook/images/ceph'
+make[2]: Entering directory '/windows10_drive_g/work/src/github.com/rook/rook/images/ceph'
 === caching image build-be9394dd/ceph-builder-amd64-tcmalloc-release
 === caching image build-be9394dd/ceph-amd64-tcmalloc-release-c19572dcbeb0
-make[2]: Leaving directory '/vagrant_drive_g/work/src/github.com/rook/rook/images/ceph'
-make[1]: Leaving directory '/vagrant_drive_g/work/src/github.com/rook/rook/images/ceph'
-make[1]: Entering directory '/vagrant_drive_g/work/src/github.com/rook/rook/images/rook'
+make[2]: Leaving directory '/windows10_drive_g/work/src/github.com/rook/rook/images/ceph'
+make[1]: Leaving directory '/windows10_drive_g/work/src/github.com/rook/rook/images/ceph'
+make[1]: Entering directory '/windows10_drive_g/work/src/github.com/rook/rook/images/rook'
 === building ceph for build-be9394dd/rook-amd64
-make[2]: Entering directory '/vagrant_drive_g/work/src/github.com/rook/rook/images/ceph'
+make[2]: Entering directory '/windows10_drive_g/work/src/github.com/rook/rook/images/ceph'
 === docker build build-be9394dd/ceph-builder-amd64-tcmalloc-release
 Sending build context to Docker daemon 14.85 kB
 Step 1/16 : FROM build-be9394dd/cross-gnu-amd64
@@ -6278,14 +6278,14 @@ Step 16/16 : CMD /build/build-ceph.sh
  ---> Using cache
  ---> c19572dcbeb0
 Successfully built c19572dcbeb0
-make[3]: Entering directory '/vagrant_drive_g/work/src/github.com/rook/rook/images/ceph'
-make[3]: Leaving directory '/vagrant_drive_g/work/src/github.com/rook/rook/images/ceph'
-make[3]: Entering directory '/vagrant_drive_g/work/src/github.com/rook/rook/images/ceph'
+make[3]: Entering directory '/windows10_drive_g/work/src/github.com/rook/rook/images/ceph'
+make[3]: Leaving directory '/windows10_drive_g/work/src/github.com/rook/rook/images/ceph'
+make[3]: Entering directory '/windows10_drive_g/work/src/github.com/rook/rook/images/ceph'
 === caching image build-be9394dd/ceph-builder-amd64-tcmalloc-release
 === caching image build-be9394dd/ceph-amd64-tcmalloc-release-c19572dcbeb0
-make[3]: Leaving directory '/vagrant_drive_g/work/src/github.com/rook/rook/images/ceph'
+make[3]: Leaving directory '/windows10_drive_g/work/src/github.com/rook/rook/images/ceph'
 b4735a060dd672251a033db144c40f58cef343e5f10b5c698da56fdb1f0eaf53
-make[2]: Leaving directory '/vagrant_drive_g/work/src/github.com/rook/rook/images/ceph'
+make[2]: Leaving directory '/windows10_drive_g/work/src/github.com/rook/rook/images/ceph'
 === docker build build-be9394dd/rook-base-amd64
 Sending build context to Docker daemon 156.3 MB
 Step 1/6 : FROM build-be9394dd/base-amd64
@@ -6763,10 +6763,10 @@ Step 4/4 : CMD
 Removing intermediate container 781a50bdbc89
 Successfully built c6801d49dcde
 === saving image build-be9394dd/rook-amd64
-make[2]: Entering directory '/vagrant_drive_g/work/src/github.com/rook/rook/images/rook'
+make[2]: Entering directory '/windows10_drive_g/work/src/github.com/rook/rook/images/rook'
 === caching image build-be9394dd/rook-base-amd64
-make[2]: Leaving directory '/vagrant_drive_g/work/src/github.com/rook/rook/images/rook'
-make[1]: Leaving directory '/vagrant_drive_g/work/src/github.com/rook/rook/images/rook'
+make[2]: Leaving directory '/windows10_drive_g/work/src/github.com/rook/rook/images/rook'
+make[1]: Leaving directory '/windows10_drive_g/work/src/github.com/rook/rook/images/rook'
 ```
 
 Include build for legacy ubuntu
