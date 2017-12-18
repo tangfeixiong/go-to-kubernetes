@@ -2,11 +2,18 @@
 
 ## Table of Contents
 
-[Mirroring Kubernetes repository for CentOS/Fedora](#rpm)
+v1.8.4
 
-[Mirroring Kubernetes repository for Ubuntu/Debian](#deb)
+1. [Mirroring Kubernetes RPM repository for CentOS/Fedora](#rpm)
+1. [Mirroring Kubernetes DEB repository for Ubuntu/Debian](#deb)
 
-## RPM
+v1.9.0
+
+1. [Update RPM repository mirror](#update-rpm-repository-mirror)
+
+## v1.8.4 and earlier
+
+### RPM
 
 gpg
 ```
@@ -256,7 +263,7 @@ pool, for example k8s v1.8.2
 100 15.7M  100 15.7M    0     0  20183      0  0:13:39  0:13:39 --:--:-- 11534
 ```
 
-### Fedora 23
+#### Fedora 23
 
 Online `dnf`
 ```
@@ -470,7 +477,7 @@ optional arguments:
 确定吗？[y/N]： y
 ```
 
-## DEB
+### DEB
 
 gpg
 ```
@@ -671,210 +678,71 @@ pool
 100 18.3M  100 18.3M    0     0  40909      0  0:07:49  0:07:49 --:--:-- 47686
 ```
 
-### Deprecated
+## v1.9.0
 
-Refer to http://linoxide.com/containers/setup-kubernetes-kubeadm-centos/
+### Update RPM repository mirror
+
+update repodata
 ```
-[vagrant@localhost ~]$ sudo vi /etc/yum.repos.d/kubernetes.repo
-
-[vagrant@localhost ~]$ sudo dnf repository-packages kubernetes list
-Kubernetes                                                                                      1.9 kB/s | 3.4 kB     00:01    
-上次元数据过期检查在 0:00:00 前执行于 Thu Dec 29 22:55:09 2016。
-可安装的软件包
-kubeadm.x86_64                                      1.6.0-0.alpha.0.2074.a092d8e0f95f52                               kubernetes
-kubectl.x86_64                                      1.5.1-0                                                           kubernetes
-kubelet.x86_64                                      1.5.1-0                                                           kubernetes
-kubernetes-cni.x86_64                               0.3.0.1-0.07a8a2                                                  kubernetes
-rkt.x86_64                                          1.21.0-1                                                          kubernetes
-
-[vagrant@localhost http%3A%2F%2Fyum.kubernetes.io]$ ./download-el7-pkgs.sh 
-Loaded plugins: fastestmirror, ovl
-Loading mirror speeds from cached hostfile
- * base: mirror.0x.sg
- * extras: mirror.0x.sg
- * updates: mirror.0x.sg
-Error: No package(s) available to install
-[vagrant@localhost http%3A%2F%2Fyum.kubernetes.io]$ vi download-el7-pkgs.sh 
-[vagrant@localhost http%3A%2F%2Fyum.kubernetes.io]$ ./download-el7-pkgs.sh 
-Loaded plugins: fastestmirror, ovl
-Loading mirror speeds from cached hostfile
- * base: mirror.0x.sg
- * extras: mirror.0x.sg
- * updates: mirror.0x.sg
-No package # available.
-Resolving Dependencies
---> Running transaction check
----> Package kubeadm.x86_64 0:1.6.0-0.alpha.0.2074.a092d8e0f95f52 will be installed
----> Package kubectl.x86_64 0:1.5.1-0 will be installed
----> Package kubelet.x86_64 0:1.5.1-0 will be installed
---> Processing Dependency: iptables >= 1.4.21 for package: kubelet-1.5.1-0.x86_64
---> Processing Dependency: socat for package: kubelet-1.5.1-0.x86_64
---> Processing Dependency: iproute for package: kubelet-1.5.1-0.x86_64
---> Processing Dependency: ethtool for package: kubelet-1.5.1-0.x86_64
---> Processing Dependency: ebtables for package: kubelet-1.5.1-0.x86_64
----> Package kubernetes-cni.x86_64 0:0.3.0.1-0.07a8a2 will be installed
----> Package rkt.x86_64 0:1.21.0-1 will be installed
---> Running transaction check
----> Package ebtables.x86_64 0:2.0.10-15.el7 will be installed
----> Package ethtool.x86_64 2:4.5-3.el7 will be installed
----> Package iproute.x86_64 0:3.10.0-74.el7 will be installed
---> Processing Dependency: libmnl.so.0(LIBMNL_1.0)(64bit) for package: iproute-3.10.0-74.el7.x86_64
---> Processing Dependency: libmnl.so.0()(64bit) for package: iproute-3.10.0-74.el7.x86_64
----> Package iptables.x86_64 0:1.4.21-17.el7 will be installed
---> Processing Dependency: libnfnetlink.so.0()(64bit) for package: iptables-1.4.21-17.el7.x86_64
---> Processing Dependency: libnetfilter_conntrack.so.3()(64bit) for package: iptables-1.4.21-17.el7.x86_64
----> Package socat.x86_64 0:1.7.2.2-5.el7 will be installed
---> Running transaction check
----> Package libmnl.x86_64 0:1.0.3-7.el7 will be installed
----> Package libnetfilter_conntrack.x86_64 0:1.0.4-2.el7 will be installed
----> Package libnfnetlink.x86_64 0:1.0.1-4.el7 will be installed
---> Finished Dependency Resolution
-
-Dependencies Resolved
-
-================================================================================================================================
- Package                           Arch              Version                                        Repository             Size
-================================================================================================================================
-Installing:
- kubeadm                           x86_64            1.6.0-0.alpha.0.2074.a092d8e0f95f52            kubernetes            5.8 M
- kubectl                           x86_64            1.5.1-0                                        kubernetes            6.6 M
- kubelet                           x86_64            1.5.1-0                                        kubernetes             12 M
- kubernetes-cni                    x86_64            0.3.0.1-0.07a8a2                               kubernetes            9.8 M
- rkt                               x86_64            1.21.0-1                                       kubernetes             87 M
-Installing for dependencies:
- ebtables                          x86_64            2.0.10-15.el7                                  base                  123 k
- ethtool                           x86_64            2:4.5-3.el7                                    base                  121 k
- iproute                           x86_64            3.10.0-74.el7                                  base                  618 k
- iptables                          x86_64            1.4.21-17.el7                                  base                  426 k
- libmnl                            x86_64            1.0.3-7.el7                                    base                   23 k
- libnetfilter_conntrack            x86_64            1.0.4-2.el7                                    base                   53 k
- libnfnetlink                      x86_64            1.0.1-4.el7                                    base                   26 k
- socat                             x86_64            1.7.2.2-5.el7                                  base                  255 k
-
-Transaction Summary
-================================================================================================================================
-Install  5 Packages (+8 Dependent packages)
-
-Total download size: 123 M
-Installed size: 276 M
-Background downloading packages, then exiting:
-warning: /var/cache/yum/x86_64/7/base/packages/ebtables-2.0.10-15.el7.x86_64.rpm.1.tmp: Header V3 RSA/SHA256 Signature, key ID f4a80eb5: NOKEY
-Public key for ebtables-2.0.10-15.el7.x86_64.rpm.1.tmp is not installed
-(1/13): ebtables-2.0.10-15.el7.x86_64.rpm                                                                | 123 kB  00:00:01     
-(2/13): ethtool-4.5-3.el7.x86_64.rpm                                                                     | 121 kB  00:00:01     
-(3/13): iptables-1.4.21-17.el7.x86_64.rpm                                                                | 426 kB  00:00:02     
-(4/13): iproute-3.10.0-74.el7.x86_64.rpm                                                                 | 618 kB  00:00:04     
-(5/13): 93af9d0fbd67365fa5bf3f85e3d36060138a62ab77e133e35f6cadc1fdc15299-kubectl-1.5.1-0.x86_64.rpm      | 6.6 MB  00:00:08     
-(6/13): 8a299eb1db946b2bdf01c5d5c58ef959e7a9d9a0dd706e570028ebb14d48c42e-kubelet-1.5.1-0.x86_64.rpm      |  12 MB  00:00:17     
-(7/13): libmnl-1.0.3-7.el7.x86_64.rpm                                                                    |  23 kB  00:00:00     
-(8/13): libnfnetlink-1.0.1-4.el7.x86_64.rpm                                                              |  26 kB  00:00:00     
-(9/13): libnetfilter_conntrack-1.0.4-2.el7.x86_64.rpm                                                    |  53 kB  00:00:00     
-(10/13): 5612db97409141d7fd839e734d9ad3864dcc16a630b2a91c312589a0a0d960d0-kubeadm-1.6.0-0.alpha.0.2074.a | 5.8 MB  00:00:37     
-(11/13): socat-1.7.2.2-5.el7.x86_64.rpm                                                                  | 255 kB  00:00:03     
-(12/13): 567600102f687e0f27bd1fd3d8211ec1cb12e71742221526bb4e14a412f4fdb5-kubernetes-cni-0.3.0.1-0.07a8a | 9.8 MB  00:00:40     
-(13/13): efd51c756948693d0c7334edfd01e77cc875aa471e46d2d1800429427bfbbde1-rkt-1.21.0-1.x86_64.rpm        |  87 MB  00:01:45     
---------------------------------------------------------------------------------------------------------------------------------
-Total                                                                                           882 kB/s | 123 MB  00:02:23     
-exiting because "Download Only" specified
-
-[vagrant@localhost http%3A%2F%2Fyum.kubernetes.io]$ ./download-el7-pkgs.sh 
+[vagrant@kubedev-172-17-4-59 https0x3A0x2F0x2Fkubernetes.io0x2Fdocs0x2Fsetup0x2Findependent0x2Finstall-kubeadm]$ ./yum-repos-el7-curl.sh 
   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
                                  Dload  Upload   Total   Spent    Left  Speed
-100   663  100   663    0     0    891      0 --:--:-- --:--:-- --:--:--   891
+100 54792  100 54792    0     0  52435      0  0:00:01  0:00:01 --:--:-- 52482
   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
                                  Dload  Upload   Total   Spent    Left  Speed
-100   975  100   975    0     0    752      0  0:00:01  0:00:01 --:--:--   752
+100  8135  100  8135    0     0   8940      0 --:--:-- --:--:-- --:--:--  8939
   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
                                  Dload  Upload   Total   Spent    Left  Speed
-100   991  100   991    0     0   1167      0 --:--:-- --:--:-- --:--:--  1167
+100  230k  100  230k    0     0   195k      0  0:00:01  0:00:01 --:--:--  195k
   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
                                  Dload  Upload   Total   Spent    Left  Speed
-100  6436  100  6436    0     0   4895      0  0:00:01  0:00:01 --:--:--  4898
+100 15287  100 15287    0     0  14282      0  0:00:01  0:00:01 --:--:-- 14286
   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
                                  Dload  Upload   Total   Spent    Left  Speed
-100  1442  100  1442    0     0   1265      0  0:00:01  0:00:01 --:--:--  1266
+100  254k  100  254k    0     0   209k      0  0:00:01  0:00:01 --:--:--  209k
   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
                                  Dload  Upload   Total   Spent    Left  Speed
-100  7677  100  7677    0     0   6421      0  0:00:01  0:00:01 --:--:--  6418
+100 21173  100 21173    0     0  18724      0  0:00:01  0:00:01 --:--:-- 18737
   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
                                  Dload  Upload   Total   Spent    Left  Speed
-100  1195  100  1195    0     0    925      0  0:00:01  0:00:01 --:--:--   926
+100  1417  100  1417    0     0   1477      0 --:--:-- --:--:-- --:--:--  1477
   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
                                  Dload  Upload   Total   Spent    Left  Speed
-100  8695  100  8695    0     0   7456      0  0:00:01  0:00:01 --:--:--  7463
-  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
-                                 Dload  Upload   Total   Spent    Left  Speed
-100  2074  100  2074    0     0   1693      0  0:00:01  0:00:01 --:--:--  1694
-  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
-                                 Dload  Upload   Total   Spent    Left  Speed
-100  1410  100  1410    0     0   1109      0  0:00:01  0:00:01 --:--:--  1108
-  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
-                                 Dload  Upload   Total   Spent    Left  Speed
-100  1449  100  1449    0     0   1834      0 --:--:-- --:--:-- --:--:--  1836
-Loaded plugins: fastestmirror, ovl
-Loading mirror speeds from cached hostfile
- * base: mirror.0x.sg
- * extras: mirror.0x.sg
- * updates: mirror.0x.sg
-No package ###rkt available.
-Resolving Dependencies
---> Running transaction check
----> Package kubeadm.x86_64 0:1.6.0-0.alpha.0.2074.a092d8e0f95f52 will be installed
----> Package kubectl.x86_64 0:1.5.1-0 will be installed
----> Package kubelet.x86_64 0:1.5.1-0 will be installed
---> Processing Dependency: iptables >= 1.4.21 for package: kubelet-1.5.1-0.x86_64
---> Processing Dependency: socat for package: kubelet-1.5.1-0.x86_64
---> Processing Dependency: iproute for package: kubelet-1.5.1-0.x86_64
---> Processing Dependency: ethtool for package: kubelet-1.5.1-0.x86_64
---> Processing Dependency: ebtables for package: kubelet-1.5.1-0.x86_64
----> Package kubernetes-cni.x86_64 0:0.3.0.1-0.07a8a2 will be installed
---> Running transaction check
----> Package ebtables.x86_64 0:2.0.10-15.el7 will be installed
----> Package ethtool.x86_64 2:4.5-3.el7 will be installed
----> Package iproute.x86_64 0:3.10.0-74.el7 will be installed
---> Processing Dependency: libmnl.so.0(LIBMNL_1.0)(64bit) for package: iproute-3.10.0-74.el7.x86_64
---> Processing Dependency: libmnl.so.0()(64bit) for package: iproute-3.10.0-74.el7.x86_64
----> Package iptables.x86_64 0:1.4.21-17.el7 will be installed
---> Processing Dependency: libnfnetlink.so.0()(64bit) for package: iptables-1.4.21-17.el7.x86_64
---> Processing Dependency: libnetfilter_conntrack.so.3()(64bit) for package: iptables-1.4.21-17.el7.x86_64
----> Package socat.x86_64 0:1.7.2.2-5.el7 will be installed
---> Running transaction check
----> Package libmnl.x86_64 0:1.0.3-7.el7 will be installed
----> Package libnetfilter_conntrack.x86_64 0:1.0.4-2.el7 will be installed
----> Package libnfnetlink.x86_64 0:1.0.1-4.el7 will be installed
---> Finished Dependency Resolution
-
-Dependencies Resolved
-
-================================================================================================================================
- Package                           Arch              Version                                        Repository             Size
-================================================================================================================================
-Installing:
- kubeadm                           x86_64            1.6.0-0.alpha.0.2074.a092d8e0f95f52            kubernetes            5.8 M
- kubectl                           x86_64            1.5.1-0                                        kubernetes            6.6 M
- kubelet                           x86_64            1.5.1-0                                        kubernetes             12 M
- kubernetes-cni                    x86_64            0.3.0.1-0.07a8a2                               kubernetes            9.8 M
-Installing for dependencies:
- ebtables                          x86_64            2.0.10-15.el7                                  base                  123 k
- ethtool                           x86_64            2:4.5-3.el7                                    base                  121 k
- iproute                           x86_64            3.10.0-74.el7                                  base                  618 k
- iptables                          x86_64            1.4.21-17.el7                                  base                  426 k
- libmnl                            x86_64            1.0.3-7.el7                                    base                   23 k
- libnetfilter_conntrack            x86_64            1.0.4-2.el7                                    base                   53 k
- libnfnetlink                      x86_64            1.0.1-4.el7                                    base                   26 k
- socat                             x86_64            1.7.2.2-5.el7                                  base                  255 k
-
-Transaction Summary
-================================================================================================================================
-Install  4 Packages (+8 Dependent packages)
-
-Total size: 36 M
-Installed size: 171 M
-Background downloading packages, then exiting:
-exiting because "Download Only" specified
-[vagrant@localhost http%3A%2F%2Fyum.kubernetes.io]$ ls
-download-el7-pkgs.sh  https%3A%2F%2Fpackages.cloud.google.com%2Fyum  kubernetes-el7-x86_64  kubernetes.repo  README.md
-
-
+100   454  100   454    0     0    502      0 --:--:-- --:--:-- --:--:--   502
 ```
 
+filter
+```
+[vagrant@kubedev-172-17-4-59 https0x3A0x2F0x2Fkubernetes.io0x2Fdocs0x2Fsetup0x2Findependent0x2Finstall-kubeadm]$ samples=9; egrep '^  <location href=".*\.rpm"></location>' https0x3A0x2F0x2Fpackages.cloud.google.com/yum/repos/kubernetes-el7-x86_64/repodata/primary.xml | cut -d '"' -f 2 | awk -v s=$samples '/1\.8\.4/{getline; for (i = 0; i <= s && $1 !~ /1\.5/; i++) {print; getline;}}'
+../../pool/f9a3e9f13f7dacb8a39b90a2331007bebbed4f84643448e83e5c18b3efe3d45b-kubeadm-1.8.5-0.x86_64.rpm
+../../pool/aa9948f82e7af317c97a242f3890985159c09c183b46ac8aab19d2ad307e6970-kubeadm-1.9.0-0.x86_64.rpm
+../../pool/e5c2fec310104577d9746c20b61d078ecf842d34785f615d8a89550a48acc1a8-kubectl-1.8.5-0.x86_64.rpm
+../../pool/bc390a3d43256791bfb844696e7215fd7ad8a09f70a42667dab4997415a6ba75-kubectl-1.9.0-0.x86_64.rpm
+../../pool/d353208063910d0d9a8ff9a3e9bfb0cbee43be501bc4ca16d69223560c4a5cc0-kubelet-1.8.4-1.x86_64.rpm
+../../pool/7330c09dd7dccc300c9c5f696fc4a8a76327e5068e51a60e4517b59a1c4b3dbc-kubelet-1.8.5-0.x86_64.rpm
+../../pool/26944be0d909a90d8ef7559b17a3ce4381821d623314a35eb0c74e62d055d944-kubelet-1.8.5-1.x86_64.rpm
+../../pool/8f507de9e1cc26e5b0043e334e26d62001c171d8e54d839128e9bade25ecda95-kubelet-1.9.0-0.x86_64.rpm
+../../pool/0c923b191423caccc65c550ef07ce61b97f991ad54785dab70dc07a5763f4222-kubernetes-cni-0.3.0.1-0.07a8a2.x86_64.rpm
+../../pool/e7a4403227dd24036f3b0615663a371c4e07a95be5fee53505e647fd8ae58aa6-kubernetes-cni-0.5.1-0.x86_64.rpm
+../../pool/79f9ba89dbe7000e7dfeda9b119f711bb626fe2c2d56abeb35141142cda00342-kubernetes-cni-0.5.1-1.x86_64.rpm
+../../pool/fe33057ffe95bfae65e2f269e1b05e99308853176e24a4d027bc082b471a07c0-kubernetes-cni-0.6.0-0.x86_64.rpm
+../../pool/fd5f5da2d1a262fa687404d34e72813520274364557e648bc64a8136f1a02630-rkt-1.25.0-1.x86_64.rpm
+../../pool/7a382e59dc2c39a66083e03ec061f33771e4a7130c98cd0ef61492b2196c0378-rkt-1.26.0-1.x86_64.rpm
+```
+
+edit yum-pool-curl.sh, then download
+```
+[vagrant@kubedev-172-17-4-59 https0x3A0x2F0x2Fkubernetes.io0x2Fdocs0x2Fsetup0x2Findependent0x2Finstall-kubeadm]$ ./yum-pool-curl.sh 
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100 16.4M  100 16.4M    0     0  1679k      0  0:00:10  0:00:10 --:--:-- 2002k
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100 9092k  100 9092k    0     0  1042k      0  0:00:08  0:00:08 --:--:-- 1454k
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100 16.7M  100 16.7M    0     0  1535k      0  0:00:11  0:00:11 --:--:-- 2694k
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100 8797k  100 8797k    0     0  1126k      0  0:00:07  0:00:07 --:--:-- 1981k
+```

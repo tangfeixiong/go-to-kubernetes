@@ -10,14 +10,6 @@ download_dir="$base_dir/https0x3A0x2F0x2Fpackages.cloud.google.com/yum"
 
 mkdir -p $download_dir/{doc,pool,repos}
 
-### v1.7.4
-pkgs=" \
-    pool/f0a51fcde5e3b329050d7a6cf70f04a6cdf09eacfbad55f4324bfa2ea4312d0e-kubeadm-1.7.4-0.x86_64.rpm \
-    pool/041d5a6813dab590b160865fea7259bc2db762a9667379d03aca8d4596a3cccd-kubectl-1.7.4-0.x86_64.rpm \
-    pool/4f60c17a926175fb9abcfdd487cebafbbbce0e2248d2b99c189ae0877376b88d-kubelet-1.7.4-0.x86_64.rpm \
-"
-
-### v1.7.6
 pkgs=" \
     pool/4ff875dc8857b85c490b42b750527ba20a154a49a8dacd256d16cbbf5e708dfd-kubeadm-1.7.6-1.x86_64.rpm \
     pool/71aa78fc7472de3664511c88f9d58d9a9c6922f26d67323869b5a661b106e0d0-kubectl-1.7.6-1.x86_64.rpm \

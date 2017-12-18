@@ -16,6 +16,10 @@ pkgs=" \
     pool/79f9ba89dbe7000e7dfeda9b119f711bb626fe2c2d56abeb35141142cda00342-kubernetes-cni-0.5.1-1.x86_64.rpm \
 "
 
+### For me, previous pkgs have already download! edit these by yourselves
+
+pkgs="pool/fe33057ffe95bfae65e2f269e1b05e99308853176e24a4d027bc082b471a07c0-kubernetes-cni-0.6.0-0.x86_64.rpm"
+
 for i in $pkgs; do
     curl -jkSL https://packages.cloud.google.com/yum/$i -o $download_dir/$i
 done
