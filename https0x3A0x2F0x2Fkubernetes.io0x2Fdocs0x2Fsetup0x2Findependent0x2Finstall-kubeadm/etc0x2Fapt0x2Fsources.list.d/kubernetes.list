@@ -1,6 +1,11 @@
 ### ubuntu
-#deb [ arch=amd64] http://apt.kubernetes.io/ kubernetes-trusty main
+#deb http://apt.kubernetes.io/ kubernetes-trusty main
 deb http://apt.kubernetes.io/ kubernetes-xenial main
+
+### --- Modify URL and path first ---
+deb [arch=amd64] http://127.0.0.1:48080/https0x3A0x2F0x2Fpackages.cloud.google.com/apt/ kubernetes-xenial main
+
+deb [arch=amd64] file:///Users/fanhongling/Downloads/workspace/src/github.com/tangfeixiong/go-to-kubernetes/https0x3A0x2F0x2Fkubernetes.io0x2Fdocs0x2Fsetup0x2Findependent0x2Finstall-kubeadm/https0x3A0x2F0x2Fpackages.cloud.google.com/apt/ kubernetes-xenial main
 
 ### debian
 #deb http://apt.kubernetes.io/ kubernetes-wheezy main

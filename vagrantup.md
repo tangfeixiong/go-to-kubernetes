@@ -216,7 +216,7 @@ link
 fanhonglingdeMacBook-Pro:~ fanhongling$ ln -s /Applications/VirtualBox.app/Contents/MacOS/VBoxGuestAdditions.iso 
 ```
 
-Mount ISO
+Mount ISO like ![屏幕快照 2017-12-17 上午5.47.12.png](./屏幕快照%202017-12-17%20上午5.47.12.png)
 
 
 Re-enter with Warning
@@ -482,6 +482,16 @@ Failed to set locale, defaulting to C
 ```
 [vagrant@kubedev-172-17-4-59 ~]$ git --version
 git version 2.13.6
+```
+
+change password
+```
+[vagrant@localhost ~]$ passwd    
+Changing password for user vagrant.
+Current password: 
+New password: 
+Retype new password: 
+passwd: all authentication tokens updated successfully.
 ```
 
 ## CentOS 7.4 VirtualBox for Windows 10

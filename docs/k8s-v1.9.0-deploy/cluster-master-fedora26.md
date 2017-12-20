@@ -45,6 +45,32 @@ net.bridge.bridge-nf-call-iptables=1
 net.bridge.bridge-nf-call-iptables = 1
 ```
 
+```
+[vagrant@kubedev-172-17-4-59 ~]$ sudo sysctl net.bridge
+net.bridge.bridge-nf-call-arptables = 0
+net.bridge.bridge-nf-call-ip6tables = 0
+net.bridge.bridge-nf-call-iptables = 1
+net.bridge.bridge-nf-filter-pppoe-tagged = 0
+net.bridge.bridge-nf-filter-vlan-tagged = 0
+net.bridge.bridge-nf-pass-vlan-input-dev = 0
+```
+
+```
+[vagrant@kubedev-172-17-4-59 ~]$ sudo sysctl -w net.bridge.bridge-nf-call-ip6tables=1
+net.bridge.bridge-nf-call-ip6tables = 1
+```
+
+```
+[vagrant@kubedev-172-17-4-59 ~]$ sudo sysctl -w net.bridge.bridge-nf-call-arptables=1
+net.bridge.bridge-nf-call-arptables = 1
+```
+
+```
+[vagrant@kubedev-172-17-4-59 ~]$ echo -e "net.bridge.bridge-nf-call-ip6tables=1\nnet.bridge.bridge-nf-call-arptables=1" | sudo tee -a /etc/sysctl.conf 
+net.bridge.bridge-nf-call-ip6tables=1
+net.bridge.bridge-nf-call-arptables=1
+```
+
 __Issue__
 ```
 [vagrant@kubedev-172-17-4-59 ~]$ sudo kubeadm init --apiserver-advertise-address 10.64.33.59
@@ -216,7 +242,7 @@ I1218 07:15:48.152576       1 main.go:332] Stopping shutdownHandler...
 modify YAML like
 ```
 ubuntu@kubedev-10-64-33-195:~$ egrep 'command: \[' kube-flannel.yaml 
-        command: [ "/opt/bin/flanneld", "--ip-masq", "--kube-subnet-mgr", "--iface=eth1", "--iface=ens0p8", "--iface-regex=10\\.64\\.33\\.[0-9]+" ]
+        command: [ "/opt/bin/flanneld", "--ip-masq", "--kube-subnet-mgr", "--iface=eth1", "--iface=enp0s8", "--iface-regex=10\\.64\\.33\\.[0-9]+" ]
 ```
 
 ```

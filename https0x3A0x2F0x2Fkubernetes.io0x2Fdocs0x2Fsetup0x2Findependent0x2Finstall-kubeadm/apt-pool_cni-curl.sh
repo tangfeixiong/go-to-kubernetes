@@ -15,6 +15,10 @@ pkgs="pool/docker-engine_1.11.2-0~xenial_amd64_5554a8bc383e65fb10d556239c72b2645
     pool/kubernetes-cni_0.5.1-00_amd64_08cbe5c42366ec3184cc91a4353f6e066f2d7325b4db1cb4f87c7dcc8c0eb620.deb \
 "
 
+### For me, previous pkgs have already download, edit by yourselves!
+
+pkgs="pool/kubernetes-cni_0.6.0-00_amd64_43460dd3c97073851f84b32f5e8eebdc84fadedb5d5a00d1fc6872f30a4dd42c.deb"
+
 for i in $pkgs; do
     curl -jkSL https://packages.cloud.google.com/apt/$i -o $download_dir/$i
 done

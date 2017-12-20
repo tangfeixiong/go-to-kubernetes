@@ -1,21 +1,26 @@
 # DevOps
 
 ## Table of contents
-1. Archive of release
-1. Images from archive
-1. Other images from local file server [](./pod-etcd-dns-and-cni-images.md)
-1. Install kubeadm from google repository [](#install-kubeadmin-from-google-repository)
->* Detailed background 
-1. Offline repository [](./kubernetes-offline-repo.md)
+1. Prerequisites
+1. Kuberntes release archive
+   *. kubectl bin
+   *. Images from archive
+1. Other images from local file server
+1. [Install kubeadm from google repository](#install-kubeadmin-from-google-repository)
+   * Detailed background 
+1. [Offline repository](./kubernetes-offline-repo.md)
+1. [kubeadm init - master](./cluster-master-fedora26.md)
+1. [kubeadm join - worker](./cluster-worker-ubuntu16.04.md)
 
 ## Prerequisites
-* [Virtual machine for CentOS 7 or Fedora 26](/vagrantup.md)
-* Docker [for CentOS 7](../docker-for-centos7.md) or [for Fedora 26](../docker-for-fedora26.md)
-* Dockerized [file server for CentOS](../dockerized-file-server-for-centos7.md) or [for Fedora 26](../dockerized-file-server-for-fedora26.md) 
+* [Virtual machine for Fedora 26](../vagrantup.md)
+* Docker [for Fedora 26](../docker-1.13-for-fedora26.md)
+* Dockerized [file server for Fedora 26](../dockerized-file-server.md)
+* Hostname, hosts, SELinux and firewalld [for Fedora26](../host-name-and-security-for-kubernetes.md) 
 
-## Archive of release
+## Kubernetes release archive
 
-Download archive into local file server
+Download archive into local file server serving directory of Fedora 26
 ```
 fanhonglingdeMacBook-Pro:~ fanhongling$ curl -jkSL -c - https://dl.k8s.io/v1.9.0/kubernetes-server-linux-amd64.tar.gz -o ./Downloads/99-mirror/https0x3A0x2F0x2Fdl.k8s.io/kubernetes-server-linux-amd64_1.9.0.tar.gz
   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
@@ -61,7 +66,9 @@ cloud-controller-manager.tar	     kube-apiserver		 kube-controller-manager.tar	 
 hyperkube			     kube-apiserver.docker_tag	 kube-proxy			     kube-scheduler.tar
 ```
 
-Bin path
+### Kubectl bin
+
+path
 ```
 [vagrant@kubedev-172-17-4-59 ~]$ mkdir bin
 ```
@@ -80,7 +87,7 @@ Check version
 Client Version: version.Info{Major:"1", Minor:"9", GitVersion:"v1.9.0", GitCommit:"925c127ec6b946659ad0fd596fa959be43f0cc05", GitTreeState:"clean", BuildDate:"2017-12-15T21:07:38Z", GoVersion:"go1.9.2", Compiler:"gc", Platform:"linux/amd64"}
 ```
 
-## Images from archive
+### Images from archive
 
 Load into Fedora 26
 ```
@@ -120,6 +127,12 @@ gcr.io/google_containers/kube-aggregator            v1.9.0              e08db957
 gcr.io/google_containers/kube-controller-manager    v1.9.0              3bb172f9452c        45 hours ago        138 MB
 gcr.io/google_containers/kube-scheduler             v1.9.0              5ceb21996307        45 hours ago        62.7 MB
 ```
+
+## Other images from local file server
+
+
+refer to [./pod-etcd-dns-and-cni-images.md](./pod-etcd-dns-and-cni-images.md)
+
 
 ## Install kubeadm from google repository
 

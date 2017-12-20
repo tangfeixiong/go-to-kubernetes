@@ -9,20 +9,20 @@ spec:
       labels:
         app: gofileserver
     spec:
-    #  initContainers:
-    #  - name: sidecar
-    #    image: busybox
-    #    command:
-    #    - cp
-    #    args:
-    #    - -rf
-    #    - /tmp/go/bin
-    #    - /mnt
-    #    volumeMounts:
-    #    - name: download-sidecar
-    #      mountPath: /tmp/go
-    #    - name: download-store
-    #      mountPath: /mnt
+      #initContainers:
+      #- name: sidecar
+      #  image: busybox
+      #  command:
+      #  - cp
+      #  args:
+      #  - -rf
+      #  - /tmp/temp/kubeadm*
+      #  - /mnt
+      #  volumeMounts:
+      #  - name: download-sidecar
+      #    mountPath: /tmp/temp
+      #  - name: download-store
+      #    mountPath: /mnt
       containers:
       - name: gofileserver
         image: tangfeixiong/gofileserver
@@ -36,7 +36,7 @@ spec:
       volumes:
         - name: download-sidecar
           hostPath:
-            path: /home/vagrant/go
+            path: /tmp
         - name: download-store
           flexVolume:
             driver: rook.io/rook

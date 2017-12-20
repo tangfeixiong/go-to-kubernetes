@@ -1,4 +1,6 @@
-# Instruction
+# DevOps
+
+Note: about kubernetes repository, refer to https://kubernetes.io/docs/setup/independent/install-kubeadm
 
 ## Table of Contents
 
@@ -10,6 +12,7 @@ v1.8.4
 v1.9.0
 
 1. [Update RPM repository mirror](#update-rpm-repository-mirror)
+1. [Update DEB repository mirror](#update-deb-repository-mirror)
 
 ## v1.8.4 and earlier
 
@@ -730,7 +733,7 @@ filter
 ../../pool/7a382e59dc2c39a66083e03ec061f33771e4a7130c98cd0ef61492b2196c0378-rkt-1.26.0-1.x86_64.rpm
 ```
 
-edit yum-pool-curl.sh, then download
+edit yum-pool-curl.sh then download
 ```
 [vagrant@kubedev-172-17-4-59 https0x3A0x2F0x2Fkubernetes.io0x2Fdocs0x2Fsetup0x2Findependent0x2Finstall-kubeadm]$ ./yum-pool-curl.sh 
   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
@@ -745,4 +748,71 @@ edit yum-pool-curl.sh, then download
   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
                                  Dload  Upload   Total   Spent    Left  Speed
 100 8797k  100 8797k    0     0  1126k      0  0:00:07  0:00:07 --:--:-- 1981k
+```
+
+### Update DEB repository mirror
+
+update dists
+```
+fanhonglingdeMacBook-Pro:https0x3A0x2F0x2Fkubernetes.io0x2Fdocs0x2Fsetup0x2Findependent0x2Finstall-kubeadm fanhongling$ ./apt-dists-curl.sh 
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100  8951  100  8951    0     0   6155      0  0:00:01  0:00:01 --:--:--  6156
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100  8448  100  8448    0     0  11219      0 --:--:-- --:--:-- --:--:-- 11219
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100   454  100   454    0     0    561      0 --:--:-- --:--:-- --:--:--   561
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100 94412  100 94412    0     0  94965      0 --:--:-- --:--:-- --:--:-- 94886
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100 12051  100 12051    0     0  14840      0 --:--:-- --:--:-- --:--:-- 14841
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100   207  100   207    0     0    262      0 --:--:-- --:--:-- --:--:--   262
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100    23  100    23    0     0     27      0 --:--:-- --:--:-- --:--:--    27
+```
+
+Filter
+```
+fanhonglingdeMacBook-Pro:https0x3A0x2F0x2Fkubernetes.io0x2Fdocs0x2Fsetup0x2Findependent0x2Finstall-kubeadm fanhongling$ samples=9; egrep '^Filename: pool/\S+deb' https0x3A0x2F0x2Fpackages.cloud.google.com/apt/dists/kubernetes-xenial/main/binary-amd64/Packages | awk '{print $2}' | awk -v s=$samples '/1\.8\.4/{getline; for (i = 0; i <= s && $1 !~ /1\.5/; i++) {print; getline;}}'
+pool/kubeadm_1.8.5-00_amd64_e6138f65d23ae9f18d3ecbb69d27cc40c30feff200d1652ce7814e365848ad88.deb
+pool/kubeadm_1.9.0-00_amd64_191bd1d8a63d263cdb318f77b03fad6c8387a912cf16a21b9b24d7e9108b4911.deb
+pool/kubectl_1.8.5-00_amd64_b9f161f02571cb379cfc93ed5a95e84b68b259cbc92d2f8291a5be3a6970ae37.deb
+pool/kubectl_1.9.0-00_amd64_8ea712c18d89d56090c8753a9630d22fd8ae5cb03d4ec79a1fe6d262c8b4eb36.deb
+pool/kubelet_1.8.4-01_amd64_e478234f2876b3170efac14ad2eb58893e8dd72fe1a7962575356d2445d8d1b4.deb
+pool/kubelet_1.8.5-00_amd64_19c18818c0a5efc2fdbc86c87407db05d1de403b01a35e3a145b23cf3995ce5c.deb
+pool/kubelet_1.8.5-01_amd64_af944a975e45ee2889cfb6117de955a68f7e8233ab831d073a179eccde1a3298.deb
+pool/kubelet_1.9.0-00_amd64_100df9788226fe76ce828503cf24b8c4c6f9705f15504093844c9138e0b2a97f.deb
+pool/kubernetes-cni_0.3.0.1-07a8a2-00_amd64_9e41a275b2afeb51dcde86b922c056c7b6dc656b54dd66fa2f1a0bb8266e9c22.deb
+pool/kubernetes-cni_0.5.1-00_amd64_08cbe5c42366ec3184cc91a4353f6e066f2d7325b4db1cb4f87c7dcc8c0eb620.deb
+pool/kubernetes-cni_0.6.0-00_amd64_43460dd3c97073851f84b32f5e8eebdc84fadedb5d5a00d1fc6872f30a4dd42c.deb
+pool/rkt_1.25.0-1_amd64_65f4d768116520be6ee5d56ebcdce87b8b39fa2e41345b7c2960a01f91b7c081.deb
+pool/rkt_1.26.0-1_amd64_af62ca3979b90f2fcbe7c48ba782dc1b0c4266832e7544ef4c69ce0a8a7dfa87.deb
+pool/rkt_1.27.0-1_amd64_b4f1d67b835d1f1b0263ddfc3f8df80cd7c9e36ac78d983e12aca5575835e122.deb
+```
+
+edit apt-pool-curl.sh, then download
+```
+fanhonglingdeMacBook-Pro:https0x3A0x2F0x2Fkubernetes.io0x2Fdocs0x2Fsetup0x2Findependent0x2Finstall-kubeadm fanhongling$ ./apt-pool-curl.sh 
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100 19.1M  100 19.1M    0     0   564k      0  0:00:34  0:00:34 --:--:--  956k
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100 10.0M  100 10.0M    0     0   787k      0  0:00:13  0:00:13 --:--:-- 1952k
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100 19.5M  100 19.5M    0     0   903k      0  0:00:22  0:00:22 --:--:-- 1543k
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100 5771k  100 5771k    0     0   587k      0  0:00:09  0:00:09 --:--:--  820k
 ```
