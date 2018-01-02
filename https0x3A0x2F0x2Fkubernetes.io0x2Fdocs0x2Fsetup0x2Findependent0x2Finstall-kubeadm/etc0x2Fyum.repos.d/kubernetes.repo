@@ -11,14 +11,14 @@ gpgkey=https://packages.cloud.google.com/yum/doc/yum-key.gpg
 ### Modify URL first
 [kubernetes-local-http]
 name=Kubernetes offline - file server
-baseurl=http://127.0.0.1:48080/https0x3A0x2F0x2Fpackages.cloud.google.com/yum/
+baseurl=http://127.0.0.1:48080/https0x3A0x2F0x2Fpackages.cloud.google.com/yum/repos/kubernetes-el7-x86_64
 enabled=0
 gpgcheck=0
 
 ### Modify path first
 [kubernetes-local-file]
 name=Kubernetes offline - downloads
-baseurl=file:///Users/fanhongling/Downloads/workspace/src/github.com/tangfeixiong/go-to-kubernetes/https0x3A0x2F0x2Fkubernetes.io0x2Fdocs0x2Fsetup0x2Findependent0x2Finstall-kubeadm/https0x3A0x2F0x2Fpackages.cloud.google.com/yum/
+baseurl=file:///Users/fanhongling/Downloads/workspace/src/github.com/tangfeixiong/go-to-kubernetes/https0x3A0x2F0x2Fkubernetes.io0x2Fdocs0x2Fsetup0x2Findependent0x2Finstall-kubeadm/https0x3A0x2F0x2Fpackages.cloud.google.com/yum/repos/kubernetes-el7-x86_64
 enabled=0
 gpgcheck=0
 

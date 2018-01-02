@@ -1,0 +1,210 @@
+
+# Gopkg.toml example
+#
+# Refer to https://github.com/golang/dep/blob/master/docs/Gopkg.toml.md
+# for detailed Gopkg.toml documentation.
+#
+# required = ["github.com/user/thing/cmd/thing"]
+# ignored = ["github.com/user/project/badpkg*", "..."]
+#
+# [[constraint]]
+#   name = "github.com/user/project"
+#   version = "1.0.0"
+#
+# [[constraint]]
+#   name = "github.com/user/project2"
+#   branch = "dev"
+#   source = "github.com/myfork/project2"
+#
+# [[constraint]]
+#   name = "github.com/user/project3"
+#   revision = "6edfef6a05373df0c92af7e7b42fa5951ce15c67"
+#
+# [[override]]
+#  name = "github.com/x/y"
+#  version = "2.4.0"
+
+required = ["k8s.io/code-generator/cmd/client-gen","github.com/jteeuwen/go-bindata/go-bindata","github.com/onsi/ginkgo/ginkgo"]
+ignored = ["github.com/tangfeixiong/go-to-kubernetes/.vagrant","github.com/tangfeixiong/rook/.work","github.com/rook/rook/Documentation","github.com/rook/rook/_output","github.com/rook/rook/build","github.com/rook/rook/cluster","github.com/rook/rook/images"]
+
+
+[[constraint]]
+  name = "github.com/aws/aws-sdk-go"
+
+[[constraint]]
+  name = "github.com/coreos/pkg"
+
+[[constraint]]
+  name = "github.com/ghodss/yaml"
+
+[[constraint]]
+  name = "github.com/go-ini/ini"
+
+[[constraint]]
+  name = "github.com/go-sql-driver/mysql"
+
+[[constraint]]
+  name = "github.com/google/uuid"
+
+[[constraint]]
+  name = "github.com/gorilla/mux"
+
+[[constraint]]
+  name = "github.com/icrowley/fake"
+
+[[constraint]]
+  name = "github.com/jbw976/go-ps"
+
+[[constraint]]
+  name = "github.com/prometheus/client_golang"
+
+[[constraint]]
+  name = "github.com/spf13/cobra"
+
+[[constraint]]
+  name = "github.com/spf13/pflag"
+
+[[constraint]]
+  name = "github.com/stretchr/testify"
+
+[[constraint]]
+  name = "github.com/rook/operator-kit"
+  branch = "master"
+
+
+[[constraint]]
+  name = "k8s.io/utils"
+
+
+#
+# The Kubernetes related projects below should all be updated as a set
+# as they are versioned together.
+#
+
+[[constraint]]
+  name = "k8s.io/kubernetes"
+  version = "=v1.8.2"
+
+[[constraint]]
+  name = "k8s.io/api"
+  version = "kubernetes-1.8.2"
+
+[[constraint]]
+  name = "k8s.io/apiextensions-apiserver"
+  version = "kubernetes-1.8.2"
+
+[[constraint]]
+  name = "k8s.io/apimachinery"
+  version = "kubernetes-1.8.2"
+
+[[constraint]]
+  name = "k8s.io/apiserver"
+  version = "kubernetes-1.8.2"
+
+[[constraint]]
+  name = "k8s.io/code-generator"
+  version = "kubernetes-1.8.2"
+
+[[constraint]]
+  name = "k8s.io/client-go"
+  version = "v5.0.1"
+
+#
+# An override supersede all constraint declarations from all projects. For example
+# glog is a dependency of many projects which are dependencies of owner project
+#
+
+[[override]]
+  name = "github.com/gogo/protobuf"
+  revision = "c0656edd0d9eab7c66d1eb0c568f9039345796f7"
+  # git reflog: "v0.4-3-gc0656edd"
+  # from rook:
+  # revision = "342cbe0a04158f6dcb03ca0079991a51a4248c02"
+  # version = "v0.5"
+
+[[override]]
+  name = "github.com/golang/glog"
+  revision = "44145f04b68cf362d9c4df2182967c2275eaefed"
+  # from rook:
+  # revision = "23def4e6c14b4da8ac2ed8007337bc5eb5007998"
+
+[[override]]
+  name = "github.com/golang/protobuf"
+  revision = "1643683e1b54a9e88ad26d98f81400c8c9d9f4f9"
+  # from kubernetes:
+  # revision = "4bd1920723d7b7c925de087aa32e2187708897f7"
+  # from rook:
+  # revision = "1e59b77b52bf8e4b449a57e6f79f21226d571845"
+
+[[override]]
+  name = "github.com/grpc-ecosystem/grpc-gateway"
+  revision = "84398b94e188ee336f307779b57b3aa91af7063c"
+  # git reflog: "v1.1.0-25-g84398b9"
+
+[[override]]
+  name = "github.com/prometheus/common"
+  # from rook:
+  revision = "2e54d0b93cba2fd133edc32211dcc32c06ef72ca"
+
+[[override]]
+  name = "golang.org/x/crypto"
+  revision = "94eea52f7b742c7cbe0b03b22f0c4c8631ece122"
+  # from kubernetes:
+  # revision = "81e90905daefcd6fd217b62423c0908922eadb30"
+
+[[override]]
+  name = "golang.org/x/net"
+  # from kubernetes:
+  revision = "1c05540f6879653db88113bc4a2b70aec4bd491f"
+  # from rook
+  # revision = "d866cfc389cec985d6fda2859936a575a55a3ab6"
+  
+  source = "github.com/golang/net"
+
+[[override]]
+  name = "golang.org/x/sys"
+  revision = "53aa286056ef226755cd898109dbcdaba8ac0b81"
+
+  source = "github.com/golang/sys"
+
+[[override]]
+  name = "golang.org/x/text"
+  revision = "3b24cac7bc3a458991ab409aa2a339ac9e0d60d6"
+
+  source = "github.com/golang/text"
+
+[[override]]
+  name = "golang.org/x/tools"
+  revision = "b19bf474d317b857955b12035d2c5acb57ce8b01"
+  # from rook
+  #revision = "64890f4e2b733655fee5077a5435a8812404c3a3"
+
+  source = "github.com/golang/tools"
+
+[[override]]
+  name = "google.golang.org/grpc"
+  revision = "d2e1b51f33ff8c5e4a15560ff049d200e83726c5"
+  # git tag: "v1.3.0"
+
+  source = "github.com/grpc/grpc-go"
+
+[[override]]
+  name = "gopkg.in/inf.v0"
+  # revision = "3887ee99ecf07df5b447e9b00d9c0b2adaa9f3e4"
+  version = "v0.9.0"
+
+  source = "github.com/go-inf/inf"
+
+[[override]]
+  name = "gopkg.in/yaml.v2"
+  branch = "v2"
+
+  source = "github.com/go-yaml/yaml"  
+
+#[[override]]
+#  name = "k8s.io/gengo"
+#  revision = "b6c426f7730e6d66e6e476a85d1c3eb7633880e0"
+
+#[[override]]
+#  name = "k8s.io/kube-openapi"
+#  revision = "da3f8c68d6b8b9c5b0bd1f579fee610b5ab5c94a"

@@ -1,0 +1,23 @@
+syntax = "proto3";
+package pb;
+
+import "google/api/annotations.proto";
+
+import "pb/fake.proto";
+//import "pb/message.proto";
+
+service RedisOpService {
+    rpc Hello (FakeReqResp) returns (FakeReqResp) {
+        option (google.api.http) = {
+	        post: "/redisopapi/v1/fake"
+            body: "*"
+        };
+    }
+}
+
+message FakeReqResp {
+	FakeMessage fake_message = 1;
+	int32 state_code = 2;
+	string state_message = 3;
+}
+
