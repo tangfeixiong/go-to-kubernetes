@@ -26,8 +26,10 @@ import (
 	"k8s.io/client-go/informers"
 	"k8s.io/client-go/kubernetes"
 	"k8s.io/client-go/rest"
+	"k8s.io/client-go/tools/clientcmd"
 	"k8s.io/kubernetes/pkg/util/version"
 
+	"github.com/tangfeixiong/go-to-kubernetes/redis-operator/pb"
 	"github.com/tangfeixiong/go-to-kubernetes/redis-operator/pkg/crd"
 )
 
@@ -119,6 +121,29 @@ func Run() (*Operator, error) {
 		informerFactory:      informerFactory,
 		c:                    c,
 	}, nil
+}
+
+func (op *Operator) RunOutCluster(kubeconfig string) error {
+	config, err := clientcmd.BuildConfigFromFlags("", kubeconfig)
+	if err != nil {
+		fmt.Println("Unable to config kubernetes client:", err.Error())
+		return err
+	}
+	op.config = config
+	return err
+}
+
+func (op *Operator) CreateCRD(recipe *pb.CrdRecipient) error {
+	r := crd.Recipient{
+		Name:     recipe.Name,
+		Group:    recipe.Group,
+		Version:  recipe.Version,
+		Scope:    recipe.Scope.String(),
+		Plural:   recipe.Plural,
+		Singular: recipe.Singular,
+		Kind:     recipe.Kind,
+	}
+	return op.CreateCRDorTPR(r)
 }
 
 func (op *Operator) CreateCRDorTPR(recipe crd.Recipient) error {

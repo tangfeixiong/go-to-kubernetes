@@ -30,6 +30,7 @@ type Config struct {
 	InsecureAddress string
 	SecureHTTP      bool
 	LogLevel        int
+	Kubeconfig      string
 }
 
 type controller struct {

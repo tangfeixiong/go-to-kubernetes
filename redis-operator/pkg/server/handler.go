@@ -1,6 +1,7 @@
 package server
 
 import (
+	"errors"
 	"fmt"
 	"io"
 	"mime"
@@ -11,6 +12,7 @@ import (
 	"sync"
 
 	"github.com/elazarl/go-bindata-assetfs"
+	"github.com/golang/glog"
 	//"github.com/gorilla/websocket"
 
 	"golang.org/x/net/context"
@@ -21,9 +23,42 @@ import (
 	"github.com/tangfeixiong/go-to-kubernetes/redis-operator/pkg/ui/data/webapp"
 )
 
-func (ctl *controller) Hello(ctx context.Context, req *pb.FakeReqResp) (*pb.FakeReqResp, error) {
+func (ctl *controller) CreateCrd(ctx context.Context, req *pb.CrdReqResp) (*pb.CrdReqResp, error) {
+	fmt.Println("Request to create CRD:", req)
+	resp := &pb.CrdReqResp{
+		Recipe: new(pb.CrdRecipient),
+	}
+	if req == nil || req.Recipe == nil {
+		resp.StateCode = 100
+		resp.StateMessage = "CRD recipe is required"
+		return resp, errors.New(resp.StateMessage)
+	}
+	if req.Recipe.Name == "" || req.Recipe.Group == "" {
+		resp.StateCode = 101
+		resp.StateMessage = "Empty CRD field is not allowed"
+		return resp, errors.New(resp.StateMessage)
+	}
+
+	resp.Recipe.Name = req.Recipe.Name
+	resp.Recipe.Group = req.Recipe.Group
+	resp.Recipe.Version = req.Recipe.Version
+	resp.Recipe.Scope = req.Recipe.Scope
+	resp.Recipe.Plural = req.Recipe.Plural
+	resp.Recipe.Singular = req.Recipe.Singular
+	resp.Recipe.Kind = req.Recipe.Kind
+	err := ctl.ops["redis-operator"].CreateCRD(req.Recipe)
+	if err != nil {
+		glog.Infof("Failed to create CRD: %s", err.Error())
+		resp.StateCode = 10
+		resp.StateMessage = err.Error()
+		return resp, err
+	}
+	return resp, nil
+}
+
+func (ctl *controller) ReapCrd(ctx context.Context, req *pb.CrdReqResp) (*pb.CrdReqResp, error) {
 	fmt.Println("Requesting:", req)
-	return new(pb.FakeReqResp), nil
+	return new(pb.CrdReqResp), nil
 }
 
 /*

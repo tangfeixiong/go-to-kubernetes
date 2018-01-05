@@ -3,20 +3,26 @@ package pb;
 
 import "google/api/annotations.proto";
 
-import "pb/fake.proto";
-//import "pb/message.proto";
+//import "pb/not-existed.proto";
+import "pb/message.proto";
 
 service RedisOpService {
-    rpc Hello (FakeReqResp) returns (FakeReqResp) {
+    rpc CreateCrd (CrdReqResp) returns (CrdReqResp) {
         option (google.api.http) = {
-	        post: "/redisopapi/v1/fake"
+	        post: "/redisopapi/v1/crd"
             body: "*"
+        };
+    }
+	
+    rpc ReapCrd (CrdReqResp) returns (CrdReqResp) {
+        option (google.api.http) = {
+	        get: "/redisopapi/v1/crd"
         };
     }
 }
 
-message FakeReqResp {
-	FakeMessage fake_message = 1;
+message CrdReqResp {
+	CrdRecipient recipe = 1;
 	int32 state_code = 2;
 	string state_message = 3;
 }

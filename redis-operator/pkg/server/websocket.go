@@ -42,7 +42,7 @@ func (ctl *controller) WebsocketHandler(w http.ResponseWriter, r *http.Request) 
 		}
 		log.Printf("recv: %+v", string(message))
 
-		content := new(pb.FakeMessage)
+		content := new(pb.CrdRecipient)
 		err = json.Unmarshal(message, content)
 		if err != nil {
 			log.Println("unmarshal:", err)

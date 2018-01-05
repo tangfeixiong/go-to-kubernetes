@@ -11,7 +11,7 @@ GIT_COMMIT=$(shell date +%y%m%d%H%M)-git$(shell git rev-parse --short=7 HEAD)
 DOCKER_FILE?=Dockerfile.busybox
 REGISTRY_HOST?=172.17.4.59:5000
 
-all: protoc-grpc docker-push
+all: protoc-grpc go-bindata docker-push
 
 protoc-grpc:
 	@if [[ ! -e $(GOPATHD) ]] ; \
@@ -24,8 +24,8 @@ protoc-grpc:
 		-I${GOPATHD}/src/github.com/grpc-ecosystem/grpc-gateway/third_party/googleapis \
 		-I${GOPATHD}/src/github.com/gogo/protobuf \
 		-I${GOPATHD}/src \
-		--gogo_out=Mgoogle/api/annotations.proto=github.com/grpc-ecosystem/grpc-gateway/third_party/googleapis/google/api,Mgogoproto/gogo.proto=github.com/gogo/protobuf/gogoproto,Mpb/fake.proto=github.com/tangfeixiong/go-to-kubernetes/redis-operator/pb,plugins=grpc:. \
-		pb/service.proto pb/fake.proto
+		--gogo_out=Mgoogle/api/annotations.proto=github.com/grpc-ecosystem/grpc-gateway/third_party/googleapis/google/api,Mgogoproto/gogo.proto=github.com/gogo/protobuf/gogoproto,Mpb/message.proto=github.com/tangfeixiong/go-to-kubernetes/redis-operator/pb,plugins=grpc:. \
+		pb/service.proto pb/message.proto
 	@protoc -I/usr/local/include -I. \
 		-I${GOPATHP}/src \
 		-I${GOPATHD}/src/github.com/grpc-ecosystem/grpc-gateway/third_party/googleapis \
@@ -41,10 +41,14 @@ go-bindata:
 go-build:
 	@CGO_ENABLED=0 go build -a -v -o ./bin/redis-operator --installsuffix cgo -ldflags "-s" ./
 
-docker-push: docker-build
-	@docker push $(IMG_NS)/$(IMG_REPO):$(IMG_TAG)
-
 go-install:
 	@go install -v ./
 
-.PHONY: all protoc-grpc go-bindata go-build docker-build docker-push docker-build-exporter docker-build-collector docker-cgo docker-run go-install
+docker-build: go-build
+	#@docker build --no-cache --force-rm -t $(IMG_NS)/$(IMG_REPO):$(IMG_TAG) ./
+	@docker build --no-cache --force-rm -t $(IMG_NS)/$(IMG_REPO):$(IMG_TAG) -f $(DOCKER_FILE) ./
+
+docker-push: docker-build
+	@docker push $(IMG_NS)/$(IMG_REPO):$(IMG_TAG)
+
+.PHONY: all protoc-grpc go-bindata go-build go-install docker-build docker-push

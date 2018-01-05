@@ -1,0 +1,16 @@
+syntax = "proto3";
+package pb;
+
+message CrdRecipient {
+	enum ResourceScope {
+        Cluster = 0;
+        Namespaced = 1;
+    }
+	string name = 1;
+	string group = 2;
+	string version = 3;
+	ResourceScope scope = 4;
+	string plural = 5;
+	string singular = 6;
+	string kind = 7;
+}
