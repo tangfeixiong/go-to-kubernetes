@@ -1,12 +1,12 @@
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: jw-s-app
+  name: spotahome-app
 ---
 kind: ClusterRole
 apiVersion: rbac.authorization.k8s.io/v1beta1
 metadata:
-  name: jw-s-redis-operator
+  name: spotahome-redis-operator
 rules:
 - apiGroups:
   - ""
@@ -22,7 +22,6 @@ rules:
   - events
   - persistentvolumes
   - persistentvolumeclaims
-  - endpoints
   verbs:
   - get
   - list
@@ -44,13 +43,6 @@ rules:
   - watch
   - create
   - delete
-- apiGroups:
-  - apps
-  resources:
-  - deployments
-  - statefulsets
-  verbs:
-  - "*"
 - apiGroups:
   - apiextensions.k8s.io
   resources:
@@ -85,7 +77,13 @@ rules:
   - watch
   - delete
 - apiGroups:
-  - operator.joelws.com
+  - policy
+  resources:
+  - poddisruptionbudgets
+  verbs:
+  - "*"
+- apiGroups:
+  - spotahome.com
   resources:
   - "*"
   verbs:
@@ -94,47 +92,54 @@ rules:
 apiVersion: v1
 kind: ServiceAccount
 metadata:
-  name: jw-s-redis-operator
-  namespace: jw-s-app
+  name: spotahome-redis-operator
+  namespace: spotahome-app
 ---
 kind: ClusterRoleBinding
 apiVersion: rbac.authorization.k8s.io/v1beta1
 metadata:
-  name: jw-s-redis-operator
-  namespace: jw-s-app
+  name: spotahome-redis-operator
+  namespace: spotahome-app
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: ClusterRole
-  name: jw-s-redis-operator
+  name: spotahome-redis-operator
   #name: cluster-admin
 subjects:
 - kind: ServiceAccount
-  name: jw-s-redis-operator
-  namespace: jw-s-app
+  name: spotahome-redis-operator
+  namespace: spotahome-app
 ---
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
   labels:
-    app: redis-operator
-  name: redis-operator
-  namespace: jw-s-app
+    app: redisoperator
+  name: redisoperator
+  namespace: spotahome-app
 spec:
   replicas: 1
+  selector:
+    matchLabels:
+      app: redisoperator
+  strategy:
+    type: RollingUpdate
   template:
     metadata:
       labels:
-        app: redis-operator
+        app: redisoperator
     spec:
-      serviceAccountName: jw-s-redis-operator
       containers:
-      - image: joelws/redis-operator:latest
-        imagePullPolicy: IfNotPresent #Never
-        name: redis-operator
+      - image: quay.io/spotahome/redis-operator:0.1.0
+        imagePullPolicy: IfNotPresent
+        name: app
         resources:
           limits:
-            cpu: 200m
-            memory: 100Mi
-          requests:
             cpu: 100m
             memory: 50Mi
+          requests:
+            cpu: 10m
+            memory: 50Mi
+      restartPolicy: Always
+      serviceAccountName: spotahome-redis-operator
+    

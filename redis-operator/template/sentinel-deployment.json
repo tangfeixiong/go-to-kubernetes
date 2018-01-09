@@ -1,0 +1,119 @@
+{
+    "apiVersion": "extensions/v1beta1",
+    "kind": "Deployment",
+    "metadata": {
+        "labels": {
+            "app": "redis",
+            "component": "sentinel",
+            "role": "sentinel",
+            "sentinel":  "true"
+        },
+        "name": "{{.Name}}",
+        "namespace": "{{.Namespace}}"
+    },
+    "spec": {
+        "replicas": 3,
+        "selector": {
+            "matchLabels": {
+                "app": "redis",
+                "component": "sentinel",
+                "sentinel": "true"
+            }  
+        },
+        "strategy": {
+            "type": "RollingUpdate"
+        },
+        "template": {
+            "metadata": {
+                "labels": {
+                    "app": "redis",
+                    "component": "sentinel",
+                    "role": "sentinel",
+                    "sentinel":  "true"
+                }  
+            },
+            "spec": {
+                "initContainers": [
+                    {
+                        "command": [ "gen-sentinel-config.sh" ],
+                        "env": {
+                            "REDIS_SENTINEL_HOST": "{{.Name}}.{{.Namespace}}",
+                            "SENTINEL_QUORUM": 2
+                        },
+                        "image": "{{.Image}}",
+                        "imagePullPolicy": "IfNotPresent",
+                        "name": "sentinel-config",
+                        "volumeMounts": [
+                            {
+                                "mountPath": "/redis",
+                                "name": "config"
+                            }
+                        ]
+                    }
+                ],
+                "containers": [
+                    {
+                        "command": [ "redis-server", "/redis/sentinel.conf", "--sentinel" ],
+                        "env": {
+                            "SENTINEL_QUORUM": 2,
+                            "SENTINEL": "true"
+                        },
+                        "image": "{{.Image}}",
+                        "imagePullPolicy": "IfNotPresent",
+                        "name": "sentinel",
+                        "ports": [
+                            {
+                                "containerPort": 26379,
+                                "name": "sentinel",
+                                "protocol": "TCP"
+                            }
+                        ],
+                        "resources": {},
+                        "readinessProbe": {
+                            "exec": {
+                                "command": [
+                                    "sh",
+                                    "-c",
+                                    "redis-cli -h $(hostname) -p 26379 ping"
+                                ]
+                            },
+                            "initialDelaySeconds": 15,
+                            "timeoutSeconds": 5
+                        },
+                        "volumeMounts": [
+                            {
+                                "mountPath": "/redis",
+                                "name": "config"
+                            }
+                        ]
+                    }
+                ],
+                "volumes": [
+                    {
+                        "hostPath": {
+                            "path": "/tmp",
+                            "type": ""
+                        },
+                        "name": "local"
+                    },
+                    {
+                        "flexVolume": {
+                            "driver": "rook.io/rook",
+                            "fsType": "ceph",
+                            "options": {
+                                "clusterName": "rook",
+                                "fsName": "myfs"
+                            }
+                        },
+                        "name": "store"
+                    },
+                    {
+                        "emptyDir": {},
+                        "name": "snapshots"
+                    }
+                ]
+            }
+        }
+    },
+    "status": {}
+}

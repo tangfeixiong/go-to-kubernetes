@@ -377,6 +377,11 @@ persistentvolume "sample-local-volume-2" created
 ```
 
 ```
+[vagrant@rookdev-172-17-4-63 ~]$ kubectl create -f /Users/fanhongling/Downloads/workspace/src/github.com/tangfeixiong/go-to-kubernetes/redis-operator/docs/jw-s0x2Fredis-operator/pv-3.yaml 
+persistentvolume "sample-local-volume-3" created
+```
+
+```
 [vagrant@kubedev-172-17-4-59 redis-operator]$ kubectl get pods -o wide -l app=redis
 NAME                                      READY     STATUS    RESTARTS   AGE       IP            NODE
 redis-sentinel-my-redis-d7fcc55c5-44999   1/1       Running   0          1h        10.244.3.74   rookdev-172-17-4-63

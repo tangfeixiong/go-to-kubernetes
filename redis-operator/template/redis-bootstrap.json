@@ -1,0 +1,112 @@
+{
+    "apiVersion": "v1",
+    "kind": "Pod",
+    "metadata": {
+        "labels": {
+            "app": "redis",
+            "component": "sentinel",
+            "role": "master",
+            "sentinel":  "{{.ClusterName}}"
+        },
+        "name": "{{.Name}}",
+        "namespace": "{{.Namespace}}"
+    },
+    "spec": {
+        "containers": [
+            {
+                "command": [ "redis-server" ],
+                "env": {
+                    "MASTER": "true"
+                },
+                "image": "{{.Image}}",
+                "imagePullPolicy": "IfNotPresent",
+                "name": "redis",
+                "ports": [
+                    {
+                        "containerPort": 6379,
+                        "name": "redis",
+                        "protocol": "TCP"
+                    }
+                ],
+                "resources": {},
+                "readinessProbe": {
+                    "exec": {
+                        "command": [
+                            "sh",
+                            "-c",
+                            "redis-cli -h $(hostname) ping"
+                        ]
+                    },
+                    "initialDelaySeconds": 15,
+                    "timeoutSeconds": 5
+                },
+                "volumeMounts": [
+                    {
+                        "mountPath": "/mnt",
+                        "name": "snapshots"
+                    }
+                ]
+            },
+            {
+                "command": [ "redis-sentinel" ],
+                "env": {
+                    "SENTINEL_QUORUM": 2,
+                    "SENTINEL": "true"
+                },
+                "image": "{{.Image}}",
+                "imagePullPolicy": "IfNotPresent",
+                "name": "sentinel",
+                "ports": [
+                    {
+                        "containerPort": 26379,
+                        "name": "sentinel",
+                        "protocol": "TCP"
+                    }
+                ],
+                "resources": {},
+                "readinessProbe": {
+                    "exec": {
+                        "command": [
+                            "sh",
+                            "-c",
+                            "redis-cli -h $(hostname) -p 26379 ping"
+                        ]
+                    },
+                    "initialDelaySeconds": 15,
+                    "timeoutSeconds": 5
+                },
+                "volumeMounts": [
+                    {
+                        "mountPath": "/mnt",
+                        "name": "snapshots"
+                    }
+                ]
+            }
+        ],
+        "volumes": [
+            {
+                "hostPath": {
+                    "path": "/tmp",
+                    "type": ""
+                },
+                "name": "local"
+            },
+            {
+                "flexVolume": {
+                    "driver": "rook.io/rook",
+                    "fsType": "ceph",
+                    "options": {
+                        "clusterName": "rook",
+                        "fsName": "myfs"
+                    }
+                },
+                "name": "store"
+            },
+            {
+                "emptyDir": {},
+                "name": "snapshots"
+            }
+        ]
+    },
+    "status": {}
+}

@@ -1,0 +1,12 @@
+apiVersion: policy/v1beta1
+kind: PodDisruptionBudget
+metadata:
+  name: {{.Name}}
+  namespace: {{.Namespace}}
+spec:
+  minAvailable: 3
+  selector:
+    matchLabels:
+      app: redis
+      component: {{.Role}}
+      {{.Role}}: {{.ClusterName}}

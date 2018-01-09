@@ -1,0 +1,21 @@
+apiVersion: spotahome.com/v1alpha1
+kind: RedisFailover
+metadata:
+  name: myredisfailover
+  namespace: spotahome-app
+spec:
+  sentinel:
+    replicas: 3        # Optional. Value by default, can be set higher.
+    resources:         # Optional. If not set, it won't be defined on created reosurces
+      requests:
+        cpu: 100m
+      limits:
+        memory: 100Mi
+  redis:
+    replicas: 3        # Optional. Value by default, can be set higher.
+    resources:         # Optional. If not set, it won't be defined on created reosurces
+      requests:
+        cpu: 100m
+      limits:
+        memory: 100Mi
+    exporter: false    # Optional. False by default. Adds a redis-exporter container to export metrics.

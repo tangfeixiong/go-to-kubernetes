@@ -317,3 +317,110 @@ github.com/spotahome/redis-operator/vendor/k8s.io/client-go/tools/clientcmd
 os/signal
 github.com/spotahome/redis-operator/cmd/operator
 ```
+
+
+```
+[vagrant@kubedev-172-17-4-59 redis-operator]$ kubectl create ns spotahome-app
+namespace "spotahome-app" created
+```
+
+```
+[vagrant@kubedev-172-17-4-59 redis-operator]$ kubectl create -f docs/spotahome0x2Fredis-operator/operator.yaml 
+namespace "spotahome-app" created
+clusterrole "spotahome-redis-operator" created
+serviceaccount "spotahome-redis-operator" created
+clusterrolebinding "spotahome-redis-operator" created
+deployment "redisoperator" created
+```
+
+```
+[vagrant@kubedev-172-17-4-59 redis-operator]$ kubectl -n spotahome-app get pods -o wide
+NAME                             READY     STATUS    RESTARTS   AGE       IP            NODE
+redisoperator-5c676d7548-8grmf   1/1       Running   0          3s        10.244.2.91   rookdev-172-17-4-61
+```
+
+```
+[vagrant@kubedev-172-17-4-59 redis-operator]$ kubectl -n spotahome-app logs redisoperator-5c676d7548-8grmf
+time="2018-01-09T10:45:14Z" level=info msg="Redis-Operator Starting..." src="proc.go:195"
+time="2018-01-09T10:45:14Z" level=info msg="Listening on :9710" src="asm_amd64.s:2337"
+```
+
+```
+[vagrant@kubedev-172-17-4-59 redis-operator]$ kubectl -n spotahome-app get crd redisfailovers.spotahome.com        
+NAME                           AGE
+redisfailovers.spotahome.com   2m
+```
+
+```
+[vagrant@kubedev-172-17-4-59 redis-operator]$ kubectl create -f docs/spotahome0x2Fredis-operator/redisfailover.yaml 
+redisfailover "myredisfailover" created
+```
+
+```
+[vagrant@kubedev-172-17-4-59 redis-operator]$ kubectl -n spotahome-app get redisfailovers        
+NAME              AGE
+myredisfailover   6m
+```
+
+```
+[vagrant@kubedev-172-17-4-59 redis-operator]$ kubectl -n spotahome-app get pods -o wide
+NAME                             READY     STATUS    RESTARTS   AGE       IP             NODE
+redisoperator-5c676d7548-8grmf   1/1       Running   0          6m        10.244.2.91    rookdev-172-17-4-61
+rfb-myredisfailover              1/2       Running   0          3m        10.244.3.113   rookdev-172-17-4-63
+```
+
+```
+[vagrant@kubedev-172-17-4-59 redis-operator]$ kubectl -n spotahome-app logs rfb-myredisfailover -c redis
+1:C 09 Jan 10:50:58.240 # Warning: no config file specified, using the default config. In order to specify a config file use redis-server /path/to/redis.conf
+                _._                                                  
+           _.-``__ ''-._                                             
+      _.-``    `.  `_.  ''-._           Redis 3.2.11 (00000000/0) 64 bit
+  .-`` .-```.  ```\/    _.,_ ''-._                                   
+ (    '      ,       .-`  | `,    )     Running in standalone mode
+ |`-._`-...-` __...-.``-._|'` _.-'|     Port: 6379
+ |    `-._   `._    /     _.-'    |     PID: 1
+  `-._    `-._  `-./  _.-'    _.-'                                   
+ |`-._`-._    `-.__.-'    _.-'_.-'|                                  
+ |    `-._`-._        _.-'_.-'    |           http://redis.io        
+  `-._    `-._`-.__.-'_.-'    _.-'                                   
+ |`-._`-._    `-.__.-'    _.-'_.-'|                                  
+ |    `-._`-._        _.-'_.-'    |                                  
+  `-._    `-._`-.__.-'_.-'    _.-'                                   
+      `-._    `-.__.-'    _.-'                                       
+          `-._        _.-'                                           
+              `-.__.-'                                               
+1:M 09 Jan 10:50:58.242 # WARNING: The TCP backlog setting of 511 cannot be enforced because /proc/sys/net/core/somaxconn is set to the lower value of 128.
+1:M 09 Jan 10:50:58.242 # Server started, Redis version 3.2.11
+1:M 09 Jan 10:50:58.242 # WARNING you have Transparent Huge Pages (THP) support enabled in your kernel. This will create latency and memory usage issues with Redis. To fix this issue run the command 'echo never > /sys/kernel/mm/transparent_hugepage/enabled' as root, and add it to your /etc/rc.local in order to retain the setting after a reboot. Redis must be restarted after THP is disabled.
+1:M 09 Jan 10:50:58.242 * The server is now ready to accept connections on port 6379
+```
+
+```
+[vagrant@kubedev-172-17-4-59 redis-operator]$ kubectl -n spotahome-app logs rfb-myredisfailover -c sentinel
+Attempting to connect to Sentinel service to retrieve current master...
+Could not connect to Redis at -p:6379: Name does not resolve
+Got ''
+FAILED
+Attempting to connect to Master at 10.244.3.113...
+OK
+                _._                                                  
+           _.-``__ ''-._                                             
+      _.-``    `.  `_.  ''-._           Redis 3.2.11 (00000000/0) 64 bit
+  .-`` .-```.  ```\/    _.,_ ''-._                                   
+ (    '      ,       .-`  | `,    )     Running in sentinel mode
+ |`-._`-...-` __...-.``-._|'` _.-'|     Port: 26379
+ |    `-._   `._    /     _.-'    |     PID: 13
+  `-._    `-._  `-./  _.-'    _.-'                                   
+ |`-._`-._    `-.__.-'    _.-'_.-'|                                  
+ |    `-._`-._        _.-'_.-'    |           http://redis.io        
+  `-._    `-._`-.__.-'_.-'    _.-'                                   
+ |`-._`-._    `-.__.-'    _.-'_.-'|                                  
+ |    `-._`-._        _.-'_.-'    |                                  
+  `-._    `-._`-.__.-'_.-'    _.-'                                   
+      `-._    `-.__.-'    _.-'                                       
+          `-._        _.-'                                           
+              `-.__.-'                                               
+13:X 09 Jan 10:51:08.047 # WARNING: The TCP backlog setting of 511 cannot be enforced because /proc/sys/net/core/somaxconn is set to the lower value of 128.
+13:X 09 Jan 10:51:08.056 # Sentinel ID is 3d3f9315a2d75eb25e59d8e747c5e3bd79a51337
+13:X 09 Jan 10:51:08.056 # +monitor master mymaster 10.244.3.113 6379 quorum 2
+```

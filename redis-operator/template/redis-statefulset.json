@@ -1,0 +1,131 @@
+{
+    "apiVersion": "apps/v1",
+    "kind": "StatefulSet",
+    "metadata": {
+        "labels": {
+            "app": "redis",
+            "component": "redis",
+            "role": "redis",
+            "redis":  "{{.ClusterName}}"
+        },
+        "name": "{{.Name}}",
+        "namespace": "{{.Namespace}}"
+    },
+    "spec": {
+        "replicas": 3,
+        "selector": {
+            "matchLabels": {
+                "app": "redis",
+                "component": "redis",
+                "redis": "{{.ClusterName}}"  
+            }
+        },
+        "serviceName": "{{.Name}}",
+        "template": {
+            "metadata": {
+                "labels": {
+                    "app": "redis",
+                    "component": "redis",
+                    "role": "redis",
+                    "redis":  "{{.ClusterName}}"
+                }  
+            },
+            "spec": {
+                "initContainers": [
+                    {
+                        "command": [ "gen-redis-config.sh" ],
+                        "env": {
+                            "REDIS_SENTINEL_HOST": "{{.Name}}.{{.Namespace}}",
+                            "SENTINEL_QUORUM": 2
+                        },
+                        "image": "{{.Image}}",
+                        "imagePullPolicy": "IfNotPresent",
+                        "name": "redis-config",
+                        "volumeMounts": [
+                            {
+                                "mountPath": "/redis",
+                                "name": "config"
+                            }
+                        ]
+                    }
+                ],
+                "containers": [
+                    {
+                        "command": [ "redis-server", "/redis/redis.conf" ],
+                        "env": {
+                            "SENTINEL_QUORUM": 2,
+                            "SENTINEL": "{{.ClusterName}}"
+                        },
+                        "image": "{{.Image}}",
+                        "imagePullPolicy": "IfNotPresent",
+                        "livenessProbe": {
+                            "exec": {
+                                "command": [
+                                    "sh",
+                                    "-c",
+                                    "redis-cli -h $(hostname) ping"
+                                ]
+                            },
+                            "initialDelaySeconds": 5,
+                            "timeoutSeconds": 5
+                        },
+                        "name": "redis",
+                        "ports": [
+                            {
+                                "containerPort": 6379,
+                                "name": "redis",
+                                "protocol": "TCP"
+                            }
+                        ],
+                        "resources": {},
+                        "readinessProbe": {
+                            "exec": {
+                                "command": [
+                                    "sh",
+                                    "-c",
+                                    "redis-cli -h $(hostname) ping"
+                                ]
+                            },
+                            "initialDelaySeconds": 15,
+                            "timeoutSeconds": 5
+                        },
+                        "volumeMounts": [
+                            {
+                                "mountPath": "/redis",
+                                "name": "config"
+                            }
+                        ]
+                    }
+                ],
+                "volumes": [
+                    {
+                        "hostPath": {
+                            "path": "/tmp",
+                            "type": ""
+                        },
+                        "name": "local"
+                    },
+                    {
+                        "flexVolume": {
+                            "driver": "rook.io/rook",
+                            "fsType": "ceph",
+                            "options": {
+                                "clusterName": "rook",
+                                "fsName": "myfs"
+                            }
+                        },
+                        "name": "store"
+                    },
+                    {
+                        "emptyDir": {},
+                        "name": "snapshots"
+                    }
+                ]
+            }
+        },
+        "updateStrategy": {
+            "type": "RollingUpdate"
+        }
+    },
+    "status": {}
+}

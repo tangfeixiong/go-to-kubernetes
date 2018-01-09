@@ -1,3 +1,46 @@
+```
+[vagrant@kubedev-172-17-4-59 code-generator]$ GOPATH=/Users/fanhongling/go go install -v ./cmd/client-gen/
+k8s.io/code-generator/vendor/github.com/golang/glog
+k8s.io/code-generator/vendor/github.com/spf13/pflag
+k8s.io/code-generator/vendor/k8s.io/gengo/types
+k8s.io/code-generator/vendor/k8s.io/gengo/namer
+k8s.io/code-generator/cmd/client-gen/types
+k8s.io/code-generator/pkg/util
+k8s.io/code-generator/vendor/golang.org/x/tools/go/ast/astutil
+k8s.io/code-generator/vendor/golang.org/x/tools/imports
+k8s.io/code-generator/vendor/k8s.io/gengo/parser
+k8s.io/code-generator/vendor/k8s.io/gengo/generator
+k8s.io/code-generator/vendor/k8s.io/gengo/args
+k8s.io/code-generator/cmd/client-gen/args
+k8s.io/code-generator/cmd/client-gen/path
+k8s.io/code-generator/cmd/client-gen/generators/scheme
+k8s.io/code-generator/cmd/client-gen/generators/util
+k8s.io/code-generator/cmd/client-gen/generators/fake
+k8s.io/code-generator/cmd/client-gen/generators
+k8s.io/code-generator/cmd/client-gen
+```
+
+```
+[vagrant@kubedev-172-17-4-59 code-generator]$ GOPATH=/Users/fanhongling/go go install -v ./cmd/deepcopy-gen/
+k8s.io/code-generator/vendor/k8s.io/gengo/examples/set-gen/sets
+k8s.io/code-generator/vendor/k8s.io/gengo/examples/deepcopy-gen/generators
+k8s.io/code-generator/cmd/deepcopy-gen/args
+k8s.io/code-generator/cmd/deepcopy-gen
+```
+
+```
+[vagrant@kubedev-172-17-4-59 code-generator]$ GOPATH=/Users/fanhongling/go go install -v ./cmd/informer-gen/
+k8s.io/code-generator/cmd/informer-gen/args
+k8s.io/code-generator/cmd/informer-gen/generators
+k8s.io/code-generator/cmd/informer-gen
+```
+
+```
+[vagrant@kubedev-172-17-4-59 code-generator]$ GOPATH=/Users/fanhongling/go go install -v ./cmd/lister-gen/  
+k8s.io/code-generator/cmd/lister-gen/args
+k8s.io/code-generator/cmd/lister-gen/generators
+k8s.io/code-generator/cmd/lister-gen
+```
 
 
 ```
