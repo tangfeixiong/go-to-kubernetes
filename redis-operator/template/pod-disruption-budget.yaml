@@ -4,9 +4,15 @@ metadata:
   name: {{.Name}}
   namespace: {{.Namespace}}
 spec:
-  minAvailable: 3
-  selector:
-    matchLabels:
-      app: redis
-      component: {{.Role}}
-      {{.Role}}: {{.ClusterName}}
+  # A PDB with pods controlled by another type of controller, by an “operator”, or bare pods has these restrictions:
+  #   only .spec.minAvailable can be used, not .spec.maxUnavailable.
+  #   only an integer value can be used with .spec.minAvailable, not a percentage.
+  minAvailable: {{.MinAvailable}}
+  # A label selector .spec.selector to specify the set of pods to which it applies. This field is required. For example:
+  # selector:
+  #   matchLabels:
+  #     app: redis
+  #     role: {{.RedisOrSentinel}}
+  #     {{.RedisOrSentinel}}: {{.ClusterName}}
+  #     isMaster: {{.isMaster}}
+  selector: {}

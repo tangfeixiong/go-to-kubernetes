@@ -740,3 +740,89 @@ Step 7/7 : CMD -v 2 --logtostderr=true
 Removing intermediate container 30d155fac9f4
 Successfully built 6173b48aa15e
 ```
+
+
+
+```
+[vagrant@rookdev-172-17-4-63 ~]$ kubectl exec -ti my-redis-0 -- redis-cli INFO replication
+# Replication
+role:master
+connected_slaves:1
+slave0:ip=10.244.3.175,port=6379,state=online,offset=154,lag=1
+master_replid:33735414e49b41f60af0c06b621db6be3845e0aa
+master_replid2:0000000000000000000000000000000000000000
+master_repl_offset:154
+second_repl_offset:-1
+repl_backlog_active:1
+repl_backlog_size:1048576
+repl_backlog_first_byte_offset:1
+repl_backlog_histlen:154
+```
+
+```
+[vagrant@rookdev-172-17-4-63 ~]$ kubectl exec -ti my-redis-1 -- redis-cli INFO replication
+# Replication
+role:slave
+master_host:10.244.2.137
+master_port:6379
+master_link_status:up
+master_last_io_seconds_ago:7
+master_sync_in_progress:0
+slave_repl_offset:168
+slave_priority:100
+slave_read_only:1
+connected_slaves:0
+master_replid:33735414e49b41f60af0c06b621db6be3845e0aa
+master_replid2:0000000000000000000000000000000000000000
+master_repl_offset:168
+second_repl_offset:-1
+repl_backlog_active:1
+repl_backlog_size:1048576
+repl_backlog_first_byte_offset:1
+repl_backlog_histlen:168
+```
+
+```
+[vagrant@kubedev-172-17-4-59 redis-operator]$ kubectl scale sts my-redis --replicas=3
+statefulset "my-redis" scaled
+```
+
+```
+[vagrant@rookdev-172-17-4-63 ~]$ kubectl exec -ti my-redis-2 -- redis-cli INFO replication
+# Replication
+role:slave
+master_host:10.244.2.137
+master_port:6379
+master_link_status:up
+master_last_io_seconds_ago:10
+master_sync_in_progress:0
+slave_repl_offset:546
+slave_priority:100
+slave_read_only:1
+connected_slaves:0
+master_replid:33735414e49b41f60af0c06b621db6be3845e0aa
+master_replid2:0000000000000000000000000000000000000000
+master_repl_offset:546
+second_repl_offset:-1
+repl_backlog_active:1
+repl_backlog_size:1048576
+repl_backlog_first_byte_offset:491
+repl_backlog_histlen:56
+```
+
+```
+[vagrant@rookdev-172-17-4-63 ~]$ kubectl exec -ti my-redis-0 -- redis-cli INFO replication
+# Replication
+role:master
+connected_slaves:2
+slave0:ip=10.244.3.175,port=6379,state=online,offset=574,lag=1
+slave1:ip=10.244.2.138,port=6379,state=online,offset=574,lag=1
+master_replid:33735414e49b41f60af0c06b621db6be3845e0aa
+master_replid2:0000000000000000000000000000000000000000
+master_repl_offset:574
+second_repl_offset:-1
+repl_backlog_active:1
+repl_backlog_size:1048576
+repl_backlog_first_byte_offset:1
+repl_backlog_histlen:574
+```

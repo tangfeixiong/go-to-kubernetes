@@ -5,26 +5,63 @@
         "labels": {
             "app": "redis",
             "component": "sentinel",
-            "role": "master",
-            "sentinel":  "{{.ClusterName}}"
+            "sentinel":  "my-redis",
+            "bootstrap": "true"
         },
-        "name": "{{.Name}}",
-        "namespace": "{{.Namespace}}"
+        "name": "redis",
+        "namespace": "default"
     },
     "spec": {
+        "initContainers": [
+            {
+                "args": [
+                    "-c",
+                    "echo -e \"cluster-enabled yes\ncluster-require-full-coverage no\ncluster-node-timeout 15000\ncluster-config-file nodes.conf\ncluster-migration-barrier 1\nappendonly yes\nprotected-mode no\n\">/data/redis.conf; echo -e \"sentinel monitor my-redis 127.0.0.1 6379 2\nsentinel down-after-milliseconds my-redis 60000\nsentinel failover-timeout my-redis 180000\nsentinel parallel-syncs my-redis 1\">/data/sentinel.conf"
+                ],
+                "command": [ "sh" ],
+                "env": [
+                    {
+                        "name": "REDIS_SENTINEL_HOST",
+                        "value": "my-redis"
+                    },
+                    {
+                        "name": "SENTINEL_QUORUM",
+                        "value": "2"
+                    }
+                ],
+                "image": "docker.io/redis:4.0-alpine",
+                "imagePullPolicy": "IfNotPresent",
+                "name": "bootstrap",
+                "volumeMounts": [
+                    {
+                        "mountPath": "/data",
+                        "name": "store"
+                    }
+                ]
+            }
+        ],
         "containers": [
             {
-                "command": [ "redis-server" ],
-                "env": {
-                    "MASTER": "true"
-                },
-                "image": "{{.Image}}",
+                "args": ["redis-server", "/data/redis.conf"],
+                "command": ["docker-entrypoint.sh"],
+                "env": [
+                    {
+                        "name": "MASTER",
+                        "value": "true"
+                    }
+                ],
+                "image": "docker.io/redis:4.0-alpine",
                 "imagePullPolicy": "IfNotPresent",
                 "name": "redis",
                 "ports": [
                     {
                         "containerPort": 6379,
                         "name": "redis",
+                        "protocol": "TCP"
+                    },
+                    {
+                        "containerPort": 16379,
+                        "name": "gossip",
                         "protocol": "TCP"
                     }
                 ],
@@ -42,18 +79,25 @@
                 },
                 "volumeMounts": [
                     {
-                        "mountPath": "/mnt",
-                        "name": "snapshots"
+                        "mountPath": "/data",
+                        "name": "store"
                     }
                 ]
             },
             {
-                "command": [ "redis-sentinel" ],
-                "env": {
-                    "SENTINEL_QUORUM": 2,
-                    "SENTINEL": "true"
-                },
-                "image": "{{.Image}}",
+                "args": ["redis-server", "/data/sentinel.conf", "--sentinel"],
+                "command": ["docker-entrypoint.sh"],
+                "env": [
+                    {
+                        "name": "SENTINEL_QUORUM",
+                        "value": "2"
+                    },
+                    {
+                        "name": "SENTINEL",
+                        "value": "true"
+                    }
+                ],
+                "image": "docker.io/redis:4.0-alpine",
                 "imagePullPolicy": "IfNotPresent",
                 "name": "sentinel",
                 "ports": [
@@ -77,34 +121,16 @@
                 },
                 "volumeMounts": [
                     {
-                        "mountPath": "/mnt",
-                        "name": "snapshots"
+                        "mountPath": "/data",
+                        "name": "store"
                     }
                 ]
             }
         ],
         "volumes": [
             {
-                "hostPath": {
-                    "path": "/tmp",
-                    "type": ""
-                },
-                "name": "local"
-            },
-            {
-                "flexVolume": {
-                    "driver": "rook.io/rook",
-                    "fsType": "ceph",
-                    "options": {
-                        "clusterName": "rook",
-                        "fsName": "myfs"
-                    }
-                },
-                "name": "store"
-            },
-            {
                 "emptyDir": {},
-                "name": "snapshots"
+                "name": "store"
             }
         ]
     },

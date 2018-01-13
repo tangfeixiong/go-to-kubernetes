@@ -6,7 +6,7 @@ metadata:
 kind: ClusterRole
 apiVersion: rbac.authorization.k8s.io/v1beta1
 metadata:
-  name: redis-operator-example
+  name: my-redis-operator-example
 rules:
 - apiGroups:
   - ""
@@ -44,6 +44,12 @@ rules:
   - create
   - delete
 - apiGroups:
+  - apps
+  resources:
+  - "*"
+  verbs:
+  - "*"
+- apiGroups:
   - apiextensions.k8s.io
   resources:
   - customresourcedefinitions
@@ -77,7 +83,13 @@ rules:
   - watch
   - delete
 - apiGroups:
-  - operator.joelws.com
+  - policy
+  resources:
+  - poddisruptionbudgets
+  verbs:
+  - "*"
+- apiGroups:
+  - example.com
   resources:
   - "*"
   verbs:
@@ -97,8 +109,8 @@ metadata:
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: ClusterRole
-  # name: redis-operator-example
-  name: cluster-admin
+  name: my-redis-operator-example
+  #name: cluster-admin
 subjects:
 - kind: ServiceAccount
   name: redis-operator
@@ -113,12 +125,19 @@ metadata:
   namespace: example-system
 spec:
   replicas: 1
+  selector:
+    matchLabels:
+      app: redis-operator
+  strategy:
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
+    type: RollingUpdate  
   template:
     metadata:
       labels:
         app: redis-operator
     spec:
-      serviceAccountName: redis-operator
       containers:
       - image: tangfeixiong/redis-operator:latest
         #imagePullPolicy: Never
@@ -137,10 +156,10 @@ spec:
             fieldRef:
               fieldPath: metadata.namespace        
         ports:
-        - containerPort: 10002
-          name: http-port
         - containerPort: 10001
-          name: tcp-port
+          name: grpc
+        - containerPort: 10002
+          name: insecure-gw
         resources:
           limits:
             cpu: 200m
@@ -148,6 +167,7 @@ spec:
           requests:
             cpu: 100m
             memory: 50Mi
+      serviceAccountName: redis-operator
 ---
 apiVersion: v1
 kind: Service

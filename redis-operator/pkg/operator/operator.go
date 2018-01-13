@@ -30,7 +30,7 @@ import (
 	"k8s.io/kubernetes/pkg/util/version"
 
 	"github.com/tangfeixiong/go-to-kubernetes/redis-operator/pb"
-	"github.com/tangfeixiong/go-to-kubernetes/redis-operator/pkg/crd"
+	"github.com/tangfeixiong/go-to-kubernetes/redis-operator/pkg/spec/crd"
 )
 
 /*

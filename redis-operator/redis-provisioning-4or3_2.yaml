@@ -1,0 +1,18 @@
+apiVersion: example.com/v1
+kind: Redis
+metadata:
+  name: my-redis-ha
+spec:
+  # Optional, default is docker.io/redis:4, must suppport
+  #   4-alpine
+  #   3
+  #   3-alpine
+  # Plan to support customized redis image, for example:
+  # image:
+  #   docker: 'docker.io/tangfeixiong/redis:latest'
+  image: {}
+  sentinels:
+    replicas: 3
+    quorum: 2
+  slaves:
+    replicas: 3

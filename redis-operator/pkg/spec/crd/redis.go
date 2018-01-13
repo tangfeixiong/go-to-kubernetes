@@ -6,8 +6,11 @@ import (
 	"text/template"
 
 	"github.com/ghodss/yaml"
+	"github.com/golang/glog"
 
 	"k8s.io/apiextensions-apiserver/pkg/apis/apiextensions/v1beta1"
+
+	"github.com/tangfeixiong/go-to-kubernetes/redis-operator/pkg/spec/artifact"
 )
 
 /*
@@ -61,10 +64,22 @@ type Recipient struct {
 }
 
 func Deserialize(recipe Recipient) (*v1beta1.CustomResourceDefinition, error) {
-	te := template.Must(template.New("RedisCRD").Parse(tpl))
+	var content string
+
+	//content = tpl
+	data, err := artifact.Asset("template/custom-resource-definition.yaml")
+	if err != nil {
+		glog.Fatalf("Cloud not find spec data, error: %s", err.Error())
+		return nil, err
+	} else {
+		content = string(data)
+		glog.V(5).Infoln("CRD artifact:", content)
+	}
+
+	te := template.Must(template.New("RedisCRD").Parse(content))
 	b := &bytes.Buffer{}
 
-	err := te.Execute(b, recipe)
+	err = te.Execute(b, recipe)
 	if err != nil {
 		return nil, fmt.Errorf("Failed to import recipe: %v\n", err)
 	}

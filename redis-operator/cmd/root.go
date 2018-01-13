@@ -15,6 +15,7 @@ import (
 
 	// "k8s.io/kubernetes/pkg/util/rand"
 
+	"github.com/tangfeixiong/go-to-kubernetes/redis-operator/pkg/operator"
 	"github.com/tangfeixiong/go-to-kubernetes/redis-operator/pkg/server"
 )
 
@@ -26,7 +27,7 @@ func RootCommandFor(name string) *cobra.Command {
 		Use:   name,
 		Short: "operator server, with gRPC & ReST API",
 		Long: `
-        hadoop-hdfs-operator
+        redis-operator
         
         This is a ..., and ...
         ...,
@@ -34,11 +35,12 @@ func RootCommandFor(name string) *cobra.Command {
         `,
 	}
 	root.AddCommand(createServiceCommand(&config))
-	// root.AddCommand(createClientCommand())
+	root.AddCommand(createRedisHighAvailabilityConfigCommand(&config.RedisBootstrapConfig))
 
-	root.Flags().StringVar(&config.Kubeconfig, "kubeconfig", "", "absolute path to the kubeconfig file, default is $HOME/.kube/config")
+	bc := &config.RedisBootstrapConfig
+	root.PersistentFlags().StringVar(&bc.Kubeconfig, "kubeconfig", "", "absolute path to the kubeconfig file, default is $HOME/.kube/config")
 	if home := homeDir(); home != "" {
-		root.Flags().Lookup("kubeconfig").NoOptDefVal = filepath.Join(home, ".kube", "config")
+		root.PersistentFlags().Lookup("kubeconfig").NoOptDefVal = filepath.Join(home, ".kube", "config")
 	}
 	pflag.CommandLine.AddGoFlagSet(flag.CommandLine)
 
@@ -58,10 +60,10 @@ func createServiceCommand(config *server.Config) *cobra.Command {
 		},
 	}
 
-	command.Flags().StringVar(&config.SecureAddress, "grpc-addr", "0.0.0.0:10001", "IP:port format")
-	command.Flags().StringVar(&config.InsecureAddress, "http-addr", "0.0.0.0:10002", "IP:port format. Serve HTTP, or No HTTP if empty")
-	command.Flags().BoolVar(&config.SecureHTTP, "secure-http", false, "Currently not used, if both HTTP address and HTTPS flag not set, just gRPC noly")
-	command.Flags().IntVar(&config.LogLevel, "log-level", 2, "for glog")
+	command.Flags().StringVar(&config.SecureAddress, "grpc_addr", "0.0.0.0:10001", "IP:port format")
+	command.Flags().StringVar(&config.InsecureAddress, "http_addr", "0.0.0.0:10002", "IP:port format. Serve HTTP, or No HTTP if empty")
+	command.Flags().BoolVar(&config.SecureHTTP, "secure_http", false, "Currently not used, if both HTTP address and HTTPS flag not set, just gRPC noly")
+	command.Flags().IntVar(&config.LogLevel, "log_level", 2, "for glog")
 	// command.Flags().AddGoFlagSet(flag.CommandLine)
 
 	return command
@@ -72,4 +74,54 @@ func homeDir() string {
 		return h
 	}
 	return os.Getenv("USERPROFILE") // windows
+}
+
+func createRedisHighAvailabilityConfigCommand(config *operator.RedisBootstrapConfig) *cobra.Command {
+
+	command := &cobra.Command{
+		Use:   "config-ha",
+		Short: "config redis.conf or sentinel.conf",
+	}
+	command.AddCommand(createRedisCommand(config), createSentinelCommand(config))
+
+	command.PersistentFlags().StringVar(&config.Name, "name", "my-redis", "Artifact name")
+	command.PersistentFlags().StringVar(&config.Namespace, "namespace", "default", "Application namespace")
+	command.PersistentFlags().StringVar(&config.Dir, "conf_dir", "/data", "Directory for redis.conf or sentinel.conf")
+	return command
+}
+
+func createRedisCommand(config *operator.RedisBootstrapConfig) *cobra.Command {
+
+	command := &cobra.Command{
+		Use:   "redis",
+		Short: "config redis.conf",
+		Run: func(cmd *cobra.Command, args []string) {
+			// pflag.Parse()
+			flag.Set("v", strconv.Itoa(config.LogLevel))
+			flag.Parse()
+			config.Role = operator.RedisHighAvailabilityRedis
+			operator.ConfigConf(config)
+		},
+	}
+	command.Flags().StringVar(&config.Kind, "kind", "StatefulSet", "Maybe support Deployment, ReplicationController")
+
+	return command
+}
+
+func createSentinelCommand(config *operator.RedisBootstrapConfig) *cobra.Command {
+
+	command := &cobra.Command{
+		Use:   "sentinel",
+		Short: "config sentinel.conf",
+		Run: func(cmd *cobra.Command, args []string) {
+			// pflag.Parse()
+			flag.Set("v", strconv.Itoa(config.LogLevel))
+			flag.Parse()
+			config.Role = operator.RedisHighAvailabilitySentinel
+			operator.ConfigConf(config)
+		},
+	}
+	command.Flags().StringVar(&config.Kind, "kind", "Deployment", "Maybe support ReplicationController")
+
+	return command
 }

@@ -1,0 +1,94 @@
+apiVersion: v1
+kind: Pod
+metadata:
+    labels:
+        app: redis
+        component: sentinel
+        sentinel:  {{.ClusterName}}
+        bootstrap: true
+    name: {{.Name}}
+    namespace: {{.Namespace}}
+spec:
+    containers:
+      - args:
+          - redis-server
+          - /data/redis.conf
+        command:
+          - docker-entrypoint.sh
+        env:
+          - name: MASTER
+            value: 'true'
+        image: {{.Image}}
+        imagePullPolicy: IfNotPresent
+        name: redis
+        ports:
+          - containerPort: 6379
+            name: client
+            protocol: TCP
+          - containerPort: 16379
+            name: gossip
+            protocol: TCP
+        resources: {}
+        readinessProbe:
+            exec:
+                command:
+                  - sh
+                  - -c
+                  - "redis-cli -h $(hostname) ping"
+            initialDelaySeconds: 15
+            timeoutSeconds: 5
+        volumeMounts:
+          - mountPath: /data
+            name: store
+      - args:
+          - redis-server
+          - /data/sentinel.conf
+          - --sentinel
+        command:
+          - docker-entrypoint.sh
+        env:
+          -  name: SENTINEL_QUORUM
+             value: '2'
+          -  name: SENTINEL
+             value: 'true'
+        image: {{.Image}}
+        imagePullPolicy: IfNotPresent
+        name: sentinel
+        ports:
+          - containerPort: 26379
+            name: sentinel
+            protocol: TCP
+        resources: {}
+        readinessProbe:
+            exec:
+                command:
+                  - sh
+                  - -c
+                  - "redis-cli -h $(hostname) -p 26379 ping"
+            initialDelaySeconds: 15
+            timeoutSeconds: 5
+        volumeMounts:
+          - mountPath: /data
+            name: store
+    initContainers:
+      - args:
+          - -c
+          - "echo -e \"appendonly yes\nprotected-mode no\n\">/data/redis.conf; echo -e \"sentinel monitor {{.ClusterName}} {{.Name}} 6379 {{.SentinelQuorum}}\nsentinel down-after-milliseconds {{.ClusterName}} 60000\nsentinel failover-timeout {{.ClusterName}} 180000\nsentinel parallel-syncs {{.ClusterName}} 1\">/data/sentinel.conf"
+        command:
+          - sh
+        env:
+          - name: REDIS_SENTINEL_HOST
+            value: {{.ClusterName}}.{{.Namespace}}
+          - name: SENTINEL_QUORUM
+            value: '{{.SentinelQuorum}}'
+        image: {{.Image}}
+        imagePullPolicy: IfNotPresent
+        name: bootstrap
+        volumeMounts:
+          - mountPath: /data
+            name: store
+    volumes:
+      - emptyDir: {}
+        name: store
+status: {}
+

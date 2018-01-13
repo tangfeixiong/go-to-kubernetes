@@ -34,8 +34,12 @@ protoc-grpc:
 		--grpc-gateway_out=logtostderr=true:. \
 		pb/service.proto
 
-go-bindata:
+go-bindata-web:
 	@pkg=webapp; src=static/...; output_file=pkg/ui/data/$${pkg}/datafile.go; \
+		go-bindata -nocompress -o $${output_file} -prefix $${PWD} -pkg $${pkg} $${src}
+
+go-bindata-spec:
+	@pkg=artifact; src=template/...; output_file=pkg/spec/$${pkg}/artifacts.go; \
 		go-bindata -nocompress -o $${output_file} -prefix $${PWD} -pkg $${pkg} $${src}
 
 go-build:

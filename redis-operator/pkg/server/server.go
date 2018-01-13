@@ -26,11 +26,11 @@ import (
 )
 
 type Config struct {
-	SecureAddress   string
-	InsecureAddress string
-	SecureHTTP      bool
-	LogLevel        int
-	Kubeconfig      string
+	SecureAddress        string
+	InsecureAddress      string
+	SecureHTTP           bool
+	LogLevel             int
+	RedisBootstrapConfig operator.RedisBootstrapConfig
 }
 
 type controller struct {

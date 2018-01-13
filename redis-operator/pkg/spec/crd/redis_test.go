@@ -9,7 +9,7 @@ import (
 var (
 	recipe Recipient = Recipient{
 		Name:     "redises",
-		Group:    "operator.joelws.com",
+		Group:    "example.com",
 		Version:  "v1",
 		Scope:    "Namespaced",
 		Plural:   "redises",
@@ -18,7 +18,7 @@ var (
 	}
 )
 
-func TestCRD_gen(t *testing.T) {
+func TestCRD_template(t *testing.T) {
 	te := template.Must(template.New("RedisCRD").Parse(tpl))
 	b := &bytes.Buffer{}
 
