@@ -87,6 +87,7 @@ func createRedisHighAvailabilityConfigCommand(config *operator.RedisBootstrapCon
 	command.PersistentFlags().StringVar(&config.Name, "name", "my-redis", "Artifact name")
 	command.PersistentFlags().StringVar(&config.Namespace, "namespace", "default", "Application namespace")
 	command.PersistentFlags().StringVar(&config.Dir, "conf_dir", "/data", "Directory for redis.conf or sentinel.conf")
+	command.PersistentFlags().IntVar(&config.Port, "service_port", 6379, "Service port")
 	return command
 }
 

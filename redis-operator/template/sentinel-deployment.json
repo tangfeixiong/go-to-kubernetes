@@ -5,11 +5,10 @@
         "labels": {
             "app": "redis",
             "component": "sentinel",
-            "role": "sentinel",
-            "sentinel":  "true"
+            "sentinel":  "my-redis"
         },
-        "name": "{{.Name}}",
-        "namespace": "{{.Namespace}}"
+        "name": "my-redis",
+        "namespace": "default"
     },
     "spec": {
         "replicas": 3,
@@ -17,7 +16,7 @@
             "matchLabels": {
                 "app": "redis",
                 "component": "sentinel",
-                "sentinel": "true"
+                "sentinel": "my-redis"
             }  
         },
         "strategy": {
@@ -28,38 +27,37 @@
                 "labels": {
                     "app": "redis",
                     "component": "sentinel",
-                    "role": "sentinel",
-                    "sentinel":  "true"
+                    "sentinel":  "my-redis"
                 }  
             },
             "spec": {
-                "initContainers": [
-                    {
-                        "command": [ "gen-sentinel-config.sh" ],
-                        "env": {
-                            "REDIS_SENTINEL_HOST": "{{.Name}}.{{.Namespace}}",
-                            "SENTINEL_QUORUM": 2
-                        },
-                        "image": "{{.Image}}",
-                        "imagePullPolicy": "IfNotPresent",
-                        "name": "sentinel-config",
-                        "volumeMounts": [
-                            {
-                                "mountPath": "/redis",
-                                "name": "config"
-                            }
-                        ]
-                    }
-                ],
                 "containers": [
                     {
-                        "command": [ "redis-server", "/redis/sentinel.conf", "--sentinel" ],
-                        "env": {
-                            "SENTINEL_QUORUM": 2,
-                            "SENTINEL": "true"
-                        },
-                        "image": "{{.Image}}",
+                        "args": [ "redis-server", "/data/sentinel.conf", "--sentinel" ],
+                        "command": ["docker-entrypoint.sh"],
+                        "env": [
+                            {
+                                "name": "SENTINEL_QUORUM",
+                                "value": "2"
+                            },
+                            {
+                                "name": "SENTINEL",
+                                "value": "true"
+                            }
+                        ],
+                        "image": "docker.io/redis:4.0-alpine",
                         "imagePullPolicy": "IfNotPresent",
+                        "livenessProbe": {
+                            "exec": {
+                                "command": [
+                                    "sh",
+                                    "-c",
+                                    "redis-cli -h $(hostname) -p 26379 ping"
+                                ]
+                            },
+                            "initialDelaySeconds": 5,
+                            "timeoutSeconds": 5
+                        },
                         "name": "sentinel",
                         "ports": [
                             {
@@ -68,7 +66,6 @@
                                 "protocol": "TCP"
                             }
                         ],
-                        "resources": {},
                         "readinessProbe": {
                             "exec": {
                                 "command": [
@@ -80,36 +77,48 @@
                             "initialDelaySeconds": 15,
                             "timeoutSeconds": 5
                         },
+                        "resources": {},
                         "volumeMounts": [
                             {
-                                "mountPath": "/redis",
-                                "name": "config"
+                                "mountPath": "/data",
+                                "name": "store"
+                            }
+                        ]
+                    }
+                ],
+                "initContainers": [
+                    {
+                        "args": [
+                            "config-ha",
+                            "--name=my-redis",
+                            "sentinel"                            
+                        ],
+                        "command": [ "/redis-operator" ],
+                        "env": [
+                            {
+                                "name": "SENTINEL_QUORUM",
+                                "value": "2"
+                            },
+                            {
+                                "name": "SENTINEL",
+                                "value": "true"
+                            }
+                        ],
+                        "image": "docker.io/tangfeixiong/redis-operator",
+                        "imagePullPolicy": "Always",
+                        "name": "bootstrap",
+                        "volumeMounts": [
+                            {
+                                "mountPath": "/data",
+                                "name": "store"
                             }
                         ]
                     }
                 ],
                 "volumes": [
                     {
-                        "hostPath": {
-                            "path": "/tmp",
-                            "type": ""
-                        },
-                        "name": "local"
-                    },
-                    {
-                        "flexVolume": {
-                            "driver": "rook.io/rook",
-                            "fsType": "ceph",
-                            "options": {
-                                "clusterName": "rook",
-                                "fsName": "myfs"
-                            }
-                        },
-                        "name": "store"
-                    },
-                    {
                         "emptyDir": {},
-                        "name": "snapshots"
+                        "name": "store"
                     }
                 ]
             }

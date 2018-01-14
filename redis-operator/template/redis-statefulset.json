@@ -77,7 +77,6 @@
                                 "protocol": "TCP"
                             }
                         ],
-                        "resources": {},
                         "readinessProbe": {
                             "exec": {
                                 "command": [
@@ -89,6 +88,7 @@
                             "initialDelaySeconds": 15,
                             "timeoutSeconds": 5
                         },
+                        "resources": {},
                         "volumeMounts": [
                             {
                                 "mountPath": "/data",
@@ -125,7 +125,7 @@
                             }
                         ],
                         "image": "docker.io/tangfeixiong/redis-operator",
-                        "imagePullPolicy": "IfNotPresent",
+                        "imagePullPolicy": "Always",
                         "name": "bootstrap",
                         "volumeMounts": [
                             {
