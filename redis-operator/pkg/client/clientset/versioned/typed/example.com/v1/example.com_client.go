@@ -9,12 +9,17 @@ import (
 
 type ExampleV1Interface interface {
 	RESTClient() rest.Interface
+	ClustersGetter
 	RedisesGetter
 }
 
 // ExampleV1Client is used to interact with features provided by the example.com group.
 type ExampleV1Client struct {
 	restClient rest.Interface
+}
+
+func (c *ExampleV1Client) Clusters(namespace string) ClusterInterface {
+	return newClusters(c, namespace)
 }
 
 func (c *ExampleV1Client) Redises(namespace string) RedisInterface {

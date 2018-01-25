@@ -45,7 +45,7 @@ type RedisInfo struct {
 }
 
 func ConfigConf(bc *RedisBootstrapConfig) {
-	fmt.Printf("with bootstrap config: %v", bc)
+	fmt.Printf("with bootstrap config: %v\n", bc)
 	clientset, err := K8sClientset(bc.Kubeconfig)
 	if err != nil {
 		fmt.Println("Get kubernetes clientset failed:", err.Error())

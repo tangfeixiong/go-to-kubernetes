@@ -1,3 +1,10 @@
+/*
+  Test all:
+    go test -v ./pkg/operator/ -args --logtostderr --v=5
+  Test some, for example:
+    go test -v -run StatefulSet_CreateRedis  ./pkg/operator/ -args --logtostderr --v=5
+
+*/
 package operator
 
 import (
@@ -16,7 +23,9 @@ import (
 	// Uncomment the following line to load the gcp plugin (only required to authenticate against GKE clusters).
 	// _ "k8s.io/client-go/plugin/pkg/client/auth/gcp"
 
+	"github.com/tangfeixiong/go-to-kubernetes/redis-operator/pkg/spec/deploy"
 	"github.com/tangfeixiong/go-to-kubernetes/redis-operator/pkg/spec/po"
+	"github.com/tangfeixiong/go-to-kubernetes/redis-operator/pkg/spec/sts"
 )
 
 /*
@@ -89,36 +98,81 @@ func TestStuff(t *testing.T) {
 	}
 }
 
+func TestNamespace_create(t *testing.T) {
+	ns := &apiv1.Namespace{
+		ObjectMeta: metav1.ObjectMeta{
+			Name: "redis-system",
+		},
+	}
+
+	podClient := clientset.CoreV1().Namespaces()
+	result, err := podClient.Create(ns)
+	if err != nil {
+		t.Fatal("Could not create Namespace:", err)
+	}
+	fmt.Printf("Created Namespace %q.\n", result.GetObjectMeta().GetName())
+}
+
 func TestPOD_RedisBootstrap(t *testing.T) {
 	var recipe po.Recipient = po.Recipient{
 		ClusterName: "my-redis",
 		Name:        "redis",
 	}
-	artfact, err := po.Deserialize(recipe)
+	pod, err := po.Deserialize(recipe)
 	if err != nil {
 		t.Fatal("Could not deserilize POD from go template:", err)
 	}
 
 	podClient := clientset.CoreV1().Pods(apiv1.NamespaceDefault)
 
-	result, err := podClient.Create(artfact)
+	result, err := podClient.Create(pod)
 	if err != nil {
 		t.Fatal("Could not create POD:", err)
 	}
 	fmt.Printf("Created POD %q.\n", result.GetObjectMeta().GetName())
 }
 
+func TestStatefulSet_createRedis(t *testing.T) {
+	recipe := &sts.RedisRecipient{
+		Name:        "my-redis",
+		ClusterName: "my-redis",
+	}
+	statefulset, err := recipe.GenerateArtifact()
+	if err != nil {
+		t.Fatal("Could not deserilize StatefulSet from go template:", err)
+	}
+
+	statefulsetsClient := clientset.AppsV1beta2().StatefulSets(apiv1.NamespaceDefault)
+
+	result, err := statefulsetsClient.Create(statefulset)
+	if err != nil {
+		//panic(err)
+		t.Fatal("Could not create StatefulSet", err)
+	}
+	fmt.Printf("Created statefulset %q.\n", result.GetObjectMeta().GetName())
+}
+
 /*
   Inspred by:
     https://github.com/kubernetes/client-go/blob/master/examples/create-update-delete-deployment/main.go
 */
-func TestDepoly_RedisSentinel(t *testing.T) {
+func TestDepolyment_createSentinel(t *testing.T) {
+	recipe := &deploy.SentinelRecipient{
+		Name:                 "my-redis",
+		HighAvailabilityName: "my-redis-ha",
+	}
+	deployment, err := recipe.GenerateArtifact()
+	if err != nil {
+		t.Fatal("Could not deserilize Deployment from go template:", err)
+	}
 
-	deploymentsClient := clientset.AppsV1beta1().Deployments(apiv1.NamespaceDefault)
+	//deploymentsClient := clientset.AppsV1beta2().Deployments(apiv1.NamespaceDefault)
+	deploymentsClient := clientset.ExtensionsV1beta1().Deployments(apiv1.NamespaceDefault)
 
 	result, err := deploymentsClient.Create(deployment)
 	if err != nil {
-		panic(err)
+		//panic(err)
+		t.Fatal("Could not create Deployment", err)
 	}
 	fmt.Printf("Created deployment %q.\n", result.GetObjectMeta().GetName())
 }

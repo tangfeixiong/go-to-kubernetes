@@ -5,16 +5,15 @@
         "labels": {
             "app": "redis",
             "component": "sentinel",
-            "role": "service",
-            "sentinel":  "true"
+            "sentinel":  "my-redis-ha"
         },
-        "name": "{{.Name}}",
-        "namespace": "{{.Namespace}}"
+        "name": "my-redis-ha",
+        "namespace": "default"
     },
     "spec": {
         "ports": [
             {
-                "name": "sentinel",
+                "name": "client",
                 "port": 26379,
                 "targetPort": 26379
             }
@@ -22,7 +21,7 @@
         "selector": {
             "app": "redis",
             "component": "sentinel",
-            "sentinel": "true"
+            "sentinel": "my-redis-ha"
         }
     }
 }

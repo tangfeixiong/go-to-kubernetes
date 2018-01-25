@@ -38,7 +38,7 @@ func RootCommandFor(name string) *cobra.Command {
 	root.AddCommand(createRedisHighAvailabilityConfigCommand(&config.RedisBootstrapConfig))
 
 	bc := &config.RedisBootstrapConfig
-	root.PersistentFlags().StringVar(&bc.Kubeconfig, "kubeconfig", "", "absolute path to the kubeconfig file, default is $HOME/.kube/config")
+	root.PersistentFlags().StringVar(&bc.Kubeconfig, "kubeconfig", "", "absolute path to the kubeconfig file. it means running out of cluster if supplied")
 	if home := homeDir(); home != "" {
 		root.PersistentFlags().Lookup("kubeconfig").NoOptDefVal = filepath.Join(home, ".kube", "config")
 	}

@@ -1,0 +1,22 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: redis
+    component: sentinel
+    sentinel: {{.ResourceName}} # my-redis
+  name: {{.Name}} # my-redis-ha
+  namespace: default
+spec:
+  #clusterIP: None
+  ports:
+  - name: client
+    port: 26379
+    protocol: TCP
+    targetPort: 26379
+  selector:
+    app: redis
+    component: sentinel
+    sentinel: {{.ResourceName}}
+  #sessionAffinity: None
+  #type: ClusterIP

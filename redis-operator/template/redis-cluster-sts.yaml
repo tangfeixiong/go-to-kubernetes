@@ -1,0 +1,114 @@
+---
+apiVersion: apps/v1beta1
+kind: StatefulSet
+metadata:
+  labels:
+    app: redis
+    component: redis
+    redis: {{.ClusterName}}
+  name: {{.Name}
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: redis
+      component: redis
+      redis: {{.ClusterName}}
+  #serviceName: {{.ClusterName}}
+  template:
+    metadata:
+      labels:
+        app: redis
+        component: redis
+        redis: {{.ClusterName}}
+      annotations:
+        # NOTE: Init container must be idempotent
+        # Add a baked-in Redis config file that enables cluster mode
+        #pod.alpha.kubernetes.io/init-containers: '[
+        #]'
+    spec:
+      containers:
+      - args:
+        - redis-server
+        - /data/redis.conf
+        # Ensure that Redis is online before initializing the next node.
+        # TODO: Test that the cluster node is init'd properly.
+        command:
+        - docker-entrypoint.sh
+        env:
+        - name: POD_NAMESPACE
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.namespace
+        image: {{.Image}}
+        imagePullPolicy: IfNotPresent
+        # Mark a node as down if Redis server stops running
+        livenessProbe:
+          exec:
+            command:
+            - sh
+            - -c
+            - "redis-cli -h $(hostname) ping"
+          initialDelaySeconds: 20
+          periodSeconds: 3
+        name: redis
+        ports:
+        - containerPort: 6379
+          name: client
+          protocol: TCP
+        - containerPort: 16379
+          name: gossip
+          protocol: TCP
+        readinessProbe:
+          exec:
+            command:
+            - sh
+            - -c
+            - "redis-cli -h $(hostname) ping"
+          initialDelaySeconds: 15
+          timeoutSeconds: 5
+        volumeMounts:
+        - name: store
+          mountPath: /data
+          readOnly: false
+        - name: podinfo
+          mountPath: /etc/podinfo
+          readOnly: false
+      initContainers:
+      - args:
+        - -c
+        - "echo -e \"cluster-enabled yes\ncluster-require-full-coverage no\ncluster-node-timeout 15000\ncluster-config-file nodes.conf\ncluster-migration-barrier 1\nappendonly yes\nprotected-mode no\nslaveof {{.RedisBootstrapIP}} 6379\n\">/data/redis.conf"
+        command:
+        - sh
+        env:
+        - name: REDIS_BOOTSTRAP_IP
+          value: {{.RedisBootstrapIP}}
+        image: {{.Image}}
+        imagePullPolicy: IfNotPresent
+        name: bootstrap
+        volumeMounts:
+        - mountPath: /data
+          name: store
+      #hostNetwork: true
+      terminationGracePeriodSeconds: 10
+      volumes:
+      # Insert our pre-baked Redis configuration file into /data/redis.conf
+      - emptyDir: {}
+        name: store
+      # The init container will use this info to find cluster peers
+      - downwardAPI:
+          items:
+          - path: "labels"
+            fieldRef:
+              fieldPath: metadata.labels
+          - path: "annotations"
+            fieldRef:
+              fieldPath: metadata.annotations
+          - path: "pod_name"
+            fieldRef:
+              fieldPath: metadata.name
+          - path: "pod_namespace"
+            fieldRef:
+              fieldPath: metadata.namespace
+        name: podinfo
+            

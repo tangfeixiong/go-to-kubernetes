@@ -5,9 +5,9 @@
         "labels": {
             "app": "redis",
             "component": "redis",
-            "redis":  "my-redis"
+            "redis":  "my-redis-cluster"
         },
-        "name": "my-redis",
+        "name": "my-redis-cluster",
         "namespace": "default"
     },
     "spec": {
@@ -27,7 +27,7 @@
         "selector": {
             "app": "redis",
             "component": "redis",
-            "redis": "my-redis"
+            "redis": "my-redis-cluster"
         }
     }
 }

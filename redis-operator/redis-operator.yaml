@@ -22,6 +22,7 @@ rules:
   - events
   - persistentvolumes
   - persistentvolumeclaims
+  - endpoints
   verbs:
   - get
   - list
@@ -140,6 +141,7 @@ spec:
     spec:
       containers:
       - image: tangfeixiong/redis-operator:latest
+        imagePullPolicy: Always
         #imagePullPolicy: Never
         name: redis-operator
         env:

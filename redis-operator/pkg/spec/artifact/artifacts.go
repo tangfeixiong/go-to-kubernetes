@@ -4,11 +4,15 @@
 // template/pod-disruption-budget.yaml
 // template/redis-bootstrap.json
 // template/redis-bootstrap.yaml
+// template/redis-cluster-sts.yaml
 // template/redis-service.json
+// template/redis-service.yaml
 // template/redis-statefulset.json
 // template/redis-statefulset.yaml
 // template/sentinel-deployment.json
+// template/sentinel-deployment.yaml
 // template/sentinel-service.json
+// template/sentinel-service.yaml
 // DO NOT EDIT!
 
 package artifact
@@ -390,262 +394,8 @@ func templateRedisBootstrapYaml() (*asset, error) {
 	return a, nil
 }
 
-var _templateRedisServiceJson = []byte(`{
-    "apiVersion": "v1",
-    "kind": "Service",
-    "metadata": {
-        "labels": {
-            "app": "redis",
-            "component": "redis",
-            "redis":  "my-redis"
-        },
-        "name": "redis",
-        "namespace": "default"
-    },
-    "spec": {
-        "clusterIP": "None",
-        "ports": [
-            {
-                "name": "client",
-                "port": 6379,
-                "targetPort": 6379
-            },
-            {
-                "name": "gossip",
-                "port": 16379,
-                "targetPort": 16379
-            }
-        ],
-        "selector": {
-            "app": "redis",
-            "component": "redis",
-            "redis": "my-redis"
-        }
-    }
-}`)
-
-func templateRedisServiceJsonBytes() ([]byte, error) {
-	return _templateRedisServiceJson, nil
-}
-
-func templateRedisServiceJson() (*asset, error) {
-	bytes, err := templateRedisServiceJsonBytes()
-	if err != nil {
-		return nil, err
-	}
-
-	info := bindataFileInfo{name: "template/redis-service.json", size: 719, mode: os.FileMode(420), modTime: time.Unix(1515708280, 0)}
-	a := &asset{bytes: bytes, info: info}
-	return a, nil
-}
-
-var _templateRedisStatefulsetJson = []byte(`{
-    "apiVersion": "apps/v1",
-    "kind": "StatefulSet",
-    "metadata": {
-        "labels": {
-            "app": "redis",
-            "component": "redis",
-            "redis":  "my-redis"
-        },
-        "name": "redis",
-        "namespace": "default"
-    },
-    "spec": {
-        "replicas": 2,
-        "selector": {
-            "matchLabels": {
-                "app": "redis",
-                "component": "redis",
-                "redis": "my-redis"  
-            }
-        },
-        "serviceName": "redis",
-        "template": {
-            "metadata": {
-                "labels": {
-                    "app": "redis",
-                    "component": "redis",
-                    "redis":  "my-redis"
-                }  
-            },
-            "spec": {
-                "containers": [
-                    {
-                        "args": ["redis-server", "/data/redis.conf"],
-                        "command": ["docker-entrypoint.sh"],
-                        "env": [
-                            {
-                                "name": "POD_NAME",
-                                "valueFrom": {
-                                    "fieldRef": {
-                                        "fieldPath": "metadata.name"
-                                    }
-                                }
-                            },
-                            {
-                                "name": "POD_NAMESPACE",
-                                "valueFrom": {
-                                    "fieldRef": {
-                                        "fieldPath": "metadata.namespace"
-                                    }
-                                }
-                            }
-                        ],
-                        "image": "docker.io/redis:4.0-alpine",
-                        "imagePullPolicy": "IfNotPresent",
-                        "livenessProbe": {
-                            "exec": {
-                                "command": [
-                                    "sh",
-                                    "-c",
-                                    "redis-cli -h $(hostname) ping"
-                                ]
-                            },
-                            "initialDelaySeconds": 5,
-                            "timeoutSeconds": 5
-                        },
-                        "name": "redis",
-                        "ports": [
-                            {
-                                "containerPort": 6379,
-                                "name": "client",
-                                "protocol": "TCP"
-                            },
-                            {
-                                "containerPort": 16379,
-                                "name": "gossip",
-                                "protocol": "TCP"
-                            }
-                        ],
-                        "resources": {},
-                        "readinessProbe": {
-                            "exec": {
-                                "command": [
-                                    "sh",
-                                    "-c",
-                                    "redis-cli -h $(hostname) ping"
-                                ]
-                            },
-                            "initialDelaySeconds": 15,
-                            "timeoutSeconds": 5
-                        },
-                        "volumeMounts": [
-                            {
-                                "mountPath": "/data",
-                                "name": "store"
-                            },
-                            {
-                                "mountPath": "/podinfo",
-                                "name": "podinfo",
-                                "readOnly": false
-                            }
-                        ]
-                    }
-                ],
-                "initContainers": [
-                    {
-                        "args": [
-                            "-c",
-                            "for i in $(seq 0 1) ; do sleep 1; master=$(redis-cli -h redis-$i.redis INFO 2>/dev/null); if [ -z \"$master\" ] ; then echo -e \"appendonly yes\nprotected-mode no\">/data/redis.conf; break; elif [ $$(expr index \"$master\" role:master) -gt 0 ] ; then echo -e \"appendonly yes\nprotected-mode no\nslaveof redis-$i.redis 6379\">/data/redis.conf; else master=$$(echo \"$master\" | grep \"master_host\" | cut -d: -f2); echo -e \"appendonly yes\nprotected-mode no\nslaveof $master 6379\">/data/redis.conf; fi ; done"
-                        ],
-                        "command": [ "sh" ],
-                        "env": [
-                            {
-                                "name": "POD_NAME",
-                                "valueFrom": {
-                                    "fieldRef": {
-                                        "fieldPath": "metadata.name"
-                                    }
-                                }
-                            },
-                            {
-                                "name": "POD_REPLICAS",
-                                "valueFrom": {
-                                    "fieldRef": {
-                                        "fieldPath": "spec.replicas"
-                                    }
-                                }
-                            }
-                        ],
-                        "image": "docker.io/redis:4.0-alpine",
-                        "imagePullPolicy": "IfNotPresent",
-                        "name": "bootstrap",
-                        "volumeMounts": [
-                            {
-                                "mountPath": "/data",
-                                "name": "store"
-                            },
-                            {
-                                "mountPath": "/podinfo",
-                                "name": "podinfo",
-                                "readOnly": false
-                            }
-                        ]
-                    }
-                ],
-                "volumes": [
-                    {
-                        "emptyDir": {},
-                        "name": "store"
-                    },
-                    {
-                        "downwardAPI": {
-                            "items": [
-                                {
-                                    "fieldRef": {
-                                        "fieldPath": "metadata.annotations"
-                                    },
-                                    "path": "annotations"
-                                },
-                                {
-                                    "fieldRef": {
-                                        "fieldPath": "metadata.labels"
-                                    },
-                                    "path": "labels"
-                                },
-                                {
-                                    "fieldRef": {
-                                        "fieldPath": "metadata.name"
-                                    },
-                                    "path": "name"
-                                },
-                                {
-                                    "fieldRef": {
-                                        "fieldPath": "metadata.namespace"
-                                    },
-                                    "path": "namespace"
-                                }
-                            ]
-                        },
-                        "name": "podinfo"
-                    }
-                ]
-            }
-        },
-        "updateStrategy": {
-            "type": "RollingUpdate"
-        }
-    }
-}
-`)
-
-func templateRedisStatefulsetJsonBytes() ([]byte, error) {
-	return _templateRedisStatefulsetJson, nil
-}
-
-func templateRedisStatefulsetJson() (*asset, error) {
-	bytes, err := templateRedisStatefulsetJsonBytes()
-	if err != nil {
-		return nil, err
-	}
-
-	info := bindataFileInfo{name: "template/redis-statefulset.json", size: 7662, mode: os.FileMode(420), modTime: time.Unix(1515752517, 0)}
-	a := &asset{bytes: bytes, info: info}
-	return a, nil
-}
-
-var _templateRedisStatefulsetYaml = []byte(`apiVersion: apps/v1beta1
+var _templateRedisClusterStsYaml = []byte(`---
+apiVersion: apps/v1beta1
 kind: StatefulSet
 metadata:
   labels:
@@ -759,6 +509,457 @@ spec:
         name: podinfo
             `)
 
+func templateRedisClusterStsYamlBytes() ([]byte, error) {
+	return _templateRedisClusterStsYaml, nil
+}
+
+func templateRedisClusterStsYaml() (*asset, error) {
+	bytes, err := templateRedisClusterStsYamlBytes()
+	if err != nil {
+		return nil, err
+	}
+
+	info := bindataFileInfo{name: "template/redis-cluster-sts.yaml", size: 3223, mode: os.FileMode(420), modTime: time.Unix(1516059729, 0)}
+	a := &asset{bytes: bytes, info: info}
+	return a, nil
+}
+
+var _templateRedisServiceJson = []byte(`{
+    "apiVersion": "v1",
+    "kind": "Service",
+    "metadata": {
+        "labels": {
+            "app": "redis",
+            "component": "redis",
+            "redis":  "my-redis-cluster"
+        },
+        "name": "my-redis-cluster",
+        "namespace": "default"
+    },
+    "spec": {
+        "clusterIP": "None",
+        "ports": [
+            {
+                "name": "client",
+                "port": 6379,
+                "targetPort": 6379
+            },
+            {
+                "name": "gossip",
+                "port": 16379,
+                "targetPort": 16379
+            }
+        ],
+        "selector": {
+            "app": "redis",
+            "component": "redis",
+            "redis": "my-redis-cluster"
+        }
+    }
+}`)
+
+func templateRedisServiceJsonBytes() ([]byte, error) {
+	return _templateRedisServiceJson, nil
+}
+
+func templateRedisServiceJson() (*asset, error) {
+	bytes, err := templateRedisServiceJsonBytes()
+	if err != nil {
+		return nil, err
+	}
+
+	info := bindataFileInfo{name: "template/redis-service.json", size: 746, mode: os.FileMode(420), modTime: time.Unix(1516003169, 0)}
+	a := &asset{bytes: bytes, info: info}
+	return a, nil
+}
+
+var _templateRedisServiceYaml = []byte(`apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: redis
+    component: redis
+    redis: {{.ResourceName}} # my-redis
+  name: {{.Name}} # my-redis
+  namespace: default
+spec:
+  clusterIP: None
+  ports:
+  - name: client
+    port: 6379
+    protocol: TCP
+    targetPort: 6379
+  - name: gossip
+    port: 16379
+    protocol: TCP
+    targetPort: 16379
+  selector:
+    app: redis
+    component: redis
+    redis: {{.ResourceName}}
+  #sessionAffinity: None
+  #type: ClusterIP`)
+
+func templateRedisServiceYamlBytes() ([]byte, error) {
+	return _templateRedisServiceYaml, nil
+}
+
+func templateRedisServiceYaml() (*asset, error) {
+	bytes, err := templateRedisServiceYamlBytes()
+	if err != nil {
+		return nil, err
+	}
+
+	info := bindataFileInfo{name: "template/redis-service.yaml", size: 472, mode: os.FileMode(420), modTime: time.Unix(1516320581, 0)}
+	a := &asset{bytes: bytes, info: info}
+	return a, nil
+}
+
+var _templateRedisStatefulsetJson = []byte(`{
+    "apiVersion": "apps/v1",
+    "kind": "StatefulSet",
+    "metadata": {
+        "labels": {
+            "app": "redis",
+            "component": "redis",
+            "redis":  "my-redis"
+        },
+        "name": "my-redis",
+        "namespace": "default"
+    },
+    "spec": {
+        "replicas": 2,
+        "selector": {
+            "matchLabels": {
+                "app": "redis",
+                "component": "redis",
+                "redis": "my-redis"  
+            }
+        },
+        "serviceName": "my-redis",
+        "template": {
+            "metadata": {
+                "labels": {
+                    "app": "redis",
+                    "component": "redis",
+                    "redis":  "my-redis"
+                }  
+            },
+            "spec": {
+                "containers": [
+                    {
+                        "args": ["redis-server", "/data/redis.conf"],
+                        "command": ["docker-entrypoint.sh"],
+                        "env": [
+                            {
+                                "name": "POD_NAME",
+                                "valueFrom": {
+                                    "fieldRef": {
+                                        "fieldPath": "metadata.name"
+                                    }
+                                }
+                            },
+                            {
+                                "name": "POD_NAMESPACE",
+                                "valueFrom": {
+                                    "fieldRef": {
+                                        "fieldPath": "metadata.namespace"
+                                    }
+                                }
+                            }
+                        ],
+                        "image": "docker.io/redis:4.0-alpine",
+                        "imagePullPolicy": "IfNotPresent",
+                        "livenessProbe": {
+                            "exec": {
+                                "command": [
+                                    "sh",
+                                    "-c",
+                                    "redis-cli -h $(hostname) ping"
+                                ]
+                            },
+                            "initialDelaySeconds": 5,
+                            "timeoutSeconds": 5
+                        },
+                        "name": "redis",
+                        "ports": [
+                            {
+                                "containerPort": 6379,
+                                "name": "client",
+                                "protocol": "TCP"
+                            },
+                            {
+                                "containerPort": 16379,
+                                "name": "gossip",
+                                "protocol": "TCP"
+                            }
+                        ],
+                        "readinessProbe": {
+                            "exec": {
+                                "command": [
+                                    "sh",
+                                    "-c",
+                                    "redis-cli -h $(hostname) ping"
+                                ]
+                            },
+                            "initialDelaySeconds": 15,
+                            "timeoutSeconds": 5
+                        },
+                        "resources": {},
+                        "volumeMounts": [
+                            {
+                                "mountPath": "/data",
+                                "name": "store"
+                            },
+                            {
+                                "mountPath": "/podinfo",
+                                "name": "podinfo",
+                                "readOnly": false
+                            }
+                        ]
+                    }
+                ],
+                "initContainers": [
+                    {
+                        "args": [
+                            "config-ha",
+                            "--name=my-redis",
+                            "redis"                            
+                        ],
+                        "command": [ "/redis-operator" ],
+                        "env": [
+                            {
+                                "name": "POD_NAME",
+                                "valueFrom": {
+                                    "fieldRef": {
+                                        "fieldPath": "metadata.name"
+                                    }
+                                }
+                            },
+                            {
+                                "name": "POD_REPLICAS",
+                                "value": "2"
+                            }
+                        ],
+                        "image": "docker.io/tangfeixiong/redis-operator",
+                        "imagePullPolicy": "Always",
+                        "name": "bootstrap",
+                        "volumeMounts": [
+                            {
+                                "mountPath": "/data",
+                                "name": "store"
+                            },
+                            {
+                                "mountPath": "/podinfo",
+                                "name": "podinfo",
+                                "readOnly": false
+                            }
+                        ]
+                    }
+                ],
+                "volumes": [
+                    {
+                        "emptyDir": {},
+                        "name": "store"
+                    },
+                    {
+                        "downwardAPI": {
+                            "items": [
+                                {
+                                    "fieldRef": {
+                                        "fieldPath": "metadata.annotations"
+                                    },
+                                    "path": "annotations"
+                                },
+                                {
+                                    "fieldRef": {
+                                        "fieldPath": "metadata.labels"
+                                    },
+                                    "path": "labels"
+                                },
+                                {
+                                    "fieldRef": {
+                                        "fieldPath": "metadata.name"
+                                    },
+                                    "path": "name"
+                                },
+                                {
+                                    "fieldRef": {
+                                        "fieldPath": "metadata.namespace"
+                                    },
+                                    "path": "namespace"
+                                }
+                            ]
+                        },
+                        "name": "podinfo"
+                    }
+                ]
+            }
+        },
+        "updateStrategy": {
+            "type": "RollingUpdate"
+        }
+    }
+}
+`)
+
+func templateRedisStatefulsetJsonBytes() ([]byte, error) {
+	return _templateRedisStatefulsetJson, nil
+}
+
+func templateRedisStatefulsetJson() (*asset, error) {
+	bytes, err := templateRedisStatefulsetJsonBytes()
+	if err != nil {
+		return nil, err
+	}
+
+	info := bindataFileInfo{name: "template/redis-statefulset.json", size: 7070, mode: os.FileMode(420), modTime: time.Unix(1515893157, 0)}
+	a := &asset{bytes: bytes, info: info}
+	return a, nil
+}
+
+var _templateRedisStatefulsetYaml = []byte(`apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  annotations:
+    operator: 'redis master slaves'
+  labels:
+    app: redis
+    component: redis
+    redis: {{.ProvisioningName}} # my-redis
+  name: {{.Name}} # my-redis
+  namespace: default
+spec:
+  podManagementPolicy: OrderedReady
+  replicas: {{.Replications}}
+  selector:
+    matchLabels:
+      app: redis
+      component: redis
+      redis: {{.ProvisioningName}}
+  serviceName: {{.ServiceName}} # my-redis
+  template:
+    metadata:
+      labels:
+        app: redis
+        component: redis
+        redis: {{.ProvisioningName}} # my-redis
+    spec:
+      containers:
+      - args:
+        - redis-server
+        - /data/redis.conf
+        command:
+        - docker-entrypoint.sh
+        env:
+        - name: POD_NAME
+          valueFrom:
+            fieldRef:
+              apiVersion: v1
+              fieldPath: metadata.name
+        - name: POD_NAMESPACE
+          valueFrom:
+            fieldRef:
+              apiVersion: v1
+              fieldPath: metadata.namespace
+        image: docker.io/redis:4.0-alpine
+        imagePullPolicy: IfNotPresent
+        livenessProbe:
+          exec:
+            command:
+            - sh
+            - -c
+            - redis-cli -h $(hostname) ping
+          failureThreshold: 3
+          initialDelaySeconds: 5
+          periodSeconds: 10
+          successThreshold: 1
+          timeoutSeconds: 5
+        name: redis
+        ports:
+        - containerPort: 6379
+          name: client
+          protocol: TCP
+        - containerPort: 16379
+          name: gossip
+          protocol: TCP
+        readinessProbe:
+          exec:
+            command:
+            - sh
+            - -c
+            - redis-cli -h $(hostname) ping
+          failureThreshold: 3
+          initialDelaySeconds: 15
+          periodSeconds: 10
+          successThreshold: 1
+          timeoutSeconds: 5
+        resources: {}
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+        volumeMounts:
+        - mountPath: /data
+          name: store
+        - mountPath: /podinfo
+          name: podinfo
+      dnsPolicy: ClusterFirst
+      initContainers:
+      - args:
+        - config-ha
+        - --name={{.Name}}
+        - --conf_dir=/data
+        - redis
+        command:
+        - /redis-operator
+        env:
+        - name: POD_NAME
+          valueFrom:
+            fieldRef:
+              apiVersion: v1
+              fieldPath: metadata.name
+        - name: POD_REPLICAS
+          value: "2"
+        image: docker.io/tangfeixiong/redis-operator
+        imagePullPolicy: IfNotPresent
+        name: bootstrap
+        resources: {}
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+        volumeMounts:
+        - mountPath: /data
+          name: store
+        - mountPath: /podinfo
+          name: podinfo
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext: {}
+      terminationGracePeriodSeconds: 30
+      volumes:
+      - emptyDir: {}
+        name: store
+      - downwardAPI:
+          defaultMode: 420
+          items:
+          - fieldRef:
+              apiVersion: v1
+              fieldPath: metadata.annotations
+            path: annotations
+          - fieldRef:
+              apiVersion: v1
+              fieldPath: metadata.labels
+            path: labels
+          - fieldRef:
+              apiVersion: v1
+              fieldPath: metadata.name
+            path: name
+          - fieldRef:
+              apiVersion: v1
+              fieldPath: metadata.namespace
+            path: namespace
+        name: podinfo
+  updateStrategy:
+    type: RollingUpdate`)
+
 func templateRedisStatefulsetYamlBytes() ([]byte, error) {
 	return _templateRedisStatefulsetYaml, nil
 }
@@ -769,7 +970,7 @@ func templateRedisStatefulsetYaml() (*asset, error) {
 		return nil, err
 	}
 
-	info := bindataFileInfo{name: "template/redis-statefulset.yaml", size: 3219, mode: os.FileMode(420), modTime: time.Unix(1515707294, 0)}
+	info := bindataFileInfo{name: "template/redis-statefulset.yaml", size: 3659, mode: os.FileMode(420), modTime: time.Unix(1516868666, 0)}
 	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
@@ -781,11 +982,10 @@ var _templateSentinelDeploymentJson = []byte(`{
         "labels": {
             "app": "redis",
             "component": "sentinel",
-            "role": "sentinel",
-            "sentinel":  "true"
+            "sentinel":  "my-redis"
         },
-        "name": "{{.Name}}",
-        "namespace": "{{.Namespace}}"
+        "name": "my-redis",
+        "namespace": "default"
     },
     "spec": {
         "replicas": 3,
@@ -793,7 +993,7 @@ var _templateSentinelDeploymentJson = []byte(`{
             "matchLabels": {
                 "app": "redis",
                 "component": "sentinel",
-                "sentinel": "true"
+                "sentinel": "my-redis"
             }  
         },
         "strategy": {
@@ -804,38 +1004,37 @@ var _templateSentinelDeploymentJson = []byte(`{
                 "labels": {
                     "app": "redis",
                     "component": "sentinel",
-                    "role": "sentinel",
-                    "sentinel":  "true"
+                    "sentinel":  "my-redis"
                 }  
             },
             "spec": {
-                "initContainers": [
-                    {
-                        "command": [ "gen-sentinel-config.sh" ],
-                        "env": {
-                            "REDIS_SENTINEL_HOST": "{{.Name}}.{{.Namespace}}",
-                            "SENTINEL_QUORUM": 2
-                        },
-                        "image": "{{.Image}}",
-                        "imagePullPolicy": "IfNotPresent",
-                        "name": "sentinel-config",
-                        "volumeMounts": [
-                            {
-                                "mountPath": "/redis",
-                                "name": "config"
-                            }
-                        ]
-                    }
-                ],
                 "containers": [
                     {
-                        "command": [ "redis-server", "/redis/sentinel.conf", "--sentinel" ],
-                        "env": {
-                            "SENTINEL_QUORUM": 2,
-                            "SENTINEL": "true"
-                        },
-                        "image": "{{.Image}}",
+                        "args": [ "redis-server", "/data/sentinel.conf", "--sentinel" ],
+                        "command": ["docker-entrypoint.sh"],
+                        "env": [
+                            {
+                                "name": "SENTINEL_QUORUM",
+                                "value": "2"
+                            },
+                            {
+                                "name": "SENTINEL",
+                                "value": "true"
+                            }
+                        ],
+                        "image": "docker.io/redis:4.0-alpine",
                         "imagePullPolicy": "IfNotPresent",
+                        "livenessProbe": {
+                            "exec": {
+                                "command": [
+                                    "sh",
+                                    "-c",
+                                    "redis-cli -h $(hostname) -p 26379 ping"
+                                ]
+                            },
+                            "initialDelaySeconds": 5,
+                            "timeoutSeconds": 5
+                        },
                         "name": "sentinel",
                         "ports": [
                             {
@@ -844,7 +1043,6 @@ var _templateSentinelDeploymentJson = []byte(`{
                                 "protocol": "TCP"
                             }
                         ],
-                        "resources": {},
                         "readinessProbe": {
                             "exec": {
                                 "command": [
@@ -856,36 +1054,48 @@ var _templateSentinelDeploymentJson = []byte(`{
                             "initialDelaySeconds": 15,
                             "timeoutSeconds": 5
                         },
+                        "resources": {},
                         "volumeMounts": [
                             {
-                                "mountPath": "/redis",
-                                "name": "config"
+                                "mountPath": "/data",
+                                "name": "store"
+                            }
+                        ]
+                    }
+                ],
+                "initContainers": [
+                    {
+                        "args": [
+                            "config-ha",
+                            "--name=my-redis",
+                            "sentinel"                            
+                        ],
+                        "command": [ "/redis-operator" ],
+                        "env": [
+                            {
+                                "name": "SENTINEL_QUORUM",
+                                "value": "2"
+                            },
+                            {
+                                "name": "SENTINEL",
+                                "value": "true"
+                            }
+                        ],
+                        "image": "docker.io/tangfeixiong/redis-operator",
+                        "imagePullPolicy": "Always",
+                        "name": "bootstrap",
+                        "volumeMounts": [
+                            {
+                                "mountPath": "/data",
+                                "name": "store"
                             }
                         ]
                     }
                 ],
                 "volumes": [
                     {
-                        "hostPath": {
-                            "path": "/tmp",
-                            "type": ""
-                        },
-                        "name": "local"
-                    },
-                    {
-                        "flexVolume": {
-                            "driver": "rook.io/rook",
-                            "fsType": "ceph",
-                            "options": {
-                                "clusterName": "rook",
-                                "fsName": "myfs"
-                            }
-                        },
-                        "name": "store"
-                    },
-                    {
                         "emptyDir": {},
-                        "name": "snapshots"
+                        "name": "store"
                     }
                 ]
             }
@@ -905,7 +1115,132 @@ func templateSentinelDeploymentJson() (*asset, error) {
 		return nil, err
 	}
 
-	info := bindataFileInfo{name: "template/sentinel-deployment.json", size: 4063, mode: os.FileMode(420), modTime: time.Unix(1515488349, 0)}
+	info := bindataFileInfo{name: "template/sentinel-deployment.json", size: 4530, mode: os.FileMode(420), modTime: time.Unix(1515893724, 0)}
+	a := &asset{bytes: bytes, info: info}
+	return a, nil
+}
+
+var _templateSentinelDeploymentYaml = []byte(`#apiVersion: extensions/v1beta1
+apiVersion: apps/v1beta2
+kind: Deployment
+metadata:
+  annotations:
+    operator: 'redis sentinels high availability'
+  labels:
+    app: redis
+    component: sentinel
+    sentinel: {{.ProvisioningName}} # my-redis
+  name: {{.Name}} # my-redis
+  namespace: default
+spec:
+  replicas: {{.Replications}} #3
+  selector:
+    matchLabels:
+      app: redis
+      component: sentinel
+      sentinel: {{.ProvisioningName}} # my-redis
+  strategy:
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: redis
+        component: sentinel
+        sentinel: {{.ProvisioningName}} # my-redis
+    spec:
+      containers:
+      - args:
+        - redis-server
+        - /data/sentinel.conf
+        - --sentinel
+        command:
+        - docker-entrypoint.sh
+        env:
+        - name: SENTINEL_QUORUM
+          value: "2"
+        - name: SENTINEL
+          value: "true"
+        image: docker.io/redis:4.0-alpine
+        imagePullPolicy: IfNotPresent
+        livenessProbe:
+          exec:
+            command:
+            - sh
+            - -c
+            - redis-cli -h $(hostname) -p 26379 ping
+          failureThreshold: 3
+          initialDelaySeconds: 5
+          periodSeconds: 10
+          successThreshold: 1
+          timeoutSeconds: 5
+        name: sentinel
+        ports:
+        - containerPort: 26379
+          name: client # sentinel
+          protocol: TCP
+        readinessProbe:
+          exec:
+            command:
+            - sh
+            - -c
+            - redis-cli -h $(hostname) -p 26379 ping
+          failureThreshold: 3
+          initialDelaySeconds: 15
+          periodSeconds: 10
+          successThreshold: 1
+          timeoutSeconds: 5
+        resources: {}
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+        volumeMounts:
+        - mountPath: /data
+          name: store
+      dnsPolicy: ClusterFirst
+      initContainers:
+      - args:
+        - config-ha
+        - --name={{.Name}}
+        - --conf_dir=/data
+        - sentinel
+        command:
+        - /redis-operator
+        env:
+        - name: SENTINEL_QUORUM
+          value: "2"
+        - name: SENTINEL
+          value: "true"
+        image: docker.io/tangfeixiong/redis-operator
+        imagePullPolicy: Always
+        name: bootstrap
+        resources: {}
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+        volumeMounts:
+        - mountPath: /data
+          name: store
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext: {}
+      terminationGracePeriodSeconds: 30
+      volumes:
+      - emptyDir: {}
+        name: store
+`)
+
+func templateSentinelDeploymentYamlBytes() ([]byte, error) {
+	return _templateSentinelDeploymentYaml, nil
+}
+
+func templateSentinelDeploymentYaml() (*asset, error) {
+	bytes, err := templateSentinelDeploymentYamlBytes()
+	if err != nil {
+		return nil, err
+	}
+
+	info := bindataFileInfo{name: "template/sentinel-deployment.yaml", size: 2755, mode: os.FileMode(420), modTime: time.Unix(1516868693, 0)}
 	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
@@ -917,16 +1252,15 @@ var _templateSentinelServiceJson = []byte(`{
         "labels": {
             "app": "redis",
             "component": "sentinel",
-            "role": "service",
-            "sentinel":  "true"
+            "sentinel":  "my-redis-ha"
         },
-        "name": "{{.Name}}",
-        "namespace": "{{.Namespace}}"
+        "name": "my-redis-ha",
+        "namespace": "default"
     },
     "spec": {
         "ports": [
             {
-                "name": "sentinel",
+                "name": "client",
                 "port": 26379,
                 "targetPort": 26379
             }
@@ -934,7 +1268,7 @@ var _templateSentinelServiceJson = []byte(`{
         "selector": {
             "app": "redis",
             "component": "sentinel",
-            "sentinel": "true"
+            "sentinel": "my-redis-ha"
         }
     }
 }`)
@@ -949,7 +1283,46 @@ func templateSentinelServiceJson() (*asset, error) {
 		return nil, err
 	}
 
-	info := bindataFileInfo{name: "template/sentinel-service.json", size: 610, mode: os.FileMode(420), modTime: time.Unix(1515459617, 0)}
+	info := bindataFileInfo{name: "template/sentinel-service.json", size: 586, mode: os.FileMode(420), modTime: time.Unix(1516003256, 0)}
+	a := &asset{bytes: bytes, info: info}
+	return a, nil
+}
+
+var _templateSentinelServiceYaml = []byte(`apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: redis
+    component: sentinel
+    sentinel: {{.ResourceName}} # my-redis
+  name: {{.Name}} # my-redis-ha
+  namespace: default
+spec:
+  #clusterIP: None
+  ports:
+  - name: client
+    port: 26379
+    protocol: TCP
+    targetPort: 26379
+  selector:
+    app: redis
+    component: sentinel
+    sentinel: {{.ResourceName}}
+  #sessionAffinity: None
+  #type: ClusterIP
+`)
+
+func templateSentinelServiceYamlBytes() ([]byte, error) {
+	return _templateSentinelServiceYaml, nil
+}
+
+func templateSentinelServiceYaml() (*asset, error) {
+	bytes, err := templateSentinelServiceYamlBytes()
+	if err != nil {
+		return nil, err
+	}
+
+	info := bindataFileInfo{name: "template/sentinel-service.yaml", size: 418, mode: os.FileMode(420), modTime: time.Unix(1516320645, 0)}
 	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
@@ -1010,11 +1383,15 @@ var _bindata = map[string]func() (*asset, error){
 	"template/pod-disruption-budget.yaml": templatePodDisruptionBudgetYaml,
 	"template/redis-bootstrap.json": templateRedisBootstrapJson,
 	"template/redis-bootstrap.yaml": templateRedisBootstrapYaml,
+	"template/redis-cluster-sts.yaml": templateRedisClusterStsYaml,
 	"template/redis-service.json": templateRedisServiceJson,
+	"template/redis-service.yaml": templateRedisServiceYaml,
 	"template/redis-statefulset.json": templateRedisStatefulsetJson,
 	"template/redis-statefulset.yaml": templateRedisStatefulsetYaml,
 	"template/sentinel-deployment.json": templateSentinelDeploymentJson,
+	"template/sentinel-deployment.yaml": templateSentinelDeploymentYaml,
 	"template/sentinel-service.json": templateSentinelServiceJson,
+	"template/sentinel-service.yaml": templateSentinelServiceYaml,
 }
 
 // AssetDir returns the file names below a certain
@@ -1062,11 +1439,15 @@ var _bintree = &bintree{nil, map[string]*bintree{
 		"pod-disruption-budget.yaml": &bintree{templatePodDisruptionBudgetYaml, map[string]*bintree{}},
 		"redis-bootstrap.json": &bintree{templateRedisBootstrapJson, map[string]*bintree{}},
 		"redis-bootstrap.yaml": &bintree{templateRedisBootstrapYaml, map[string]*bintree{}},
+		"redis-cluster-sts.yaml": &bintree{templateRedisClusterStsYaml, map[string]*bintree{}},
 		"redis-service.json": &bintree{templateRedisServiceJson, map[string]*bintree{}},
+		"redis-service.yaml": &bintree{templateRedisServiceYaml, map[string]*bintree{}},
 		"redis-statefulset.json": &bintree{templateRedisStatefulsetJson, map[string]*bintree{}},
 		"redis-statefulset.yaml": &bintree{templateRedisStatefulsetYaml, map[string]*bintree{}},
 		"sentinel-deployment.json": &bintree{templateSentinelDeploymentJson, map[string]*bintree{}},
+		"sentinel-deployment.yaml": &bintree{templateSentinelDeploymentYaml, map[string]*bintree{}},
 		"sentinel-service.json": &bintree{templateSentinelServiceJson, map[string]*bintree{}},
+		"sentinel-service.yaml": &bintree{templateSentinelServiceYaml, map[string]*bintree{}},
 	}},
 }}
 

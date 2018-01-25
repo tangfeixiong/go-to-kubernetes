@@ -2,19 +2,15 @@ package operator
 
 import (
 	"fmt"
-	"os"
-	"os/signal"
-	"runtime"
-	"syscall"
+	//"os"
+	//"os/signal"
+	//"runtime"
+	//"syscall"
 	"time"
 
-	client "github.com/jw-s/redis-operator/pkg/generated/clientset"
-	redisinformers "github.com/jw-s/redis-operator/pkg/generated/informers/externalversions"
-	"github.com/jw-s/redis-operator/pkg/operator/controller"
-	"github.com/jw-s/redis-operator/pkg/operator/util"
 	opkit "github.com/rook/operator-kit"
 	rookop "github.com/rook/rook/pkg/operator"
-	"github.com/sirupsen/logrus"
+	//"github.com/sirupsen/logrus"
 
 	"k8s.io/api/extensions/v1beta1"
 	apiextensionsv1beta1 "k8s.io/apiextensions-apiserver/pkg/apis/apiextensions/v1beta1"
@@ -23,114 +19,126 @@ import (
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	errorsUtil "k8s.io/apimachinery/pkg/util/errors"
 	"k8s.io/apimachinery/pkg/util/wait"
-	"k8s.io/client-go/informers"
+	kubeinformers "k8s.io/client-go/informers"
 	"k8s.io/client-go/kubernetes"
 	"k8s.io/client-go/rest"
 	"k8s.io/client-go/tools/clientcmd"
 	"k8s.io/kubernetes/pkg/util/version"
 
 	"github.com/tangfeixiong/go-to-kubernetes/redis-operator/pb"
+	clientset "github.com/tangfeixiong/go-to-kubernetes/redis-operator/pkg/client/clientset/versioned"
+	informers "github.com/tangfeixiong/go-to-kubernetes/redis-operator/pkg/client/informers/externalversions"
+	"github.com/tangfeixiong/go-to-kubernetes/redis-operator/pkg/controller"
+	"github.com/tangfeixiong/go-to-kubernetes/redis-operator/pkg/signals"
 	"github.com/tangfeixiong/go-to-kubernetes/redis-operator/pkg/spec/crd"
 )
 
 /*
-  https://github.com/rook/rook/blob/master/pkg/operator/operator.go
+  Inspired by:
+    https://github.com/rook/rook/blob/master/pkg/operator/operator.go
 */
 type Operator struct {
-	config               *rest.Config
-	kubeClient           kubernetes.Interface
-	apiExtClientset      apiextensionsclient.Interface
-	redisClient          client.Interface
-	controllerConfig     controller.Config
-	redisInformerFactory redisinformers.SharedInformerFactory
-	informerFactory      informers.SharedInformerFactory
-	c                    controller.Controller
-	operator             *rookop.Operator
-	Interval             time.Duration
-	Timeout              time.Duration
-	agents               map[string]*struct{}
+	cfg                   *rest.Config
+	kubeClientset         kubernetes.Interface
+	kubeApiExtClientset   apiextensionsclient.Interface
+	sampleClientset       clientset.Interface
+	sampleInformerFactory informers.SharedInformerFactory
+	kubeInformerFactory   kubeinformers.SharedInformerFactory
+	operator              *rookop.Operator
+	Interval              time.Duration
+	Timeout               time.Duration
+	agents                map[string]*struct{}
+	c                     *controller.Controller
 }
 
-func Run() (*Operator, error) {
-	config, err := util.InClusterConfig()
-	if err != nil {
-		return nil, fmt.Errorf("Could not create In-cluster config: " + err.Error())
-	}
-
-	kubeClient, err := kubernetes.NewForConfig(config)
-	if err != nil {
-		return nil, fmt.Errorf("Could not create kube client: " + err.Error())
-	}
-
-	apiExtClientset, err := apiextensionsclient.NewForConfig(config)
-	if err != nil {
-		return nil, fmt.Errorf("failed to create k8s API extension clientset. %+v", err)
-	}
-
-	redisClient, err := client.NewForConfig(config)
-	if err != nil {
-		return nil, fmt.Errorf("Could not create redis client: " + err.Error())
-	}
-
-	controllerConfig := controller.NewConfig(config, Resync)
-
-	redisInformerFactory := redisinformers.NewSharedInformerFactory(redisClient, Resync)
-
-	informerFactory := informers.NewSharedInformerFactory(kubeClient, Resync)
-
-	c := controller.New(controllerConfig,
-		kubeClient,
-		redisClient.RedisV1(),
-		redisInformerFactory.Redis().V1().Redises(),
-		informerFactory.Core().V1().Pods(),
-		informerFactory.Apps().V1beta1().Deployments(),
-		informerFactory.Core().V1().Services(),
-		informerFactory.Core().V1().Endpoints(),
-		informerFactory.Core().V1().ConfigMaps(),
-		informerFactory.Apps().V1beta1().StatefulSets())
-
-	doneChan := make(chan struct{})
-
-	go c.Run(doneChan)
-
-	go informerFactory.Start(doneChan)
-
-	go redisInformerFactory.Start(doneChan)
-
-	go func() {
-		signalChan := make(chan os.Signal, 1)
-		signal.Notify(signalChan, syscall.SIGINT, syscall.SIGTERM)
-		for {
-			select {
-			case <-signalChan:
-				logrus.Info("Shutdown signal received, exiting...")
-				close(doneChan)
-				// os.Exit(0)
-				runtime.Goexit()
-			}
+func Run(bc RedisBootstrapConfig) (*Operator, error) {
+	var cfg *rest.Config
+	var err error
+	if bc.Kubeconfig != "" {
+		cfg, err = clientcmd.BuildConfigFromFlags("", bc.Kubeconfig)
+		if err != nil {
+			fmt.Println("Unable to config kubernetes client:", err.Error())
+			return nil, err
 		}
-	}()
+	} else {
+		cfg, err = rest.InClusterConfig()
+		if err != nil {
+			return nil, fmt.Errorf("Could not create In-cluster config: " + err.Error())
+		}
+	}
 
-	return &Operator{
-		config:               config,
-		kubeClient:           kubeClient,
-		apiExtClientset:      apiExtClientset,
-		redisClient:          redisClient,
-		controllerConfig:     controllerConfig,
-		redisInformerFactory: redisInformerFactory,
-		informerFactory:      informerFactory,
-		c:                    c,
-	}, nil
+	op := new(Operator)
+	ch := make(chan error)
+
+	go op.main(cfg, ch)
+
+	err = <-ch
+	if err != nil {
+		return nil, err
+	}
+
+	return op, nil
 }
 
-func (op *Operator) RunOutCluster(kubeconfig string) error {
-	config, err := clientcmd.BuildConfigFromFlags("", kubeconfig)
+func (op *Operator) main(cfg *rest.Config, errCh chan<- error) {
+	// set up signals so we handle the first shutdown signal gracefully
+	stopCh := signals.SetupSignalHandler()
+
+	//	config, err := util.InClusterConfig()
+	//	if err != nil {
+	//		return nil, fmt.Errorf("Could not create In-cluster config: " + err.Error())
+	//	}
+
+	kubeClientset, err := kubernetes.NewForConfig(cfg)
 	if err != nil {
-		fmt.Println("Unable to config kubernetes client:", err.Error())
-		return err
+		//glog.Fatalf("Error building kubeconfig: %s", err.Error())
+		errCh <- fmt.Errorf("Error building kubeconfig: %s", err.Error())
+		return
+		//return nil, fmt.Errorf("Could not create kube client: " + err.Error())
 	}
-	op.config = config
-	return err
+
+	kubeApiExtClientset, err := apiextensionsclient.NewForConfig(cfg)
+	if err != nil {
+		errCh <- fmt.Errorf("Error building kubernetes api extensions clientset: %s", err.Error())
+		return
+		//return nil, fmt.Errorf("failed to create k8s API extension clientset. %+v", err)
+	}
+
+	exampleClientset, err := clientset.NewForConfig(cfg)
+	if err != nil {
+		//glog.Fatalf("Error building kubernetes clientset: %s", err.Error())
+		errCh <- fmt.Errorf("Error building kubernetes clientset: %s", err.Error())
+		return
+		//return nil, fmt.Errorf("Could not create redis CRD clientset: " + err.Error())
+	}
+
+	//	controllerConfig := controller.NewConfig(config, Resync)
+
+	kubeInformerFactory := kubeinformers.NewSharedInformerFactory(kubeClientset, time.Second*30)
+	exampleInformerFactory := informers.NewSharedInformerFactory(exampleClientset, time.Second*30)
+
+	controller := controller.NewController(kubeClientset, exampleClientset, kubeInformerFactory, exampleInformerFactory)
+	controller.Config = &struct {
+		*rest.Config
+		DefaultResync time.Duration
+	}{cfg, Resync}
+
+	go kubeInformerFactory.Start(stopCh)
+	go exampleInformerFactory.Start(stopCh)
+
+	op.cfg = cfg
+	op.c = controller
+	op.kubeClientset = kubeClientset
+	op.kubeApiExtClientset = kubeApiExtClientset
+	op.sampleClientset = exampleClientset
+	op.sampleInformerFactory = exampleInformerFactory
+	op.kubeInformerFactory = kubeInformerFactory
+
+	if err = controller.Run( /*2*/ 1, stopCh); err != nil {
+		//glog.Fatalf("Error running controller: %s", err.Error())
+		errCh <- fmt.Errorf("Error running controller: %s", err.Error())
+		return
+	}
 }
 
 func (op *Operator) CreateCRD(recipe *pb.CrdRecipient) error {
@@ -148,7 +156,7 @@ func (op *Operator) CreateCRD(recipe *pb.CrdRecipient) error {
 
 func (op *Operator) CreateCRDorTPR(recipe crd.Recipient) error {
 	// CRD is available on v1.7.0 and above. TPR became deprecated on v1.7.0
-	serverVersion, err := op.kubeClient.Discovery().ServerVersion()
+	serverVersion, err := op.kubeClientset.Discovery().ServerVersion()
 	if err != nil {
 		return fmt.Errorf("Error getting server version: %v", err)
 	}
@@ -170,8 +178,8 @@ func (op *Operator) CreateCRDorTPR(recipe crd.Recipient) error {
 		}
 	} else {
 		context := opkit.Context{
-			Clientset:             op.kubeClient,
-			APIExtensionClientset: op.apiExtClientset,
+			Clientset:             op.kubeClientset,
+			APIExtensionClientset: op.kubeApiExtClientset,
 			Interval:              500 * time.Millisecond,
 			Timeout:               60 * time.Second,
 		}
@@ -208,7 +216,7 @@ func (op *Operator) CreateCRDorTPR(recipe crd.Recipient) error {
 func (op *Operator) createCRD(recipe crd.Recipient) error {
 	rediscrd, err := crd.Deserialize(recipe)
 
-	_, err = op.apiExtClientset.ApiextensionsV1beta1().CustomResourceDefinitions().Create(rediscrd)
+	_, err = op.kubeApiExtClientset.ApiextensionsV1beta1().CustomResourceDefinitions().Create(rediscrd)
 	if err != nil {
 		if !errors.IsAlreadyExists(err) {
 			return fmt.Errorf("failed to create %s CRD. %+v", recipe.Name, err)
@@ -220,7 +228,7 @@ func (op *Operator) createCRD(recipe crd.Recipient) error {
 func (op *Operator) waitForCRDInit(recipe crd.Recipient) error {
 	crdName := fmt.Sprintf("%s.%s", recipe.Name, recipe.Group)
 	return wait.Poll(500*time.Millisecond, 60*time.Second, func() (bool, error) {
-		crdRedis, err := op.apiExtClientset.ApiextensionsV1beta1().CustomResourceDefinitions().Get(crdName, metav1.GetOptions{})
+		crdRedis, err := op.kubeApiExtClientset.ApiextensionsV1beta1().CustomResourceDefinitions().Get(crdName, metav1.GetOptions{})
 		if err != nil {
 			return false, err
 		}
@@ -288,66 +296,10 @@ func waitForTPRInit(context opkit.Context, resource opkit.CustomResource) error 
 }
 
 /*
-  https://github.com/jw-s/redis-operator/blob/master/cmd/operator/main.go
+  Inspired by:
+    https://github.com/jw-s/redis-operator/blob/master/cmd/operator/main.go
 */
 
 var (
 	Resync time.Duration = time.Minute
 )
-
-func main() {
-
-	doneChan := make(chan struct{})
-
-	config, err := util.InClusterConfig()
-	if err != nil {
-		panic("Could not create In-cluster config: " + err.Error())
-	}
-
-	kubeClient, err := kubernetes.NewForConfig(config)
-
-	if err != nil {
-		panic("Could not create kube client: " + err.Error())
-	}
-
-	redisClient, err := client.NewForConfig(config)
-
-	if err != nil {
-		panic("Could not create redis client: " + err.Error())
-	}
-
-	controllerConfig := controller.NewConfig(config, Resync)
-
-	redisInformerFactory := redisinformers.NewSharedInformerFactory(redisClient, Resync)
-
-	informerFactory := informers.NewSharedInformerFactory(kubeClient, Resync)
-
-	c := controller.New(controllerConfig,
-		kubeClient,
-		redisClient.RedisV1(),
-		redisInformerFactory.Redis().V1().Redises(),
-		informerFactory.Core().V1().Pods(),
-		informerFactory.Apps().V1beta1().Deployments(),
-		informerFactory.Core().V1().Services(),
-		informerFactory.Core().V1().Endpoints(),
-		informerFactory.Core().V1().ConfigMaps(),
-		informerFactory.Apps().V1beta1().StatefulSets())
-
-	go c.Run(doneChan)
-
-	go informerFactory.Start(doneChan)
-
-	go redisInformerFactory.Start(doneChan)
-
-	signalChan := make(chan os.Signal, 1)
-	signal.Notify(signalChan, syscall.SIGINT, syscall.SIGTERM)
-	for {
-		select {
-		case <-signalChan:
-			logrus.Info("Shutdown signal received, exiting...")
-			close(doneChan)
-			os.Exit(0)
-		}
-	}
-
-}

@@ -1,4 +1,4 @@
-package sts
+package deploy
 
 import (
 	"bytes"
@@ -9,8 +9,10 @@ import (
 	"github.com/ghodss/yaml"
 	"github.com/golang/glog"
 
+	//"k8s.io/api/apps/v1beta1"
 	"k8s.io/api/apps/v1beta2"
 	apiv1 "k8s.io/api/core/v1"
+	//"k8s.io/api/extensions/v1beta1"
 	// "k8s.io/apiextensions-apiserver/pkg/apis/apiextensions/v1beta1"
 	"k8s.io/apimachinery/pkg/util/rand"
 
@@ -18,34 +20,41 @@ import (
 )
 
 const (
-	DEFAULT_NAMESPACE  = "default"
-	DEFAULT_IMAGE      = "docker.io/redis:4.0-alpine"
-	REDIS_PORT_DEFAULT = 6379
+	SENTINEL_PORT_DEFAULT = 26379
+	DEFAULT_NAMESPACE     = "default"
+	DEFAULT_IMAGE         = "docker.io/redis:4.0-alpine"
+	DEFAULT_QUORUM        = 2
 )
 
 var (
-	redis_tpl         string = "template/redis-statefulset.yaml"
+	sentinel_tpl      string = "template/sentinel-deployment.yaml"
 	name_default      string = "my-redis"
 	replicas_default  int    = 3
-	container_default string = "redis"
+	container_default string = "sentinel"
 	port_default      string = "client"
-	sync_default      string = "gossip"
 )
 
-type RedisRecipient struct {
-	Name, Namespace               string
-	ProvisioningName, ServiceName string
-	Image, PortName, SyncName     string
-	Replications, ClientPort      int
+type SentinelRecipient struct {
+	Name, Namespace          string
+	ProvisioningName         string
+	Image, PortName          string
+	Replications, ClientPort int
+	Quorum                   uint8
 }
 
-func NewRedisRecipient(name, namespace, resourceProvision, serviceName string, slaves int) *RedisRecipient {
-	recipe := &RedisRecipient{
+func NewSentinelRecipient(name, namespace, resourceProvision string, quorum int) *SentinelRecipient {
+	var replications int
+	if quorum%2 > 0 {
+		replications = (quorum - 1) * 2
+	} else {
+		replications = (quorum-1)*2 + 1
+	}
+
+	recipe := &SentinelRecipient{
 		Name:             name,
 		Namespace:        namespace,
 		ProvisioningName: resourceProvision,
-		ServiceName:      serviceName,
-		Replications:     slaves + 1,
+		Replications:     replications,
 	}
 
 	if name == "" {
@@ -57,30 +66,26 @@ func NewRedisRecipient(name, namespace, resourceProvision, serviceName string, s
 	if resourceProvision == "" {
 		recipe.ProvisioningName = name_default
 	}
-	if serviceName == "" {
-		recipe.ServiceName = recipe.ProvisioningName
-	}
 	//	if portname == "" {
 	//		recipe.PortName = port_default
 	//	}
 	recipe.PortName = port_default
-	//	if reidsport <= 1024 || reidsport >= 65535 {
-	//		recipe.ClientPort = REDIS_PORT_DEFAULT
+	//	if sentinelport <= 1024 || sentinelport >= 65535 {
+	//		recipe.ClientPort = SENTINEL_PORT_DEFAULT
 	//	}
-	recipe.ClientPort = REDIS_PORT_DEFAULT
-	recipe.SyncName = sync_default
+	recipe.ClientPort = SENTINEL_PORT_DEFAULT
 
-	if recipe.Replications < 2 {
+	if recipe.Replications < 3 {
 		recipe.Replications = replicas_default
 	}
 
 	return recipe
 }
 
-func (recipe *RedisRecipient) parseTpl() (*bytes.Buffer, error) {
+func (recipe *SentinelRecipient) parseTpl() (*bytes.Buffer, error) {
 	var text string
 
-	data, err := artifact.Asset(redis_tpl)
+	data, err := artifact.Asset(sentinel_tpl)
 	if err != nil {
 		glog.Errorf("Cloud not find spec binding, error: %s", err.Error())
 		return nil, err
@@ -88,7 +93,7 @@ func (recipe *RedisRecipient) parseTpl() (*bytes.Buffer, error) {
 		text = string(data)
 	}
 
-	te := template.Must(template.New("sts").Parse(text))
+	te := template.Must(template.New("deploy").Parse(text))
 	b := &bytes.Buffer{}
 
 	err = te.Execute(b, recipe)
@@ -96,21 +101,21 @@ func (recipe *RedisRecipient) parseTpl() (*bytes.Buffer, error) {
 		return nil, fmt.Errorf("Failed to parse spec binding: %v\n", err)
 	}
 
-	glog.V(5).Infoln("StatefulSet artifact for Redis:", b.String())
+	glog.V(5).Infoln("Deployment artifact for Sentinel:", b.String())
 	return b, nil
 }
 
-func (recipe *RedisRecipient) GenerateArtifact() (*v1beta2.StatefulSet, error) {
+func (recipe *SentinelRecipient) GenerateArtifact() (*v1beta2.Deployment, error) {
 	b, err := recipe.parseTpl()
 	if err != nil {
 		return nil, err
 	}
 
-	result := new(v1beta2.StatefulSet)
+	result := new(v1beta2.Deployment)
 
 	err = yaml.Unmarshal(b.Bytes(), &result)
 	if err != nil {
-		glog.Errorf("Could not decode StatefulSet artifact: %v", err)
+		glog.Errorf("Could not decode Deployment artifact: %v", err)
 		return nil, fmt.Errorf("Failed to perform deserializtion: %v\n", err)
 	}
 
@@ -132,33 +137,16 @@ func (recipe *RedisRecipient) GenerateArtifact() (*v1beta2.StatefulSet, error) {
 		c.Ports = append(c.Ports, *p)
 	}
 
-	if ok, c, p := findContainerPort(result, sync_default); ok {
-		p.Name = recipe.SyncName
-		p.ContainerPort = int32(recipe.ClientPort + 10000)
-	} else if c == nil {
-		glog.Infoln("Could not find Container to set port name")
-	} else {
-		p := &apiv1.ContainerPort{
-			Name:          recipe.SyncName,
-			ContainerPort: int32(recipe.ClientPort + 10000),
-			Protocol:      apiv1.ProtocolTCP,
-			/*TargetPort:,
-			  NodePort:*/
-		}
-		// c.Ports = []apiv1.ContainerPort{*p}
-		c.Ports = append(c.Ports, *p)
-	}
-
 	return result, nil
 }
 
-func findContainerPort(s *v1beta2.StatefulSet, name string) (bool, *apiv1.Container, *apiv1.ContainerPort) {
+func findContainerPort(d *v1beta2.Deployment, name string) (bool, *apiv1.Container, *apiv1.ContainerPort) {
 	var c *apiv1.Container = nil
 	var p *apiv1.ContainerPort
 
-	for i := 0; i < len(s.Spec.Template.Spec.Containers); i++ {
-		if s.Spec.Template.Spec.Containers[i].Name == container_default {
-			c = &s.Spec.Template.Spec.Containers[i]
+	for i := 0; i < len(d.Spec.Template.Spec.Containers); i++ {
+		if d.Spec.Template.Spec.Containers[i].Name == container_default {
+			c = &d.Spec.Template.Spec.Containers[i]
 			for j := 0; j < len(c.Ports); j++ {
 				if c.Ports[j].Name == name {
 					p = &c.Ports[j]

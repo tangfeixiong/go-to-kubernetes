@@ -1,12 +1,14 @@
 #!/bin/bash
 
-# refer to
+# Inspired by:
+#
 #   https://blog.openshift.com/kubernetes-deep-dive-code-generation-customresources/
 #   https://github.com/openshift-evangelists/crd-code-generation/blob/master/hack/update-codegen.sh
 
 #   https://github.com/kubernetes/sample-controller/blob/master/hack/update-codegen.sh
+#   https://github.com/kubernetes/code-generator/blob/master/hack/update-codegen.sh
+#   https://github.com/kubernetes/code-generator/blob/master/generate-groups.sh
 
-#   https://github.com/jw-s/redis-operator/tree/master/hack
 #   https://github.com/rook/rook/blob/master/build/codegen/codegen.sh
 
 set -o errexit

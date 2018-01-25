@@ -45,7 +45,7 @@ func Start(config *Config) {
 		config: config,
 		ops:    make(map[string]*operator.Operator),
 	}
-	op, err := operator.Run()
+	op, err := operator.Run(config.RedisBootstrapConfig)
 	if err != nil {
 		glog.Infof("Could not start Redis operator: %v", err)
 		return

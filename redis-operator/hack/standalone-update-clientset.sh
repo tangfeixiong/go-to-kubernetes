@@ -1,5 +1,10 @@
 #!/usr/bin/env bash
 
+# Inspired by:
+#   https://github.com/kubernetes/code-generator/blob/master/generate-groups.sh
+#
+#   https://github.com/jw-s/redis-operator/tree/master/hack
+
 PROJECT=github.com/tangfeixiong/go-to-kubernetes
 GOPATH="$(cd $(dirname ${BASH_SOURCE})/../../../../../.. && pwd)"
 if [[ -L ${HOME}/go ]]; then

@@ -5,11 +5,116 @@ import (
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 )
 
+/*
+  Inspired by:
+    https://github.com/rook/rook/blob/master/pkg/apis/rook.io/v1alpha1/types.go
+*/
+
 // ***************************************************************************
 // IMPORTANT FOR CODE GENERATION
 // If the types in this file are updated, you will need to run
 // `make codegen` to generate the new types under the client/clientset folder.
 // ***************************************************************************
+
+// +genclient
+// +genclient:noStatus
+// +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+
+type Cluster struct {
+	metav1.TypeMeta   `json:",inline"`
+	metav1.ObjectMeta `json:"metadata"`
+	Spec              ClusterSpec `json:"spec"`
+}
+
+// +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+
+type ClusterList struct {
+	metav1.TypeMeta `json:",inline"`
+	metav1.ListMeta `json:"metadata"`
+	Items           []Cluster `json:"items"`
+}
+
+type ClusterMode string
+
+const (
+	MasterSlaveModel ClusterMode = "ms"
+	RedisSentinelHA  ClusterMode = "rs"
+)
+
+type RedisTemplate struct {
+	ReplicationSlaves *int32 `json:"replicationSlaves,omitempty"`
+	HashSlots         *int32 `json:"hashSlots,omitempty"`
+	StatefulSetName   string `json:"statefulSetName,omitempty"`
+	ServiceName       string `json:"serviceName,omitempty"`
+}
+
+type SentinelTemplate struct {
+	Quorum          *int32 `json:"quorum,omitempty`
+	MasterGroupName string `json:"masterGroupName,omitempty"`
+	DeploymentName  string `json:"deploymentName,omitempty"`
+	ServiceName     string `json:"serviceName,omitempty"`
+}
+
+type ClusterSpec struct {
+	RedisTemplate    *RedisTemplate    `json:"redisTemplate"`
+	SentinelTemplate *SentinelTemplate `json:"sentinelTemplate"`
+	Mode             ClusterMode       `json:"mode,omitempty"`
+	Image            string            `json:"image,omitempty"`
+
+	// The type of backend for the cluster (only "ceph" is implemented)
+	//Backend string `json:"backend,omitempty"`
+
+	// The path on the host where config and data can be persisted.
+	DataDirHostPath string `json:"dataDirHostPath,omitempty"`
+
+	// The placement-related configuration to pass to kubernetes (affinity, node selector, tolerations).
+	Placement PlacementSpec `json:"placement,omitempty"`
+
+	// A spec for available storage in the cluster and how it should be used
+	//Storage StorageSpec `json:"storage"`
+
+	// HostNetwork to enable host network
+	HostNetwork bool `json:"hostNetwork,omitempty"`
+
+	// MonCount sets the mon size
+	//MonCount int `json:"monCount"`
+
+	// Resources set resource requests and limits
+	Resources ResourceSpec `json:"resources,omitempty"`
+}
+
+// +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+
+type PlacementSpec struct {
+	metav1.TypeMeta `json:",inline"`
+	All             Placement `json:"all,omitempty"`
+	API             Placement `json:"api,omitempty"`
+	Redis           Placement `json:"mgr,omitempty"`
+	Sentinel        Placement `json:"mon,omitempty"`
+}
+
+// +genclient:noStatus
+// +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+
+// Placement encapsulates the various kubernetes options that control where pods are scheduled and executed.
+type Placement struct {
+	metav1.TypeMeta `json:",inline"`
+	NodeAffinity    *v1.NodeAffinity    `json:"nodeAffinity,omitempty"`
+	PodAffinity     *v1.PodAffinity     `json:"podAffinity,omitempty"`
+	PodAntiAffinity *v1.PodAntiAffinity `json:"podAntiAffinity,omitempty"`
+	Tolerations     []v1.Toleration     `json:"tolerations,omitemtpy"`
+}
+
+type ResourceSpec struct {
+	API      v1.ResourceRequirements `json:"api,omitempty"`
+	Redis    v1.ResourceRequirements `json:"api,omitempty"`
+	Sentinel v1.ResourceRequirements `json:"mgr,omitempty"`
+}
+
+/*
+  Inspired by:
+    https://github.com/jw-s/redis-operator/blob/master/pkg/apis/redis/v1/redis.go
+*/
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 

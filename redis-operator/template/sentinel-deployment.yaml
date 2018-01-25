@@ -1,0 +1,108 @@
+#apiVersion: extensions/v1beta1
+apiVersion: apps/v1beta2
+kind: Deployment
+metadata:
+  annotations:
+    operator: 'redis sentinels high availability'
+  labels:
+    app: redis
+    component: sentinel
+    sentinel: {{.ProvisioningName}} # my-redis
+  name: {{.Name}} # my-redis
+  namespace: default
+spec:
+  replicas: {{.Replications}} #3
+  selector:
+    matchLabels:
+      app: redis
+      component: sentinel
+      sentinel: {{.ProvisioningName}} # my-redis
+  strategy:
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: redis
+        component: sentinel
+        sentinel: {{.ProvisioningName}} # my-redis
+    spec:
+      containers:
+      - args:
+        - redis-server
+        - /data/sentinel.conf
+        - --sentinel
+        command:
+        - docker-entrypoint.sh
+        env:
+        - name: SENTINEL_QUORUM
+          value: "2"
+        - name: SENTINEL
+          value: "true"
+        image: docker.io/redis:4.0-alpine
+        imagePullPolicy: IfNotPresent
+        livenessProbe:
+          exec:
+            command:
+            - sh
+            - -c
+            - redis-cli -h $(hostname) -p 26379 ping
+          failureThreshold: 3
+          initialDelaySeconds: 5
+          periodSeconds: 10
+          successThreshold: 1
+          timeoutSeconds: 5
+        name: sentinel
+        ports:
+        - containerPort: 26379
+          name: client # sentinel
+          protocol: TCP
+        readinessProbe:
+          exec:
+            command:
+            - sh
+            - -c
+            - redis-cli -h $(hostname) -p 26379 ping
+          failureThreshold: 3
+          initialDelaySeconds: 15
+          periodSeconds: 10
+          successThreshold: 1
+          timeoutSeconds: 5
+        resources: {}
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+        volumeMounts:
+        - mountPath: /data
+          name: store
+      dnsPolicy: ClusterFirst
+      initContainers:
+      - args:
+        - config-ha
+        - --name={{.Name}}
+        - --conf_dir=/data
+        - sentinel
+        command:
+        - /redis-operator
+        env:
+        - name: SENTINEL_QUORUM
+          value: "2"
+        - name: SENTINEL
+          value: "true"
+        image: docker.io/tangfeixiong/redis-operator
+        imagePullPolicy: Always
+        name: bootstrap
+        resources: {}
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+        volumeMounts:
+        - mountPath: /data
+          name: store
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext: {}
+      terminationGracePeriodSeconds: 30
+      volumes:
+      - emptyDir: {}
+        name: store

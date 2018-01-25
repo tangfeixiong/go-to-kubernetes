@@ -1,54 +1,287 @@
+
+## Demo
+
 ```
-[vagrant@kubedev-172-17-4-59 code-generator]$ GOPATH=/Users/fanhongling/go go install -v ./cmd/client-gen/
-k8s.io/code-generator/vendor/github.com/golang/glog
-k8s.io/code-generator/vendor/github.com/spf13/pflag
-k8s.io/code-generator/vendor/k8s.io/gengo/types
-k8s.io/code-generator/vendor/k8s.io/gengo/namer
-k8s.io/code-generator/cmd/client-gen/types
-k8s.io/code-generator/pkg/util
-k8s.io/code-generator/vendor/golang.org/x/tools/go/ast/astutil
-k8s.io/code-generator/vendor/golang.org/x/tools/imports
-k8s.io/code-generator/vendor/k8s.io/gengo/parser
-k8s.io/code-generator/vendor/k8s.io/gengo/generator
-k8s.io/code-generator/vendor/k8s.io/gengo/args
-k8s.io/code-generator/cmd/client-gen/args
-k8s.io/code-generator/cmd/client-gen/path
-k8s.io/code-generator/cmd/client-gen/generators/scheme
-k8s.io/code-generator/cmd/client-gen/generators/util
-k8s.io/code-generator/cmd/client-gen/generators/fake
-k8s.io/code-generator/cmd/client-gen/generators
-k8s.io/code-generator/cmd/client-gen
+[vagrant@rookdev-172-17-4-59 redis-operator]$ kubectl create -f redis-crd.yaml 
+customresourcedefinition "clusters.example.com" created
+customresourcedefinition "redises.example.com" created
 ```
 
 ```
-[vagrant@kubedev-172-17-4-59 code-generator]$ GOPATH=/Users/fanhongling/go go install -v ./cmd/deepcopy-gen/
-k8s.io/code-generator/vendor/k8s.io/gengo/examples/set-gen/sets
-k8s.io/code-generator/vendor/k8s.io/gengo/examples/deepcopy-gen/generators
-k8s.io/code-generator/cmd/deepcopy-gen/args
-k8s.io/code-generator/cmd/deepcopy-gen
+[vagrant@kubedev-172-17-4-59 redis-operator]$ kubectl create -f redis-operator.yaml 
+namespace "example-system" created
+clusterrole "my-redis-operator-example" created
+serviceaccount "redis-operator" created
+clusterrolebinding "redis-operator" created
+deployment "redis-operator" created
+service "redis-operator" created
 ```
 
 ```
-[vagrant@kubedev-172-17-4-59 code-generator]$ GOPATH=/Users/fanhongling/go go install -v ./cmd/informer-gen/
-k8s.io/code-generator/cmd/informer-gen/args
-k8s.io/code-generator/cmd/informer-gen/generators
-k8s.io/code-generator/cmd/informer-gen
+[vagrant@rookdev-172-17-4-59 redis-operator]$ kubectl get ns
+NAME             STATUS    AGE
+default          Active    38d
+example-system   Active    1m
+kube-public      Active    38d
+kube-system      Active    38d
 ```
 
 ```
-[vagrant@kubedev-172-17-4-59 code-generator]$ GOPATH=/Users/fanhongling/go go install -v ./cmd/lister-gen/  
-k8s.io/code-generator/cmd/lister-gen/args
-k8s.io/code-generator/cmd/lister-gen/generators
-k8s.io/code-generator/cmd/lister-gen
+[vagrant@rookdev-172-17-4-63 ~]$ kubectl --namespace example-system get pods -o wide
+NAME                              READY     STATUS    RESTARTS   AGE       IP             NODE
+redis-operator-75d95bf5b4-vfs4k   1/1       Running   0          1m        10.244.2.187   rookdev-172-17-4-61
 ```
 
+```
+[vagrant@rookdev-172-17-4-63 ~]$ kubectl --namespace example-system logs redis-operator-75d95bf5b4-vfs4k
+I0125 10:45:31.278351       1 controller.go:154] Setting up event handlers
+time="2018-01-25T10:45:31Z" level=info msg="Starting controller" pkg=controller
+I0125 10:45:31.280089       1 controller.go:229] Waiting for informer caches to sync
+time="2018-01-25T10:45:32Z" level=info msg="Sync completed" pkg=controller
+I0125 10:45:32.085241       1 controller.go:235] Starting workers
+I0125 10:45:32.085261       1 controller.go:241] Started workers
+```
+
+```
+ubuntu@rookdev-172-17-4-61:/Users/fanhongling/Downloads/workspace/src/github.com/tangfeixiong/go-to-kubernetes/redis-operator$ kubectl create -f redis-provision-4or3_2.yaml 
+cluster "demo-redis-sentinels" created
+```
+
+```
+ubuntu@rookdev-172-17-4-61:/Users/fanhongling/Downloads/workspace/src/github.com/tangfeixiong/go-to-kubernetes/redis-operator$ kubectl get pods -o wide
+NAME                                    READY     STATUS    RESTARTS   AGE       IP             NODE
+demo-redis-sentinels-0                  1/1       Running   0          1m        10.244.3.208   rookdev-172-17-4-63
+demo-redis-sentinels-1                  1/1       Running   0          1m        10.244.2.190   rookdev-172-17-4-61
+demo-redis-sentinels-549fcdccb4-45svm   1/1       Running   0          1m        10.244.2.189   rookdev-172-17-4-61
+demo-redis-sentinels-549fcdccb4-74kb4   1/1       Running   0          1m        10.244.3.209   rookdev-172-17-4-63
+demo-redis-sentinels-549fcdccb4-flw9t   1/1       Running   0          1m        10.244.2.188   rookdev-172-17-4-61
+```
+
+```
+ubuntu@rookdev-172-17-4-61:/Users/fanhongling/Downloads/workspace/src/github.com/tangfeixiong/go-to-kubernetes/redis-operator$ kubectl exec -ti demo-redis-sentinels-0 -- redis-cli INFO REPLICATION
+# Replication
+role:master
+connected_slaves:1
+slave0:ip=10.244.2.190,port=6379,state=online,offset=52357,lag=0
+master_replid:05dcba4bb566aacc7ab394ce9e8436861ba0e374
+master_replid2:0000000000000000000000000000000000000000
+master_repl_offset:52661
+second_repl_offset:-1
+repl_backlog_active:1
+repl_backlog_size:1048576
+repl_backlog_first_byte_offset:1
+repl_backlog_histlen:52661
+```
+
+```
+ubuntu@rookdev-172-17-4-61:/Users/fanhongling/Downloads/workspace/src/github.com/tangfeixiong/go-to-kubernetes/redis-operator$ kubectl exec -ti demo-redis-sentinels-1 -- redis-cli INFO REPLICATION
+# Replication
+role:slave
+master_host:10.244.3.208
+master_port:6379
+master_link_status:up
+master_last_io_seconds_ago:0
+master_sync_in_progress:0
+slave_repl_offset:54955
+slave_priority:100
+slave_read_only:1
+connected_slaves:0
+master_replid:05dcba4bb566aacc7ab394ce9e8436861ba0e374
+master_replid2:0000000000000000000000000000000000000000
+master_repl_offset:54955
+second_repl_offset:-1
+repl_backlog_active:1
+repl_backlog_size:1048576
+repl_backlog_first_byte_offset:1
+repl_backlog_histlen:54955
+```
+
+```
+ubuntu@rookdev-172-17-4-61:/Users/fanhongling/Downloads/workspace/src/github.com/tangfeixiong/go-to-kubernetes/redis-operator$ kubectl exec -ti demo-redis-sentinels-549fcdccb4-45svm -- redis-cli -p 26379 SENTINEL masters
+1)  1) "name"
+    2) "demo-redis-sentinels"
+    3) "ip"
+    4) "10.244.3.208"
+    5) "port"
+    6) "6379"
+    7) "runid"
+    8) "e5a7b7fabfd90c74037e2c6129ce1c71795560b0"
+    9) "flags"
+   10) "master"
+   11) "link-pending-commands"
+   12) "0"
+   13) "link-refcount"
+   14) "1"
+   15) "last-ping-sent"
+   16) "0"
+   17) "last-ok-ping-reply"
+   18) "663"
+   19) "last-ping-reply"
+   20) "663"
+   21) "down-after-milliseconds"
+   22) "60000"
+   23) "info-refresh"
+   24) "2050"
+   25) "role-reported"
+   26) "master"
+   27) "role-reported-time"
+   28) "333268"
+   29) "config-epoch"
+   30) "0"
+   31) "num-slaves"
+   32) "1"
+   33) "num-other-sentinels"
+   34) "2"
+   35) "quorum"
+   36) "2"
+   37) "failover-timeout"
+   38) "180000"
+   39) "parallel-syncs"
+   40) "1"
+```
+
+```
+ubuntu@rookdev-172-17-4-61:/Users/fanhongling/Downloads/workspace/src/github.com/tangfeixiong/go-to-kubernetes/redis-operator$ kubectl exec -ti demo-redis-sentinels-549fcdccb4-74kb4 -- redis-cli -p 26379 SENTINEL master demo-redis-sentinels
+ 1) "name"
+ 2) "demo-redis-sentinels"
+ 3) "ip"
+ 4) "10.244.3.208"
+ 5) "port"
+ 6) "6379"
+ 7) "runid"
+ 8) "e5a7b7fabfd90c74037e2c6129ce1c71795560b0"
+ 9) "flags"
+10) "master"
+11) "link-pending-commands"
+12) "0"
+13) "link-refcount"
+14) "1"
+15) "last-ping-sent"
+16) "0"
+17) "last-ok-ping-reply"
+18) "798"
+19) "last-ping-reply"
+20) "798"
+21) "down-after-milliseconds"
+22) "60000"
+23) "info-refresh"
+24) "1720"
+25) "role-reported"
+26) "master"
+27) "role-reported-time"
+28) "443411"
+29) "config-epoch"
+30) "0"
+31) "num-slaves"
+32) "1"
+33) "num-other-sentinels"
+34) "2"
+35) "quorum"
+36) "2"
+37) "failover-timeout"
+38) "180000"
+39) "parallel-syncs"
+40) "1"
+```
+
+```
+ubuntu@rookdev-172-17-4-61:/Users/fanhongling/Downloads/workspace/src/github.com/tangfeixiong/go-to-kubernetes/redis-operator$ kubectl exec -ti demo-redis-sentinels-549fcdccb4-flw9t -- redis-cli -p 26379 SENTINEL slaves demo-redis-sentinels
+1)  1) "name"
+    2) "10.244.2.190:6379"
+    3) "ip"
+    4) "10.244.2.190"
+    5) "port"
+    6) "6379"
+    7) "runid"
+    8) "6fa0bd157fd95a3f7862323a90d220c37cbb2834"
+    9) "flags"
+   10) "slave"
+   11) "link-pending-commands"
+   12) "0"
+   13) "link-refcount"
+   14) "1"
+   15) "last-ping-sent"
+   16) "0"
+   17) "last-ok-ping-reply"
+   18) "259"
+   19) "last-ping-reply"
+   20) "259"
+   21) "down-after-milliseconds"
+   22) "60000"
+   23) "info-refresh"
+   24) "1174"
+   25) "role-reported"
+   26) "slave"
+   27) "role-reported-time"
+   28) "513155"
+   29) "master-link-down-time"
+   30) "0"
+   31) "master-link-status"
+   32) "ok"
+   33) "master-host"
+   34) "10.244.3.208"
+   35) "master-port"
+   36) "6379"
+   37) "slave-priority"
+   38) "100"
+   39) "slave-repl-offset"
+   40) "117529"
+```
+
+## Development
+
+### Kubernetes API extensions code-generator
+
+[./k8s-api-ext-code-generator.md](./k8s-api-ext-code-generator.md)
+
+Generated
+```
+[vagrant@kubedev-172-17-4-59 redis-operator]$ ls pkg/apis pkg/client     
+pkg/apis:
+example.com
+
+pkg/client:
+clientset  informers  listers
+```
+
+### go-bindata code generator
+
+Refer to https://github.com/jteeuwen/go-bindata
+
+Generate
+```
+[vagrant@kubedev-172-17-4-59 redis-operator]$ make go-bindata-spec
+```
+
+Generated
+```
+[vagrant@kubedev-172-17-4-59 redis-operator]$ ls pkg/spec/artifact/             
+artifacts.go
+```
+
+### Protobuf and gRPC code generater
+
+Protobuf: refer to https://github.com/google/protobuf and https://github.com/golang/protobuf
+
+gRPC: refer to https://github.com/grpc/grpc-go and https://github.com/grpc-ecosystem/grpc-gateway
+
+Generate
+```
+[vagrant@kubedev-172-17-4-59 redis-operator]$ make protoc-grpc
+```
+
+Generated
+```
+[vagrant@kubedev-172-17-4-59 redis-operator]$ ls pb/*.go
+pb/message.pb.go  pb/service.pb.go  pb/service.pb.gw.go
+```
+
+### Build or install
 
 ```
 [vagrant@kubedev-172-17-4-59 redis-operator]$ GOPATH=/Users/fanhongling/Downloads/workspace:$HOME/go make go-install
-```
-
-```
-[vagrant@kubedev-172-17-4-59 redis-operator]$ GOPATH=/Users/fanhongling/Downloads/workspace:/Users/fanhongling/go make go-install
+### snippets ###
+github.com/tangfeixiong/go-to-kubernetes/redis-operator/pkg/operator
 github.com/tangfeixiong/go-to-kubernetes/redis-operator/pkg/server
 github.com/tangfeixiong/go-to-kubernetes/redis-operator/cmd
 github.com/tangfeixiong/go-to-kubernetes/redis-operator
@@ -237,9 +470,9 @@ NAME                  AGE
 redises.example.com   44s
 ```
 
-
+__docker__
 ```
-[vagrant@kubedev-172-17-4-59 redis-operator]$ GOPATH=/Users/fanhongling/Downloads/workspace:/Users/fanhongling/go make docker-build
+[vagrant@kubedev-172-17-4-59 redis-operator]$ GOPATH=/Users/fanhongling/Downloads/workspace:/Users/fanhongling/go make docker-push
 runtime/internal/sys
 runtime/internal/atomic
 runtime
@@ -277,39 +510,33 @@ net/url
 text/template/parse
 text/template
 github.com/tangfeixiong/go-to-kubernetes/vendor/github.com/spf13/cobra
-encoding
-encoding/base64
-unicode/utf16
-encoding/json
-math/bits
-compress/flate
-encoding/binary
 hash
-hash/crc32
-compress/gzip
+crypto
+crypto/sha1
 container/list
 crypto/subtle
 crypto/cipher
 crypto/internal/cipherhw
 crypto/aes
-internal/syscall/unix
-math/big
-crypto/rand
-crypto
+encoding/binary
 crypto/des
+math/bits
+math/big
 crypto/elliptic
 crypto/sha512
 encoding/asn1
 crypto/ecdsa
 crypto/hmac
 crypto/md5
+internal/syscall/unix
+crypto/rand
 crypto/rc4
 crypto/rsa
-crypto/sha1
 crypto/sha256
 crypto/dsa
 crypto/x509/pkix
 encoding/hex
+encoding/base64
 encoding/pem
 crypto/x509
 vendor/golang_org/x/crypto/chacha20poly1305/internal/chacha20
@@ -317,9 +544,31 @@ vendor/golang_org/x/crypto/poly1305
 vendor/golang_org/x/crypto/chacha20poly1305
 vendor/golang_org/x/crypto/curve25519
 crypto/tls
+log
+github.com/tangfeixiong/go-to-kubernetes/vendor/github.com/go-redis/redis/internal
+hash/crc32
+github.com/tangfeixiong/go-to-kubernetes/vendor/github.com/go-redis/redis/internal/consistenthash
+github.com/tangfeixiong/go-to-kubernetes/vendor/github.com/go-redis/redis/internal/hashtag
+encoding
+github.com/tangfeixiong/go-to-kubernetes/vendor/github.com/go-redis/redis/internal/proto
+github.com/tangfeixiong/go-to-kubernetes/vendor/github.com/go-redis/redis/internal/pool
+github.com/tangfeixiong/go-to-kubernetes/vendor/github.com/go-redis/redis
+os/user
+github.com/tangfeixiong/go-to-kubernetes/vendor/github.com/golang/glog
+unicode/utf16
+encoding/json
+github.com/tangfeixiong/go-to-kubernetes/vendor/github.com/gogo/protobuf/proto
+github.com/tangfeixiong/go-to-kubernetes/vendor/github.com/gogo/protobuf/sortkeys
+compress/flate
+compress/gzip
+github.com/tangfeixiong/go-to-kubernetes/vendor/github.com/mailru/easyjson/jlexer
+github.com/tangfeixiong/go-to-kubernetes/vendor/github.com/mailru/easyjson/buffer
+github.com/tangfeixiong/go-to-kubernetes/vendor/github.com/mailru/easyjson/jwriter
+regexp/syntax
+regexp
+github.com/tangfeixiong/go-to-kubernetes/vendor/gopkg.in/yaml.v2
 vendor/golang_org/x/net/http2/hpack
 vendor/golang_org/x/text/transform
-log
 vendor/golang_org/x/text/unicode/bidi
 vendor/golang_org/x/text/secure/bidirule
 vendor/golang_org/x/text/unicode/norm
@@ -334,79 +583,17 @@ net/http/httptrace
 net/http/internal
 path
 net/http
-github.com/tangfeixiong/go-to-kubernetes/vendor/github.com/elazarl/go-bindata-assetfs
-os/user
-github.com/tangfeixiong/go-to-kubernetes/vendor/github.com/golang/glog
-github.com/tangfeixiong/go-to-kubernetes/vendor/github.com/gorilla/websocket
-github.com/tangfeixiong/go-to-kubernetes/vendor/github.com/golang/protobuf/proto
-github.com/tangfeixiong/go-to-kubernetes/vendor/github.com/golang/protobuf/ptypes/struct
-github.com/tangfeixiong/go-to-kubernetes/vendor/github.com/golang/protobuf/jsonpb
-github.com/tangfeixiong/go-to-kubernetes/vendor/github.com/grpc-ecosystem/grpc-gateway/runtime/internal
-github.com/tangfeixiong/go-to-kubernetes/vendor/github.com/grpc-ecosystem/grpc-gateway/utilities
-github.com/tangfeixiong/go-to-kubernetes/vendor/golang.org/x/net/context
-github.com/tangfeixiong/go-to-kubernetes/vendor/golang.org/x/net/http2/hpack
+github.com/tangfeixiong/go-to-kubernetes/vendor/github.com/go-openapi/swag
+github.com/tangfeixiong/go-to-kubernetes/vendor/github.com/go-openapi/jsonpointer
+github.com/tangfeixiong/go-to-kubernetes/vendor/github.com/PuerkitoBio/urlesc
 github.com/tangfeixiong/go-to-kubernetes/vendor/golang.org/x/text/transform
 github.com/tangfeixiong/go-to-kubernetes/vendor/golang.org/x/text/unicode/bidi
 github.com/tangfeixiong/go-to-kubernetes/vendor/golang.org/x/text/secure/bidirule
 github.com/tangfeixiong/go-to-kubernetes/vendor/golang.org/x/text/unicode/norm
 github.com/tangfeixiong/go-to-kubernetes/vendor/golang.org/x/net/idna
-github.com/tangfeixiong/go-to-kubernetes/vendor/golang.org/x/net/lex/httplex
-github.com/tangfeixiong/go-to-kubernetes/vendor/golang.org/x/net/http2
-github.com/tangfeixiong/go-to-kubernetes/vendor/golang.org/x/net/internal/timeseries
-html
-html/template
-text/tabwriter
-github.com/tangfeixiong/go-to-kubernetes/vendor/golang.org/x/net/trace
-github.com/tangfeixiong/go-to-kubernetes/vendor/google.golang.org/grpc/codes
-github.com/tangfeixiong/go-to-kubernetes/vendor/google.golang.org/grpc/credentials
-github.com/tangfeixiong/go-to-kubernetes/vendor/google.golang.org/grpc/grpclb/grpc_lb_v1
-github.com/tangfeixiong/go-to-kubernetes/vendor/google.golang.org/grpc/grpclog
-github.com/tangfeixiong/go-to-kubernetes/vendor/google.golang.org/grpc/internal
-github.com/tangfeixiong/go-to-kubernetes/vendor/google.golang.org/grpc/keepalive
-github.com/tangfeixiong/go-to-kubernetes/vendor/google.golang.org/grpc/metadata
-github.com/tangfeixiong/go-to-kubernetes/vendor/google.golang.org/grpc/naming
-github.com/tangfeixiong/go-to-kubernetes/vendor/google.golang.org/grpc/peer
-github.com/tangfeixiong/go-to-kubernetes/vendor/google.golang.org/grpc/stats
-github.com/tangfeixiong/go-to-kubernetes/vendor/github.com/golang/protobuf/ptypes/any
-github.com/tangfeixiong/go-to-kubernetes/vendor/google.golang.org/genproto/googleapis/rpc/status
-github.com/tangfeixiong/go-to-kubernetes/vendor/google.golang.org/grpc/status
-github.com/tangfeixiong/go-to-kubernetes/vendor/google.golang.org/grpc/tap
-github.com/tangfeixiong/go-to-kubernetes/vendor/google.golang.org/grpc/transport
-net/http/httputil
-github.com/tangfeixiong/go-to-kubernetes/vendor/google.golang.org/grpc
-github.com/tangfeixiong/go-to-kubernetes/vendor/github.com/grpc-ecosystem/grpc-gateway/runtime
-github.com/philips/grpc-gateway-example/pkg/ui/data/swagger
-github.com/tangfeixiong/go-to-bigdata/nps-wss/pkg/httpfs
-github.com/tangfeixiong/go-to-kubernetes/vendor/github.com/gogo/protobuf/proto
-github.com/tangfeixiong/go-to-kubernetes/vendor/github.com/golang/protobuf/protoc-gen-go/descriptor
-github.com/tangfeixiong/go-to-kubernetes/vendor/github.com/grpc-ecosystem/grpc-gateway/third_party/googleapis/google/api
-github.com/tangfeixiong/go-to-kubernetes/redis-operator/pb
-github.com/tangfeixiong/go-to-kubernetes/vendor/github.com/jw-s/redis-operator/vendor/golang.org/x/sys/unix
-github.com/tangfeixiong/go-to-kubernetes/vendor/github.com/jw-s/redis-operator/vendor/golang.org/x/crypto/ssh/terminal
-github.com/tangfeixiong/go-to-kubernetes/vendor/github.com/jw-s/redis-operator/vendor/github.com/sirupsen/logrus
-github.com/tangfeixiong/go-to-kubernetes/vendor/github.com/gogo/protobuf/sortkeys
-github.com/tangfeixiong/go-to-kubernetes/vendor/github.com/mailru/easyjson/jlexer
-github.com/tangfeixiong/go-to-kubernetes/vendor/github.com/mailru/easyjson/buffer
-github.com/tangfeixiong/go-to-kubernetes/vendor/github.com/mailru/easyjson/jwriter
-regexp/syntax
-regexp
-github.com/tangfeixiong/go-to-kubernetes/vendor/gopkg.in/yaml.v2
-github.com/tangfeixiong/go-to-kubernetes/vendor/github.com/go-openapi/swag
-github.com/tangfeixiong/go-to-kubernetes/vendor/github.com/go-openapi/jsonpointer
-github.com/PuerkitoBio/urlesc
-golang.org/x/text/transform
-golang.org/x/text/unicode/bidi
-golang.org/x/text/secure/bidirule
-golang.org/x/text/unicode/norm
-golang.org/x/net/idna
-golang.org/x/text/width
-github.com/PuerkitoBio/purell
-github.com/mailru/easyjson/jlexer
-github.com/mailru/easyjson/buffer
-github.com/mailru/easyjson/jwriter
-github.com/go-openapi/swag
-github.com/go-openapi/jsonpointer
-github.com/go-openapi/jsonreference
+github.com/tangfeixiong/go-to-kubernetes/vendor/golang.org/x/text/width
+github.com/tangfeixiong/go-to-kubernetes/vendor/github.com/PuerkitoBio/purell
+github.com/tangfeixiong/go-to-kubernetes/vendor/github.com/go-openapi/jsonreference
 github.com/tangfeixiong/go-to-kubernetes/vendor/github.com/go-openapi/spec
 github.com/tangfeixiong/go-to-kubernetes/vendor/gopkg.in/inf.v0
 hash/adler32
@@ -437,13 +624,20 @@ github.com/tangfeixiong/go-to-kubernetes/vendor/k8s.io/apimachinery/pkg/runtime
 github.com/tangfeixiong/go-to-kubernetes/vendor/k8s.io/apimachinery/pkg/types
 runtime/debug
 github.com/tangfeixiong/go-to-kubernetes/vendor/k8s.io/apimachinery/pkg/util/intstr
+github.com/tangfeixiong/go-to-kubernetes/vendor/golang.org/x/net/http2/hpack
+github.com/tangfeixiong/go-to-kubernetes/vendor/golang.org/x/net/lex/httplex
+github.com/tangfeixiong/go-to-kubernetes/vendor/golang.org/x/net/http2
 github.com/tangfeixiong/go-to-kubernetes/vendor/k8s.io/apimachinery/pkg/util/net
 github.com/tangfeixiong/go-to-kubernetes/vendor/k8s.io/apimachinery/pkg/util/runtime
 github.com/tangfeixiong/go-to-kubernetes/vendor/k8s.io/apimachinery/pkg/util/wait
 github.com/tangfeixiong/go-to-kubernetes/vendor/k8s.io/apimachinery/pkg/watch
 github.com/tangfeixiong/go-to-kubernetes/vendor/k8s.io/apimachinery/pkg/apis/meta/v1
 github.com/tangfeixiong/go-to-kubernetes/vendor/k8s.io/api/core/v1
-github.com/tangfeixiong/go-to-kubernetes/vendor/github.com/jw-s/redis-operator/pkg/apis/redis/v1
+github.com/tangfeixiong/go-to-kubernetes/vendor/k8s.io/api/apps/v1beta1
+github.com/tangfeixiong/go-to-kubernetes/vendor/k8s.io/api/extensions/v1beta1
+github.com/tangfeixiong/go-to-kubernetes/vendor/k8s.io/apiextensions-apiserver/pkg/apis/apiextensions
+github.com/tangfeixiong/go-to-kubernetes/vendor/k8s.io/apimachinery/pkg/util/json
+github.com/tangfeixiong/go-to-kubernetes/vendor/k8s.io/apiextensions-apiserver/pkg/apis/apiextensions/v1beta1
 github.com/tangfeixiong/go-to-kubernetes/vendor/github.com/ghodss/yaml
 github.com/tangfeixiong/go-to-kubernetes/vendor/github.com/json-iterator/go
 github.com/tangfeixiong/go-to-kubernetes/vendor/k8s.io/apimachinery/pkg/runtime/serializer/recognizer
@@ -453,7 +647,7 @@ github.com/tangfeixiong/go-to-kubernetes/vendor/k8s.io/apimachinery/pkg/runtime/
 github.com/tangfeixiong/go-to-kubernetes/vendor/k8s.io/apimachinery/pkg/runtime/serializer/protobuf
 github.com/tangfeixiong/go-to-kubernetes/vendor/k8s.io/apimachinery/pkg/runtime/serializer/versioning
 github.com/tangfeixiong/go-to-kubernetes/vendor/k8s.io/apimachinery/pkg/runtime/serializer
-github.com/tangfeixiong/go-to-kubernetes/vendor/github.com/jw-s/redis-operator/pkg/generated/clientset/scheme
+github.com/tangfeixiong/go-to-kubernetes/vendor/k8s.io/apiextensions-apiserver/pkg/client/clientset/clientset/scheme
 github.com/tangfeixiong/go-to-kubernetes/vendor/k8s.io/apimachinery/pkg/api/errors
 github.com/tangfeixiong/go-to-kubernetes/vendor/k8s.io/apimachinery/pkg/runtime/serializer/streaming
 github.com/tangfeixiong/go-to-kubernetes/vendor/k8s.io/apimachinery/pkg/version
@@ -461,6 +655,7 @@ github.com/tangfeixiong/go-to-kubernetes/vendor/k8s.io/client-go/pkg/version
 github.com/tangfeixiong/go-to-kubernetes/vendor/k8s.io/client-go/rest/watch
 github.com/tangfeixiong/go-to-kubernetes/vendor/k8s.io/client-go/tools/clientcmd/api
 github.com/tangfeixiong/go-to-kubernetes/vendor/k8s.io/client-go/tools/metrics
+net/http/httputil
 github.com/tangfeixiong/go-to-kubernetes/vendor/github.com/gregjones/httpcache
 github.com/tangfeixiong/go-to-kubernetes/vendor/github.com/google/btree
 github.com/tangfeixiong/go-to-kubernetes/vendor/github.com/peterbourgon/diskv
@@ -472,8 +667,10 @@ github.com/tangfeixiong/go-to-kubernetes/vendor/k8s.io/apimachinery/pkg/util/clo
 github.com/tangfeixiong/go-to-kubernetes/vendor/k8s.io/client-go/util/integer
 github.com/tangfeixiong/go-to-kubernetes/vendor/k8s.io/client-go/util/flowcontrol
 github.com/tangfeixiong/go-to-kubernetes/vendor/k8s.io/client-go/rest
-github.com/tangfeixiong/go-to-kubernetes/vendor/github.com/jw-s/redis-operator/pkg/generated/clientset/typed/redis/v1
+github.com/tangfeixiong/go-to-kubernetes/vendor/k8s.io/apiextensions-apiserver/pkg/client/clientset/clientset/typed/apiextensions/v1beta1
 github.com/tangfeixiong/go-to-kubernetes/vendor/github.com/emicklei/go-restful-swagger12
+github.com/tangfeixiong/go-to-kubernetes/vendor/github.com/golang/protobuf/proto
+github.com/tangfeixiong/go-to-kubernetes/vendor/github.com/golang/protobuf/ptypes/any
 github.com/tangfeixiong/go-to-kubernetes/vendor/github.com/golang/protobuf/ptypes/duration
 github.com/tangfeixiong/go-to-kubernetes/vendor/github.com/golang/protobuf/ptypes/timestamp
 github.com/tangfeixiong/go-to-kubernetes/vendor/github.com/golang/protobuf/ptypes
@@ -483,14 +680,13 @@ github.com/tangfeixiong/go-to-kubernetes/vendor/github.com/googleapis/gnostic/co
 github.com/tangfeixiong/go-to-kubernetes/vendor/github.com/googleapis/gnostic/OpenAPIv2
 github.com/tangfeixiong/go-to-kubernetes/vendor/k8s.io/apimachinery/pkg/api/equality
 github.com/tangfeixiong/go-to-kubernetes/vendor/github.com/davecgh/go-spew/spew
+text/tabwriter
 github.com/tangfeixiong/go-to-kubernetes/vendor/k8s.io/apimachinery/pkg/util/diff
-github.com/tangfeixiong/go-to-kubernetes/vendor/k8s.io/apimachinery/pkg/util/json
 github.com/tangfeixiong/go-to-kubernetes/vendor/k8s.io/apimachinery/pkg/conversion/unstructured
 github.com/tangfeixiong/go-to-kubernetes/vendor/k8s.io/apimachinery/pkg/apis/meta/v1/unstructured
 github.com/tangfeixiong/go-to-kubernetes/vendor/k8s.io/apimachinery/pkg/apis/meta/v1alpha1
 github.com/tangfeixiong/go-to-kubernetes/vendor/k8s.io/apimachinery/pkg/api/meta
 github.com/tangfeixiong/go-to-kubernetes/vendor/k8s.io/api/admissionregistration/v1alpha1
-github.com/tangfeixiong/go-to-kubernetes/vendor/k8s.io/api/apps/v1beta1
 github.com/tangfeixiong/go-to-kubernetes/vendor/k8s.io/api/apps/v1beta2
 github.com/tangfeixiong/go-to-kubernetes/vendor/k8s.io/api/authentication/v1
 github.com/tangfeixiong/go-to-kubernetes/vendor/k8s.io/api/authentication/v1beta1
@@ -502,7 +698,6 @@ github.com/tangfeixiong/go-to-kubernetes/vendor/k8s.io/api/batch/v1
 github.com/tangfeixiong/go-to-kubernetes/vendor/k8s.io/api/batch/v1beta1
 github.com/tangfeixiong/go-to-kubernetes/vendor/k8s.io/api/batch/v2alpha1
 github.com/tangfeixiong/go-to-kubernetes/vendor/k8s.io/api/certificates/v1beta1
-github.com/tangfeixiong/go-to-kubernetes/vendor/k8s.io/api/extensions/v1beta1
 github.com/tangfeixiong/go-to-kubernetes/vendor/k8s.io/api/networking/v1
 github.com/tangfeixiong/go-to-kubernetes/vendor/k8s.io/api/policy/v1beta1
 github.com/tangfeixiong/go-to-kubernetes/vendor/k8s.io/api/rbac/v1
@@ -514,32 +709,7 @@ github.com/tangfeixiong/go-to-kubernetes/vendor/k8s.io/api/storage/v1
 github.com/tangfeixiong/go-to-kubernetes/vendor/k8s.io/api/storage/v1beta1
 github.com/tangfeixiong/go-to-kubernetes/vendor/k8s.io/client-go/kubernetes/scheme
 github.com/tangfeixiong/go-to-kubernetes/vendor/k8s.io/client-go/discovery
-github.com/tangfeixiong/go-to-kubernetes/vendor/github.com/jw-s/redis-operator/pkg/generated/clientset
-container/heap
-github.com/tangfeixiong/go-to-kubernetes/vendor/github.com/hashicorp/golang-lru/simplelru
-github.com/tangfeixiong/go-to-kubernetes/vendor/github.com/hashicorp/golang-lru
-github.com/tangfeixiong/go-to-kubernetes/vendor/k8s.io/apimachinery/pkg/util/cache
-github.com/tangfeixiong/go-to-kubernetes/vendor/k8s.io/apimachinery/pkg/apis/meta/internalversion
-github.com/tangfeixiong/go-to-kubernetes/vendor/k8s.io/client-go/tools/pager
-github.com/tangfeixiong/go-to-kubernetes/vendor/k8s.io/client-go/tools/cache
-github.com/tangfeixiong/go-to-kubernetes/vendor/github.com/jw-s/redis-operator/pkg/generated/informers/externalversions/internalinterfaces
-github.com/tangfeixiong/go-to-kubernetes/vendor/github.com/jw-s/redis-operator/pkg/generated/listers/redis/v1
-github.com/tangfeixiong/go-to-kubernetes/vendor/github.com/jw-s/redis-operator/pkg/generated/informers/externalversions/redis/v1
-github.com/tangfeixiong/go-to-kubernetes/vendor/github.com/jw-s/redis-operator/pkg/generated/informers/externalversions/redis
-github.com/tangfeixiong/go-to-kubernetes/vendor/github.com/jw-s/redis-operator/pkg/generated/informers/externalversions
-github.com/tangfeixiong/go-to-kubernetes/vendor/github.com/jw-s/redis-operator/vendor/github.com/go-redis/redis/internal
-github.com/tangfeixiong/go-to-kubernetes/vendor/github.com/jw-s/redis-operator/vendor/github.com/go-redis/redis/internal/consistenthash
-github.com/tangfeixiong/go-to-kubernetes/vendor/github.com/jw-s/redis-operator/vendor/github.com/go-redis/redis/internal/hashtag
-github.com/tangfeixiong/go-to-kubernetes/vendor/github.com/jw-s/redis-operator/vendor/github.com/go-redis/redis/internal/proto
-github.com/tangfeixiong/go-to-kubernetes/vendor/github.com/jw-s/redis-operator/vendor/github.com/go-redis/redis/internal/pool
-github.com/tangfeixiong/go-to-kubernetes/vendor/github.com/jw-s/redis-operator/vendor/github.com/go-redis/redis
-github.com/tangfeixiong/go-to-kubernetes/vendor/github.com/jw-s/redis-operator/pkg/operator/spec
-github.com/tangfeixiong/go-to-kubernetes/vendor/github.com/jw-s/redis-operator/pkg/operator/redis
-github.com/tangfeixiong/go-to-kubernetes/vendor/k8s.io/client-go/listers/core/v1
-github.com/tangfeixiong/go-to-kubernetes/vendor/github.com/jw-s/redis-operator/pkg/operator/util
-github.com/tangfeixiong/go-to-kubernetes/vendor/k8s.io/apimachinery/pkg/util/mergepatch
-github.com/tangfeixiong/go-to-kubernetes/vendor/k8s.io/apimachinery/third_party/forked/golang/json
-github.com/tangfeixiong/go-to-kubernetes/vendor/k8s.io/apimachinery/pkg/util/strategicpatch
+github.com/tangfeixiong/go-to-kubernetes/vendor/k8s.io/apiextensions-apiserver/pkg/client/clientset/clientset
 github.com/tangfeixiong/go-to-kubernetes/vendor/k8s.io/client-go/kubernetes/typed/admissionregistration/v1alpha1
 github.com/tangfeixiong/go-to-kubernetes/vendor/k8s.io/client-go/kubernetes/typed/apps/v1beta1
 github.com/tangfeixiong/go-to-kubernetes/vendor/k8s.io/client-go/kubernetes/typed/apps/v1beta2
@@ -566,18 +736,14 @@ github.com/tangfeixiong/go-to-kubernetes/vendor/k8s.io/client-go/kubernetes/type
 github.com/tangfeixiong/go-to-kubernetes/vendor/k8s.io/client-go/kubernetes/typed/storage/v1
 github.com/tangfeixiong/go-to-kubernetes/vendor/k8s.io/client-go/kubernetes/typed/storage/v1beta1
 github.com/tangfeixiong/go-to-kubernetes/vendor/k8s.io/client-go/kubernetes
-github.com/tangfeixiong/go-to-kubernetes/vendor/k8s.io/client-go/informers/internalinterfaces
-github.com/tangfeixiong/go-to-kubernetes/vendor/k8s.io/client-go/listers/apps/v1beta1
-github.com/tangfeixiong/go-to-kubernetes/vendor/k8s.io/client-go/informers/apps/v1beta1
-github.com/tangfeixiong/go-to-kubernetes/vendor/k8s.io/client-go/informers/core/v1
-github.com/tangfeixiong/go-to-kubernetes/vendor/k8s.io/client-go/util/workqueue
-github.com/tangfeixiong/go-to-kubernetes/vendor/github.com/jw-s/redis-operator/vendor/k8s.io/kubernetes/plugin/pkg/scheduler/api
-github.com/tangfeixiong/go-to-kubernetes/vendor/github.com/jw-s/redis-operator/pkg/operator/controller
-github.com/tangfeixiong/go-to-kubernetes/vendor/k8s.io/apiextensions-apiserver/pkg/apis/apiextensions
-github.com/tangfeixiong/go-to-kubernetes/vendor/k8s.io/apiextensions-apiserver/pkg/apis/apiextensions/v1beta1
-github.com/tangfeixiong/go-to-kubernetes/vendor/k8s.io/apiextensions-apiserver/pkg/client/clientset/clientset/scheme
-github.com/tangfeixiong/go-to-kubernetes/vendor/k8s.io/apiextensions-apiserver/pkg/client/clientset/clientset/typed/apiextensions/v1beta1
-github.com/tangfeixiong/go-to-kubernetes/vendor/k8s.io/apiextensions-apiserver/pkg/client/clientset/clientset
+container/heap
+github.com/tangfeixiong/go-to-kubernetes/vendor/golang.org/x/net/context
+github.com/tangfeixiong/go-to-kubernetes/vendor/github.com/hashicorp/golang-lru/simplelru
+github.com/tangfeixiong/go-to-kubernetes/vendor/github.com/hashicorp/golang-lru
+github.com/tangfeixiong/go-to-kubernetes/vendor/k8s.io/apimachinery/pkg/util/cache
+github.com/tangfeixiong/go-to-kubernetes/vendor/k8s.io/apimachinery/pkg/apis/meta/internalversion
+github.com/tangfeixiong/go-to-kubernetes/vendor/k8s.io/client-go/tools/pager
+github.com/tangfeixiong/go-to-kubernetes/vendor/k8s.io/client-go/tools/cache
 github.com/tangfeixiong/go-to-kubernetes/vendor/k8s.io/kubernetes/pkg/util/version
 github.com/tangfeixiong/go-to-kubernetes/vendor/github.com/rook/operator-kit
 github.com/tangfeixiong/go-to-kubernetes/vendor/github.com/coreos/go-systemd/journal
@@ -630,9 +796,14 @@ github.com/tangfeixiong/go-to-kubernetes/vendor/k8s.io/kubernetes/pkg/util/point
 github.com/tangfeixiong/go-to-kubernetes/vendor/k8s.io/kubernetes/pkg/kubelet/apis/kubeletconfig/v1alpha1
 github.com/tangfeixiong/go-to-kubernetes/vendor/github.com/rook/rook/pkg/operator/agent
 encoding/gob
+html
+html/template
 net/rpc
 github.com/tangfeixiong/go-to-kubernetes/vendor/github.com/rook/rook/pkg/daemon/agent/flexvolume
 github.com/tangfeixiong/go-to-kubernetes/vendor/github.com/golang/groupcache/lru
+github.com/tangfeixiong/go-to-kubernetes/vendor/k8s.io/apimachinery/pkg/util/mergepatch
+github.com/tangfeixiong/go-to-kubernetes/vendor/k8s.io/apimachinery/third_party/forked/golang/json
+github.com/tangfeixiong/go-to-kubernetes/vendor/k8s.io/apimachinery/pkg/util/strategicpatch
 github.com/tangfeixiong/go-to-kubernetes/vendor/k8s.io/client-go/tools/record
 github.com/tangfeixiong/go-to-kubernetes/vendor/github.com/rook/rook/pkg/operator/provisioner/controller/leaderelection/resourcelock
 github.com/tangfeixiong/go-to-kubernetes/vendor/github.com/rook/rook/pkg/operator/provisioner/controller/leaderelection
@@ -644,13 +815,55 @@ github.com/tangfeixiong/go-to-kubernetes/vendor/github.com/rook/rook/pkg/operato
 github.com/tangfeixiong/go-to-kubernetes/vendor/github.com/rook/rook/pkg/operator/provisioner
 os/signal
 github.com/tangfeixiong/go-to-kubernetes/vendor/github.com/rook/rook/pkg/operator
+github.com/tangfeixiong/go-to-kubernetes/vendor/github.com/golang/protobuf/ptypes/struct
+github.com/tangfeixiong/go-to-kubernetes/vendor/github.com/golang/protobuf/jsonpb
+github.com/tangfeixiong/go-to-kubernetes/vendor/github.com/grpc-ecosystem/grpc-gateway/runtime/internal
+github.com/tangfeixiong/go-to-kubernetes/vendor/github.com/grpc-ecosystem/grpc-gateway/utilities
+github.com/tangfeixiong/go-to-kubernetes/vendor/golang.org/x/net/internal/timeseries
+github.com/tangfeixiong/go-to-kubernetes/vendor/golang.org/x/net/trace
+github.com/tangfeixiong/go-to-kubernetes/vendor/google.golang.org/grpc/codes
+github.com/tangfeixiong/go-to-kubernetes/vendor/google.golang.org/grpc/credentials
+github.com/tangfeixiong/go-to-kubernetes/vendor/google.golang.org/grpc/grpclb/grpc_lb_v1
+github.com/tangfeixiong/go-to-kubernetes/vendor/google.golang.org/grpc/grpclog
+github.com/tangfeixiong/go-to-kubernetes/vendor/google.golang.org/grpc/internal
+github.com/tangfeixiong/go-to-kubernetes/vendor/google.golang.org/grpc/keepalive
+github.com/tangfeixiong/go-to-kubernetes/vendor/google.golang.org/grpc/metadata
+github.com/tangfeixiong/go-to-kubernetes/vendor/google.golang.org/grpc/naming
+github.com/tangfeixiong/go-to-kubernetes/vendor/google.golang.org/grpc/peer
+github.com/tangfeixiong/go-to-kubernetes/vendor/google.golang.org/grpc/stats
+github.com/tangfeixiong/go-to-kubernetes/vendor/google.golang.org/genproto/googleapis/rpc/status
+github.com/tangfeixiong/go-to-kubernetes/vendor/google.golang.org/grpc/status
+github.com/tangfeixiong/go-to-kubernetes/vendor/google.golang.org/grpc/tap
+github.com/tangfeixiong/go-to-kubernetes/vendor/google.golang.org/grpc/transport
+github.com/tangfeixiong/go-to-kubernetes/vendor/google.golang.org/grpc
+github.com/tangfeixiong/go-to-kubernetes/vendor/github.com/grpc-ecosystem/grpc-gateway/runtime
+github.com/tangfeixiong/go-to-kubernetes/vendor/github.com/golang/protobuf/protoc-gen-go/descriptor
+github.com/tangfeixiong/go-to-kubernetes/vendor/github.com/grpc-ecosystem/grpc-gateway/third_party/googleapis/google/api
+github.com/tangfeixiong/go-to-kubernetes/redis-operator/pb
+github.com/tangfeixiong/go-to-kubernetes/redis-operator/pkg/apis/example.com
+github.com/tangfeixiong/go-to-kubernetes/redis-operator/pkg/apis/example.com/v1
+github.com/tangfeixiong/go-to-kubernetes/redis-operator/pkg/client/clientset/versioned/scheme
+github.com/tangfeixiong/go-to-kubernetes/redis-operator/pkg/client/clientset/versioned/typed/example.com/v1
+github.com/tangfeixiong/go-to-kubernetes/redis-operator/pkg/client/clientset/versioned
+github.com/tangfeixiong/go-to-kubernetes/redis-operator/pkg/client/informers/externalversions/internalinterfaces
+github.com/tangfeixiong/go-to-kubernetes/redis-operator/pkg/client/listers/example.com/v1
+github.com/tangfeixiong/go-to-kubernetes/redis-operator/pkg/client/informers/externalversions/example.com/v1
+github.com/tangfeixiong/go-to-kubernetes/redis-operator/pkg/client/informers/externalversions/example.com
+github.com/tangfeixiong/go-to-kubernetes/redis-operator/pkg/client/informers/externalversions
 github.com/tangfeixiong/go-to-kubernetes/vendor/golang.org/x/sys/unix
 github.com/tangfeixiong/go-to-kubernetes/vendor/golang.org/x/crypto/ssh/terminal
 github.com/tangfeixiong/go-to-kubernetes/vendor/github.com/sirupsen/logrus
-github.com/tangfeixiong/go-to-kubernetes/redis-operator/pkg/crd
+github.com/tangfeixiong/go-to-kubernetes/redis-operator/pkg/spec/artifact
+github.com/tangfeixiong/go-to-kubernetes/vendor/k8s.io/apimachinery/pkg/util/rand
+github.com/tangfeixiong/go-to-kubernetes/redis-operator/pkg/spec/deploy
+github.com/tangfeixiong/go-to-kubernetes/redis-operator/pkg/spec/sts
+github.com/tangfeixiong/go-to-kubernetes/redis-operator/pkg/spec/svc
+github.com/tangfeixiong/go-to-kubernetes/vendor/k8s.io/client-go/informers/internalinterfaces
 github.com/tangfeixiong/go-to-kubernetes/vendor/k8s.io/client-go/listers/admissionregistration/v1alpha1
 github.com/tangfeixiong/go-to-kubernetes/vendor/k8s.io/client-go/informers/admissionregistration/v1alpha1
 github.com/tangfeixiong/go-to-kubernetes/vendor/k8s.io/client-go/informers/admissionregistration
+github.com/tangfeixiong/go-to-kubernetes/vendor/k8s.io/client-go/listers/apps/v1beta1
+github.com/tangfeixiong/go-to-kubernetes/vendor/k8s.io/client-go/informers/apps/v1beta1
 github.com/tangfeixiong/go-to-kubernetes/vendor/k8s.io/client-go/listers/apps/v1beta2
 github.com/tangfeixiong/go-to-kubernetes/vendor/k8s.io/client-go/informers/apps/v1beta2
 github.com/tangfeixiong/go-to-kubernetes/vendor/k8s.io/client-go/informers/apps
@@ -669,6 +882,8 @@ github.com/tangfeixiong/go-to-kubernetes/vendor/k8s.io/client-go/informers/batch
 github.com/tangfeixiong/go-to-kubernetes/vendor/k8s.io/client-go/listers/certificates/v1beta1
 github.com/tangfeixiong/go-to-kubernetes/vendor/k8s.io/client-go/informers/certificates/v1beta1
 github.com/tangfeixiong/go-to-kubernetes/vendor/k8s.io/client-go/informers/certificates
+github.com/tangfeixiong/go-to-kubernetes/vendor/k8s.io/client-go/listers/core/v1
+github.com/tangfeixiong/go-to-kubernetes/vendor/k8s.io/client-go/informers/core/v1
 github.com/tangfeixiong/go-to-kubernetes/vendor/k8s.io/client-go/informers/core
 github.com/tangfeixiong/go-to-kubernetes/vendor/k8s.io/client-go/listers/extensions/v1beta1
 github.com/tangfeixiong/go-to-kubernetes/vendor/k8s.io/client-go/informers/extensions/v1beta1
@@ -698,6 +913,10 @@ github.com/tangfeixiong/go-to-kubernetes/vendor/k8s.io/client-go/listers/storage
 github.com/tangfeixiong/go-to-kubernetes/vendor/k8s.io/client-go/informers/storage/v1beta1
 github.com/tangfeixiong/go-to-kubernetes/vendor/k8s.io/client-go/informers/storage
 github.com/tangfeixiong/go-to-kubernetes/vendor/k8s.io/client-go/informers
+github.com/tangfeixiong/go-to-kubernetes/vendor/k8s.io/client-go/util/workqueue
+github.com/tangfeixiong/go-to-kubernetes/redis-operator/pkg/controller
+github.com/tangfeixiong/go-to-kubernetes/redis-operator/pkg/signals
+github.com/tangfeixiong/go-to-kubernetes/redis-operator/pkg/spec/crd
 github.com/tangfeixiong/go-to-kubernetes/vendor/github.com/howeyc/gopass
 github.com/tangfeixiong/go-to-kubernetes/vendor/github.com/imdario/mergo
 github.com/tangfeixiong/go-to-kubernetes/vendor/k8s.io/client-go/tools/auth
@@ -706,39 +925,47 @@ github.com/tangfeixiong/go-to-kubernetes/vendor/k8s.io/client-go/tools/clientcmd
 github.com/tangfeixiong/go-to-kubernetes/vendor/k8s.io/client-go/util/homedir
 github.com/tangfeixiong/go-to-kubernetes/vendor/k8s.io/client-go/tools/clientcmd
 github.com/tangfeixiong/go-to-kubernetes/redis-operator/pkg/operator
+github.com/tangfeixiong/go-to-kubernetes/vendor/github.com/elazarl/go-bindata-assetfs
+github.com/tangfeixiong/go-to-kubernetes/vendor/github.com/gorilla/websocket
+github.com/philips/grpc-gateway-example/pkg/ui/data/swagger
+github.com/tangfeixiong/go-to-bigdata/nps-wss/pkg/httpfs
 github.com/tangfeixiong/go-to-kubernetes/redis-operator/pkg/ui/data/webapp
 github.com/tangfeixiong/go-to-kubernetes/vendor/golang.org/x/net/websocket
 github.com/tangfeixiong/go-to-kubernetes/redis-operator/pkg/server
 github.com/tangfeixiong/go-to-kubernetes/redis-operator/cmd
 github.com/tangfeixiong/go-to-kubernetes/redis-operator
 #@docker build --no-cache --force-rm -t docker.io/tangfeixiong/redis-operator:latest ./
-Sending build context to Docker daemon 29.54 MB
+Sending build context to Docker daemon 29.73 MB
 Step 1/7 : FROM busybox
  ---> 6ad733544a63
 Step 2/7 : LABEL "maintainer" "tangfeixiong <tangfx128@gmail.com>" "project" "https://github.com/tangfeixiong/go-to-kubernetes" "name" "redis-operator" "version" "0.1" "created-by" '{"go":"v1.9.2","kubernetes":"v1.8","docker":"1.13"}'
- ---> Running in b795a1994fa7
- ---> 3c64c8ce0b23
-Removing intermediate container b795a1994fa7
+ ---> Running in af67cbe01e96
+ ---> 483d302a0600
+Removing intermediate container af67cbe01e96
 Step 3/7 : COPY bin/redis-operator /
- ---> 02db5987625d
-Removing intermediate container a7f745dd30b7
+ ---> bd8c54d38399
+Removing intermediate container 1eba37b4986c
 Step 4/7 : ENV DOCKER_API_VERSION '1.12' DOCKER_CONFIG_JSON '{"auths": {"localhost:5000": {"auth": "","email": ""}}}' REGISTRY_CERTS_JSON '{"localhost:5000": {"ca_base64": "", "crt_base64": "", "key_base64": ""}}'
- ---> Running in a2cf1d8f7ea5
- ---> 151a589b4efd
-Removing intermediate container a2cf1d8f7ea5
+ ---> Running in 6130b9100659
+ ---> 444ae0587cbe
+Removing intermediate container 6130b9100659
 Step 5/7 : EXPOSE 10002 10001
- ---> Running in ee35afc75347
- ---> 7584ebc301c2
-Removing intermediate container ee35afc75347
+ ---> Running in f2c09bfb4506
+ ---> 91f164436295
+Removing intermediate container f2c09bfb4506
 Step 6/7 : ENTRYPOINT /redis-operator serve
- ---> Running in b7d6fc1b4d63
- ---> 42893f95a3c5
-Removing intermediate container b7d6fc1b4d63
+ ---> Running in fa1808f5c4b7
+ ---> d76737597435
+Removing intermediate container fa1808f5c4b7
 Step 7/7 : CMD -v 2 --logtostderr=true
- ---> Running in 30d155fac9f4
- ---> 6173b48aa15e
-Removing intermediate container 30d155fac9f4
-Successfully built 6173b48aa15e
+ ---> Running in a975fe908614
+ ---> 3c2ea5ba5e44
+Removing intermediate container a975fe908614
+Successfully built 3c2ea5ba5e44
+The push refers to a repository [docker.io/tangfeixiong/redis-operator]
+4abf275618e6: Pushed 
+0271b8eebde3: Layer already exists 
+latest: digest: sha256:644b1223c8a767e1c091fcf621d1356b36b619bc5640bf3ca6cc3f13f75e76bc size: 738
 ```
 
 
@@ -1039,4 +1266,184 @@ sentinel known-slave my-redis 10.244.3.175 6379
 sentinel known-sentinel my-redis 10.244.2.139 26379 680d72d916d0833d84800ea59a686426a9754857
 sentinel known-sentinel my-redis 10.244.3.177 26379 dc88af434430ea5b2b4dc13f302832fc42e6beec
 sentinel current-epoch 0
+```
+
+```
+[vagrant@rookdev-172-17-4-63 ~]$ docker run --rm --name=test -ti --entrypoint="/bin/ash" docker.io/redis:4.0-alpine -c "redis-cli -h 10.102.38.21 -p 26379 SENTINEL masters"
+1)  1) "name"
+    2) "my-redis"
+    3) "ip"
+    4) "10.244.3.184"
+    5) "port"
+    6) "6379"
+    7) "runid"
+    8) "f1c118267716a052b01e66906a7d4339d2d2ebc6"
+    9) "flags"
+   10) "master"
+   11) "link-pending-commands"
+   12) "0"
+   13) "link-refcount"
+   14) "1"
+   15) "last-ping-sent"
+   16) "0"
+   17) "last-ok-ping-reply"
+   18) "226"
+   19) "last-ping-reply"
+   20) "226"
+   21) "down-after-milliseconds"
+   22) "60000"
+   23) "info-refresh"
+   24) "1328"
+   25) "role-reported"
+   26) "master"
+   27) "role-reported-time"
+   28) "3374108"
+   29) "config-epoch"
+   30) "0"
+   31) "num-slaves"
+   32) "1"
+   33) "num-other-sentinels"
+   34) "2"
+   35) "quorum"
+   36) "2"
+   37) "failover-timeout"
+   38) "180000"
+   39) "parallel-syncs"
+   40) "1"
+```
+
+### CI/CD
+
+```
+[vagrant@kubedev-172-17-4-59 redis-operator]$ redis-operator serve --kubeconfig --logtostderr --v=5
+I0125 08:36:10.463292   26211 controller.go:154] Setting up event handlers
+INFO[0000] Starting controller                           pkg=controller
+I0125 08:36:10.477105   26211 controller.go:229] Waiting for informer caches to sync
+INFO[0000] Sync completed                                pkg=controller
+I0125 08:36:10.782018   26211 controller.go:235] Starting workers
+I0125 08:36:10.782555   26211 controller.go:241] Started workers
+```
+
+```
+[vagrant@rookdev-172-17-4-63 ~]$ kubectl create -f /Users/fanhongling/Downloads/workspace/src/github.com/tangfeixiong/go-to-kubernetes/redis-operator/redis-crd.yaml 
+customresourcedefinition "clusters.example.com" created
+customresourcedefinition "redises.example.com" created
+```
+
+```
+[vagrant@rookdev-172-17-4-63 ~]$ kubectl create -f /Users/fanhongling/Downloads/workspace/src/github.com/tangfeixiong/go-to-kubernetes/redis-operator/redis-provision-4or3_2.yaml 
+cluster "demo-redis-sentinels" created
+```
+
+```
+ubuntu@rookdev-172-17-4-61:~$ kubectl get svc -o wide
+NAME                      TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)              AGE       SELECTOR
+demo-redis-sentinels      ClusterIP   None            <none>        6379/TCP,16379/TCP   11m       app=redis,component=redis,redis=demo-redis-sentinels
+demo-redis-sentinels-ha   ClusterIP   10.109.188.95   <none>        26379/TCP            11m       app=redis,component=sentinel,sentinel=demo-redis-sentinels
+kubernetes                ClusterIP   10.96.0.1       <none>        443/TCP              38d       <none>
+```
+
+```
+ubuntu@rookdev-172-17-4-61:~$ kubectl get sts -o wide
+NAME                   DESIRED   CURRENT   AGE       CONTAINERS   IMAGES
+demo-redis-sentinels   2         2         11m       redis        docker.io/redis:4.0-alpine
+```
+
+```
+ubuntu@rookdev-172-17-4-61:~$ kubectl get deploy -o wide
+NAME                   DESIRED   CURRENT   UP-TO-DATE   AVAILABLE   AGE       CONTAINERS     IMAGES                                     SELECTOR
+demo-redis-sentinels   3         3         3            3           11m       sentinel       docker.io/redis:4.0-alpine                 app=redis,component=sentinel,sentinel=demo-redis-sentinels
+```
+
+```
+ubuntu@rookdev-172-17-4-61:~$ kubectl get pods -o wide
+NAME                                    READY     STATUS    RESTARTS   AGE       IP             NODE
+demo-redis-sentinels-0                  1/1       Running   0          12m       10.244.2.185   rookdev-172-17-4-61
+demo-redis-sentinels-1                  1/1       Running   0          11m       10.244.3.206   rookdev-172-17-4-63
+demo-redis-sentinels-549fcdccb4-8wdk5   1/1       Running   0          12m       10.244.3.205   rookdev-172-17-4-63
+demo-redis-sentinels-549fcdccb4-9cr47   1/1       Running   0          12m       10.244.3.204   rookdev-172-17-4-63
+demo-redis-sentinels-549fcdccb4-vrcrp   1/1       Running   0          12m       10.244.2.186   rookdev-172-17-4-61
+```
+
+```
+ubuntu@rookdev-172-17-4-61:~$ kubectl exec -ti demo-redis-sentinels-1 -- redis-cli INFO REPLICATION
+# Replication
+role:slave
+master_host:10.244.2.185
+master_port:6379
+master_link_status:up
+master_last_io_seconds_ago:1
+master_sync_in_progress:0
+slave_repl_offset:21885
+slave_priority:100
+slave_read_only:1
+connected_slaves:0
+master_replid:38076048dddfb3d3876d0e88fe0c63a1a50d4501
+master_replid2:0000000000000000000000000000000000000000
+master_repl_offset:21885
+second_repl_offset:-1
+repl_backlog_active:1
+repl_backlog_size:1048576
+repl_backlog_first_byte_offset:1
+repl_backlog_histlen:21885
+```
+
+```
+ubuntu@rookdev-172-17-4-61:~$ kubectl exec -ti demo-redis-sentinels-0 -- redis-cli INFO REPLICATION
+# Replication
+role:master
+connected_slaves:1
+slave0:ip=10.244.3.206,port=6379,state=online,offset=24331,lag=0
+master_replid:38076048dddfb3d3876d0e88fe0c63a1a50d4501
+master_replid2:0000000000000000000000000000000000000000
+master_repl_offset:24331
+second_repl_offset:-1
+repl_backlog_active:1
+repl_backlog_size:1048576
+repl_backlog_first_byte_offset:1
+repl_backlog_histlen:24331
+```
+
+```
+ubuntu@rookdev-172-17-4-61:~$ kubectl exec -ti demo-redis-sentinels-549fcdccb4-8wdk5 -- redis-cli -p 26379 SENTINEL masters
+1)  1) "name"
+    2) "demo-redis-sentinels"
+    3) "ip"
+    4) "10.244.2.185"
+    5) "port"
+    6) "6379"
+    7) "runid"
+    8) "7c2b0cb2a6661814cd8f09fc1cde6e6a43f25def"
+    9) "flags"
+   10) "master"
+   11) "link-pending-commands"
+   12) "0"
+   13) "link-refcount"
+   14) "1"
+   15) "last-ping-sent"
+   16) "0"
+   17) "last-ok-ping-reply"
+   18) "83"
+   19) "last-ping-reply"
+   20) "83"
+   21) "down-after-milliseconds"
+   22) "60000"
+   23) "info-refresh"
+   24) "4367"
+   25) "role-reported"
+   26) "master"
+   27) "role-reported-time"
+   28) "345936"
+   29) "config-epoch"
+   30) "0"
+   31) "num-slaves"
+   32) "1"
+   33) "num-other-sentinels"
+   34) "2"
+   35) "quorum"
+   36) "2"
+   37) "failover-timeout"
+   38) "180000"
+   39) "parallel-syncs"
+   40) "1"
 ```
