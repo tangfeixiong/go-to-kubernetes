@@ -1,12 +1,22 @@
+# Redis Operator under CRD and API extensions
 
 ## Demo
 
+Step 1st
 ```
 [vagrant@rookdev-172-17-4-59 redis-operator]$ kubectl create -f redis-crd.yaml 
 customresourcedefinition "clusters.example.com" created
 customresourcedefinition "redises.example.com" created
 ```
 
+```
+[vagrant@kubedev-172-17-4-59 redis-operator]$ kubectl get crd
+NAME                           AGE
+clusters.example.com           4h
+redises.example.com            4h
+```
+
+Step 2nd
 ```
 [vagrant@kubedev-172-17-4-59 redis-operator]$ kubectl create -f redis-operator.yaml 
 namespace "example-system" created
@@ -27,6 +37,45 @@ kube-system      Active    38d
 ```
 
 ```
+[vagrant@kubedev-172-17-4-59 redis-operator]$ kubectl get clusterrole my-redis-operator-example
+NAME                        AGE
+my-redis-operator-example   1h
+```
+
+```
+[vagrant@kubedev-172-17-4-59 redis-operator]$ kubectl get sa -n example-system
+NAME             SECRETS   AGE
+default          1         1h
+redis-operator   1         1h
+```
+
+```
+[vagrant@kubedev-172-17-4-59 redis-operator]$ kubectl get clusterrolebindings/redis-operator -o yaml
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  creationTimestamp: 2018-01-25T10:43:19Z
+  name: redis-operator
+  resourceVersion: "2004619"
+  selfLink: /apis/rbac.authorization.k8s.io/v1/clusterrolebindings/redis-operator
+  uid: 8ef7ab0d-01bc-11e8-a011-525400224e72
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: my-redis-operator-example
+subjects:
+- kind: ServiceAccount
+  name: redis-operator
+  namespace: example-system
+```
+
+```
+[vagrant@kubedev-172-17-4-59 redis-operator]$ kubectl -n example-system get deploy
+NAME             DESIRED   CURRENT   UP-TO-DATE   AVAILABLE   AGE
+redis-operator   1         1         1            1           1h
+```
+
+```
 [vagrant@rookdev-172-17-4-63 ~]$ kubectl --namespace example-system get pods -o wide
 NAME                              READY     STATUS    RESTARTS   AGE       IP             NODE
 redis-operator-75d95bf5b4-vfs4k   1/1       Running   0          1m        10.244.2.187   rookdev-172-17-4-61
@@ -43,6 +92,13 @@ I0125 10:45:32.085261       1 controller.go:241] Started workers
 ```
 
 ```
+[vagrant@kubedev-172-17-4-59 redis-operator]$ kubectl -n example-system get svc                       
+NAME             TYPE        CLUSTER-IP   EXTERNAL-IP   PORT(S)     AGE
+redis-operator   ClusterIP   None         <none>        10002/TCP   1h
+```
+
+Step 3rd
+```
 ubuntu@rookdev-172-17-4-61:/Users/fanhongling/Downloads/workspace/src/github.com/tangfeixiong/go-to-kubernetes/redis-operator$ kubectl create -f redis-provision-4or3_2.yaml 
 cluster "demo-redis-sentinels" created
 ```
@@ -57,6 +113,7 @@ demo-redis-sentinels-549fcdccb4-74kb4   1/1       Running   0          1m       
 demo-redis-sentinels-549fcdccb4-flw9t   1/1       Running   0          1m        10.244.2.188   rookdev-172-17-4-61
 ```
 
+Step 4th
 ```
 ubuntu@rookdev-172-17-4-61:/Users/fanhongling/Downloads/workspace/src/github.com/tangfeixiong/go-to-kubernetes/redis-operator$ kubectl exec -ti demo-redis-sentinels-0 -- redis-cli INFO REPLICATION
 # Replication
