@@ -17,6 +17,7 @@ import (
 	// Uncomment the following line to load the gcp plugin (only required to authenticate against GKE clusters).
 	// _ "k8s.io/client-go/plugin/pkg/client/auth/gcp"
 
+	"github.com/tangfeixiong/go-to-kubernetes/cmd/spectest/mysqlorbranches"
 	"github.com/tangfeixiong/go-to-kubernetes/redis-operator/pkg/spec/crd"
 	"github.com/tangfeixiong/go-to-kubernetes/redis-operator/pkg/spec/deploy"
 	"github.com/tangfeixiong/go-to-kubernetes/redis-operator/pkg/spec/sts"
@@ -101,6 +102,19 @@ func main() {
 			createSentinelSvc()
 		case "redis-crd":
 			createRedisCrd()
+			break
+		case "mariadb-crd":
+			apiextensionsclientset, err := apiextensionsclient.NewForConfig(config)
+			if err != nil {
+				panic(err)
+			}
+			mysqlorbranches.CreateCRD(apiextensionsclientset)
+		case "mariadb-localstorage":
+			mysqlorbranches.CreateLocalStorage(clientset)
+		case "mariadb-svc":
+			mysqlorbranches.CreateMariadbSvc(clientset)
+		case "mariadb-sts":
+			mysqlorbranches.CreateMariadbSts(clientset)
 		default:
 			fmt.Println("Unknown create option", os.Args[1])
 		}
@@ -193,9 +207,6 @@ func createRedisCrd() {
 	}
 
 	apiextensionsclientset, err := apiextensionsclient.NewForConfig(config)
-	if err != nil {
-		panic(err)
-	}
 	if err != nil {
 		panic(err)
 	}
