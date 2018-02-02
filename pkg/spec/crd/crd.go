@@ -99,7 +99,7 @@ func ScopeSetter(isNamespaced bool) SetFieldFunc {
 	}
 }
 
-func (recipe *Recipient) ParseFrom(crdtpl []byte) (*bytes.Buffer, error) {
+func (recipe *Recipient) parse(crdtpl []byte) (*bytes.Buffer, error) {
 	text := tpl
 	if len(crdtpl) > 0 {
 		text = string(crdtpl)
@@ -114,8 +114,12 @@ func (recipe *Recipient) ParseFrom(crdtpl []byte) (*bytes.Buffer, error) {
 	return b, nil
 }
 
-func (recipe *Recipient) DecodeArtifact(crdtpl []byte) (*v1beta1.CustomResourceDefinition, error) {
-	b, err := recipe.ParseFrom(crdtpl)
+func (recipe *Recipient) Parse() (*bytes.Buffer, error) {
+	return recipe.parse([]byte{})
+}
+
+func (recipe *Recipient) generate(crdtpl []byte) (*v1beta1.CustomResourceDefinition, error) {
+	b, err := recipe.parse(crdtpl)
 	if err != nil {
 		logger.Println(err.Error())
 		return nil, err
@@ -140,4 +144,8 @@ func (recipe *Recipient) DecodeArtifact(crdtpl []byte) (*v1beta1.CustomResourceD
 	//	obj4, err := runtime.Decode(jsonserializer, b.Bytes())
 
 	return res, nil
+}
+
+func (recipe *Recipient) Generate() (*v1beta1.CustomResourceDefinition, error) {
+	return recipe.generate(nil)
 }

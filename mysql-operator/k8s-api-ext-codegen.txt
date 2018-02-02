@@ -1,0 +1,167 @@
+[vagrant@kubedev-172-17-4-59 mysql-operator]$ ./hack/update-codegen.sh 
+--------deepcopy--------
+I0201 20:14:55.677601   24185 parse.go:418] type checker: /opt/go/src/runtime/trace.go:150:30: cannot use (traceBufHeader literal) (value of type traceBufHeader) as unsafe.ArbitraryType value in argument to unsafe.Sizeof
+I0201 20:14:55.679772   24185 parse.go:418] type checker: /opt/go/src/runtime/trace.go:150:7: array length 64 << 10 - unsafe.Sizeof((traceBufHeader literal)) (value of type uintptr) must be constant
+I0201 20:14:55.680487   24185 parse.go:418] type checker: /opt/go/src/runtime/mgcwork.go:303:37: cannot use (workbufhdr literal) (value of type workbufhdr) as unsafe.ArbitraryType value in argument to unsafe.Sizeof
+I0201 20:14:55.680997   24185 parse.go:418] type checker: /opt/go/src/runtime/mgcwork.go:303:7: array length (_WorkbufSize - unsafe.Sizeof((workbufhdr literal))) / sys.PtrSize (value of type uintptr) must be constant
+I0201 20:14:55.682019   24185 parse.go:418] type checker: /opt/go/src/runtime/chan.go:27:28: cannot use (hchan literal) (value of type hchan) as unsafe.ArbitraryType value in argument to unsafe.Sizeof
+I0201 20:14:55.682697   24185 parse.go:418] type checker: /opt/go/src/runtime/chan.go:27:66: cannot use (hchan literal) (value of type hchan) as unsafe.ArbitraryType value in argument to unsafe.Sizeof
+I0201 20:14:55.683289   24185 parse.go:418] type checker: /opt/go/src/runtime/chan.go:27:14: unsafe.Sizeof((hchan literal)) + uintptr(-int(unsafe.Sizeof((hchan literal))) & (maxAlign - 1)) (value of type uintptr) is not constant
+I0201 20:14:55.686072   24185 parse.go:418] type checker: /opt/go/src/runtime/hashmap.go:80:31: cannot use (struct{b bmap; v int64} literal).v (value of type int64) as unsafe.ArbitraryType value in argument to unsafe.Offsetof
+I0201 20:14:55.686551   24185 parse.go:418] type checker: /opt/go/src/runtime/hashmap.go:80:15: unsafe.Offsetof((struct{b bmap; v int64} literal).v) (value of type uintptr) is not constant
+I0201 20:14:55.690245   24185 parse.go:418] type checker: /opt/go/src/runtime/mheap.go:148:47: cannot use (mcentral literal) (value of type mcentral) as unsafe.ArbitraryType value in argument to unsafe.Sizeof
+I0201 20:14:55.690781   24185 parse.go:418] type checker: /opt/go/src/runtime/mheap.go:148:13: array length sys.CacheLineSize - unsafe.Sizeof((mcentral literal)) % sys.CacheLineSize (value of type uintptr) must be constant
+I0201 20:14:55.693192   24185 parse.go:418] type checker: /opt/go/src/runtime/mfinal.go:28:65: cannot use (finalizer literal) (value of type finalizer) as unsafe.ArbitraryType value in argument to unsafe.Sizeof
+I0201 20:14:55.693751   24185 parse.go:418] type checker: /opt/go/src/runtime/mfinal.go:28:11: array length (_FinBlockSize - 2 * sys.PtrSize - 2 * 4) / unsafe.Sizeof((finalizer literal)) (value of type uintptr) must be constant
+I0201 20:14:55.696049   24185 parse.go:418] type checker: /opt/go/src/runtime/mheap.go:1535:41: cannot use (gcBitsHeader literal) (value of type gcBitsHeader) as unsafe.ArbitraryType value in argument to unsafe.Sizeof
+I0201 20:14:55.696685   24185 parse.go:418] type checker: /opt/go/src/runtime/mheap.go:1535:27: unsafe.Sizeof((gcBitsHeader literal)) (value of type uintptr) is not constant
+I0201 20:14:55.697862   24185 parse.go:418] type checker: /opt/go/src/runtime/mstats.go:436:39: cannot use memstats.by_size (variable of type [67]struct{size uint32; nmalloc uint64; nfree uint64}) as unsafe.ArbitraryType value in argument to unsafe.Offsetof
+I0201 20:14:55.698464   24185 parse.go:418] type checker: /opt/go/src/runtime/mstats.go:436:76: cannot use memstats.by_size[0] (variable of type struct{size uint32; nmalloc uint64; nfree uint64}) as unsafe.ArbitraryType value in argument to unsafe.Sizeof
+I0201 20:14:55.703707   24185 parse.go:418] type checker: /opt/go/src/runtime/panic.go:120:34: cannot use (_defer literal) (value of type _defer) as unsafe.ArbitraryType value in argument to unsafe.Sizeof
+I0201 20:14:55.704327   24185 parse.go:418] type checker: /opt/go/src/runtime/panic.go:120:20: unsafe.Sizeof((_defer literal)) (value of type uintptr) is not constant
+I0201 20:14:55.713411   24185 parse.go:418] type checker: /opt/go/src/runtime/sema.go:51:42: cannot use (semaRoot literal) (value of type semaRoot) as unsafe.ArbitraryType value in argument to unsafe.Sizeof
+I0201 20:14:55.714190   24185 parse.go:418] type checker: /opt/go/src/runtime/sema.go:51:8: array length sys.CacheLineSize - unsafe.Sizeof((semaRoot literal)) (value of type uintptr) must be constant
+I0201 20:14:55.733991   24185 parse.go:367] type checking encountered some issues in "runtime", but ignoring.
+I0201 20:14:55.738344   24185 parse.go:418] type checker: /opt/go/src/sync/map.go:69:31: cannot convert new(interface{}) (value of type *interface{}) to unsafe.Pointer
+I0201 20:14:55.738953   24185 parse.go:418] type checker: /opt/go/src/sync/pool.go:68:27: cannot use (poolLocalInternal literal) (value of type poolLocalInternal) as unsafe.ArbitraryType value in argument to unsafe.Sizeof
+I0201 20:14:55.739299   24185 parse.go:418] type checker: /opt/go/src/sync/pool.go:68:7: array length 128 - unsafe.Sizeof((poolLocalInternal literal)) % 128 (value of type uintptr) must be constant
+I0201 20:14:55.739787   24185 parse.go:367] type checking encountered some issues in "sync", but ignoring.
+I0201 20:14:58.278180   24185 parse.go:418] type checker: /opt/go/src/crypto/cipher/xor.go:12:36: cannot use uintptr(0) (constant 0 of type uintptr) as unsafe.ArbitraryType value in argument to unsafe.Sizeof
+I0201 20:14:58.278908   24185 parse.go:418] type checker: /opt/go/src/crypto/cipher/xor.go:12:18: int(unsafe.Sizeof(uintptr(0))) (value of type int) is not constant
+I0201 20:14:58.279662   24185 parse.go:367] type checking encountered some issues in "crypto/cipher", but ignoring.
+I0201 20:15:01.797142   24185 execute.go:217] Processing package "v1alpha1", disk location "/Users/fanhongling/Downloads/workspace/src/github.com/tangfeixiong/go-to-kubernetes/mysql-operator/pkg/apis/example.com/v1alpha1"
+I0201 20:15:01.799169   24185 deepcopy.go:270] Type github.com/tangfeixiong/go-to-kubernetes/mysql-operator/pkg/apis/example.com/v1alpha1.AddToScheme is not copyable
+I0201 20:15:01.799457   24185 deepcopy.go:270] Type github.com/tangfeixiong/go-to-kubernetes/mysql-operator/pkg/apis/example.com/v1alpha1.ClusterMode is not copyable
+I0201 20:15:01.800045   24185 deepcopy.go:270] Type github.com/tangfeixiong/go-to-kubernetes/mysql-operator/pkg/apis/example.com/v1alpha1.ConfigMap is not copyable
+I0201 20:15:01.800487   24185 deepcopy.go:270] Type github.com/tangfeixiong/go-to-kubernetes/mysql-operator/pkg/apis/example.com/v1alpha1.Kind is not copyable
+I0201 20:15:01.800954   24185 deepcopy.go:270] Type github.com/tangfeixiong/go-to-kubernetes/mysql-operator/pkg/apis/example.com/v1alpha1.Resource is not copyable
+I0201 20:15:01.801123   24185 deepcopy.go:270] Type github.com/tangfeixiong/go-to-kubernetes/mysql-operator/pkg/apis/example.com/v1alpha1.SchemeBuilder is not copyable
+I0201 20:15:01.801198   24185 deepcopy.go:270] Type github.com/tangfeixiong/go-to-kubernetes/mysql-operator/pkg/apis/example.com/v1alpha1.SchemeGroupVersion is not copyable
+I0201 20:15:01.801264   24185 deepcopy.go:270] Type github.com/tangfeixiong/go-to-kubernetes/mysql-operator/pkg/apis/example.com/v1alpha1.ServerConditionType is not copyable
+I0201 20:15:01.801301   24185 deepcopy.go:270] Type github.com/tangfeixiong/go-to-kubernetes/mysql-operator/pkg/apis/example.com/v1alpha1.ServerPhase is not copyable
+I0201 20:15:01.801373   24185 deepcopy.go:270] Type github.com/tangfeixiong/go-to-kubernetes/mysql-operator/pkg/apis/example.com/v1alpha1.addKnownTypes is not copyable
+I0201 20:15:01.801471   24185 deepcopy.go:270] Type github.com/tangfeixiong/go-to-kubernetes/mysql-operator/pkg/apis/example.com/v1alpha1.localSchemeBuilder is not copyable
+I0201 20:15:01.835264   24185 execute.go:67] Assembling file "/Users/fanhongling/Downloads/workspace/src/github.com/tangfeixiong/go-to-kubernetes/mysql-operator/pkg/apis/example.com/v1alpha1/zz_generated.deepcopy.go"
+I0201 20:15:01.861806   24185 main.go:81] Completed successfully.
+--------clientset--------
+I0201 20:15:02.969162   24201 parse.go:418] type checker: /opt/go/src/runtime/trace.go:150:30: cannot use (traceBufHeader literal) (value of type traceBufHeader) as unsafe.ArbitraryType value in argument to unsafe.Sizeof
+I0201 20:15:02.971473   24201 parse.go:418] type checker: /opt/go/src/runtime/trace.go:150:7: array length 64 << 10 - unsafe.Sizeof((traceBufHeader literal)) (value of type uintptr) must be constant
+I0201 20:15:02.972199   24201 parse.go:418] type checker: /opt/go/src/runtime/mgcwork.go:303:37: cannot use (workbufhdr literal) (value of type workbufhdr) as unsafe.ArbitraryType value in argument to unsafe.Sizeof
+I0201 20:15:02.972770   24201 parse.go:418] type checker: /opt/go/src/runtime/mgcwork.go:303:7: array length (_WorkbufSize - unsafe.Sizeof((workbufhdr literal))) / sys.PtrSize (value of type uintptr) must be constant
+I0201 20:15:02.973547   24201 parse.go:418] type checker: /opt/go/src/runtime/chan.go:27:28: cannot use (hchan literal) (value of type hchan) as unsafe.ArbitraryType value in argument to unsafe.Sizeof
+I0201 20:15:02.973867   24201 parse.go:418] type checker: /opt/go/src/runtime/chan.go:27:66: cannot use (hchan literal) (value of type hchan) as unsafe.ArbitraryType value in argument to unsafe.Sizeof
+I0201 20:15:02.974366   24201 parse.go:418] type checker: /opt/go/src/runtime/chan.go:27:14: unsafe.Sizeof((hchan literal)) + uintptr(-int(unsafe.Sizeof((hchan literal))) & (maxAlign - 1)) (value of type uintptr) is not constant
+I0201 20:15:02.981571   24201 parse.go:418] type checker: /opt/go/src/runtime/hashmap.go:80:31: cannot use (struct{b bmap; v int64} literal).v (value of type int64) as unsafe.ArbitraryType value in argument to unsafe.Offsetof
+I0201 20:15:02.982079   24201 parse.go:418] type checker: /opt/go/src/runtime/hashmap.go:80:15: unsafe.Offsetof((struct{b bmap; v int64} literal).v) (value of type uintptr) is not constant
+I0201 20:15:02.984211   24201 parse.go:418] type checker: /opt/go/src/runtime/mheap.go:148:47: cannot use (mcentral literal) (value of type mcentral) as unsafe.ArbitraryType value in argument to unsafe.Sizeof
+I0201 20:15:02.984919   24201 parse.go:418] type checker: /opt/go/src/runtime/mheap.go:148:13: array length sys.CacheLineSize - unsafe.Sizeof((mcentral literal)) % sys.CacheLineSize (value of type uintptr) must be constant
+I0201 20:15:02.986308   24201 parse.go:418] type checker: /opt/go/src/runtime/mfinal.go:28:65: cannot use (finalizer literal) (value of type finalizer) as unsafe.ArbitraryType value in argument to unsafe.Sizeof
+I0201 20:15:02.986929   24201 parse.go:418] type checker: /opt/go/src/runtime/mfinal.go:28:11: array length (_FinBlockSize - 2 * sys.PtrSize - 2 * 4) / unsafe.Sizeof((finalizer literal)) (value of type uintptr) must be constant
+I0201 20:15:02.988312   24201 parse.go:418] type checker: /opt/go/src/runtime/mheap.go:1535:41: cannot use (gcBitsHeader literal) (value of type gcBitsHeader) as unsafe.ArbitraryType value in argument to unsafe.Sizeof
+I0201 20:15:02.988911   24201 parse.go:418] type checker: /opt/go/src/runtime/mheap.go:1535:27: unsafe.Sizeof((gcBitsHeader literal)) (value of type uintptr) is not constant
+I0201 20:15:02.990841   24201 parse.go:418] type checker: /opt/go/src/runtime/mstats.go:436:39: cannot use memstats.by_size (variable of type [67]struct{size uint32; nmalloc uint64; nfree uint64}) as unsafe.ArbitraryType value in argument to unsafe.Offsetof
+I0201 20:15:02.991477   24201 parse.go:418] type checker: /opt/go/src/runtime/mstats.go:436:76: cannot use memstats.by_size[0] (variable of type struct{size uint32; nmalloc uint64; nfree uint64}) as unsafe.ArbitraryType value in argument to unsafe.Sizeof
+I0201 20:15:02.992567   24201 parse.go:418] type checker: /opt/go/src/runtime/panic.go:120:34: cannot use (_defer literal) (value of type _defer) as unsafe.ArbitraryType value in argument to unsafe.Sizeof
+I0201 20:15:02.992895   24201 parse.go:418] type checker: /opt/go/src/runtime/panic.go:120:20: unsafe.Sizeof((_defer literal)) (value of type uintptr) is not constant
+I0201 20:15:02.994445   24201 parse.go:418] type checker: /opt/go/src/runtime/sema.go:51:42: cannot use (semaRoot literal) (value of type semaRoot) as unsafe.ArbitraryType value in argument to unsafe.Sizeof
+I0201 20:15:02.994888   24201 parse.go:418] type checker: /opt/go/src/runtime/sema.go:51:8: array length sys.CacheLineSize - unsafe.Sizeof((semaRoot literal)) (value of type uintptr) must be constant
+I0201 20:15:03.001337   24201 parse.go:367] type checking encountered some issues in "runtime", but ignoring.
+I0201 20:15:03.380867   24201 parse.go:418] type checker: /opt/go/src/sync/map.go:69:31: cannot convert new(interface{}) (value of type *interface{}) to unsafe.Pointer
+I0201 20:15:03.381432   24201 parse.go:418] type checker: /opt/go/src/sync/pool.go:68:27: cannot use (poolLocalInternal literal) (value of type poolLocalInternal) as unsafe.ArbitraryType value in argument to unsafe.Sizeof
+I0201 20:15:03.382110   24201 parse.go:418] type checker: /opt/go/src/sync/pool.go:68:7: array length 128 - unsafe.Sizeof((poolLocalInternal literal)) % 128 (value of type uintptr) must be constant
+I0201 20:15:03.382862   24201 parse.go:367] type checking encountered some issues in "sync", but ignoring.
+I0201 20:15:05.997684   24201 parse.go:418] type checker: /opt/go/src/crypto/cipher/xor.go:12:36: cannot use uintptr(0) (constant 0 of type uintptr) as unsafe.ArbitraryType value in argument to unsafe.Sizeof
+I0201 20:15:05.998376   24201 parse.go:418] type checker: /opt/go/src/crypto/cipher/xor.go:12:18: int(unsafe.Sizeof(uintptr(0))) (value of type int) is not constant
+I0201 20:15:05.998844   24201 parse.go:367] type checking encountered some issues in "crypto/cipher", but ignoring.
+I0201 20:15:09.779786   24201 parse.go:418] type checker: /Users/fanhongling/Downloads/workspace/src/github.com/tangfeixiong/go-to-kubernetes/vendor/github.com/davecgh/go-spew/spew/bypass.go:34:26: cannot use (*byte)(nil) (value of type *byte) as unsafe.ArbitraryType value in argument to unsafe.Sizeof
+I0201 20:15:09.780334   24201 parse.go:418] type checker: /Users/fanhongling/Downloads/workspace/src/github.com/tangfeixiong/go-to-kubernetes/vendor/github.com/davecgh/go-spew/spew/bypass.go:34:12: unsafe.Sizeof((*byte)(nil)) (value of type uintptr) is not constant
+I0201 20:15:09.781472   24201 parse.go:367] type checking encountered some issues in "github.com/davecgh/go-spew/spew", but ignoring.
+I0201 20:15:10.060839   24201 execute.go:217] Processing package "versioned", disk location "/Users/fanhongling/Downloads/workspace/src/github.com/tangfeixiong/go-to-kubernetes/mysql-operator/pkg/client/clientset/versioned"
+I0201 20:15:10.069792   24201 execute.go:67] Assembling file "/Users/fanhongling/Downloads/workspace/src/github.com/tangfeixiong/go-to-kubernetes/mysql-operator/pkg/client/clientset/versioned/doc.go"
+I0201 20:15:10.076223   24201 execute.go:67] Assembling file "/Users/fanhongling/Downloads/workspace/src/github.com/tangfeixiong/go-to-kubernetes/mysql-operator/pkg/client/clientset/versioned/clientset.go"
+I0201 20:15:10.081411   24201 execute.go:217] Processing package "scheme", disk location "/Users/fanhongling/Downloads/workspace/src/github.com/tangfeixiong/go-to-kubernetes/mysql-operator/pkg/client/clientset/versioned/scheme"
+I0201 20:15:10.084153   24201 execute.go:67] Assembling file "/Users/fanhongling/Downloads/workspace/src/github.com/tangfeixiong/go-to-kubernetes/mysql-operator/pkg/client/clientset/versioned/scheme/doc.go"
+I0201 20:15:10.086934   24201 execute.go:67] Assembling file "/Users/fanhongling/Downloads/workspace/src/github.com/tangfeixiong/go-to-kubernetes/mysql-operator/pkg/client/clientset/versioned/scheme/register.go"
+I0201 20:15:10.089751   24201 execute.go:217] Processing package "v1alpha1", disk location "/Users/fanhongling/Downloads/workspace/src/github.com/tangfeixiong/go-to-kubernetes/mysql-operator/pkg/client/clientset/versioned/typed/example.com/v1alpha1"
+I0201 20:15:10.097601   24201 execute.go:67] Assembling file "/Users/fanhongling/Downloads/workspace/src/github.com/tangfeixiong/go-to-kubernetes/mysql-operator/pkg/client/clientset/versioned/typed/example.com/v1alpha1/doc.go"
+I0201 20:15:10.100194   24201 execute.go:67] Assembling file "/Users/fanhongling/Downloads/workspace/src/github.com/tangfeixiong/go-to-kubernetes/mysql-operator/pkg/client/clientset/versioned/typed/example.com/v1alpha1/mariadb.go"
+I0201 20:15:10.104781   24201 execute.go:67] Assembling file "/Users/fanhongling/Downloads/workspace/src/github.com/tangfeixiong/go-to-kubernetes/mysql-operator/pkg/client/clientset/versioned/typed/example.com/v1alpha1/mysql.go"
+I0201 20:15:10.111734   24201 execute.go:67] Assembling file "/Users/fanhongling/Downloads/workspace/src/github.com/tangfeixiong/go-to-kubernetes/mysql-operator/pkg/client/clientset/versioned/typed/example.com/v1alpha1/example.com_client.go"
+I0201 20:15:10.122471   24201 execute.go:67] Assembling file "/Users/fanhongling/Downloads/workspace/src/github.com/tangfeixiong/go-to-kubernetes/mysql-operator/pkg/client/clientset/versioned/typed/example.com/v1alpha1/generated_expansion.go"
+--------listers--------
+I0201 20:15:11.638652   24230 parse.go:418] type checker: /opt/go/src/runtime/trace.go:150:30: cannot use (traceBufHeader literal) (value of type traceBufHeader) as unsafe.ArbitraryType value in argument to unsafe.Sizeof
+I0201 20:15:11.640651   24230 parse.go:418] type checker: /opt/go/src/runtime/trace.go:150:7: array length 64 << 10 - unsafe.Sizeof((traceBufHeader literal)) (value of type uintptr) must be constant
+I0201 20:15:11.641086   24230 parse.go:418] type checker: /opt/go/src/runtime/mgcwork.go:303:37: cannot use (workbufhdr literal) (value of type workbufhdr) as unsafe.ArbitraryType value in argument to unsafe.Sizeof
+I0201 20:15:11.641543   24230 parse.go:418] type checker: /opt/go/src/runtime/mgcwork.go:303:7: array length (_WorkbufSize - unsafe.Sizeof((workbufhdr literal))) / sys.PtrSize (value of type uintptr) must be constant
+I0201 20:15:11.642331   24230 parse.go:418] type checker: /opt/go/src/runtime/chan.go:27:28: cannot use (hchan literal) (value of type hchan) as unsafe.ArbitraryType value in argument to unsafe.Sizeof
+I0201 20:15:11.643022   24230 parse.go:418] type checker: /opt/go/src/runtime/chan.go:27:66: cannot use (hchan literal) (value of type hchan) as unsafe.ArbitraryType value in argument to unsafe.Sizeof
+I0201 20:15:11.643352   24230 parse.go:418] type checker: /opt/go/src/runtime/chan.go:27:14: unsafe.Sizeof((hchan literal)) + uintptr(-int(unsafe.Sizeof((hchan literal))) & (maxAlign - 1)) (value of type uintptr) is not constant
+I0201 20:15:11.645698   24230 parse.go:418] type checker: /opt/go/src/runtime/hashmap.go:80:31: cannot use (struct{b bmap; v int64} literal).v (value of type int64) as unsafe.ArbitraryType value in argument to unsafe.Offsetof
+I0201 20:15:11.646382   24230 parse.go:418] type checker: /opt/go/src/runtime/hashmap.go:80:15: unsafe.Offsetof((struct{b bmap; v int64} literal).v) (value of type uintptr) is not constant
+I0201 20:15:11.648233   24230 parse.go:418] type checker: /opt/go/src/runtime/mheap.go:148:47: cannot use (mcentral literal) (value of type mcentral) as unsafe.ArbitraryType value in argument to unsafe.Sizeof
+I0201 20:15:11.648797   24230 parse.go:418] type checker: /opt/go/src/runtime/mheap.go:148:13: array length sys.CacheLineSize - unsafe.Sizeof((mcentral literal)) % sys.CacheLineSize (value of type uintptr) must be constant
+I0201 20:15:11.649954   24230 parse.go:418] type checker: /opt/go/src/runtime/mfinal.go:28:65: cannot use (finalizer literal) (value of type finalizer) as unsafe.ArbitraryType value in argument to unsafe.Sizeof
+I0201 20:15:11.650532   24230 parse.go:418] type checker: /opt/go/src/runtime/mfinal.go:28:11: array length (_FinBlockSize - 2 * sys.PtrSize - 2 * 4) / unsafe.Sizeof((finalizer literal)) (value of type uintptr) must be constant
+I0201 20:15:11.652081   24230 parse.go:418] type checker: /opt/go/src/runtime/mheap.go:1535:41: cannot use (gcBitsHeader literal) (value of type gcBitsHeader) as unsafe.ArbitraryType value in argument to unsafe.Sizeof
+I0201 20:15:11.652531   24230 parse.go:418] type checker: /opt/go/src/runtime/mheap.go:1535:27: unsafe.Sizeof((gcBitsHeader literal)) (value of type uintptr) is not constant
+I0201 20:15:11.653535   24230 parse.go:418] type checker: /opt/go/src/runtime/mstats.go:436:39: cannot use memstats.by_size (variable of type [67]struct{size uint32; nmalloc uint64; nfree uint64}) as unsafe.ArbitraryType value in argument to unsafe.Offsetof
+I0201 20:15:11.654187   24230 parse.go:418] type checker: /opt/go/src/runtime/mstats.go:436:76: cannot use memstats.by_size[0] (variable of type struct{size uint32; nmalloc uint64; nfree uint64}) as unsafe.ArbitraryType value in argument to unsafe.Sizeof
+I0201 20:15:11.656380   24230 parse.go:418] type checker: /opt/go/src/runtime/panic.go:120:34: cannot use (_defer literal) (value of type _defer) as unsafe.ArbitraryType value in argument to unsafe.Sizeof
+I0201 20:15:11.657009   24230 parse.go:418] type checker: /opt/go/src/runtime/panic.go:120:20: unsafe.Sizeof((_defer literal)) (value of type uintptr) is not constant
+I0201 20:15:11.658827   24230 parse.go:418] type checker: /opt/go/src/runtime/sema.go:51:42: cannot use (semaRoot literal) (value of type semaRoot) as unsafe.ArbitraryType value in argument to unsafe.Sizeof
+I0201 20:15:11.659764   24230 parse.go:418] type checker: /opt/go/src/runtime/sema.go:51:8: array length sys.CacheLineSize - unsafe.Sizeof((semaRoot literal)) (value of type uintptr) must be constant
+I0201 20:15:11.668537   24230 parse.go:367] type checking encountered some issues in "runtime", but ignoring.
+I0201 20:15:11.670407   24230 parse.go:418] type checker: /opt/go/src/sync/map.go:69:31: cannot convert new(interface{}) (value of type *interface{}) to unsafe.Pointer
+I0201 20:15:11.671076   24230 parse.go:418] type checker: /opt/go/src/sync/pool.go:68:27: cannot use (poolLocalInternal literal) (value of type poolLocalInternal) as unsafe.ArbitraryType value in argument to unsafe.Sizeof
+I0201 20:15:11.671502   24230 parse.go:418] type checker: /opt/go/src/sync/pool.go:68:7: array length 128 - unsafe.Sizeof((poolLocalInternal literal)) % 128 (value of type uintptr) must be constant
+I0201 20:15:11.672235   24230 parse.go:367] type checking encountered some issues in "sync", but ignoring.
+I0201 20:15:14.834721   24230 parse.go:418] type checker: /opt/go/src/crypto/cipher/xor.go:12:36: cannot use uintptr(0) (constant 0 of type uintptr) as unsafe.ArbitraryType value in argument to unsafe.Sizeof
+I0201 20:15:14.835269   24230 parse.go:418] type checker: /opt/go/src/crypto/cipher/xor.go:12:18: int(unsafe.Sizeof(uintptr(0))) (value of type int) is not constant
+I0201 20:15:14.835854   24230 parse.go:367] type checking encountered some issues in "crypto/cipher", but ignoring.
+I0201 20:15:18.384054   24230 execute.go:217] Processing package "v1alpha1", disk location "/Users/fanhongling/Downloads/workspace/src/github.com/tangfeixiong/go-to-kubernetes/mysql-operator/pkg/client/listers/example.com/v1alpha1"
+I0201 20:15:18.396459   24230 execute.go:67] Assembling file "/Users/fanhongling/Downloads/workspace/src/github.com/tangfeixiong/go-to-kubernetes/mysql-operator/pkg/client/listers/example.com/v1alpha1/expansion_generated.go"
+I0201 20:15:18.403580   24230 execute.go:67] Assembling file "/Users/fanhongling/Downloads/workspace/src/github.com/tangfeixiong/go-to-kubernetes/mysql-operator/pkg/client/listers/example.com/v1alpha1/mariadb.go"
+I0201 20:15:18.464271   24230 execute.go:67] Assembling file "/Users/fanhongling/Downloads/workspace/src/github.com/tangfeixiong/go-to-kubernetes/mysql-operator/pkg/client/listers/example.com/v1alpha1/mysql.go"
+I0201 20:15:18.518342   24230 main.go:56] Completed successfully.
+--------informers--------
+I0201 20:15:20.252006   24240 parse.go:418] type checker: /opt/go/src/runtime/trace.go:150:30: cannot use (traceBufHeader literal) (value of type traceBufHeader) as unsafe.ArbitraryType value in argument to unsafe.Sizeof
+I0201 20:15:20.253841   24240 parse.go:418] type checker: /opt/go/src/runtime/trace.go:150:7: array length 64 << 10 - unsafe.Sizeof((traceBufHeader literal)) (value of type uintptr) must be constant
+I0201 20:15:20.254372   24240 parse.go:418] type checker: /opt/go/src/runtime/mgcwork.go:303:37: cannot use (workbufhdr literal) (value of type workbufhdr) as unsafe.ArbitraryType value in argument to unsafe.Sizeof
+I0201 20:15:20.254779   24240 parse.go:418] type checker: /opt/go/src/runtime/mgcwork.go:303:7: array length (_WorkbufSize - unsafe.Sizeof((workbufhdr literal))) / sys.PtrSize (value of type uintptr) must be constant
+I0201 20:15:20.255453   24240 parse.go:418] type checker: /opt/go/src/runtime/chan.go:27:28: cannot use (hchan literal) (value of type hchan) as unsafe.ArbitraryType value in argument to unsafe.Sizeof
+I0201 20:15:20.255929   24240 parse.go:418] type checker: /opt/go/src/runtime/chan.go:27:66: cannot use (hchan literal) (value of type hchan) as unsafe.ArbitraryType value in argument to unsafe.Sizeof
+I0201 20:15:20.256275   24240 parse.go:418] type checker: /opt/go/src/runtime/chan.go:27:14: unsafe.Sizeof((hchan literal)) + uintptr(-int(unsafe.Sizeof((hchan literal))) & (maxAlign - 1)) (value of type uintptr) is not constant
+I0201 20:15:20.258152   24240 parse.go:418] type checker: /opt/go/src/runtime/hashmap.go:80:31: cannot use (struct{b bmap; v int64} literal).v (value of type int64) as unsafe.ArbitraryType value in argument to unsafe.Offsetof
+I0201 20:15:20.258506   24240 parse.go:418] type checker: /opt/go/src/runtime/hashmap.go:80:15: unsafe.Offsetof((struct{b bmap; v int64} literal).v) (value of type uintptr) is not constant
+I0201 20:15:20.260664   24240 parse.go:418] type checker: /opt/go/src/runtime/mheap.go:148:47: cannot use (mcentral literal) (value of type mcentral) as unsafe.ArbitraryType value in argument to unsafe.Sizeof
+I0201 20:15:20.261328   24240 parse.go:418] type checker: /opt/go/src/runtime/mheap.go:148:13: array length sys.CacheLineSize - unsafe.Sizeof((mcentral literal)) % sys.CacheLineSize (value of type uintptr) must be constant
+I0201 20:15:20.262680   24240 parse.go:418] type checker: /opt/go/src/runtime/mfinal.go:28:65: cannot use (finalizer literal) (value of type finalizer) as unsafe.ArbitraryType value in argument to unsafe.Sizeof
+I0201 20:15:20.263342   24240 parse.go:418] type checker: /opt/go/src/runtime/mfinal.go:28:11: array length (_FinBlockSize - 2 * sys.PtrSize - 2 * 4) / unsafe.Sizeof((finalizer literal)) (value of type uintptr) must be constant
+I0201 20:15:20.264880   24240 parse.go:418] type checker: /opt/go/src/runtime/mheap.go:1535:41: cannot use (gcBitsHeader literal) (value of type gcBitsHeader) as unsafe.ArbitraryType value in argument to unsafe.Sizeof
+I0201 20:15:20.265444   24240 parse.go:418] type checker: /opt/go/src/runtime/mheap.go:1535:27: unsafe.Sizeof((gcBitsHeader literal)) (value of type uintptr) is not constant
+I0201 20:15:20.266110   24240 parse.go:418] type checker: /opt/go/src/runtime/mstats.go:436:39: cannot use memstats.by_size (variable of type [67]struct{size uint32; nmalloc uint64; nfree uint64}) as unsafe.ArbitraryType value in argument to unsafe.Offsetof
+I0201 20:15:20.266840   24240 parse.go:418] type checker: /opt/go/src/runtime/mstats.go:436:76: cannot use memstats.by_size[0] (variable of type struct{size uint32; nmalloc uint64; nfree uint64}) as unsafe.ArbitraryType value in argument to unsafe.Sizeof
+I0201 20:15:20.267848   24240 parse.go:418] type checker: /opt/go/src/runtime/panic.go:120:34: cannot use (_defer literal) (value of type _defer) as unsafe.ArbitraryType value in argument to unsafe.Sizeof
+I0201 20:15:20.268346   24240 parse.go:418] type checker: /opt/go/src/runtime/panic.go:120:20: unsafe.Sizeof((_defer literal)) (value of type uintptr) is not constant
+I0201 20:15:20.270060   24240 parse.go:418] type checker: /opt/go/src/runtime/sema.go:51:42: cannot use (semaRoot literal) (value of type semaRoot) as unsafe.ArbitraryType value in argument to unsafe.Sizeof
+I0201 20:15:20.270547   24240 parse.go:418] type checker: /opt/go/src/runtime/sema.go:51:8: array length sys.CacheLineSize - unsafe.Sizeof((semaRoot literal)) (value of type uintptr) must be constant
+I0201 20:15:20.276524   24240 parse.go:367] type checking encountered some issues in "runtime", but ignoring.
+I0201 20:15:20.278376   24240 parse.go:418] type checker: /opt/go/src/sync/map.go:69:31: cannot convert new(interface{}) (value of type *interface{}) to unsafe.Pointer
+I0201 20:15:20.278825   24240 parse.go:418] type checker: /opt/go/src/sync/pool.go:68:27: cannot use (poolLocalInternal literal) (value of type poolLocalInternal) as unsafe.ArbitraryType value in argument to unsafe.Sizeof
+I0201 20:15:20.279446   24240 parse.go:418] type checker: /opt/go/src/sync/pool.go:68:7: array length 128 - unsafe.Sizeof((poolLocalInternal literal)) % 128 (value of type uintptr) must be constant
+I0201 20:15:20.280297   24240 parse.go:367] type checking encountered some issues in "sync", but ignoring.
+I0201 20:15:22.970258   24240 parse.go:418] type checker: /opt/go/src/crypto/cipher/xor.go:12:36: cannot use uintptr(0) (constant 0 of type uintptr) as unsafe.ArbitraryType value in argument to unsafe.Sizeof
+I0201 20:15:22.970917   24240 parse.go:418] type checker: /opt/go/src/crypto/cipher/xor.go:12:18: int(unsafe.Sizeof(uintptr(0))) (value of type int) is not constant
+I0201 20:15:22.971697   24240 parse.go:367] type checking encountered some issues in "crypto/cipher", but ignoring.
+I0201 20:15:26.211571   24240 execute.go:217] Processing package "v1alpha1", disk location "/Users/fanhongling/Downloads/workspace/src/github.com/tangfeixiong/go-to-kubernetes/mysql-operator/pkg/client/informers/externalversions/example.com/v1alpha1"
+I0201 20:15:26.230920   24240 execute.go:67] Assembling file "/Users/fanhongling/Downloads/workspace/src/github.com/tangfeixiong/go-to-kubernetes/mysql-operator/pkg/client/informers/externalversions/example.com/v1alpha1/interface.go"
+I0201 20:15:26.241105   24240 execute.go:67] Assembling file "/Users/fanhongling/Downloads/workspace/src/github.com/tangfeixiong/go-to-kubernetes/mysql-operator/pkg/client/informers/externalversions/example.com/v1alpha1/mariadb.go"
+I0201 20:15:26.249919   24240 execute.go:67] Assembling file "/Users/fanhongling/Downloads/workspace/src/github.com/tangfeixiong/go-to-kubernetes/mysql-operator/pkg/client/informers/externalversions/example.com/v1alpha1/mysql.go"
+I0201 20:15:26.257417   24240 execute.go:217] Processing package "internalinterfaces", disk location "/Users/fanhongling/Downloads/workspace/src/github.com/tangfeixiong/go-to-kubernetes/mysql-operator/pkg/client/informers/externalversions/internalinterfaces"
+I0201 20:15:26.259872   24240 execute.go:67] Assembling file "/Users/fanhongling/Downloads/workspace/src/github.com/tangfeixiong/go-to-kubernetes/mysql-operator/pkg/client/informers/externalversions/internalinterfaces/factory_interfaces.go"
+I0201 20:15:26.263185   24240 execute.go:217] Processing package "externalversions", disk location "/Users/fanhongling/Downloads/workspace/src/github.com/tangfeixiong/go-to-kubernetes/mysql-operator/pkg/client/informers/externalversions"
+I0201 20:15:26.267122   24240 execute.go:67] Assembling file "/Users/fanhongling/Downloads/workspace/src/github.com/tangfeixiong/go-to-kubernetes/mysql-operator/pkg/client/informers/externalversions/factory.go"
+I0201 20:15:26.271005   24240 execute.go:67] Assembling file "/Users/fanhongling/Downloads/workspace/src/github.com/tangfeixiong/go-to-kubernetes/mysql-operator/pkg/client/informers/externalversions/generic.go"
+I0201 20:15:26.274255   24240 execute.go:217] Processing package "example", disk location "/Users/fanhongling/Downloads/workspace/src/github.com/tangfeixiong/go-to-kubernetes/mysql-operator/pkg/client/informers/externalversions/example.com"
+I0201 20:15:26.276033   24240 execute.go:67] Assembling file "/Users/fanhongling/Downloads/workspace/src/github.com/tangfeixiong/go-to-kubernetes/mysql-operator/pkg/client/informers/externalversions/example.com/interface.go"
+I0201 20:15:26.279996   24240 main.go:59] Completed successfully.

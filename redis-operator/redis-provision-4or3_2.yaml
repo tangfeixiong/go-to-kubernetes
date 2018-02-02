@@ -1,7 +1,8 @@
 apiVersion: example.com/v1
 kind: Cluster
 metadata:
-  name: demo-redis-sentinels
+  name: demo-redis-ha
+  namespace: example-system
 spec:
   # Optional, default is docker.io/redis:4, must suppport
   #   4-alpine
@@ -18,7 +19,7 @@ spec:
   redisTemplate:
     # Thus total members are replicationSlaves + masters
     replicationSlaves: 1
-    # According redis documention, in high availability, hashSlots are not required
+    # According redis documention (https://redis.io/topics/sentinel), in high availability, hashSlots are not required
     #    if only one slaves, hash slots must be 16384
     #    in multiple slaves, when hash slots value is 0, means auto data sharding, for example:
     #        for 6 nodes with 3 masters and 3 slaves, the slots are sharding as 0-5500, 5501-11000, 11001-16383

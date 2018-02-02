@@ -58,7 +58,7 @@ type SentinelTemplate struct {
 type ClusterSpec struct {
 	RedisTemplate    *RedisTemplate    `json:"redisTemplate"`
 	SentinelTemplate *SentinelTemplate `json:"sentinelTemplate"`
-	Mode             ClusterMode       `json:"mode,omitempty"`
+	Mode             ClusterMode       `json:"clusterMode,omitempty"`
 	Image            string            `json:"image,omitempty"`
 
 	// The type of backend for the cluster (only "ceph" is implemented)
@@ -89,8 +89,8 @@ type PlacementSpec struct {
 	metav1.TypeMeta `json:",inline"`
 	All             Placement `json:"all,omitempty"`
 	API             Placement `json:"api,omitempty"`
-	Redis           Placement `json:"mgr,omitempty"`
-	Sentinel        Placement `json:"mon,omitempty"`
+	Redis           Placement `json:"redis,omitempty"`
+	Sentinel        Placement `json:"sentinel,omitempty"`
 }
 
 // +genclient:noStatus
@@ -107,8 +107,8 @@ type Placement struct {
 
 type ResourceSpec struct {
 	API      v1.ResourceRequirements `json:"api,omitempty"`
-	Redis    v1.ResourceRequirements `json:"api,omitempty"`
-	Sentinel v1.ResourceRequirements `json:"mgr,omitempty"`
+	Redis    v1.ResourceRequirements `json:"redis,omitempty"`
+	Sentinel v1.ResourceRequirements `json:"sentinel,omitempty"`
 }
 
 /*

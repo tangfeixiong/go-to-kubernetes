@@ -15,7 +15,7 @@ func TestParser(t *testing.T) {
 		t.Error("creating recipe:", err)
 	}
 
-	b, err := recipe.ParseFrom([]byte{})
+	b, err := recipe.parse([]byte{})
 	if err != nil {
 		t.Errorf("Executing template failed: %v", err)
 	} else {
@@ -25,7 +25,7 @@ func TestParser(t *testing.T) {
 
 func TestDecoder(t *testing.T) {
 	recipe, err := NewRecipient("example.com", "v1", "foos", "foo")
-	obj, err := recipe.DecodeArtifact(nil)
+	obj, err := recipe.generate(nil)
 	if err != nil {
 		t.Error("Deserilizing CRD failed:", err)
 	} else {

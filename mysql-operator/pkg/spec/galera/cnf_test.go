@@ -14,7 +14,7 @@ import (
 )
 
 func TestParse(t *testing.T) {
-	recipe, err := NewRecipient(true, ClusterAddressesSetter("192.168.1.10", "192.168.1.11"))
+	recipe, err := NewRecipient(true, ThisNodeSetter("127.0.0.1", ""))
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -33,7 +33,9 @@ func TestParse(t *testing.T) {
 }
 
 func TestCreate(t *testing.T) {
-	recipe, err := NewRecipient(false, ClusterAddressesSetter("192.168.1.10", "192.168.1.11", "192.168.1.12"), ThisNodeSetter("127.0.0.1", ""))
+	recipe, err := NewRecipient(false,
+		ClusterAddressesSetter("192.168.1.10", "192.168.1.11", "192.168.1.12"),
+		WsrepProviderOptionsSetter("pc.wait_prim=FALSE", "pc.bootstrap=TRUE"))
 	if err != nil {
 		t.Fatal(err)
 	}

@@ -1,0 +1,33 @@
+apiVersion: example.com/v1alpha1
+kind: Mariadb
+metadata:
+  name: demo-mariadb-galera
+  namespace: example-system
+spec:
+  # Optional, default is docker.io/mariadb:10, must suppport:
+  #   mariadb:10.1, mariadb:10.0
+  #   mysql:5
+  #   mysql:5.7, mysql:5.6, mysql:5.5
+  # May support:
+  #   mariadb:5
+  # Plan to support custome image, for example:
+  # image:
+  #   nameValues:
+  #   - name: version
+  #     value: mariadb10.2
+  #   docker: 'docker.io/tangfeixiong/mariadb:latest'
+  #image: {}
+  # Follow https://mariadb.com/kb/en/library/what-is-mariadb-galera-cluster/
+  #   clusterMode: Galera, Replication
+  # Follow https://dev.mysql.com/downloads/cluster/
+  #   clusterMode: CGE, Replication
+  # No clustering
+  #   clusterMode: None
+  #clusterMode: Galera
+  mysqlTemplate: {}
+  galeraTemplate:
+    # According documention, https://mariadb.com/kb/en/library/getting-started-with-mariadb-galera-cluster/
+    # Thus total members of cluster, minimal value is 3
+    count: 3
+    # According documention, http://galeracluster.com/documentation-webpages/mysqlwsrepoptions.html#wsrep-cluster-name
+    #clusterName: example_cluster

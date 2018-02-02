@@ -23,6 +23,7 @@ import (
 func RootCommandFor(name string) *cobra.Command {
 	var config server.Config
 	// in, out, errout := os.Stdin, os.Stdout, os.Stderr
+	cfg := &config.InitConfig
 
 	root := &cobra.Command{
 		Use:   name,
@@ -36,9 +37,8 @@ func RootCommandFor(name string) *cobra.Command {
         `,
 	}
 	root.AddCommand(createServiceCommand(&config))
-	root.AddCommand(createInitCommand(&config.InitConfig))
+	root.AddCommand(createInitCommand(cfg))
 
-	cfg := &config.InitConfig
 	root.PersistentFlags().StringVar(&cfg.Kubeconfig, "kubeconfig", "", "absolute path to the kubeconfig file. it means running out of cluster if supplied")
 	if home := HomeDir(); home != "" {
 		root.PersistentFlags().Lookup("kubeconfig").NoOptDefVal = filepath.Join(home, ".kube", "config")
@@ -57,7 +57,7 @@ func createServiceCommand(config *server.Config) *cobra.Command {
 			// pflag.Parse()
 			flag.Set("v", strconv.Itoa(config.LogLevel))
 			flag.Parse()
-			//server.Start(config)
+			server.Start(config)
 		},
 	}
 
@@ -116,7 +116,8 @@ func createInitCommand(config *initcnf.Config) *cobra.Command {
 
 	command.PersistentFlags().StringVar(&config.Name, "name", "", "StatefulSet name, or lookup value via label <crd group>/go-to-kubernetes")
 	command.PersistentFlags().StringVar(&config.Namespace, "namespace", "", "Kubernetes namespace, or lookup value from env name POD_NAMESPACE, otherwise 'default'")
-	command.PersistentFlags().StringVar(&config.Dir, "conf_dir", "/etc/mysql/conf.d", "Directory of galera.cnf")
+	command.PersistentFlags().StringVar(&config.DomainName, "domain_name", "svc.cluster.local", "Domain name of K8s DNS")
+	command.PersistentFlags().StringVar(&config.Dir, "conf_dir", "/etc/mysql/mariadb.conf.d", "Directory of galera.cnf")
 	command.PersistentFlags().IntVar(&config.Port, "service_port", 3306, "Service port")
 	return command
 }

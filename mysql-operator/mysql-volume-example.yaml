@@ -1,0 +1,54 @@
+---
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: hostpath
+  namespace: example-system
+  annotations:
+    volume.beta.kubernetes.io/storage-class: "example-hostpath"
+spec:
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 1Mi
+---
+# If static provisioner is installed, do not prebind through pv
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: example-local-storage
+  annotations:
+    "volume.alpha.kubernetes.io/node-affinity": '{
+      "requiredDuringSchedulingIgnoredDuringExecution": {
+        "nodeSelectorTerms": [
+          { "matchExpressions": [
+            { "key": "kubernetes.io/hostname",
+              "operator": "In",
+              "values": ["rookdev-172-17-4-61", "rookdev-172-17-4-63"]
+            }
+          ]}
+         ]}
+        }'
+spec:
+  capacity:
+    storage: 10Mi
+  accessModes:
+  - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: local-storage
+  local:
+    path: /mnt/disks/vol2
+---
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: example-local-claim
+  namespace: example-system
+spec:
+  accessModes:
+  - ReadWriteOnce
+  resources:
+    requests:
+      storage: 10Mi
+  storageClassName: local-storage

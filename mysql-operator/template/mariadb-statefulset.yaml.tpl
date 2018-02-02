@@ -1,4 +1,4 @@
-apiVersion: apps/v1
+apiVersion: apps/v1beta2
 kind: StatefulSet
 metadata:
   labels:
@@ -9,6 +9,7 @@ metadata:
   #namespace: default
 spec:
   podManagementPolicy: OrderedReady
+  #podManagementPolicy: Parallel
   replicas: {{.Count}}
   selector:
     matchLabels:
@@ -70,48 +71,57 @@ spec:
               fieldPath: metadata.name
         image: docker.io/mariadb:10.2
         imagePullPolicy: IfNotPresent
-        livenessProbe:
-          exec:
-            command:
-            - mysqladmin
-            - ping
-          failureThreshold: 3
-          initialDelaySeconds: 5
-          periodSeconds: 10
-          successThreshold: 1
-          timeoutSeconds: 5
+        #livenessProbe:
+        #  exec:
+        #    command:
+        #    - mysqladmin
+        #    - --password={{.MysqlRootPassword}}
+        #    - ping
+        #  failureThreshold: 3
+        #  initialDelaySeconds: 5
+        #  periodSeconds: 10
+        #  successThreshold: 1
+        #  timeoutSeconds: 5
         name: mariadb-galera
         ports:
         - containerPort: 3306
           name: client
           protocol: TCP
-        readinessProbe:
-          exec:
-            command:
-            - mysqladmin
-            - ping
-          failureThreshold: 3
-          initialDelaySeconds: 15
-          periodSeconds: 10
-          successThreshold: 1
-          timeoutSeconds: 5
+        #readinessProbe:
+        #  exec:
+        #    command:
+        #    - mysqladmin
+        #    - --password={{.MysqlRootPassword}}
+        #    - ping
+        #  failureThreshold: 3
+        #  initialDelaySeconds: 15
+        #  periodSeconds: 10
+        #  successThreshold: 1
+        #  timeoutSeconds: 5
         resources: {}
+        securityContext:
+          privileged: true
         terminationMessagePath: /dev/termination-log
         terminationMessagePolicy: File
         volumeMounts:
+        - mountPath: /etc/mysql/mariadb.conf.d
+          name: confd
         - mountPath: /docker-entrypoint-initdb.d
           name: initdb
         - mountPath: /var/lib/mysql
-          name: local-vol
+          #name: local-vol
+          name: hostpath
         - mountPath: /podinfo
           name: podinfo
       dnsPolicy: ClusterFirst
       initContainers:
       - args:
-        - init
-        - --conf_dir=/etc/mysql/conf.d
+        - --conf_dir=/etc/mysql/mariadb.conf.d
+        - --logtostderr
+        - --v=5
         command:
         - /mysql-operator
+        - init
         env:
         - name: MY_NODE_NAME
           valueFrom:
@@ -133,33 +143,37 @@ spec:
         #  valueFrom:
         #    fieldRef:
         #      fieldPath: spec.serviceAccountName
-        - name: CLUSTER_NODES
-          value: "3"
+        - name: CLUSTER_NAME
+          value: {{.ClusterName}}
         image: docker.io/tangfeixiong/mysql-operator
-        imagePullPolicy: IfNotPresent
+        #imagePullPolicy: IfNotPresent
+        imagePullPolicy: Always
         name: initcnf
         resources: {}
+        securityContext:
+          privileged: true
         terminationMessagePath: /dev/termination-log
         terminationMessagePolicy: File
         volumeMounts:
+        - mountPath: /etc/mysql/mariadb.conf.d
+          name: confd
         - mountPath: /docker-entrypoint-initdb.d
           name: initdb
         - mountPath: /tmp/docker-entrypoint-initdb.d
           name: initscripts
         - mountPath: /podinfo
           name: podinfo
-      restartPolicy: Always
+      #restartPolicy: Always
       schedulerName: default-scheduler
-      #securityContext: {}
-      securityContext:
-        fsGroup: 1234
+      securityContext: {}
+      #securityContext:
+      #  fsGroup: 1234
       terminationGracePeriodSeconds: 30
       volumes:
       - emptyDir: {}
+        name: confd
+      - emptyDir: {}
         name: initdb
-      #- hostPath:
-      #    path: /path/from/host
-      #  name: initscripts
       - name: initscripts
         persistentVolumeClaim:
           claimName: example-local-claim
@@ -184,14 +198,28 @@ spec:
             path: namespace
         name: podinfo
   updateStrategy:
-    type: RollingUpdate
+    #type: RollingUpdate
+    type: OnDelete
   volumeClaimTemplates:
+  #- metadata:
+  #    name: local-vol
+  #  spec:
+  #    accessModes: [ "ReadWriteOnce" ]
+  #    storageClassName: "local-storage"
+  #    resources:
+  #      requests:
+  #        storage: 100Mi
   - metadata:
-      name: local-vol
+      name: hostpath
+      #annotations:
+      #  volume.beta.kubernetes.io/storage-class: "example-hostpath"
     spec:
-      accessModes: [ "ReadWriteOnce" ]
-      storageClassName: "local-storage"
+      accessModes:
+        - ReadWriteOnce
+        #- ReadOnlyMany
+        #- ReadWriteMany
+      storageClassName: "example-hostpath"
       resources:
         requests:
-          storage: 100Mi
+          storage: 80Mi
     

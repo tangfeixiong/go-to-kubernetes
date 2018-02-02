@@ -52,6 +52,13 @@ k8s.io/code-generator/cmd/lister-gen/generators
 k8s.io/code-generator/cmd/lister-gen
 ```
 
+### Definitions
+
+Build types.go
+```
+[vagrant@kubedev-172-17-4-59 redis-operator]$ GOPATH=/Users/fanhongling/Downloads/workspace:/Users/fanhongling/go go build -a -v ./pkg/apis/example.com/...
+```
+
 ### Generate code
 
 1st step

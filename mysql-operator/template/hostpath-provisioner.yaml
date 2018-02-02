@@ -1,0 +1,84 @@
+kind: StorageClass
+apiVersion: storage.k8s.io/v1beta1
+metadata:
+  name: example-hostpath
+provisioner: example.com/hostpath
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: hostpath-admin
+---
+apiVersion: rbac.authorization.k8s.io/v1beta1
+kind: ClusterRoleBinding
+metadata:
+  name: hostpath-provisioner-pv-binding
+  namespace: default
+subjects:
+- kind: ServiceAccount
+  name: hostpath-admin
+  namespace: default
+roleRef:
+  kind: ClusterRole
+  name: system:persistent-volume-provisioner
+  apiGroup: rbac.authorization.k8s.io
+---
+apiVersion: rbac.authorization.k8s.io/v1beta1
+kind: ClusterRoleBinding
+metadata:
+  name: hostpath-provisioner-node-binding
+  namespace: default
+subjects:
+- kind: ServiceAccount
+  name: hostpath-admin
+  namespace: default
+roleRef:
+  kind: ClusterRole
+  name: system:node
+  apiGroup: rbac.authorization.k8s.io
+---
+apiVersion: extensions/v1beta1
+kind: DaemonSet
+metadata:
+  name: hostpath-provisioner
+  labels:
+    app: hostpath-provisioner
+spec:
+  selector:
+    matchLabels:
+      app: hostpath-provisioner 
+  template:
+    metadata:
+      labels:
+        app: hostpath-provisioner
+    spec:
+      containers:
+        - name: hostpath-provisioner
+          image: docker.io/tangfeixiong/hostpath-provisioner:latest
+          imagePullPolicy: "IfNotPresent"
+          env:
+            - name: NODE_NAME
+              valueFrom:
+                fieldRef:
+                  fieldPath: spec.nodeName
+          volumeMounts:
+            - name: pv-volume
+              mountPath: /tmp/hostpath-provisioner
+      serviceAccountName: hostpath-admin
+      volumes:
+        - name: pv-volume
+          hostPath:
+            path: /tmp/hostpath-provisioner
+---
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: hostpath
+  annotations:
+    volume.beta.kubernetes.io/storage-class: "example-hostpath"
+spec:
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 1Mi

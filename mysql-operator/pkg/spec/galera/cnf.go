@@ -14,7 +14,7 @@ import (
 
 type Recipient struct {
 	ClusterName                                  string
-	ClusterAddresses                             string
+	ClusterAddresses, WsrepProviderOptions       string
 	FirstNodeHost, SecondNodeHost, ThirdNodeHost string
 	ThisNodeHost, ThisNodeName                   string
 	DisableClusterAddresses                      bool
@@ -55,6 +55,15 @@ func ClusterAddressesSetter(v ...string) ConfigOptionFunc {
 	return func(recipe *Recipient) error {
 		if len(v) > 0 {
 			recipe.ClusterAddresses = strings.Join(v, ",")
+		}
+		return nil
+	}
+}
+
+func WsrepProviderOptionsSetter(v ...string) ConfigOptionFunc {
+	return func(recipe *Recipient) error {
+		if len(v) > 0 {
+			recipe.WsrepProviderOptions = strings.Join(v, "&")
 		}
 		return nil
 	}
@@ -108,16 +117,33 @@ func (recipe *Recipient) Generate(path string) error {
 		return err
 	}
 
+	dir := filepath.Dir(path)
+	if fi, err := os.Stat(dir); err != nil {
+		if os.IsNotExist(err) {
+			if err := os.MkdirAll(dir, os.ModeDir); err != nil {
+				logger.Printf("Make dir %s failed: %s", dir, err.Error())
+				return fmt.Errorf("Make dir %s failed: %s", dir, err.Error())
+			}
+		} else {
+			logger.Printf("Stats %s failed: %s. %q", dir, err.Error(), fi)
+			return fmt.Errorf("Stats %s failed: %s", dir, err.Error())
+		}
+	}
+
+	//err := ioutil.WriteFile(path, b.Bytes(), 0644)
+
 	f, err := os.Create(path)
 	if err != nil {
-		return fmt.Errorf("Writing %s failed: %s", path, err.Error())
+		logger.Printf("Create %s failed: %s", path, err.Error())
+		return fmt.Errorf("Create %s failed: %s", path, err.Error())
 	}
 	defer f.Close()
 
 	if _, err := f.Write(b.Bytes()); err != nil {
+		logger.Printf("Writing %s failed: %s", path, err.Error())
 		fmt.Errorf("Writing %s failed: %s", path, err.Error())
 	}
 
-	log.Println("Wrote", path)
+	logger.Println("Wrote", path)
 	return nil
 }

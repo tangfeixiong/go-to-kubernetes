@@ -29,6 +29,8 @@ type ClusterType string
 const (
 	MariadbGalera ClusterType = "galera"
 	MySQLGPC      ClusterType = "mysql"
+
+	DefaultDomainName = "svc.cluster.local"
 )
 
 type Config struct {
@@ -39,6 +41,7 @@ type Config struct {
 	Clustering ClusterType
 	Port       int
 	Dir        string
+	DomainName string
 	LogLevel   int
 }
 
@@ -47,7 +50,10 @@ func BuildGaleraCnf(cfg *Config) {
 		cfg.Namespace = os.Getenv("MY_POD_NAMESPACE")
 	}
 	if cfg.Dir == "" {
-		cfg.Dir = "/etc/mysql/conf.d"
+		cfg.Dir = "/etc/mysql/mariadb.conf.d"
+	}
+	if cfg.DomainName == "" {
+		cfg.DomainName = DefaultDomainName
 	}
 
 	clientset, err := k8sClientset(cfg.Kubeconfig)
@@ -55,7 +61,8 @@ func BuildGaleraCnf(cfg *Config) {
 		glog.Fatal("Get kubernetes clientset failed:", err.Error())
 	}
 
-	glog.V(5).Infof("With init parameters: %v\n", cfg)
+	//glog.V(5).Infof("With init parameters: %v\n", cfg)
+	glog.Infof("With init parameters: %v\n", cfg)
 	cfg.buildGaleraCnf(clientset)
 }
 
@@ -85,7 +92,7 @@ func (cfg *Config) buildGaleraCnf(clientset kubernetes.Interface) {
 		var list *appsv1beta2.StatefulSetList
 		list, err = stsClient.List(opts)
 		if err != nil {
-			glog.Exit("Get statefulset failed: %+v\n", err)
+			glog.Exitf("Get statefulset failed: %s\n", err.Error())
 		}
 		for _, sts := range list.Items {
 			if strings.HasPrefix(mypodname, sts.Name) && strings.HasPrefix(mypodname[len(sts.Name):], "-") {
@@ -96,7 +103,7 @@ func (cfg *Config) buildGaleraCnf(clientset kubernetes.Interface) {
 	} else {
 		obj, err = stsClient.Get(cfg.Name, metav1.GetOptions{})
 		if err != nil {
-			glog.Exitf("Get statefulset failed: %+v\n", err)
+			glog.Exitf("Get statefulset failed: %s\n", err.Error())
 		}
 	}
 	if obj == nil {
@@ -123,17 +130,13 @@ func (cfg *Config) buildGaleraCnf(clientset kubernetes.Interface) {
 	path := filepath.Join(cfg.Dir, "galera.cnf")
 
 	gcomm := []string{}
-	for i := 0; i < int(*obj.Spec.Replicas); i++ {
-		addr := fmt.Sprintf("%s-%d.%s.%s", obj.Name, i, obj.Name, obj.Namespace)
-		gcomm = append(gcomm, addr)
-	}
-
 	if len(list.Items) > 0 {
 		//mypodname, ok := os.LookupEnv("MY_POD_NAME")
-		if !ok {
-			glog.Error("Environment POD name not found")
+		if mypodname == "" || !ok {
+			glog.Error("Get POD name failed or Environment POD name not found")
 		}
 		myname := mypodname
+		// myname, err := os.Hostname()
 		myip := ""
 		//		for _, pod := range list.Items {
 		//			if pod.Name == myname {
@@ -141,32 +144,52 @@ func (cfg *Config) buildGaleraCnf(clientset kubernetes.Interface) {
 		//				break
 		//			}
 		//		}
-		myip, ok = os.LookupEnv("MY_POD_NAME")
+		myip, ok = os.LookupEnv("MY_POD_IP")
 		if myip == "" || !ok {
 			glog.Error("Get POD IP failed or environment POD IP not found")
 		}
-		for _, pod := range list.Items {
-			if pod.Name != myname {
-				if recipe, err := galera.NewRecipient(false, galera.ClusterNameSetter(obj.Name), galera.ClusterAddressesSetter(pod.Status.PodIP), galera.ThisNodeSetter(myip, myname)); err != nil {
-					glog.Error("New recipe failed:", err)
-				} else if err := recipe.Generate(path); err != nil {
-					glog.Fatal("Write galera.cnf failed:", err)
-				}
-				return
+
+		for i := 0; i < len(list.Items); i++ {
+			//addr := fmt.Sprintf("%s-%d.%s.%s.%s", obj.Name, i, obj.Name, obj.Namespace, cfg.DomainName)
+			pod := list.Items[i]
+			if pod.Status.PodIP != "" && pod.Status.PodIP != myip {
+				gcomm = append(gcomm, pod.Status.PodIP)
 			}
 		}
-		if recipe, err := galera.NewRecipient(false, galera.ClusterNameSetter(obj.Name), galera.ClusterAddressesSetter(gcomm...), galera.ThisNodeSetter(myip, myname)); err != nil {
+
+		var recipe *galera.Recipient
+		var err error
+		if len(gcomm) == 0 {
+			recipe, err = galera.NewRecipient(false, galera.ClusterNameSetter(obj.Name),
+				galera.WsrepProviderOptionsSetter("pc.npvo=TRUE", "pc.recovery=FALSE"),
+				galera.ThisNodeSetter(myip, myname))
+		} else {
+			recipe, err = galera.NewRecipient(false, galera.ClusterNameSetter(obj.Name),
+				galera.ClusterAddressesSetter(gcomm...),
+				galera.WsrepProviderOptionsSetter("pc.wait_prim_timeout=PT300S", "pc.npvo=TRUE", "pc.recovery=FALSE"),
+				galera.ThisNodeSetter(myip, myname))
+		}
+		if err != nil {
 			glog.Error("New recipe failed:", err)
-		} else if err := recipe.Generate(path); err != nil {
+		} else if err = recipe.Generate(path); err != nil {
 			glog.Fatal("Write galera.cnf failed:", err)
+		} else {
+			glog.Infof("Bootstrap: %v", gcomm)
 		}
 		return
 	}
 
-	if recipe, err := galera.NewRecipient(false, galera.ClusterNameSetter(obj.Name), galera.ClusterAddressesSetter(gcomm...)); err != nil {
+	for i := 0; i < int(*obj.Spec.Replicas); i++ {
+		addr := fmt.Sprintf("%s-%d.%s.%s.%s", obj.Name, i, obj.Name, obj.Namespace, cfg.DomainName)
+		gcomm = append(gcomm, addr)
+	}
+	if recipe, err := galera.NewRecipient(false, galera.ClusterNameSetter(obj.Name),
+		galera.ClusterAddressesSetter(gcomm...), galera.WsrepProviderOptionsSetter("pc.wait_prim=FALSE")); err != nil {
 		glog.Error("New recipe failed:", err)
 	} else if err := recipe.Generate(path); err != nil {
 		glog.Fatal("Write galera.cnf failed:", err)
+	} else {
+		glog.Infoln("Bootstrap without thisNodeAddress and thisNodeName")
 	}
 }
 

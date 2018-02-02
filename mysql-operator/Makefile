@@ -25,8 +25,8 @@ protoc-grpc:
 		-I${GOPATHD}/src/github.com/grpc-ecosystem/grpc-gateway/third_party/googleapis \
 		-I${GOPATHD}/src/github.com/gogo/protobuf \
 		-I${GOPATHD}/src \
-		--gogo_out=Mgoogle/api/annotations.proto=github.com/grpc-ecosystem/grpc-gateway/third_party/googleapis/google/api,Mgogoproto/gogo.proto=github.com/gogo/protobuf/gogoproto,Mpb/message.proto=github.com/tangfeixiong/go-to-kubernetes/redis-operator/pb,plugins=grpc:. \
-		pb/service.proto pb/message.proto
+		--gogo_out=Mgoogle/api/annotations.proto=github.com/grpc-ecosystem/grpc-gateway/third_party/googleapis/google/api,Mgogoproto/gogo.proto=github.com/gogo/protobuf/gogoproto,Mpb/datatype.proto=github.com/tangfeixiong/go-to-kubernetes/mysql-operator/pb,plugins=grpc:. \
+		pb/service.proto pb/datatype.proto
 	@protoc -I/usr/local/include -I. \
 		-I${GOPATHP}/src \
 		-I${GOPATHD}/src/github.com/grpc-ecosystem/grpc-gateway/third_party/googleapis \
@@ -43,10 +43,11 @@ go-bindata-artifacts:
 	@pkg=artifact; src=template/...; output_file=pkg/spec/$${pkg}/artifacts.go; \
 		go-bindata -nocompress -o $${output_file} -prefix $${PWD} -pkg $${pkg} $${src}
 
-go-build:
-	@CGO_ENABLED=0 go build -a -v -o ./bin/$(BIN_NAME) --installsuffix cgo -ldflags "-s" ./
+go-build: go-bindata-artifacts
+	#@CGO_ENABLED=0 go build -a -v -o ./bin/$(BIN_NAME) --installsuffix cgo -ldflags "-s" ./
+	@CGO_ENABLED=0 go build -a -v -o ./bin/$(BIN_NAME) -ldflags '-extldflags "-static"' ./
 
-go-install:
+go-install: go-bindata-artifacts
 	@go install -v ./
 
 docker-build: go-build

@@ -109,6 +109,8 @@ func main() {
 				panic(err)
 			}
 			mysqlorbranches.CreateCRD(apiextensionsclientset)
+		case "mariadb-hostpath":
+			mysqlorbranches.CreateHostPath(clientset)
 		case "mariadb-localstorage":
 			mysqlorbranches.CreateLocalStorage(clientset)
 		case "mariadb-svc":

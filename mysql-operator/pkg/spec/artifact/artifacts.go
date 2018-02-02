@@ -2,9 +2,13 @@
 // sources:
 // template/galera.cnf
 // template/galera.cnf.tpl
+// template/hostpath-provisioner.yaml
 // template/local-storage-provision.yaml
+// template/local-volume-admin-account.yaml
+// template/local-volume-static-provisioner.yaml
 // template/mariadb-service.yaml.tpl
 // template/mariadb-statefulset.yaml.tpl
+// template/provision-example.yaml
 // DO NOT EDIT!
 
 package artifact
@@ -56,7 +60,7 @@ bind-address=0.0.0.0
 
 # Galera Provider Configuration
 wsrep_on=ON
-wsrep_provider=/usr/lib/galera/libgalera_smm.so
+wsrep_provider=/usr/lib/libgalera_smm.so
 
 # Galera Cluster Configuration
 wsrep_cluster_name="test_cluster"
@@ -79,7 +83,7 @@ func templateGaleraCnf() (*asset, error) {
 		return nil, err
 	}
 
-	info := bindataFileInfo{name: "template/galera.cnf", size: 482, mode: os.FileMode(420), modTime: time.Unix(1516949888, 0)}
+	info := bindataFileInfo{name: "template/galera.cnf", size: 475, mode: os.FileMode(420), modTime: time.Unix(1517449578, 0)}
 	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
@@ -99,13 +103,17 @@ bind-address=0.0.0.0
 # wsrep_on=ON — Enable wsrep replication (starting 10.1.1)
 # wsrep_provider — Path to the Galera library
 wsrep_on=ON
-wsrep_provider=/usr/lib/galera/libgalera_smm.so
+wsrep_provider=/usr/lib/libgalera_smm.so
 
 # Galera Cluster Configuration
-#wsrep_cluster_name	example_cluster
+# wsrep_cluster_name - Defines the logical cluster name for the node. default is example_cluster
 # wsrep_cluster_address — see cluster connection URL
+# Refer to https://mariadb.com/kb/en/library/getting-started-with-mariadb-galera-cluster/#restarting-the-cluster
+# wsrep_provider_options="pc.wait_prim=FALSE" - Default is TRUE, the node waits for the pc.wait_prim_timeout time period. Useful to bring up a non-primary component and make it primary with pc.bootstrap.
+# wsrep_provider_options="pc.wait_prim_timeout=PT30S" - The period of time to wait for a primary component.
+# wsrep_provider_options="pc.bootstrap=TRUE" - If you set this value to TRUE is a signal to turn a NON-PRIMARY component into PRIMARY.
 wsrep_cluster_name="{{.ClusterName}}"
-{{if .DisableClusterAddresses}}#{{end}}wsrep_cluster_address="gcomm://{{with .ClusterAddresses}}{{.}}{{else}}{{.FirstNodeHost}},{{.SecondNodeHost}},{{.ThirdNodeHost}}{{end}}"
+{{if .DisableClusterAddresses}}#{{end}}wsrep_cluster_address="gcomm://{{with .ClusterAddresses}}{{.}}{{end}}{{with .WsrepProviderOptions}}?{{.}}{{end}}"
 
 # Galera Synchronization Configuration
 #wsrep_sst_method	mysqldump
@@ -127,7 +135,108 @@ func templateGaleraCnfTpl() (*asset, error) {
 		return nil, err
 	}
 
-	info := bindataFileInfo{name: "template/galera.cnf.tpl", size: 1247, mode: os.FileMode(420), modTime: time.Unix(1517161389, 0)}
+	info := bindataFileInfo{name: "template/galera.cnf.tpl", size: 1839, mode: os.FileMode(420), modTime: time.Unix(1517571239, 0)}
+	a := &asset{bytes: bytes, info: info}
+	return a, nil
+}
+
+var _templateHostpathProvisionerYaml = []byte(`kind: StorageClass
+apiVersion: storage.k8s.io/v1beta1
+metadata:
+  name: example-hostpath
+provisioner: example.com/hostpath
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: hostpath-admin
+---
+apiVersion: rbac.authorization.k8s.io/v1beta1
+kind: ClusterRoleBinding
+metadata:
+  name: hostpath-provisioner-pv-binding
+  namespace: default
+subjects:
+- kind: ServiceAccount
+  name: hostpath-admin
+  namespace: default
+roleRef:
+  kind: ClusterRole
+  name: system:persistent-volume-provisioner
+  apiGroup: rbac.authorization.k8s.io
+---
+apiVersion: rbac.authorization.k8s.io/v1beta1
+kind: ClusterRoleBinding
+metadata:
+  name: hostpath-provisioner-node-binding
+  namespace: default
+subjects:
+- kind: ServiceAccount
+  name: hostpath-admin
+  namespace: default
+roleRef:
+  kind: ClusterRole
+  name: system:node
+  apiGroup: rbac.authorization.k8s.io
+---
+apiVersion: extensions/v1beta1
+kind: DaemonSet
+metadata:
+  name: hostpath-provisioner
+  labels:
+    app: hostpath-provisioner
+spec:
+  selector:
+    matchLabels:
+      app: hostpath-provisioner 
+  template:
+    metadata:
+      labels:
+        app: hostpath-provisioner
+    spec:
+      containers:
+        - name: hostpath-provisioner
+          image: docker.io/tangfeixiong/hostpath-provisioner:latest
+          imagePullPolicy: "IfNotPresent"
+          env:
+            - name: NODE_NAME
+              valueFrom:
+                fieldRef:
+                  fieldPath: spec.nodeName
+          volumeMounts:
+            - name: pv-volume
+              mountPath: /tmp/hostpath-provisioner
+      serviceAccountName: hostpath-admin
+      volumes:
+        - name: pv-volume
+          hostPath:
+            path: /tmp/hostpath-provisioner
+---
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: hostpath
+  annotations:
+    volume.beta.kubernetes.io/storage-class: "example-hostpath"
+spec:
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 1Mi
+`)
+
+func templateHostpathProvisionerYamlBytes() ([]byte, error) {
+	return _templateHostpathProvisionerYaml, nil
+}
+
+func templateHostpathProvisionerYaml() (*asset, error) {
+	bytes, err := templateHostpathProvisionerYamlBytes()
+	if err != nil {
+		return nil, err
+	}
+
+	info := bindataFileInfo{name: "template/hostpath-provisioner.yaml", size: 1920, mode: os.FileMode(420), modTime: time.Unix(1517439085, 0)}
 	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
@@ -141,6 +250,7 @@ metadata:
 provisioner: kubernetes.io/no-provisioner
 volumeBindingMode: WaitForFirstConsumer
 ---
+# If static provisioner is installed, do not prebind through pv
 apiVersion: v1
 kind: PersistentVolume
 metadata:
@@ -189,7 +299,129 @@ func templateLocalStorageProvisionYaml() (*asset, error) {
 		return nil, err
 	}
 
-	info := bindataFileInfo{name: "template/local-storage-provision.yaml", size: 1127, mode: os.FileMode(420), modTime: time.Unix(1517418782, 0)}
+	info := bindataFileInfo{name: "template/local-storage-provision.yaml", size: 1191, mode: os.FileMode(420), modTime: time.Unix(1517439458, 0)}
+	a := &asset{bytes: bytes, info: info}
+	return a, nil
+}
+
+var _templateLocalVolumeAdminAccountYaml = []byte(`apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: local-storage-admin
+---
+apiVersion: rbac.authorization.k8s.io/v1beta1
+kind: ClusterRoleBinding
+metadata:
+  name: local-storage-provisioner-pv-binding
+  namespace: default
+subjects:
+- kind: ServiceAccount
+  name: local-storage-admin
+  namespace: default
+roleRef:
+  kind: ClusterRole
+  name: system:persistent-volume-provisioner
+  apiGroup: rbac.authorization.k8s.io
+---
+apiVersion: rbac.authorization.k8s.io/v1beta1
+kind: ClusterRoleBinding
+metadata:
+  name: local-storage-provisioner-node-binding
+  namespace: default
+subjects:
+- kind: ServiceAccount
+  name: local-storage-admin
+  namespace: default
+roleRef:
+  kind: ClusterRole
+  name: system:node
+  apiGroup: rbac.authorization.k8s.io
+`)
+
+func templateLocalVolumeAdminAccountYamlBytes() ([]byte, error) {
+	return _templateLocalVolumeAdminAccountYaml, nil
+}
+
+func templateLocalVolumeAdminAccountYaml() (*asset, error) {
+	bytes, err := templateLocalVolumeAdminAccountYamlBytes()
+	if err != nil {
+		return nil, err
+	}
+
+	info := bindataFileInfo{name: "template/local-volume-admin-account.yaml", size: 741, mode: os.FileMode(420), modTime: time.Unix(1517433168, 0)}
+	a := &asset{bytes: bytes, info: info}
+	return a, nil
+}
+
+var _templateLocalVolumeStaticProvisionerYaml = []byte(`---
+# Source: provisioner/templates/provisioner.yaml
+ 
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: local-provisioner-config 
+  namespace: default 
+data:
+  storageClassMap: |     
+    fast-disks:
+       hostDir: /mnt/fast-disks
+       mountDir:  /mnt/fast-disks  
+---
+apiVersion: extensions/v1beta1
+kind: DaemonSet
+metadata:
+  name: local-volume-provisioner
+  namespace: default
+  labels:
+    app: local-volume-provisioner
+spec:
+  selector:
+    matchLabels:
+      app: local-volume-provisioner 
+  template:
+    metadata:
+      labels:
+        app: local-volume-provisioner
+    spec:
+      serviceAccountName: local-storage-admin
+      containers:
+        - image: "quay.io/external_storage/local-volume-provisioner:latest"
+          imagePullPolicy: "Always"
+          name: provisioner 
+          securityContext:
+            privileged: true
+          env:
+          - name: MY_NODE_NAME
+            valueFrom:
+              fieldRef:
+                fieldPath: spec.nodeName
+          volumeMounts:
+            - mountPath: /etc/provisioner/config 
+              name: provisioner-config
+              readOnly: true             
+            - mountPath:  /mnt/fast-disks 
+              name: fast-disks 
+      volumes:
+        - name: provisioner-config
+          configMap:
+            name: local-provisioner-config         
+        - name: fast-disks
+          hostPath:
+            path: /mnt/fast-disks 
+
+`)
+
+func templateLocalVolumeStaticProvisionerYamlBytes() ([]byte, error) {
+	return _templateLocalVolumeStaticProvisionerYaml, nil
+}
+
+func templateLocalVolumeStaticProvisionerYaml() (*asset, error) {
+	bytes, err := templateLocalVolumeStaticProvisionerYamlBytes()
+	if err != nil {
+		return nil, err
+	}
+
+	info := bindataFileInfo{name: "template/local-volume-static-provisioner.yaml", size: 1418, mode: os.FileMode(420), modTime: time.Unix(1517433205, 0)}
 	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
@@ -204,7 +436,7 @@ metadata:
   name: {{.Name}} # e.g. demo-mariadb-galera
   #namespace: default
 spec:
-  #clusterIP: None
+  clusterIP: None
   ports:
   - name: client
     port: 3306
@@ -244,12 +476,12 @@ func templateMariadbServiceYamlTpl() (*asset, error) {
 		return nil, err
 	}
 
-	info := bindataFileInfo{name: "template/mariadb-service.yaml.tpl", size: 844, mode: os.FileMode(420), modTime: time.Unix(1517384688, 0)}
+	info := bindataFileInfo{name: "template/mariadb-service.yaml.tpl", size: 843, mode: os.FileMode(420), modTime: time.Unix(1517531271, 0)}
 	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
 
-var _templateMariadbStatefulsetYamlTpl = []byte(`apiVersion: apps/v1
+var _templateMariadbStatefulsetYamlTpl = []byte(`apiVersion: apps/v1beta2
 kind: StatefulSet
 metadata:
   labels:
@@ -260,6 +492,7 @@ metadata:
   #namespace: default
 spec:
   podManagementPolicy: OrderedReady
+  #podManagementPolicy: Parallel
   replicas: {{.Count}}
   selector:
     matchLabels:
@@ -321,48 +554,57 @@ spec:
               fieldPath: metadata.name
         image: docker.io/mariadb:10.2
         imagePullPolicy: IfNotPresent
-        livenessProbe:
-          exec:
-            command:
-            - mysqladmin
-            - ping
-          failureThreshold: 3
-          initialDelaySeconds: 5
-          periodSeconds: 10
-          successThreshold: 1
-          timeoutSeconds: 5
+        #livenessProbe:
+        #  exec:
+        #    command:
+        #    - mysqladmin
+        #    - --password={{.MysqlRootPassword}}
+        #    - ping
+        #  failureThreshold: 3
+        #  initialDelaySeconds: 5
+        #  periodSeconds: 10
+        #  successThreshold: 1
+        #  timeoutSeconds: 5
         name: mariadb-galera
         ports:
         - containerPort: 3306
           name: client
           protocol: TCP
-        readinessProbe:
-          exec:
-            command:
-            - mysqladmin
-            - ping
-          failureThreshold: 3
-          initialDelaySeconds: 15
-          periodSeconds: 10
-          successThreshold: 1
-          timeoutSeconds: 5
+        #readinessProbe:
+        #  exec:
+        #    command:
+        #    - mysqladmin
+        #    - --password={{.MysqlRootPassword}}
+        #    - ping
+        #  failureThreshold: 3
+        #  initialDelaySeconds: 15
+        #  periodSeconds: 10
+        #  successThreshold: 1
+        #  timeoutSeconds: 5
         resources: {}
+        securityContext:
+          privileged: true
         terminationMessagePath: /dev/termination-log
         terminationMessagePolicy: File
         volumeMounts:
+        - mountPath: /etc/mysql/mariadb.conf.d
+          name: confd
         - mountPath: /docker-entrypoint-initdb.d
           name: initdb
         - mountPath: /var/lib/mysql
-          name: local-vol
+          #name: local-vol
+          name: hostpath
         - mountPath: /podinfo
           name: podinfo
       dnsPolicy: ClusterFirst
       initContainers:
       - args:
-        - init
-        - --conf_dir=/etc/mysql/conf.d
+        - --conf_dir=/etc/mysql/mariadb.conf.d
+        - --logtostderr
+        - --v=5
         command:
         - /mysql-operator
+        - init
         env:
         - name: MY_NODE_NAME
           valueFrom:
@@ -384,33 +626,37 @@ spec:
         #  valueFrom:
         #    fieldRef:
         #      fieldPath: spec.serviceAccountName
-        - name: CLUSTER_NODES
-          value: "3"
+        - name: CLUSTER_NAME
+          value: {{.ClusterName}}
         image: docker.io/tangfeixiong/mysql-operator
-        imagePullPolicy: IfNotPresent
+        #imagePullPolicy: IfNotPresent
+        imagePullPolicy: Always
         name: initcnf
         resources: {}
+        securityContext:
+          privileged: true
         terminationMessagePath: /dev/termination-log
         terminationMessagePolicy: File
         volumeMounts:
+        - mountPath: /etc/mysql/mariadb.conf.d
+          name: confd
         - mountPath: /docker-entrypoint-initdb.d
           name: initdb
         - mountPath: /tmp/docker-entrypoint-initdb.d
           name: initscripts
         - mountPath: /podinfo
           name: podinfo
-      restartPolicy: Always
+      #restartPolicy: Always
       schedulerName: default-scheduler
-      #securityContext: {}
-      securityContext:
-        fsGroup: 1234
+      securityContext: {}
+      #securityContext:
+      #  fsGroup: 1234
       terminationGracePeriodSeconds: 30
       volumes:
       - emptyDir: {}
+        name: confd
+      - emptyDir: {}
         name: initdb
-      #- hostPath:
-      #    path: /path/from/host
-      #  name: initscripts
       - name: initscripts
         persistentVolumeClaim:
           claimName: example-local-claim
@@ -435,16 +681,30 @@ spec:
             path: namespace
         name: podinfo
   updateStrategy:
-    type: RollingUpdate
+    #type: RollingUpdate
+    type: OnDelete
   volumeClaimTemplates:
+  #- metadata:
+  #    name: local-vol
+  #  spec:
+  #    accessModes: [ "ReadWriteOnce" ]
+  #    storageClassName: "local-storage"
+  #    resources:
+  #      requests:
+  #        storage: 100Mi
   - metadata:
-      name: local-vol
+      name: hostpath
+      #annotations:
+      #  volume.beta.kubernetes.io/storage-class: "example-hostpath"
     spec:
-      accessModes: [ "ReadWriteOnce" ]
-      storageClassName: "local-storage"
+      accessModes:
+        - ReadWriteOnce
+        #- ReadOnlyMany
+        #- ReadWriteMany
+      storageClassName: "example-hostpath"
       resources:
         requests:
-          storage: 100Mi
+          storage: 50Mi
     `)
 
 func templateMariadbStatefulsetYamlTplBytes() ([]byte, error) {
@@ -457,7 +717,55 @@ func templateMariadbStatefulsetYamlTpl() (*asset, error) {
 		return nil, err
 	}
 
-	info := bindataFileInfo{name: "template/mariadb-statefulset.yaml.tpl", size: 5842, mode: os.FileMode(420), modTime: time.Unix(1517388541, 0)}
+	info := bindataFileInfo{name: "template/mariadb-statefulset.yaml.tpl", size: 6679, mode: os.FileMode(420), modTime: time.Unix(1517594248, 0)}
+	a := &asset{bytes: bytes, info: info}
+	return a, nil
+}
+
+var _templateProvisionExampleYaml = []byte(`apiVersion: example.com/v1alpha1
+kind: Mariadb
+metadata:
+  name: my-galera
+spec:
+  # Optional, default is docker.io/mariadb:10, must suppport:
+  #   mariadb:10.1, mariadb:10.0
+  #   mysql:5
+  #   mysql:5.7, mysql:5.6, mysql:5.5
+  # May support:
+  #   mariadb:5
+  # Plan to support custome image, for example:
+  # image:
+  #   nameValues:
+  #   - name: version
+  #     value: mariadb10.2
+  #   docker: 'docker.io/tangfeixiong/mariadb:latest'
+  #image: {}
+  # Follow https://mariadb.com/kb/en/library/what-is-mariadb-galera-cluster/
+  #   clusterMode: Galera, Replication
+  # Follow https://dev.mysql.com/downloads/cluster/
+  #   clusterMode: CGE, Replication
+  # No clustering
+  #   clusterMode: None
+  #clusterMode: Galera
+  mysqlTemplate: {}
+  galeraTemplate:
+    # According documention, https://mariadb.com/kb/en/library/getting-started-with-mariadb-galera-cluster/
+    # Thus total members of cluster, minimal value is 3
+    count: 3
+    # According documention, http://galeracluster.com/documentation-webpages/mysqlwsrepoptions.html#wsrep-cluster-name
+    #clusterName: example_cluster`)
+
+func templateProvisionExampleYamlBytes() ([]byte, error) {
+	return _templateProvisionExampleYaml, nil
+}
+
+func templateProvisionExampleYaml() (*asset, error) {
+	bytes, err := templateProvisionExampleYamlBytes()
+	if err != nil {
+		return nil, err
+	}
+
+	info := bindataFileInfo{name: "template/provision-example.yaml", size: 1090, mode: os.FileMode(420), modTime: time.Unix(1517533275, 0)}
 	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
@@ -516,9 +824,13 @@ func AssetNames() []string {
 var _bindata = map[string]func() (*asset, error){
 	"template/galera.cnf": templateGaleraCnf,
 	"template/galera.cnf.tpl": templateGaleraCnfTpl,
+	"template/hostpath-provisioner.yaml": templateHostpathProvisionerYaml,
 	"template/local-storage-provision.yaml": templateLocalStorageProvisionYaml,
+	"template/local-volume-admin-account.yaml": templateLocalVolumeAdminAccountYaml,
+	"template/local-volume-static-provisioner.yaml": templateLocalVolumeStaticProvisionerYaml,
 	"template/mariadb-service.yaml.tpl": templateMariadbServiceYamlTpl,
 	"template/mariadb-statefulset.yaml.tpl": templateMariadbStatefulsetYamlTpl,
+	"template/provision-example.yaml": templateProvisionExampleYaml,
 }
 
 // AssetDir returns the file names below a certain
@@ -564,9 +876,13 @@ var _bintree = &bintree{nil, map[string]*bintree{
 	"template": &bintree{nil, map[string]*bintree{
 		"galera.cnf": &bintree{templateGaleraCnf, map[string]*bintree{}},
 		"galera.cnf.tpl": &bintree{templateGaleraCnfTpl, map[string]*bintree{}},
+		"hostpath-provisioner.yaml": &bintree{templateHostpathProvisionerYaml, map[string]*bintree{}},
 		"local-storage-provision.yaml": &bintree{templateLocalStorageProvisionYaml, map[string]*bintree{}},
+		"local-volume-admin-account.yaml": &bintree{templateLocalVolumeAdminAccountYaml, map[string]*bintree{}},
+		"local-volume-static-provisioner.yaml": &bintree{templateLocalVolumeStaticProvisionerYaml, map[string]*bintree{}},
 		"mariadb-service.yaml.tpl": &bintree{templateMariadbServiceYamlTpl, map[string]*bintree{}},
 		"mariadb-statefulset.yaml.tpl": &bintree{templateMariadbStatefulsetYamlTpl, map[string]*bintree{}},
+		"provision-example.yaml": &bintree{templateProvisionExampleYaml, map[string]*bintree{}},
 	}},
 }}
 

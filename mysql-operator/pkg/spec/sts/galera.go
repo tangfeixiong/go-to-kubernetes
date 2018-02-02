@@ -47,9 +47,14 @@ type MariadbGaleraRecipient struct {
 	Quorum                                                                     *uint8
 	Weights                                                                    []*uint8
 	Count                                                                      int
+	ClusterName                                                                string
 }
 
 func NewMariadbGaleraRecipient(name, namespace, crn, service string, count *uint8, dbaccount *DatabaseAccount) *MariadbGaleraRecipient {
+	return NewMariadbGaleraRecipient1(name, namespace, crn, service, name, count, dbaccount)
+}
+
+func NewMariadbGaleraRecipient1(name, namespace, crn, service, cluster string, count *uint8, dbaccount *DatabaseAccount) *MariadbGaleraRecipient {
 	num := replicas_default
 	if count != nil && *count > 0 {
 		//num = (*count-1)*2 + 1
@@ -61,6 +66,7 @@ func NewMariadbGaleraRecipient(name, namespace, crn, service string, count *uint
 		Namespace:          namespace,
 		CustomResourceName: crn,
 		ServiceName:        service,
+		ClusterName:        cluster,
 		Count:              int(num),
 	}
 
@@ -76,6 +82,10 @@ func NewMariadbGaleraRecipient(name, namespace, crn, service string, count *uint
 	if service == "" {
 		recipe.ServiceName = recipe.CustomResourceName
 	}
+	if cluster == "" {
+		recipe.ClusterName = recipe.ServiceName
+	}
+
 	//	if port == nil {
 	//		recipe.ClientPort = DEFAULT_CLIENT_PORT
 	//	} else if 1024 < *port && *port < 65535 {

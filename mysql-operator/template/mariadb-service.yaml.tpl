@@ -8,7 +8,7 @@ metadata:
   name: {{.Name}} # e.g. demo-mariadb-galera
   #namespace: default
 spec:
-  #clusterIP: None
+  clusterIP: None
   ports:
   - name: client
     port: 3306

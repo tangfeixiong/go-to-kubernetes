@@ -114,6 +114,9 @@ roleRef:
   #name: cluster-admin
 subjects:
 - kind: ServiceAccount
+  name: default
+  namespace: example-system
+- kind: ServiceAccount
   name: redis-operator
   namespace: example-system
 ---

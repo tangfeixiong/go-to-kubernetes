@@ -25,11 +25,11 @@ import (
 	"k8s.io/client-go/tools/clientcmd"
 	"k8s.io/kubernetes/pkg/util/version"
 
+	"github.com/tangfeixiong/go-to-kubernetes/pkg/signals"
 	"github.com/tangfeixiong/go-to-kubernetes/redis-operator/pb"
 	clientset "github.com/tangfeixiong/go-to-kubernetes/redis-operator/pkg/client/clientset/versioned"
 	informers "github.com/tangfeixiong/go-to-kubernetes/redis-operator/pkg/client/informers/externalversions"
 	"github.com/tangfeixiong/go-to-kubernetes/redis-operator/pkg/controller"
-	"github.com/tangfeixiong/go-to-kubernetes/redis-operator/pkg/signals"
 	"github.com/tangfeixiong/go-to-kubernetes/redis-operator/pkg/spec/crd"
 )
 

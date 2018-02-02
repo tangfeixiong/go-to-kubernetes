@@ -21,7 +21,7 @@ import (
 func CreateCRD(apiextensionsclientset apiextensionsclient.Interface) {
 	recipe, err := crd.NewRecipient("example.com", "v1", "mysqlfamilies", "mysqlfamily")
 
-	customeresourcedefinition, err := recipe.DecodeArtifact(nil)
+	customeresourcedefinition, err := recipe.Generate()
 	if err != nil {
 		panic(err)
 	}
@@ -37,6 +37,10 @@ func CreateCRD(apiextensionsclientset apiextensionsclient.Interface) {
 		panic(err)
 	}
 	fmt.Printf("Created CRD %q.\n", result.Name)
+}
+
+func CreateHostPath(clientset kubernetes.Interface) {
+
 }
 
 func CreateLocalStorage(clientset kubernetes.Interface) {
@@ -126,6 +130,10 @@ func CreateMariadbSvc(clientset kubernetes.Interface) {
 	serviceClient := clientset.CoreV1().Services(apiv1.NamespaceDefault)
 
 	result, err := serviceClient.Create(service)
+	if errors.IsAlreadyExists(err) {
+		fmt.Printf("Already exists SVC %q.\n", service.Name)
+		return
+	}
 	if err != nil {
 		panic(err)
 	}
@@ -143,6 +151,10 @@ func CreateMariadbSts(clientset kubernetes.Interface) {
 	statefulsetsClient := clientset.AppsV1beta2().StatefulSets(apiv1.NamespaceDefault)
 
 	result, err := statefulsetsClient.Create(statefulset)
+	if errors.IsAlreadyExists(err) {
+		fmt.Printf("Already exists StatefulSet %q.\n", statefulset.Name)
+		return
+	}
 	if err != nil {
 		panic(err)
 	}
