@@ -1,0 +1,17 @@
+apiVersion: example.com/v1alpha1
+kind: Rabbitmq
+metadata:
+  name: demo-rabbitmq-cluster
+  #namespace: example-project
+spec:
+  # Optional, default is docker.io/rabbitmq:3.7, must suppport:
+  # May support custome image, for example:
+  # image:
+  #   nameValues:
+  #   - name: version
+  #     value: rabbitmq3.7
+  #   docker: 'docker.io/tangfeixiong/rabbitmq:latest'
+  #image: {}
+  # Follow https://www.rabbitmq.com/clustering.html
+  #mode: PeerDiscovery_K8s
+  count: 3

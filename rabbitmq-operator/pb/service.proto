@@ -1,0 +1,29 @@
+syntax = "proto3";
+package pb;
+
+import "google/api/annotations.proto";
+
+//import "pb/not-existed.proto";
+import "pb/datatype.proto";
+
+service SimpleGRpcService {
+    rpc CreateCrd (CrdReqResp) returns (CrdReqResp) {
+        option (google.api.http) = {
+	        post: "/api/v1/crd"
+            body: "*"
+        };
+    }
+	
+    rpc ReapCrd (CrdReqResp) returns (CrdReqResp) {
+        option (google.api.http) = {
+	        get: "/api/v1/crd"
+        };
+    }
+}
+
+message CrdReqResp {
+	CrdRecipient recipe = 1;
+	int32 state_code = 2;
+	string state_message = 3;
+}
+

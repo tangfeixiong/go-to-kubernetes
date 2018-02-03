@@ -1,5 +1,5 @@
 /*
-  go test -v -run Galera ./pkg/spec/svc/ -args --logtostderr --v=5
+  [vagrant@kubedev-172-17-4-59 mysql-operator]$ go test -v -run Galera ./pkg/spec/svc/ -args --logtostderr --v=5
 */
 
 package svc

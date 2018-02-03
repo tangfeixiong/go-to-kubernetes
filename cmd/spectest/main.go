@@ -18,6 +18,7 @@ import (
 	// _ "k8s.io/client-go/plugin/pkg/client/auth/gcp"
 
 	"github.com/tangfeixiong/go-to-kubernetes/cmd/spectest/mysqlorbranches"
+	"github.com/tangfeixiong/go-to-kubernetes/cmd/spectest/rabbitmq"
 	"github.com/tangfeixiong/go-to-kubernetes/redis-operator/pkg/spec/crd"
 	"github.com/tangfeixiong/go-to-kubernetes/redis-operator/pkg/spec/deploy"
 	"github.com/tangfeixiong/go-to-kubernetes/redis-operator/pkg/spec/sts"
@@ -117,6 +118,12 @@ func main() {
 			mysqlorbranches.CreateMariadbSvc(clientset)
 		case "mariadb-sts":
 			mysqlorbranches.CreateMariadbSts(clientset)
+
+		case "rabbitmq-svc":
+			rabbitmq.CreateSvc(clientset)
+		case "rabbitmq-sts":
+			rabbitmq.CreateSts(clientset)
+
 		default:
 			fmt.Println("Unknown create option", os.Args[1])
 		}
