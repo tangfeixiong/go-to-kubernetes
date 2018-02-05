@@ -2,7 +2,7 @@
 	"https://github.com/rook/rook/blob/master/cmd/rook/main.go"
 */
 
-package utils
+package hadoop
 
 import (
 	"fmt"

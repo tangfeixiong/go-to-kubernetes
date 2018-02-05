@@ -1,0 +1,53 @@
+apiVersion: apiextensions.k8s.io/v1beta1
+kind: CustomResourceDefinition
+metadata:
+  name: hadoops.example.com
+spec:
+  group: example.com
+  version: v1alpha1
+  scope: Namespaced
+  names:
+    plural: hadoops
+    singular: hadoop
+    kind: Hadoop
+---
+apiVersion: apiextensions.k8s.io/v1beta1
+kind: CustomResourceDefinition
+metadata:
+  name: hadoophdfses.example.com
+spec:
+  group: example.com
+  version: v1alpha1
+  scope: Namespaced
+  names:
+    plural: hadoophdfses
+    singular: hadoophdfs
+    kind: HadoopHdfs
+---
+apiVersion: apiextensions.k8s.io/v1beta1
+kind: CustomResourceDefinition
+metadata:
+  name: hadoopyarns.example.com
+spec:
+  group: example.com
+  version: v1alpha1
+  scope: Namespaced
+  names:
+    plural: hadoopyarns
+    singular: hadoopyarn
+    kind: HadoopYarn
+---
+apiVersion: apiextensions.k8s.io/v1beta1
+kind: CustomResourceDefinition
+metadata:
+  name: hadoopmapreduces.example.com
+spec:
+  group: example.com
+  version: v1alpha1
+  scope: Namespaced
+  names:
+    plural: hadoopmapreduces
+    singular: hadoopmapreduce
+    kind: HadoopMapreduce
+
+

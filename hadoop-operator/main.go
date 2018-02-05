@@ -7,7 +7,7 @@ import (
 	"runtime"
 	"time"
 
-	"github.com/tangfeixiong/go-to-kubernetes/hadoop-hdfs-operator/cmd"
+	"github.com/tangfeixiong/go-to-kubernetes/hadoop-operator/cmd"
 )
 
 func main() {

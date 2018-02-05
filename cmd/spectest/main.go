@@ -17,6 +17,7 @@ import (
 	// Uncomment the following line to load the gcp plugin (only required to authenticate against GKE clusters).
 	// _ "k8s.io/client-go/plugin/pkg/client/auth/gcp"
 
+	"github.com/tangfeixiong/go-to-kubernetes/cmd/spectest/hadoop"
 	"github.com/tangfeixiong/go-to-kubernetes/cmd/spectest/mysqlorbranches"
 	"github.com/tangfeixiong/go-to-kubernetes/cmd/spectest/rabbitmq"
 	"github.com/tangfeixiong/go-to-kubernetes/redis-operator/pkg/spec/crd"
@@ -123,6 +124,13 @@ func main() {
 			rabbitmq.CreateSvc(clientset)
 		case "rabbitmq-sts":
 			rabbitmq.CreateSts(clientset)
+
+		case "hadoop-hdfs-svc":
+			hadoop.CreateHdfsSvc(clientset)
+		case "hadoop-hdfs-cm":
+			hadoop.CreateHdfsCm(clientset)
+		case "hadoop-hdfs-sts":
+			hadoop.CreateHdfsSts(clientset)
 
 		default:
 			fmt.Println("Unknown create option", os.Args[1])

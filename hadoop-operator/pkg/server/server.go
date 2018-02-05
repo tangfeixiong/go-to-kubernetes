@@ -21,21 +21,28 @@ import (
 
 	"google.golang.org/grpc"
 
-	"github.com/tangfeixiong/go-to-kubernetes/hadoop-hdfs-operator/pb"
-	"github.com/tangfeixiong/go-to-kubernetes/hadoop-hdfs-operator/pkg/operator"
+	"github.com/tangfeixiong/go-to-kubernetes/hadoop-operator/pb"
+	"github.com/tangfeixiong/go-to-kubernetes/hadoop-operator/pkg/operator"
 )
 
 type controller struct {
 	config *Config
 	ops    map[string]*operator.Operator
+	root   http.FileSystem
 	signal os.Signal
 }
 
 func Start(config *Config) {
 	ctl := &controller{
 		config: config,
-		//wsnovnc: &gowebsockifynovnc.WsnovncManager{},
+		ops:    make(map[string]*operator.Operator),
 	}
+	op, err := operator.Run(config.RuntimeConfig)
+	if err != nil {
+		glog.Errorf("Start operator failed: %v", err)
+		return
+	}
+	ctl.ops["hadoop-operator"] = op
 	ctl.start()
 }
 
@@ -69,7 +76,7 @@ func (ctl *controller) start() {
 func (ctl *controller) startGRPC(ch chan<- string) {
 	s := grpc.NewServer()
 
-	pb.RegisterGorhServiceServer(s, ctl)
+	pb.RegisterSimpleGRpcServiceServer(s, ctl)
 	host := ctl.config.SecureAddress
 
 	l, err := net.Listen("tcp", host)
@@ -104,14 +111,14 @@ func (ctl *controller) startGateway(ch <-chan string) {
 	gRPCHost := <-ch
 
 	host := ctl.config.InsecureAddress
-	if err := pb.RegisterGorhServiceHandlerFromEndpoint(ctx, gwmux, gRPCHost, dopts); err != nil {
-		fmt.Println("Failed to init gRPC gateway. ", err)
+	if err := pb.RegisterSimpleGRpcServiceHandlerFromEndpoint(ctx, gwmux, gRPCHost, dopts); err != nil {
+		fmt.Println("Register gRPC gateway failed.", err)
 		return
 	}
-	ctl.serve_noVNC(mux)
 
 	mux.Handle("/", gwmux)
 	// serveSwagger(mux)
+	ctl.serveWebPages(mux)
 
 	lstn, err := net.Listen("tcp", host)
 	if nil != err {

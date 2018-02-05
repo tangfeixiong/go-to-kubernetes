@@ -1,0 +1,23 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: hadoop
+    example.com/rabbitmq-operator: {{ .CustomResourceName }} # operator reserved!
+    github.com/go-to-kubernetes: hadoop-operator
+  name: {{ .Name }} # e.g. demo-hadoop-namenode
+  #namespace: {{ .Namespace }}
+spec:
+  clusterIP: None
+  ports:
+  - name: hdfs
+    port: 9000
+    protocol: TCP
+    targetPort: 9000
+  selector:
+    app: hadoop
+    example.com/rabbitmq-operator: {{ .CustomResourceName }} # required by operator itself!
+    github.com/go-to-kubernetes: hadoop-operator
+  #sessionAffinity: None
+  #sessionAffinity: ClientIP
+  #type: ClusterIP

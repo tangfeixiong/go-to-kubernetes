@@ -1,130 +1,305 @@
-/*
-   "github.com/rook/rook/pkg/operator"
-*/
-
 package operator
 
 import (
 	"fmt"
-	"os"
-	"os/signal"
-	"syscall"
+	//"os"
+	//"os/signal"
+	//"runtime"
+	//"syscall"
 	"time"
 
-	"github.com/coreos/pkg/capnslog"
 	opkit "github.com/rook/operator-kit"
-	"github.com/rook/rook/pkg/clusterd"
-	"github.com/rook/rook/pkg/daemon/agent/flexvolume/attachment"
-	"github.com/rook/rook/pkg/operator/agent"
-	"github.com/rook/rook/pkg/operator/cluster"
-	"github.com/rook/rook/pkg/operator/k8sutil"
-	"github.com/rook/rook/pkg/operator/mds"
-	"github.com/rook/rook/pkg/operator/pool"
-	"github.com/rook/rook/pkg/operator/provisioner"
-	"github.com/rook/rook/pkg/operator/provisioner/controller"
-	"github.com/rook/rook/pkg/operator/rgw"
-	"k8s.io/api/core/v1"
+	rookop "github.com/rook/rook/pkg/operator"
+	//"github.com/sirupsen/logrus"
+
+	"k8s.io/api/extensions/v1beta1"
+	apiextensionsv1beta1 "k8s.io/apiextensions-apiserver/pkg/apis/apiextensions/v1beta1"
+	apiextensionsclient "k8s.io/apiextensions-apiserver/pkg/client/clientset/clientset"
+	"k8s.io/apimachinery/pkg/api/errors"
+	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
+	errorsUtil "k8s.io/apimachinery/pkg/util/errors"
+	"k8s.io/apimachinery/pkg/util/wait"
+	kubeinformers "k8s.io/client-go/informers"
+	"k8s.io/client-go/kubernetes"
+	"k8s.io/client-go/rest"
+	"k8s.io/client-go/tools/clientcmd"
+	"k8s.io/kubernetes/pkg/util/version"
+
+	"github.com/tangfeixiong/go-to-kubernetes/hadoop-operator/pb"
+	clientset "github.com/tangfeixiong/go-to-kubernetes/hadoop-operator/pkg/client/clientset/versioned"
+	informers "github.com/tangfeixiong/go-to-kubernetes/hadoop-operator/pkg/client/informers/externalversions"
+	"github.com/tangfeixiong/go-to-kubernetes/hadoop-operator/pkg/controller"
+	"github.com/tangfeixiong/go-to-kubernetes/hadoop-operator/pkg/hadoop"
+	"github.com/tangfeixiong/go-to-kubernetes/pkg/signals"
+	"github.com/tangfeixiong/go-to-kubernetes/pkg/spec/crd"
 )
 
-const (
-	initRetryDelay = 10 * time.Second
-)
-
-// volume provisioner constant
-const (
-	provisionerName = "rook.io/block"
-)
-
-var logger = capnslog.NewPackageLogger("github.com/rook/rook", "operator")
-
+/*
+  Inspired by:
+    https://github.com/rook/rook/blob/master/pkg/operator/operator.go
+*/
 type Operator struct {
-	agents map[string]*Agent
+	cfg                   *rest.Config
+	kubeClientset         kubernetes.Interface
+	kubeApiExtClientset   apiextensionsclient.Interface
+	sampleClientset       clientset.Interface
+	sampleInformerFactory informers.SharedInformerFactory
+	kubeInformerFactory   kubeinformers.SharedInformerFactory
+	operator              *rookop.Operator
+	Interval              time.Duration
+	Timeout               time.Duration
+	agents                map[string]*struct{}
+	c                     *controller.Controller
 }
 
-// New creates an operator instance
-func New(context *clusterd.Context, volumeAttachmentWrapper attachment.Attachment, rookImage string) *Operator {
-	clusterController := cluster.NewClusterController(context, rookImage, volumeAttachmentWrapper)
-	volumeProvisioner := provisioner.New(context)
-
-	schemes := []opkit.CustomResource{cluster.ClusterResource, pool.PoolResource, rgw.ObjectStoreResource,
-		mds.FilesystemResource, attachment.VolumeAttachmentResource}
-	return &Operator{
-		context:           context,
-		clusterController: clusterController,
-		resources:         schemes,
-		volumeProvisioner: volumeProvisioner,
-		rookImage:         rookImage,
-	}
-}
-
-// Run the operator instance
-func (o *Operator) Run() error {
-
-	namespace := os.Getenv(k8sutil.PodNamespaceEnvVar)
-	if namespace == "" {
-		return fmt.Errorf("Rook operator namespace is not provided. Expose it via downward API in the rook operator manifest file using environment variable %s", k8sutil.PodNamespaceEnvVar)
-	}
-
-	for {
-		err := o.initResources()
-		if err == nil {
-			break
+func Run(conf hadoop.Config) (*Operator, error) {
+	var cfg *rest.Config
+	var err error
+	if conf.Kubeconfig != "" {
+		cfg, err = clientcmd.BuildConfigFromFlags("", conf.Kubeconfig)
+		if err != nil {
+			fmt.Println("Read kubernetes config failed:", err.Error())
+			return nil, err
 		}
-		logger.Errorf("failed to init resources. %+v. retrying...", err)
-		<-time.After(initRetryDelay)
+	} else {
+		cfg, err = rest.InClusterConfig()
+		if err != nil {
+			return nil, fmt.Errorf("Read Kubernetes in-cluster config failed: " + err.Error())
+		}
 	}
 
-	rookAgent := agent.New(o.context.Clientset)
+	op := new(Operator)
+	ch := make(chan error)
 
-	if err := rookAgent.Start(namespace, o.rookImage); err != nil {
-		return fmt.Errorf("Error starting agent daemonset: %v", err)
+	go op.main(cfg, ch)
+
+	err = <-ch
+	if err != nil {
+		return nil, err
 	}
 
-	signalChan := make(chan os.Signal, 1)
-	stopChan := make(chan struct{})
-	signal.Notify(signalChan, syscall.SIGINT, syscall.SIGTERM)
+	return op, nil
+}
 
-	// Run volume provisioner
-	// The controller needs to know what the server version is because out-of-tree
-	// provisioners aren't officially supported until 1.5
-	serverVersion, err := o.context.Clientset.Discovery().ServerVersion()
+func (op *Operator) main(cfg *rest.Config, errCh chan<- error) {
+	// set up signals so we handle the first shutdown signal gracefully
+	stopCh := signals.SetupSignalHandler()
+
+	//	config, err := util.InClusterConfig()
+	//	if err != nil {
+	//		return nil, fmt.Errorf("Could not create In-cluster config: " + err.Error())
+	//	}
+
+	kubeClientset, err := kubernetes.NewForConfig(cfg)
+	if err != nil {
+		//glog.Fatalf("Error building kubeconfig: %s", err.Error())
+		errCh <- fmt.Errorf("Error building kubeconfig: %s", err.Error())
+		return
+		//return nil, fmt.Errorf("Could not create kube client: " + err.Error())
+	}
+
+	kubeApiExtClientset, err := apiextensionsclient.NewForConfig(cfg)
+	if err != nil {
+		errCh <- fmt.Errorf("Error building kubernetes api extensions clientset: %s", err.Error())
+		return
+		//return nil, fmt.Errorf("failed to create k8s API extension clientset. %+v", err)
+	}
+
+	exampleClientset, err := clientset.NewForConfig(cfg)
+	if err != nil {
+		//glog.Fatalf("Error building kubernetes clientset: %s", err.Error())
+		errCh <- fmt.Errorf("Error building kubernetes clientset: %s", err.Error())
+		return
+		//return nil, fmt.Errorf("Could not create redis CRD clientset: " + err.Error())
+	}
+
+	//	controllerConfig := controller.NewConfig(config, Resync)
+
+	kubeInformerFactory := kubeinformers.NewSharedInformerFactory(kubeClientset, time.Second*30)
+	exampleInformerFactory := informers.NewSharedInformerFactory(exampleClientset, time.Second*30)
+
+	controller := controller.NewController(kubeClientset, exampleClientset, kubeInformerFactory, exampleInformerFactory)
+	controller.Config = &struct {
+		*rest.Config
+		DefaultResync time.Duration
+	}{cfg, Resync}
+
+	go kubeInformerFactory.Start(stopCh)
+	go exampleInformerFactory.Start(stopCh)
+
+	op.cfg = cfg
+	op.c = controller
+	op.kubeClientset = kubeClientset
+	op.kubeApiExtClientset = kubeApiExtClientset
+	op.sampleClientset = exampleClientset
+	op.sampleInformerFactory = exampleInformerFactory
+	op.kubeInformerFactory = kubeInformerFactory
+
+	if err = controller.Run( /*2*/ 1, stopCh); err != nil {
+		//glog.Fatalf("Error running controller: %s", err.Error())
+		errCh <- fmt.Errorf("Error running controller: %s", err.Error())
+		return
+	}
+}
+
+func (op *Operator) CreateCRD(recipe *pb.CrdRecipient) error {
+	r := crd.Recipient{
+		Group:    recipe.Group,
+		Version:  recipe.Version,
+		Scope:    recipe.Scope,
+		Plural:   recipe.Plural,
+		Singular: recipe.Singular,
+		Kind:     recipe.Kind,
+	}
+	return op.CreateCRDorTPR(r)
+}
+
+func (op *Operator) CreateCRDorTPR(recipe crd.Recipient) error {
+	// CRD is available on v1.7.0 and above. TPR became deprecated on v1.7.0
+	serverVersion, err := op.kubeClientset.Discovery().ServerVersion()
 	if err != nil {
 		return fmt.Errorf("Error getting server version: %v", err)
 	}
-	pc := controller.NewProvisionController(
-		o.context.Clientset,
-		provisionerName,
-		o.volumeProvisioner,
-		serverVersion.GitVersion,
+	kubeVersion := version.MustParseSemantic(serverVersion.GitVersion)
+
+	const (
+		serverVersionV170 = "v1.7.0"
 	)
-	go pc.Run(stopChan)
-	logger.Infof("rook-provisioner started")
 
-	// watch for changes to the rook clusters
-	o.clusterController.StartWatch(v1.NamespaceAll, stopChan)
+	var lastErr error
+	if kubeVersion.AtLeast(version.MustParseSemantic(serverVersionV170)) {
+		err = op.createCRD(recipe)
+		if err != nil {
+			lastErr = err
+		}
 
-	for {
-		select {
-		case <-signalChan:
-			logger.Infof("shutdown signal received, exiting...")
-			close(stopChan)
-			return nil
+		if err := op.waitForCRDInit(recipe); err != nil {
+			lastErr = err
+		}
+	} else {
+		context := opkit.Context{
+			Clientset:             op.kubeClientset,
+			APIExtensionClientset: op.kubeApiExtClientset,
+			Interval:              500 * time.Millisecond,
+			Timeout:               60 * time.Second,
+		}
+		scheme := opkit.CustomResource{
+			Name:    fmt.Sprintf("%s.%s", recipe.Plural, recipe.Group),
+			Plural:  recipe.Plural,
+			Group:   recipe.Group,
+			Version: recipe.Version,
+			Scope:   apiextensionsv1beta1.NamespaceScoped,
+			Kind:    recipe.Kind,
+		}
+		if recipe.Scope == string(apiextensionsv1beta1.ClusterScoped) || recipe.Scope == string(apiextensionsv1beta1.NamespaceScoped) {
+			scheme.Scope = apiextensionsv1beta1.ResourceScope(recipe.Scope)
+		}
+		resources := []opkit.CustomResource{scheme}
+
+		// Create and wait for TPR resources
+		for _, resource := range resources {
+			err = createTPR(context, resource)
+			if err != nil {
+				lastErr = err
+			}
+		}
+
+		for _, resource := range resources {
+			if err := waitForTPRInit(context, resource); err != nil {
+				lastErr = err
+			}
 		}
 	}
+	return lastErr
 }
 
-func (o *Operator) initResources() error {
-	kitCtx := opkit.Context{
-		Clientset:             o.context.Clientset,
-		APIExtensionClientset: o.context.APIExtensionClientset,
-		Interval:              500 * time.Millisecond,
-		Timeout:               60 * time.Second,
-	}
+func (op *Operator) createCRD(recipe crd.Recipient) error {
+	result, err := recipe.Generate()
 
-	// Create and wait for CRD resources
-	err := opkit.CreateCustomResources(kitCtx, o.resources)
+	_, err = op.kubeApiExtClientset.ApiextensionsV1beta1().CustomResourceDefinitions().Create(result)
 	if err != nil {
-		return fmt.Errorf("failed to create custom resource. %+v", err)
+		if !errors.IsAlreadyExists(err) {
+			return fmt.Errorf("Create CRD failed. %+v", err)
+		}
 	}
 	return nil
 }
+
+func (op *Operator) waitForCRDInit(recipe crd.Recipient) error {
+	crdName := fmt.Sprintf("%s.%s", recipe.Plural, recipe.Group)
+	return wait.Poll(500*time.Millisecond, 60*time.Second, func() (bool, error) {
+		crdRedis, err := op.kubeApiExtClientset.ApiextensionsV1beta1().CustomResourceDefinitions().Get(crdName, metav1.GetOptions{})
+		if err != nil {
+			return false, err
+		}
+		for _, cond := range crdRedis.Status.Conditions {
+			switch cond.Type {
+			case apiextensionsv1beta1.Established:
+				if cond.Status == apiextensionsv1beta1.ConditionTrue {
+					return true, nil
+				}
+			case apiextensionsv1beta1.NamesAccepted:
+				if cond.Status == apiextensionsv1beta1.ConditionFalse {
+					return false, fmt.Errorf("Name conflict: %v\n", cond.Reason)
+				}
+			}
+		}
+		return false, nil
+	})
+}
+
+func createTPR(context opkit.Context, resource opkit.CustomResource) error {
+	tprName := fmt.Sprintf("%s.%s", resource.Name, resource.Group)
+	tpr := &v1beta1.ThirdPartyResource{
+		ObjectMeta: metav1.ObjectMeta{
+			Name: tprName,
+		},
+		Versions: []v1beta1.APIVersion{
+			{Name: resource.Version},
+		},
+		Description: fmt.Sprintf("ThirdPartyResource for %s", resource.Name),
+	}
+	_, err := context.Clientset.ExtensionsV1beta1().ThirdPartyResources().Create(tpr)
+	if err != nil {
+		if !errors.IsAlreadyExists(err) {
+			return fmt.Errorf("failed to create %s TPR. %+v", resource.Name, err)
+		}
+	}
+	return nil
+}
+
+func waitForTPRInit(context opkit.Context, resource opkit.CustomResource) error {
+	// wait for TPR being established
+	restcli := context.Clientset.CoreV1().RESTClient()
+	uri := fmt.Sprintf("apis/%s/%s/%s", resource.Group, resource.Version, resource.Plural)
+	tprName := fmt.Sprintf("%s.%s", resource.Name, resource.Group)
+
+	err := wait.Poll(context.Interval, context.Timeout, func() (bool, error) {
+		_, err := restcli.Get().RequestURI(uri).DoRaw()
+		if err != nil {
+			if errors.IsNotFound(err) {
+				return false, nil
+			}
+			return false, err
+		}
+		return true, nil
+
+	})
+	if err != nil {
+		deleteErr := context.Clientset.ExtensionsV1beta1().ThirdPartyResources().Delete(tprName, nil)
+		if deleteErr != nil {
+			return errorsUtil.NewAggregate([]error{err, deleteErr})
+		}
+		return err
+	}
+	return nil
+}
+
+/*
+  Inspired by:
+    https://github.com/jw-s/redis-operator/blob/master/cmd/operator/main.go
+*/
+
+var (
+	Resync time.Duration = time.Minute
+)
