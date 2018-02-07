@@ -13,6 +13,7 @@
   limitations under the License.
 -->
 <configuration>
+
   <!-- Configurations for NameNode: -->
   <property>
     <name>dfs.namenode.name.dir</name>

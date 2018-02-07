@@ -13,7 +13,7 @@ GIT_COMMIT=$(shell date +%y%m%d%H%M)-git$(shell git rev-parse --short=7 HEAD)
 DOCKER_FILE?=Dockerfile.busybox
 DOCKER_REGISTRY?=172.17.4.59:5000/admin
 
-all: protoc-grpc go-bindata-web docker-push hadoop-agent
+all: protoc-grpc go-bindata-web docker-push
 
 protoc-grpc:
 	@if [[ ! -e $(GOPATHD) ]] ; \
@@ -50,7 +50,7 @@ go-build: go-bindata-spec
 go-install:
 	@go install -v ./
 
-docker-build: go-build
+docker-build: hadoop-agent
 	#@docker build --no-cache --force-rm -t $(IMG_NS)/$(IMG_REPO):$(IMG_TAG) ./
 	@docker build --no-cache --force-rm -t $(IMG_NS)/$(IMG_REPO):$(IMG_TAG) -f $(DOCKER_FILE) ./
 

@@ -49,9 +49,10 @@ spec:
       #      topologyKey: kubernetes.io/hostname
       containers:
       - args:
-        - {{.HdfsNodeType}}
+        #- {{.HdfsNodeType}}
         command:
-        - /hadoop-3.0.0/bin/hdfs
+        #- /hadoop-3.0.0/bin/hdfs
+        - /operator-entrypoint/hadoop-startup.sh
         env:
         - name: MY_POD_IP
           valueFrom:
@@ -79,6 +80,18 @@ spec:
         - containerPort: 9000
           name: hdfs
           protocol: TCP
+        ports:
+        - containerPort: 9870
+          name: nnhttp
+          protocol: TCP
+        ports:
+        - containerPort: 9867
+          name: dnipc
+          protocol: TCP
+        ports:
+        - containerPort: 9864
+          name: dnhttp
+          protocol: TCP
         #readinessProbe:
         #  exec:
         #    command:
@@ -97,15 +110,15 @@ spec:
         volumeMounts:
         - mountPath: /hadoop-3.0.0/etc/hadoop
           name: hadoopetc
-        - mountPath: /tmp/hadoop-3.0.00x2Fetc0x2Fhadoop
-          name: conf
+        - mountPath: /operator-entrypoint
+          name: operatorentry
         - mountPath: /tmp/hadoop-root
           #name: local-vol
           name: hostpath
       dnsPolicy: ClusterFirst
       initContainers:
       - args:
-        - --conf_dir=/hadoop-3.0.0/etc/hadoop
+        - --hadoop_dir=/hadoop-3.0.0
         {{with .HdfsClusterID}}- --hdfs_cluster_id={{.}}{{end}}
         - --hdfs_node_type={{.HdfsNodeType}}
         - --logtostderr
@@ -143,8 +156,8 @@ spec:
         terminationMessagePath: /dev/termination-log
         terminationMessagePolicy: File
         volumeMounts:
-        - mountPath: /tmp/hadoop-3.0.00x2Fetc0x2Fhadoop
-          name: conf
+        - mountPath: /operator-entrypoint
+          name: operatorentry
         - mountPath: /tmp/hadoop-root
           #name: local-vol
           name: hostpath
@@ -191,7 +204,7 @@ spec:
             path: namespace
         name: podinfo
       - emptyDir: {}
-        name: conf
+        name: operatorentry
   updateStrategy:
     #type: RollingUpdate
     type: OnDelete

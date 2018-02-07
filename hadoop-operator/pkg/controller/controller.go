@@ -42,6 +42,7 @@ import (
 	samplescheme "github.com/tangfeixiong/go-to-kubernetes/hadoop-operator/pkg/client/clientset/versioned/scheme"
 	informers "github.com/tangfeixiong/go-to-kubernetes/hadoop-operator/pkg/client/informers/externalversions"
 	listers "github.com/tangfeixiong/go-to-kubernetes/hadoop-operator/pkg/client/listers/example.com/v1alpha1"
+	hcm "github.com/tangfeixiong/go-to-kubernetes/hadoop-operator/pkg/hadoop"
 	"github.com/tangfeixiong/go-to-kubernetes/hadoop-operator/pkg/spec/sts"
 	"github.com/tangfeixiong/go-to-kubernetes/hadoop-operator/pkg/spec/svc"
 )
@@ -146,7 +147,7 @@ func NewController(
 		foosLister:        fooInformer.Lister(),
 		cacheSyncs:        cacheSyncs,
 		recorder:          recorder,
-		workqueue:         workqueue.NewNamedRateLimitingQueue(workqueue.DefaultControllerRateLimiter(), "hadoophdfses"),
+		workqueue:         workqueue.NewNamedRateLimitingQueue(workqueue.DefaultControllerRateLimiter(), samplev1alpha1.HdfsResourceKind+"es"),
 		logger:            logrus.WithField("pkg", "controller"),
 		//Config:            cfg,
 		//redises: make(map[string]*redis.Redis),
@@ -355,6 +356,21 @@ func (c *Controller) syncHandler(key string) error {
 		return err
 	}
 
+	cfg := hcm.Config{
+		Name:               foo.Name,
+		ServiceName:        foo.Name,
+		Namespace:          foo.Namespace,
+		BaseDomain:         "cluster.local",
+		CustomResourceName: foo.Name,
+	}
+
+	cm, err := cfg.InitMap(c.kubeclientset)
+	if err != nil {
+		glog.V(2).Info(err)
+		return err
+	}
+	glog.V(5).Infof("ConfigMap %v created", cm.GetObjectMeta().GetName())
+
 	serviceName := foo.Name
 	//	if foo.Spec.ServiceName != "" {
 	//		serviceName = foo.Spec.ServiceName
@@ -371,7 +387,7 @@ func (c *Controller) syncHandler(key string) error {
 			*metav1.NewControllerRef(foo, schema.GroupVersionKind{
 				Group:   samplev1alpha1.SchemeGroupVersion.Group,
 				Version: samplev1alpha1.SchemeGroupVersion.Version,
-				Kind:    "HadoopHdfs",
+				Kind:    samplev1alpha1.HdfsResourceKind,
 			}),
 		}
 
@@ -401,14 +417,14 @@ func (c *Controller) syncHandler(key string) error {
 		//runtime.HandleError(fmt.Errorf("%s: deployment name must be specified", key))
 		//return nil
 	}
-	count := int32(1)
-	//	if foo.Spec.Count != nil {
-	//		if *foo.Spec.Count < 3 || *foo.Spec.Count > 15 {
-	//			runtime.HandleError(fmt.Errorf("Cluster members must be between 3 and 5"))
-	//			return nil
-	//		}
-	//	}
-	//	count = int32(*foo.Spec.Count)
+	count := int32(5)
+	if foo.Spec.Count != nil {
+		if *foo.Spec.Count < 5 {
+			runtime.HandleError(fmt.Errorf("Cluster members must be at lease 5, e.g. NameNode + SecondaryNameNode + DataNodes"))
+			return nil
+		}
+	}
+	count = int32(*foo.Spec.Count)
 
 	//var artifact extensions.Deployment
 	var artifact *appsv1beta2.StatefulSet
@@ -418,7 +434,7 @@ func (c *Controller) syncHandler(key string) error {
 	statefulSet, err := c.statefulSetLister.StatefulSets(foo.Namespace).Get(statefulSetName)
 	// If the resource doesn't exist, we'll create it
 	if errors.IsNotFound(err) {
-		recipe := sts.NewHadoopHdfsNodeRecipient(statefulSetName, foo.Namespace, foo.Name, serviceName, "", "namenode", &count)
+		recipe := sts.NewHadoopHdfsNodeRecipient(statefulSetName, foo.Namespace, foo.Name, serviceName, foo.Name, "", &count)
 		artifact, err = recipe.New()
 		if err != nil {
 			runtime.HandleError(fmt.Errorf("Internel error: %s", err.Error()))
@@ -428,7 +444,7 @@ func (c *Controller) syncHandler(key string) error {
 			*metav1.NewControllerRef(foo, schema.GroupVersionKind{
 				Group:   samplev1alpha1.SchemeGroupVersion.Group,
 				Version: samplev1alpha1.SchemeGroupVersion.Version,
-				Kind:    "HadoopHdfs",
+				Kind:    samplev1alpha1.HdfsResourceKind,
 			}),
 		}
 
@@ -456,8 +472,8 @@ func (c *Controller) syncHandler(key string) error {
 	// If this number of the replicas on the Foo resource is specified, and the
 	// number does not equal the current desired replicas on the Deployment, we
 	// should update the Deployment resource.
-	if 1 != *statefulSet.Spec.Replicas {
-		glog.V(4).Infof("Replicas: %d", *statefulSet.Spec.Replicas)
+	if foo.Spec.Count != nil && *foo.Spec.Count != *statefulSet.Spec.Replicas {
+		glog.V(4).Infof("Count: %d, Replicas: %d", *foo.Spec.Count, *statefulSet.Spec.Replicas)
 		//deployment, err = c.kubeclientset.ExtensionsV1beta1().Deployments(foo.Namespace).Update(newDeployment(foo))
 		//deployment, err = c.kubeclientset.AppsV1beta2().Deployments(foo.Namespace).Update(artifact)
 		statefulSet, err = c.kubeclientset.AppsV1beta2().StatefulSets(foo.Namespace).Update(artifact)

@@ -85,6 +85,7 @@ type HadoopHdfsList struct {
 type HdfsSpec struct {
 	DataReplication    *int32        `json:"dataReplication,omitempty"`
 	ReplicaReplacement string        `json:"replicaReplacement,omitempty"`
+	Count              *int32        `json:"count,omitempty"`
 	NameNodeTemplate   *NodeTemplate `json:"nameNodeTemplate`
 	DataNodeTemplate   *NodeTemplate `json:"nameNodeTemplate`
 }

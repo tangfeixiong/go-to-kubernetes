@@ -56,7 +56,7 @@ func createServiceCommand(config *server.Config) *cobra.Command {
 			// pflag.Parse()
 			flag.Set("v", strconv.Itoa(config.LogLevel))
 			flag.Parse()
-			//server.Start(config)
+			server.Start(config)
 		},
 	}
 
@@ -90,7 +90,7 @@ func createInitCommand(config *hadoop.Config) *cobra.Command {
 	command.PersistentFlags().StringVar(&config.CustomResourceName, "custom_resource", "", "custom resource name")
 	command.PersistentFlags().StringVar(&config.ClusterID, "hdfs_cluster_id", "", "HDFS cluster name, auto-creating by default")
 	command.PersistentFlags().StringVar(&config.NodeType, "hdfs_node_type", "namenode", "Or datanode")
-	command.PersistentFlags().StringVar(&config.Dir, "conf_dir", "/hadoop-3.0.0/etc/hadoop", "Directory of etc")
+	command.PersistentFlags().StringVar(&config.Dir, "hadoop_dir", "/hadoop-3.0.0", "Directory of etc")
 	command.PersistentFlags().IntVar(&config.Port, "service_port", 9000, "Service port")
 	return command
 }

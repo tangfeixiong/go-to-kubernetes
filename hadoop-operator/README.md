@@ -1,4 +1,52 @@
+## DevOps
 
+CRD
+
+Operator
+
+Persistent Volume
+
+
+
+Validate
+```
+[vagrant@rookdev-172-17-4-63 ~]$ kubectl get pvc -l example.com/hadoop-operator=demo-hdfs-classic        
+NAME                           STATUS    VOLUME                                     CAPACITY   ACCESS MODES   STORAGECLASS       AGE
+hostpath-demo-hdfs-classic-0   Bound     pvc-9091d170-0bee-11e8-8484-525400224e72   80Mi       RWO            example-hostpath   18m
+hostpath-demo-hdfs-classic-1   Bound     pvc-0ba28605-0bef-11e8-8484-525400224e72   80Mi       RWO            example-hostpath   15m
+hostpath-demo-hdfs-classic-2   Bound     pvc-5a1a9b4e-0bef-11e8-8484-525400224e72   80Mi       RWO            example-hostpath   12m
+hostpath-demo-hdfs-classic-3   Bound     pvc-85d0aea7-0bef-11e8-8484-525400224e72   80Mi       RWO            example-hostpath   11m
+hostpath-demo-hdfs-classic-4   Bound     pvc-918b9025-0bef-11e8-8484-525400224e72   80Mi       RWO            example-hostpath   11m
+```
+
+```
+[vagrant@rookdev-172-17-4-63 ~]$ kubectl get pods -l example.com/hadoop-operator=demo-hdfs-classic -o wide
+NAME                  READY     STATUS    RESTARTS   AGE       IP             NODE
+demo-hdfs-classic-0   1/1       Running   0          8m        10.244.3.105   rookdev-172-17-4-63
+demo-hdfs-classic-1   1/1       Running   0          4m        10.244.2.187   rookdev-172-17-4-61
+demo-hdfs-classic-2   1/1       Running   0          2m        10.244.3.106   rookdev-172-17-4-63
+demo-hdfs-classic-3   1/1       Running   0          1m        10.244.2.188   rookdev-172-17-4-61
+demo-hdfs-classic-4   1/1       Running   0          55s       10.244.3.107   rookdev-172-17-4-63
+```
+
+Expose namenode web into _NodePort_
+```
+[vagrant@rookdev-172-17-4-63 ~]$ kubectl expose pod demo-hdfs-classic-0 --port=9870 --type=NodePort
+service "demo-hdfs-classic-0" exposed
+```
+
+Find _NodePort_
+```
+[vagrant@rookdev-172-17-4-63 ~]$ kubectl get svc
+NAME                  TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)             AGE
+demo-hdfs-classic     ClusterIP   None            <none>        9000/TCP,9870/TCP   13m
+demo-hdfs-classic-0   NodePort    10.110.35.141   <none>        9870:30538/TCP      39s
+kubernetes            ClusterIP   10.96.0.1       <none>        443/TCP             51d
+```
+
+![屏幕快照 2018-02-07 上午2.20.49.png](./屏幕快照%202018-02-07%20上午2.20.49.png)
+
+CI/CD
 ```
 [vagrant@kubedev-172-17-4-59 hadoop-operator]$ GOPATH=/Users/fanhongling/Downloads/workspace:/Users/fanhongling/go make go-bindata-spec     
 ```

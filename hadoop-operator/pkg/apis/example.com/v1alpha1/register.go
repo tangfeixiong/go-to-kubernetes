@@ -58,6 +58,7 @@ const (
 	CustomResourceGroup = "example.com"
 	Version             = "v1alpha1"
 
+	HdfsResourceKind     = "HadoopHdfs"
 	NameNodeResourceKind = "NameNode"
 	DataNodeResourceKind = "DataNode"
 )

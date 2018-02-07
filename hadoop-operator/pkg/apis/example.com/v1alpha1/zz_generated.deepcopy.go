@@ -350,6 +350,15 @@ func (in *HdfsSpec) DeepCopyInto(out *HdfsSpec) {
 			**out = **in
 		}
 	}
+	if in.Count != nil {
+		in, out := &in.Count, &out.Count
+		if *in == nil {
+			*out = nil
+		} else {
+			*out = new(int32)
+			**out = **in
+		}
+	}
 	if in.NameNodeTemplate != nil {
 		in, out := &in.NameNodeTemplate, &out.NameNodeTemplate
 		if *in == nil {

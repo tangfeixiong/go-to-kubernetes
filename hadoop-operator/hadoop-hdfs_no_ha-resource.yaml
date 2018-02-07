@@ -1,0 +1,15 @@
+apiVersion: example.com/v1alpha1
+kind: HadoopHdfs
+metadata:
+  name: demo-hdfs-classic
+  #namespace: example-project
+spec:
+  # Optional, default is docker.io/tangfeixiong/hadoop, must suppport:
+  # May support authorized image, for example:
+  # image:
+  #   nameValues:
+  #   - name: version
+  #     value: hadoop3.0.0
+  #   docker: 'docker.io/xxx/xxx:latest'
+  #image: {}
+  count: 5 # Minimal nodes, e.g. NameNode, SecondaryNameNode, 2 DataNodes

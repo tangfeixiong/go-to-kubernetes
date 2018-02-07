@@ -5,15 +5,11 @@ metadata:
     app: hadoop
     example.com/hadoop-operator: {{ .CustomResourceName }} # operator reserved!
     github.com/go-to-kubernetes: hadoop-operator
-  name: {{ .Name }} # e.g. demo-hadoop-namenode
+  name: {{ .NamenodeWebServingName }} # e.g. demo-hadoop-namenode
   #namespace: {{ .Namespace }}
 spec:
-  clusterIP: None
+  {{with .NamenodeWebServingClusterIP}}clusterIP: {{.}}{{end}}
   ports:
-  - name: dfs
-    port: 9000
-    protocol: TCP
-    targetPort: 9000
   - name: web
     port: 9870
     protocol: TCP
@@ -22,6 +18,7 @@ spec:
     app: hadoop
     example.com/hadoop-operator: {{ .CustomResourceName }} # required by operator itself!
     github.com/go-to-kubernetes: hadoop-operator
+    statefulset.kubernetes.io/pod-name: {{.NamenodeWebServingPodName}} # e.g. my-hdfs-0
   #sessionAffinity: None
   #sessionAffinity: ClientIP
   #type: ClusterIP

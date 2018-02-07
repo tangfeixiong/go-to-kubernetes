@@ -76,7 +76,7 @@ func CreateHdfsCm(clientset kubernetes.Interface) {
 }
 
 func CreateHdfsSts(clientset kubernetes.Interface) {
-	count := int32(1)
+	count := int32(2)
 	recipe := sts.NewHadoopHdfsNodeRecipient("my-hdfs", "default", "my-hadoop", "my-hdfs", "my-cluster", "namenode", &count)
 	statefulset, err := recipe.New()
 	if err != nil {

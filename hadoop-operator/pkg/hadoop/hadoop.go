@@ -40,7 +40,7 @@ type Config struct {
 	Kind               string
 	CustomResourceName string
 	Name               string
-	instanceName       string
+	resourceHostname   string
 	ServiceName        string
 	Namespace          string
 	BaseDomain         string
@@ -52,21 +52,19 @@ type Config struct {
 }
 
 func (cfg *Config) prerequisites() (kubernetes.Interface, error) {
-	if cfg.instanceName == "" {
-		cfg.instanceName = os.Getenv("MY_POD_NAME")
+	if cfg.resourceHostname == "" {
+		cfg.resourceHostname = os.Getenv("MY_POD_NAME")
 	}
 	if cfg.Namespace == "" {
 		cfg.Namespace = os.Getenv("MY_POD_NAMESPACE")
 	}
 	if cfg.Dir == "" {
-		cfg.Dir = "/hadoop-3.0.0/etc/hdfs"
+		cfg.Dir = "/hadoop-3.0.0"
 	}
 	if cfg.BaseDomain == "" {
 		cfg.BaseDomain = domain_example
 	}
-	if cfg.ClusterID == "" {
-		cfg.ClusterID = cluster_example
-	}
+
 	if cfg.NodeType == "" {
 		cfg.NodeType = string(sampleapiv1alpha1.DataNode)
 	}
@@ -100,9 +98,9 @@ func InitMap(cfg *Config) error {
 }
 
 func (cfg *Config) InitMap(clientset kubernetes.Interface) (*corev1.ConfigMap, error) {
-	cfg.instanceName = fmt.Sprintf("%s-0", cfg.Name)
+	cfg.resourceHostname = fmt.Sprintf("%s-0", cfg.Name)
 	recipe, err := hadoopspec.NewHadoopRecipient(
-		hadoopspec.NameNodeFqdnSetter(cfg.instanceName, cfg.ServiceName, cfg.Namespace, "svc", cfg.BaseDomain),
+		hadoopspec.NameNodeFqdnSetter(cfg.resourceHostname, cfg.ServiceName, cfg.Namespace, "svc", cfg.BaseDomain),
 		hadoopspec.ResourceNameSetter(cfg.Name),
 		hadoopspec.CustomResourceNameSetter(cfg.CustomResourceName))
 	if err != nil {
@@ -190,7 +188,7 @@ func (cfg *Config) initContainer(clientset kubernetes.Interface) {
 		glog.Exit("List pods failed:", err.Error())
 	}
 
-	if len(list.Items) > 0 {
+	if len(list.Items) != 0 {
 		//mypodname, ok := os.LookupEnv("MY_POD_NAME")
 		if mypodname == "" || !ok {
 			glog.Error("Read POD name failed or Environment POD name not found")
@@ -208,12 +206,46 @@ func (cfg *Config) initContainer(clientset kubernetes.Interface) {
 		if mypodip == "" || !ok {
 			glog.Error("Read POD IP failed or environment POD IP not found")
 		}
+
+		var xmlrecipe *hadoopspec.HadoopRecipient
+		cfg.resourceHostname = fmt.Sprintf("%s-0", obj.Name)
+		xmlrecipe, err = hadoopspec.NewHadoopRecipient(
+			hadoopspec.NameNodeFqdnSetter(cfg.resourceHostname, obj.Spec.ServiceName, obj.Namespace, "svc", cfg.BaseDomain),
+			hadoopspec.ResourceNameSetter(obj.Name),
+			hadoopspec.CustomResourceNameSetter(obj.ObjectMeta.Labels["example.com/hadoop-operator"]))
+		if err != nil {
+			glog.Fatal("Create recipe failed:", err)
+		}
+
+		err = xmlrecipe.Generate("/operator-entrypoint")
+		if err != nil {
+			glog.Fatal("Generate files failed: %v", err)
+		}
+
+		var recipe *hadoopspec.HadoopStartupRecipient
+		node := string(sampleapiv1alpha1.DataNode)
+		if strings.HasSuffix(mypodname, "-0") {
+			node = string(sampleapiv1alpha1.NameNode)
+		} else if strings.HasSuffix(mypodname, "-1") {
+			node = string(sampleapiv1alpha1.SecondaryNameNode)
+		}
+		recipe, err = hadoopspec.NewHadoopStartupRecipient(hadoopspec.HadoopHomeSetter(cfg.Dir),
+			hadoopspec.BinNameSetter("hdfs"), hadoopspec.CmdNameSetter(node))
+		if err != nil {
+			glog.Error("New recipe failed:", err)
+		}
+		if err = recipe.Generate("/operator-entrypoint"); err != nil {
+			glog.Fatal("Write bootstrap files failed:", err)
+		}
+
+		if node == string(sampleapiv1alpha1.NameNode) {
+			err = RealRunner{}.Format("/hadoop-3.0.0/bin/hadoop", node, cfg.ClusterID)
+			if err != nil {
+				glog.Exitf("Format DFS failed: %s", err.Error())
+			}
+		}
+		return
 	}
 
-	if strings.HasSuffix(cfg.NodeType, string(sampleapiv1alpha1.NameNode)) {
-		err = RealRunner{}.Format("/hadoop-3.0.0/bin/hadoop", cfg.NodeType, cfg.ClusterID)
-		if err != nil {
-			glog.Exitf("Format DFS failed: %s", err.Error())
-		}
-	}
+	glog.Infoln("No POD found")
 }

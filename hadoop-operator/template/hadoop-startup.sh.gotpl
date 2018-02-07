@@ -1,0 +1,24 @@
+#!/bin/bash -e
+
+### refer to http://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/ClusterSetup.html#Hadoop_Startup
+
+# $HADOOP_HOME/bin/hdfs namenode
+
+# $HADOOP_HOME/bin/hdfs datanode
+
+# $HADOOP_HOME/bin/yarn resourcemanager
+
+# $HADOOP_HOME/bin/yarn nodemanager
+
+# $HADOOP_HOME/bin/yarn proxyserver
+
+# $HADOOP_HOME/bin/mapred historyserver
+
+SOURCE="${BASH_SOURCE[0]}"
+
+#[ -f $SOURCE/core-site.xml ] && cp -f $SOURCE/core-site.xml {{.EtcPath}}
+#[ -f $SOURCE/hdfs-site.xml ] && cp -f $SOURCE/hdfs-site.xml {{.EtcPath}}
+#[ -f $SOURCE/yarn-site.xml ] && cp -f $SOURCE/yarn-site.xml {{.EtcPath}}
+#[ -f $SOURCE/mapred-site.xml ] && cp -f $SOURCE/mapred-site.xml {{.EtcPath}}
+
+{{.BinPath}} {{.CmdName}}
