@@ -1,0 +1,12 @@
+.project/
+.settings/
+target/
+.eclipse
+.gradle
+*.jar
+*.war
+*.zip
+*.tar
+*.gz
+archetype-catalog.xml
+

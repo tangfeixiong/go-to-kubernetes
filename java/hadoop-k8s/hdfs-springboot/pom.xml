@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>https0x3A0x2F0x2Fgithub0x2Ecom0x2Ftangfeixiong0x2Fgo-to-kubernetes</groupId>
+        <artifactId>hadoop-Kubernetes</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+    </parent>
+
+    <groupId>https0x3A0x2F0x2Fgithub0x2Ecom0x2Ftangfeixiong0x2Fgo-to-kubernetes</groupId>
+    <artifactId>hdfs-springboot</artifactId>
+    <version>latest</version>
+    <packaging>jar</packaging>
+
+	<properties>
+        <docker-registry>docker.io/tangfeixiong</docker-registry>
+        <image-repository>${project.artifactId}</image-repository>
+        <image-tag>${project.version}</image-tag>
+<!--        <image-tag>latest</image-tag>-->
+		<oracle-java-url>http://download.oracle.com/otn-pub/java/jdk/8u151-b12/e758a0de34e24606bca991d704f6dcbf/jdk-8u151-linux-x64.tar.gz</oracle-java-url>
+	</properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.data</groupId>
+            <artifactId>spring-data-hadoop</artifactId>
+            <version>2.5.0.RELEASE</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.data</groupId>
+            <artifactId>spring-data-hadoop-boot</artifactId>
+            <version>2.5.0.RELEASE</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-log4j</artifactId>
+			<version>1.3.8.RELEASE</version>
+        </dependency>
+		<!-- Compile -->
+<!--		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter</artifactId>
+			<version>${spring-boot.version}</version> 
+		</dependency>-->
+		<!-- Test -->
+<!--		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<version>${spring-boot.version}</version> 
+			<scope>test</scope>
+		</dependency>-->
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+			    <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId> 
+                <version>3.7.0</version> 
+		        <configuration>
+		          <source>1.8</source>
+		          <target>1.8</target>
+		        </configuration>
+            </plugin>
+			
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+				<version>${spring-boot.version}</version> 
+            </plugin>
+
+            <!-- https://github.com/fabric8io/docker-maven-plugin -->
+			<plugin>
+             <groupId>io.fabric8</groupId>
+             <artifactId>docker-maven-plugin</artifactId>
+             <version>0.24.0</version>
+             <extensions>true</extensions>
+			 <configuration>
+			   <images>
+			     <image>
+			       <name>${docker-registry}/${image-repository}:${image-tag}</name>
+			       <build>
+			         <assembly>
+<!--                       <descriptorRef>artifact-with-dependencies</descriptorRef>-->
+					    <descriptorRef>artifact</descriptorRef>
+                     </assembly>
+<!--			         <dockerFileDir>${project.basedir}/src/main/docker/io-dot-fabric8</dockerFileDir>-->
+				     <dockerFileDir>io-dot-fabric8</dockerFileDir>
+<!--					 <dockerFile>Dockerfile.oracle-server-jre1.8</dockerFile>-->
+				     <args>
+				         <jarTgt>${project.build.finalName}.jar</jarTgt>
+				         <javaUri>${oracle-java-url}</javaUri>
+					 </args>
+					 <nocache>true</nocache>
+			       </build>
+			     </image>
+			   </images>
+			 </configuration>
+			 <executions>
+			   <execution>
+			     <id>docker-build</id>
+			     <goals>
+			       <goal>build</goal>
+			     </goals>
+			   </execution>
+			 </executions>
+			</plugin>
+
+           <!-- https://github.com/spotify/dockerfile-maven -->			
+			<plugin>
+				<groupId>com.spotify</groupId>
+				<artifactId>dockerfile-maven-plugin</artifactId>
+				<version>1.3.7</version>
+				<executions>
+				    <execution>
+				      <id>default</id>
+				      <goals>
+				        <goal>build</goal>
+				        <goal>push</goal>
+				      </goals>
+				    </execution>
+				</executions>
+				<configuration>
+				    <contextDirectory>${project.basedir}/src/main/docker/com-dot-spotify</contextDirectory>
+				    <repository>${docker-registry}/${image-repository}</repository>
+<!--				    <tag>${project.version}</tag>-->
+                   <skip>true</skip>
+                   <build.noCache>true</build.noCache>
+				    <buildArgs>
+				      <jarTgt>${project.build.finalName}.jar</jarTgt>
+				    </buildArgs>
+				</configuration>
+			</plugin>
+			
+			<!-- https://github.com/spotify/docker-maven-plugin -->
+			<plugin>
+				<groupId>com.spotify</groupId>
+				<artifactId>docker-maven-plugin</artifactId>
+				<version>1.0.0</version>
+				<configuration>
+					<imageName>${docker-registry}/${image-repository}</imageName>
+					<dockerDirectory>src/main/docker/com-dot-spotify</dockerDirectory>
+					<resources>
+						<resource>
+							<targetPath>/</targetPath>
+							<directory>${project.build.directory}</directory>
+							<include>${project.build.finalName}.jar</include>
+						</resource>
+					</resources>
+				</configuration>
+			</plugin>
+	
+			<plugin>
+			   <groupId>org.apache.maven.plugins</groupId>
+			   <artifactId>maven-deploy-plugin</artifactId>
+			   <version>2.8.2</version>
+			   <executions>
+			      <execution>
+			         <id>default-deploy</id>
+			         <phase>deploy</phase>
+			         <goals>
+			            <goal>deploy</goal>
+			         </goals>
+			      </execution>
+			   </executions>
+		       <configuration>
+		         <skip>true</skip>
+		       </configuration>
+			</plugin>	
+	
+		    <plugin>
+		      <groupId>org.sonatype.plugins</groupId>
+		      <artifactId>nexus-staging-maven-plugin</artifactId>
+			  <version>1.6.8</version>
+		      <executions>
+		        <execution>
+		          <id>default-deploy</id>
+		          <phase>deploy</phase>
+		          <goals>
+		            <goal>deploy</goal>
+		          </goals>
+		        </execution>
+		      </executions>
+		      <configuration>
+		        <serverId>my-snapshots</serverId>
+		        <nexusUrl>http://localhost:8081/</nexusUrl>
+		        <!-- explicit matching using the staging profile id -->
+		        <stagingProfileId>staging</stagingProfileId>
+		      </configuration>
+		    </plugin>
+			
+        </plugins>
+    </build>
+
+    <repositories>
+        <repository>
+            <id>spring-release</id>
+            <url>http://repo.spring.io/libs-release</url>
+            <snapshots><enabled>false</enabled></snapshots>
+        </repository>
+	    <repository>
+		    <id>spring-libs-milestone</id>
+			<name>spring-libs-milestone</name>
+			<url>https://repo.spring.io/libs-milestone</url>
+	    </repository>
+	    <repository>
+		    <id>spring-libs-snapshot</id>
+			<name>spring-libs-snapshot</name>
+			<url>https://repo.spring.io/libs-snapshot</url>
+	    </repository>
+    </repositories>
+
+    <pluginRepositories>
+        <pluginRepository>
+            <id>spring-release</id>
+            <url>http://repo.spring.io/libs-release</url>
+            <snapshots><enabled>false</enabled></snapshots>
+        </pluginRepository>
+        <pluginRepository>
+		    <id>spring-plugins-release</id>
+			<name>spring-plugins-release</name>
+			<url>https://repo.spring.io/plugins-release</url>
+	    </pluginRepository>
+        <pluginRepository>
+		    <id>spring-plugins-milestone</id>
+			<name>spring-plugins-milestone</name>
+			<url>https://repo.spring.io/plugins-milestone</url>
+	    </pluginRepository>
+        <pluginRepository>
+		    <id>spring-plugins-snapshot</id>
+			<name>spring-plugins-snapshot</name>
+			<url>https://repo.spring.io/plugins-snapshot</url>
+	    </pluginRepository>
+    </pluginRepositories>
+
+</project>

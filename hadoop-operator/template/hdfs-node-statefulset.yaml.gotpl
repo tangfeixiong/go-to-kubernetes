@@ -85,6 +85,10 @@ spec:
           name: nnhttp
           protocol: TCP
         ports:
+        - containerPort: 9868
+          name: snnhttp
+          protocol: TCP
+        ports:
         - containerPort: 9867
           name: dnipc
           protocol: TCP

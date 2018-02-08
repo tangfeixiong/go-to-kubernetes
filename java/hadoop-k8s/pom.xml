@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+<!--	<parent>
+		<groupId>org.springframework.cloud</groupId>
+		<artifactId>spring-cloud-kubernetes</artifactId>
+		<version>0.2.0.BUILD-SNAPSHOT</version>
+		<relativePath>../../../../spring-cloud-incubator/spring-cloud-kubernetes</relativePath>
+	</parent>-->
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>1.5.10.RELEASE</version>
+    </parent>
+
+	<groupId>https0x3A0x2F0x2Fgithub0x2Ecom0x2Ftangfeixiong0x2Fgo-to-kubernetes</groupId>
+	<artifactId>hadoop-Kubernetes</artifactId>
+ 	<version>0.0.1-SNAPSHOT</version> 
+	<packaging>pom</packaging>
+
+	<name>hadoop Kubernetes :: Applications</name>
+	<description>hadoop Applications of platform-features of Kubernetes.</description>
+
+	<modules>
+<!--		<module>hdfs-java</module>-->
+		<module>hdfs-springboot</module>
+<!--		<module>hdfs-springcloudk8s</module>-->
+	</modules>
+
+	<properties>
+ 		<spring-boot.version>1.5.10.RELEASE</spring-boot.version> 
+		<spring-cloud-kubernetes.version>0.2.0.RELEASE</spring-cloud-kubernetes.version>
+<!-- The predefined properties in spring-cloud-kubernetes -->
+<!-- 		<maven-deploy-plugin.version></maven-deploy-plugin.version> -->
+<!-- 		<maven-surefire-plugin.version></maven-surefire-plugin.version> -->
+<!-- 		<fabric8.maven.plugin.version></fabric8.maven.plugin.version> -->
+<!-- 		<maven-failsafe-plugin.version></maven-failsafe-plugin.version> -->
+	</properties>
+
+	<dependencyManagement>
+		<dependencies>
+<!--			<dependency>
+				<groupId>org.springframework.cloud</groupId>
+				<artifactId>spring-cloud-kubernetes-dependencies</artifactId>
+				<version>${spring-cloud-kubernetes.version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>-->
+
+			<!-- https://mvnrepository.com/artifact/io.fabric8/docker-maven-plugin -->
+			<dependency>
+			    <groupId>io.fabric8</groupId>
+			    <artifactId>docker-maven-plugin</artifactId>
+			    <version>0.24.0</version>
+			</dependency>
+
+			<!-- https://mvnrepository.com/artifact/com.spotify/dockerfile-maven-plugin -->
+			<dependency>
+			    <groupId>com.spotify</groupId>
+			    <artifactId>dockerfile-maven-plugin</artifactId>
+			    <version>1.3.7</version>
+			</dependency>
+			<!-- https://mvnrepository.com/artifact/com.spotify/docker-maven-plugin -->
+			<dependency>
+			    <groupId>com.spotify</groupId>
+			    <artifactId>docker-maven-plugin</artifactId>
+			    <version>1.0.0</version>
+			</dependency>
+
+		</dependencies>
+	</dependencyManagement>
+	
+    <repositories>
+	    <!-- my synced -->
+<!--        <repository>
+            <id>my-synced</id>
+            <url>http://172.17.4.50:8081/content/repositories/allsynced</url>
+            <releases>
+			    <enabled>true</enabled>
+		    </releases>
+            <snapshots>
+			    <enabled>true</enabled>
+			</snapshots>
+        </repository>-->
+		
+	    <!-- ali yun -->
+	    <repository>
+		    <id>aliyun</id>
+			<name>aliyun</name>
+			<url>http://maven.aliyun.com/nexus/content/groups/public</url>
+	    </repository>
+
+        <repository>
+            <id>clojars</id>
+            <name>clojars</name>
+            <url>http://clojars.org/repo/</url>
+        </repository>
+		<repository>
+		    <id>sonatype-snapshots</id>
+			<name>sonatype-snapshots</name>
+			<url>https://oss.sonatype.org/content/repositories/snapshots/</url>
+		</repository>	
+<!--	    <repository>
+		    <id>confluent</id>
+			<name>confluent</name>
+			<url>http://packages.confluent.io/maven/</url>
+	    </repository>
+		<repository>
+			<id>twitter4j</id>
+			<url>http://twitter4j.org/maven2</url>
+		</repository>-->
+    </repositories>
+	
+	<pluginRepositories>
+	    <!-- my synced -->
+<!--        <pluginRepository>
+            <id>my-synced</id>
+            <url>http://172.17.4.50:8081/content/repositories/allsynced</url>
+            <releases>
+			    <enabled>true</enabled>
+			</releases>
+            <snapshots>
+			    <enabled>true</enabled>
+			</snapshots>
+        </pluginRepository>-->
+
+	    <pluginRepository>
+		    <id>aliyun</id>
+			<name>aliyun</name>
+			<url>http://maven.aliyun.com/nexus/content/groups/public</url>
+	    </pluginRepository>
+   </pluginRepositories>	
+
+	<build>
+	  <!-- To define the plugin version in your parent POM -->
+	  <pluginManagement>
+	    <plugins>
+	      <plugin>
+	        <groupId>org.apache.maven.plugins</groupId>
+	        <artifactId>maven-resources-plugin</artifactId>
+	        <version>3.0.2</version>
+	      </plugin>
+
+		  <plugin>
+		    <groupId>org.apache.maven.plugins</groupId>
+		    <artifactId>maven-deploy-plugin</artifactId>
+		    <version>2.8.2</version>
+		  </plugin>
+
+	      <plugin>
+	        <groupId>org.sonatype.plugins</groupId>
+	        <artifactId>nexus-staging-maven-plugin</artifactId>
+		    <version>1.6.8</version>
+		  </plugin>
+	    </plugins>
+	  </pluginManagement>
+	</build>
+
+<!--	<distributionManagement>	
+	    <repository>
+	        <id>my-releases</id>
+	        <name>My internal repository</name>
+	        <url>http://172.17.4.50:8081/content/repositories/releases</url>
+	    </repository>
+	    <snapshotRepository>
+	        <id>my-snapshots</id>
+	        <name>My internal repository</name>
+	        <url>http://172.17.4.50:8081/content/repositories/snapshots</url>
+	    </snapshotRepository>
+	</distributionManagement>-->
+
+</project>
+

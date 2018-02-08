@@ -1,0 +1,6 @@
+spring:
+  main:
+    show_banner: false
+  hadoop:
+    fsUri: hdfs://demo-hdfs-classic-0.demo-hdfs-classic.default.svc.cluster.local:9000
+
