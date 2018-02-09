@@ -24,7 +24,7 @@
 	<description>hadoop Applications of platform-features of Kubernetes.</description>
 
 	<modules>
-<!--		<module>hdfs-java</module>-->
+		<module>hdfs-java</module>
 		<module>hdfs-springboot</module>
 <!--		<module>hdfs-springcloudk8s</module>-->
 	</modules>
