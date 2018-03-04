@@ -16,14 +16,15 @@ import (
 
 	// "k8s.io/kubernetes/pkg/util/rand"
 
-	"github.com/tangfeixiong/go-to-kubernetes/mysql-operator/pkg/initcnf"
+	"github.com/tangfeixiong/go-to-kubernetes/mysql-operator/pkg/preboot"
 	"github.com/tangfeixiong/go-to-kubernetes/mysql-operator/pkg/server"
+	commonutil "github.com/tangfeixiong/go-to-kubernetes/pkg/util"
 )
 
 func RootCommandFor(name string) *cobra.Command {
 	var config server.Config
 	// in, out, errout := os.Stdin, os.Stdout, os.Stderr
-	cfg := &config.InitConfig
+	cfg := &config.PrebootCfg
 
 	root := &cobra.Command{
 		Use:   name,
@@ -38,9 +39,11 @@ func RootCommandFor(name string) *cobra.Command {
 	}
 	root.AddCommand(createServiceCommand(&config))
 	root.AddCommand(createInitCommand(cfg))
+	root.AddCommand(createAgentCommand(cfg))
 
 	root.PersistentFlags().StringVar(&cfg.Kubeconfig, "kubeconfig", "", "absolute path to the kubeconfig file. it means running out of cluster if supplied")
-	if home := HomeDir(); home != "" {
+	//if home := HomeDir(); home != "" {
+	if home := commonutil.HomeDir(); home != "" {
 		root.PersistentFlags().Lookup("kubeconfig").NoOptDefVal = filepath.Join(home, ".kube", "config")
 	}
 	pflag.CommandLine.AddGoFlagSet(flag.CommandLine)
@@ -67,6 +70,50 @@ func createServiceCommand(config *server.Config) *cobra.Command {
 	command.Flags().IntVar(&config.LogLevel, "log_level", 2, "for glog")
 	// command.Flags().AddGoFlagSet(flag.CommandLine)
 
+	return command
+}
+
+func createInitCommand(config *preboot.Config) *cobra.Command {
+	command := &cobra.Command{
+		Use:   "init",
+		Short: "init galera.cnf",
+		Run: func(cmd *cobra.Command, args []string) {
+			// pflag.Parse()
+			flag.Set("v", strconv.Itoa(config.LogLevel))
+			flag.Parse()
+
+			config.Clustering = preboot.MariadbGalera
+			preboot.PreBootGalera(config)
+		},
+	}
+
+	command.PersistentFlags().StringVar(&config.Name, "name", "", "StatefulSet name, or lookup value via label <crd group>/go-to-kubernetes")
+	command.PersistentFlags().StringVar(&config.Namespace, "namespace", "", "Kubernetes namespace, or lookup value from env name POD_NAMESPACE, otherwise 'default'")
+	command.PersistentFlags().StringVar(&config.DomainName, "domain_name", "svc.cluster.local", "Domain name of K8s DNS")
+	command.PersistentFlags().StringVar(&config.Dir, "conf_dir", "/etc/mysql/mariadb.conf.d", "Directory of galera.cnf")
+	command.PersistentFlags().IntVar(&config.Port, "service_port", 3306, "Service port")
+	return command
+}
+
+func createAgentCommand(config *preboot.Config) *cobra.Command {
+	command := &cobra.Command{
+		Use:   "agent",
+		Short: "call mysqld",
+		Run: func(cmd *cobra.Command, args []string) {
+			// pflag.Parse()
+			flag.Set("v", strconv.Itoa(config.LogLevel))
+			flag.Parse()
+
+			config.Clustering = preboot.MariadbGalera
+			preboot.StartMysqldAgent(config)
+		},
+	}
+
+	command.PersistentFlags().StringVar(&config.Name, "name", "", "StatefulSet name, or lookup value via label <crd group>/go-to-kubernetes")
+	command.PersistentFlags().StringVar(&config.Namespace, "namespace", "", "Kubernetes namespace, or lookup value from env name POD_NAMESPACE, otherwise 'default'")
+	command.PersistentFlags().StringVar(&config.DomainName, "domain_name", "svc.cluster.local", "Domain name of K8s DNS")
+	command.PersistentFlags().StringVar(&config.Dir, "conf_dir", "/etc/mysql/mariadb.conf.d", "Directory of galera.cnf")
+	command.PersistentFlags().IntVar(&config.Port, "service_port", 3306, "Service port")
 	return command
 }
 
@@ -97,27 +144,4 @@ func HomeDir() string {
 		}
 	}
 	return os.Getenv("HOME")
-}
-
-func createInitCommand(config *initcnf.Config) *cobra.Command {
-
-	command := &cobra.Command{
-		Use:   "init",
-		Short: "init galera.cnf",
-		Run: func(cmd *cobra.Command, args []string) {
-			// pflag.Parse()
-			flag.Set("v", strconv.Itoa(config.LogLevel))
-			flag.Parse()
-
-			config.Clustering = initcnf.MariadbGalera
-			initcnf.BuildGaleraCnf(config)
-		},
-	}
-
-	command.PersistentFlags().StringVar(&config.Name, "name", "", "StatefulSet name, or lookup value via label <crd group>/go-to-kubernetes")
-	command.PersistentFlags().StringVar(&config.Namespace, "namespace", "", "Kubernetes namespace, or lookup value from env name POD_NAMESPACE, otherwise 'default'")
-	command.PersistentFlags().StringVar(&config.DomainName, "domain_name", "svc.cluster.local", "Domain name of K8s DNS")
-	command.PersistentFlags().StringVar(&config.Dir, "conf_dir", "/etc/mysql/mariadb.conf.d", "Directory of galera.cnf")
-	command.PersistentFlags().IntVar(&config.Port, "service_port", 3306, "Service port")
-	return command
 }

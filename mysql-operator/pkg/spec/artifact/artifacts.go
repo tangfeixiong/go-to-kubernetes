@@ -7,7 +7,7 @@
 // template/local-volume-admin-account.yaml
 // template/local-volume-static-provisioner.yaml
 // template/mariadb-service.yaml.tpl
-// template/mariadb-statefulset.yaml.tpl
+// template/mariadb-statefulset.gotpl.yaml
 // template/provision-example.yaml
 // DO NOT EDIT!
 
@@ -481,7 +481,7 @@ func templateMariadbServiceYamlTpl() (*asset, error) {
 	return a, nil
 }
 
-var _templateMariadbStatefulsetYamlTpl = []byte(`apiVersion: apps/v1beta2
+var _templateMariadbStatefulsetGotplYaml = []byte(`apiVersion: apps/v1beta2
 kind: StatefulSet
 metadata:
   labels:
@@ -530,10 +530,10 @@ spec:
       #          - local-test-anti-affinity
       #      topologyKey: kubernetes.io/hostname
       containers:
-      - args:
-        - mysqld
-        command:
-        - docker-entrypoint.sh
+      - args: ["/operator-entrypoint/mysql-operator", "agent"]
+        #- mysqld
+        command: ["/operator-entrypoint/tini", "-g", "--"]
+        #- /usr/local/bin/docker-entrypoint.sh
         env:
         - name: MYSQL_USER
           value: {{.MysqlUser}}  
@@ -547,11 +547,6 @@ spec:
           value: {{.MysqlRootPassword}}  
         #- name: MYSQL_ROOT_PASSWORD_FILE
         #  value: /run/secrets/mysql-root
-        - name: POD_NAME
-          valueFrom:
-            fieldRef:
-              apiVersion: v1
-              fieldPath: metadata.name
         image: docker.io/mariadb:10.2
         imagePullPolicy: IfNotPresent
         #livenessProbe:
@@ -587,15 +582,15 @@ spec:
         terminationMessagePath: /dev/termination-log
         terminationMessagePolicy: File
         volumeMounts:
-        - mountPath: /etc/mysql/mariadb.conf.d
-          name: confd
         - mountPath: /docker-entrypoint-initdb.d
           name: initdb
+        - mountPath: /etc/mysql/mariadb.conf.d
+          name: confd
+        - mountPath: /operator-entrypoint
+          name: operatorentry
         - mountPath: /var/lib/mysql
           #name: local-vol
           name: hostpath
-        - mountPath: /podinfo
-          name: podinfo
       dnsPolicy: ClusterFirst
       initContainers:
       - args:
@@ -622,28 +617,30 @@ spec:
           valueFrom:
             fieldRef:
               fieldPath: status.podIP
-        #- name: MY_POD_SERVICE_ACCOUNT
-        #  valueFrom:
-        #    fieldRef:
-        #      fieldPath: spec.serviceAccountName
+        - name: MY_POD_SERVICE_ACCOUNT
+          valueFrom:
+            fieldRef:
+              fieldPath: spec.serviceAccountName
         - name: CLUSTER_NAME
           value: {{.ClusterName}}
-        image: docker.io/tangfeixiong/mysql-operator
+        image: docker.io/tangfeixiong/mysql-operator        
         #imagePullPolicy: IfNotPresent
         imagePullPolicy: Always
-        name: initcnf
+        name: preboot
         resources: {}
         securityContext:
           privileged: true
         terminationMessagePath: /dev/termination-log
         terminationMessagePolicy: File
         volumeMounts:
-        - mountPath: /etc/mysql/mariadb.conf.d
-          name: confd
         - mountPath: /docker-entrypoint-initdb.d
           name: initdb
-        - mountPath: /tmp/docker-entrypoint-initdb.d
-          name: initscripts
+        - mountPath: /etc/mysql/mariadb.conf.d
+          name: confd
+        - mountPath: /operator-entrypoint
+          name: operatorentry
+        - mountPath: /operator-initdb
+          name: operatorinitdb
         - mountPath: /podinfo
           name: podinfo
       #restartPolicy: Always
@@ -653,13 +650,6 @@ spec:
       #  fsGroup: 1234
       terminationGracePeriodSeconds: 30
       volumes:
-      - emptyDir: {}
-        name: confd
-      - emptyDir: {}
-        name: initdb
-      - name: initscripts
-        persistentVolumeClaim:
-          claimName: example-local-claim
       - downwardAPI:
           defaultMode: 420
           items:
@@ -680,6 +670,15 @@ spec:
               fieldPath: metadata.namespace
             path: namespace
         name: podinfo
+      - emptyDir: {}
+        name: confd
+      - emptyDir: {}
+        name: initdb
+      - emptyDir: {}
+        name: operatorentry
+      - name: operatorinitdb
+        persistentVolumeClaim:
+          claimName: example-local-claim
   updateStrategy:
     #type: RollingUpdate
     type: OnDelete
@@ -692,6 +691,15 @@ spec:
   #    resources:
   #      requests:
   #        storage: 100Mi
+  #- metadata:
+  #    name: mysql-pv-claim
+  #  spec:
+  #    accessModes:
+  #    - ReadWriteOnce
+  #    resources:
+  #      requests:
+  #        storage: 20Gi
+  #    storageClassName: rook-block
   - metadata:
       name: hostpath
       #annotations:
@@ -704,20 +712,20 @@ spec:
       storageClassName: "example-hostpath"
       resources:
         requests:
-          storage: 50Mi
+          storage: 80Mi
     `)
 
-func templateMariadbStatefulsetYamlTplBytes() ([]byte, error) {
-	return _templateMariadbStatefulsetYamlTpl, nil
+func templateMariadbStatefulsetGotplYamlBytes() ([]byte, error) {
+	return _templateMariadbStatefulsetGotplYaml, nil
 }
 
-func templateMariadbStatefulsetYamlTpl() (*asset, error) {
-	bytes, err := templateMariadbStatefulsetYamlTplBytes()
+func templateMariadbStatefulsetGotplYaml() (*asset, error) {
+	bytes, err := templateMariadbStatefulsetGotplYamlBytes()
 	if err != nil {
 		return nil, err
 	}
 
-	info := bindataFileInfo{name: "template/mariadb-statefulset.yaml.tpl", size: 6679, mode: os.FileMode(420), modTime: time.Unix(1517594248, 0)}
+	info := bindataFileInfo{name: "template/mariadb-statefulset.gotpl.yaml", size: 6980, mode: os.FileMode(420), modTime: time.Unix(1519277891, 0)}
 	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
@@ -829,7 +837,7 @@ var _bindata = map[string]func() (*asset, error){
 	"template/local-volume-admin-account.yaml": templateLocalVolumeAdminAccountYaml,
 	"template/local-volume-static-provisioner.yaml": templateLocalVolumeStaticProvisionerYaml,
 	"template/mariadb-service.yaml.tpl": templateMariadbServiceYamlTpl,
-	"template/mariadb-statefulset.yaml.tpl": templateMariadbStatefulsetYamlTpl,
+	"template/mariadb-statefulset.gotpl.yaml": templateMariadbStatefulsetGotplYaml,
 	"template/provision-example.yaml": templateProvisionExampleYaml,
 }
 
@@ -881,7 +889,7 @@ var _bintree = &bintree{nil, map[string]*bintree{
 		"local-volume-admin-account.yaml": &bintree{templateLocalVolumeAdminAccountYaml, map[string]*bintree{}},
 		"local-volume-static-provisioner.yaml": &bintree{templateLocalVolumeStaticProvisionerYaml, map[string]*bintree{}},
 		"mariadb-service.yaml.tpl": &bintree{templateMariadbServiceYamlTpl, map[string]*bintree{}},
-		"mariadb-statefulset.yaml.tpl": &bintree{templateMariadbStatefulsetYamlTpl, map[string]*bintree{}},
+		"mariadb-statefulset.gotpl.yaml": &bintree{templateMariadbStatefulsetGotplYaml, map[string]*bintree{}},
 		"provision-example.yaml": &bintree{templateProvisionExampleYaml, map[string]*bintree{}},
 	}},
 }}

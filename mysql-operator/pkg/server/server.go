@@ -37,7 +37,7 @@ func Start(config *Config) {
 		config: config,
 		ops:    make(map[string]*operator.Operator),
 	}
-	op, err := operator.Run(config.InitConfig)
+	op, err := operator.Run(config.PrebootCfg)
 	if err != nil {
 		glog.Errorf("Start operator failed: %v", err)
 		return

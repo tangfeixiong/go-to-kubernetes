@@ -29,7 +29,7 @@ import (
 	clientset "github.com/tangfeixiong/go-to-kubernetes/mysql-operator/pkg/client/clientset/versioned"
 	informers "github.com/tangfeixiong/go-to-kubernetes/mysql-operator/pkg/client/informers/externalversions"
 	"github.com/tangfeixiong/go-to-kubernetes/mysql-operator/pkg/controller"
-	"github.com/tangfeixiong/go-to-kubernetes/mysql-operator/pkg/initcnf"
+	"github.com/tangfeixiong/go-to-kubernetes/mysql-operator/pkg/preboot"
 	"github.com/tangfeixiong/go-to-kubernetes/pkg/signals"
 	"github.com/tangfeixiong/go-to-kubernetes/pkg/spec/crd"
 )
@@ -52,7 +52,7 @@ type Operator struct {
 	c                     *controller.Controller
 }
 
-func Run(ic initcnf.Config) (*Operator, error) {
+func Run(ic preboot.Config) (*Operator, error) {
 	var cfg *rest.Config
 	var err error
 	if ic.Kubeconfig != "" {
@@ -146,7 +146,7 @@ func (op *Operator) CreateCRD(recipe *pb.CrdRecipient) error {
 	r := crd.Recipient{
 		Group:    recipe.Group,
 		Version:  recipe.Version,
-		Scope:    recipe.Scope.String(),
+		Scope:    recipe.Scope,
 		Plural:   recipe.Plural,
 		Singular: recipe.Singular,
 		Kind:     recipe.Kind,
@@ -215,6 +215,9 @@ func (op *Operator) CreateCRDorTPR(recipe crd.Recipient) error {
 
 func (op *Operator) createCRD(recipe crd.Recipient) error {
 	result, err := recipe.Generate()
+	if err != nil {
+		return err
+	}
 
 	_, err = op.kubeApiExtClientset.ApiextensionsV1beta1().CustomResourceDefinitions().Create(result)
 	if err != nil {

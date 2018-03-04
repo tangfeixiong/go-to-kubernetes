@@ -3,14 +3,35 @@ package pb;
 
 message CrdRecipient {
 	enum ResourceScope {
-        Cluster = 0;
-        Namespaced = 1;
+        Namespaced = 0;
+        Cluster = 1;
     }
-	string name = 1;
-	string group = 2;
-	string version = 3;
-	ResourceScope scope = 4;
-	string plural = 5;
-	string singular = 6;
-	string kind = 7;
+	string group = 1;
+	string version = 2;
+	string scope = 3;
+	string plural = 4;
+	string singular = 5;
+	string kind = 6;
+	repeated string shortNames = 7;
+    string listKind = 8;
+	ResourceScope resourceScope = 9;
+}
+
+message StorageRecipient {
+    message NoProvisioner {
+        string persistentVolumeCapacity = 1;
+        string mountPoint = 2;
+        repeated string nodeAffinityHostnames = 3;
+    }
+    message ExampleHostpath {
+        string persistentVolumeCapacity = 1;
+        string path = 2;
+    }
+    message Rook {
+        string persistentVolumeCapacity = 1;
+    }
+    
+    NoProvisioner noProvisionerLocalVolume = 1;
+    ExampleHostpath exampleHostpathLocalVolume = 2;
+    Rook cephRbdPool = 3;
 }

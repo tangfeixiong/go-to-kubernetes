@@ -8,16 +8,25 @@ spec:
   group: example.com
   # version name to use for REST API: /apis/<group>/<version>
   version: v1alpha1
-  # either Namespaced or Cluster
-  scope: Namespaced
+  # // Names are the names used to describe this custom resource
   names:
     # plural name to be used in the URL: /apis/<group>/<version>/<plural>
     plural: mariadbs
     # singular name to be used as an alias on the CLI and for display
     singular: mariadb
+    # // ShortNames are short names for the resource.  It must be all lowercase.
+    # ShortNames []string
     # kind is normally the CamelCased singular type. Your resource manifests use this.
     kind: Mariadb
     # shortNames allow shorter string to match your resource on the CLI
+    # // ListKind is the serialized kind of the list for this resource.  Defaults to <kind>List.
+    # ListKind string
+  # either Namespaced or Cluster
+  scope: Namespaced
+  # // Validation describes the validation methods for CustomResources
+  # Validation *CustomResourceValidation
+  #   // OpenAPIV3Schema is the OpenAPI v3 schema to be validated against.
+  #   OpenAPIV3Schema *JSONSchemaProps
 ---
 #apiVersion: apiextensions.k8s.io/v1beta1
 #kind: CustomResourceDefinition

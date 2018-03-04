@@ -1,7 +1,7 @@
 package server
 
 import (
-	"github.com/tangfeixiong/go-to-kubernetes/mysql-operator/pkg/initcnf"
+	"github.com/tangfeixiong/go-to-kubernetes/mysql-operator/pkg/preboot"
 )
 
 type Config struct {
@@ -9,5 +9,5 @@ type Config struct {
 	InsecureAddress string
 	SecureHTTP      bool
 	LogLevel        int
-	InitConfig      initcnf.Config
+	PrebootCfg      preboot.Config
 }

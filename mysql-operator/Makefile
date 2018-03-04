@@ -12,7 +12,7 @@ GIT_COMMIT=$(shell date +%y%m%d%H%M)-git$(shell git rev-parse --short=7 HEAD)
 DOCKER_FILE?=Dockerfile.busybox
 DOCKER_REGISTRY?=172.17.4.59:5000/admin
 
-all: protoc-grpc go-bindata-artifacts docker-push
+all: protoc-grpc go-bindata-spec docker-push
 
 protoc-grpc:
 	@if [[ ! -e $(GOPATHD) ]] ; \
@@ -39,22 +39,22 @@ go-bindata-web:
 	@pkg=webapp; src=static/...; output_file=pkg/ui/data/$${pkg}/datafile.go; \
 		go-bindata -nocompress -o $${output_file} -prefix $${PWD} -pkg $${pkg} $${src}
 
-go-bindata-artifacts:
+go-bindata-spec:
 	@pkg=artifact; src=template/...; output_file=pkg/spec/$${pkg}/artifacts.go; \
 		go-bindata -nocompress -o $${output_file} -prefix $${PWD} -pkg $${pkg} $${src}
 
-go-build: go-bindata-artifacts
+go-build: go-bindata-spec
 	#@CGO_ENABLED=0 go build -a -v -o ./bin/$(BIN_NAME) --installsuffix cgo -ldflags "-s" ./
 	@CGO_ENABLED=0 go build -a -v -o ./bin/$(BIN_NAME) -ldflags '-extldflags "-static"' ./
 
-go-install: go-bindata-artifacts
+go-install: go-bindata-spec
 	@go install -v ./
 
 docker-build: go-build
-	#@docker build --no-cache --force-rm -t $(IMG_NS)/$(IMG_REPO):$(GIT_COMMIT) ./
+	#@docker build --no-cache --force-rm -t $(IMG_NS)/$(IMG_REPO):$(GIT_COMMIT) -f $(DOCKER_FILE) ./
 	@docker build --no-cache --force-rm -t $(IMG_NS)/$(IMG_REPO):$(IMG_TAG) -f $(DOCKER_FILE) ./
 
 docker-push: docker-build
 	@docker push $(IMG_NS)/$(IMG_REPO):$(IMG_TAG)
 
-.PHONY: all protoc-grpc go-bindata-artifacts go-build go-install docker-build docker-push
+.PHONY: all protoc-grpc go-bindata-spec go-build go-install docker-build docker-push

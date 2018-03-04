@@ -120,17 +120,29 @@
                                         <Build-Number>1.0</Build-Number>
                                     </manifestEntries>
                                 </transformer>
+
+                               <!-- https://gist.github.com/BDF/393fe8739b035f461ce4 -->
+							    <!-- The goal was to create an uber-jar out of the Spring boot application... -->
+							    <transformer implementation="org.apache.maven.plugins.shade.resource.AppendingTransformer">
+							        <resource>META-INF/spring.handlers</resource>
+							    </transformer>
+							    <transformer implementation="org.apache.maven.plugins.shade.resource.AppendingTransformer">
+							        <resource>META-INF/spring.schemas</resource>
+							    </transformer>
+							    <transformer implementation="org.apache.maven.plugins.shade.resource.AppendingTransformer">
+							        <resource>META-INF/spring.factories</resource>
+							    </transformer>
 								
 								 <!-- Add a transformer to exclude any other manifest files (possibly from dependencies). -->
-                                <transformer implementation="org.apache.maven.plugins.shade.resource.DontIncludeResourceTransformer">
+<!--                                <transformer implementation="org.apache.maven.plugins.shade.resource.DontIncludeResourceTransformer">
                                   <resource>MANIFEST.MF</resource>
-                                </transformer>
+                                </transformer>-->
 
                                 <!-- Add a transformer to include your custom manifest file. -->
-                                <transformer implementation="org.apache.maven.plugins.shade.resource.IncludeResourceTransformer">
+<!--                                <transformer implementation="org.apache.maven.plugins.shade.resource.IncludeResourceTransformer">
                                   <resource>META-INF/MANIFEST.MF</resource>
                                   <file>src/main/resources/META-INF/MANIFEST.MF</file>
-                                </transformer>
+                                </transformer>-->
                             </transformers>
                         </configuration>
                     </execution>

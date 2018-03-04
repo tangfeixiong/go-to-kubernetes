@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>https0x3A0x2F0x2Fgithub0x2Ecom0x2Ftangfeixiong0x2Fgo-to-kubernetes</groupId>
+        <artifactId>hadoop-Kubernetes</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+    </parent>
+
+    <groupId>https0x3A0x2F0x2Fgithub0x2Ecom0x2Ftangfeixiong0x2Fgo-to-kubernetes</groupId>
+    <artifactId>hdfs-springcloudkubernetes</artifactId>
+    <version>latest</version>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <log4j.version>1.2.17</log4j.version>
+<!--        <commons-io.version>1.3.2</commons-io.version>-->
+        <docker-registry>docker.io/tangfeixiong</docker-registry>
+        <image-repository>${project.artifactId}</image-repository>
+        <image-tag>${project.version}</image-tag>
+<!--        <image-tag>latest</image-tag>-->
+		<oracle-java-url>http://download.oracle.com/otn-pub/java/jdk/8u151-b12/e758a0de34e24606bca991d704f6dcbf/jdk-8u151-linux-x64.tar.gz</oracle-java-url>
+    </properties>
+
+
+    <dependencies>
+		<dependency>
+		    <groupId>org.springframework.cloud</groupId>
+		    <artifactId>spring-cloud-starter-kubernetes</artifactId>
+		    <version>0.2.0.RELEASE</version>
+		</dependency>
+
+        <!-- Hadoop main client artifact -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter</artifactId>
+		</dependency>
+        <dependency>
+            <groupId>org.apache.hadoop</groupId>
+            <artifactId>hadoop-client</artifactId>
+            <version>${hadoop.version}</version>
+        </dependency>
+		<dependency>
+			<groupId>org.springframework.data</groupId>
+			<artifactId>spring-data-hadoop</artifactId>
+			<version>${hadoop.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.data</groupId>
+			<artifactId>spring-data-hadoop-store</artifactId>
+			<version>${hadoop.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.xerial.snappy</groupId>
+			<artifactId>snappy-java</artifactId>
+			<version>1.1.7.1</version>
+            <scope>runtime</scope>
+		</dependency>
+        <dependency>
+            <groupId>log4j</groupId>
+            <artifactId>log4j</artifactId>
+            <version>${log4j.version}</version>
+        </dependency>
+		<!-- https://mvnrepository.com/artifact/commons-io/commons-io -->
+		<dependency>
+		    <groupId>commons-io</groupId>
+		    <artifactId>commons-io</artifactId>
+		    <version>2.6</version>
+		</dependency>
+
+        <!-- https://github.com/kubernetes-client/java/ -->
+		<dependency>
+		    <groupId>io.kubernetes</groupId>
+		    <artifactId>client-java</artifactId>
+		    <version>0.2</version>
+		    <scope>compile</scope>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/io.fabric8/kubernetes-client -->
+		<dependency>
+		    <groupId>io.fabric8</groupId>
+		    <artifactId>kubernetes-client</artifactId>
+		    <version>3.1.8</version>
+		</dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                </configuration>
+            </plugin>
+
+		    <plugin>
+		        <groupId>org.apache.maven.plugins</groupId>
+		        <artifactId>maven-resources-plugin</artifactId>
+		        <version>3.0.2</version>
+		        <configuration>
+			      <resources>
+			        <resource>
+			          <directory>src/main/resources</directory>
+			          <includes>
+			            <include>*.properties</include>
+					  </includes>
+					  <excludes>
+			            <exclude>**/*.doc</exclude>
+			            <exclude>**/*.pdf</exclude>
+			          </excludes>
+			        </resource>
+			      </resources>		
+		        </configuration>					    
+		    </plugin>
+
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+				<version>${spring-boot.version}</version>
+				<executions>
+					<execution>
+						<goals>
+							<goal>repackage</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			
+            <!-- https://github.com/fabric8io/docker-maven-plugin -->
+			<plugin>
+             <groupId>io.fabric8</groupId>
+             <artifactId>docker-maven-plugin</artifactId>
+             <version>0.24.0</version>
+             <extensions>true</extensions>
+			 <configuration>
+			   <images>
+			     <image>
+			       <name>${docker-registry}/${image-repository}:${image-tag}</name>
+			       <build>
+			         <assembly>
+<!--                       <descriptorRef>artifact-with-dependencies</descriptorRef>-->
+					    <descriptorRef>artifact</descriptorRef>
+                     </assembly>
+<!--			         <dockerFileDir>${project.basedir}/src/main/docker/io-dot-fabric8</dockerFileDir>-->
+				     <dockerFileDir>io-dot-fabric8</dockerFileDir>
+<!--					 <dockerFile>Dockerfile.oracle-server-jre1.8</dockerFile>-->
+				     <args>
+				         <jarTgt>${project.build.finalName}.jar</jarTgt>
+				         <javaUri>${oracle-java-url}</javaUri>
+					 </args>
+					 <nocache>true</nocache>
+			       </build>
+			     </image>
+			   </images>
+			 </configuration>
+			 <executions>
+			   <execution>
+			     <id>docker-build</id>
+			     <goals>
+			       <goal>build</goal>
+			     </goals>
+			   </execution>
+			 </executions>
+			</plugin>
+
+           <!-- https://github.com/spotify/dockerfile-maven -->			
+			<plugin>
+				<groupId>com.spotify</groupId>
+				<artifactId>dockerfile-maven-plugin</artifactId>
+				<version>1.3.7</version>
+				<executions>
+				    <execution>
+				      <id>default</id>
+				      <goals>
+				        <goal>build</goal>
+				        <goal>push</goal>
+				      </goals>
+				    </execution>
+				</executions>
+				<configuration>
+				    <contextDirectory>${project.basedir}/src/main/docker/com-dot-spotify</contextDirectory>
+				    <repository>${docker-registry}/${image-repository}</repository>
+<!--				    <tag>${project.version}</tag>-->
+                   <skip>true</skip>
+                   <build.noCache>true</build.noCache>
+				    <buildArgs>
+				      <jarTgt>${project.build.finalName}.jar</jarTgt>
+				    </buildArgs>
+				</configuration>
+			</plugin>
+			
+			<!-- https://github.com/spotify/docker-maven-plugin -->
+			<plugin>
+				<groupId>com.spotify</groupId>
+				<artifactId>docker-maven-plugin</artifactId>
+				<version>1.0.0</version>
+				<configuration>
+					<imageName>${docker-registry}/${image-repository}</imageName>
+					<dockerDirectory>src/main/docker/com-dot-spotify</dockerDirectory>
+					<resources>
+						<resource>
+							<targetPath>/</targetPath>
+							<directory>${project.build.directory}</directory>
+							<include>${project.build.finalName}.jar</include>
+						</resource>
+					</resources>
+				</configuration>
+			</plugin>
+
+        </plugins>
+    </build>
+
+</project>

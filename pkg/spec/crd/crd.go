@@ -41,16 +41,20 @@ spec:
     #ListKind string
 `
 
+var logger = log.New(os.Stderr, fmt.Sprintf("[%s] ", filepath.Base(os.Args[0])), log.LstdFlags|log.Lshortfile)
+
+type FieldSetterFunc func(*Recipient) error
+
 type Recipient struct {
 	Group, Version, Scope, Plural, Singular, Kind, ListKind string
 	ShortNames                                              []string
 }
 
-func NewRecipient(group, version, plural, singular string, options ...SetFieldFunc) (*Recipient, error) {
+func NewRecipient(group, version, plural, singular string, options ...FieldSetterFunc) (*Recipient, error) {
 	recipe := &Recipient{
 		Group:    group,
 		Version:  version,
-		Scope:    "Namespaced",
+		Scope:    string(v1beta1.NamespaceScoped),
 		Plural:   plural,
 		Singular: singular,
 		Kind:     strings.Title(singular),
@@ -65,11 +69,7 @@ func NewRecipient(group, version, plural, singular string, options ...SetFieldFu
 	return recipe, nil
 }
 
-var logger = log.New(os.Stderr, fmt.Sprintf("[%s] ", filepath.Base(os.Args[0])), log.LstdFlags|log.Lshortfile)
-
-type SetFieldFunc func(*Recipient) error
-
-func GroupVersionSetter(group, version string) SetFieldFunc {
+func GroupVersionSetter(group, version string) FieldSetterFunc {
 	return func(recipe *Recipient) error {
 		if match, err := regexp.MatchString(`[a-z][a-z0-9]*(\.[a-z0-9]+){0,}`, group); err == nil && match {
 			recipe.Group = group
@@ -88,12 +88,23 @@ func GroupVersionSetter(group, version string) SetFieldFunc {
 	}
 }
 
-func ScopeSetter(isNamespaced bool) SetFieldFunc {
+func ScopeSetter(isNamespaced bool) FieldSetterFunc {
 	return func(recipe *Recipient) error {
 		if isNamespaced {
 			recipe.Scope = "Namespaced"
 		} else {
 			recipe.Scope = "Cluster"
+		}
+		return nil
+	}
+}
+
+func NamespaceScopedSetter(isNamespaced bool) FieldSetterFunc {
+	return func(recipe *Recipient) error {
+		if isNamespaced {
+			recipe.Scope = string(v1beta1.NamespaceScoped)
+		} else {
+			recipe.Scope = string(v1beta1.ClusterScoped)
 		}
 		return nil
 	}
@@ -118,7 +129,7 @@ func (recipe *Recipient) Parse() (*bytes.Buffer, error) {
 	return recipe.parse([]byte{})
 }
 
-func (recipe *Recipient) generate(crdtpl []byte) (*v1beta1.CustomResourceDefinition, error) {
+func (recipe *Recipient) newCRD(crdtpl []byte) (*v1beta1.CustomResourceDefinition, error) {
 	b, err := recipe.parse(crdtpl)
 	if err != nil {
 		logger.Println(err.Error())
@@ -147,5 +158,5 @@ func (recipe *Recipient) generate(crdtpl []byte) (*v1beta1.CustomResourceDefinit
 }
 
 func (recipe *Recipient) Generate() (*v1beta1.CustomResourceDefinition, error) {
-	return recipe.generate(nil)
+	return recipe.newCRD(nil)
 }

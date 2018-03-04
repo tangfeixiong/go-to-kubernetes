@@ -32,6 +32,7 @@
 	<properties>
  		<spring-boot.version>1.5.10.RELEASE</spring-boot.version> 
 		<spring-cloud-kubernetes.version>0.2.0.RELEASE</spring-cloud-kubernetes.version>
+        <hadoop.version>3.0.0</hadoop.version>
 <!-- The predefined properties in spring-cloud-kubernetes -->
 <!-- 		<maven-deploy-plugin.version></maven-deploy-plugin.version> -->
 <!-- 		<maven-surefire-plugin.version></maven-surefire-plugin.version> -->

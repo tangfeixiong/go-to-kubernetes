@@ -25,7 +25,7 @@ func TestParser(t *testing.T) {
 
 func TestDecoder(t *testing.T) {
 	recipe, err := NewRecipient("example.com", "v1", "foos", "foo")
-	obj, err := recipe.generate(nil)
+	obj, err := recipe.newCRD(nil)
 	if err != nil {
 		t.Error("Deserilizing CRD failed:", err)
 	} else {

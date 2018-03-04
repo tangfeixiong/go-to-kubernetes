@@ -18,6 +18,8 @@ import (
 	"golang.org/x/net/context"
 	"golang.org/x/net/websocket"
 
+	apiextv1beta1 "k8s.io/apiextensions-apiserver/pkg/apis/apiextensions/v1beta1"
+
 	"github.com/tangfeixiong/go-to-bigdata/nps-wss/pkg/httpfs"
 	"github.com/tangfeixiong/go-to-kubernetes/mysql-operator/pb"
 	"github.com/tangfeixiong/go-to-kubernetes/mysql-operator/pkg/ui/data/webapp"
@@ -33,21 +35,27 @@ func (ctl *controller) CreateCrd(ctx context.Context, req *pb.CrdReqResp) (*pb.C
 		resp.StateMessage = "CRD recipe is required"
 		return resp, errors.New(resp.StateMessage)
 	}
-	if req.Recipe.Name == "" || req.Recipe.Group == "" {
+	if req.Recipe.Group == "" || req.Recipe.Plural == "" {
 		resp.StateCode = 101
-		resp.StateMessage = "Empty CRD field is not allowed"
+		resp.StateMessage = "CRD name e.g. <group>/<plural> is required"
 		return resp, errors.New(resp.StateMessage)
 	}
-
-	resp.Recipe.Name = req.Recipe.Name
+	if req.Recipe.Scope != string(apiextv1beta1.NamespaceScoped) && req.Recipe.Scope != string(apiextv1beta1.ClusterScoped) {
+		req.Recipe.Scope = req.Recipe.ResourceScope.String()
+	}
 	resp.Recipe.Group = req.Recipe.Group
 	resp.Recipe.Version = req.Recipe.Version
 	resp.Recipe.Scope = req.Recipe.Scope
 	resp.Recipe.Plural = req.Recipe.Plural
 	resp.Recipe.Singular = req.Recipe.Singular
 	resp.Recipe.Kind = req.Recipe.Kind
-	err := ctl.ops["mysql-operator"].CreateCRD(req.Recipe)
-	if err != nil {
+
+	if v, ok := ctl.ops["mysql-operator"]; !ok {
+		glog.Infoln("CRD operation does not exist")
+		resp.StateCode = 199
+		resp.StateMessage = "Missing operation"
+		return resp, fmt.Errorf("Missing operation")
+	} else if err := v.CreateCRD(req.Recipe); err != nil {
 		glog.Infof("Create CRD failed: %s", err.Error())
 		resp.StateCode = 10
 		resp.StateMessage = err.Error()
