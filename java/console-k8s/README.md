@@ -1,5 +1,6 @@
+# Development
 
-### Development
+## Spring Webflux
 
 For example
 ```
@@ -43,7 +44,30 @@ Downloading from <<<...snippets...>>>
 [INFO] ------------------------------------------------------------------------
 ```
 
-### Development Reference
+### Reference
+
+http://www.baeldung.com/spring-5-functional-web
+
+https://github.com/spring-projects/spring-boot/tree/master/spring-boot-samples/spring-boot-sample-webflux
+
+https://www.thymeleaf.org/doc/tutorials/3.0/thymeleafspring.html
+
+http://forum.thymeleaf.org/Thymeleaf-3-0-8-JUST-PUBLISHED-td4030687.html
+
+https://github.com/thymeleaf/thymeleafsandbox-stsm-reactive
+
+https://github.com/thymeleaf/thymeleafsandbox-biglist-reactive
+
+https://github.com/thymeleaf/thymeleafsandbox-sse-webflux
+
+https://docs.spring.io/spring/docs/current/spring-framework-reference/web-reactive.html
+
+https://docs.spring.io/spring/docs/current/spring-framework-reference/
+
+
+## Kafka
+
+### Reference
 
 [Kafka APIs](https://kafka.apache.org/documentation/#api)
 
