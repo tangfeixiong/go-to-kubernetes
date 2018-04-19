@@ -1,4 +1,4 @@
-ROM openjdk:8-jre
+FROM openjdk:8-jre
 LABEL maintainer="tangfeixiong <tangfx128@gmail.com>" \
       project="https://github.com/tangfeixiong/go-to-kubernetes" \
       name="web-console" \

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<metadata xmlns="http://linux.duke.edu/metadata/common" xmlns:rpm="http://linux.duke.edu/metadata/rpm" packages="142">
+<metadata xmlns="http://linux.duke.edu/metadata/common" xmlns:rpm="http://linux.duke.edu/metadata/rpm" packages="181">
 <package type="rpm">
   <name>kubeadm</name>
   <arch>x86_64</arch>
@@ -809,6 +809,68 @@
 </package><package type="rpm">
   <name>kubeadm</name>
   <arch>x86_64</arch>
+  <version epoch="0" ver="1.7.14" rel="0"></version>
+  <checksum type="sha256" pkgid="YES">0ce3d048f9832d29000f6c69e05eb7a1fbc013810c7d1f66ad43e17f8578bd05</checksum>
+  <summary>Command-line utility for administering a Kubernetes cluster.</summary>
+  <description>Command-line utility for administering a Kubernetes cluster.</description>
+  <packager></packager>
+  <url>https://kubernetes.io</url>
+  <time file="0" build="1520885407"></time>
+  <size package="8979778" installed="51206672" archive="51207092"></size>
+  <location href="../../pool/0ce3d048f9832d29000f6c69e05eb7a1fbc013810c7d1f66ad43e17f8578bd05-kubeadm-1.7.14-0.x86_64.rpm"></location>
+  <format>
+    <rpm:license>ASL 2.0</rpm:license>
+    <rpm:vendor></rpm:vendor>
+    <rpm:group>Unspecified</rpm:group>
+    <rpm:buildhost>f767502849be</rpm:buildhost>
+    <rpm:sourcerpm>kubelet-1.7.14-0.src.rpm</rpm:sourcerpm>
+    <rpm:header-range start="5024" end="9490"></rpm:header-range>
+    <rpm:provides>
+      <rpm:entry name="kubeadm" flags="EQ" epoch="0" ver="1.7.14" rel="0"></rpm:entry>
+      <rpm:entry name="kubeadm(x86-64)" flags="EQ" epoch="0" ver="1.7.14" rel="0"></rpm:entry>
+    </rpm:provides>
+    <rpm:requires>
+      <rpm:entry name="kubectl" flags="GE" epoch="0" ver="1.6.0"></rpm:entry>
+      <rpm:entry name="kubelet" flags="GE" epoch="0" ver="1.6.0"></rpm:entry>
+      <rpm:entry name="kubernetes-cni"></rpm:entry>
+    </rpm:requires>
+    <file>/etc/systemd/system/kubelet.service.d/10-kubeadm.conf</file>
+    <file>/usr/bin/kubeadm</file>
+  </format>
+</package><package type="rpm">
+  <name>kubeadm</name>
+  <arch>x86_64</arch>
+  <version epoch="0" ver="1.7.15" rel="0"></version>
+  <checksum type="sha256" pkgid="YES">7de188358ee8ee1babf424ab9d8d83ab2eb82325cba7133d97d8d5de3a365918</checksum>
+  <summary>Command-line utility for administering a Kubernetes cluster.</summary>
+  <description>Command-line utility for administering a Kubernetes cluster.</description>
+  <packager></packager>
+  <url>https://kubernetes.io</url>
+  <time file="0" build="1521497202"></time>
+  <size package="8979794" installed="51206672" archive="51207092"></size>
+  <location href="../../pool/7de188358ee8ee1babf424ab9d8d83ab2eb82325cba7133d97d8d5de3a365918-kubeadm-1.7.15-0.x86_64.rpm"></location>
+  <format>
+    <rpm:license>ASL 2.0</rpm:license>
+    <rpm:vendor></rpm:vendor>
+    <rpm:group>Unspecified</rpm:group>
+    <rpm:buildhost>be1233d80521</rpm:buildhost>
+    <rpm:sourcerpm>kubelet-1.7.15-0.src.rpm</rpm:sourcerpm>
+    <rpm:header-range start="5024" end="9490"></rpm:header-range>
+    <rpm:provides>
+      <rpm:entry name="kubeadm" flags="EQ" epoch="0" ver="1.7.15" rel="0"></rpm:entry>
+      <rpm:entry name="kubeadm(x86-64)" flags="EQ" epoch="0" ver="1.7.15" rel="0"></rpm:entry>
+    </rpm:provides>
+    <rpm:requires>
+      <rpm:entry name="kubectl" flags="GE" epoch="0" ver="1.6.0"></rpm:entry>
+      <rpm:entry name="kubelet" flags="GE" epoch="0" ver="1.6.0"></rpm:entry>
+      <rpm:entry name="kubernetes-cni"></rpm:entry>
+    </rpm:requires>
+    <file>/etc/systemd/system/kubelet.service.d/10-kubeadm.conf</file>
+    <file>/usr/bin/kubeadm</file>
+  </format>
+</package><package type="rpm">
+  <name>kubeadm</name>
+  <arch>x86_64</arch>
   <version epoch="0" ver="1.8.0" rel="0"></version>
   <checksum type="sha256" pkgid="YES">ee93b5249497dba6488262bd2b56e32438a69f78993eb973bafa52d72f9b883a</checksum>
   <summary>Command-line utility for administering a Kubernetes cluster.</summary>
@@ -1026,6 +1088,161 @@
 </package><package type="rpm">
   <name>kubeadm</name>
   <arch>x86_64</arch>
+  <version epoch="0" ver="1.8.6" rel="0"></version>
+  <checksum type="sha256" pkgid="YES">919d83307b30c808a9bf17f08ab6d72612d08860a8923366e666ed072012f62a</checksum>
+  <summary>Command-line utility for administering a Kubernetes cluster.</summary>
+  <description>Command-line utility for administering a Kubernetes cluster.</description>
+  <packager></packager>
+  <url>https://kubernetes.io</url>
+  <time file="0" build="1513893552"></time>
+  <size package="15626282" installed="93724032" archive="93724452"></size>
+  <location href="../../pool/919d83307b30c808a9bf17f08ab6d72612d08860a8923366e666ed072012f62a-kubeadm-1.8.6-0.x86_64.rpm"></location>
+  <format>
+    <rpm:license>ASL 2.0</rpm:license>
+    <rpm:vendor></rpm:vendor>
+    <rpm:group>Unspecified</rpm:group>
+    <rpm:buildhost>eebea5da7e7e</rpm:buildhost>
+    <rpm:sourcerpm>kubelet-1.8.6-0.src.rpm</rpm:sourcerpm>
+    <rpm:header-range start="5024" end="9406"></rpm:header-range>
+    <rpm:provides>
+      <rpm:entry name="kubeadm" flags="EQ" epoch="0" ver="1.8.6" rel="0"></rpm:entry>
+      <rpm:entry name="kubeadm(x86-64)" flags="EQ" epoch="0" ver="1.8.6" rel="0"></rpm:entry>
+    </rpm:provides>
+    <rpm:requires>
+      <rpm:entry name="kubectl" flags="GE" epoch="0" ver="1.6.0"></rpm:entry>
+      <rpm:entry name="kubelet" flags="GE" epoch="0" ver="1.6.0"></rpm:entry>
+      <rpm:entry name="kubernetes-cni"></rpm:entry>
+    </rpm:requires>
+    <file>/etc/systemd/system/kubelet.service.d/10-kubeadm.conf</file>
+    <file>/usr/bin/kubeadm</file>
+  </format>
+</package><package type="rpm">
+  <name>kubeadm</name>
+  <arch>x86_64</arch>
+  <version epoch="0" ver="1.8.7" rel="0"></version>
+  <checksum type="sha256" pkgid="YES">005fee933b99ae653baf508af37144c194d330b6324a62b32ebc08557a838937</checksum>
+  <summary>Command-line utility for administering a Kubernetes cluster.</summary>
+  <description>Command-line utility for administering a Kubernetes cluster.</description>
+  <packager></packager>
+  <url>https://kubernetes.io</url>
+  <time file="0" build="1516816703"></time>
+  <size package="15634674" installed="93874776" archive="93875196"></size>
+  <location href="../../pool/005fee933b99ae653baf508af37144c194d330b6324a62b32ebc08557a838937-kubeadm-1.8.7-0.x86_64.rpm"></location>
+  <format>
+    <rpm:license>ASL 2.0</rpm:license>
+    <rpm:vendor></rpm:vendor>
+    <rpm:group>Unspecified</rpm:group>
+    <rpm:buildhost>9f14a91e1cc9</rpm:buildhost>
+    <rpm:sourcerpm>kubelet-1.8.7-0.src.rpm</rpm:sourcerpm>
+    <rpm:header-range start="5024" end="9478"></rpm:header-range>
+    <rpm:provides>
+      <rpm:entry name="kubeadm" flags="EQ" epoch="0" ver="1.8.7" rel="0"></rpm:entry>
+      <rpm:entry name="kubeadm(x86-64)" flags="EQ" epoch="0" ver="1.8.7" rel="0"></rpm:entry>
+    </rpm:provides>
+    <rpm:requires>
+      <rpm:entry name="kubectl" flags="GE" epoch="0" ver="1.6.0"></rpm:entry>
+      <rpm:entry name="kubelet" flags="GE" epoch="0" ver="1.6.0"></rpm:entry>
+      <rpm:entry name="kubernetes-cni"></rpm:entry>
+    </rpm:requires>
+    <file>/etc/systemd/system/kubelet.service.d/10-kubeadm.conf</file>
+    <file>/usr/bin/kubeadm</file>
+  </format>
+</package><package type="rpm">
+  <name>kubeadm</name>
+  <arch>x86_64</arch>
+  <version epoch="0" ver="1.8.8" rel="0"></version>
+  <checksum type="sha256" pkgid="YES">2e001cae2c8933ef43f6d5607a8bd57200957685bfb932dfb753b23abb9f8074</checksum>
+  <summary>Command-line utility for administering a Kubernetes cluster.</summary>
+  <description>Command-line utility for administering a Kubernetes cluster.</description>
+  <packager></packager>
+  <url>https://kubernetes.io</url>
+  <time file="0" build="1518248733"></time>
+  <size package="15630630" installed="93884952" archive="93885372"></size>
+  <location href="../../pool/2e001cae2c8933ef43f6d5607a8bd57200957685bfb932dfb753b23abb9f8074-kubeadm-1.8.8-0.x86_64.rpm"></location>
+  <format>
+    <rpm:license>ASL 2.0</rpm:license>
+    <rpm:vendor></rpm:vendor>
+    <rpm:group>Unspecified</rpm:group>
+    <rpm:buildhost>64145c5c1581</rpm:buildhost>
+    <rpm:sourcerpm>kubelet-1.8.8-0.src.rpm</rpm:sourcerpm>
+    <rpm:header-range start="5024" end="9478"></rpm:header-range>
+    <rpm:provides>
+      <rpm:entry name="kubeadm" flags="EQ" epoch="0" ver="1.8.8" rel="0"></rpm:entry>
+      <rpm:entry name="kubeadm(x86-64)" flags="EQ" epoch="0" ver="1.8.8" rel="0"></rpm:entry>
+    </rpm:provides>
+    <rpm:requires>
+      <rpm:entry name="kubectl" flags="GE" epoch="0" ver="1.6.0"></rpm:entry>
+      <rpm:entry name="kubelet" flags="GE" epoch="0" ver="1.6.0"></rpm:entry>
+      <rpm:entry name="kubernetes-cni"></rpm:entry>
+    </rpm:requires>
+    <file>/etc/systemd/system/kubelet.service.d/10-kubeadm.conf</file>
+    <file>/usr/bin/kubeadm</file>
+  </format>
+</package><package type="rpm">
+  <name>kubeadm</name>
+  <arch>x86_64</arch>
+  <version epoch="0" ver="1.8.9" rel="0"></version>
+  <checksum type="sha256" pkgid="YES">e1cf1b76ab1c7d92a24d0ccccd2f3cdaae5b02bd063797938d27760531b76049</checksum>
+  <summary>Command-line utility for administering a Kubernetes cluster.</summary>
+  <description>Command-line utility for administering a Kubernetes cluster.</description>
+  <packager></packager>
+  <url>https://kubernetes.io</url>
+  <time file="0" build="1520881571"></time>
+  <size package="15637498" installed="93928232" archive="93928652"></size>
+  <location href="../../pool/e1cf1b76ab1c7d92a24d0ccccd2f3cdaae5b02bd063797938d27760531b76049-kubeadm-1.8.9-0.x86_64.rpm"></location>
+  <format>
+    <rpm:license>ASL 2.0</rpm:license>
+    <rpm:vendor></rpm:vendor>
+    <rpm:group>Unspecified</rpm:group>
+    <rpm:buildhost>206b70cb9165</rpm:buildhost>
+    <rpm:sourcerpm>kubelet-1.8.9-0.src.rpm</rpm:sourcerpm>
+    <rpm:header-range start="5024" end="9478"></rpm:header-range>
+    <rpm:provides>
+      <rpm:entry name="kubeadm" flags="EQ" epoch="0" ver="1.8.9" rel="0"></rpm:entry>
+      <rpm:entry name="kubeadm(x86-64)" flags="EQ" epoch="0" ver="1.8.9" rel="0"></rpm:entry>
+    </rpm:provides>
+    <rpm:requires>
+      <rpm:entry name="kubectl" flags="GE" epoch="0" ver="1.6.0"></rpm:entry>
+      <rpm:entry name="kubelet" flags="GE" epoch="0" ver="1.6.0"></rpm:entry>
+      <rpm:entry name="kubernetes-cni"></rpm:entry>
+    </rpm:requires>
+    <file>/etc/systemd/system/kubelet.service.d/10-kubeadm.conf</file>
+    <file>/usr/bin/kubeadm</file>
+  </format>
+</package><package type="rpm">
+  <name>kubeadm</name>
+  <arch>x86_64</arch>
+  <version epoch="0" ver="1.8.10" rel="0"></version>
+  <checksum type="sha256" pkgid="YES">1e84e0b4101a6ded3d395f77ff5736e6d15d9730b5b9fb00ddf625878ef585f4</checksum>
+  <summary>Command-line utility for administering a Kubernetes cluster.</summary>
+  <description>Command-line utility for administering a Kubernetes cluster.</description>
+  <packager></packager>
+  <url>https://kubernetes.io</url>
+  <time file="0" build="1521492119"></time>
+  <size package="15641378" installed="93925176" archive="93925596"></size>
+  <location href="../../pool/1e84e0b4101a6ded3d395f77ff5736e6d15d9730b5b9fb00ddf625878ef585f4-kubeadm-1.8.10-0.x86_64.rpm"></location>
+  <format>
+    <rpm:license>ASL 2.0</rpm:license>
+    <rpm:vendor></rpm:vendor>
+    <rpm:group>Unspecified</rpm:group>
+    <rpm:buildhost>888801c201a4</rpm:buildhost>
+    <rpm:sourcerpm>kubelet-1.8.10-0.src.rpm</rpm:sourcerpm>
+    <rpm:header-range start="5024" end="9490"></rpm:header-range>
+    <rpm:provides>
+      <rpm:entry name="kubeadm" flags="EQ" epoch="0" ver="1.8.10" rel="0"></rpm:entry>
+      <rpm:entry name="kubeadm(x86-64)" flags="EQ" epoch="0" ver="1.8.10" rel="0"></rpm:entry>
+    </rpm:provides>
+    <rpm:requires>
+      <rpm:entry name="kubectl" flags="GE" epoch="0" ver="1.6.0"></rpm:entry>
+      <rpm:entry name="kubelet" flags="GE" epoch="0" ver="1.6.0"></rpm:entry>
+      <rpm:entry name="kubernetes-cni"></rpm:entry>
+    </rpm:requires>
+    <file>/etc/systemd/system/kubelet.service.d/10-kubeadm.conf</file>
+    <file>/usr/bin/kubeadm</file>
+  </format>
+</package><package type="rpm">
+  <name>kubeadm</name>
+  <arch>x86_64</arch>
   <version epoch="0" ver="1.9.0" rel="0"></version>
   <checksum type="sha256" pkgid="YES">aa9948f82e7af317c97a242f3890985159c09c183b46ac8aab19d2ad307e6970</checksum>
   <summary>Command-line utility for administering a Kubernetes cluster.</summary>
@@ -1045,6 +1262,192 @@
     <rpm:provides>
       <rpm:entry name="kubeadm" flags="EQ" epoch="0" ver="1.9.0" rel="0"></rpm:entry>
       <rpm:entry name="kubeadm(x86-64)" flags="EQ" epoch="0" ver="1.9.0" rel="0"></rpm:entry>
+    </rpm:provides>
+    <rpm:requires>
+      <rpm:entry name="kubectl" flags="GE" epoch="0" ver="1.6.0"></rpm:entry>
+      <rpm:entry name="kubelet" flags="GE" epoch="0" ver="1.6.0"></rpm:entry>
+      <rpm:entry name="kubernetes-cni"></rpm:entry>
+    </rpm:requires>
+    <file>/etc/systemd/system/kubelet.service.d/10-kubeadm.conf</file>
+    <file>/usr/bin/kubeadm</file>
+  </format>
+</package><package type="rpm">
+  <name>kubeadm</name>
+  <arch>x86_64</arch>
+  <version epoch="0" ver="1.9.1" rel="0"></version>
+  <checksum type="sha256" pkgid="YES">ccc2b7d8ac99c8ead43087e7bb5cc7fb3fe684bfd78241c8240feb945303c40e</checksum>
+  <summary>Command-line utility for administering a Kubernetes cluster.</summary>
+  <description>Command-line utility for administering a Kubernetes cluster.</description>
+  <packager></packager>
+  <url>https://kubernetes.io</url>
+  <time file="0" build="1515100003"></time>
+  <size package="17241846" installed="103945872" archive="103946292"></size>
+  <location href="../../pool/ccc2b7d8ac99c8ead43087e7bb5cc7fb3fe684bfd78241c8240feb945303c40e-kubeadm-1.9.1-0.x86_64.rpm"></location>
+  <format>
+    <rpm:license>ASL 2.0</rpm:license>
+    <rpm:vendor></rpm:vendor>
+    <rpm:group>Unspecified</rpm:group>
+    <rpm:buildhost>32b5636c8754</rpm:buildhost>
+    <rpm:sourcerpm>kubelet-1.9.1-0.src.rpm</rpm:sourcerpm>
+    <rpm:header-range start="5024" end="9478"></rpm:header-range>
+    <rpm:provides>
+      <rpm:entry name="kubeadm" flags="EQ" epoch="0" ver="1.9.1" rel="0"></rpm:entry>
+      <rpm:entry name="kubeadm(x86-64)" flags="EQ" epoch="0" ver="1.9.1" rel="0"></rpm:entry>
+    </rpm:provides>
+    <rpm:requires>
+      <rpm:entry name="kubectl" flags="GE" epoch="0" ver="1.6.0"></rpm:entry>
+      <rpm:entry name="kubelet" flags="GE" epoch="0" ver="1.6.0"></rpm:entry>
+      <rpm:entry name="kubernetes-cni"></rpm:entry>
+    </rpm:requires>
+    <file>/etc/systemd/system/kubelet.service.d/10-kubeadm.conf</file>
+    <file>/usr/bin/kubeadm</file>
+  </format>
+</package><package type="rpm">
+  <name>kubeadm</name>
+  <arch>x86_64</arch>
+  <version epoch="0" ver="1.9.2" rel="0"></version>
+  <checksum type="sha256" pkgid="YES">eb3f5ec9f28b4e6548acc87211b74534c6eae3cabfe870addeff84ac3243a77e</checksum>
+  <summary>Command-line utility for administering a Kubernetes cluster.</summary>
+  <description>Command-line utility for administering a Kubernetes cluster.</description>
+  <packager></packager>
+  <url>https://kubernetes.io</url>
+  <time file="0" build="1516316493"></time>
+  <size package="17248822" installed="103972464" archive="103972884"></size>
+  <location href="../../pool/eb3f5ec9f28b4e6548acc87211b74534c6eae3cabfe870addeff84ac3243a77e-kubeadm-1.9.2-0.x86_64.rpm"></location>
+  <format>
+    <rpm:license>ASL 2.0</rpm:license>
+    <rpm:vendor></rpm:vendor>
+    <rpm:group>Unspecified</rpm:group>
+    <rpm:buildhost>b616eeaad01a</rpm:buildhost>
+    <rpm:sourcerpm>kubelet-1.9.2-0.src.rpm</rpm:sourcerpm>
+    <rpm:header-range start="5024" end="9478"></rpm:header-range>
+    <rpm:provides>
+      <rpm:entry name="kubeadm" flags="EQ" epoch="0" ver="1.9.2" rel="0"></rpm:entry>
+      <rpm:entry name="kubeadm(x86-64)" flags="EQ" epoch="0" ver="1.9.2" rel="0"></rpm:entry>
+    </rpm:provides>
+    <rpm:requires>
+      <rpm:entry name="kubectl" flags="GE" epoch="0" ver="1.6.0"></rpm:entry>
+      <rpm:entry name="kubelet" flags="GE" epoch="0" ver="1.6.0"></rpm:entry>
+      <rpm:entry name="kubernetes-cni"></rpm:entry>
+    </rpm:requires>
+    <file>/etc/systemd/system/kubelet.service.d/10-kubeadm.conf</file>
+    <file>/usr/bin/kubeadm</file>
+  </format>
+</package><package type="rpm">
+  <name>kubeadm</name>
+  <arch>x86_64</arch>
+  <version epoch="0" ver="1.9.3" rel="0"></version>
+  <checksum type="sha256" pkgid="YES">df7f026762a109d02bf92ec559bbeb3f490e8e35885ffc2631042ffcd9b945ab</checksum>
+  <summary>Command-line utility for administering a Kubernetes cluster.</summary>
+  <description>Command-line utility for administering a Kubernetes cluster.</description>
+  <packager></packager>
+  <url>https://kubernetes.io</url>
+  <time file="0" build="1518216106"></time>
+  <size package="17242898" installed="103978360" archive="103978780"></size>
+  <location href="../../pool/df7f026762a109d02bf92ec559bbeb3f490e8e35885ffc2631042ffcd9b945ab-kubeadm-1.9.3-0.x86_64.rpm"></location>
+  <format>
+    <rpm:license>ASL 2.0</rpm:license>
+    <rpm:vendor></rpm:vendor>
+    <rpm:group>Unspecified</rpm:group>
+    <rpm:buildhost>5db4be127d41</rpm:buildhost>
+    <rpm:sourcerpm>kubelet-1.9.3-0.src.rpm</rpm:sourcerpm>
+    <rpm:header-range start="5024" end="9478"></rpm:header-range>
+    <rpm:provides>
+      <rpm:entry name="kubeadm" flags="EQ" epoch="0" ver="1.9.3" rel="0"></rpm:entry>
+      <rpm:entry name="kubeadm(x86-64)" flags="EQ" epoch="0" ver="1.9.3" rel="0"></rpm:entry>
+    </rpm:provides>
+    <rpm:requires>
+      <rpm:entry name="kubectl" flags="GE" epoch="0" ver="1.6.0"></rpm:entry>
+      <rpm:entry name="kubelet" flags="GE" epoch="0" ver="1.6.0"></rpm:entry>
+      <rpm:entry name="kubernetes-cni"></rpm:entry>
+    </rpm:requires>
+    <file>/etc/systemd/system/kubelet.service.d/10-kubeadm.conf</file>
+    <file>/usr/bin/kubeadm</file>
+  </format>
+</package><package type="rpm">
+  <name>kubeadm</name>
+  <arch>x86_64</arch>
+  <version epoch="0" ver="1.9.4" rel="0"></version>
+  <checksum type="sha256" pkgid="YES">12f95589196fb1331fb136084c16dcc647ef9db391307a64f6a23391a7afc6de</checksum>
+  <summary>Command-line utility for administering a Kubernetes cluster.</summary>
+  <description>Command-line utility for administering a Kubernetes cluster.</description>
+  <packager></packager>
+  <url>https://kubernetes.io</url>
+  <time file="0" build="1520883534"></time>
+  <size package="17315142" installed="104788984" archive="104789404"></size>
+  <location href="../../pool/12f95589196fb1331fb136084c16dcc647ef9db391307a64f6a23391a7afc6de-kubeadm-1.9.4-0.x86_64.rpm"></location>
+  <format>
+    <rpm:license>ASL 2.0</rpm:license>
+    <rpm:vendor></rpm:vendor>
+    <rpm:group>Unspecified</rpm:group>
+    <rpm:buildhost>56d20c1218ce</rpm:buildhost>
+    <rpm:sourcerpm>kubelet-1.9.4-0.src.rpm</rpm:sourcerpm>
+    <rpm:header-range start="5024" end="9478"></rpm:header-range>
+    <rpm:provides>
+      <rpm:entry name="kubeadm" flags="EQ" epoch="0" ver="1.9.4" rel="0"></rpm:entry>
+      <rpm:entry name="kubeadm(x86-64)" flags="EQ" epoch="0" ver="1.9.4" rel="0"></rpm:entry>
+    </rpm:provides>
+    <rpm:requires>
+      <rpm:entry name="kubectl" flags="GE" epoch="0" ver="1.6.0"></rpm:entry>
+      <rpm:entry name="kubelet" flags="GE" epoch="0" ver="1.6.0"></rpm:entry>
+      <rpm:entry name="kubernetes-cni"></rpm:entry>
+    </rpm:requires>
+    <file>/etc/systemd/system/kubelet.service.d/10-kubeadm.conf</file>
+    <file>/usr/bin/kubeadm</file>
+  </format>
+</package><package type="rpm">
+  <name>kubeadm</name>
+  <arch>x86_64</arch>
+  <version epoch="0" ver="1.9.5" rel="0"></version>
+  <checksum type="sha256" pkgid="YES">4c45f9cada16d14ffd030aade7728b8ac5d148be70206cd3fbeb4188ee790f00</checksum>
+  <summary>Command-line utility for administering a Kubernetes cluster.</summary>
+  <description>Command-line utility for administering a Kubernetes cluster.</description>
+  <packager></packager>
+  <url>https://kubernetes.io</url>
+  <time file="0" build="1521489663"></time>
+  <size package="17318434" installed="104786104" archive="104786524"></size>
+  <location href="../../pool/4c45f9cada16d14ffd030aade7728b8ac5d148be70206cd3fbeb4188ee790f00-kubeadm-1.9.5-0.x86_64.rpm"></location>
+  <format>
+    <rpm:license>ASL 2.0</rpm:license>
+    <rpm:vendor></rpm:vendor>
+    <rpm:group>Unspecified</rpm:group>
+    <rpm:buildhost>63bb0045c057</rpm:buildhost>
+    <rpm:sourcerpm>kubelet-1.9.5-0.src.rpm</rpm:sourcerpm>
+    <rpm:header-range start="5024" end="9478"></rpm:header-range>
+    <rpm:provides>
+      <rpm:entry name="kubeadm" flags="EQ" epoch="0" ver="1.9.5" rel="0"></rpm:entry>
+      <rpm:entry name="kubeadm(x86-64)" flags="EQ" epoch="0" ver="1.9.5" rel="0"></rpm:entry>
+    </rpm:provides>
+    <rpm:requires>
+      <rpm:entry name="kubectl" flags="GE" epoch="0" ver="1.6.0"></rpm:entry>
+      <rpm:entry name="kubelet" flags="GE" epoch="0" ver="1.6.0"></rpm:entry>
+      <rpm:entry name="kubernetes-cni"></rpm:entry>
+    </rpm:requires>
+    <file>/etc/systemd/system/kubelet.service.d/10-kubeadm.conf</file>
+    <file>/usr/bin/kubeadm</file>
+  </format>
+</package><package type="rpm">
+  <name>kubeadm</name>
+  <arch>x86_64</arch>
+  <version epoch="0" ver="1.9.6" rel="0"></version>
+  <checksum type="sha256" pkgid="YES">f56f3294d633ecfa7f2aac506f7267c00547d4c529b134bc4698a563402897c3</checksum>
+  <summary>Command-line utility for administering a Kubernetes cluster.</summary>
+  <description>Command-line utility for administering a Kubernetes cluster.</description>
+  <packager></packager>
+  <url>https://kubernetes.io</url>
+  <time file="0" build="1521660629"></time>
+  <size package="17311518" installed="104786104" archive="104786524"></size>
+  <location href="../../pool/f56f3294d633ecfa7f2aac506f7267c00547d4c529b134bc4698a563402897c3-kubeadm-1.9.6-0.x86_64.rpm"></location>
+  <format>
+    <rpm:license>ASL 2.0</rpm:license>
+    <rpm:vendor></rpm:vendor>
+    <rpm:group>Unspecified</rpm:group>
+    <rpm:buildhost>377aaa72916c</rpm:buildhost>
+    <rpm:sourcerpm>kubelet-1.9.6-0.src.rpm</rpm:sourcerpm>
+    <rpm:header-range start="5024" end="9478"></rpm:header-range>
+    <rpm:provides>
+      <rpm:entry name="kubeadm" flags="EQ" epoch="0" ver="1.9.6" rel="0"></rpm:entry>
+      <rpm:entry name="kubeadm(x86-64)" flags="EQ" epoch="0" ver="1.9.6" rel="0"></rpm:entry>
     </rpm:provides>
     <rpm:requires>
       <rpm:entry name="kubectl" flags="GE" epoch="0" ver="1.6.0"></rpm:entry>
@@ -1732,6 +2135,56 @@
 </package><package type="rpm">
   <name>kubectl</name>
   <arch>x86_64</arch>
+  <version epoch="0" ver="1.7.14" rel="0"></version>
+  <checksum type="sha256" pkgid="YES">4919fb3d1a5908461418f8a901c1c89bfd37e3418d72bbd4a8a215104015dae6</checksum>
+  <summary>Command-line utility for interacting with a Kubernetes cluster.</summary>
+  <description>Command-line utility for interacting with a Kubernetes cluster.</description>
+  <packager></packager>
+  <url>https://kubernetes.io</url>
+  <time file="0" build="1520885407"></time>
+  <size package="9362258" installed="51971904" archive="51972156"></size>
+  <location href="../../pool/4919fb3d1a5908461418f8a901c1c89bfd37e3418d72bbd4a8a215104015dae6-kubectl-1.7.14-0.x86_64.rpm"></location>
+  <format>
+    <rpm:license>ASL 2.0</rpm:license>
+    <rpm:vendor></rpm:vendor>
+    <rpm:group>Unspecified</rpm:group>
+    <rpm:buildhost>f767502849be</rpm:buildhost>
+    <rpm:sourcerpm>kubelet-1.7.14-0.src.rpm</rpm:sourcerpm>
+    <rpm:header-range start="5024" end="9258"></rpm:header-range>
+    <rpm:provides>
+      <rpm:entry name="kubectl" flags="EQ" epoch="0" ver="1.7.14" rel="0"></rpm:entry>
+      <rpm:entry name="kubectl(x86-64)" flags="EQ" epoch="0" ver="1.7.14" rel="0"></rpm:entry>
+    </rpm:provides>
+    <file>/usr/bin/kubectl</file>
+  </format>
+</package><package type="rpm">
+  <name>kubectl</name>
+  <arch>x86_64</arch>
+  <version epoch="0" ver="1.7.15" rel="0"></version>
+  <checksum type="sha256" pkgid="YES">5e509f4b46906b21ec01844d1566374b2699ea2e27f82c7902df6e94381c516e</checksum>
+  <summary>Command-line utility for interacting with a Kubernetes cluster.</summary>
+  <description>Command-line utility for interacting with a Kubernetes cluster.</description>
+  <packager></packager>
+  <url>https://kubernetes.io</url>
+  <time file="0" build="1521497202"></time>
+  <size package="9362258" installed="51971904" archive="51972156"></size>
+  <location href="../../pool/5e509f4b46906b21ec01844d1566374b2699ea2e27f82c7902df6e94381c516e-kubectl-1.7.15-0.x86_64.rpm"></location>
+  <format>
+    <rpm:license>ASL 2.0</rpm:license>
+    <rpm:vendor></rpm:vendor>
+    <rpm:group>Unspecified</rpm:group>
+    <rpm:buildhost>be1233d80521</rpm:buildhost>
+    <rpm:sourcerpm>kubelet-1.7.15-0.src.rpm</rpm:sourcerpm>
+    <rpm:header-range start="5024" end="9258"></rpm:header-range>
+    <rpm:provides>
+      <rpm:entry name="kubectl" flags="EQ" epoch="0" ver="1.7.15" rel="0"></rpm:entry>
+      <rpm:entry name="kubectl(x86-64)" flags="EQ" epoch="0" ver="1.7.15" rel="0"></rpm:entry>
+    </rpm:provides>
+    <file>/usr/bin/kubectl</file>
+  </format>
+</package><package type="rpm">
+  <name>kubectl</name>
+  <arch>x86_64</arch>
   <version epoch="0" ver="1.8.0" rel="0"></version>
   <checksum type="sha256" pkgid="YES">582709dfb1c59f85c78f7db2c7609a1f3bf7308b73255bdbc910695b31b8660f</checksum>
   <summary>Command-line utility for interacting with a Kubernetes cluster.</summary>
@@ -1882,6 +2335,131 @@
 </package><package type="rpm">
   <name>kubectl</name>
   <arch>x86_64</arch>
+  <version epoch="0" ver="1.8.6" rel="0"></version>
+  <checksum type="sha256" pkgid="YES">432a40bb7dbe35e3c85cd926b015269b8de54809ad0f14ceecfd5a05acbe44a4</checksum>
+  <summary>Command-line utility for interacting with a Kubernetes cluster.</summary>
+  <description>Command-line utility for interacting with a Kubernetes cluster.</description>
+  <packager></packager>
+  <url>https://kubernetes.io</url>
+  <time file="0" build="1513893552"></time>
+  <size package="7622054" installed="37367568" archive="37367820"></size>
+  <location href="../../pool/432a40bb7dbe35e3c85cd926b015269b8de54809ad0f14ceecfd5a05acbe44a4-kubectl-1.8.6-0.x86_64.rpm"></location>
+  <format>
+    <rpm:license>ASL 2.0</rpm:license>
+    <rpm:vendor></rpm:vendor>
+    <rpm:group>Unspecified</rpm:group>
+    <rpm:buildhost>eebea5da7e7e</rpm:buildhost>
+    <rpm:sourcerpm>kubelet-1.8.6-0.src.rpm</rpm:sourcerpm>
+    <rpm:header-range start="5024" end="9182"></rpm:header-range>
+    <rpm:provides>
+      <rpm:entry name="kubectl" flags="EQ" epoch="0" ver="1.8.6" rel="0"></rpm:entry>
+      <rpm:entry name="kubectl(x86-64)" flags="EQ" epoch="0" ver="1.8.6" rel="0"></rpm:entry>
+    </rpm:provides>
+    <file>/usr/bin/kubectl</file>
+  </format>
+</package><package type="rpm">
+  <name>kubectl</name>
+  <arch>x86_64</arch>
+  <version epoch="0" ver="1.8.7" rel="0"></version>
+  <checksum type="sha256" pkgid="YES">d8cbd7dd54e61c27d437cc32f2af5168ae693b888a7fa94f86583be94e9e8fbb</checksum>
+  <summary>Command-line utility for interacting with a Kubernetes cluster.</summary>
+  <description>Command-line utility for interacting with a Kubernetes cluster.</description>
+  <packager></packager>
+  <url>https://kubernetes.io</url>
+  <time file="0" build="1516816703"></time>
+  <size package="7624642" installed="37448000" archive="37448252"></size>
+  <location href="../../pool/d8cbd7dd54e61c27d437cc32f2af5168ae693b888a7fa94f86583be94e9e8fbb-kubectl-1.8.7-0.x86_64.rpm"></location>
+  <format>
+    <rpm:license>ASL 2.0</rpm:license>
+    <rpm:vendor></rpm:vendor>
+    <rpm:group>Unspecified</rpm:group>
+    <rpm:buildhost>9f14a91e1cc9</rpm:buildhost>
+    <rpm:sourcerpm>kubelet-1.8.7-0.src.rpm</rpm:sourcerpm>
+    <rpm:header-range start="5024" end="9254"></rpm:header-range>
+    <rpm:provides>
+      <rpm:entry name="kubectl" flags="EQ" epoch="0" ver="1.8.7" rel="0"></rpm:entry>
+      <rpm:entry name="kubectl(x86-64)" flags="EQ" epoch="0" ver="1.8.7" rel="0"></rpm:entry>
+    </rpm:provides>
+    <file>/usr/bin/kubectl</file>
+  </format>
+</package><package type="rpm">
+  <name>kubectl</name>
+  <arch>x86_64</arch>
+  <version epoch="0" ver="1.8.8" rel="0"></version>
+  <checksum type="sha256" pkgid="YES">bb633ec4b637d8dbfdba4b50f427dffd1347ae8bb44c49ffc75809d6d052eab9</checksum>
+  <summary>Command-line utility for interacting with a Kubernetes cluster.</summary>
+  <description>Command-line utility for interacting with a Kubernetes cluster.</description>
+  <packager></packager>
+  <url>https://kubernetes.io</url>
+  <time file="0" build="1518248733"></time>
+  <size package="7625926" installed="37451992" archive="37452244"></size>
+  <location href="../../pool/bb633ec4b637d8dbfdba4b50f427dffd1347ae8bb44c49ffc75809d6d052eab9-kubectl-1.8.8-0.x86_64.rpm"></location>
+  <format>
+    <rpm:license>ASL 2.0</rpm:license>
+    <rpm:vendor></rpm:vendor>
+    <rpm:group>Unspecified</rpm:group>
+    <rpm:buildhost>64145c5c1581</rpm:buildhost>
+    <rpm:sourcerpm>kubelet-1.8.8-0.src.rpm</rpm:sourcerpm>
+    <rpm:header-range start="5024" end="9254"></rpm:header-range>
+    <rpm:provides>
+      <rpm:entry name="kubectl" flags="EQ" epoch="0" ver="1.8.8" rel="0"></rpm:entry>
+      <rpm:entry name="kubectl(x86-64)" flags="EQ" epoch="0" ver="1.8.8" rel="0"></rpm:entry>
+    </rpm:provides>
+    <file>/usr/bin/kubectl</file>
+  </format>
+</package><package type="rpm">
+  <name>kubectl</name>
+  <arch>x86_64</arch>
+  <version epoch="0" ver="1.8.9" rel="0"></version>
+  <checksum type="sha256" pkgid="YES">d8701448da60b3b00bc02930f5418ad19e8e9da398442e6d2b806e6d9e2cdc74</checksum>
+  <summary>Command-line utility for interacting with a Kubernetes cluster.</summary>
+  <description>Command-line utility for interacting with a Kubernetes cluster.</description>
+  <packager></packager>
+  <url>https://kubernetes.io</url>
+  <time file="0" build="1520881571"></time>
+  <size package="7626138" installed="37456448" archive="37456700"></size>
+  <location href="../../pool/d8701448da60b3b00bc02930f5418ad19e8e9da398442e6d2b806e6d9e2cdc74-kubectl-1.8.9-0.x86_64.rpm"></location>
+  <format>
+    <rpm:license>ASL 2.0</rpm:license>
+    <rpm:vendor></rpm:vendor>
+    <rpm:group>Unspecified</rpm:group>
+    <rpm:buildhost>206b70cb9165</rpm:buildhost>
+    <rpm:sourcerpm>kubelet-1.8.9-0.src.rpm</rpm:sourcerpm>
+    <rpm:header-range start="5024" end="9254"></rpm:header-range>
+    <rpm:provides>
+      <rpm:entry name="kubectl" flags="EQ" epoch="0" ver="1.8.9" rel="0"></rpm:entry>
+      <rpm:entry name="kubectl(x86-64)" flags="EQ" epoch="0" ver="1.8.9" rel="0"></rpm:entry>
+    </rpm:provides>
+    <file>/usr/bin/kubectl</file>
+  </format>
+</package><package type="rpm">
+  <name>kubectl</name>
+  <arch>x86_64</arch>
+  <version epoch="0" ver="1.8.10" rel="0"></version>
+  <checksum type="sha256" pkgid="YES">83b1b027b99b38cb67713bd4c60e7fc3f08d2a60f53b28fe7e6ccc64a47bb1f2</checksum>
+  <summary>Command-line utility for interacting with a Kubernetes cluster.</summary>
+  <description>Command-line utility for interacting with a Kubernetes cluster.</description>
+  <packager></packager>
+  <url>https://kubernetes.io</url>
+  <time file="0" build="1521492119"></time>
+  <size package="7626102" installed="37456448" archive="37456700"></size>
+  <location href="../../pool/83b1b027b99b38cb67713bd4c60e7fc3f08d2a60f53b28fe7e6ccc64a47bb1f2-kubectl-1.8.10-0.x86_64.rpm"></location>
+  <format>
+    <rpm:license>ASL 2.0</rpm:license>
+    <rpm:vendor></rpm:vendor>
+    <rpm:group>Unspecified</rpm:group>
+    <rpm:buildhost>888801c201a4</rpm:buildhost>
+    <rpm:sourcerpm>kubelet-1.8.10-0.src.rpm</rpm:sourcerpm>
+    <rpm:header-range start="5024" end="9258"></rpm:header-range>
+    <rpm:provides>
+      <rpm:entry name="kubectl" flags="EQ" epoch="0" ver="1.8.10" rel="0"></rpm:entry>
+      <rpm:entry name="kubectl(x86-64)" flags="EQ" epoch="0" ver="1.8.10" rel="0"></rpm:entry>
+    </rpm:provides>
+    <file>/usr/bin/kubectl</file>
+  </format>
+</package><package type="rpm">
+  <name>kubectl</name>
+  <arch>x86_64</arch>
   <version epoch="0" ver="1.9.0" rel="0"></version>
   <checksum type="sha256" pkgid="YES">bc390a3d43256791bfb844696e7215fd7ad8a09f70a42667dab4997415a6ba75</checksum>
   <summary>Command-line utility for interacting with a Kubernetes cluster.</summary>
@@ -1901,6 +2479,156 @@
     <rpm:provides>
       <rpm:entry name="kubectl" flags="EQ" epoch="0" ver="1.9.0" rel="0"></rpm:entry>
       <rpm:entry name="kubectl(x86-64)" flags="EQ" epoch="0" ver="1.9.0" rel="0"></rpm:entry>
+    </rpm:provides>
+    <file>/usr/bin/kubectl</file>
+  </format>
+</package><package type="rpm">
+  <name>kubectl</name>
+  <arch>x86_64</arch>
+  <version epoch="0" ver="1.9.1" rel="0"></version>
+  <checksum type="sha256" pkgid="YES">331270b6ba931a571640b0552d8737631cf30cc9cde14eaa45a5acd2afb8f304</checksum>
+  <summary>Command-line utility for interacting with a Kubernetes cluster.</summary>
+  <description>Command-line utility for interacting with a Kubernetes cluster.</description>
+  <packager></packager>
+  <url>https://kubernetes.io</url>
+  <time file="0" build="1515100003"></time>
+  <size package="9309842" installed="48668152" archive="48668404"></size>
+  <location href="../../pool/331270b6ba931a571640b0552d8737631cf30cc9cde14eaa45a5acd2afb8f304-kubectl-1.9.1-0.x86_64.rpm"></location>
+  <format>
+    <rpm:license>ASL 2.0</rpm:license>
+    <rpm:vendor></rpm:vendor>
+    <rpm:group>Unspecified</rpm:group>
+    <rpm:buildhost>32b5636c8754</rpm:buildhost>
+    <rpm:sourcerpm>kubelet-1.9.1-0.src.rpm</rpm:sourcerpm>
+    <rpm:header-range start="4336" end="8566"></rpm:header-range>
+    <rpm:provides>
+      <rpm:entry name="kubectl" flags="EQ" epoch="0" ver="1.9.1" rel="0"></rpm:entry>
+      <rpm:entry name="kubectl(x86-64)" flags="EQ" epoch="0" ver="1.9.1" rel="0"></rpm:entry>
+    </rpm:provides>
+    <file>/usr/bin/kubectl</file>
+  </format>
+</package><package type="rpm">
+  <name>kubectl</name>
+  <arch>x86_64</arch>
+  <version epoch="0" ver="1.9.2" rel="0"></version>
+  <checksum type="sha256" pkgid="YES">2dd849a46b6ca33d527c707136f6f66dfc12887640171333f3bb8fab9f95faac</checksum>
+  <summary>Command-line utility for interacting with a Kubernetes cluster.</summary>
+  <description>Command-line utility for interacting with a Kubernetes cluster.</description>
+  <packager></packager>
+  <url>https://kubernetes.io</url>
+  <time file="0" build="1516316493"></time>
+  <size package="9310530" installed="48668152" archive="48668404"></size>
+  <location href="../../pool/2dd849a46b6ca33d527c707136f6f66dfc12887640171333f3bb8fab9f95faac-kubectl-1.9.2-0.x86_64.rpm"></location>
+  <format>
+    <rpm:license>ASL 2.0</rpm:license>
+    <rpm:vendor></rpm:vendor>
+    <rpm:group>Unspecified</rpm:group>
+    <rpm:buildhost>b616eeaad01a</rpm:buildhost>
+    <rpm:sourcerpm>kubelet-1.9.2-0.src.rpm</rpm:sourcerpm>
+    <rpm:header-range start="5024" end="9254"></rpm:header-range>
+    <rpm:provides>
+      <rpm:entry name="kubectl" flags="EQ" epoch="0" ver="1.9.2" rel="0"></rpm:entry>
+      <rpm:entry name="kubectl(x86-64)" flags="EQ" epoch="0" ver="1.9.2" rel="0"></rpm:entry>
+    </rpm:provides>
+    <file>/usr/bin/kubectl</file>
+  </format>
+</package><package type="rpm">
+  <name>kubectl</name>
+  <arch>x86_64</arch>
+  <version epoch="0" ver="1.9.3" rel="0"></version>
+  <checksum type="sha256" pkgid="YES">eb54809406a7bc73f1996ce669323b65f0846d1830ef04a1e69e66f633a627a7</checksum>
+  <summary>Command-line utility for interacting with a Kubernetes cluster.</summary>
+  <description>Command-line utility for interacting with a Kubernetes cluster.</description>
+  <packager></packager>
+  <url>https://kubernetes.io</url>
+  <time file="0" build="1518216106"></time>
+  <size package="9310194" installed="48668048" archive="48668300"></size>
+  <location href="../../pool/eb54809406a7bc73f1996ce669323b65f0846d1830ef04a1e69e66f633a627a7-kubectl-1.9.3-0.x86_64.rpm"></location>
+  <format>
+    <rpm:license>ASL 2.0</rpm:license>
+    <rpm:vendor></rpm:vendor>
+    <rpm:group>Unspecified</rpm:group>
+    <rpm:buildhost>5db4be127d41</rpm:buildhost>
+    <rpm:sourcerpm>kubelet-1.9.3-0.src.rpm</rpm:sourcerpm>
+    <rpm:header-range start="5024" end="9254"></rpm:header-range>
+    <rpm:provides>
+      <rpm:entry name="kubectl" flags="EQ" epoch="0" ver="1.9.3" rel="0"></rpm:entry>
+      <rpm:entry name="kubectl(x86-64)" flags="EQ" epoch="0" ver="1.9.3" rel="0"></rpm:entry>
+    </rpm:provides>
+    <file>/usr/bin/kubectl</file>
+  </format>
+</package><package type="rpm">
+  <name>kubectl</name>
+  <arch>x86_64</arch>
+  <version epoch="0" ver="1.9.4" rel="0"></version>
+  <checksum type="sha256" pkgid="YES">9566533de10dab5d80d8e7a8799ffea78e2b0f43e838e3b9d08f5e51c4dbc7ba</checksum>
+  <summary>Command-line utility for interacting with a Kubernetes cluster.</summary>
+  <description>Command-line utility for interacting with a Kubernetes cluster.</description>
+  <packager></packager>
+  <url>https://kubernetes.io</url>
+  <time file="0" build="1520883534"></time>
+  <size package="9310478" installed="48756904" archive="48757156"></size>
+  <location href="../../pool/9566533de10dab5d80d8e7a8799ffea78e2b0f43e838e3b9d08f5e51c4dbc7ba-kubectl-1.9.4-0.x86_64.rpm"></location>
+  <format>
+    <rpm:license>ASL 2.0</rpm:license>
+    <rpm:vendor></rpm:vendor>
+    <rpm:group>Unspecified</rpm:group>
+    <rpm:buildhost>56d20c1218ce</rpm:buildhost>
+    <rpm:sourcerpm>kubelet-1.9.4-0.src.rpm</rpm:sourcerpm>
+    <rpm:header-range start="5024" end="9254"></rpm:header-range>
+    <rpm:provides>
+      <rpm:entry name="kubectl" flags="EQ" epoch="0" ver="1.9.4" rel="0"></rpm:entry>
+      <rpm:entry name="kubectl(x86-64)" flags="EQ" epoch="0" ver="1.9.4" rel="0"></rpm:entry>
+    </rpm:provides>
+    <file>/usr/bin/kubectl</file>
+  </format>
+</package><package type="rpm">
+  <name>kubectl</name>
+  <arch>x86_64</arch>
+  <version epoch="0" ver="1.9.5" rel="0"></version>
+  <checksum type="sha256" pkgid="YES">b8fb4f730cd9b661657b8baf0119e291add74e753d50e313843cfee6e0e65577</checksum>
+  <summary>Command-line utility for interacting with a Kubernetes cluster.</summary>
+  <description>Command-line utility for interacting with a Kubernetes cluster.</description>
+  <packager></packager>
+  <url>https://kubernetes.io</url>
+  <time file="0" build="1521489663"></time>
+  <size package="9311434" installed="48757080" archive="48757332"></size>
+  <location href="../../pool/b8fb4f730cd9b661657b8baf0119e291add74e753d50e313843cfee6e0e65577-kubectl-1.9.5-0.x86_64.rpm"></location>
+  <format>
+    <rpm:license>ASL 2.0</rpm:license>
+    <rpm:vendor></rpm:vendor>
+    <rpm:group>Unspecified</rpm:group>
+    <rpm:buildhost>63bb0045c057</rpm:buildhost>
+    <rpm:sourcerpm>kubelet-1.9.5-0.src.rpm</rpm:sourcerpm>
+    <rpm:header-range start="5024" end="9254"></rpm:header-range>
+    <rpm:provides>
+      <rpm:entry name="kubectl" flags="EQ" epoch="0" ver="1.9.5" rel="0"></rpm:entry>
+      <rpm:entry name="kubectl(x86-64)" flags="EQ" epoch="0" ver="1.9.5" rel="0"></rpm:entry>
+    </rpm:provides>
+    <file>/usr/bin/kubectl</file>
+  </format>
+</package><package type="rpm">
+  <name>kubectl</name>
+  <arch>x86_64</arch>
+  <version epoch="0" ver="1.9.6" rel="0"></version>
+  <checksum type="sha256" pkgid="YES">c9a30a9b3cd4f8b83a3ffcbfe5a23b32c0c78ec90a8e67505ba4ae31ed1d7a69</checksum>
+  <summary>Command-line utility for interacting with a Kubernetes cluster.</summary>
+  <description>Command-line utility for interacting with a Kubernetes cluster.</description>
+  <packager></packager>
+  <url>https://kubernetes.io</url>
+  <time file="0" build="1521660629"></time>
+  <size package="9311818" installed="48757144" archive="48757396"></size>
+  <location href="../../pool/c9a30a9b3cd4f8b83a3ffcbfe5a23b32c0c78ec90a8e67505ba4ae31ed1d7a69-kubectl-1.9.6-0.x86_64.rpm"></location>
+  <format>
+    <rpm:license>ASL 2.0</rpm:license>
+    <rpm:vendor></rpm:vendor>
+    <rpm:group>Unspecified</rpm:group>
+    <rpm:buildhost>377aaa72916c</rpm:buildhost>
+    <rpm:sourcerpm>kubelet-1.9.6-0.src.rpm</rpm:sourcerpm>
+    <rpm:header-range start="5024" end="9254"></rpm:header-range>
+    <rpm:provides>
+      <rpm:entry name="kubectl" flags="EQ" epoch="0" ver="1.9.6" rel="0"></rpm:entry>
+      <rpm:entry name="kubectl(x86-64)" flags="EQ" epoch="0" ver="1.9.6" rel="0"></rpm:entry>
     </rpm:provides>
     <file>/usr/bin/kubectl</file>
   </format>
@@ -4229,6 +4957,92 @@
 </package><package type="rpm">
   <name>kubelet</name>
   <arch>x86_64</arch>
+  <version epoch="0" ver="1.7.14" rel="0"></version>
+  <checksum type="sha256" pkgid="YES">5c0e31c65e992e0f20cdb3b783d5f00293f0690cafa045a97f4af86cd861c39f</checksum>
+  <summary>Container cluster management</summary>
+  <description>The node agent of Kubernetes, the container cluster manager.</description>
+  <packager></packager>
+  <url>https://kubernetes.io</url>
+  <time file="0" build="1520885407"></time>
+  <size package="17438698" installed="100891837" archive="100892380"></size>
+  <location href="../../pool/5c0e31c65e992e0f20cdb3b783d5f00293f0690cafa045a97f4af86cd861c39f-kubelet-1.7.14-0.x86_64.rpm"></location>
+  <format>
+    <rpm:license>ASL 2.0</rpm:license>
+    <rpm:vendor></rpm:vendor>
+    <rpm:group>Unspecified</rpm:group>
+    <rpm:buildhost>f767502849be</rpm:buildhost>
+    <rpm:sourcerpm>kubelet-1.7.14-0.src.rpm</rpm:sourcerpm>
+    <rpm:header-range start="5024" end="10102"></rpm:header-range>
+    <rpm:provides>
+      <rpm:entry name="kubelet" flags="EQ" epoch="0" ver="1.7.14" rel="0"></rpm:entry>
+      <rpm:entry name="kubelet(x86-64)" flags="EQ" epoch="0" ver="1.7.14" rel="0"></rpm:entry>
+    </rpm:provides>
+    <rpm:requires>
+      <rpm:entry name="ebtables"></rpm:entry>
+      <rpm:entry name="ethtool"></rpm:entry>
+      <rpm:entry name="iproute"></rpm:entry>
+      <rpm:entry name="iptables" flags="GE" epoch="0" ver="1.4.21"></rpm:entry>
+      <rpm:entry name="kubernetes-cni" flags="EQ" epoch="0" ver="0.5.1"></rpm:entry>
+      <rpm:entry name="libc.so.6(GLIBC_2.7)(64bit)"></rpm:entry>
+      <rpm:entry name="libdl.so.2()(64bit)"></rpm:entry>
+      <rpm:entry name="libdl.so.2(GLIBC_2.2.5)(64bit)"></rpm:entry>
+      <rpm:entry name="libpthread.so.0()(64bit)"></rpm:entry>
+      <rpm:entry name="libpthread.so.0(GLIBC_2.2.5)(64bit)"></rpm:entry>
+      <rpm:entry name="libpthread.so.0(GLIBC_2.3.2)(64bit)"></rpm:entry>
+      <rpm:entry name="rtld(GNU_HASH)"></rpm:entry>
+      <rpm:entry name="socat"></rpm:entry>
+      <rpm:entry name="util-linux"></rpm:entry>
+    </rpm:requires>
+    <file>/etc/systemd/system/kubelet.service</file>
+    <file>/usr/bin/kubelet</file>
+    <file type="dir">/etc/kubernetes/manifests</file>
+  </format>
+</package><package type="rpm">
+  <name>kubelet</name>
+  <arch>x86_64</arch>
+  <version epoch="0" ver="1.7.15" rel="0"></version>
+  <checksum type="sha256" pkgid="YES">8ebb830fda83dc4d4d0d8703818d997174c2be7b2f370da7aac768f0e46eaab6</checksum>
+  <summary>Container cluster management</summary>
+  <description>The node agent of Kubernetes, the container cluster manager.</description>
+  <packager></packager>
+  <url>https://kubernetes.io</url>
+  <time file="0" build="1521497202"></time>
+  <size package="17426898" installed="100887197" archive="100887740"></size>
+  <location href="../../pool/8ebb830fda83dc4d4d0d8703818d997174c2be7b2f370da7aac768f0e46eaab6-kubelet-1.7.15-0.x86_64.rpm"></location>
+  <format>
+    <rpm:license>ASL 2.0</rpm:license>
+    <rpm:vendor></rpm:vendor>
+    <rpm:group>Unspecified</rpm:group>
+    <rpm:buildhost>be1233d80521</rpm:buildhost>
+    <rpm:sourcerpm>kubelet-1.7.15-0.src.rpm</rpm:sourcerpm>
+    <rpm:header-range start="5024" end="10102"></rpm:header-range>
+    <rpm:provides>
+      <rpm:entry name="kubelet" flags="EQ" epoch="0" ver="1.7.15" rel="0"></rpm:entry>
+      <rpm:entry name="kubelet(x86-64)" flags="EQ" epoch="0" ver="1.7.15" rel="0"></rpm:entry>
+    </rpm:provides>
+    <rpm:requires>
+      <rpm:entry name="ebtables"></rpm:entry>
+      <rpm:entry name="ethtool"></rpm:entry>
+      <rpm:entry name="iproute"></rpm:entry>
+      <rpm:entry name="iptables" flags="GE" epoch="0" ver="1.4.21"></rpm:entry>
+      <rpm:entry name="kubernetes-cni" flags="EQ" epoch="0" ver="0.5.1"></rpm:entry>
+      <rpm:entry name="libc.so.6(GLIBC_2.7)(64bit)"></rpm:entry>
+      <rpm:entry name="libdl.so.2()(64bit)"></rpm:entry>
+      <rpm:entry name="libdl.so.2(GLIBC_2.2.5)(64bit)"></rpm:entry>
+      <rpm:entry name="libpthread.so.0()(64bit)"></rpm:entry>
+      <rpm:entry name="libpthread.so.0(GLIBC_2.2.5)(64bit)"></rpm:entry>
+      <rpm:entry name="libpthread.so.0(GLIBC_2.3.2)(64bit)"></rpm:entry>
+      <rpm:entry name="rtld(GNU_HASH)"></rpm:entry>
+      <rpm:entry name="socat"></rpm:entry>
+      <rpm:entry name="util-linux"></rpm:entry>
+    </rpm:requires>
+    <file>/etc/systemd/system/kubelet.service</file>
+    <file>/usr/bin/kubelet</file>
+    <file type="dir">/etc/kubernetes/manifests</file>
+  </format>
+</package><package type="rpm">
+  <name>kubelet</name>
+  <arch>x86_64</arch>
   <version epoch="0" ver="1.8.0" rel="0"></version>
   <checksum type="sha256" pkgid="YES">d51b547da5980e2f6bfd33a382779194a0eacecac999ca726f85ef76183a9033</checksum>
   <summary>Container cluster management</summary>
@@ -4745,6 +5559,221 @@
 </package><package type="rpm">
   <name>kubelet</name>
   <arch>x86_64</arch>
+  <version epoch="0" ver="1.8.6" rel="0"></version>
+  <checksum type="sha256" pkgid="YES">f4011419193577161ae891a1b26986cae5f5e588941340db3abb771e2a677de7</checksum>
+  <summary>Container cluster management</summary>
+  <description>The node agent of Kubernetes, the container cluster manager.</description>
+  <packager></packager>
+  <url>https://kubernetes.io</url>
+  <time file="0" build="1513893552"></time>
+  <size package="16581202" installed="93823125" archive="93823668"></size>
+  <location href="../../pool/f4011419193577161ae891a1b26986cae5f5e588941340db3abb771e2a677de7-kubelet-1.8.6-0.x86_64.rpm"></location>
+  <format>
+    <rpm:license>ASL 2.0</rpm:license>
+    <rpm:vendor></rpm:vendor>
+    <rpm:group>Unspecified</rpm:group>
+    <rpm:buildhost>eebea5da7e7e</rpm:buildhost>
+    <rpm:sourcerpm>kubelet-1.8.6-0.src.rpm</rpm:sourcerpm>
+    <rpm:header-range start="5024" end="9982"></rpm:header-range>
+    <rpm:provides>
+      <rpm:entry name="kubelet" flags="EQ" epoch="0" ver="1.8.6" rel="0"></rpm:entry>
+      <rpm:entry name="kubelet(x86-64)" flags="EQ" epoch="0" ver="1.8.6" rel="0"></rpm:entry>
+    </rpm:provides>
+    <rpm:requires>
+      <rpm:entry name="ebtables"></rpm:entry>
+      <rpm:entry name="ethtool"></rpm:entry>
+      <rpm:entry name="iproute"></rpm:entry>
+      <rpm:entry name="iptables" flags="GE" epoch="0" ver="1.4.21"></rpm:entry>
+      <rpm:entry name="kubernetes-cni" flags="EQ" epoch="0" ver="0.5.1"></rpm:entry>
+      <rpm:entry name="libc.so.6(GLIBC_2.2.5)(64bit)"></rpm:entry>
+      <rpm:entry name="libdl.so.2()(64bit)"></rpm:entry>
+      <rpm:entry name="libdl.so.2(GLIBC_2.2.5)(64bit)"></rpm:entry>
+      <rpm:entry name="libpthread.so.0()(64bit)"></rpm:entry>
+      <rpm:entry name="libpthread.so.0(GLIBC_2.2.5)(64bit)"></rpm:entry>
+      <rpm:entry name="libpthread.so.0(GLIBC_2.3.2)(64bit)"></rpm:entry>
+      <rpm:entry name="rtld(GNU_HASH)"></rpm:entry>
+      <rpm:entry name="socat"></rpm:entry>
+      <rpm:entry name="util-linux"></rpm:entry>
+    </rpm:requires>
+    <file>/etc/systemd/system/kubelet.service</file>
+    <file>/usr/bin/kubelet</file>
+    <file type="dir">/etc/kubernetes/manifests</file>
+  </format>
+</package><package type="rpm">
+  <name>kubelet</name>
+  <arch>x86_64</arch>
+  <version epoch="0" ver="1.8.7" rel="0"></version>
+  <checksum type="sha256" pkgid="YES">e2792eaf4f3088dd639feea4b4bbfb0b2f96ac498d7a67c31b47488758ff7633</checksum>
+  <summary>Container cluster management</summary>
+  <description>The node agent of Kubernetes, the container cluster manager.</description>
+  <packager></packager>
+  <url>https://kubernetes.io</url>
+  <time file="0" build="1516816703"></time>
+  <size package="16585378" installed="93982189" archive="93982732"></size>
+  <location href="../../pool/e2792eaf4f3088dd639feea4b4bbfb0b2f96ac498d7a67c31b47488758ff7633-kubelet-1.8.7-0.x86_64.rpm"></location>
+  <format>
+    <rpm:license>ASL 2.0</rpm:license>
+    <rpm:vendor></rpm:vendor>
+    <rpm:group>Unspecified</rpm:group>
+    <rpm:buildhost>9f14a91e1cc9</rpm:buildhost>
+    <rpm:sourcerpm>kubelet-1.8.7-0.src.rpm</rpm:sourcerpm>
+    <rpm:header-range start="5024" end="10054"></rpm:header-range>
+    <rpm:provides>
+      <rpm:entry name="kubelet" flags="EQ" epoch="0" ver="1.8.7" rel="0"></rpm:entry>
+      <rpm:entry name="kubelet(x86-64)" flags="EQ" epoch="0" ver="1.8.7" rel="0"></rpm:entry>
+    </rpm:provides>
+    <rpm:requires>
+      <rpm:entry name="ebtables"></rpm:entry>
+      <rpm:entry name="ethtool"></rpm:entry>
+      <rpm:entry name="iproute"></rpm:entry>
+      <rpm:entry name="iptables" flags="GE" epoch="0" ver="1.4.21"></rpm:entry>
+      <rpm:entry name="kubernetes-cni" flags="EQ" epoch="0" ver="0.5.1"></rpm:entry>
+      <rpm:entry name="libc.so.6(GLIBC_2.2.5)(64bit)"></rpm:entry>
+      <rpm:entry name="libdl.so.2()(64bit)"></rpm:entry>
+      <rpm:entry name="libdl.so.2(GLIBC_2.2.5)(64bit)"></rpm:entry>
+      <rpm:entry name="libpthread.so.0()(64bit)"></rpm:entry>
+      <rpm:entry name="libpthread.so.0(GLIBC_2.2.5)(64bit)"></rpm:entry>
+      <rpm:entry name="libpthread.so.0(GLIBC_2.3.2)(64bit)"></rpm:entry>
+      <rpm:entry name="rtld(GNU_HASH)"></rpm:entry>
+      <rpm:entry name="socat"></rpm:entry>
+      <rpm:entry name="util-linux"></rpm:entry>
+    </rpm:requires>
+    <file>/etc/systemd/system/kubelet.service</file>
+    <file>/usr/bin/kubelet</file>
+    <file type="dir">/etc/kubernetes/manifests</file>
+  </format>
+</package><package type="rpm">
+  <name>kubelet</name>
+  <arch>x86_64</arch>
+  <version epoch="0" ver="1.8.8" rel="0"></version>
+  <checksum type="sha256" pkgid="YES">0e9672058439598e1d6d57ae5bd36007730225f94139cc0f03ddc81ddd798787</checksum>
+  <summary>Container cluster management</summary>
+  <description>The node agent of Kubernetes, the container cluster manager.</description>
+  <packager></packager>
+  <url>https://kubernetes.io</url>
+  <time file="0" build="1518248733"></time>
+  <size package="16587438" installed="93982029" archive="93982572"></size>
+  <location href="../../pool/0e9672058439598e1d6d57ae5bd36007730225f94139cc0f03ddc81ddd798787-kubelet-1.8.8-0.x86_64.rpm"></location>
+  <format>
+    <rpm:license>ASL 2.0</rpm:license>
+    <rpm:vendor></rpm:vendor>
+    <rpm:group>Unspecified</rpm:group>
+    <rpm:buildhost>64145c5c1581</rpm:buildhost>
+    <rpm:sourcerpm>kubelet-1.8.8-0.src.rpm</rpm:sourcerpm>
+    <rpm:header-range start="5024" end="10054"></rpm:header-range>
+    <rpm:provides>
+      <rpm:entry name="kubelet" flags="EQ" epoch="0" ver="1.8.8" rel="0"></rpm:entry>
+      <rpm:entry name="kubelet(x86-64)" flags="EQ" epoch="0" ver="1.8.8" rel="0"></rpm:entry>
+    </rpm:provides>
+    <rpm:requires>
+      <rpm:entry name="ebtables"></rpm:entry>
+      <rpm:entry name="ethtool"></rpm:entry>
+      <rpm:entry name="iproute"></rpm:entry>
+      <rpm:entry name="iptables" flags="GE" epoch="0" ver="1.4.21"></rpm:entry>
+      <rpm:entry name="kubernetes-cni" flags="EQ" epoch="0" ver="0.5.1"></rpm:entry>
+      <rpm:entry name="libc.so.6(GLIBC_2.2.5)(64bit)"></rpm:entry>
+      <rpm:entry name="libdl.so.2()(64bit)"></rpm:entry>
+      <rpm:entry name="libdl.so.2(GLIBC_2.2.5)(64bit)"></rpm:entry>
+      <rpm:entry name="libpthread.so.0()(64bit)"></rpm:entry>
+      <rpm:entry name="libpthread.so.0(GLIBC_2.2.5)(64bit)"></rpm:entry>
+      <rpm:entry name="libpthread.so.0(GLIBC_2.3.2)(64bit)"></rpm:entry>
+      <rpm:entry name="rtld(GNU_HASH)"></rpm:entry>
+      <rpm:entry name="socat"></rpm:entry>
+      <rpm:entry name="util-linux"></rpm:entry>
+    </rpm:requires>
+    <file>/etc/systemd/system/kubelet.service</file>
+    <file>/usr/bin/kubelet</file>
+    <file type="dir">/etc/kubernetes/manifests</file>
+  </format>
+</package><package type="rpm">
+  <name>kubelet</name>
+  <arch>x86_64</arch>
+  <version epoch="0" ver="1.8.9" rel="0"></version>
+  <checksum type="sha256" pkgid="YES">6330c00f0fcefa1ad4e5541abe6ff2682668ec1c34b9116a26c54191203c4d24</checksum>
+  <summary>Container cluster management</summary>
+  <description>The node agent of Kubernetes, the container cluster manager.</description>
+  <packager></packager>
+  <url>https://kubernetes.io</url>
+  <time file="0" build="1520881571"></time>
+  <size package="16603314" installed="94047661" archive="94048204"></size>
+  <location href="../../pool/6330c00f0fcefa1ad4e5541abe6ff2682668ec1c34b9116a26c54191203c4d24-kubelet-1.8.9-0.x86_64.rpm"></location>
+  <format>
+    <rpm:license>ASL 2.0</rpm:license>
+    <rpm:vendor></rpm:vendor>
+    <rpm:group>Unspecified</rpm:group>
+    <rpm:buildhost>206b70cb9165</rpm:buildhost>
+    <rpm:sourcerpm>kubelet-1.8.9-0.src.rpm</rpm:sourcerpm>
+    <rpm:header-range start="5024" end="10054"></rpm:header-range>
+    <rpm:provides>
+      <rpm:entry name="kubelet" flags="EQ" epoch="0" ver="1.8.9" rel="0"></rpm:entry>
+      <rpm:entry name="kubelet(x86-64)" flags="EQ" epoch="0" ver="1.8.9" rel="0"></rpm:entry>
+    </rpm:provides>
+    <rpm:requires>
+      <rpm:entry name="ebtables"></rpm:entry>
+      <rpm:entry name="ethtool"></rpm:entry>
+      <rpm:entry name="iproute"></rpm:entry>
+      <rpm:entry name="iptables" flags="GE" epoch="0" ver="1.4.21"></rpm:entry>
+      <rpm:entry name="kubernetes-cni" flags="EQ" epoch="0" ver="0.5.1"></rpm:entry>
+      <rpm:entry name="libc.so.6(GLIBC_2.2.5)(64bit)"></rpm:entry>
+      <rpm:entry name="libdl.so.2()(64bit)"></rpm:entry>
+      <rpm:entry name="libdl.so.2(GLIBC_2.2.5)(64bit)"></rpm:entry>
+      <rpm:entry name="libpthread.so.0()(64bit)"></rpm:entry>
+      <rpm:entry name="libpthread.so.0(GLIBC_2.2.5)(64bit)"></rpm:entry>
+      <rpm:entry name="libpthread.so.0(GLIBC_2.3.2)(64bit)"></rpm:entry>
+      <rpm:entry name="rtld(GNU_HASH)"></rpm:entry>
+      <rpm:entry name="socat"></rpm:entry>
+      <rpm:entry name="util-linux"></rpm:entry>
+    </rpm:requires>
+    <file>/etc/systemd/system/kubelet.service</file>
+    <file>/usr/bin/kubelet</file>
+    <file type="dir">/etc/kubernetes/manifests</file>
+  </format>
+</package><package type="rpm">
+  <name>kubelet</name>
+  <arch>x86_64</arch>
+  <version epoch="0" ver="1.8.10" rel="0"></version>
+  <checksum type="sha256" pkgid="YES">bb3cbbc83f073688b4d4b005f1608cbf4b2d81d209e9a7bd16e825678a49d048</checksum>
+  <summary>Container cluster management</summary>
+  <description>The node agent of Kubernetes, the container cluster manager.</description>
+  <packager></packager>
+  <url>https://kubernetes.io</url>
+  <time file="0" build="1521492119"></time>
+  <size package="16605722" installed="94048773" archive="94049316"></size>
+  <location href="../../pool/bb3cbbc83f073688b4d4b005f1608cbf4b2d81d209e9a7bd16e825678a49d048-kubelet-1.8.10-0.x86_64.rpm"></location>
+  <format>
+    <rpm:license>ASL 2.0</rpm:license>
+    <rpm:vendor></rpm:vendor>
+    <rpm:group>Unspecified</rpm:group>
+    <rpm:buildhost>888801c201a4</rpm:buildhost>
+    <rpm:sourcerpm>kubelet-1.8.10-0.src.rpm</rpm:sourcerpm>
+    <rpm:header-range start="5024" end="10062"></rpm:header-range>
+    <rpm:provides>
+      <rpm:entry name="kubelet" flags="EQ" epoch="0" ver="1.8.10" rel="0"></rpm:entry>
+      <rpm:entry name="kubelet(x86-64)" flags="EQ" epoch="0" ver="1.8.10" rel="0"></rpm:entry>
+    </rpm:provides>
+    <rpm:requires>
+      <rpm:entry name="ebtables"></rpm:entry>
+      <rpm:entry name="ethtool"></rpm:entry>
+      <rpm:entry name="iproute"></rpm:entry>
+      <rpm:entry name="iptables" flags="GE" epoch="0" ver="1.4.21"></rpm:entry>
+      <rpm:entry name="kubernetes-cni" flags="EQ" epoch="0" ver="0.5.1"></rpm:entry>
+      <rpm:entry name="libc.so.6(GLIBC_2.2.5)(64bit)"></rpm:entry>
+      <rpm:entry name="libdl.so.2()(64bit)"></rpm:entry>
+      <rpm:entry name="libdl.so.2(GLIBC_2.2.5)(64bit)"></rpm:entry>
+      <rpm:entry name="libpthread.so.0()(64bit)"></rpm:entry>
+      <rpm:entry name="libpthread.so.0(GLIBC_2.2.5)(64bit)"></rpm:entry>
+      <rpm:entry name="libpthread.so.0(GLIBC_2.3.2)(64bit)"></rpm:entry>
+      <rpm:entry name="rtld(GNU_HASH)"></rpm:entry>
+      <rpm:entry name="socat"></rpm:entry>
+      <rpm:entry name="util-linux"></rpm:entry>
+    </rpm:requires>
+    <file>/etc/systemd/system/kubelet.service</file>
+    <file>/usr/bin/kubelet</file>
+    <file type="dir">/etc/kubernetes/manifests</file>
+  </format>
+</package><package type="rpm">
+  <name>kubelet</name>
+  <arch>x86_64</arch>
   <version epoch="0" ver="1.9.0" rel="0"></version>
   <checksum type="sha256" pkgid="YES">8f507de9e1cc26e5b0043e334e26d62001c171d8e54d839128e9bade25ecda95</checksum>
   <summary>Container cluster management</summary>
@@ -4764,6 +5793,264 @@
     <rpm:provides>
       <rpm:entry name="kubelet" flags="EQ" epoch="0" ver="1.9.0" rel="0"></rpm:entry>
       <rpm:entry name="kubelet(x86-64)" flags="EQ" epoch="0" ver="1.9.0" rel="0"></rpm:entry>
+    </rpm:provides>
+    <rpm:requires>
+      <rpm:entry name="ebtables"></rpm:entry>
+      <rpm:entry name="ethtool"></rpm:entry>
+      <rpm:entry name="iproute"></rpm:entry>
+      <rpm:entry name="iptables" flags="GE" epoch="0" ver="1.4.21"></rpm:entry>
+      <rpm:entry name="kubernetes-cni" flags="EQ" epoch="0" ver="0.6.0"></rpm:entry>
+      <rpm:entry name="libc.so.6(GLIBC_2.2.5)(64bit)"></rpm:entry>
+      <rpm:entry name="libdl.so.2()(64bit)"></rpm:entry>
+      <rpm:entry name="libdl.so.2(GLIBC_2.2.5)(64bit)"></rpm:entry>
+      <rpm:entry name="libpthread.so.0()(64bit)"></rpm:entry>
+      <rpm:entry name="libpthread.so.0(GLIBC_2.2.5)(64bit)"></rpm:entry>
+      <rpm:entry name="libpthread.so.0(GLIBC_2.3.2)(64bit)"></rpm:entry>
+      <rpm:entry name="rtld(GNU_HASH)"></rpm:entry>
+      <rpm:entry name="socat"></rpm:entry>
+      <rpm:entry name="util-linux"></rpm:entry>
+    </rpm:requires>
+    <file>/etc/systemd/system/kubelet.service</file>
+    <file>/usr/bin/kubelet</file>
+    <file type="dir">/etc/kubernetes/manifests</file>
+  </format>
+</package><package type="rpm">
+  <name>kubelet</name>
+  <arch>x86_64</arch>
+  <version epoch="0" ver="1.9.1" rel="0"></version>
+  <checksum type="sha256" pkgid="YES">cec192f6a1a3a90321f0458d336dd56ccbe78f2a47b33bfd6e8fd78151fa3326</checksum>
+  <summary>Container cluster management</summary>
+  <description>The node agent of Kubernetes, the container cluster manager.</description>
+  <packager></packager>
+  <url>https://kubernetes.io</url>
+  <time file="0" build="1515100003"></time>
+  <size package="17591042" installed="101002877" archive="101003420"></size>
+  <location href="../../pool/cec192f6a1a3a90321f0458d336dd56ccbe78f2a47b33bfd6e8fd78151fa3326-kubelet-1.9.1-0.x86_64.rpm"></location>
+  <format>
+    <rpm:license>ASL 2.0</rpm:license>
+    <rpm:vendor></rpm:vendor>
+    <rpm:group>Unspecified</rpm:group>
+    <rpm:buildhost>32b5636c8754</rpm:buildhost>
+    <rpm:sourcerpm>kubelet-1.9.1-0.src.rpm</rpm:sourcerpm>
+    <rpm:header-range start="5024" end="10054"></rpm:header-range>
+    <rpm:provides>
+      <rpm:entry name="kubelet" flags="EQ" epoch="0" ver="1.9.1" rel="0"></rpm:entry>
+      <rpm:entry name="kubelet(x86-64)" flags="EQ" epoch="0" ver="1.9.1" rel="0"></rpm:entry>
+    </rpm:provides>
+    <rpm:requires>
+      <rpm:entry name="ebtables"></rpm:entry>
+      <rpm:entry name="ethtool"></rpm:entry>
+      <rpm:entry name="iproute"></rpm:entry>
+      <rpm:entry name="iptables" flags="GE" epoch="0" ver="1.4.21"></rpm:entry>
+      <rpm:entry name="kubernetes-cni" flags="EQ" epoch="0" ver="0.6.0"></rpm:entry>
+      <rpm:entry name="libc.so.6(GLIBC_2.2.5)(64bit)"></rpm:entry>
+      <rpm:entry name="libdl.so.2()(64bit)"></rpm:entry>
+      <rpm:entry name="libdl.so.2(GLIBC_2.2.5)(64bit)"></rpm:entry>
+      <rpm:entry name="libpthread.so.0()(64bit)"></rpm:entry>
+      <rpm:entry name="libpthread.so.0(GLIBC_2.2.5)(64bit)"></rpm:entry>
+      <rpm:entry name="libpthread.so.0(GLIBC_2.3.2)(64bit)"></rpm:entry>
+      <rpm:entry name="rtld(GNU_HASH)"></rpm:entry>
+      <rpm:entry name="socat"></rpm:entry>
+      <rpm:entry name="util-linux"></rpm:entry>
+    </rpm:requires>
+    <file>/etc/systemd/system/kubelet.service</file>
+    <file>/usr/bin/kubelet</file>
+    <file type="dir">/etc/kubernetes/manifests</file>
+  </format>
+</package><package type="rpm">
+  <name>kubelet</name>
+  <arch>x86_64</arch>
+  <version epoch="0" ver="1.9.2" rel="0"></version>
+  <checksum type="sha256" pkgid="YES">0e1c33997496242d47dd85fffa18e364ea000dc423afdb65bb91f8a53ff98a6f</checksum>
+  <summary>Container cluster management</summary>
+  <description>The node agent of Kubernetes, the container cluster manager.</description>
+  <packager></packager>
+  <url>https://kubernetes.io</url>
+  <time file="0" build="1516316493"></time>
+  <size package="17599234" installed="101019245" archive="101019788"></size>
+  <location href="../../pool/0e1c33997496242d47dd85fffa18e364ea000dc423afdb65bb91f8a53ff98a6f-kubelet-1.9.2-0.x86_64.rpm"></location>
+  <format>
+    <rpm:license>ASL 2.0</rpm:license>
+    <rpm:vendor></rpm:vendor>
+    <rpm:group>Unspecified</rpm:group>
+    <rpm:buildhost>b616eeaad01a</rpm:buildhost>
+    <rpm:sourcerpm>kubelet-1.9.2-0.src.rpm</rpm:sourcerpm>
+    <rpm:header-range start="5024" end="10054"></rpm:header-range>
+    <rpm:provides>
+      <rpm:entry name="kubelet" flags="EQ" epoch="0" ver="1.9.2" rel="0"></rpm:entry>
+      <rpm:entry name="kubelet(x86-64)" flags="EQ" epoch="0" ver="1.9.2" rel="0"></rpm:entry>
+    </rpm:provides>
+    <rpm:requires>
+      <rpm:entry name="ebtables"></rpm:entry>
+      <rpm:entry name="ethtool"></rpm:entry>
+      <rpm:entry name="iproute"></rpm:entry>
+      <rpm:entry name="iptables" flags="GE" epoch="0" ver="1.4.21"></rpm:entry>
+      <rpm:entry name="kubernetes-cni" flags="EQ" epoch="0" ver="0.6.0"></rpm:entry>
+      <rpm:entry name="libc.so.6(GLIBC_2.2.5)(64bit)"></rpm:entry>
+      <rpm:entry name="libdl.so.2()(64bit)"></rpm:entry>
+      <rpm:entry name="libdl.so.2(GLIBC_2.2.5)(64bit)"></rpm:entry>
+      <rpm:entry name="libpthread.so.0()(64bit)"></rpm:entry>
+      <rpm:entry name="libpthread.so.0(GLIBC_2.2.5)(64bit)"></rpm:entry>
+      <rpm:entry name="libpthread.so.0(GLIBC_2.3.2)(64bit)"></rpm:entry>
+      <rpm:entry name="rtld(GNU_HASH)"></rpm:entry>
+      <rpm:entry name="socat"></rpm:entry>
+      <rpm:entry name="util-linux"></rpm:entry>
+    </rpm:requires>
+    <file>/etc/systemd/system/kubelet.service</file>
+    <file>/usr/bin/kubelet</file>
+    <file type="dir">/etc/kubernetes/manifests</file>
+  </format>
+</package><package type="rpm">
+  <name>kubelet</name>
+  <arch>x86_64</arch>
+  <version epoch="0" ver="1.9.3" rel="0"></version>
+  <checksum type="sha256" pkgid="YES">b59d38d81913c58b9b382e4c39a00303d68ece464f5402046f0900e70ea106f8</checksum>
+  <summary>Container cluster management</summary>
+  <description>The node agent of Kubernetes, the container cluster manager.</description>
+  <packager></packager>
+  <url>https://kubernetes.io</url>
+  <time file="0" build="1518216106"></time>
+  <size package="17603926" installed="101023229" archive="101023772"></size>
+  <location href="../../pool/b59d38d81913c58b9b382e4c39a00303d68ece464f5402046f0900e70ea106f8-kubelet-1.9.3-0.x86_64.rpm"></location>
+  <format>
+    <rpm:license>ASL 2.0</rpm:license>
+    <rpm:vendor></rpm:vendor>
+    <rpm:group>Unspecified</rpm:group>
+    <rpm:buildhost>5db4be127d41</rpm:buildhost>
+    <rpm:sourcerpm>kubelet-1.9.3-0.src.rpm</rpm:sourcerpm>
+    <rpm:header-range start="5024" end="10054"></rpm:header-range>
+    <rpm:provides>
+      <rpm:entry name="kubelet" flags="EQ" epoch="0" ver="1.9.3" rel="0"></rpm:entry>
+      <rpm:entry name="kubelet(x86-64)" flags="EQ" epoch="0" ver="1.9.3" rel="0"></rpm:entry>
+    </rpm:provides>
+    <rpm:requires>
+      <rpm:entry name="ebtables"></rpm:entry>
+      <rpm:entry name="ethtool"></rpm:entry>
+      <rpm:entry name="iproute"></rpm:entry>
+      <rpm:entry name="iptables" flags="GE" epoch="0" ver="1.4.21"></rpm:entry>
+      <rpm:entry name="kubernetes-cni" flags="EQ" epoch="0" ver="0.6.0"></rpm:entry>
+      <rpm:entry name="libc.so.6(GLIBC_2.2.5)(64bit)"></rpm:entry>
+      <rpm:entry name="libdl.so.2()(64bit)"></rpm:entry>
+      <rpm:entry name="libdl.so.2(GLIBC_2.2.5)(64bit)"></rpm:entry>
+      <rpm:entry name="libpthread.so.0()(64bit)"></rpm:entry>
+      <rpm:entry name="libpthread.so.0(GLIBC_2.2.5)(64bit)"></rpm:entry>
+      <rpm:entry name="libpthread.so.0(GLIBC_2.3.2)(64bit)"></rpm:entry>
+      <rpm:entry name="rtld(GNU_HASH)"></rpm:entry>
+      <rpm:entry name="socat"></rpm:entry>
+      <rpm:entry name="util-linux"></rpm:entry>
+    </rpm:requires>
+    <file>/etc/systemd/system/kubelet.service</file>
+    <file>/usr/bin/kubelet</file>
+    <file type="dir">/etc/kubernetes/manifests</file>
+  </format>
+</package><package type="rpm">
+  <name>kubelet</name>
+  <arch>x86_64</arch>
+  <version epoch="0" ver="1.9.4" rel="0"></version>
+  <checksum type="sha256" pkgid="YES">d69020c41cbd116872424bef4b6d6c5c7b29cbcc8fca3ca949aca421899c27fd</checksum>
+  <summary>Container cluster management</summary>
+  <description>The node agent of Kubernetes, the container cluster manager.</description>
+  <packager></packager>
+  <url>https://kubernetes.io</url>
+  <time file="0" build="1520883534"></time>
+  <size package="17538790" installed="100680765" archive="100681308"></size>
+  <location href="../../pool/d69020c41cbd116872424bef4b6d6c5c7b29cbcc8fca3ca949aca421899c27fd-kubelet-1.9.4-0.x86_64.rpm"></location>
+  <format>
+    <rpm:license>ASL 2.0</rpm:license>
+    <rpm:vendor></rpm:vendor>
+    <rpm:group>Unspecified</rpm:group>
+    <rpm:buildhost>56d20c1218ce</rpm:buildhost>
+    <rpm:sourcerpm>kubelet-1.9.4-0.src.rpm</rpm:sourcerpm>
+    <rpm:header-range start="5024" end="10054"></rpm:header-range>
+    <rpm:provides>
+      <rpm:entry name="kubelet" flags="EQ" epoch="0" ver="1.9.4" rel="0"></rpm:entry>
+      <rpm:entry name="kubelet(x86-64)" flags="EQ" epoch="0" ver="1.9.4" rel="0"></rpm:entry>
+    </rpm:provides>
+    <rpm:requires>
+      <rpm:entry name="ebtables"></rpm:entry>
+      <rpm:entry name="ethtool"></rpm:entry>
+      <rpm:entry name="iproute"></rpm:entry>
+      <rpm:entry name="iptables" flags="GE" epoch="0" ver="1.4.21"></rpm:entry>
+      <rpm:entry name="kubernetes-cni" flags="EQ" epoch="0" ver="0.6.0"></rpm:entry>
+      <rpm:entry name="libc.so.6(GLIBC_2.2.5)(64bit)"></rpm:entry>
+      <rpm:entry name="libdl.so.2()(64bit)"></rpm:entry>
+      <rpm:entry name="libdl.so.2(GLIBC_2.2.5)(64bit)"></rpm:entry>
+      <rpm:entry name="libpthread.so.0()(64bit)"></rpm:entry>
+      <rpm:entry name="libpthread.so.0(GLIBC_2.2.5)(64bit)"></rpm:entry>
+      <rpm:entry name="libpthread.so.0(GLIBC_2.3.2)(64bit)"></rpm:entry>
+      <rpm:entry name="rtld(GNU_HASH)"></rpm:entry>
+      <rpm:entry name="socat"></rpm:entry>
+      <rpm:entry name="util-linux"></rpm:entry>
+    </rpm:requires>
+    <file>/etc/systemd/system/kubelet.service</file>
+    <file>/usr/bin/kubelet</file>
+    <file type="dir">/etc/kubernetes/manifests</file>
+  </format>
+</package><package type="rpm">
+  <name>kubelet</name>
+  <arch>x86_64</arch>
+  <version epoch="0" ver="1.9.5" rel="0"></version>
+  <checksum type="sha256" pkgid="YES">aea4066130f6381c7145630edddd65df6293728b2fef3370e040920367f8e33d</checksum>
+  <summary>Container cluster management</summary>
+  <description>The node agent of Kubernetes, the container cluster manager.</description>
+  <packager></packager>
+  <url>https://kubernetes.io</url>
+  <time file="0" build="1521489663"></time>
+  <size package="17538630" installed="100682101" archive="100682644"></size>
+  <location href="../../pool/aea4066130f6381c7145630edddd65df6293728b2fef3370e040920367f8e33d-kubelet-1.9.5-0.x86_64.rpm"></location>
+  <format>
+    <rpm:license>ASL 2.0</rpm:license>
+    <rpm:vendor></rpm:vendor>
+    <rpm:group>Unspecified</rpm:group>
+    <rpm:buildhost>63bb0045c057</rpm:buildhost>
+    <rpm:sourcerpm>kubelet-1.9.5-0.src.rpm</rpm:sourcerpm>
+    <rpm:header-range start="5024" end="10054"></rpm:header-range>
+    <rpm:provides>
+      <rpm:entry name="kubelet" flags="EQ" epoch="0" ver="1.9.5" rel="0"></rpm:entry>
+      <rpm:entry name="kubelet(x86-64)" flags="EQ" epoch="0" ver="1.9.5" rel="0"></rpm:entry>
+    </rpm:provides>
+    <rpm:requires>
+      <rpm:entry name="ebtables"></rpm:entry>
+      <rpm:entry name="ethtool"></rpm:entry>
+      <rpm:entry name="iproute"></rpm:entry>
+      <rpm:entry name="iptables" flags="GE" epoch="0" ver="1.4.21"></rpm:entry>
+      <rpm:entry name="kubernetes-cni" flags="EQ" epoch="0" ver="0.6.0"></rpm:entry>
+      <rpm:entry name="libc.so.6(GLIBC_2.2.5)(64bit)"></rpm:entry>
+      <rpm:entry name="libdl.so.2()(64bit)"></rpm:entry>
+      <rpm:entry name="libdl.so.2(GLIBC_2.2.5)(64bit)"></rpm:entry>
+      <rpm:entry name="libpthread.so.0()(64bit)"></rpm:entry>
+      <rpm:entry name="libpthread.so.0(GLIBC_2.2.5)(64bit)"></rpm:entry>
+      <rpm:entry name="libpthread.so.0(GLIBC_2.3.2)(64bit)"></rpm:entry>
+      <rpm:entry name="rtld(GNU_HASH)"></rpm:entry>
+      <rpm:entry name="socat"></rpm:entry>
+      <rpm:entry name="util-linux"></rpm:entry>
+    </rpm:requires>
+    <file>/etc/systemd/system/kubelet.service</file>
+    <file>/usr/bin/kubelet</file>
+    <file type="dir">/etc/kubernetes/manifests</file>
+  </format>
+</package><package type="rpm">
+  <name>kubelet</name>
+  <arch>x86_64</arch>
+  <version epoch="0" ver="1.9.6" rel="0"></version>
+  <checksum type="sha256" pkgid="YES">fff4e7133c41ce6aaca95adb598f47967d180c4c5e8e6c67d8bfe58345bfde27</checksum>
+  <summary>Container cluster management</summary>
+  <description>The node agent of Kubernetes, the container cluster manager.</description>
+  <packager></packager>
+  <url>https://kubernetes.io</url>
+  <time file="0" build="1521660629"></time>
+  <size package="17538018" installed="100682101" archive="100682644"></size>
+  <location href="../../pool/fff4e7133c41ce6aaca95adb598f47967d180c4c5e8e6c67d8bfe58345bfde27-kubelet-1.9.6-0.x86_64.rpm"></location>
+  <format>
+    <rpm:license>ASL 2.0</rpm:license>
+    <rpm:vendor></rpm:vendor>
+    <rpm:group>Unspecified</rpm:group>
+    <rpm:buildhost>377aaa72916c</rpm:buildhost>
+    <rpm:sourcerpm>kubelet-1.9.6-0.src.rpm</rpm:sourcerpm>
+    <rpm:header-range start="5024" end="10054"></rpm:header-range>
+    <rpm:provides>
+      <rpm:entry name="kubelet" flags="EQ" epoch="0" ver="1.9.6" rel="0"></rpm:entry>
+      <rpm:entry name="kubelet(x86-64)" flags="EQ" epoch="0" ver="1.9.6" rel="0"></rpm:entry>
     </rpm:provides>
     <rpm:requires>
       <rpm:entry name="ebtables"></rpm:entry>

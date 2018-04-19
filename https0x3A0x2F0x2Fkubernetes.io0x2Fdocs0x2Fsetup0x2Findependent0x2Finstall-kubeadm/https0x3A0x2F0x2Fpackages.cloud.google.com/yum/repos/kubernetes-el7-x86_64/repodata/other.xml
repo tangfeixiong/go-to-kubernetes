@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<otherdata xmlns="http://linux.duke.edu/metadata/other" packages="142">
+<otherdata xmlns="http://linux.duke.edu/metadata/other" packages="181">
 <package pkgid="5116fa4b73c700823cfc76b3cedff6622f2fbd0a3d2fa09bce6d93329771e291" name="kubeadm" arch="x86_64">
   <version epoch="0" ver="1.6.0" rel="0"></version>
   <changelog author="Lucas Käldström &lt;lucas.kaldstrom@hotmail.co.uk&gt; - 1.4.3-0" date="1476705600">- Bump version of kubeadm</changelog>
@@ -312,6 +312,30 @@
   <changelog author="Wojciech Tyczynski &lt;wojtekt@google.com&gt; - 1.7.8" date="1507550402">- Bump version of kubelet and kubectl to v1.7.8.</changelog>
   <changelog author="Wojciech Tyczynski &lt;wojtekt@google.com&gt; - 1.7.9" date="1511784000">- Bump version of kubelet and kubectl to v1.7.9.</changelog>
   <changelog author="Wojciech Tyczynski &lt;wojtekt@google.com&gt; - 1.7.11" date="1511784001">- Bump version of kubelet and kubectl to v1.7.11.</changelog>
+</package><package pkgid="0ce3d048f9832d29000f6c69e05eb7a1fbc013810c7d1f66ad43e17f8578bd05" name="kubeadm" arch="x86_64">
+  <version epoch="0" ver="1.7.14" rel="0"></version>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.6.2" date="1493208000">- Bump version of kubelet and kubectl to v1.6.2.</changelog>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.6.3" date="1494417600">- Bump version of kubelet and kubectl to v1.6.3.</changelog>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.6.4" date="1495195200">- Bump version of kubelet and kubectl to v1.6.4.</changelog>
+  <changelog author="Mike Danese &lt;mikedanese@google.com&gt; - 1.7.0" date="1498824000">- Bump version of kubelet and kubectl to v1.7.0.</changelog>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.7.1" date="1500033600">- Bump version of kubelet and kubectl to v1.7.1.</changelog>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.7.2" date="1501070400">- Bump version of kubelet and kubectl to v1.7.2.</changelog>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.7.3" date="1501761600">- Bump version of kubelet and kubectl to v1.7.3.</changelog>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.8.0" date="1506686400">- Bump version of kubelet and kubectl to v1.8.0.</changelog>
+  <changelog author="Di Xu &lt;stephenhsu90@gmail.com&gt;" date="1508414400">- Bump CNI version to v0.6.0.</changelog>
+  <changelog author="Anthony Yeh &lt;enisoc@google.com&gt; - 1.9.0" date="1513339200">- Release of Kubernetes 1.9.0.</changelog>
+</package><package pkgid="7de188358ee8ee1babf424ab9d8d83ab2eb82325cba7133d97d8d5de3a365918" name="kubeadm" arch="x86_64">
+  <version epoch="0" ver="1.7.15" rel="0"></version>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.6.2" date="1493208000">- Bump version of kubelet and kubectl to v1.6.2.</changelog>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.6.3" date="1494417600">- Bump version of kubelet and kubectl to v1.6.3.</changelog>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.6.4" date="1495195200">- Bump version of kubelet and kubectl to v1.6.4.</changelog>
+  <changelog author="Mike Danese &lt;mikedanese@google.com&gt; - 1.7.0" date="1498824000">- Bump version of kubelet and kubectl to v1.7.0.</changelog>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.7.1" date="1500033600">- Bump version of kubelet and kubectl to v1.7.1.</changelog>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.7.2" date="1501070400">- Bump version of kubelet and kubectl to v1.7.2.</changelog>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.7.3" date="1501761600">- Bump version of kubelet and kubectl to v1.7.3.</changelog>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.8.0" date="1506686400">- Bump version of kubelet and kubectl to v1.8.0.</changelog>
+  <changelog author="Di Xu &lt;stephenhsu90@gmail.com&gt;" date="1508414400">- Bump CNI version to v0.6.0.</changelog>
+  <changelog author="Anthony Yeh &lt;enisoc@google.com&gt; - 1.9.0" date="1513339200">- Release of Kubernetes 1.9.0.</changelog>
 </package><package pkgid="ee93b5249497dba6488262bd2b56e32438a69f78993eb973bafa52d72f9b883a" name="kubeadm" arch="x86_64">
   <version epoch="0" ver="1.8.0" rel="0"></version>
   <changelog author="Lucas Käldström &lt;lucas.kaldstrom@hotmail.co.uk&gt;" date="1490702400">- Bump CNI version to v0.5.1.</changelog>
@@ -396,6 +420,66 @@
   <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.7.2" date="1501070400">- Bump version of kubelet and kubectl to v1.7.2.</changelog>
   <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.7.3" date="1501761600">- Bump version of kubelet and kubectl to v1.7.3.</changelog>
   <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.8.0" date="1506686400">- Bump version of kubelet and kubectl to v1.8.0.</changelog>
+</package><package pkgid="919d83307b30c808a9bf17f08ab6d72612d08860a8923366e666ed072012f62a" name="kubeadm" arch="x86_64">
+  <version epoch="0" ver="1.8.6" rel="0"></version>
+  <changelog author="Mike Danese &lt;mikedanese@google.com&gt; - 1.6.1" date="1491220800">- Bump version of kubelet and kubectl to v1.6.1.</changelog>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.6.2" date="1493208000">- Bump version of kubelet and kubectl to v1.6.2.</changelog>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.6.3" date="1494417600">- Bump version of kubelet and kubectl to v1.6.3.</changelog>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.6.4" date="1495195200">- Bump version of kubelet and kubectl to v1.6.4.</changelog>
+  <changelog author="Mike Danese &lt;mikedanese@google.com&gt; - 1.7.0" date="1498824000">- Bump version of kubelet and kubectl to v1.7.0.</changelog>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.7.1" date="1500033600">- Bump version of kubelet and kubectl to v1.7.1.</changelog>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.7.2" date="1501070400">- Bump version of kubelet and kubectl to v1.7.2.</changelog>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.7.3" date="1501761600">- Bump version of kubelet and kubectl to v1.7.3.</changelog>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.8.0" date="1506686400">- Bump version of kubelet and kubectl to v1.8.0.</changelog>
+  <changelog author="Di Xu &lt;stephenhsu90@gmail.com&gt;" date="1508414400">- Bump CNI version to v0.6.0.</changelog>
+</package><package pkgid="005fee933b99ae653baf508af37144c194d330b6324a62b32ebc08557a838937" name="kubeadm" arch="x86_64">
+  <version epoch="0" ver="1.8.7" rel="0"></version>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.6.2" date="1493208000">- Bump version of kubelet and kubectl to v1.6.2.</changelog>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.6.3" date="1494417600">- Bump version of kubelet and kubectl to v1.6.3.</changelog>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.6.4" date="1495195200">- Bump version of kubelet and kubectl to v1.6.4.</changelog>
+  <changelog author="Mike Danese &lt;mikedanese@google.com&gt; - 1.7.0" date="1498824000">- Bump version of kubelet and kubectl to v1.7.0.</changelog>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.7.1" date="1500033600">- Bump version of kubelet and kubectl to v1.7.1.</changelog>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.7.2" date="1501070400">- Bump version of kubelet and kubectl to v1.7.2.</changelog>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.7.3" date="1501761600">- Bump version of kubelet and kubectl to v1.7.3.</changelog>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.8.0" date="1506686400">- Bump version of kubelet and kubectl to v1.8.0.</changelog>
+  <changelog author="Di Xu &lt;stephenhsu90@gmail.com&gt;" date="1508414400">- Bump CNI version to v0.6.0.</changelog>
+  <changelog author="Anthony Yeh &lt;enisoc@google.com&gt; - 1.9.0" date="1513339200">- Release of Kubernetes 1.9.0.</changelog>
+</package><package pkgid="2e001cae2c8933ef43f6d5607a8bd57200957685bfb932dfb753b23abb9f8074" name="kubeadm" arch="x86_64">
+  <version epoch="0" ver="1.8.8" rel="0"></version>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.6.2" date="1493208000">- Bump version of kubelet and kubectl to v1.6.2.</changelog>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.6.3" date="1494417600">- Bump version of kubelet and kubectl to v1.6.3.</changelog>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.6.4" date="1495195200">- Bump version of kubelet and kubectl to v1.6.4.</changelog>
+  <changelog author="Mike Danese &lt;mikedanese@google.com&gt; - 1.7.0" date="1498824000">- Bump version of kubelet and kubectl to v1.7.0.</changelog>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.7.1" date="1500033600">- Bump version of kubelet and kubectl to v1.7.1.</changelog>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.7.2" date="1501070400">- Bump version of kubelet and kubectl to v1.7.2.</changelog>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.7.3" date="1501761600">- Bump version of kubelet and kubectl to v1.7.3.</changelog>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.8.0" date="1506686400">- Bump version of kubelet and kubectl to v1.8.0.</changelog>
+  <changelog author="Di Xu &lt;stephenhsu90@gmail.com&gt;" date="1508414400">- Bump CNI version to v0.6.0.</changelog>
+  <changelog author="Anthony Yeh &lt;enisoc@google.com&gt; - 1.9.0" date="1513339200">- Release of Kubernetes 1.9.0.</changelog>
+</package><package pkgid="e1cf1b76ab1c7d92a24d0ccccd2f3cdaae5b02bd063797938d27760531b76049" name="kubeadm" arch="x86_64">
+  <version epoch="0" ver="1.8.9" rel="0"></version>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.6.2" date="1493208000">- Bump version of kubelet and kubectl to v1.6.2.</changelog>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.6.3" date="1494417600">- Bump version of kubelet and kubectl to v1.6.3.</changelog>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.6.4" date="1495195200">- Bump version of kubelet and kubectl to v1.6.4.</changelog>
+  <changelog author="Mike Danese &lt;mikedanese@google.com&gt; - 1.7.0" date="1498824000">- Bump version of kubelet and kubectl to v1.7.0.</changelog>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.7.1" date="1500033600">- Bump version of kubelet and kubectl to v1.7.1.</changelog>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.7.2" date="1501070400">- Bump version of kubelet and kubectl to v1.7.2.</changelog>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.7.3" date="1501761600">- Bump version of kubelet and kubectl to v1.7.3.</changelog>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.8.0" date="1506686400">- Bump version of kubelet and kubectl to v1.8.0.</changelog>
+  <changelog author="Di Xu &lt;stephenhsu90@gmail.com&gt;" date="1508414400">- Bump CNI version to v0.6.0.</changelog>
+  <changelog author="Anthony Yeh &lt;enisoc@google.com&gt; - 1.9.0" date="1513339200">- Release of Kubernetes 1.9.0.</changelog>
+</package><package pkgid="1e84e0b4101a6ded3d395f77ff5736e6d15d9730b5b9fb00ddf625878ef585f4" name="kubeadm" arch="x86_64">
+  <version epoch="0" ver="1.8.10" rel="0"></version>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.6.2" date="1493208000">- Bump version of kubelet and kubectl to v1.6.2.</changelog>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.6.3" date="1494417600">- Bump version of kubelet and kubectl to v1.6.3.</changelog>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.6.4" date="1495195200">- Bump version of kubelet and kubectl to v1.6.4.</changelog>
+  <changelog author="Mike Danese &lt;mikedanese@google.com&gt; - 1.7.0" date="1498824000">- Bump version of kubelet and kubectl to v1.7.0.</changelog>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.7.1" date="1500033600">- Bump version of kubelet and kubectl to v1.7.1.</changelog>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.7.2" date="1501070400">- Bump version of kubelet and kubectl to v1.7.2.</changelog>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.7.3" date="1501761600">- Bump version of kubelet and kubectl to v1.7.3.</changelog>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.8.0" date="1506686400">- Bump version of kubelet and kubectl to v1.8.0.</changelog>
+  <changelog author="Di Xu &lt;stephenhsu90@gmail.com&gt;" date="1508414400">- Bump CNI version to v0.6.0.</changelog>
+  <changelog author="Anthony Yeh &lt;enisoc@google.com&gt; - 1.9.0" date="1513339200">- Release of Kubernetes 1.9.0.</changelog>
 </package><package pkgid="aa9948f82e7af317c97a242f3890985159c09c183b46ac8aab19d2ad307e6970" name="kubeadm" arch="x86_64">
   <version epoch="0" ver="1.9.0" rel="0"></version>
   <changelog author="Mike Danese &lt;mikedanese@google.com&gt; - 1.6.1" date="1491220800">- Bump version of kubelet and kubectl to v1.6.1.</changelog>
@@ -408,6 +492,78 @@
   <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.7.3" date="1501761600">- Bump version of kubelet and kubectl to v1.7.3.</changelog>
   <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.8.0" date="1506686400">- Bump version of kubelet and kubectl to v1.8.0.</changelog>
   <changelog author="Di Xu &lt;stephenhsu90@gmail.com&gt;" date="1508414400">- Bump CNI version to v0.6.0.</changelog>
+</package><package pkgid="ccc2b7d8ac99c8ead43087e7bb5cc7fb3fe684bfd78241c8240feb945303c40e" name="kubeadm" arch="x86_64">
+  <version epoch="0" ver="1.9.1" rel="0"></version>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.6.2" date="1493208000">- Bump version of kubelet and kubectl to v1.6.2.</changelog>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.6.3" date="1494417600">- Bump version of kubelet and kubectl to v1.6.3.</changelog>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.6.4" date="1495195200">- Bump version of kubelet and kubectl to v1.6.4.</changelog>
+  <changelog author="Mike Danese &lt;mikedanese@google.com&gt; - 1.7.0" date="1498824000">- Bump version of kubelet and kubectl to v1.7.0.</changelog>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.7.1" date="1500033600">- Bump version of kubelet and kubectl to v1.7.1.</changelog>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.7.2" date="1501070400">- Bump version of kubelet and kubectl to v1.7.2.</changelog>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.7.3" date="1501761600">- Bump version of kubelet and kubectl to v1.7.3.</changelog>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.8.0" date="1506686400">- Bump version of kubelet and kubectl to v1.8.0.</changelog>
+  <changelog author="Di Xu &lt;stephenhsu90@gmail.com&gt;" date="1508414400">- Bump CNI version to v0.6.0.</changelog>
+  <changelog author="Anthony Yeh &lt;enisoc@google.com&gt; - 1.9.0" date="1513339200">- Release of Kubernetes 1.9.0.</changelog>
+</package><package pkgid="eb3f5ec9f28b4e6548acc87211b74534c6eae3cabfe870addeff84ac3243a77e" name="kubeadm" arch="x86_64">
+  <version epoch="0" ver="1.9.2" rel="0"></version>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.6.2" date="1493208000">- Bump version of kubelet and kubectl to v1.6.2.</changelog>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.6.3" date="1494417600">- Bump version of kubelet and kubectl to v1.6.3.</changelog>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.6.4" date="1495195200">- Bump version of kubelet and kubectl to v1.6.4.</changelog>
+  <changelog author="Mike Danese &lt;mikedanese@google.com&gt; - 1.7.0" date="1498824000">- Bump version of kubelet and kubectl to v1.7.0.</changelog>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.7.1" date="1500033600">- Bump version of kubelet and kubectl to v1.7.1.</changelog>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.7.2" date="1501070400">- Bump version of kubelet and kubectl to v1.7.2.</changelog>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.7.3" date="1501761600">- Bump version of kubelet and kubectl to v1.7.3.</changelog>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.8.0" date="1506686400">- Bump version of kubelet and kubectl to v1.8.0.</changelog>
+  <changelog author="Di Xu &lt;stephenhsu90@gmail.com&gt;" date="1508414400">- Bump CNI version to v0.6.0.</changelog>
+  <changelog author="Anthony Yeh &lt;enisoc@google.com&gt; - 1.9.0" date="1513339200">- Release of Kubernetes 1.9.0.</changelog>
+</package><package pkgid="df7f026762a109d02bf92ec559bbeb3f490e8e35885ffc2631042ffcd9b945ab" name="kubeadm" arch="x86_64">
+  <version epoch="0" ver="1.9.3" rel="0"></version>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.6.2" date="1493208000">- Bump version of kubelet and kubectl to v1.6.2.</changelog>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.6.3" date="1494417600">- Bump version of kubelet and kubectl to v1.6.3.</changelog>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.6.4" date="1495195200">- Bump version of kubelet and kubectl to v1.6.4.</changelog>
+  <changelog author="Mike Danese &lt;mikedanese@google.com&gt; - 1.7.0" date="1498824000">- Bump version of kubelet and kubectl to v1.7.0.</changelog>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.7.1" date="1500033600">- Bump version of kubelet and kubectl to v1.7.1.</changelog>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.7.2" date="1501070400">- Bump version of kubelet and kubectl to v1.7.2.</changelog>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.7.3" date="1501761600">- Bump version of kubelet and kubectl to v1.7.3.</changelog>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.8.0" date="1506686400">- Bump version of kubelet and kubectl to v1.8.0.</changelog>
+  <changelog author="Di Xu &lt;stephenhsu90@gmail.com&gt;" date="1508414400">- Bump CNI version to v0.6.0.</changelog>
+  <changelog author="Anthony Yeh &lt;enisoc@google.com&gt; - 1.9.0" date="1513339200">- Release of Kubernetes 1.9.0.</changelog>
+</package><package pkgid="12f95589196fb1331fb136084c16dcc647ef9db391307a64f6a23391a7afc6de" name="kubeadm" arch="x86_64">
+  <version epoch="0" ver="1.9.4" rel="0"></version>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.6.2" date="1493208000">- Bump version of kubelet and kubectl to v1.6.2.</changelog>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.6.3" date="1494417600">- Bump version of kubelet and kubectl to v1.6.3.</changelog>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.6.4" date="1495195200">- Bump version of kubelet and kubectl to v1.6.4.</changelog>
+  <changelog author="Mike Danese &lt;mikedanese@google.com&gt; - 1.7.0" date="1498824000">- Bump version of kubelet and kubectl to v1.7.0.</changelog>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.7.1" date="1500033600">- Bump version of kubelet and kubectl to v1.7.1.</changelog>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.7.2" date="1501070400">- Bump version of kubelet and kubectl to v1.7.2.</changelog>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.7.3" date="1501761600">- Bump version of kubelet and kubectl to v1.7.3.</changelog>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.8.0" date="1506686400">- Bump version of kubelet and kubectl to v1.8.0.</changelog>
+  <changelog author="Di Xu &lt;stephenhsu90@gmail.com&gt;" date="1508414400">- Bump CNI version to v0.6.0.</changelog>
+  <changelog author="Anthony Yeh &lt;enisoc@google.com&gt; - 1.9.0" date="1513339200">- Release of Kubernetes 1.9.0.</changelog>
+</package><package pkgid="4c45f9cada16d14ffd030aade7728b8ac5d148be70206cd3fbeb4188ee790f00" name="kubeadm" arch="x86_64">
+  <version epoch="0" ver="1.9.5" rel="0"></version>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.6.2" date="1493208000">- Bump version of kubelet and kubectl to v1.6.2.</changelog>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.6.3" date="1494417600">- Bump version of kubelet and kubectl to v1.6.3.</changelog>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.6.4" date="1495195200">- Bump version of kubelet and kubectl to v1.6.4.</changelog>
+  <changelog author="Mike Danese &lt;mikedanese@google.com&gt; - 1.7.0" date="1498824000">- Bump version of kubelet and kubectl to v1.7.0.</changelog>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.7.1" date="1500033600">- Bump version of kubelet and kubectl to v1.7.1.</changelog>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.7.2" date="1501070400">- Bump version of kubelet and kubectl to v1.7.2.</changelog>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.7.3" date="1501761600">- Bump version of kubelet and kubectl to v1.7.3.</changelog>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.8.0" date="1506686400">- Bump version of kubelet and kubectl to v1.8.0.</changelog>
+  <changelog author="Di Xu &lt;stephenhsu90@gmail.com&gt;" date="1508414400">- Bump CNI version to v0.6.0.</changelog>
+  <changelog author="Anthony Yeh &lt;enisoc@google.com&gt; - 1.9.0" date="1513339200">- Release of Kubernetes 1.9.0.</changelog>
+</package><package pkgid="f56f3294d633ecfa7f2aac506f7267c00547d4c529b134bc4698a563402897c3" name="kubeadm" arch="x86_64">
+  <version epoch="0" ver="1.9.6" rel="0"></version>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.6.2" date="1493208000">- Bump version of kubelet and kubectl to v1.6.2.</changelog>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.6.3" date="1494417600">- Bump version of kubelet and kubectl to v1.6.3.</changelog>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.6.4" date="1495195200">- Bump version of kubelet and kubectl to v1.6.4.</changelog>
+  <changelog author="Mike Danese &lt;mikedanese@google.com&gt; - 1.7.0" date="1498824000">- Bump version of kubelet and kubectl to v1.7.0.</changelog>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.7.1" date="1500033600">- Bump version of kubelet and kubectl to v1.7.1.</changelog>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.7.2" date="1501070400">- Bump version of kubelet and kubectl to v1.7.2.</changelog>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.7.3" date="1501761600">- Bump version of kubelet and kubectl to v1.7.3.</changelog>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.8.0" date="1506686400">- Bump version of kubelet and kubectl to v1.8.0.</changelog>
+  <changelog author="Di Xu &lt;stephenhsu90@gmail.com&gt;" date="1508414400">- Bump CNI version to v0.6.0.</changelog>
+  <changelog author="Anthony Yeh &lt;enisoc@google.com&gt; - 1.9.0" date="1513339200">- Release of Kubernetes 1.9.0.</changelog>
 </package><package pkgid="fd9b1e2215cab6da7adc6e87e2710b91ecfda3b617edfe7e71c92277301a63ab" name="kubectl" arch="x86_64">
   <version epoch="0" ver="1.5.4" rel="0"></version>
   <changelog author="dgoodwin &lt;dgoodwin@redhat.com&gt; - 1.4.0-0" date="1474372800">- Add kubectl and kubeadm sub-packages.&#xA;- Rename to kubernetes-cni.&#xA;- Update versions of CNI.</changelog>
@@ -732,6 +888,30 @@
   <changelog author="Wojciech Tyczynski &lt;wojtekt@google.com&gt; - 1.7.8" date="1507550402">- Bump version of kubelet and kubectl to v1.7.8.</changelog>
   <changelog author="Wojciech Tyczynski &lt;wojtekt@google.com&gt; - 1.7.9" date="1511784000">- Bump version of kubelet and kubectl to v1.7.9.</changelog>
   <changelog author="Wojciech Tyczynski &lt;wojtekt@google.com&gt; - 1.7.11" date="1511784001">- Bump version of kubelet and kubectl to v1.7.11.</changelog>
+</package><package pkgid="4919fb3d1a5908461418f8a901c1c89bfd37e3418d72bbd4a8a215104015dae6" name="kubectl" arch="x86_64">
+  <version epoch="0" ver="1.7.14" rel="0"></version>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.6.2" date="1493208000">- Bump version of kubelet and kubectl to v1.6.2.</changelog>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.6.3" date="1494417600">- Bump version of kubelet and kubectl to v1.6.3.</changelog>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.6.4" date="1495195200">- Bump version of kubelet and kubectl to v1.6.4.</changelog>
+  <changelog author="Mike Danese &lt;mikedanese@google.com&gt; - 1.7.0" date="1498824000">- Bump version of kubelet and kubectl to v1.7.0.</changelog>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.7.1" date="1500033600">- Bump version of kubelet and kubectl to v1.7.1.</changelog>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.7.2" date="1501070400">- Bump version of kubelet and kubectl to v1.7.2.</changelog>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.7.3" date="1501761600">- Bump version of kubelet and kubectl to v1.7.3.</changelog>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.8.0" date="1506686400">- Bump version of kubelet and kubectl to v1.8.0.</changelog>
+  <changelog author="Di Xu &lt;stephenhsu90@gmail.com&gt;" date="1508414400">- Bump CNI version to v0.6.0.</changelog>
+  <changelog author="Anthony Yeh &lt;enisoc@google.com&gt; - 1.9.0" date="1513339200">- Release of Kubernetes 1.9.0.</changelog>
+</package><package pkgid="5e509f4b46906b21ec01844d1566374b2699ea2e27f82c7902df6e94381c516e" name="kubectl" arch="x86_64">
+  <version epoch="0" ver="1.7.15" rel="0"></version>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.6.2" date="1493208000">- Bump version of kubelet and kubectl to v1.6.2.</changelog>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.6.3" date="1494417600">- Bump version of kubelet and kubectl to v1.6.3.</changelog>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.6.4" date="1495195200">- Bump version of kubelet and kubectl to v1.6.4.</changelog>
+  <changelog author="Mike Danese &lt;mikedanese@google.com&gt; - 1.7.0" date="1498824000">- Bump version of kubelet and kubectl to v1.7.0.</changelog>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.7.1" date="1500033600">- Bump version of kubelet and kubectl to v1.7.1.</changelog>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.7.2" date="1501070400">- Bump version of kubelet and kubectl to v1.7.2.</changelog>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.7.3" date="1501761600">- Bump version of kubelet and kubectl to v1.7.3.</changelog>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.8.0" date="1506686400">- Bump version of kubelet and kubectl to v1.8.0.</changelog>
+  <changelog author="Di Xu &lt;stephenhsu90@gmail.com&gt;" date="1508414400">- Bump CNI version to v0.6.0.</changelog>
+  <changelog author="Anthony Yeh &lt;enisoc@google.com&gt; - 1.9.0" date="1513339200">- Release of Kubernetes 1.9.0.</changelog>
 </package><package pkgid="582709dfb1c59f85c78f7db2c7609a1f3bf7308b73255bdbc910695b31b8660f" name="kubectl" arch="x86_64">
   <version epoch="0" ver="1.8.0" rel="0"></version>
   <changelog author="Lucas Käldström &lt;lucas.kaldstrom@hotmail.co.uk&gt;" date="1490702400">- Bump CNI version to v0.5.1.</changelog>
@@ -804,6 +984,66 @@
   <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.7.2" date="1501070400">- Bump version of kubelet and kubectl to v1.7.2.</changelog>
   <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.7.3" date="1501761600">- Bump version of kubelet and kubectl to v1.7.3.</changelog>
   <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.8.0" date="1506686400">- Bump version of kubelet and kubectl to v1.8.0.</changelog>
+</package><package pkgid="432a40bb7dbe35e3c85cd926b015269b8de54809ad0f14ceecfd5a05acbe44a4" name="kubectl" arch="x86_64">
+  <version epoch="0" ver="1.8.6" rel="0"></version>
+  <changelog author="Mike Danese &lt;mikedanese@google.com&gt; - 1.6.1" date="1491220800">- Bump version of kubelet and kubectl to v1.6.1.</changelog>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.6.2" date="1493208000">- Bump version of kubelet and kubectl to v1.6.2.</changelog>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.6.3" date="1494417600">- Bump version of kubelet and kubectl to v1.6.3.</changelog>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.6.4" date="1495195200">- Bump version of kubelet and kubectl to v1.6.4.</changelog>
+  <changelog author="Mike Danese &lt;mikedanese@google.com&gt; - 1.7.0" date="1498824000">- Bump version of kubelet and kubectl to v1.7.0.</changelog>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.7.1" date="1500033600">- Bump version of kubelet and kubectl to v1.7.1.</changelog>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.7.2" date="1501070400">- Bump version of kubelet and kubectl to v1.7.2.</changelog>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.7.3" date="1501761600">- Bump version of kubelet and kubectl to v1.7.3.</changelog>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.8.0" date="1506686400">- Bump version of kubelet and kubectl to v1.8.0.</changelog>
+  <changelog author="Di Xu &lt;stephenhsu90@gmail.com&gt;" date="1508414400">- Bump CNI version to v0.6.0.</changelog>
+</package><package pkgid="d8cbd7dd54e61c27d437cc32f2af5168ae693b888a7fa94f86583be94e9e8fbb" name="kubectl" arch="x86_64">
+  <version epoch="0" ver="1.8.7" rel="0"></version>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.6.2" date="1493208000">- Bump version of kubelet and kubectl to v1.6.2.</changelog>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.6.3" date="1494417600">- Bump version of kubelet and kubectl to v1.6.3.</changelog>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.6.4" date="1495195200">- Bump version of kubelet and kubectl to v1.6.4.</changelog>
+  <changelog author="Mike Danese &lt;mikedanese@google.com&gt; - 1.7.0" date="1498824000">- Bump version of kubelet and kubectl to v1.7.0.</changelog>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.7.1" date="1500033600">- Bump version of kubelet and kubectl to v1.7.1.</changelog>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.7.2" date="1501070400">- Bump version of kubelet and kubectl to v1.7.2.</changelog>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.7.3" date="1501761600">- Bump version of kubelet and kubectl to v1.7.3.</changelog>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.8.0" date="1506686400">- Bump version of kubelet and kubectl to v1.8.0.</changelog>
+  <changelog author="Di Xu &lt;stephenhsu90@gmail.com&gt;" date="1508414400">- Bump CNI version to v0.6.0.</changelog>
+  <changelog author="Anthony Yeh &lt;enisoc@google.com&gt; - 1.9.0" date="1513339200">- Release of Kubernetes 1.9.0.</changelog>
+</package><package pkgid="bb633ec4b637d8dbfdba4b50f427dffd1347ae8bb44c49ffc75809d6d052eab9" name="kubectl" arch="x86_64">
+  <version epoch="0" ver="1.8.8" rel="0"></version>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.6.2" date="1493208000">- Bump version of kubelet and kubectl to v1.6.2.</changelog>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.6.3" date="1494417600">- Bump version of kubelet and kubectl to v1.6.3.</changelog>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.6.4" date="1495195200">- Bump version of kubelet and kubectl to v1.6.4.</changelog>
+  <changelog author="Mike Danese &lt;mikedanese@google.com&gt; - 1.7.0" date="1498824000">- Bump version of kubelet and kubectl to v1.7.0.</changelog>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.7.1" date="1500033600">- Bump version of kubelet and kubectl to v1.7.1.</changelog>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.7.2" date="1501070400">- Bump version of kubelet and kubectl to v1.7.2.</changelog>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.7.3" date="1501761600">- Bump version of kubelet and kubectl to v1.7.3.</changelog>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.8.0" date="1506686400">- Bump version of kubelet and kubectl to v1.8.0.</changelog>
+  <changelog author="Di Xu &lt;stephenhsu90@gmail.com&gt;" date="1508414400">- Bump CNI version to v0.6.0.</changelog>
+  <changelog author="Anthony Yeh &lt;enisoc@google.com&gt; - 1.9.0" date="1513339200">- Release of Kubernetes 1.9.0.</changelog>
+</package><package pkgid="d8701448da60b3b00bc02930f5418ad19e8e9da398442e6d2b806e6d9e2cdc74" name="kubectl" arch="x86_64">
+  <version epoch="0" ver="1.8.9" rel="0"></version>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.6.2" date="1493208000">- Bump version of kubelet and kubectl to v1.6.2.</changelog>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.6.3" date="1494417600">- Bump version of kubelet and kubectl to v1.6.3.</changelog>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.6.4" date="1495195200">- Bump version of kubelet and kubectl to v1.6.4.</changelog>
+  <changelog author="Mike Danese &lt;mikedanese@google.com&gt; - 1.7.0" date="1498824000">- Bump version of kubelet and kubectl to v1.7.0.</changelog>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.7.1" date="1500033600">- Bump version of kubelet and kubectl to v1.7.1.</changelog>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.7.2" date="1501070400">- Bump version of kubelet and kubectl to v1.7.2.</changelog>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.7.3" date="1501761600">- Bump version of kubelet and kubectl to v1.7.3.</changelog>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.8.0" date="1506686400">- Bump version of kubelet and kubectl to v1.8.0.</changelog>
+  <changelog author="Di Xu &lt;stephenhsu90@gmail.com&gt;" date="1508414400">- Bump CNI version to v0.6.0.</changelog>
+  <changelog author="Anthony Yeh &lt;enisoc@google.com&gt; - 1.9.0" date="1513339200">- Release of Kubernetes 1.9.0.</changelog>
+</package><package pkgid="83b1b027b99b38cb67713bd4c60e7fc3f08d2a60f53b28fe7e6ccc64a47bb1f2" name="kubectl" arch="x86_64">
+  <version epoch="0" ver="1.8.10" rel="0"></version>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.6.2" date="1493208000">- Bump version of kubelet and kubectl to v1.6.2.</changelog>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.6.3" date="1494417600">- Bump version of kubelet and kubectl to v1.6.3.</changelog>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.6.4" date="1495195200">- Bump version of kubelet and kubectl to v1.6.4.</changelog>
+  <changelog author="Mike Danese &lt;mikedanese@google.com&gt; - 1.7.0" date="1498824000">- Bump version of kubelet and kubectl to v1.7.0.</changelog>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.7.1" date="1500033600">- Bump version of kubelet and kubectl to v1.7.1.</changelog>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.7.2" date="1501070400">- Bump version of kubelet and kubectl to v1.7.2.</changelog>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.7.3" date="1501761600">- Bump version of kubelet and kubectl to v1.7.3.</changelog>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.8.0" date="1506686400">- Bump version of kubelet and kubectl to v1.8.0.</changelog>
+  <changelog author="Di Xu &lt;stephenhsu90@gmail.com&gt;" date="1508414400">- Bump CNI version to v0.6.0.</changelog>
+  <changelog author="Anthony Yeh &lt;enisoc@google.com&gt; - 1.9.0" date="1513339200">- Release of Kubernetes 1.9.0.</changelog>
 </package><package pkgid="bc390a3d43256791bfb844696e7215fd7ad8a09f70a42667dab4997415a6ba75" name="kubectl" arch="x86_64">
   <version epoch="0" ver="1.9.0" rel="0"></version>
   <changelog author="Mike Danese &lt;mikedanese@google.com&gt; - 1.6.1" date="1491220800">- Bump version of kubelet and kubectl to v1.6.1.</changelog>
@@ -816,6 +1056,78 @@
   <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.7.3" date="1501761600">- Bump version of kubelet and kubectl to v1.7.3.</changelog>
   <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.8.0" date="1506686400">- Bump version of kubelet and kubectl to v1.8.0.</changelog>
   <changelog author="Di Xu &lt;stephenhsu90@gmail.com&gt;" date="1508414400">- Bump CNI version to v0.6.0.</changelog>
+</package><package pkgid="331270b6ba931a571640b0552d8737631cf30cc9cde14eaa45a5acd2afb8f304" name="kubectl" arch="x86_64">
+  <version epoch="0" ver="1.9.1" rel="0"></version>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.6.2" date="1493208000">- Bump version of kubelet and kubectl to v1.6.2.</changelog>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.6.3" date="1494417600">- Bump version of kubelet and kubectl to v1.6.3.</changelog>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.6.4" date="1495195200">- Bump version of kubelet and kubectl to v1.6.4.</changelog>
+  <changelog author="Mike Danese &lt;mikedanese@google.com&gt; - 1.7.0" date="1498824000">- Bump version of kubelet and kubectl to v1.7.0.</changelog>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.7.1" date="1500033600">- Bump version of kubelet and kubectl to v1.7.1.</changelog>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.7.2" date="1501070400">- Bump version of kubelet and kubectl to v1.7.2.</changelog>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.7.3" date="1501761600">- Bump version of kubelet and kubectl to v1.7.3.</changelog>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.8.0" date="1506686400">- Bump version of kubelet and kubectl to v1.8.0.</changelog>
+  <changelog author="Di Xu &lt;stephenhsu90@gmail.com&gt;" date="1508414400">- Bump CNI version to v0.6.0.</changelog>
+  <changelog author="Anthony Yeh &lt;enisoc@google.com&gt; - 1.9.0" date="1513339200">- Release of Kubernetes 1.9.0.</changelog>
+</package><package pkgid="2dd849a46b6ca33d527c707136f6f66dfc12887640171333f3bb8fab9f95faac" name="kubectl" arch="x86_64">
+  <version epoch="0" ver="1.9.2" rel="0"></version>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.6.2" date="1493208000">- Bump version of kubelet and kubectl to v1.6.2.</changelog>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.6.3" date="1494417600">- Bump version of kubelet and kubectl to v1.6.3.</changelog>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.6.4" date="1495195200">- Bump version of kubelet and kubectl to v1.6.4.</changelog>
+  <changelog author="Mike Danese &lt;mikedanese@google.com&gt; - 1.7.0" date="1498824000">- Bump version of kubelet and kubectl to v1.7.0.</changelog>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.7.1" date="1500033600">- Bump version of kubelet and kubectl to v1.7.1.</changelog>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.7.2" date="1501070400">- Bump version of kubelet and kubectl to v1.7.2.</changelog>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.7.3" date="1501761600">- Bump version of kubelet and kubectl to v1.7.3.</changelog>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.8.0" date="1506686400">- Bump version of kubelet and kubectl to v1.8.0.</changelog>
+  <changelog author="Di Xu &lt;stephenhsu90@gmail.com&gt;" date="1508414400">- Bump CNI version to v0.6.0.</changelog>
+  <changelog author="Anthony Yeh &lt;enisoc@google.com&gt; - 1.9.0" date="1513339200">- Release of Kubernetes 1.9.0.</changelog>
+</package><package pkgid="eb54809406a7bc73f1996ce669323b65f0846d1830ef04a1e69e66f633a627a7" name="kubectl" arch="x86_64">
+  <version epoch="0" ver="1.9.3" rel="0"></version>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.6.2" date="1493208000">- Bump version of kubelet and kubectl to v1.6.2.</changelog>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.6.3" date="1494417600">- Bump version of kubelet and kubectl to v1.6.3.</changelog>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.6.4" date="1495195200">- Bump version of kubelet and kubectl to v1.6.4.</changelog>
+  <changelog author="Mike Danese &lt;mikedanese@google.com&gt; - 1.7.0" date="1498824000">- Bump version of kubelet and kubectl to v1.7.0.</changelog>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.7.1" date="1500033600">- Bump version of kubelet and kubectl to v1.7.1.</changelog>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.7.2" date="1501070400">- Bump version of kubelet and kubectl to v1.7.2.</changelog>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.7.3" date="1501761600">- Bump version of kubelet and kubectl to v1.7.3.</changelog>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.8.0" date="1506686400">- Bump version of kubelet and kubectl to v1.8.0.</changelog>
+  <changelog author="Di Xu &lt;stephenhsu90@gmail.com&gt;" date="1508414400">- Bump CNI version to v0.6.0.</changelog>
+  <changelog author="Anthony Yeh &lt;enisoc@google.com&gt; - 1.9.0" date="1513339200">- Release of Kubernetes 1.9.0.</changelog>
+</package><package pkgid="9566533de10dab5d80d8e7a8799ffea78e2b0f43e838e3b9d08f5e51c4dbc7ba" name="kubectl" arch="x86_64">
+  <version epoch="0" ver="1.9.4" rel="0"></version>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.6.2" date="1493208000">- Bump version of kubelet and kubectl to v1.6.2.</changelog>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.6.3" date="1494417600">- Bump version of kubelet and kubectl to v1.6.3.</changelog>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.6.4" date="1495195200">- Bump version of kubelet and kubectl to v1.6.4.</changelog>
+  <changelog author="Mike Danese &lt;mikedanese@google.com&gt; - 1.7.0" date="1498824000">- Bump version of kubelet and kubectl to v1.7.0.</changelog>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.7.1" date="1500033600">- Bump version of kubelet and kubectl to v1.7.1.</changelog>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.7.2" date="1501070400">- Bump version of kubelet and kubectl to v1.7.2.</changelog>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.7.3" date="1501761600">- Bump version of kubelet and kubectl to v1.7.3.</changelog>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.8.0" date="1506686400">- Bump version of kubelet and kubectl to v1.8.0.</changelog>
+  <changelog author="Di Xu &lt;stephenhsu90@gmail.com&gt;" date="1508414400">- Bump CNI version to v0.6.0.</changelog>
+  <changelog author="Anthony Yeh &lt;enisoc@google.com&gt; - 1.9.0" date="1513339200">- Release of Kubernetes 1.9.0.</changelog>
+</package><package pkgid="b8fb4f730cd9b661657b8baf0119e291add74e753d50e313843cfee6e0e65577" name="kubectl" arch="x86_64">
+  <version epoch="0" ver="1.9.5" rel="0"></version>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.6.2" date="1493208000">- Bump version of kubelet and kubectl to v1.6.2.</changelog>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.6.3" date="1494417600">- Bump version of kubelet and kubectl to v1.6.3.</changelog>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.6.4" date="1495195200">- Bump version of kubelet and kubectl to v1.6.4.</changelog>
+  <changelog author="Mike Danese &lt;mikedanese@google.com&gt; - 1.7.0" date="1498824000">- Bump version of kubelet and kubectl to v1.7.0.</changelog>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.7.1" date="1500033600">- Bump version of kubelet and kubectl to v1.7.1.</changelog>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.7.2" date="1501070400">- Bump version of kubelet and kubectl to v1.7.2.</changelog>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.7.3" date="1501761600">- Bump version of kubelet and kubectl to v1.7.3.</changelog>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.8.0" date="1506686400">- Bump version of kubelet and kubectl to v1.8.0.</changelog>
+  <changelog author="Di Xu &lt;stephenhsu90@gmail.com&gt;" date="1508414400">- Bump CNI version to v0.6.0.</changelog>
+  <changelog author="Anthony Yeh &lt;enisoc@google.com&gt; - 1.9.0" date="1513339200">- Release of Kubernetes 1.9.0.</changelog>
+</package><package pkgid="c9a30a9b3cd4f8b83a3ffcbfe5a23b32c0c78ec90a8e67505ba4ae31ed1d7a69" name="kubectl" arch="x86_64">
+  <version epoch="0" ver="1.9.6" rel="0"></version>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.6.2" date="1493208000">- Bump version of kubelet and kubectl to v1.6.2.</changelog>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.6.3" date="1494417600">- Bump version of kubelet and kubectl to v1.6.3.</changelog>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.6.4" date="1495195200">- Bump version of kubelet and kubectl to v1.6.4.</changelog>
+  <changelog author="Mike Danese &lt;mikedanese@google.com&gt; - 1.7.0" date="1498824000">- Bump version of kubelet and kubectl to v1.7.0.</changelog>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.7.1" date="1500033600">- Bump version of kubelet and kubectl to v1.7.1.</changelog>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.7.2" date="1501070400">- Bump version of kubelet and kubectl to v1.7.2.</changelog>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.7.3" date="1501761600">- Bump version of kubelet and kubectl to v1.7.3.</changelog>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.8.0" date="1506686400">- Bump version of kubelet and kubectl to v1.8.0.</changelog>
+  <changelog author="Di Xu &lt;stephenhsu90@gmail.com&gt;" date="1508414400">- Bump CNI version to v0.6.0.</changelog>
+  <changelog author="Anthony Yeh &lt;enisoc@google.com&gt; - 1.9.0" date="1513339200">- Release of Kubernetes 1.9.0.</changelog>
 </package><package pkgid="2e63c1f9436c6413a4ea0f45145b97c6dbf55e9bb2a251adc38db1292bbd6ed1" name="kubelet" arch="x86_64">
   <version epoch="0" ver="1.5.4" rel="0"></version>
   <changelog author="dgoodwin &lt;dgoodwin@redhat.com&gt; - 1.4.0-0" date="1474372800">- Add kubectl and kubeadm sub-packages.&#xA;- Rename to kubernetes-cni.&#xA;- Update versions of CNI.</changelog>
@@ -1464,6 +1776,30 @@
   <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.7.3" date="1501761600">- Bump version of kubelet and kubectl to v1.7.3.</changelog>
   <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.8.0" date="1506686400">- Bump version of kubelet and kubectl to v1.8.0.</changelog>
   <changelog author="Di Xu &lt;stephenhsu90@gmail.com&gt;" date="1508414400">- Bump CNI version to v0.6.0.</changelog>
+</package><package pkgid="5c0e31c65e992e0f20cdb3b783d5f00293f0690cafa045a97f4af86cd861c39f" name="kubelet" arch="x86_64">
+  <version epoch="0" ver="1.7.14" rel="0"></version>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.6.2" date="1493208000">- Bump version of kubelet and kubectl to v1.6.2.</changelog>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.6.3" date="1494417600">- Bump version of kubelet and kubectl to v1.6.3.</changelog>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.6.4" date="1495195200">- Bump version of kubelet and kubectl to v1.6.4.</changelog>
+  <changelog author="Mike Danese &lt;mikedanese@google.com&gt; - 1.7.0" date="1498824000">- Bump version of kubelet and kubectl to v1.7.0.</changelog>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.7.1" date="1500033600">- Bump version of kubelet and kubectl to v1.7.1.</changelog>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.7.2" date="1501070400">- Bump version of kubelet and kubectl to v1.7.2.</changelog>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.7.3" date="1501761600">- Bump version of kubelet and kubectl to v1.7.3.</changelog>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.8.0" date="1506686400">- Bump version of kubelet and kubectl to v1.8.0.</changelog>
+  <changelog author="Di Xu &lt;stephenhsu90@gmail.com&gt;" date="1508414400">- Bump CNI version to v0.6.0.</changelog>
+  <changelog author="Anthony Yeh &lt;enisoc@google.com&gt; - 1.9.0" date="1513339200">- Release of Kubernetes 1.9.0.</changelog>
+</package><package pkgid="8ebb830fda83dc4d4d0d8703818d997174c2be7b2f370da7aac768f0e46eaab6" name="kubelet" arch="x86_64">
+  <version epoch="0" ver="1.7.15" rel="0"></version>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.6.2" date="1493208000">- Bump version of kubelet and kubectl to v1.6.2.</changelog>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.6.3" date="1494417600">- Bump version of kubelet and kubectl to v1.6.3.</changelog>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.6.4" date="1495195200">- Bump version of kubelet and kubectl to v1.6.4.</changelog>
+  <changelog author="Mike Danese &lt;mikedanese@google.com&gt; - 1.7.0" date="1498824000">- Bump version of kubelet and kubectl to v1.7.0.</changelog>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.7.1" date="1500033600">- Bump version of kubelet and kubectl to v1.7.1.</changelog>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.7.2" date="1501070400">- Bump version of kubelet and kubectl to v1.7.2.</changelog>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.7.3" date="1501761600">- Bump version of kubelet and kubectl to v1.7.3.</changelog>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.8.0" date="1506686400">- Bump version of kubelet and kubectl to v1.8.0.</changelog>
+  <changelog author="Di Xu &lt;stephenhsu90@gmail.com&gt;" date="1508414400">- Bump CNI version to v0.6.0.</changelog>
+  <changelog author="Anthony Yeh &lt;enisoc@google.com&gt; - 1.9.0" date="1513339200">- Release of Kubernetes 1.9.0.</changelog>
 </package><package pkgid="d51b547da5980e2f6bfd33a382779194a0eacecac999ca726f85ef76183a9033" name="kubelet" arch="x86_64">
   <version epoch="0" ver="1.8.0" rel="0"></version>
   <changelog author="Lucas Käldström &lt;lucas.kaldstrom@hotmail.co.uk&gt;" date="1490702400">- Bump CNI version to v0.5.1.</changelog>
@@ -1608,6 +1944,66 @@
   <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.7.3" date="1501761600">- Bump version of kubelet and kubectl to v1.7.3.</changelog>
   <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.8.0" date="1506686400">- Bump version of kubelet and kubectl to v1.8.0.</changelog>
   <changelog author="Di Xu &lt;stephenhsu90@gmail.com&gt;" date="1508414400">- Bump CNI version to v0.6.0.</changelog>
+</package><package pkgid="f4011419193577161ae891a1b26986cae5f5e588941340db3abb771e2a677de7" name="kubelet" arch="x86_64">
+  <version epoch="0" ver="1.8.6" rel="0"></version>
+  <changelog author="Mike Danese &lt;mikedanese@google.com&gt; - 1.6.1" date="1491220800">- Bump version of kubelet and kubectl to v1.6.1.</changelog>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.6.2" date="1493208000">- Bump version of kubelet and kubectl to v1.6.2.</changelog>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.6.3" date="1494417600">- Bump version of kubelet and kubectl to v1.6.3.</changelog>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.6.4" date="1495195200">- Bump version of kubelet and kubectl to v1.6.4.</changelog>
+  <changelog author="Mike Danese &lt;mikedanese@google.com&gt; - 1.7.0" date="1498824000">- Bump version of kubelet and kubectl to v1.7.0.</changelog>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.7.1" date="1500033600">- Bump version of kubelet and kubectl to v1.7.1.</changelog>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.7.2" date="1501070400">- Bump version of kubelet and kubectl to v1.7.2.</changelog>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.7.3" date="1501761600">- Bump version of kubelet and kubectl to v1.7.3.</changelog>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.8.0" date="1506686400">- Bump version of kubelet and kubectl to v1.8.0.</changelog>
+  <changelog author="Di Xu &lt;stephenhsu90@gmail.com&gt;" date="1508414400">- Bump CNI version to v0.6.0.</changelog>
+</package><package pkgid="e2792eaf4f3088dd639feea4b4bbfb0b2f96ac498d7a67c31b47488758ff7633" name="kubelet" arch="x86_64">
+  <version epoch="0" ver="1.8.7" rel="0"></version>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.6.2" date="1493208000">- Bump version of kubelet and kubectl to v1.6.2.</changelog>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.6.3" date="1494417600">- Bump version of kubelet and kubectl to v1.6.3.</changelog>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.6.4" date="1495195200">- Bump version of kubelet and kubectl to v1.6.4.</changelog>
+  <changelog author="Mike Danese &lt;mikedanese@google.com&gt; - 1.7.0" date="1498824000">- Bump version of kubelet and kubectl to v1.7.0.</changelog>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.7.1" date="1500033600">- Bump version of kubelet and kubectl to v1.7.1.</changelog>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.7.2" date="1501070400">- Bump version of kubelet and kubectl to v1.7.2.</changelog>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.7.3" date="1501761600">- Bump version of kubelet and kubectl to v1.7.3.</changelog>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.8.0" date="1506686400">- Bump version of kubelet and kubectl to v1.8.0.</changelog>
+  <changelog author="Di Xu &lt;stephenhsu90@gmail.com&gt;" date="1508414400">- Bump CNI version to v0.6.0.</changelog>
+  <changelog author="Anthony Yeh &lt;enisoc@google.com&gt; - 1.9.0" date="1513339200">- Release of Kubernetes 1.9.0.</changelog>
+</package><package pkgid="0e9672058439598e1d6d57ae5bd36007730225f94139cc0f03ddc81ddd798787" name="kubelet" arch="x86_64">
+  <version epoch="0" ver="1.8.8" rel="0"></version>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.6.2" date="1493208000">- Bump version of kubelet and kubectl to v1.6.2.</changelog>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.6.3" date="1494417600">- Bump version of kubelet and kubectl to v1.6.3.</changelog>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.6.4" date="1495195200">- Bump version of kubelet and kubectl to v1.6.4.</changelog>
+  <changelog author="Mike Danese &lt;mikedanese@google.com&gt; - 1.7.0" date="1498824000">- Bump version of kubelet and kubectl to v1.7.0.</changelog>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.7.1" date="1500033600">- Bump version of kubelet and kubectl to v1.7.1.</changelog>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.7.2" date="1501070400">- Bump version of kubelet and kubectl to v1.7.2.</changelog>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.7.3" date="1501761600">- Bump version of kubelet and kubectl to v1.7.3.</changelog>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.8.0" date="1506686400">- Bump version of kubelet and kubectl to v1.8.0.</changelog>
+  <changelog author="Di Xu &lt;stephenhsu90@gmail.com&gt;" date="1508414400">- Bump CNI version to v0.6.0.</changelog>
+  <changelog author="Anthony Yeh &lt;enisoc@google.com&gt; - 1.9.0" date="1513339200">- Release of Kubernetes 1.9.0.</changelog>
+</package><package pkgid="6330c00f0fcefa1ad4e5541abe6ff2682668ec1c34b9116a26c54191203c4d24" name="kubelet" arch="x86_64">
+  <version epoch="0" ver="1.8.9" rel="0"></version>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.6.2" date="1493208000">- Bump version of kubelet and kubectl to v1.6.2.</changelog>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.6.3" date="1494417600">- Bump version of kubelet and kubectl to v1.6.3.</changelog>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.6.4" date="1495195200">- Bump version of kubelet and kubectl to v1.6.4.</changelog>
+  <changelog author="Mike Danese &lt;mikedanese@google.com&gt; - 1.7.0" date="1498824000">- Bump version of kubelet and kubectl to v1.7.0.</changelog>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.7.1" date="1500033600">- Bump version of kubelet and kubectl to v1.7.1.</changelog>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.7.2" date="1501070400">- Bump version of kubelet and kubectl to v1.7.2.</changelog>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.7.3" date="1501761600">- Bump version of kubelet and kubectl to v1.7.3.</changelog>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.8.0" date="1506686400">- Bump version of kubelet and kubectl to v1.8.0.</changelog>
+  <changelog author="Di Xu &lt;stephenhsu90@gmail.com&gt;" date="1508414400">- Bump CNI version to v0.6.0.</changelog>
+  <changelog author="Anthony Yeh &lt;enisoc@google.com&gt; - 1.9.0" date="1513339200">- Release of Kubernetes 1.9.0.</changelog>
+</package><package pkgid="bb3cbbc83f073688b4d4b005f1608cbf4b2d81d209e9a7bd16e825678a49d048" name="kubelet" arch="x86_64">
+  <version epoch="0" ver="1.8.10" rel="0"></version>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.6.2" date="1493208000">- Bump version of kubelet and kubectl to v1.6.2.</changelog>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.6.3" date="1494417600">- Bump version of kubelet and kubectl to v1.6.3.</changelog>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.6.4" date="1495195200">- Bump version of kubelet and kubectl to v1.6.4.</changelog>
+  <changelog author="Mike Danese &lt;mikedanese@google.com&gt; - 1.7.0" date="1498824000">- Bump version of kubelet and kubectl to v1.7.0.</changelog>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.7.1" date="1500033600">- Bump version of kubelet and kubectl to v1.7.1.</changelog>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.7.2" date="1501070400">- Bump version of kubelet and kubectl to v1.7.2.</changelog>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.7.3" date="1501761600">- Bump version of kubelet and kubectl to v1.7.3.</changelog>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.8.0" date="1506686400">- Bump version of kubelet and kubectl to v1.8.0.</changelog>
+  <changelog author="Di Xu &lt;stephenhsu90@gmail.com&gt;" date="1508414400">- Bump CNI version to v0.6.0.</changelog>
+  <changelog author="Anthony Yeh &lt;enisoc@google.com&gt; - 1.9.0" date="1513339200">- Release of Kubernetes 1.9.0.</changelog>
 </package><package pkgid="8f507de9e1cc26e5b0043e334e26d62001c171d8e54d839128e9bade25ecda95" name="kubelet" arch="x86_64">
   <version epoch="0" ver="1.9.0" rel="0"></version>
   <changelog author="Mike Danese &lt;mikedanese@google.com&gt; - 1.6.1" date="1491220800">- Bump version of kubelet and kubectl to v1.6.1.</changelog>
@@ -1620,6 +2016,78 @@
   <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.7.3" date="1501761600">- Bump version of kubelet and kubectl to v1.7.3.</changelog>
   <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.8.0" date="1506686400">- Bump version of kubelet and kubectl to v1.8.0.</changelog>
   <changelog author="Di Xu &lt;stephenhsu90@gmail.com&gt;" date="1508414400">- Bump CNI version to v0.6.0.</changelog>
+</package><package pkgid="cec192f6a1a3a90321f0458d336dd56ccbe78f2a47b33bfd6e8fd78151fa3326" name="kubelet" arch="x86_64">
+  <version epoch="0" ver="1.9.1" rel="0"></version>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.6.2" date="1493208000">- Bump version of kubelet and kubectl to v1.6.2.</changelog>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.6.3" date="1494417600">- Bump version of kubelet and kubectl to v1.6.3.</changelog>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.6.4" date="1495195200">- Bump version of kubelet and kubectl to v1.6.4.</changelog>
+  <changelog author="Mike Danese &lt;mikedanese@google.com&gt; - 1.7.0" date="1498824000">- Bump version of kubelet and kubectl to v1.7.0.</changelog>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.7.1" date="1500033600">- Bump version of kubelet and kubectl to v1.7.1.</changelog>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.7.2" date="1501070400">- Bump version of kubelet and kubectl to v1.7.2.</changelog>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.7.3" date="1501761600">- Bump version of kubelet and kubectl to v1.7.3.</changelog>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.8.0" date="1506686400">- Bump version of kubelet and kubectl to v1.8.0.</changelog>
+  <changelog author="Di Xu &lt;stephenhsu90@gmail.com&gt;" date="1508414400">- Bump CNI version to v0.6.0.</changelog>
+  <changelog author="Anthony Yeh &lt;enisoc@google.com&gt; - 1.9.0" date="1513339200">- Release of Kubernetes 1.9.0.</changelog>
+</package><package pkgid="0e1c33997496242d47dd85fffa18e364ea000dc423afdb65bb91f8a53ff98a6f" name="kubelet" arch="x86_64">
+  <version epoch="0" ver="1.9.2" rel="0"></version>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.6.2" date="1493208000">- Bump version of kubelet and kubectl to v1.6.2.</changelog>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.6.3" date="1494417600">- Bump version of kubelet and kubectl to v1.6.3.</changelog>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.6.4" date="1495195200">- Bump version of kubelet and kubectl to v1.6.4.</changelog>
+  <changelog author="Mike Danese &lt;mikedanese@google.com&gt; - 1.7.0" date="1498824000">- Bump version of kubelet and kubectl to v1.7.0.</changelog>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.7.1" date="1500033600">- Bump version of kubelet and kubectl to v1.7.1.</changelog>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.7.2" date="1501070400">- Bump version of kubelet and kubectl to v1.7.2.</changelog>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.7.3" date="1501761600">- Bump version of kubelet and kubectl to v1.7.3.</changelog>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.8.0" date="1506686400">- Bump version of kubelet and kubectl to v1.8.0.</changelog>
+  <changelog author="Di Xu &lt;stephenhsu90@gmail.com&gt;" date="1508414400">- Bump CNI version to v0.6.0.</changelog>
+  <changelog author="Anthony Yeh &lt;enisoc@google.com&gt; - 1.9.0" date="1513339200">- Release of Kubernetes 1.9.0.</changelog>
+</package><package pkgid="b59d38d81913c58b9b382e4c39a00303d68ece464f5402046f0900e70ea106f8" name="kubelet" arch="x86_64">
+  <version epoch="0" ver="1.9.3" rel="0"></version>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.6.2" date="1493208000">- Bump version of kubelet and kubectl to v1.6.2.</changelog>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.6.3" date="1494417600">- Bump version of kubelet and kubectl to v1.6.3.</changelog>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.6.4" date="1495195200">- Bump version of kubelet and kubectl to v1.6.4.</changelog>
+  <changelog author="Mike Danese &lt;mikedanese@google.com&gt; - 1.7.0" date="1498824000">- Bump version of kubelet and kubectl to v1.7.0.</changelog>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.7.1" date="1500033600">- Bump version of kubelet and kubectl to v1.7.1.</changelog>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.7.2" date="1501070400">- Bump version of kubelet and kubectl to v1.7.2.</changelog>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.7.3" date="1501761600">- Bump version of kubelet and kubectl to v1.7.3.</changelog>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.8.0" date="1506686400">- Bump version of kubelet and kubectl to v1.8.0.</changelog>
+  <changelog author="Di Xu &lt;stephenhsu90@gmail.com&gt;" date="1508414400">- Bump CNI version to v0.6.0.</changelog>
+  <changelog author="Anthony Yeh &lt;enisoc@google.com&gt; - 1.9.0" date="1513339200">- Release of Kubernetes 1.9.0.</changelog>
+</package><package pkgid="d69020c41cbd116872424bef4b6d6c5c7b29cbcc8fca3ca949aca421899c27fd" name="kubelet" arch="x86_64">
+  <version epoch="0" ver="1.9.4" rel="0"></version>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.6.2" date="1493208000">- Bump version of kubelet and kubectl to v1.6.2.</changelog>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.6.3" date="1494417600">- Bump version of kubelet and kubectl to v1.6.3.</changelog>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.6.4" date="1495195200">- Bump version of kubelet and kubectl to v1.6.4.</changelog>
+  <changelog author="Mike Danese &lt;mikedanese@google.com&gt; - 1.7.0" date="1498824000">- Bump version of kubelet and kubectl to v1.7.0.</changelog>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.7.1" date="1500033600">- Bump version of kubelet and kubectl to v1.7.1.</changelog>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.7.2" date="1501070400">- Bump version of kubelet and kubectl to v1.7.2.</changelog>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.7.3" date="1501761600">- Bump version of kubelet and kubectl to v1.7.3.</changelog>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.8.0" date="1506686400">- Bump version of kubelet and kubectl to v1.8.0.</changelog>
+  <changelog author="Di Xu &lt;stephenhsu90@gmail.com&gt;" date="1508414400">- Bump CNI version to v0.6.0.</changelog>
+  <changelog author="Anthony Yeh &lt;enisoc@google.com&gt; - 1.9.0" date="1513339200">- Release of Kubernetes 1.9.0.</changelog>
+</package><package pkgid="aea4066130f6381c7145630edddd65df6293728b2fef3370e040920367f8e33d" name="kubelet" arch="x86_64">
+  <version epoch="0" ver="1.9.5" rel="0"></version>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.6.2" date="1493208000">- Bump version of kubelet and kubectl to v1.6.2.</changelog>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.6.3" date="1494417600">- Bump version of kubelet and kubectl to v1.6.3.</changelog>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.6.4" date="1495195200">- Bump version of kubelet and kubectl to v1.6.4.</changelog>
+  <changelog author="Mike Danese &lt;mikedanese@google.com&gt; - 1.7.0" date="1498824000">- Bump version of kubelet and kubectl to v1.7.0.</changelog>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.7.1" date="1500033600">- Bump version of kubelet and kubectl to v1.7.1.</changelog>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.7.2" date="1501070400">- Bump version of kubelet and kubectl to v1.7.2.</changelog>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.7.3" date="1501761600">- Bump version of kubelet and kubectl to v1.7.3.</changelog>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.8.0" date="1506686400">- Bump version of kubelet and kubectl to v1.8.0.</changelog>
+  <changelog author="Di Xu &lt;stephenhsu90@gmail.com&gt;" date="1508414400">- Bump CNI version to v0.6.0.</changelog>
+  <changelog author="Anthony Yeh &lt;enisoc@google.com&gt; - 1.9.0" date="1513339200">- Release of Kubernetes 1.9.0.</changelog>
+</package><package pkgid="fff4e7133c41ce6aaca95adb598f47967d180c4c5e8e6c67d8bfe58345bfde27" name="kubelet" arch="x86_64">
+  <version epoch="0" ver="1.9.6" rel="0"></version>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.6.2" date="1493208000">- Bump version of kubelet and kubectl to v1.6.2.</changelog>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.6.3" date="1494417600">- Bump version of kubelet and kubectl to v1.6.3.</changelog>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.6.4" date="1495195200">- Bump version of kubelet and kubectl to v1.6.4.</changelog>
+  <changelog author="Mike Danese &lt;mikedanese@google.com&gt; - 1.7.0" date="1498824000">- Bump version of kubelet and kubectl to v1.7.0.</changelog>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.7.1" date="1500033600">- Bump version of kubelet and kubectl to v1.7.1.</changelog>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.7.2" date="1501070400">- Bump version of kubelet and kubectl to v1.7.2.</changelog>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.7.3" date="1501761600">- Bump version of kubelet and kubectl to v1.7.3.</changelog>
+  <changelog author="Jacob Beacham &lt;beacham@google.com&gt; - 1.8.0" date="1506686400">- Bump version of kubelet and kubectl to v1.8.0.</changelog>
+  <changelog author="Di Xu &lt;stephenhsu90@gmail.com&gt;" date="1508414400">- Bump CNI version to v0.6.0.</changelog>
+  <changelog author="Anthony Yeh &lt;enisoc@google.com&gt; - 1.9.0" date="1513339200">- Release of Kubernetes 1.9.0.</changelog>
 </package><package pkgid="0c923b191423caccc65c550ef07ce61b97f991ad54785dab70dc07a5763f4222" name="kubernetes-cni" arch="x86_64">
   <version epoch="0" ver="0.3.0.1" rel="0.07a8a2"></version>
   <changelog author="dgoodwin &lt;dgoodwin@redhat.com&gt; - 1.4.0-0" date="1474372800">- Add kubectl and kubeadm sub-packages.&#xA;- Rename to kubernetes-cni.&#xA;- Update versions of CNI.</changelog>
