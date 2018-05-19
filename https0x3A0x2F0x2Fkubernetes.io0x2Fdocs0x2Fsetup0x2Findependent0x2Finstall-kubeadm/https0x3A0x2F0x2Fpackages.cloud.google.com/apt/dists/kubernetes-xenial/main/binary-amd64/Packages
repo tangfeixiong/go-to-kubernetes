@@ -414,6 +414,51 @@ Section: misc
 Size: 9709058
 
 Package: kubeadm
+Version: 1.7.14-00
+Installed-Size: 69801
+Maintainer: Kubernetes Authors <kubernetes-dev+release@googlegroups.com>
+Architecture: amd64
+Depends: kubelet (>= 1.6.0), kubectl (>= 1.6.0)
+Description: Kubernetes Cluster Bootstrapping Tool
+ The Kubernetes command line tool for bootstrapping a Kubernetes cluster.
+Homepage: https://kubernetes.io
+Filename: pool/kubeadm_1.7.14-00_amd64_e7bfddf64bea954e1ce8115f0f8803b4b95e1d79fef147780f4e19978f952f4c.deb
+Priority: optional
+SHA256: e7bfddf64bea954e1ce8115f0f8803b4b95e1d79fef147780f4e19978f952f4c
+Section: misc
+Size: 9792378
+
+Package: kubeadm
+Version: 1.7.15-00
+Installed-Size: 69801
+Maintainer: Kubernetes Authors <kubernetes-dev+release@googlegroups.com>
+Architecture: amd64
+Depends: kubelet (>= 1.6.0), kubectl (>= 1.6.0)
+Description: Kubernetes Cluster Bootstrapping Tool
+ The Kubernetes command line tool for bootstrapping a Kubernetes cluster.
+Homepage: https://kubernetes.io
+Filename: pool/kubeadm_1.7.15-00_amd64_c6f376c65346540f6806c7288bd772745744a6b472dee080c8b9cbedef7a4957.deb
+Priority: optional
+SHA256: c6f376c65346540f6806c7288bd772745744a6b472dee080c8b9cbedef7a4957
+Section: misc
+Size: 9792320
+
+Package: kubeadm
+Version: 1.7.16-00
+Installed-Size: 69801
+Maintainer: Kubernetes Authors <kubernetes-dev+release@googlegroups.com>
+Architecture: amd64
+Depends: kubelet (>= 1.6.0), kubectl (>= 1.6.0)
+Description: Kubernetes Cluster Bootstrapping Tool
+ The Kubernetes command line tool for bootstrapping a Kubernetes cluster.
+Homepage: https://kubernetes.io
+Filename: pool/kubeadm_1.7.16-00_amd64_f2d39cff3636ccea71e838df9fd675fd8e96ee7f00f66b56739dc5b368960d7b.deb
+Priority: optional
+SHA256: f2d39cff3636ccea71e838df9fd675fd8e96ee7f00f66b56739dc5b368960d7b
+Section: misc
+Size: 9796718
+
+Package: kubeadm
 Version: 1.8.0-00
 Installed-Size: 133113
 Maintainer: Kubernetes Authors <kubernetes-dev+release@googlegroups.com>
@@ -519,6 +564,126 @@ Section: misc
 Size: 18142940
 
 Package: kubeadm
+Version: 1.8.6-00
+Installed-Size: 133266
+Maintainer: Kubernetes Authors <kubernetes-dev+release@googlegroups.com>
+Architecture: amd64
+Depends: kubelet (>= 1.6.0), kubectl (>= 1.6.0)
+Description: Kubernetes Cluster Bootstrapping Tool
+ The Kubernetes command line tool for bootstrapping a Kubernetes cluster.
+Homepage: https://kubernetes.io
+Filename: pool/kubeadm_1.8.6-00_amd64_66ce5093b3e309db9ae0d79be4bdf370251ae7d705a8a361130d82a7eac155c4.deb
+Priority: optional
+SHA256: 66ce5093b3e309db9ae0d79be4bdf370251ae7d705a8a361130d82a7eac155c4
+Section: misc
+Size: 18143542
+
+Package: kubeadm
+Version: 1.8.7-00
+Installed-Size: 133554
+Maintainer: Kubernetes Authors <kubernetes-dev+release@googlegroups.com>
+Architecture: amd64
+Depends: kubelet (>= 1.6.0), kubectl (>= 1.6.0)
+Description: Kubernetes Cluster Bootstrapping Tool
+ The Kubernetes command line tool for bootstrapping a Kubernetes cluster.
+Homepage: https://kubernetes.io
+Filename: pool/kubeadm_1.8.7-00_amd64_4a0952ba784b8bdb10c488a76fc89c4878ab86cb1f858ea38da52bc7909d6b0c.deb
+Priority: optional
+SHA256: 4a0952ba784b8bdb10c488a76fc89c4878ab86cb1f858ea38da52bc7909d6b0c
+Section: misc
+Size: 18154718
+
+Package: kubeadm
+Version: 1.8.8-00
+Installed-Size: 133568
+Maintainer: Kubernetes Authors <kubernetes-dev+release@googlegroups.com>
+Architecture: amd64
+Depends: kubelet (>= 1.6.0), kubectl (>= 1.6.0)
+Description: Kubernetes Cluster Bootstrapping Tool
+ The Kubernetes command line tool for bootstrapping a Kubernetes cluster.
+Homepage: https://kubernetes.io
+Filename: pool/kubeadm_1.8.8-00_amd64_f9d534729452a1e97820390c845e67c00b953e0cea806f0d8ac1d494ffecb45c.deb
+Priority: optional
+SHA256: f9d534729452a1e97820390c845e67c00b953e0cea806f0d8ac1d494ffecb45c
+Section: misc
+Size: 18148606
+
+Package: kubeadm
+Version: 1.8.9-00
+Installed-Size: 133618
+Maintainer: Kubernetes Authors <kubernetes-dev+release@googlegroups.com>
+Architecture: amd64
+Depends: kubelet (>= 1.6.0), kubectl (>= 1.6.0)
+Description: Kubernetes Cluster Bootstrapping Tool
+ The Kubernetes command line tool for bootstrapping a Kubernetes cluster.
+Homepage: https://kubernetes.io
+Filename: pool/kubeadm_1.8.9-00_amd64_170dac07edd6fbb7888e55f8f84e3135eadcb326ee41a7ffb91411fd62a917c4.deb
+Priority: optional
+SHA256: 170dac07edd6fbb7888e55f8f84e3135eadcb326ee41a7ffb91411fd62a917c4
+Section: misc
+Size: 18145992
+
+Package: kubeadm
+Version: 1.8.10-00
+Installed-Size: 133623
+Maintainer: Kubernetes Authors <kubernetes-dev+release@googlegroups.com>
+Architecture: amd64
+Depends: kubelet (>= 1.6.0), kubectl (>= 1.6.0)
+Description: Kubernetes Cluster Bootstrapping Tool
+ The Kubernetes command line tool for bootstrapping a Kubernetes cluster.
+Homepage: https://kubernetes.io
+Filename: pool/kubeadm_1.8.10-00_amd64_bddec18c35b3f0d004fc6951ed3bf177b4719f5f9d3e7138a5bd9b31a294d26a.deb
+Priority: optional
+SHA256: bddec18c35b3f0d004fc6951ed3bf177b4719f5f9d3e7138a5bd9b31a294d26a
+Section: misc
+Size: 18161384
+
+Package: kubeadm
+Version: 1.8.11-00
+Installed-Size: 133649
+Maintainer: Kubernetes Authors <kubernetes-dev+release@googlegroups.com>
+Architecture: amd64
+Depends: kubelet (>= 1.6.0), kubectl (>= 1.6.0)
+Description: Kubernetes Cluster Bootstrapping Tool
+ The Kubernetes command line tool for bootstrapping a Kubernetes cluster.
+Homepage: https://kubernetes.io
+Filename: pool/kubeadm_1.8.11-00_amd64_c85712972eea993f59edd68cead2017451165d279cec3bc0d2c8b62ae6f8a62c.deb
+Priority: optional
+SHA256: c85712972eea993f59edd68cead2017451165d279cec3bc0d2c8b62ae6f8a62c
+Section: misc
+Size: 18162474
+
+Package: kubeadm
+Version: 1.8.12-00
+Installed-Size: 133649
+Maintainer: Kubernetes Authors <kubernetes-dev+release@googlegroups.com>
+Architecture: amd64
+Depends: kubelet (>= 1.6.0), kubectl (>= 1.6.0)
+Description: Kubernetes Cluster Bootstrapping Tool
+ The Kubernetes command line tool for bootstrapping a Kubernetes cluster.
+Homepage: https://kubernetes.io
+Filename: pool/kubeadm_1.8.12-00_amd64_bac0585cbd950a79cc06dc1dc5e0d74fdf386efbfeaad1bb3a7c9aea4e119e9d.deb
+Priority: optional
+SHA256: bac0585cbd950a79cc06dc1dc5e0d74fdf386efbfeaad1bb3a7c9aea4e119e9d
+Section: misc
+Size: 18165452
+
+Package: kubeadm
+Version: 1.8.13-00
+Installed-Size: 133649
+Maintainer: Kubernetes Authors <kubernetes-dev+release@googlegroups.com>
+Architecture: amd64
+Depends: kubelet (>= 1.6.0), kubectl (>= 1.6.0)
+Description: Kubernetes Cluster Bootstrapping Tool
+ The Kubernetes command line tool for bootstrapping a Kubernetes cluster.
+Homepage: https://kubernetes.io
+Filename: pool/kubeadm_1.8.13-00_amd64_1e80966640bc0b8a769ef708d6af032b698e98eb2888859519d998f8478ebbdf.deb
+Priority: optional
+SHA256: 1e80966640bc0b8a769ef708d6af032b698e98eb2888859519d998f8478ebbdf
+Section: misc
+Size: 18172116
+
+Package: kubeadm
 Version: 1.9.0-00
 Installed-Size: 147193
 Maintainer: Kubernetes Authors <kubernetes-dev+release@googlegroups.com>
@@ -532,6 +697,156 @@ Priority: optional
 SHA256: 191bd1d8a63d263cdb318f77b03fad6c8387a912cf16a21b9b24d7e9108b4911
 Section: misc
 Size: 20044720
+
+Package: kubeadm
+Version: 1.9.1-00
+Installed-Size: 147206
+Maintainer: Kubernetes Authors <kubernetes-dev+release@googlegroups.com>
+Architecture: amd64
+Depends: kubelet (>= 1.6.0), kubectl (>= 1.6.0)
+Description: Kubernetes Cluster Bootstrapping Tool
+ The Kubernetes command line tool for bootstrapping a Kubernetes cluster.
+Homepage: https://kubernetes.io
+Filename: pool/kubeadm_1.9.1-00_amd64_31ec5709ec1eb37b194563cb28eaafafd1f0c9d009239cdfb694686066b35c2e.deb
+Priority: optional
+SHA256: 31ec5709ec1eb37b194563cb28eaafafd1f0c9d009239cdfb694686066b35c2e
+Section: misc
+Size: 20054270
+
+Package: kubeadm
+Version: 1.9.2-00
+Installed-Size: 147243
+Maintainer: Kubernetes Authors <kubernetes-dev+release@googlegroups.com>
+Architecture: amd64
+Depends: kubelet (>= 1.6.0), kubectl (>= 1.6.0)
+Description: Kubernetes Cluster Bootstrapping Tool
+ The Kubernetes command line tool for bootstrapping a Kubernetes cluster.
+Homepage: https://kubernetes.io
+Filename: pool/kubeadm_1.9.2-00_amd64_869c826d406035aad1617118f88d5c627e16797388a5e2b3735d7b825d62e7ad.deb
+Priority: optional
+SHA256: 869c826d406035aad1617118f88d5c627e16797388a5e2b3735d7b825d62e7ad
+Section: misc
+Size: 20076428
+
+Package: kubeadm
+Version: 1.9.3-00
+Installed-Size: 147253
+Maintainer: Kubernetes Authors <kubernetes-dev+release@googlegroups.com>
+Architecture: amd64
+Depends: kubelet (>= 1.6.0), kubectl (>= 1.6.0)
+Description: Kubernetes Cluster Bootstrapping Tool
+ The Kubernetes command line tool for bootstrapping a Kubernetes cluster.
+Homepage: https://kubernetes.io
+Filename: pool/kubeadm_1.9.3-00_amd64_df3d3c15601640c5cd5db3902d52fb2e33263b79c62d299700971083b7bec9f5.deb
+Priority: optional
+SHA256: df3d3c15601640c5cd5db3902d52fb2e33263b79c62d299700971083b7bec9f5
+Section: misc
+Size: 20091708
+
+Package: kubeadm
+Version: 1.9.4-00
+Installed-Size: 148605
+Maintainer: Kubernetes Authors <kubernetes-dev+release@googlegroups.com>
+Architecture: amd64
+Depends: kubelet (>= 1.6.0), kubectl (>= 1.6.0)
+Description: Kubernetes Cluster Bootstrapping Tool
+ The Kubernetes command line tool for bootstrapping a Kubernetes cluster.
+Homepage: https://kubernetes.io
+Filename: pool/kubeadm_1.9.4-00_amd64_7c267288a1a9cebc480778b50ef00ab5dfe477f545bc917a50adb322ea2b9c24.deb
+Priority: optional
+SHA256: 7c267288a1a9cebc480778b50ef00ab5dfe477f545bc917a50adb322ea2b9c24
+Section: misc
+Size: 20152534
+
+Package: kubeadm
+Version: 1.9.5-00
+Installed-Size: 148606
+Maintainer: Kubernetes Authors <kubernetes-dev+release@googlegroups.com>
+Architecture: amd64
+Depends: kubelet (>= 1.6.0), kubectl (>= 1.6.0)
+Description: Kubernetes Cluster Bootstrapping Tool
+ The Kubernetes command line tool for bootstrapping a Kubernetes cluster.
+Homepage: https://kubernetes.io
+Filename: pool/kubeadm_1.9.5-00_amd64_3d2a1245ecfd2ef57d1d6f0f3897658d5e506ed467d8197f0669be445e9db259.deb
+Priority: optional
+SHA256: 3d2a1245ecfd2ef57d1d6f0f3897658d5e506ed467d8197f0669be445e9db259
+Section: misc
+Size: 20160618
+
+Package: kubeadm
+Version: 1.9.6-00
+Installed-Size: 148606
+Maintainer: Kubernetes Authors <kubernetes-dev+release@googlegroups.com>
+Architecture: amd64
+Depends: kubelet (>= 1.6.0), kubectl (>= 1.6.0)
+Description: Kubernetes Cluster Bootstrapping Tool
+ The Kubernetes command line tool for bootstrapping a Kubernetes cluster.
+Homepage: https://kubernetes.io
+Filename: pool/kubeadm_1.9.6-00_amd64_9763ef588d8820e343c180f1e2c16d1c51be4d6a686f2d5ebd87a64d8b4fd661.deb
+Priority: optional
+SHA256: 9763ef588d8820e343c180f1e2c16d1c51be4d6a686f2d5ebd87a64d8b4fd661
+Section: misc
+Size: 20154258
+
+Package: kubeadm
+Version: 1.9.7-00
+Installed-Size: 148646
+Maintainer: Kubernetes Authors <kubernetes-dev+release@googlegroups.com>
+Architecture: amd64
+Depends: kubelet (>= 1.6.0), kubectl (>= 1.6.0)
+Description: Kubernetes Cluster Bootstrapping Tool
+ The Kubernetes command line tool for bootstrapping a Kubernetes cluster.
+Homepage: https://kubernetes.io
+Filename: pool/kubeadm_1.9.7-00_amd64_af2c1e96e8339736360470580f6bb642f5b8702bf969c5acdeeb23626198d11d.deb
+Priority: optional
+SHA256: af2c1e96e8339736360470580f6bb642f5b8702bf969c5acdeeb23626198d11d
+Section: misc
+Size: 20171564
+
+Package: kubeadm
+Version: 1.10.0-00
+Installed-Size: 152835
+Maintainer: Kubernetes Authors <kubernetes-dev+release@googlegroups.com>
+Architecture: amd64
+Depends: kubelet (>= 1.6.0), kubectl (>= 1.6.0)
+Description: Kubernetes Cluster Bootstrapping Tool
+ The Kubernetes command line tool for bootstrapping a Kubernetes cluster.
+Homepage: https://kubernetes.io
+Filename: pool/kubeadm_1.10.0-00_amd64_ea6b408af5de27ae3df9a1f96724067104998608b64869fee2c680ea9f9c000d.deb
+Priority: optional
+SHA256: ea6b408af5de27ae3df9a1f96724067104998608b64869fee2c680ea9f9c000d
+Section: misc
+Size: 20682252
+
+Package: kubeadm
+Version: 1.10.1-00
+Installed-Size: 152860
+Maintainer: Kubernetes Authors <kubernetes-dev+release@googlegroups.com>
+Architecture: amd64
+Depends: kubelet (>= 1.6.0), kubectl (>= 1.6.0)
+Description: Kubernetes Cluster Bootstrapping Tool
+ The Kubernetes command line tool for bootstrapping a Kubernetes cluster.
+Homepage: https://kubernetes.io
+Filename: pool/kubeadm_1.10.1-00_amd64_d5942f2d1a7b85136b82dc79c6f6204373c731b6ef7fe204a96f1c56af4859f3.deb
+Priority: optional
+SHA256: d5942f2d1a7b85136b82dc79c6f6204373c731b6ef7fe204a96f1c56af4859f3
+Section: misc
+Size: 20691354
+
+Package: kubeadm
+Version: 1.10.2-00
+Installed-Size: 152916
+Maintainer: Kubernetes Authors <kubernetes-dev+release@googlegroups.com>
+Architecture: amd64
+Depends: kubelet (>= 1.6.0), kubectl (>= 1.6.0)
+Description: Kubernetes Cluster Bootstrapping Tool
+ The Kubernetes command line tool for bootstrapping a Kubernetes cluster.
+Homepage: https://kubernetes.io
+Filename: pool/kubeadm_1.10.2-00_amd64_4bdf79bcda2a820210f5c0f7e84f9f57d6cc196ba9b59943f296544624e6d743.deb
+Priority: optional
+SHA256: 4bdf79bcda2a820210f5c0f7e84f9f57d6cc196ba9b59943f296544624e6d743
+Section: misc
+Size: 20685516
 
 Package: kubectl
 Version: 1.5.1-00
@@ -968,6 +1283,34 @@ Section: misc
 Size: 10140650
 
 Package: kubectl
+Version: 1.7.14-00
+Installed-Size: 70816
+Maintainer: Kubernetes Authors <kubernetes-dev+release@googlegroups.com>
+Architecture: amd64
+Description: Kubernetes Command Line Tool
+ The Kubernetes command line tool for interacting with the Kubernetes API.
+Homepage: https://kubernetes.io
+Filename: pool/kubectl_1.7.14-00_amd64_dd862ac20277caa52836dfc306dc8119e3141776af1b905afd9e36a81fed46c0.deb
+Priority: optional
+SHA256: dd862ac20277caa52836dfc306dc8119e3141776af1b905afd9e36a81fed46c0
+Section: misc
+Size: 10139582
+
+Package: kubectl
+Version: 1.7.15-00
+Installed-Size: 70816
+Maintainer: Kubernetes Authors <kubernetes-dev+release@googlegroups.com>
+Architecture: amd64
+Description: Kubernetes Command Line Tool
+ The Kubernetes command line tool for interacting with the Kubernetes API.
+Homepage: https://kubernetes.io
+Filename: pool/kubectl_1.7.15-00_amd64_29a6ff4fad741a2516e4255402230c3393b98dde6088ebadc74b974e23b142b5.deb
+Priority: optional
+SHA256: 29a6ff4fad741a2516e4255402230c3393b98dde6088ebadc74b974e23b142b5
+Section: misc
+Size: 10138806
+
+Package: kubectl
 Version: 1.8.0-00
 Installed-Size: 51058
 Maintainer: Kubernetes Authors <kubernetes-dev+release@googlegroups.com>
@@ -1052,6 +1395,118 @@ Section: misc
 Size: 8614054
 
 Package: kubectl
+Version: 1.8.6-00
+Installed-Size: 51125
+Maintainer: Kubernetes Authors <kubernetes-dev+release@googlegroups.com>
+Architecture: amd64
+Description: Kubernetes Command Line Tool
+ The Kubernetes command line tool for interacting with the Kubernetes API.
+Homepage: https://kubernetes.io
+Filename: pool/kubectl_1.8.6-00_amd64_bc0fe25db6363a762821ec2460be64c6fe66e857210eafc45289f25ea92b1408.deb
+Priority: optional
+SHA256: bc0fe25db6363a762821ec2460be64c6fe66e857210eafc45289f25ea92b1408
+Section: misc
+Size: 8612722
+
+Package: kubectl
+Version: 1.8.7-00
+Installed-Size: 51275
+Maintainer: Kubernetes Authors <kubernetes-dev+release@googlegroups.com>
+Architecture: amd64
+Description: Kubernetes Command Line Tool
+ The Kubernetes command line tool for interacting with the Kubernetes API.
+Homepage: https://kubernetes.io
+Filename: pool/kubectl_1.8.7-00_amd64_7c6fa8b9de95ec7585b6af78997fa427c19e224a66b0da08cc4e76954c0bf700.deb
+Priority: optional
+SHA256: 7c6fa8b9de95ec7585b6af78997fa427c19e224a66b0da08cc4e76954c0bf700
+Section: misc
+Size: 8621148
+
+Package: kubectl
+Version: 1.8.8-00
+Installed-Size: 51279
+Maintainer: Kubernetes Authors <kubernetes-dev+release@googlegroups.com>
+Architecture: amd64
+Description: Kubernetes Command Line Tool
+ The Kubernetes command line tool for interacting with the Kubernetes API.
+Homepage: https://kubernetes.io
+Filename: pool/kubectl_1.8.8-00_amd64_1a766866712f71c62ad30e6a247d13fab7eefe6eb3335a683b7697733bf36652.deb
+Priority: optional
+SHA256: 1a766866712f71c62ad30e6a247d13fab7eefe6eb3335a683b7697733bf36652
+Section: misc
+Size: 8617086
+
+Package: kubectl
+Version: 1.8.9-00
+Installed-Size: 51284
+Maintainer: Kubernetes Authors <kubernetes-dev+release@googlegroups.com>
+Architecture: amd64
+Description: Kubernetes Command Line Tool
+ The Kubernetes command line tool for interacting with the Kubernetes API.
+Homepage: https://kubernetes.io
+Filename: pool/kubectl_1.8.9-00_amd64_5f045afdadb2b6253721343febd5cddf7bb98f40935439e427f9a2df0e96cf21.deb
+Priority: optional
+SHA256: 5f045afdadb2b6253721343febd5cddf7bb98f40935439e427f9a2df0e96cf21
+Section: misc
+Size: 8622264
+
+Package: kubectl
+Version: 1.8.10-00
+Installed-Size: 51288
+Maintainer: Kubernetes Authors <kubernetes-dev+release@googlegroups.com>
+Architecture: amd64
+Description: Kubernetes Command Line Tool
+ The Kubernetes command line tool for interacting with the Kubernetes API.
+Homepage: https://kubernetes.io
+Filename: pool/kubectl_1.8.10-00_amd64_4ece6cd7ef9bff0e1d2b6bb9c30b40a500133e9b1cb4dae778edca1d4a5bec44.deb
+Priority: optional
+SHA256: 4ece6cd7ef9bff0e1d2b6bb9c30b40a500133e9b1cb4dae778edca1d4a5bec44
+Section: misc
+Size: 8618596
+
+Package: kubectl
+Version: 1.8.11-00
+Installed-Size: 51288
+Maintainer: Kubernetes Authors <kubernetes-dev+release@googlegroups.com>
+Architecture: amd64
+Description: Kubernetes Command Line Tool
+ The Kubernetes command line tool for interacting with the Kubernetes API.
+Homepage: https://kubernetes.io
+Filename: pool/kubectl_1.8.11-00_amd64_86ab3ffd7dece91a755136b67d40eb4d9ea2ec1404d91377d079833c31d647e1.deb
+Priority: optional
+SHA256: 86ab3ffd7dece91a755136b67d40eb4d9ea2ec1404d91377d079833c31d647e1
+Section: misc
+Size: 8618890
+
+Package: kubectl
+Version: 1.8.12-00
+Installed-Size: 51288
+Maintainer: Kubernetes Authors <kubernetes-dev+release@googlegroups.com>
+Architecture: amd64
+Description: Kubernetes Command Line Tool
+ The Kubernetes command line tool for interacting with the Kubernetes API.
+Homepage: https://kubernetes.io
+Filename: pool/kubectl_1.8.12-00_amd64_894345a819f1c6a86d411be6240f63d5c9ea69eea2505fae05e642272a9c6a19.deb
+Priority: optional
+SHA256: 894345a819f1c6a86d411be6240f63d5c9ea69eea2505fae05e642272a9c6a19
+Section: misc
+Size: 8615840
+
+Package: kubectl
+Version: 1.8.13-00
+Installed-Size: 51288
+Maintainer: Kubernetes Authors <kubernetes-dev+release@googlegroups.com>
+Architecture: amd64
+Description: Kubernetes Command Line Tool
+ The Kubernetes command line tool for interacting with the Kubernetes API.
+Homepage: https://kubernetes.io
+Filename: pool/kubectl_1.8.13-00_amd64_828ddd59b708e767ee49b866d231af2932412a64f5be69ed8602e2ae341c8a82.deb
+Priority: optional
+SHA256: 828ddd59b708e767ee49b866d231af2932412a64f5be69ed8602e2ae341c8a82
+Section: misc
+Size: 8619362
+
+Package: kubectl
 Version: 1.9.0-00
 Installed-Size: 65829
 Maintainer: Kubernetes Authors <kubernetes-dev+release@googlegroups.com>
@@ -1064,6 +1519,146 @@ Priority: optional
 SHA256: 8ea712c18d89d56090c8753a9630d22fd8ae5cb03d4ec79a1fe6d262c8b4eb36
 Section: misc
 Size: 10538152
+
+Package: kubectl
+Version: 1.9.1-00
+Installed-Size: 65829
+Maintainer: Kubernetes Authors <kubernetes-dev+release@googlegroups.com>
+Architecture: amd64
+Description: Kubernetes Command Line Tool
+ The Kubernetes command line tool for interacting with the Kubernetes API.
+Homepage: https://kubernetes.io
+Filename: pool/kubectl_1.9.1-00_amd64_bdfb1ad90e0f02a7ae614502079a87ed99209679bdedf0c62873564c186c9f99.deb
+Priority: optional
+SHA256: bdfb1ad90e0f02a7ae614502079a87ed99209679bdedf0c62873564c186c9f99
+Section: misc
+Size: 10540496
+
+Package: kubectl
+Version: 1.9.2-00
+Installed-Size: 65829
+Maintainer: Kubernetes Authors <kubernetes-dev+release@googlegroups.com>
+Architecture: amd64
+Description: Kubernetes Command Line Tool
+ The Kubernetes command line tool for interacting with the Kubernetes API.
+Homepage: https://kubernetes.io
+Filename: pool/kubectl_1.9.2-00_amd64_a9d5a970c989cb1f77c30c5d27f611cab58659751005e7052541540dca19855c.deb
+Priority: optional
+SHA256: a9d5a970c989cb1f77c30c5d27f611cab58659751005e7052541540dca19855c
+Section: misc
+Size: 10537062
+
+Package: kubectl
+Version: 1.9.3-00
+Installed-Size: 65828
+Maintainer: Kubernetes Authors <kubernetes-dev+release@googlegroups.com>
+Architecture: amd64
+Description: Kubernetes Command Line Tool
+ The Kubernetes command line tool for interacting with the Kubernetes API.
+Homepage: https://kubernetes.io
+Filename: pool/kubectl_1.9.3-00_amd64_bf9b3256304edcd2f4bd85b74857dacfe6796bec548e1411ed6f93350dd01316.deb
+Priority: optional
+SHA256: bf9b3256304edcd2f4bd85b74857dacfe6796bec548e1411ed6f93350dd01316
+Section: misc
+Size: 10539730
+
+Package: kubectl
+Version: 1.9.4-00
+Installed-Size: 65991
+Maintainer: Kubernetes Authors <kubernetes-dev+release@googlegroups.com>
+Architecture: amd64
+Description: Kubernetes Command Line Tool
+ The Kubernetes command line tool for interacting with the Kubernetes API.
+Homepage: https://kubernetes.io
+Filename: pool/kubectl_1.9.4-00_amd64_0f814c1c7d852379aa61744ed119518558a0f0cfa1a6e36e8fc2037bd023dad4.deb
+Priority: optional
+SHA256: 0f814c1c7d852379aa61744ed119518558a0f0cfa1a6e36e8fc2037bd023dad4
+Section: misc
+Size: 10543002
+
+Package: kubectl
+Version: 1.9.5-00
+Installed-Size: 65991
+Maintainer: Kubernetes Authors <kubernetes-dev+release@googlegroups.com>
+Architecture: amd64
+Description: Kubernetes Command Line Tool
+ The Kubernetes command line tool for interacting with the Kubernetes API.
+Homepage: https://kubernetes.io
+Filename: pool/kubectl_1.9.5-00_amd64_fc4313ac6797482c4ece18c14ba2ad2c46bb6bed4b4e9e5c1ee30f64c31ff13d.deb
+Priority: optional
+SHA256: fc4313ac6797482c4ece18c14ba2ad2c46bb6bed4b4e9e5c1ee30f64c31ff13d
+Section: misc
+Size: 10542258
+
+Package: kubectl
+Version: 1.9.6-00
+Installed-Size: 65991
+Maintainer: Kubernetes Authors <kubernetes-dev+release@googlegroups.com>
+Architecture: amd64
+Description: Kubernetes Command Line Tool
+ The Kubernetes command line tool for interacting with the Kubernetes API.
+Homepage: https://kubernetes.io
+Filename: pool/kubectl_1.9.6-00_amd64_8f3805e25732ca6ecc12e2751932130a5131adb605691b85e06c6204a0b6326f.deb
+Priority: optional
+SHA256: 8f3805e25732ca6ecc12e2751932130a5131adb605691b85e06c6204a0b6326f
+Section: misc
+Size: 10541840
+
+Package: kubectl
+Version: 1.9.7-00
+Installed-Size: 65995
+Maintainer: Kubernetes Authors <kubernetes-dev+release@googlegroups.com>
+Architecture: amd64
+Description: Kubernetes Command Line Tool
+ The Kubernetes command line tool for interacting with the Kubernetes API.
+Homepage: https://kubernetes.io
+Filename: pool/kubectl_1.9.7-00_amd64_c532c2abf3344a081d16fc69253c470f1e22c39350b6778dec2f73bb88eaa941.deb
+Priority: optional
+SHA256: c532c2abf3344a081d16fc69253c470f1e22c39350b6778dec2f73bb88eaa941
+Section: misc
+Size: 10542432
+
+Package: kubectl
+Version: 1.10.0-00
+Installed-Size: 53023
+Maintainer: Kubernetes Authors <kubernetes-dev+release@googlegroups.com>
+Architecture: amd64
+Description: Kubernetes Command Line Tool
+ The Kubernetes command line tool for interacting with the Kubernetes API.
+Homepage: https://kubernetes.io
+Filename: pool/kubectl_1.10.0-00_amd64_e391c19fa377b84587676c5577222ceb5d8fcbde442c79a9cd55d1f344293834.deb
+Priority: optional
+SHA256: e391c19fa377b84587676c5577222ceb5d8fcbde442c79a9cd55d1f344293834
+Section: misc
+Size: 8904594
+
+Package: kubectl
+Version: 1.10.1-00
+Installed-Size: 53023
+Maintainer: Kubernetes Authors <kubernetes-dev+release@googlegroups.com>
+Architecture: amd64
+Description: Kubernetes Command Line Tool
+ The Kubernetes command line tool for interacting with the Kubernetes API.
+Homepage: https://kubernetes.io
+Filename: pool/kubectl_1.10.1-00_amd64_a0d873581d1de51178e88938df4fc968fab57d8e0ecf3b9c211829e673f98ace.deb
+Priority: optional
+SHA256: a0d873581d1de51178e88938df4fc968fab57d8e0ecf3b9c211829e673f98ace
+Section: misc
+Size: 8906124
+
+Package: kubectl
+Version: 1.10.2-00
+Installed-Size: 53031
+Maintainer: Kubernetes Authors <kubernetes-dev+release@googlegroups.com>
+Architecture: amd64
+Description: Kubernetes Command Line Tool
+ The Kubernetes command line tool for interacting with the Kubernetes API.
+Homepage: https://kubernetes.io
+Filename: pool/kubectl_1.10.2-00_amd64_a3ca21b1875a20567024584f18ec6aca390e8be8a8d92e20b5b7258452e419c9.deb
+Priority: optional
+SHA256: a3ca21b1875a20567024584f18ec6aca390e8be8a8d92e20b5b7258452e419c9
+Section: misc
+Size: 8909072
 
 Package: kubelet
 Version: 1.5.1-00
@@ -1996,6 +2591,51 @@ Section: misc
 Size: 19544874
 
 Package: kubelet
+Version: 1.7.14-00
+Installed-Size: 143188
+Maintainer: Kubernetes Authors <kubernetes-dev+release@googlegroups.com>
+Architecture: amd64
+Depends: iptables (>= 1.4.21), kubernetes-cni (= 0.5.1), iproute2, socat, util-linux, mount, ebtables, ethtool, init-system-helpers (>= 1.18~)
+Description: Kubernetes Node Agent
+ The node agent of Kubernetes, the container cluster manager
+Homepage: https://kubernetes.io
+Filename: pool/kubelet_1.7.14-00_amd64_d197387f749b3807e0b6498e4783303936b92087e286851fb86465c18b7506ce.deb
+Priority: optional
+SHA256: d197387f749b3807e0b6498e4783303936b92087e286851fb86465c18b7506ce
+Section: misc
+Size: 19591088
+
+Package: kubelet
+Version: 1.7.15-00
+Installed-Size: 143182
+Maintainer: Kubernetes Authors <kubernetes-dev+release@googlegroups.com>
+Architecture: amd64
+Depends: iptables (>= 1.4.21), kubernetes-cni (= 0.5.1), iproute2, socat, util-linux, mount, ebtables, ethtool, init-system-helpers (>= 1.18~)
+Description: Kubernetes Node Agent
+ The node agent of Kubernetes, the container cluster manager
+Homepage: https://kubernetes.io
+Filename: pool/kubelet_1.7.15-00_amd64_d92cc5ccec7b452c457c47c08cc6df68efab96b9b2f1406627d3a48e2f35b65e.deb
+Priority: optional
+SHA256: d92cc5ccec7b452c457c47c08cc6df68efab96b9b2f1406627d3a48e2f35b65e
+Section: misc
+Size: 19578042
+
+Package: kubelet
+Version: 1.7.16-00
+Installed-Size: 143182
+Maintainer: Kubernetes Authors <kubernetes-dev+release@googlegroups.com>
+Architecture: amd64
+Depends: iptables (>= 1.4.21), kubernetes-cni (= 0.5.1), iproute2, socat, util-linux, mount, ebtables, ethtool, init-system-helpers (>= 1.18~)
+Description: Kubernetes Node Agent
+ The node agent of Kubernetes, the container cluster manager
+Homepage: https://kubernetes.io
+Filename: pool/kubelet_1.7.16-00_amd64_d73c96d4f76b0b2816580e414ed8db4ea753e5e969edcf4a2424bc92f83bce10.deb
+Priority: optional
+SHA256: d73c96d4f76b0b2816580e414ed8db4ea753e5e969edcf4a2424bc92f83bce10
+Section: misc
+Size: 19584344
+
+Package: kubelet
 Version: 1.8.0-00
 Installed-Size: 134312
 Maintainer: Kubernetes Authors <kubernetes-dev+release@googlegroups.com>
@@ -2176,6 +2816,126 @@ Section: misc
 Size: 19254630
 
 Package: kubelet
+Version: 1.8.6-00
+Installed-Size: 134583
+Maintainer: Kubernetes Authors <kubernetes-dev+release@googlegroups.com>
+Architecture: amd64
+Depends: iptables (>= 1.4.21), kubernetes-cni (= 0.5.1), iproute2, socat, util-linux, mount, ebtables, ethtool, init-system-helpers (>= 1.18~)
+Description: Kubernetes Node Agent
+ The node agent of Kubernetes, the container cluster manager
+Homepage: https://kubernetes.io
+Filename: pool/kubelet_1.8.6-00_amd64_39a5f313074cbc2dda28f97cc7739c352f0037895211c4f894845dc74063711b.deb
+Priority: optional
+SHA256: 39a5f313074cbc2dda28f97cc7739c352f0037895211c4f894845dc74063711b
+Section: misc
+Size: 19246028
+
+Package: kubelet
+Version: 1.8.7-00
+Installed-Size: 134878
+Maintainer: Kubernetes Authors <kubernetes-dev+release@googlegroups.com>
+Architecture: amd64
+Depends: iptables (>= 1.4.21), kubernetes-cni (= 0.5.1), iproute2, socat, util-linux, mount, ebtables, ethtool, init-system-helpers (>= 1.18~)
+Description: Kubernetes Node Agent
+ The node agent of Kubernetes, the container cluster manager
+Homepage: https://kubernetes.io
+Filename: pool/kubelet_1.8.7-00_amd64_24344d1fccddb84f462d4458dc7ef60516b7b34c8f7e53050b8cebd904f1a8b0.deb
+Priority: optional
+SHA256: 24344d1fccddb84f462d4458dc7ef60516b7b34c8f7e53050b8cebd904f1a8b0
+Section: misc
+Size: 19240726
+
+Package: kubelet
+Version: 1.8.8-00
+Installed-Size: 134877
+Maintainer: Kubernetes Authors <kubernetes-dev+release@googlegroups.com>
+Architecture: amd64
+Depends: iptables (>= 1.4.21), kubernetes-cni (= 0.5.1), iproute2, socat, util-linux, mount, ebtables, ethtool, init-system-helpers (>= 1.18~)
+Description: Kubernetes Node Agent
+ The node agent of Kubernetes, the container cluster manager
+Homepage: https://kubernetes.io
+Filename: pool/kubelet_1.8.8-00_amd64_64d4ec64faa4ed93bf67900985ab8b87b0c96449c0a5b23dad8fe0138fef99de.deb
+Priority: optional
+SHA256: 64d4ec64faa4ed93bf67900985ab8b87b0c96449c0a5b23dad8fe0138fef99de
+Section: misc
+Size: 19255030
+
+Package: kubelet
+Version: 1.8.9-00
+Installed-Size: 134960
+Maintainer: Kubernetes Authors <kubernetes-dev+release@googlegroups.com>
+Architecture: amd64
+Depends: iptables (>= 1.4.21), kubernetes-cni (= 0.5.1), iproute2, socat, util-linux, mount, ebtables, ethtool, init-system-helpers (>= 1.18~)
+Description: Kubernetes Node Agent
+ The node agent of Kubernetes, the container cluster manager
+Homepage: https://kubernetes.io
+Filename: pool/kubelet_1.8.9-00_amd64_9319e46c4964ea2dbb3da011b491953ad95b5b038861ce94d59db714c74dd036.deb
+Priority: optional
+SHA256: 9319e46c4964ea2dbb3da011b491953ad95b5b038861ce94d59db714c74dd036
+Section: misc
+Size: 19268486
+
+Package: kubelet
+Version: 1.8.10-00
+Installed-Size: 134966
+Maintainer: Kubernetes Authors <kubernetes-dev+release@googlegroups.com>
+Architecture: amd64
+Depends: iptables (>= 1.4.21), kubernetes-cni (= 0.5.1), iproute2, socat, util-linux, mount, ebtables, ethtool, init-system-helpers (>= 1.18~)
+Description: Kubernetes Node Agent
+ The node agent of Kubernetes, the container cluster manager
+Homepage: https://kubernetes.io
+Filename: pool/kubelet_1.8.10-00_amd64_f02917067d77dbcb01ab6b881f68314d1e6b4ff178560e2d596d9c3226726c79.deb
+Priority: optional
+SHA256: f02917067d77dbcb01ab6b881f68314d1e6b4ff178560e2d596d9c3226726c79
+Section: misc
+Size: 19271308
+
+Package: kubelet
+Version: 1.8.11-00
+Installed-Size: 134978
+Maintainer: Kubernetes Authors <kubernetes-dev+release@googlegroups.com>
+Architecture: amd64
+Depends: iptables (>= 1.4.21), kubernetes-cni (= 0.5.1), iproute2, socat, util-linux, mount, ebtables, ethtool, init-system-helpers (>= 1.18~)
+Description: Kubernetes Node Agent
+ The node agent of Kubernetes, the container cluster manager
+Homepage: https://kubernetes.io
+Filename: pool/kubelet_1.8.11-00_amd64_e38ba6a15aaeda29fe2866b8b1365702d4b4dea577d646df50da2f8c5ee762cf.deb
+Priority: optional
+SHA256: e38ba6a15aaeda29fe2866b8b1365702d4b4dea577d646df50da2f8c5ee762cf
+Section: misc
+Size: 19280424
+
+Package: kubelet
+Version: 1.8.12-00
+Installed-Size: 134978
+Maintainer: Kubernetes Authors <kubernetes-dev+release@googlegroups.com>
+Architecture: amd64
+Depends: iptables (>= 1.4.21), kubernetes-cni (= 0.5.1), iproute2, socat, util-linux, mount, ebtables, ethtool, init-system-helpers (>= 1.18~)
+Description: Kubernetes Node Agent
+ The node agent of Kubernetes, the container cluster manager
+Homepage: https://kubernetes.io
+Filename: pool/kubelet_1.8.12-00_amd64_7dc5d77b1b85ce6eef0bb128ab5b1790affc0542822facf4515ffcea051b7781.deb
+Priority: optional
+SHA256: 7dc5d77b1b85ce6eef0bb128ab5b1790affc0542822facf4515ffcea051b7781
+Section: misc
+Size: 19273942
+
+Package: kubelet
+Version: 1.8.13-00
+Installed-Size: 134978
+Maintainer: Kubernetes Authors <kubernetes-dev+release@googlegroups.com>
+Architecture: amd64
+Depends: iptables (>= 1.4.21), kubernetes-cni (= 0.5.1), iproute2, socat, util-linux, mount, ebtables, ethtool, init-system-helpers (>= 1.18~)
+Description: Kubernetes Node Agent
+ The node agent of Kubernetes, the container cluster manager
+Homepage: https://kubernetes.io
+Filename: pool/kubelet_1.8.13-00_amd64_95894fc832a74a6be8461c516595b4e7ea12edf1e5f4ff20599d23fca50f491f.deb
+Priority: optional
+SHA256: 95894fc832a74a6be8461c516595b4e7ea12edf1e5f4ff20599d23fca50f491f
+Section: misc
+Size: 19283464
+
+Package: kubelet
 Version: 1.9.0-00
 Installed-Size: 144333
 Maintainer: Kubernetes Authors <kubernetes-dev+release@googlegroups.com>
@@ -2189,6 +2949,156 @@ Priority: optional
 SHA256: 100df9788226fe76ce828503cf24b8c4c6f9705f15504093844c9138e0b2a97f
 Section: misc
 Size: 20452588
+
+Package: kubelet
+Version: 1.9.1-00
+Installed-Size: 144345
+Maintainer: Kubernetes Authors <kubernetes-dev+release@googlegroups.com>
+Architecture: amd64
+Depends: iptables (>= 1.4.21), kubernetes-cni (= 0.6.0), iproute2, socat, util-linux, mount, ebtables, ethtool, init-system-helpers (>= 1.18~)
+Description: Kubernetes Node Agent
+ The node agent of Kubernetes, the container cluster manager
+Homepage: https://kubernetes.io
+Filename: pool/kubelet_1.9.1-00_amd64_e1111bdd0cb45976216b7498a0b1d68d15ddaacc462a067d831b0f20ae8c276b.deb
+Priority: optional
+SHA256: e1111bdd0cb45976216b7498a0b1d68d15ddaacc462a067d831b0f20ae8c276b
+Section: misc
+Size: 20472594
+
+Package: kubelet
+Version: 1.9.2-00
+Installed-Size: 144362
+Maintainer: Kubernetes Authors <kubernetes-dev+release@googlegroups.com>
+Architecture: amd64
+Depends: iptables (>= 1.4.21), kubernetes-cni (= 0.6.0), iproute2, socat, util-linux, mount, ebtables, ethtool, init-system-helpers (>= 1.18~)
+Description: Kubernetes Node Agent
+ The node agent of Kubernetes, the container cluster manager
+Homepage: https://kubernetes.io
+Filename: pool/kubelet_1.9.2-00_amd64_cdb2335fec48cd8cb3ad2bdd874fb29828ceb893d200ebee44657ae51f0851b4.deb
+Priority: optional
+SHA256: cdb2335fec48cd8cb3ad2bdd874fb29828ceb893d200ebee44657ae51f0851b4
+Section: misc
+Size: 20454180
+
+Package: kubelet
+Version: 1.9.3-00
+Installed-Size: 144367
+Maintainer: Kubernetes Authors <kubernetes-dev+release@googlegroups.com>
+Architecture: amd64
+Depends: iptables (>= 1.4.21), kubernetes-cni (= 0.6.0), iproute2, socat, util-linux, mount, ebtables, ethtool, init-system-helpers (>= 1.18~)
+Description: Kubernetes Node Agent
+ The node agent of Kubernetes, the container cluster manager
+Homepage: https://kubernetes.io
+Filename: pool/kubelet_1.9.3-00_amd64_50317ce119d81a3a69ba891c5c77b48b153b97a175598dc62ee811e081a063ee.deb
+Priority: optional
+SHA256: 50317ce119d81a3a69ba891c5c77b48b153b97a175598dc62ee811e081a063ee
+Section: misc
+Size: 20454776
+
+Package: kubelet
+Version: 1.9.4-00
+Installed-Size: 143881
+Maintainer: Kubernetes Authors <kubernetes-dev+release@googlegroups.com>
+Architecture: amd64
+Depends: iptables (>= 1.4.21), kubernetes-cni (= 0.6.0), iproute2, socat, util-linux, mount, ebtables, ethtool, init-system-helpers (>= 1.18~)
+Description: Kubernetes Node Agent
+ The node agent of Kubernetes, the container cluster manager
+Homepage: https://kubernetes.io
+Filename: pool/kubelet_1.9.4-00_amd64_c8c2af29e421adf188c94b7049e30ed1b6368dad49cfe5e8c865d43a16be6b76.deb
+Priority: optional
+SHA256: c8c2af29e421adf188c94b7049e30ed1b6368dad49cfe5e8c865d43a16be6b76
+Section: misc
+Size: 20395024
+
+Package: kubelet
+Version: 1.9.5-00
+Installed-Size: 143885
+Maintainer: Kubernetes Authors <kubernetes-dev+release@googlegroups.com>
+Architecture: amd64
+Depends: iptables (>= 1.4.21), kubernetes-cni (= 0.6.0), iproute2, socat, util-linux, mount, ebtables, ethtool, init-system-helpers (>= 1.18~)
+Description: Kubernetes Node Agent
+ The node agent of Kubernetes, the container cluster manager
+Homepage: https://kubernetes.io
+Filename: pool/kubelet_1.9.5-00_amd64_5400807b4c667bfeaa5074245fb1edb20cf4b1b7f3ac88cb23df437f8558cd13.deb
+Priority: optional
+SHA256: 5400807b4c667bfeaa5074245fb1edb20cf4b1b7f3ac88cb23df437f8558cd13
+Section: misc
+Size: 20397784
+
+Package: kubelet
+Version: 1.9.6-00
+Installed-Size: 143885
+Maintainer: Kubernetes Authors <kubernetes-dev+release@googlegroups.com>
+Architecture: amd64
+Depends: iptables (>= 1.4.21), kubernetes-cni (= 0.6.0), iproute2, socat, util-linux, mount, ebtables, ethtool, init-system-helpers (>= 1.18~)
+Description: Kubernetes Node Agent
+ The node agent of Kubernetes, the container cluster manager
+Homepage: https://kubernetes.io
+Filename: pool/kubelet_1.9.6-00_amd64_abc92a438e6bcade2e879b789fa0634474f448df7428157703206448805a948f.deb
+Priority: optional
+SHA256: abc92a438e6bcade2e879b789fa0634474f448df7428157703206448805a948f
+Section: misc
+Size: 20393264
+
+Package: kubelet
+Version: 1.9.7-00
+Installed-Size: 143931
+Maintainer: Kubernetes Authors <kubernetes-dev+release@googlegroups.com>
+Architecture: amd64
+Depends: iptables (>= 1.4.21), kubernetes-cni (= 0.6.0), iproute2, socat, util-linux, mount, ebtables, ethtool, init-system-helpers (>= 1.18~)
+Description: Kubernetes Node Agent
+ The node agent of Kubernetes, the container cluster manager
+Homepage: https://kubernetes.io
+Filename: pool/kubelet_1.9.7-00_amd64_6a510a9b3d8b54473e8237cda857be4487dbc8cbd2b6b84ad292f5a3c3ec01c5.deb
+Priority: optional
+SHA256: 6a510a9b3d8b54473e8237cda857be4487dbc8cbd2b6b84ad292f5a3c3ec01c5
+Section: misc
+Size: 20400054
+
+Package: kubelet
+Version: 1.10.0-00
+Installed-Size: 149213
+Maintainer: Kubernetes Authors <kubernetes-dev+release@googlegroups.com>
+Architecture: amd64
+Depends: iptables (>= 1.4.21), kubernetes-cni (= 0.6.0), iproute2, socat, util-linux, mount, ebtables, ethtool, init-system-helpers (>= 1.18~)
+Description: Kubernetes Node Agent
+ The node agent of Kubernetes, the container cluster manager
+Homepage: https://kubernetes.io
+Filename: pool/kubelet_1.10.0-00_amd64_211eced3f0715db1dbbb9fa0973299a8f6b764ef43e25bd94fece3947b13091f.deb
+Priority: optional
+SHA256: 211eced3f0715db1dbbb9fa0973299a8f6b764ef43e25bd94fece3947b13091f
+Section: misc
+Size: 21089520
+
+Package: kubelet
+Version: 1.10.1-00
+Installed-Size: 149240
+Maintainer: Kubernetes Authors <kubernetes-dev+release@googlegroups.com>
+Architecture: amd64
+Depends: iptables (>= 1.4.21), kubernetes-cni (= 0.6.0), iproute2, socat, util-linux, mount, ebtables, ethtool, init-system-helpers (>= 1.18~)
+Description: Kubernetes Node Agent
+ The node agent of Kubernetes, the container cluster manager
+Homepage: https://kubernetes.io
+Filename: pool/kubelet_1.10.1-00_amd64_7002d1aa12fea2f0c81efdc5ea577607e387d21177c6fa57e1f897037325b824.deb
+Priority: optional
+SHA256: 7002d1aa12fea2f0c81efdc5ea577607e387d21177c6fa57e1f897037325b824
+Section: misc
+Size: 21111050
+
+Package: kubelet
+Version: 1.10.2-00
+Installed-Size: 149257
+Maintainer: Kubernetes Authors <kubernetes-dev+release@googlegroups.com>
+Architecture: amd64
+Depends: iptables (>= 1.4.21), kubernetes-cni (= 0.6.0), iproute2, socat, util-linux, mount, ebtables, ethtool, init-system-helpers (>= 1.18~)
+Description: Kubernetes Node Agent
+ The node agent of Kubernetes, the container cluster manager
+Homepage: https://kubernetes.io
+Filename: pool/kubelet_1.10.2-00_amd64_3ff69468521886de7b64ba9b4932bab7e6ef71f7344ace36ac0855df7bd2427a.deb
+Priority: optional
+SHA256: 3ff69468521886de7b64ba9b4932bab7e6ef71f7344ace36ac0855df7bd2427a
+Section: misc
+Size: 21096048
 
 Package: kubernetes-cni
 Version: 0.3.0.1-07a8a2-00

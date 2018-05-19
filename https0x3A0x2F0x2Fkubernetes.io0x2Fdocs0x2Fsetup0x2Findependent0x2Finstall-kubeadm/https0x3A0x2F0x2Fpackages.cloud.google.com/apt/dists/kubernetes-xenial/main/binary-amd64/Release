@@ -1,8 +1,9 @@
 Codename: kubernetes-xenial
-Date: Sat, 16 Dec 2017 00:11:14 UTC
+Date: Tue, 15 May 2018 20:55:58 UTC
 Description: kubernetes-xenial
 Label: kubernetes-xenial
 Origin: kubernetes-xenial
+Acquire-By-Hash: yes
 Suite: kubernetes-xenial
 Component: main
 Architecture: amd64

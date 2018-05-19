@@ -10,6 +10,8 @@ download_dir="$base_dir/https0x3A0x2F0x2Fpackages.cloud.google.com/yum"
 
 mkdir -p $download_dir/{doc,pool,repos}
 
+### EL6
+
 targets="kubernetes-el6-x86_64/repodata/filelists.xml \
     kubernetes-el6-x86_64/repodata/filelists.xml.gz \
     kubernetes-el6-x86_64/repodata/other.xml \
@@ -27,6 +29,8 @@ targets="kubernetes-el6-x86_64/repodata/filelists.xml \
     kubernetes-el6-x86_64-unstable/repodata/repomd.xml \
     kubernetes-el6-x86_64-unstable/repodata/repomd.xml.asc \
 "
+
+### EL7
 
 targets="kubernetes-el7-x86_64/repodata/filelists.xml \
     kubernetes-el7-x86_64/repodata/filelists.xml.gz \

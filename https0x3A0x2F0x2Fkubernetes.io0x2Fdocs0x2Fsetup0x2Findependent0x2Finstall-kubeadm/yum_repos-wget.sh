@@ -1,5 +1,7 @@
 #!/bin/bash
 
+### Deprecated
+
 set -e
 
 working_dir=`pwd`
