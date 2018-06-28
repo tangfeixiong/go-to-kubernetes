@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head th:replace="fragments :: head(title=~{::title/text()})">
+		<title>Messages : View all</title>
+	</head>
+	<body>
+		<div class="container">
+			<div th:replace="fragments :: navbar"></div>
+			<div class="float-right mt-2">
+				<a class="btn btn-primary btn-sm" href="form.html" th:href="@{/(form=${sc.text})}" th:text="'Create ' + ${sc.text} + ' Application'">Create xxx</a>
+			</div>
+			<h4 class="float-left mt-2" th:text="${sc.text} + ' Appliances : View all'">xxx : View all</h4>
+			<table class="table table-bordered table-striped">
+				<thead>
+					<tr>
+						<th>ID</th>
+						<th>Created</th>
+						<th>Summary</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:if="${scs.empty}">
+						<td colspan="3">No catalogs</td>
+					</tr>
+					<tr th:each="catl : ${scs}">
+						<td th:text="${catl.id}">1</td>
+						<td th:text="${#calendars.format(catl.created)}">July 11,
+							2012 2:17:16 PM CDT</td>
+						<td><a href="view.html" th:href="@{'/' + ${catl.text}}"
+							th:text="${catl.summary}"> The summary </a></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</body>
+</html>

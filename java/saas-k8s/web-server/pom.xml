@@ -1,0 +1,342 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<groupId>https0x3A0x2F0x2Fgithub0x2Ecom0x2Fstackdocker.mooc-k8s</groupId>
+		<artifactId>mooc-parent</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+		<relativePath>../</relativePath> <!-- lookup parent from repository -->
+	</parent>
+    <!--<parent>-->
+        <!--<groupId>org.springframework.boot</groupId>-->
+        <!--<artifactId>spring-boot-starter-parent</artifactId>-->
+        <!--<version>2.0.1.RELEASE</version>-->
+        <!--<relativePath />-->
+    <!--</parent>-->
+	<!--<version>0.0.1-SNAPSHOT</version>-->
+	<!--<groupId>https0x3A0x2F0x2Fgithub0x2Ecom0x2Fstackdocker.mooc-k8s</groupId>-->
+	<artifactId>web-server</artifactId>
+	<packaging>jar</packaging>
+
+	<name>Web Server</name>
+	<description>MOOC Web App :: Spring Boot Application</description>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+
+		<java.version>1.8</java.version>
+		<!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-dependenies -->
+		<spring-boot.version>2.0.3.RELEASE</spring-boot.version>
+
+        <!-- https://mvnrepository.com/artifact/org.apache.tomcat.embed/tomcat-embed-jasper -->
+		<tomcat.version>9.0.8</tomcat.version>
+        <!-- https://mvnrepository.com/artifact/javax.servlet.jsp.jstl/jstl -->
+        <jstl.version>1.2</jstl.version>
+
+        <junit.version>4.12</junit.version>
+
+        <maven-compiler-plugin.version>3.7.0</maven-compiler-plugin.version>
+        <maven-war-plugin.version>3.2.0</maven-war-plugin.version>
+
+        <start-class>io.stackdocker.moocsaas.webapp.App</start-class>
+        <skip.it>true</skip.it>
+
+		<main.basedir>${basedir}/..</main.basedir>
+		<m2eclipse.wtp.contextRoot>/</m2eclipse.wtp.contextRoot>
+	</properties>
+
+	<dependencyManagement>
+		<dependencies>
+			<!-- our bom -->
+<!--			<dependency>
+				<groupId>https0x3A0x2F0x2Fgithub0x2Ecom0x2Fstackdocker.mooc-k8s</groupId>
+				<artifactId>core</artifactId>
+				<version>${project.version}</version>
+			</dependency>-->
+
+			<!-- https://docs.spring.io/spring-boot/docs/current/reference/html/using-boot-build-systems.html#using-boot-maven-without-a-parent -->
+			<dependency>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-dependencies</artifactId>
+				<version>${spring-boot.version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+
+			<!-- Override Spring Data release train provided by Spring Boot -->
+			<!--<dependency>-->
+			<!--<groupId>org.springframework.data</groupId>-->
+			<!--<artifactId>spring-data-releasetrain</artifactId>-->
+			<!--<version>Fowler-SR2</version>-->
+			<!--<type>pom</type>-->
+			<!--<scope>import</scope>-->
+			<!--</dependency>-->
+
+		</dependencies>
+	</dependencyManagement>
+
+	<dependencies>
+<!--		<dependency>
+			<groupId>https0x3A0x2F0x2Fgithub0x2Ecom0x2Fstackdocker.mooc-k8s</groupId>
+			<artifactId>core</artifactId>
+		</dependency>-->
+
+		<!-- Compile -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+		<dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-thymeleaf</artifactId>
+        </dependency>
+        <!-- Provided -->
+<!--		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-tomcat</artifactId>
+			<scope>provided</scope>
+		</dependency>-->
+<!--        <dependency>
+            <groupId>org.apache.tomcat.embed</groupId>
+            <artifactId>tomcat-embed-jasper</artifactId>
+            <version>${tomcat.version}</version>
+            <scope>provided</scope>
+        </dependency>-->
+
+        <!-- <groupId>javax.servlet.jsp.jstl</groupId> -->
+<!--        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>jstl</artifactId>
+            <version>${jstl.version}</version>
+        </dependency>-->
+
+		<!-- https://github.com/kubernetes-client/java#maven-users -->
+		<dependency>
+			<groupId>io.kubernetes</groupId>
+			<artifactId>client-java</artifactId>
+			<version>2.0.0-beta1</version>
+			<scope>compile</scope>
+		</dependency>
+
+		<!-- https://github.com/fabric8io/kubernetes-client -->
+		<!-- https://mvnrepository.com/artifact/io.fabric8/kubernetes-client -->
+<!--		<dependency>
+			<groupId>io.fabric8</groupId>
+			<artifactId>kubernetes-client</artifactId>
+			<version>3.2.0</version>
+		</dependency>-->
+
+		<dependency>
+			<groupId>commons-codec</groupId>
+			<artifactId>commons-codec</artifactId>
+			<version>1.10</version>
+		</dependency>
+		<dependency>
+			<groupId>log4j</groupId>
+			<artifactId>log4j</artifactId>
+			<version>1.2.17</version>
+		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+			<version>1.7.25</version>
+		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-log4j12</artifactId>
+			<version>1.7.25</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-lang3</artifactId>
+			<version>3.4</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/javax.validation/validation-api -->
+		<!--<dependency>-->
+			<!--<groupId>javax.validation</groupId>-->
+			<!--<artifactId>validation-api</artifactId>-->
+			<!--<version>1.0.0.GA</version>-->
+		<!--</dependency>-->
+		<!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-validator -->
+		<dependency>
+			<groupId>org.hibernate.validator</groupId>
+			<artifactId>hibernate-validator</artifactId>
+			<version>6.0.9.Final</version>
+			<!--<version>5.4.0.Final</version>-->
+			<!--<version>5.1.1.Final</version>-->
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<version>1.16.20</version>
+			<scope>provided</scope>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.aspectj/aspectjrt -->
+		<dependency>
+			<groupId>org.aspectj</groupId>
+			<artifactId>aspectjrt</artifactId>
+			<version>1.8.13</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.apache.commons/commons-math3 -->
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-math3</artifactId>
+			<version>3.2</version>
+		</dependency>
+
+        <!-- https://mvnrepository.com/artifact/org.json/json -->
+		<dependency>
+		    <groupId>org.json</groupId>
+		    <artifactId>json</artifactId>
+		    <version>20180130</version>
+		</dependency>
+		
+		<dependency>
+		    <groupId>net.sf.json-lib</groupId>
+		    <artifactId>json-lib</artifactId>
+		    <version>2.4</version>
+		    <classifier>jdk15</classifier>
+		</dependency>
+
+        <!-- https://docs.spring.io/spring-boot/docs/current/reference/html/using-boot-devtools.html -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-devtools</artifactId>
+            <scope>provided</scope>
+        </dependency>
+
+        <!-- Test -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/junit/junit -->
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>${junit.version}</version>
+            <scope>test</scope>
+        </dependency>
+
+	</dependencies>
+
+
+	<build>
+        <resources>
+            <resource>
+                <directory>src/main/webapp</directory>
+            </resource>
+            <resource>
+                <directory>src/main/resources</directory>
+            </resource>
+        </resources>
+
+		<plugins>
+			<!-- https://maven.apache.org/plugins/maven-compiler-plugin/examples/set-compiler-source-and-target.html -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>${maven-compiler-plugin.version}</version>
+				<configuration>
+					<source>1.8</source>
+					<target>1.8</target>
+					<encoding>UTF-8</encoding>
+				</configuration>
+			</plugin>
+            <!-- https://docs.spring.io/spring-boot/docs/2.0.3.RELEASE/maven-plugin/examples/it-skip.html -->
+            <!-- http://maven.apache.org/surefire/maven-failsafe-plugin/integration-test-mojo.html -->
+            <!-- The Failsafe Plugin is designed to run integration tests while the Surefire Plugin is designed to run unit tests. -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-failsafe-plugin</artifactId>
+                <version>2.22.0</version>
+                <configuration>
+                    <skip>${skip.it}</skip>
+                    <skipTests>true</skipTests>
+                </configuration>
+            </plugin>
+            <!-- https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-surefire-plugin -->
+            <!--The Surefire Plugin is used during the test phase of the build lifecycle to execute the unit tests of an application. -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.22.0</version>
+                <configuration>
+                    <useSystemClassLoader>false</useSystemClassLoader>
+                    <skip>${skip.it}</skip>
+                    <skipTests>true</skipTests>
+                </configuration>
+            </plugin>
+            <!-- force maven properties into spring boot application-dev.yml -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-resources-plugin</artifactId>
+                <version>2.7</version>
+                <configuration>
+                    <delimiters>
+                        <delimiter>@</delimiter>
+                    </delimiters>
+                    <useDefaultDelimiters>false</useDefaultDelimiters>
+                </configuration>
+            </plugin>
+
+<!--            <plugin>
+              <groupId>org.apache.maven.plugins</groupId>
+              <artifactId>maven-war-plugin</artifactId>
+              <version>${maven-war-plugin.version}</version>
+              <configuration>
+                <failOnMissingWebXml>false</failOnMissingWebXml>
+              </configuration>
+            </plugin>-->
+
+            <!-- https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#using-boot-maven-plugin -->
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <version>${spring-boot.version}</version>
+                <configuration>
+                    <mainClass>${start-class}</mainClass>
+<!--                  <layout>ZIP</layout>-->
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>re-packaging</id>
+                        <goals>
+                            <goal>repackage</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>pre-integration-test</id>
+                        <goals>
+                            <goal>start</goal>
+                        </goals>
+                        <configuration>
+                            <skip>${skip.it}</skip>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>post-integration-test</id>
+                        <goals>
+                            <goal>stop</goal>
+                        </goals>
+                        <configuration>
+                            <skip>${skip.it}</skip>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
+		</plugins>
+
+	</build>
+
+</project>
