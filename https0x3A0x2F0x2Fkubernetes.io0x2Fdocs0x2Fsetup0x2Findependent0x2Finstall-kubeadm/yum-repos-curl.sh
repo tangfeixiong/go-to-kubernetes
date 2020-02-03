@@ -8,7 +8,7 @@ base_dir=$(cd $(dirname "${BASH_SOURCE[0]}") && pwd)
 
 download_dir="$base_dir/https0x3A0x2F0x2Fpackages.cloud.google.com/yum"
 
-mkdir -p $download_dir/{doc,pool,repos}
+mkdir -p $download_dir/repos/{kubernetes-el6-x86_64/repodata,kubernetes-el7-x86_64/repodata}
 
 ### EL6
 

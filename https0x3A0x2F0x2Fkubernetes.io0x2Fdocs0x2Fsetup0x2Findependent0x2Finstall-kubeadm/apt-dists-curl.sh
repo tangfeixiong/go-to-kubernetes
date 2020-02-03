@@ -43,6 +43,14 @@ targets=" \
     kubernetes-xenial/main/binary-amd64/Release \
     kubernetes-xenial/main/debian-installer/binary-amd64/Packages \
     kubernetes-xenial/main/debian-installer/binary-amd64/Packages.gz \
+    kubernetes-yakkety/InRelease \
+    kubernetes-yakkety/Release \
+    kubernetes-yakkety/Release.gpg \
+    kubernetes-yakkety/main/binary-amd64/Packages \
+    kubernetes-yakkety/main/binary-amd64/Packages.gz \
+    kubernetes-yakkety/main/binary-amd64/Release \
+    kubernetes-yakkety/main/debian-installer/binary-amd64/Packages \
+    kubernetes-yakkety/main/debian-installer/binary-amd64/Packages.gz \
 "
 
 targets=" \
