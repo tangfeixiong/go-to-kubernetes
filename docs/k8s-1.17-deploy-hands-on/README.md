@@ -178,3 +178,31 @@ Install Kubernetes v1.17.2 workloads node onto VM _workerk8s1_
 ## Continously DevOps
 
 Link to https://www.digitalocean.com/community/tutorials/how-to-create-a-kubernetes-cluster-using-kubeadm-on-ubuntu-18-04
+
+## Issues
+
+kube-flannel enter 'Evicted' status
+```
+vagrant@ubuntu-bionic:/Users/fanhongling/Downloads/workspace/src/github.com/tangfeixiong/go-to-kubernetes$ kubectl -n kube-system get pods -lapp=flannel
+NAME                          READY   STATUS    RESTARTS   AGE
+kube-flannel-ds-amd64-6qxfq   0/1     Evicted   0          32s
+```
+
+Refer
+- google://kube flannel Evicted
+- https://qiita.com/toru2220/items/c4c0dd553bef8f6caab5
+- https://kubernetes.io/docs/tasks/administer-cluster/out-of-resource/
+
+```
+vagrant@ubuntu-bionic:/Users/fanhongling/Downloads/workspace/src/github.com/tangfeixiong/go-to-kubernetes$ df -h
+Filesystem                   Size  Used Avail Use% Mounted on
+udev                         2.0G     0  2.0G   0% /dev
+tmpfs                        395M  1.2M  394M   1% /run
+/dev/sda1                    9.7G  8.4G  1.3G  87% /
+tmpfs                        2.0G     0  2.0G   0% /dev/shm
+tmpfs                        5.0M     0  5.0M   0% /run/lock
+tmpfs                        2.0G     0  2.0G   0% /sys/fs/cgroup
+tmpfs                        395M     0  395M   0% /run/user/1000
+Users_fanhongling_go         233G  223G  9.9G  96% /Users/fanhongling/go
+Users_fanhongling_Downloads  233G  223G  9.9G  96% /Users/fanhongling/Downloads
+```

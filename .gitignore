@@ -1,5 +1,6 @@
 .vagrant
 bin/
+*.wasm
 /rootfs/kubectl
 /rootfs/exec2hterm
 /rootfs/.gotty

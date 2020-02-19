@@ -723,7 +723,7 @@ __Dashboard Token__
 ```
 ubuntu@masterk8s:~$ cat dashboard-admin-user.yaml 
 # https://github.com/kubernetes/dashboard/blob/master/docs/user/access-control/creating-sample-user.md
-# $ kubectl -n kube-system describe secret $(kubectl -n kube-system get secret | grep admin-user )
+# $ kubectl -n kube-system describe secret $(kubectl -n kube-system get secret | grep admin-user | awk '{print $1}')
 ---
 apiVersion: v1
 kind: ServiceAccount

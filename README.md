@@ -71,6 +71,62 @@ Go build
 Or
 
     $ GOPATH=/work:/go:/data go install -v github.com/tangfeixiong/go-to-kubernetes/cmd/c3
+    
+### mod
+
+Issue
+```
+go: github.com/tangfeixiong/go-to-kubernetes imports
+	github.com/tangfeixiong/go-to-kubernetes/cmd/k8sec imports
+	github.com/tangfeixiong/go-to-kubernetes/pkg/k8sec/server imports
+	github.com/tangfeixiong/go-to-kubernetes/pkg/k8sec/agent/manager imports
+	github.com/google/cadvisor/container/docker imports
+	github.com/opencontainers/runc/libcontainer/configs imports
+	github.com/Sirupsen/logrus: github.com/Sirupsen/logrus@v1.4.2: parsing go.mod:
+	module declares its path as: github.com/sirupsen/logrus
+	        but was required as: github.com/Sirupsen/logrus
+Makefile:225: recipe for target 'go-install' failed
+make: *** [go-install] Error 1
+```
+
+https://stackoverflow.com/questions/56032544/how-to-find-dependency-causing-sirupsen-logrus-vs-sirupsen-logrus-unexpecte
+
+```
+go: finding gopkg.in/jcmturner/rpc.v1 v1.1.0
+build github.com/tangfeixiong/go-to-kubernetes: cannot load github.com/containerd/containerd/dialer: module github.com/containerd/containerd@latest found (v1.3.2), but does not contain package github.com/containerd/containerd/dialer
+Makefile:225: recipe for target 'go-install' failed
+make: *** [go-install] Error 1
+```
+
+```
+go: finding github.com/containerd/containerd v1.0.2
+build github.com/tangfeixiong/go-to-kubernetes: cannot load github.com/coreos/go-systemd/dbus: no matching versions for query "latest"
+Makefile:225: recipe for target 'go-install' failed
+make: *** [go-install] Error 1
+```
+
+```
+github.com/godbus/dbus
+github.com/coreos/go-systemd/dbus
+# github.com/coreos/go-systemd/dbus
+/home/vagrant/go/pkg/mod/github.com/coreos/go-systemd@v0.0.0-20190321100706-95778dfbb74e/dbus/dbus.go:127:33: cannot use dbus.SystemBusPrivate (type func() (*dbus.Conn, error)) as type func(...<T>) (*dbus.Conn, error) in argument to dbusAuthHelloConnection
+/home/vagrant/go/pkg/mod/github.com/coreos/go-systemd@v0.0.0-20190321100706-95778dfbb74e/dbus/dbus.go:136:33: cannot use dbus.SessionBusPrivate (type func() (*dbus.Conn, error)) as type func(...<T>) (*dbus.Conn, error) in argument to dbusAuthHelloConnection
+/home/vagrant/go/pkg/mod/github.com/coreos/go-systemd@v0.0.0-20190321100706-95778dfbb74e/dbus/dbus.go:146:42: undefined: dbus.ConnOption
+/home/vagrant/go/pkg/mod/github.com/coreos/go-systemd@v0.0.0-20190321100706-95778dfbb74e/dbus/dbus.go:204:48: undefined: dbus.ConnOption
+/home/vagrant/go/pkg/mod/github.com/coreos/go-systemd@v0.0.0-20190321100706-95778dfbb74e/dbus/dbus.go:224:53: undefined: dbus.ConnOption
+```
+
+```
+github.com/google/cadvisor/storage/influxdb
+# github.com/google/cadvisor/storage/influxdb
+/home/vagrant/go/pkg/mod/github.com/google/cadvisor@v0.35.0/storage/influxdb/influxdb.go:352:12: row.Err undefined (type models.Row has no field or method Err)
+/home/vagrant/go/pkg/mod/github.com/google/cadvisor@v0.35.0/storage/influxdb/influxdb.go:353:33: row.Err undefined (type models.Row has no field or method Err)
+```
+
+curl http://172.28.128.4:19753/rp/cadvisor/docker/
+```
+failed to get docker info: Error response from daemon: client version 1.40 is too new. Maximum supported API version is 1.39
+```
 
 ## Intruduction of *docker exec* and *kubectl exec* command 简述docker exec和kubectl exec的远程命令机制
 
