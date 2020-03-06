@@ -261,7 +261,7 @@ TBC
 
 ## Calico BGP/IPinIP networking
 
-K8s deployment refer to [./k8s-1.17-deploy-hands-on.md](./k8s-1.17-deploy-hands-on.md) 
+K8s deployment refer to [./k8s-1.17-deploy-hands-on/](./k8s-1.17-deploy-hands-on/) 
 
 Networking topology (TBC)
 
