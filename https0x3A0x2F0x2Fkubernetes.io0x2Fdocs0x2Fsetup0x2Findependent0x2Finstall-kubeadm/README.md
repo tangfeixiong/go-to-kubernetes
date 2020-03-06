@@ -15,16 +15,16 @@ Note: about kubernetes repository, refer to https://kubernetes.io/docs/setup/ind
 
 Current download is on releasing V1.8.4
 ```
-[vagrant@localhost http0x3A0x2F0x2Fkubernetes.io0x2Fdocs0x2Fsetup0x2Findependent0x2Finstall-kubeadm]$ ./yum-gpg-curl.sh 
+fanhonglingdeMacBook-Pro:https0x3A0x2F0x2Fkubernetes.io0x2Fdocs0x2Fsetup0x2Findependent0x2Finstall-kubeadm fanhongling$ ./yum-gpg-curl.sh 
   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
                                  Dload  Upload   Total   Spent    Left  Speed
-100   663  100   663    0     0     59      0  0:00:11  0:00:11 --:--:--   197
+100   659  100   659    0     0    663      0 --:--:-- --:--:-- --:--:--   662
   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
                                  Dload  Upload   Total   Spent    Left  Speed
-100   975  100   975    0     0    312      0  0:00:03  0:00:03 --:--:--   312
+100   975  100   975    0     0   2031      0 --:--:-- --:--:-- --:--:--  2035
   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
                                  Dload  Upload   Total   Spent    Left  Speed
-100   991  100   991    0     0    108      0  0:00:09  0:00:09 --:--:--   249
+100  1885  100  1885    0     0   3889      0 --:--:-- --:--:-- --:--:--  3886
 ```
 
 ### Repos
@@ -660,16 +660,16 @@ Debian release cycle
 
 Download
 ```
-fanhonglingdeMacBook-Pro:http0x3A0x2F0x2Fkubernetes.io0x2Fdocs0x2Fsetup0x2Findependent0x2Finstall-kubeadm fanhongling$ ./apt-gpg-curl.sh 
+fanhonglingdeMacBook-Pro:https0x3A0x2F0x2Fkubernetes.io0x2Fdocs0x2Fsetup0x2Findependent0x2Finstall-kubeadm fanhongling$ ./apt-gpg-curl.sh 
   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
                                  Dload  Upload   Total   Spent    Left  Speed
-100   663  100   663    0     0    186      0  0:00:03  0:00:03 --:--:--   186
+100   659  100   659    0     0    335      0  0:00:01  0:00:01 --:--:--   335
   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
                                  Dload  Upload   Total   Spent    Left  Speed
-100   975  100   975    0     0    321      0  0:00:03  0:00:03 --:--:--   321
+100   975  100   975    0     0   2391      0 --:--:-- --:--:-- --:--:--  2389
   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
                                  Dload  Upload   Total   Spent    Left  Speed
-100   991  100   991    0     0    103      0  0:00:09  0:00:09 --:--:--   247
+100  1885  100  1885    0     0   4579      0 --:--:-- --:--:-- --:--:--  4586
 ```
 
 ### Dists
